@@ -1,15 +1,24 @@
 # Microsoft.Extensions.AI Integration
 
-The Baseten SDK provides `AIFunction` tools that can be used with any `Microsoft.Extensions.AI.IChatClient` to give AI agents access to model management, deployment monitoring, and secrets on the Baseten platform.
+!!! tip "Cross-SDK comparison"
+    See the [centralized MEAI documentation](https://tryagi.github.io/docs/meai/) for feature matrices and comparisons across all tryAGI SDKs.
+
+The Baseten SDK provides `AIFunction` tool wrappers compatible with [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai). These tools can be used with any `IChatClient` to give AI models access to Baseten's model deployment management, deployment status monitoring, and workspace secret listing.
+
+## Installation
+
+```bash
+dotnet add package Baseten
+```
 
 ## Available Tools
 
-| Tool | Function Name | Description |
-|------|--------------|-------------|
-| `AsListModelsTool()` | `BasetenListModels` | Lists all ML models deployed on Baseten |
-| `AsGetModelTool()` | `BasetenGetModel` | Gets details of a specific model by ID |
-| `AsGetDeploymentStatusTool()` | `BasetenGetDeploymentStatus` | Gets production deployment status for a model |
-| `AsListSecretsTool()` | `BasetenListSecrets` | Lists workspace secrets (values never returned) |
+| Method | Tool Name | Description |
+|--------|-----------|-------------|
+| `AsListModelsTool()` | `BasetenListModels` | List all deployed ML models with names, IDs, and instance types |
+| `AsGetModelTool()` | `BasetenGetModel` | Get details of a specific model by ID |
+| `AsGetDeploymentStatusTool()` | `BasetenGetDeploymentStatus` | Get production deployment status, replica count, and autoscaling settings |
+| `AsListSecretsTool()` | `BasetenListSecrets` | List workspace secrets (names only, values never returned) |
 
 ## Usage
 
@@ -17,31 +26,40 @@ The Baseten SDK provides `AIFunction` tools that can be used with any `Microsoft
 using Baseten;
 using Microsoft.Extensions.AI;
 
-// Create the Baseten client
-var basetenClient = new BasetenClient(apiKey);
+var basetenClient = new BasetenClient(
+    apiKey: Environment.GetEnvironmentVariable("BASETEN_API_KEY")!);
 
-// Create tools for use with any IChatClient
-var tools = new[]
+var options = new ChatOptions
 {
-    basetenClient.AsListModelsTool(),
-    basetenClient.AsGetModelTool(),
-    basetenClient.AsGetDeploymentStatusTool(),
-    basetenClient.AsListSecretsTool(),
+    Tools =
+    [
+        basetenClient.AsListModelsTool(),
+        basetenClient.AsGetModelTool(),
+        basetenClient.AsGetDeploymentStatusTool(),
+        basetenClient.AsListSecretsTool(),
+    ],
 };
 
-// Use with any IChatClient (OpenAI, Anthropic, Ollama, etc.)
-var chatOptions = new ChatOptions { Tools = [.. tools] };
-var response = await chatClient.GetResponseAsync(
-    "What models are currently deployed and what's their status?",
-    chatOptions);
+IChatClient chatClient = /* your chat client */;
+
+var messages = new List<ChatMessage>
+{
+    new(ChatRole.User, "List all deployed models and check the production deployment status for each."),
+};
+
+while (true)
+{
+    var response = await chatClient.GetResponseAsync(messages, options);
+    messages.AddRange(response.ToChatMessages());
+
+    if (response.FinishReason == ChatFinishReason.ToolCalls)
+    {
+        var results = await response.CallToolsAsync(options);
+        messages.AddRange(results);
+        continue;
+    }
+
+    Console.WriteLine(response.Text);
+    break;
+}
 ```
-
-## Authentication
-
-The Baseten API uses `Api-Key` authentication. Pass your API key to the constructor:
-
-```csharp
-var client = new BasetenClient(apiKey);
-```
-
-The SDK automatically prefixes the key with `Api-Key ` in the `Authorization` header.
