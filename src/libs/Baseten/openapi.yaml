@@ -4443,6 +4443,19 @@
                         ],
                         "description": "The replica the log line was emitted from.",
                         "title": "Replica"
+                    },
+                    "request_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The request ID associated with an inference request.",
+                        "title": "Request Id"
                     }
                 },
                 "required": [
