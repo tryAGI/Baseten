@@ -29,6 +29,13 @@ namespace Baseten
         public string? Replica { get; set; }
 
         /// <summary>
+        /// The request ID associated with an inference request.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
+        public string? RequestId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -46,17 +53,23 @@ namespace Baseten
         /// <param name="replica">
         /// The replica the log line was emitted from.
         /// </param>
+        /// <param name="requestId">
+        /// The request ID associated with an inference request.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LogV1(
             string timestamp,
             string message,
-            string? replica)
+            string? replica,
+            string? requestId)
         {
             this.Timestamp = timestamp ?? throw new global::System.ArgumentNullException(nameof(timestamp));
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
             this.Replica = replica;
+            this.RequestId = requestId;
         }
 
         /// <summary>
