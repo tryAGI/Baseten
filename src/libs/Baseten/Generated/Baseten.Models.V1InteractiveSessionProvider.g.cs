@@ -15,6 +15,10 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        Ssh,
+        /// <summary>
+        /// 
+        /// </summary>
         VsCode,
     }
 
@@ -31,6 +35,7 @@ namespace Baseten
             return value switch
             {
                 V1InteractiveSessionProvider.Cursor => "cursor",
+                V1InteractiveSessionProvider.Ssh => "ssh",
                 V1InteractiveSessionProvider.VsCode => "vs_code",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -43,6 +48,7 @@ namespace Baseten
             return value switch
             {
                 "cursor" => V1InteractiveSessionProvider.Cursor,
+                "ssh" => V1InteractiveSessionProvider.Ssh,
                 "vs_code" => V1InteractiveSessionProvider.VsCode,
                 _ => null,
             };
