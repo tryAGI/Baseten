@@ -7269,7 +7269,8 @@
             "V1InteractiveSessionProvider": {
                 "enum": [
                     "vs_code",
-                    "cursor"
+                    "cursor",
+                    "ssh"
                 ],
                 "title": "V1InteractiveSessionProvider",
                 "type": "string"
