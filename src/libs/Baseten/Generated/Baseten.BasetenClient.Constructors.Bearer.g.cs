@@ -15,7 +15,7 @@ namespace Baseten
         {
             Authorizing(HttpClient, ref apiKey);
 
-            AuthorizeUsingApiKeyInHeader(apiKey);
+            AuthorizeUsingBearer(apiKey);
 
             Authorized(HttpClient);
         }
