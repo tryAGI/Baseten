@@ -40,6 +40,12 @@ namespace Baseten
         ///     "environment": "production",<br/>
         ///     "git_sha": "abc123"<br/>
         ///   },<br/>
+        ///   "weights": [<br/>
+        ///     {<br/>
+        ///       "mount_location": "/models/base",<br/>
+        ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
+        ///     }<br/>
+        ///   ],<br/>
         ///   "name": null<br/>
         /// }'
         /// </remarks>
@@ -75,6 +81,10 @@ namespace Baseten
         /// User-defined metadata for the deployment<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="weights">
+        /// Weight configurations for BDN model weight distribution<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="name">
         /// Name of the model
         /// </param>
@@ -89,6 +99,7 @@ namespace Baseten
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
             object? additionalAutoscalingConfig = default,
             object? metadata = default,
+            global::System.Collections.Generic.IList<object>? weights = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

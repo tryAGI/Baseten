@@ -56,6 +56,13 @@ namespace Baseten
         public object? Metadata { get; set; }
 
         /// <summary>
+        /// Weight configurations for BDN model weight distribution<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("weights")]
+        public global::System.Collections.Generic.IList<object>? Weights { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -89,6 +96,10 @@ namespace Baseten
         /// User-defined metadata for the deployment<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="weights">
+        /// Weight configurations for BDN model weight distribution<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -99,7 +110,8 @@ namespace Baseten
             object? environmentVariables,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings,
             object? additionalAutoscalingConfig,
-            object? metadata)
+            object? metadata,
+            global::System.Collections.Generic.IList<object>? weights)
         {
             this.Resources = resources ?? throw new global::System.ArgumentNullException(nameof(resources));
             this.LlmVersion = llmVersion;
@@ -108,6 +120,7 @@ namespace Baseten
             this.AutoscalingSettings = autoscalingSettings;
             this.AdditionalAutoscalingConfig = additionalAutoscalingConfig;
             this.Metadata = metadata;
+            this.Weights = weights;
         }
 
         /// <summary>
