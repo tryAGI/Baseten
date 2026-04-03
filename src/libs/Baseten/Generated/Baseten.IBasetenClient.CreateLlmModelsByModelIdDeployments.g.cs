@@ -40,7 +40,13 @@ namespace Baseten
         ///   "metadata": {<br/>
         ///     "environment": "production",<br/>
         ///     "git_sha": "abc123"<br/>
-        ///   }<br/>
+        ///   },<br/>
+        ///   "weights": [<br/>
+        ///     {<br/>
+        ///       "mount_location": "/models/base",<br/>
+        ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
+        ///     }<br/>
+        ///   ]<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.LLMModelVersionV1> CreateLlmModelsByModelIdDeploymentsAsync(
@@ -77,6 +83,10 @@ namespace Baseten
         /// User-defined metadata for the deployment<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="weights">
+        /// Weight configurations for BDN model weight distribution<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.LLMModelVersionV1> CreateLlmModelsByModelIdDeploymentsAsync(
@@ -88,6 +98,7 @@ namespace Baseten
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
             object? additionalAutoscalingConfig = default,
             object? metadata = default,
+            global::System.Collections.Generic.IList<object>? weights = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
