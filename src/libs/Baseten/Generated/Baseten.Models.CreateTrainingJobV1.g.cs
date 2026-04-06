@@ -55,6 +55,13 @@ namespace Baseten
         public global::System.Collections.Generic.IList<global::Baseten.CreateJobWeightConfigV1>? Weights { get; set; }
 
         /// <summary>
+        /// When enabled, uses /b10/workspace as the working directory instead of the image WORKDIR.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_baseten_workdir")]
+        public bool? EnableBasetenWorkdir { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -87,6 +94,10 @@ namespace Baseten
         /// <param name="weights">
         /// MDN weight sources to mount in the training container. Weights are mirrored and cached for fast startup.
         /// </param>
+        /// <param name="enableBasetenWorkdir">
+        /// When enabled, uses /b10/workspace as the working directory instead of the image WORKDIR.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -97,7 +108,8 @@ namespace Baseten
             string? name,
             global::Baseten.TrussUserEnv? trussUserEnv,
             global::Baseten.InteractiveSessionConfigV1? interactiveSession,
-            global::System.Collections.Generic.IList<global::Baseten.CreateJobWeightConfigV1>? weights)
+            global::System.Collections.Generic.IList<global::Baseten.CreateJobWeightConfigV1>? weights,
+            bool? enableBasetenWorkdir)
         {
             this.Image = image ?? throw new global::System.ArgumentNullException(nameof(image));
             this.Compute = compute;
@@ -106,6 +118,7 @@ namespace Baseten
             this.TrussUserEnv = trussUserEnv;
             this.InteractiveSession = interactiveSession;
             this.Weights = weights;
+            this.EnableBasetenWorkdir = enableBasetenWorkdir;
         }
 
         /// <summary>

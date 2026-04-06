@@ -85,7 +85,8 @@ namespace Baseten
         ///         "mount_location": "/app/models/base",<br/>
         ///         "source": "hf://meta-llama/Llama-3-8B@main"<br/>
         ///       }<br/>
-        ///     ]<br/>
+        ///     ],<br/>
+        ///     "enable_baseten_workdir": false<br/>
         ///   }<br/>
         /// }'
         /// </remarks>
