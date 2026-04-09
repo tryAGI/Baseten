@@ -5,6 +5,25 @@ namespace Baseten
 {
     public partial class BasetenClient
     {
+
+
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetChainsByChainIdEnvironmentsByEnvNameSecurityRequirement0 =
+            new global::Baseten.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
+                {                    new global::Baseten.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetChainsByChainIdEnvironmentsByEnvNameSecurityRequirements =
+            new global::Baseten.EndPointSecurityRequirement[]
+            {                s_GetChainsByChainIdEnvironmentsByEnvNameSecurityRequirement0,
+            };
         partial void PrepareGetChainsByChainIdEnvironmentsByEnvNameArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string chainId,
@@ -48,9 +67,15 @@ namespace Baseten
                 chainId: ref chainId,
                 envName: ref envName);
 
+
+            var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetChainsByChainIdEnvironmentsByEnvNameSecurityRequirements,
+                operationName: "GetChainsByChainIdEnvironmentsByEnvNameAsync");
+
             var __pathBuilder = new global::Baseten.PathBuilder(
                 path: $"/v1/chains/{chainId}/environments/{envName}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -60,7 +85,7 @@ namespace Baseten
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

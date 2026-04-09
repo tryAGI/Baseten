@@ -6,6 +6,7 @@ namespace Baseten
     public sealed partial class BasetenClient
     {
         /// <inheritdoc cref="BasetenClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Baseten.EndPointAuthorization}?, bool)"/>
+
         public BasetenClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

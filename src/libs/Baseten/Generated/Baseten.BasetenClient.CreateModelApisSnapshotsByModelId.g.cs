@@ -5,6 +5,25 @@ namespace Baseten
 {
     public partial class BasetenClient
     {
+
+
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateModelApisSnapshotsByModelIdSecurityRequirement0 =
+            new global::Baseten.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
+                {                    new global::Baseten.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateModelApisSnapshotsByModelIdSecurityRequirements =
+            new global::Baseten.EndPointSecurityRequirement[]
+            {                s_CreateModelApisSnapshotsByModelIdSecurityRequirement0,
+            };
         partial void PrepareCreateModelApisSnapshotsByModelIdArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string modelId,
@@ -55,9 +74,15 @@ namespace Baseten
                 modelId: ref modelId,
                 request: request);
 
+
+            var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateModelApisSnapshotsByModelIdSecurityRequirements,
+                operationName: "CreateModelApisSnapshotsByModelIdAsync");
+
             var __pathBuilder = new global::Baseten.PathBuilder(
                 path: $"/v1/model_apis/snapshots/{modelId}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -67,7 +92,7 @@ namespace Baseten
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
