@@ -13,7 +13,7 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.baseten.co";
+        public const string DefaultBaseUrl = "https://api.baseten.co/";
 
         private bool _disposeHttpClient = true;
 

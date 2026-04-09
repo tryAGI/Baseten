@@ -5,6 +5,25 @@ namespace Baseten
 {
     public partial class BasetenClient
     {
+
+
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateModelsByModelIdDeploymentsByDeploymentIdActivateSecurityRequirement0 =
+            new global::Baseten.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
+                {                    new global::Baseten.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateModelsByModelIdDeploymentsByDeploymentIdActivateSecurityRequirements =
+            new global::Baseten.EndPointSecurityRequirement[]
+            {                s_CreateModelsByModelIdDeploymentsByDeploymentIdActivateSecurityRequirement0,
+            };
         partial void PrepareCreateModelsByModelIdDeploymentsByDeploymentIdActivateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string modelId,
@@ -48,9 +67,15 @@ namespace Baseten
                 modelId: ref modelId,
                 deploymentId: ref deploymentId);
 
+
+            var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateModelsByModelIdDeploymentsByDeploymentIdActivateSecurityRequirements,
+                operationName: "CreateModelsByModelIdDeploymentsByDeploymentIdActivateAsync");
+
             var __pathBuilder = new global::Baseten.PathBuilder(
                 path: $"/v1/models/{modelId}/deployments/{deploymentId}/activate",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -60,7 +85,7 @@ namespace Baseten
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
