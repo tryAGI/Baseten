@@ -16,11 +16,11 @@ namespace Baseten
         public required string PublicKey { get; set; }
 
         /// <summary>
-        /// The replica to connect to (0-indexed).<br/>
-        /// Default Value: 0
+        /// The replica to connect to (e.g. '0' for training, hash for inference).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("replica_id")]
-        public int? ReplicaId { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ReplicaId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,18 +35,17 @@ namespace Baseten
         /// The user's SSH public key (e.g., 'ssh-ed25519 AAAA... user@host').
         /// </param>
         /// <param name="replicaId">
-        /// The replica to connect to (0-indexed).<br/>
-        /// Default Value: 0
+        /// The replica to connect to (e.g. '0' for training, hash for inference).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SignSSHCertificateRequestV1(
             string publicKey,
-            int? replicaId)
+            string replicaId)
         {
             this.PublicKey = publicKey ?? throw new global::System.ArgumentNullException(nameof(publicKey));
-            this.ReplicaId = replicaId;
+            this.ReplicaId = replicaId ?? throw new global::System.ArgumentNullException(nameof(replicaId));
         }
 
         /// <summary>
