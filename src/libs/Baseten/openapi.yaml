@@ -8243,14 +8243,14 @@
                         "type": "string"
                     },
                     "replica_id": {
-                        "default": 0,
-                        "description": "The replica to connect to (0-indexed).",
+                        "description": "The replica to connect to (e.g. '0' for training, hash for inference).",
                         "title": "Replica Id",
-                        "type": "integer"
+                        "type": "string"
                     }
                 },
                 "required": [
-                    "public_key"
+                    "public_key",
+                    "replica_id"
                 ],
                 "title": "SignSSHCertificateRequestV1",
                 "type": "object"

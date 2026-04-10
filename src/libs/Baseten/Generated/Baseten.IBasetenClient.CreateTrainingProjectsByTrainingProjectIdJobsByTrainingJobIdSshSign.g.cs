@@ -40,8 +40,7 @@ namespace Baseten
         /// The user's SSH public key (e.g., 'ssh-ed25519 AAAA... user@host').
         /// </param>
         /// <param name="replicaId">
-        /// The replica to connect to (0-indexed).<br/>
-        /// Default Value: 0
+        /// The replica to connect to (e.g. '0' for training, hash for inference).
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -50,7 +49,7 @@ namespace Baseten
             string trainingProjectId,
             string trainingJobId,
             string publicKey,
-            int? replicaId = default,
+            string replicaId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
