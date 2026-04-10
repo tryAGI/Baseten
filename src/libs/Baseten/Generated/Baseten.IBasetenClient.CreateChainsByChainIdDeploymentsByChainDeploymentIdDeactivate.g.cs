@@ -10,6 +10,7 @@ namespace Baseten
         /// </summary>
         /// <param name="chainId"></param>
         /// <param name="chainDeploymentId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -20,6 +21,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.DeactivateResponseV1> CreateChainsByChainIdDeploymentsByChainDeploymentIdDeactivateAsync(
             string chainId,
             string chainDeploymentId,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

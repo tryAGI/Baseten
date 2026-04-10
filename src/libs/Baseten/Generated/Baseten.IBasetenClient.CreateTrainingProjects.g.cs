@@ -9,6 +9,7 @@ namespace Baseten
         /// Upserts a training project with the specified metadata.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -24,6 +25,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.UpsertTrainingProjectResponseV1> CreateTrainingProjectsAsync(
 
             global::Baseten.UpsertTrainingProjectRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Upsert a training project.<br/>
@@ -32,10 +34,12 @@ namespace Baseten
         /// <param name="trainingProject">
         /// The training project to upsert.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.UpsertTrainingProjectResponseV1> CreateTrainingProjectsAsync(
             global::Baseten.UpsertTrainingProjectV1 trainingProject,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

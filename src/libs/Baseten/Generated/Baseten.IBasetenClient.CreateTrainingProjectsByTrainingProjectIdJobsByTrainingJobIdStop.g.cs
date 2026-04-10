@@ -11,6 +11,7 @@ namespace Baseten
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -24,6 +25,7 @@ namespace Baseten
             string trainingJobId,
 
             global::Baseten.StopTrainingJobRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Stop a training job.<br/>
@@ -31,11 +33,13 @@ namespace Baseten
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.StopTrainingJobResponseV1> CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdStopAsync(
             string trainingProjectId,
             string trainingJobId,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

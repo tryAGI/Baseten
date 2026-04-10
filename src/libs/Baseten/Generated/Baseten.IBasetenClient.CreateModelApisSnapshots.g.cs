@@ -9,6 +9,7 @@ namespace Baseten
         /// Creates a model weight snapshot for the specified model and returns the snapshot.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -23,6 +24,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.ModelWeightSnapshotV1> CreateModelApisSnapshotsAsync(
 
             global::Baseten.CreateModelWeightSnapshotRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a model weight snapshot<br/>
@@ -34,11 +36,13 @@ namespace Baseten
         /// <param name="snapshotUri">
         /// Path to the model weight snapshot
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.ModelWeightSnapshotV1> CreateModelApisSnapshotsAsync(
             string model,
             string snapshotUri,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

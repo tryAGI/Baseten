@@ -9,6 +9,7 @@ namespace Baseten
         /// Search training jobs for the organization.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -28,6 +29,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.SearchTrainingJobsResponseV1> CreateTrainingJobsSearchAsync(
 
             global::Baseten.SearchTrainingJobsRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Search training jobs.<br/>
@@ -49,6 +51,7 @@ namespace Baseten
         /// Order the training jobs by a field. Currently supports created_at<br/>
         /// Default Value: [{"field":"created_at","order":"desc"}]
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.SearchTrainingJobsResponseV1> CreateTrainingJobsSearchAsync(
@@ -56,6 +59,7 @@ namespace Baseten
             string? jobId = default,
             global::System.Collections.Generic.IList<string>? statuses = default,
             global::System.Collections.Generic.IList<global::Baseten.OrderByV1>? orderBy = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

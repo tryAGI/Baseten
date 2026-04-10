@@ -11,6 +11,7 @@ namespace Baseten
         /// <param name="chainId"></param>
         /// <param name="envName"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -27,6 +28,7 @@ namespace Baseten
             string envName,
 
             global::Baseten.PromoteToChainEnvironmentRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Promotes a chain deployment to an environment<br/>
@@ -41,6 +43,7 @@ namespace Baseten
         /// <param name="deploymentId">
         /// The id of the chain deployment to promote
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.ChainDeploymentV1> CreateChainsByChainIdEnvironmentsByEnvNamePromoteAsync(
@@ -48,6 +51,7 @@ namespace Baseten
             string envName,
             string deploymentId,
             bool? scaleDownPreviousDeployment = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

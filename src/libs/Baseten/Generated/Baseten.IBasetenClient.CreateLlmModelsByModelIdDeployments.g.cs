@@ -9,6 +9,7 @@ namespace Baseten
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -53,6 +54,7 @@ namespace Baseten
             string modelId,
 
             global::Baseten.CreateLLMModelVersionRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new BIS LLM deployment version
@@ -87,6 +89,7 @@ namespace Baseten
         /// Weight configurations for BDN model weight distribution<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.LLMModelVersionV1> CreateLlmModelsByModelIdDeploymentsAsync(
@@ -99,6 +102,7 @@ namespace Baseten
             object? additionalAutoscalingConfig = default,
             object? metadata = default,
             global::System.Collections.Generic.IList<object>? weights = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

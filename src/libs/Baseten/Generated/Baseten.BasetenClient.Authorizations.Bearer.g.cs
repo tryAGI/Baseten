@@ -25,6 +25,7 @@ namespace Baseten
             Authorizations.Add(new global::Baseten.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "HttpBearer",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

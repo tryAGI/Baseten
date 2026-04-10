@@ -8,6 +8,7 @@ namespace Baseten
         /// Creates a new BIS LLM deployment
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -52,6 +53,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.LLMModelV1> CreateLlmModelsAsync(
 
             global::Baseten.CreateLLMModelRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new BIS LLM deployment
@@ -88,6 +90,7 @@ namespace Baseten
         /// <param name="name">
         /// Name of the model
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.LLMModelV1> CreateLlmModelsAsync(
@@ -100,6 +103,7 @@ namespace Baseten
             object? additionalAutoscalingConfig = default,
             object? metadata = default,
             global::System.Collections.Generic.IList<object>? weights = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
