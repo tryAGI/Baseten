@@ -9,6 +9,7 @@ namespace Baseten
         /// Creates an API key with the provided name and type. The API key is returned in the response.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -23,6 +24,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.APIKeyV1> CreateKeysAsync(
 
             global::Baseten.CreateAPIKeyRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates an API key<br/>
@@ -39,12 +41,14 @@ namespace Baseten
         /// List of model IDs to scope the API key to, only present if type is 'WORKSPACE_EXPORT_METRICS' or 'WORKSPACE_INVOKE'<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.APIKeyV1> CreateKeysAsync(
             global::Baseten.APIKeyCategory type,
             string? name = default,
             global::System.Collections.Generic.IList<string>? modelIds = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

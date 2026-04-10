@@ -10,6 +10,7 @@ namespace Baseten
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -75,6 +76,7 @@ namespace Baseten
             string trainingProjectId,
 
             global::Baseten.CreateTrainingJobRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a training job.<br/>
@@ -84,11 +86,13 @@ namespace Baseten
         /// <param name="trainingJob">
         /// The training job to create.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.CreateTrainingJobResponseV1> CreateTrainingProjectsByTrainingProjectIdJobsAsync(
             string trainingProjectId,
             global::Baseten.CreateTrainingJobV1 trainingJob,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

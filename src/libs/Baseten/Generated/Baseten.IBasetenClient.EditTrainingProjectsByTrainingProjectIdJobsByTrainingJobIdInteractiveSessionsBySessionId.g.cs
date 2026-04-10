@@ -12,6 +12,7 @@ namespace Baseten
         /// <param name="trainingJobId"></param>
         /// <param name="sessionId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -29,6 +30,7 @@ namespace Baseten
             string sessionId,
 
             global::Baseten.PatchInteractiveSessionRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Patch an interactive session.<br/>
@@ -45,6 +47,7 @@ namespace Baseten
         /// Update when the interactive session is created. Cannot be changed if the session trigger is 'on_startup'.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.PatchInteractiveSessionResponseV1> EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdAsync(
@@ -53,6 +56,7 @@ namespace Baseten
             string sessionId,
             int? timeoutMinutes = default,
             global::Baseten.V1InteractiveSessionTrigger? trigger = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

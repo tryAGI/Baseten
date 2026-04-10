@@ -9,6 +9,7 @@ namespace Baseten
         /// Retries a failed production deployment and returns the retry status and updated deployment.
         /// </summary>
         /// <param name="modelId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -18,6 +19,7 @@ namespace Baseten
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.RetryDeploymentResponseV1> CreateModelsByModelIdDeploymentsProductionRetryAsync(
             string modelId,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

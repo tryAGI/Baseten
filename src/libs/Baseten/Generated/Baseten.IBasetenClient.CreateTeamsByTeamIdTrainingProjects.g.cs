@@ -10,6 +10,7 @@ namespace Baseten
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -26,6 +27,7 @@ namespace Baseten
             string teamId,
 
             global::Baseten.UpsertTrainingProjectRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Upsert a training project in a specific team.<br/>
@@ -35,11 +37,13 @@ namespace Baseten
         /// <param name="trainingProject">
         /// The training project to upsert.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.UpsertTrainingProjectResponseV1> CreateTeamsByTeamIdTrainingProjectsAsync(
             string teamId,
             global::Baseten.UpsertTrainingProjectV1 trainingProject,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

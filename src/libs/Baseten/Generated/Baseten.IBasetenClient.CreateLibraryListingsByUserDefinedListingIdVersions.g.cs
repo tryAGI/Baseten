@@ -10,6 +10,7 @@ namespace Baseten
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
@@ -28,6 +29,7 @@ namespace Baseten
             string userDefinedListingId,
 
             global::Baseten.CreateLibraryListingVersionRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new library listing version<br/>
@@ -52,6 +54,7 @@ namespace Baseten
         /// <param name="versionTag">
         /// Human-readable tag for this version
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.LibraryListingVersionV1> CreateLibraryListingsByUserDefinedListingIdVersionsAsync(
@@ -61,6 +64,7 @@ namespace Baseten
             string? displayName = default,
             bool? isPublic = default,
             bool? allowTrussDownload = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
