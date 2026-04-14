@@ -3158,6 +3158,48 @@
                 }
             }
         },
+        "/v1/teams/{team_id}/llm_models": {
+            "post": {
+                "summary": "Creates a new BIS LLM deployment",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLLMModelRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LLMModelV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/team_id"
+                }
+            ]
+        },
         "/v1/llm_models/{model_id}/deployments": {
             "post": {
                 "summary": "Creates a new BIS LLM deployment version",
