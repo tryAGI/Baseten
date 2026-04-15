@@ -2795,6 +2795,34 @@
                 }
             }
         },
+        "/v1/training/capacity": {
+            "get": {
+                "summary": "Get training GPU capacity.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/training/capacity \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training/capacity\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns GPU capacity limits (baseline and peak) and current usage for the organization.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTrainingGpuCapacityResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/blobs/credentials/model": {
             "get": {
                 "summary": "Get blob credentials for models.",
@@ -8554,6 +8582,57 @@
                     "training_jobs"
                 ],
                 "title": "SearchTrainingJobsResponseV1",
+                "type": "object"
+            },
+            "TrainingGpuCapacityItemV1": {
+                "description": "GPU capacity and current usage for one GPU type.",
+                "properties": {
+                    "gpu_type": {
+                        "description": "GPU type identifier (e.g. H100, A100-40GB)",
+                        "title": "Gpu Type",
+                        "type": "string"
+                    },
+                    "baseline": {
+                        "description": "Baseline GPU allocation; jobs below this threshold are expected to run immediately. 0 if not configured.",
+                        "title": "Baseline",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Maximum concurrent GPUs of this type for this org",
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "usage_count": {
+                        "description": "GPUs currently in use by active training jobs",
+                        "title": "Usage Count",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "gpu_type",
+                    "baseline",
+                    "limit",
+                    "usage_count"
+                ],
+                "title": "TrainingGpuCapacityItemV1",
+                "type": "object"
+            },
+            "GetTrainingGpuCapacityResponseV1": {
+                "description": "Response for the training GPU capacity endpoint.",
+                "properties": {
+                    "gpu_capacities": {
+                        "description": "GPU capacity limits and current usage per GPU type",
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingGpuCapacityItemV1"
+                        },
+                        "title": "Gpu Capacities",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "gpu_capacities"
+                ],
+                "title": "GetTrainingGpuCapacityResponseV1",
                 "type": "object"
             },
             "AWSCredentialsV1": {
