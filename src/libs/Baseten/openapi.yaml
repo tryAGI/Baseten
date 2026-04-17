@@ -9570,6 +9570,19 @@
                         "description": "Name of the resource",
                         "title": "Name"
                     },
+                    "model_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name of the parent resource (e.g., model name for model deployments, training project name for training jobs)",
+                        "title": "Model Name"
+                    },
                     "is_deleted": {
                         "description": "Indicates if the resource has been deleted",
                         "title": "Is Deleted",

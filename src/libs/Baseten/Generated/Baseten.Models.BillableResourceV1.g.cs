@@ -31,6 +31,13 @@ namespace Baseten
         public string? Name { get; set; }
 
         /// <summary>
+        /// Name of the parent resource (e.g., model name for model deployments, training project name for training jobs)<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_name")]
+        public string? ModelName { get; set; }
+
+        /// <summary>
         /// Indicates if the resource has been deleted
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("is_deleted")]
@@ -80,6 +87,10 @@ namespace Baseten
         /// Name of the resource<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="modelName">
+        /// Name of the parent resource (e.g., model name for model deployments, training project name for training jobs)<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="instanceType">
         /// Instance type used<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -100,6 +111,7 @@ namespace Baseten
             global::Baseten.ResourceKind kind,
             bool isDeleted,
             string? name,
+            string? modelName,
             string? instanceType,
             string? environmentName,
             global::Baseten.ChainMetadataV1? chainMetadata)
@@ -107,6 +119,7 @@ namespace Baseten
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Kind = kind;
             this.Name = name;
+            this.ModelName = modelName;
             this.IsDeleted = isDeleted;
             this.InstanceType = instanceType;
             this.EnvironmentName = environmentName;
