@@ -2795,6 +2795,130 @@
                 }
             }
         },
+        "/v1/trainers/sessions": {
+            "post": {
+                "summary": "Create a trainer session.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project_id\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project_id': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a TrainerSession for the given training project.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateTrainerSessionRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateTrainerSessionResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/trainers/sessions/{session_id}/trainers": {
+            "post": {
+                "summary": "Create a trainer server.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"lora_rank\": null,\n  \"seed\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'lora_rank': None, 'seed': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a TrainerServer and an associated SamplingServer for the given trainer session.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateTrainerServerRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateTrainerServerResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/session_id"
+                }
+            ]
+        },
+        "/v1/trainers/sessions/{session_id}/samplers": {
+            "post": {
+                "summary": "Create a sampling server.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a standalone SamplingServer (not linked to a TrainerServer).",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateSamplingServerRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSamplingServerResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/session_id"
+                }
+            ]
+        },
         "/v1/training/capacity": {
             "get": {
                 "summary": "Get training GPU capacity.",
@@ -8582,6 +8706,184 @@
                     "training_jobs"
                 ],
                 "title": "SearchTrainingJobsResponseV1",
+                "type": "object"
+            },
+            "CreateTrainerSessionRequestV1": {
+                "properties": {
+                    "training_project_id": {
+                        "description": "ID of the training project to associate with.",
+                        "title": "Training Project Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "training_project_id"
+                ],
+                "title": "CreateTrainerSessionRequestV1",
+                "type": "object"
+            },
+            "TrainerSessionV1": {
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "title": "TrainerSessionV1",
+                "type": "object"
+            },
+            "CreateTrainerSessionResponseV1": {
+                "properties": {
+                    "session": {
+                        "$ref": "#/components/schemas/TrainerSessionV1"
+                    }
+                },
+                "required": [
+                    "session"
+                ],
+                "title": "CreateTrainerSessionResponseV1",
+                "type": "object"
+            },
+            "CreateTrainerServerRequestV1": {
+                "properties": {
+                    "model": {
+                        "description": "Base model ID (e.g. 'Qwen/Qwen3-8B').",
+                        "title": "Model",
+                        "type": "string"
+                    },
+                    "lora_rank": {
+                        "default": 16,
+                        "description": "LoRA rank.",
+                        "title": "Lora Rank",
+                        "type": "integer"
+                    },
+                    "seed": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Random seed for reproducibility.",
+                        "title": "Seed"
+                    }
+                },
+                "required": [
+                    "model"
+                ],
+                "title": "CreateTrainerServerRequestV1",
+                "type": "object"
+            },
+            "SamplingServerV1": {
+                "properties": {
+                    "id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Id"
+                    },
+                    "base_url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Base Url"
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_url"
+                ],
+                "title": "SamplingServerV1",
+                "type": "object"
+            },
+            "TrainerServerV1": {
+                "properties": {
+                    "id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Id"
+                    },
+                    "base_url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Base Url"
+                    },
+                    "sampling_server": {
+                        "$ref": "#/components/schemas/SamplingServerV1"
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_url",
+                    "sampling_server"
+                ],
+                "title": "TrainerServerV1",
+                "type": "object"
+            },
+            "CreateTrainerServerResponseV1": {
+                "properties": {
+                    "trainer_server": {
+                        "$ref": "#/components/schemas/TrainerServerV1"
+                    }
+                },
+                "required": [
+                    "trainer_server"
+                ],
+                "title": "CreateTrainerServerResponseV1",
+                "type": "object"
+            },
+            "CreateSamplingServerRequestV1": {
+                "properties": {
+                    "model": {
+                        "description": "Model to use for standalone samplers (eg, for baselines).",
+                        "title": "Model",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "model"
+                ],
+                "title": "CreateSamplingServerRequestV1",
+                "type": "object"
+            },
+            "CreateSamplingServerResponseV1": {
+                "properties": {
+                    "sampling_server": {
+                        "$ref": "#/components/schemas/SamplingServerV1"
+                    }
+                },
+                "required": [
+                    "sampling_server"
+                ],
+                "title": "CreateSamplingServerResponseV1",
                 "type": "object"
             },
             "TrainingGpuCapacityItemV1": {
