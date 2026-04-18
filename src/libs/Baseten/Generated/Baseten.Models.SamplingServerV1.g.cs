@@ -12,13 +12,15 @@ namespace Baseten
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_url")]
-        public string? BaseUrl { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string BaseUrl { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,11 +37,11 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SamplingServerV1(
-            string? id,
-            string? baseUrl)
+            string id,
+            string baseUrl)
         {
-            this.Id = id;
-            this.BaseUrl = baseUrl;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
         }
 
         /// <summary>

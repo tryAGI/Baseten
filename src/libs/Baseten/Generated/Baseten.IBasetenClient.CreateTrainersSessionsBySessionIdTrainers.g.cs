@@ -19,6 +19,7 @@ namespace Baseten
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "model": null,<br/>
+        ///   "max_seq_len": null,<br/>
         ///   "lora_rank": null,<br/>
         ///   "seed": null<br/>
         /// }'
@@ -37,6 +38,10 @@ namespace Baseten
         /// <param name="model">
         /// Base model ID (e.g. 'Qwen/Qwen3-8B').
         /// </param>
+        /// <param name="maxSeqLen">
+        /// Maximum sequence length for training.<br/>
+        /// Default Value: 32768
+        /// </param>
         /// <param name="loraRank">
         /// LoRA rank.<br/>
         /// Default Value: 16
@@ -51,6 +56,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainersSessionsBySessionIdTrainersAsync(
             string sessionId,
             string model,
+            int? maxSeqLen = default,
             int? loraRank = default,
             int? seed = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
