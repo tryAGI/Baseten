@@ -12,13 +12,15 @@ namespace Baseten
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_url")]
-        public string? BaseUrl { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string BaseUrl { get; set; }
 
         /// <summary>
         /// 
@@ -36,19 +38,19 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="TrainerServerV1" /> class.
         /// </summary>
-        /// <param name="samplingServer"></param>
         /// <param name="id"></param>
         /// <param name="baseUrl"></param>
+        /// <param name="samplingServer"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TrainerServerV1(
-            global::Baseten.SamplingServerV1 samplingServer,
-            string? id,
-            string? baseUrl)
+            string id,
+            string baseUrl,
+            global::Baseten.SamplingServerV1 samplingServer)
         {
-            this.Id = id;
-            this.BaseUrl = baseUrl;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.SamplingServer = samplingServer ?? throw new global::System.ArgumentNullException(nameof(samplingServer));
         }
 

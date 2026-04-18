@@ -18,7 +18,8 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "model": null<br/>
+        ///   "model": null,<br/>
+        ///   "max_seq_length": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.CreateSamplingServerResponseV1> CreateTrainersSessionsBySessionIdSamplersAsync(
@@ -35,12 +36,17 @@ namespace Baseten
         /// <param name="model">
         /// Model to use for standalone samplers (eg, for baselines).
         /// </param>
+        /// <param name="maxSeqLength">
+        /// Minimum max-sequence-length the sampler must support. If set, only instance-type entries whose configured max_seq_length is &gt;= this value are considered. Omit to accept any entry.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.CreateSamplingServerResponseV1> CreateTrainersSessionsBySessionIdSamplersAsync(
             string sessionId,
             string model,
+            int? maxSeqLength = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -16,6 +16,13 @@ namespace Baseten
         public required string Model { get; set; }
 
         /// <summary>
+        /// Maximum sequence length for training.<br/>
+        /// Default Value: 32768
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_seq_len")]
+        public int? MaxSeqLen { get; set; }
+
+        /// <summary>
         /// LoRA rank.<br/>
         /// Default Value: 16
         /// </summary>
@@ -41,6 +48,10 @@ namespace Baseten
         /// <param name="model">
         /// Base model ID (e.g. 'Qwen/Qwen3-8B').
         /// </param>
+        /// <param name="maxSeqLen">
+        /// Maximum sequence length for training.<br/>
+        /// Default Value: 32768
+        /// </param>
         /// <param name="loraRank">
         /// LoRA rank.<br/>
         /// Default Value: 16
@@ -54,10 +65,12 @@ namespace Baseten
 #endif
         public CreateTrainerServerRequestV1(
             string model,
+            int? maxSeqLen,
             int? loraRank,
             int? seed)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.MaxSeqLen = maxSeqLen;
             this.LoraRank = loraRank;
             this.Seed = seed;
         }

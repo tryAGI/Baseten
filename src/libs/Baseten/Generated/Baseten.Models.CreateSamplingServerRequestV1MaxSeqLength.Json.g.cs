@@ -2,7 +2,7 @@
 
 namespace Baseten
 {
-    public sealed partial class SamplingServerV1BaseUrl
+    public sealed partial class CreateSamplingServerRequestV1MaxSeqLength
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -34,14 +34,14 @@ namespace Baseten
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Baseten.SamplingServerV1BaseUrl? FromJson(
+        public static global::Baseten.CreateSamplingServerRequestV1MaxSeqLength? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Baseten.SamplingServerV1BaseUrl),
-                jsonSerializerContext) as global::Baseten.SamplingServerV1BaseUrl;
+                typeof(global::Baseten.CreateSamplingServerRequestV1MaxSeqLength),
+                jsonSerializerContext) as global::Baseten.CreateSamplingServerRequestV1MaxSeqLength;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Baseten.SamplingServerV1BaseUrl? FromJson(
+        public static global::Baseten.CreateSamplingServerRequestV1MaxSeqLength? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Baseten.SamplingServerV1BaseUrl>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Baseten.CreateSamplingServerRequestV1MaxSeqLength>(
                 json,
                 jsonSerializerOptions);
         }
@@ -63,14 +63,14 @@ namespace Baseten
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Baseten.SamplingServerV1BaseUrl?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Baseten.CreateSamplingServerRequestV1MaxSeqLength?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Baseten.SamplingServerV1BaseUrl),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Baseten.SamplingServerV1BaseUrl;
+                typeof(global::Baseten.CreateSamplingServerRequestV1MaxSeqLength),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Baseten.CreateSamplingServerRequestV1MaxSeqLength;
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Baseten.SamplingServerV1BaseUrl?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Baseten.CreateSamplingServerRequestV1MaxSeqLength?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Baseten.SamplingServerV1BaseUrl?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Baseten.CreateSamplingServerRequestV1MaxSeqLength?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

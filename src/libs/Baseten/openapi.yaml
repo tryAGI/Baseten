@@ -2839,11 +2839,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"lora_rank\": null,\n  \"seed\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_len\": null,\n  \"lora_rank\": null,\n  \"seed\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'lora_rank': None, 'seed': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_len': None, 'lora_rank': None, 'seed': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a TrainerServer and an associated SamplingServer for the given trainer session.",
@@ -2882,11 +2882,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_length\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_length': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a standalone SamplingServer (not linked to a TrainerServer).",
@@ -8754,6 +8754,12 @@
                         "title": "Model",
                         "type": "string"
                     },
+                    "max_seq_len": {
+                        "default": 32768,
+                        "description": "Maximum sequence length for training.",
+                        "title": "Max Seq Len",
+                        "type": "integer"
+                    },
                     "lora_rank": {
                         "default": 16,
                         "description": "LoRA rank.",
@@ -8783,26 +8789,12 @@
             "SamplingServerV1": {
                 "properties": {
                     "id": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Id"
+                        "title": "Id",
+                        "type": "string"
                     },
                     "base_url": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Base Url"
+                        "title": "Base Url",
+                        "type": "string"
                     }
                 },
                 "required": [
@@ -8815,26 +8807,12 @@
             "TrainerServerV1": {
                 "properties": {
                     "id": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Id"
+                        "title": "Id",
+                        "type": "string"
                     },
                     "base_url": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Base Url"
+                        "title": "Base Url",
+                        "type": "string"
                     },
                     "sampling_server": {
                         "$ref": "#/components/schemas/SamplingServerV1"
@@ -8866,6 +8844,19 @@
                         "description": "Model to use for standalone samplers (eg, for baselines).",
                         "title": "Model",
                         "type": "string"
+                    },
+                    "max_seq_length": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Minimum max-sequence-length the sampler must support. If set, only instance-type entries whose configured max_seq_length is >= this value are considered. Omit to accept any entry.",
+                        "title": "Max Seq Length"
                     }
                 },
                 "required": [
