@@ -79,6 +79,13 @@ namespace Baseten
         public global::Baseten.CheckpointSyncStatus? CheckpointSyncStatus { get; set; }
 
         /// <summary>
+        /// Queue priority. Higher values are dequeued first. NULL is treated as 0.<br/>
+        /// Default Value: 0
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public int? Priority { get; set; }
+
+        /// <summary>
         /// The user who created the training job.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -127,6 +134,10 @@ namespace Baseten
         /// Checkpoint sync status of the training job.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="priority">
+        /// Queue priority. Higher values are dequeued first. NULL is treated as 0.<br/>
+        /// Default Value: 0
+        /// </param>
         /// <param name="user">
         /// The user who created the training job.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -145,6 +156,7 @@ namespace Baseten
             string? errorMessage,
             string? name,
             global::Baseten.CheckpointSyncStatus? checkpointSyncStatus,
+            int? priority,
             global::Baseten.UserV1? user)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
@@ -157,6 +169,7 @@ namespace Baseten
             this.TrainingProject = trainingProject ?? throw new global::System.ArgumentNullException(nameof(trainingProject));
             this.Name = name;
             this.CheckpointSyncStatus = checkpointSyncStatus;
+            this.Priority = priority;
             this.User = user;
         }
 

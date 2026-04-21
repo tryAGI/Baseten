@@ -62,6 +62,13 @@ namespace Baseten
         public bool? EnableBasetenWorkdir { get; set; }
 
         /// <summary>
+        /// Queue priority. Higher values are dequeued first. Defaults to 0.<br/>
+        /// Default Value: 0
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
+        public int? Priority { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -98,6 +105,10 @@ namespace Baseten
         /// When enabled, uses /b10/workspace as the working directory instead of the image WORKDIR.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="priority">
+        /// Queue priority. Higher values are dequeued first. Defaults to 0.<br/>
+        /// Default Value: 0
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -109,7 +120,8 @@ namespace Baseten
             global::Baseten.TrussUserEnv? trussUserEnv,
             global::Baseten.InteractiveSessionConfigV1? interactiveSession,
             global::System.Collections.Generic.IList<global::Baseten.CreateJobWeightConfigV1>? weights,
-            bool? enableBasetenWorkdir)
+            bool? enableBasetenWorkdir,
+            int? priority)
         {
             this.Image = image ?? throw new global::System.ArgumentNullException(nameof(image));
             this.Compute = compute;
@@ -119,6 +131,7 @@ namespace Baseten
             this.InteractiveSession = interactiveSession;
             this.Weights = weights;
             this.EnableBasetenWorkdir = enableBasetenWorkdir;
+            this.Priority = priority;
         }
 
         /// <summary>

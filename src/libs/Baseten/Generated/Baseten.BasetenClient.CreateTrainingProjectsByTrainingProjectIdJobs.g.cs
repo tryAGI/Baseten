@@ -107,7 +107,8 @@ namespace Baseten
         ///         "source": "hf://meta-llama/Llama-3-8B@main"<br/>
         ///       }<br/>
         ///     ],<br/>
-        ///     "enable_baseten_workdir": false<br/>
+        ///     "enable_baseten_workdir": false,<br/>
+        ///     "priority": 0<br/>
         ///   }<br/>
         /// }'
         /// </remarks>
