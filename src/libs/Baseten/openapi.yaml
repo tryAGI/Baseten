@@ -2158,11 +2158,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"training_job\": {\n    \"image\": {\n      \"base_image\": \"hello-world\",\n      \"docker_auth\": null\n    },\n    \"compute\": {\n      \"node_count\": 1,\n      \"cpu_count\": 1,\n      \"memory\": \"2Gi\",\n      \"accelerator\": {\n        \"accelerator\": \"H100\",\n        \"count\": 2\n      }\n    },\n    \"runtime\": {\n      \"start_commands\": [\n        \"python main.py\"\n      ],\n      \"environment_variables\": {\n        \"API_KEY\": \"your_api_key_here\",\n        \"PATH\": \"/usr/bin\"\n      },\n      \"artifacts\": null,\n      \"enable_cache\": true,\n      \"cache_config\": {\n        \"enable_legacy_hf_mount\": true,\n        \"enabled\": true,\n        \"mount_base_path\": \"/root/.cache\",\n        \"require_cache_affinity\": true\n      },\n      \"checkpointing_config\": {\n        \"enabled\": true,\n        \"checkpoint_path\": \"/mnt/ckpts\",\n        \"volume_size_gib\": 10\n      },\n      \"load_checkpoint_config\": null\n    },\n    \"name\": \"gpt-oss-job\",\n    \"truss_user_env\": null,\n    \"interactive_session\": null,\n    \"weights\": [\n      {\n        \"allow_patterns\": null,\n        \"auth\": null,\n        \"auth_secret_name\": null,\n        \"ignore_patterns\": null,\n        \"mount_location\": \"/app/models/base\",\n        \"source\": \"hf://meta-llama/Llama-3-8B@main\"\n      }\n    ],\n    \"enable_baseten_workdir\": false\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"training_job\": {\n    \"image\": {\n      \"base_image\": \"hello-world\",\n      \"docker_auth\": null\n    },\n    \"compute\": {\n      \"node_count\": 1,\n      \"cpu_count\": 1,\n      \"memory\": \"2Gi\",\n      \"accelerator\": {\n        \"accelerator\": \"H100\",\n        \"count\": 2\n      }\n    },\n    \"runtime\": {\n      \"start_commands\": [\n        \"python main.py\"\n      ],\n      \"environment_variables\": {\n        \"API_KEY\": \"your_api_key_here\",\n        \"PATH\": \"/usr/bin\"\n      },\n      \"artifacts\": null,\n      \"enable_cache\": true,\n      \"cache_config\": {\n        \"enable_legacy_hf_mount\": true,\n        \"enabled\": true,\n        \"mount_base_path\": \"/root/.cache\",\n        \"require_cache_affinity\": true\n      },\n      \"checkpointing_config\": {\n        \"enabled\": true,\n        \"checkpoint_path\": \"/mnt/ckpts\",\n        \"volume_size_gib\": 10\n      },\n      \"load_checkpoint_config\": null\n    },\n    \"name\": \"gpt-oss-job\",\n    \"truss_user_env\": null,\n    \"interactive_session\": null,\n    \"weights\": [\n      {\n        \"allow_patterns\": null,\n        \"auth\": null,\n        \"auth_secret_name\": null,\n        \"ignore_patterns\": null,\n        \"mount_location\": \"/app/models/base\",\n        \"source\": \"hf://meta-llama/Llama-3-8B@main\"\n      }\n    ],\n    \"enable_baseten_workdir\": false,\n    \"priority\": 0\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_job': {'image': {'base_image': 'hello-world', 'docker_auth': None}, 'compute': {'node_count': 1, 'cpu_count': 1, 'memory': '2Gi', 'accelerator': {'accelerator': 'H100', 'count': 2}}, 'runtime': {'start_commands': ['python main.py'], 'environment_variables': {'API_KEY': 'your_api_key_here', 'PATH': '/usr/bin'}, 'artifacts': None, 'enable_cache': True, 'cache_config': {'enable_legacy_hf_mount': True, 'enabled': True, 'mount_base_path': '/root/.cache', 'require_cache_affinity': True}, 'checkpointing_config': {'enabled': True, 'checkpoint_path': '/mnt/ckpts', 'volume_size_gib': 10}, 'load_checkpoint_config': None}, 'name': 'gpt-oss-job', 'truss_user_env': None, 'interactive_session': None, 'weights': [{'allow_patterns': None, 'auth': None, 'auth_secret_name': None, 'ignore_patterns': None, 'mount_location': '/app/models/base', 'source': 'hf://meta-llama/Llama-3-8B@main'}], 'enable_baseten_workdir': False}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_job': {'image': {'base_image': 'hello-world', 'docker_auth': None}, 'compute': {'node_count': 1, 'cpu_count': 1, 'memory': '2Gi', 'accelerator': {'accelerator': 'H100', 'count': 2}}, 'runtime': {'start_commands': ['python main.py'], 'environment_variables': {'API_KEY': 'your_api_key_here', 'PATH': '/usr/bin'}, 'artifacts': None, 'enable_cache': True, 'cache_config': {'enable_legacy_hf_mount': True, 'enabled': True, 'mount_base_path': '/root/.cache', 'require_cache_affinity': True}, 'checkpointing_config': {'enabled': True, 'checkpoint_path': '/mnt/ckpts', 'volume_size_gib': 10}, 'load_checkpoint_config': None}, 'name': 'gpt-oss-job', 'truss_user_env': None, 'interactive_session': None, 'weights': [{'allow_patterns': None, 'auth': None, 'auth_secret_name': None, 'ignore_patterns': None, 'mount_location': '/app/models/base', 'source': 'hf://meta-llama/Llama-3-8B@main'}], 'enable_baseten_workdir': False, 'priority': 0}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a training job with the specified configuration.",
@@ -6277,6 +6277,12 @@
                         "default": null,
                         "description": "Checkpoint sync status of the training job."
                     },
+                    "priority": {
+                        "default": 0,
+                        "description": "Queue priority. Higher values are dequeued first. NULL is treated as 0.",
+                        "title": "Priority",
+                        "type": "integer"
+                    },
                     "user": {
                         "anyOf": [
                             {
@@ -7145,6 +7151,17 @@
                         ],
                         "title": "Enable Baseten Workdir",
                         "type": "boolean"
+                    },
+                    "priority": {
+                        "default": 0,
+                        "description": "Queue priority. Higher values are dequeued first. Defaults to 0.",
+                        "examples": [
+                            0,
+                            10,
+                            100
+                        ],
+                        "title": "Priority",
+                        "type": "integer"
                     }
                 },
                 "required": [
