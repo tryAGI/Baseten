@@ -63,7 +63,7 @@ namespace Baseten
 
         /// <summary>
         /// Queue priority. Higher values are dequeued first. Defaults to 0.<br/>
-        /// Default Value: 0
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("priority")]
         public int? Priority { get; set; }
@@ -107,7 +107,7 @@ namespace Baseten
         /// </param>
         /// <param name="priority">
         /// Queue priority. Higher values are dequeued first. Defaults to 0.<br/>
-        /// Default Value: 0
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
