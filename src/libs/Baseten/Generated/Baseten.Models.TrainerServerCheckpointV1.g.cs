@@ -4,9 +4,9 @@
 namespace Baseten
 {
     /// <summary>
-    /// A checkpoint for a training job.
+    /// A checkpoint saved by a trainer server.
     /// </summary>
-    public sealed partial class TrainingJobCheckpointV1
+    public sealed partial class TrainerServerCheckpointV1
     {
         /// <summary>
         /// The ID of the checkpoint.
@@ -56,11 +56,11 @@ namespace Baseten
         public string? SyncStatus { get; set; }
 
         /// <summary>
-        /// The ID of the training job.
+        /// The ID of the trainer server.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("training_job_id")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("trainer_server_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string TrainingJobId { get; set; }
+        public required string TrainerServerId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -69,7 +69,7 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TrainingJobCheckpointV1" /> class.
+        /// Initializes a new instance of the <see cref="TrainerServerCheckpointV1" /> class.
         /// </summary>
         /// <param name="checkpointId">
         /// The ID of the checkpoint.
@@ -83,8 +83,8 @@ namespace Baseten
         /// <param name="sizeBytes">
         /// The size of the checkpoint in bytes.
         /// </param>
-        /// <param name="trainingJobId">
-        /// The ID of the training job.
+        /// <param name="trainerServerId">
+        /// The ID of the trainer server.
         /// </param>
         /// <param name="baseModel">
         /// The base model of the checkpoint.
@@ -99,12 +99,12 @@ namespace Baseten
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public TrainingJobCheckpointV1(
+        public TrainerServerCheckpointV1(
             string checkpointId,
             global::System.DateTime createdAt,
             string checkpointType,
             long sizeBytes,
-            string trainingJobId,
+            string trainerServerId,
             string? baseModel,
             object? loraAdapterConfig,
             string? syncStatus)
@@ -116,13 +116,13 @@ namespace Baseten
             this.LoraAdapterConfig = loraAdapterConfig;
             this.SizeBytes = sizeBytes;
             this.SyncStatus = syncStatus;
-            this.TrainingJobId = trainingJobId ?? throw new global::System.ArgumentNullException(nameof(trainingJobId));
+            this.TrainerServerId = trainerServerId ?? throw new global::System.ArgumentNullException(nameof(trainerServerId));
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TrainingJobCheckpointV1" /> class.
+        /// Initializes a new instance of the <see cref="TrainerServerCheckpointV1" /> class.
         /// </summary>
-        public TrainingJobCheckpointV1()
+        public TrainerServerCheckpointV1()
         {
         }
     }
