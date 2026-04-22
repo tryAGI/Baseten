@@ -2919,6 +2919,42 @@
                 }
             ]
         },
+        "/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints": {
+            "get": {
+                "summary": "List trainer server checkpoints.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "List the checkpoints saved by a trainer server.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTrainerServerCheckpointsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/session_id"
+                },
+                {
+                    "$ref": "#/components/parameters/trainer_server_id"
+                }
+            ]
+        },
         "/v1/training/capacity": {
             "get": {
                 "summary": "Get training GPU capacity.",
@@ -7986,11 +8022,6 @@
             "TrainingJobCheckpointV1": {
                 "description": "A checkpoint for a training job.",
                 "properties": {
-                    "training_job_id": {
-                        "description": "The ID of the training job.",
-                        "title": "Training Job Id",
-                        "type": "string"
-                    },
                     "checkpoint_id": {
                         "description": "The ID of the checkpoint.",
                         "title": "Checkpoint Id",
@@ -8049,16 +8080,21 @@
                         "default": null,
                         "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
                         "title": "Sync Status"
+                    },
+                    "training_job_id": {
+                        "description": "The ID of the training job.",
+                        "title": "Training Job Id",
+                        "type": "string"
                     }
                 },
                 "required": [
-                    "training_job_id",
                     "checkpoint_id",
                     "created_at",
                     "checkpoint_type",
                     "base_model",
                     "lora_adapter_config",
-                    "size_bytes"
+                    "size_bytes",
+                    "training_job_id"
                 ],
                 "title": "TrainingJobCheckpointV1",
                 "type": "object"
@@ -8899,6 +8935,110 @@
                     "sampling_server"
                 ],
                 "title": "CreateSamplingServerResponseV1",
+                "type": "object"
+            },
+            "TrainerServerCheckpointV1": {
+                "description": "A checkpoint saved by a trainer server.",
+                "properties": {
+                    "checkpoint_id": {
+                        "description": "The ID of the checkpoint.",
+                        "title": "Checkpoint Id",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "The timestamp of the checkpoint in ISO 8601 format.",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "checkpoint_type": {
+                        "description": "The type of checkpoint.",
+                        "title": "Checkpoint Type",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The base model of the checkpoint.",
+                        "title": "Base Model"
+                    },
+                    "lora_adapter_config": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The adapter config of the checkpoint.",
+                        "title": "Lora Adapter Config"
+                    },
+                    "size_bytes": {
+                        "description": "The size of the checkpoint in bytes.",
+                        "title": "Size Bytes",
+                        "type": "integer"
+                    },
+                    "sync_status": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
+                        "title": "Sync Status"
+                    },
+                    "trainer_server_id": {
+                        "description": "The ID of the trainer server.",
+                        "title": "Trainer Server Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "checkpoint_id",
+                    "created_at",
+                    "checkpoint_type",
+                    "base_model",
+                    "lora_adapter_config",
+                    "size_bytes",
+                    "trainer_server_id"
+                ],
+                "title": "TrainerServerCheckpointV1",
+                "type": "object"
+            },
+            "GetTrainerServerCheckpointsResponseV1": {
+                "description": "A response to list checkpoints for a trainer server.",
+                "properties": {
+                    "trainer_server_id": {
+                        "description": "The ID of the trainer server.",
+                        "title": "Trainer Server Id",
+                        "type": "string"
+                    },
+                    "checkpoints": {
+                        "description": "The checkpoints for the trainer server.",
+                        "items": {
+                            "$ref": "#/components/schemas/TrainerServerCheckpointV1"
+                        },
+                        "title": "Checkpoints",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "trainer_server_id",
+                    "checkpoints"
+                ],
+                "title": "GetTrainerServerCheckpointsResponseV1",
                 "type": "object"
             },
             "TrainingGpuCapacityItemV1": {
@@ -10580,6 +10720,14 @@
                     "type": "string"
                 },
                 "name": "session_id",
+                "in": "path",
+                "required": true
+            },
+            "trainer_server_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "trainer_server_id",
                 "in": "path",
                 "required": true
             },
