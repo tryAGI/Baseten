@@ -7153,15 +7153,22 @@
                         "type": "boolean"
                     },
                     "priority": {
-                        "default": 0,
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
                         "description": "Queue priority. Higher values are dequeued first. Defaults to 0.",
                         "examples": [
                             0,
                             10,
                             100
                         ],
-                        "title": "Priority",
-                        "type": "integer"
+                        "title": "Priority"
                     }
                 },
                 "required": [
