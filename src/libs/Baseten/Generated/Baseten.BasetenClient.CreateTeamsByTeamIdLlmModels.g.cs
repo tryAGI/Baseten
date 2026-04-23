@@ -60,6 +60,7 @@ namespace Baseten
         ///   "llm_version": null,<br/>
         ///   "llm_config": null,<br/>
         ///   "environment_variables": null,<br/>
+        ///   "model_metadata": null,<br/>
         ///   "autoscaling_settings": {<br/>
         ///     "autoscaling_window": 600,<br/>
         ///     "concurrency_target": null,<br/>
@@ -448,6 +449,10 @@ namespace Baseten
         /// <param name="environmentVariables">
         /// Environment variables for the model
         /// </param>
+        /// <param name="modelMetadata">
+        /// Model metadata persisted into model_config<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="autoscalingSettings">
         /// Autoscaling settings for the model<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -477,6 +482,7 @@ namespace Baseten
             string? llmVersion = default,
             object? llmConfig = default,
             object? environmentVariables = default,
+            object? modelMetadata = default,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
             object? additionalAutoscalingConfig = default,
             object? metadata = default,
@@ -490,6 +496,7 @@ namespace Baseten
                 LlmVersion = llmVersion,
                 LlmConfig = llmConfig,
                 EnvironmentVariables = environmentVariables,
+                ModelMetadata = modelMetadata,
                 AutoscalingSettings = autoscalingSettings,
                 AdditionalAutoscalingConfig = additionalAutoscalingConfig,
                 Metadata = metadata,

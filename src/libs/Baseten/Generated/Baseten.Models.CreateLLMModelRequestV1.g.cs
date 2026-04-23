@@ -35,6 +35,13 @@ namespace Baseten
         public object? EnvironmentVariables { get; set; }
 
         /// <summary>
+        /// Model metadata persisted into model_config<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_metadata")]
+        public object? ModelMetadata { get; set; }
+
+        /// <summary>
         /// Autoscaling settings for the model<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -94,6 +101,10 @@ namespace Baseten
         /// <param name="environmentVariables">
         /// Environment variables for the model
         /// </param>
+        /// <param name="modelMetadata">
+        /// Model metadata persisted into model_config<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="autoscalingSettings">
         /// Autoscaling settings for the model<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -119,6 +130,7 @@ namespace Baseten
             string? llmVersion,
             object? llmConfig,
             object? environmentVariables,
+            object? modelMetadata,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings,
             object? additionalAutoscalingConfig,
             object? metadata,
@@ -128,6 +140,7 @@ namespace Baseten
             this.LlmVersion = llmVersion;
             this.LlmConfig = llmConfig;
             this.EnvironmentVariables = environmentVariables;
+            this.ModelMetadata = modelMetadata;
             this.AutoscalingSettings = autoscalingSettings;
             this.AdditionalAutoscalingConfig = additionalAutoscalingConfig;
             this.Metadata = metadata;
