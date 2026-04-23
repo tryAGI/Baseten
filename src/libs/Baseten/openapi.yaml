@@ -999,6 +999,42 @@
                 }
             ]
         },
+        "/v1/models/{model_id}/deployments/{deployment_id}/download": {
+            "get": {
+                "summary": "Gets a presigned download URL for a deployment's truss",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/download \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/download\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Gets a presigned URL to download the truss tar file for a deployment.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DownloadDeploymentResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
         "/v1/models/{model_id}/deployments/{deployment_id}/logs": {
             "post": {
                 "summary": "Gets the logs for a model deployment.",
@@ -3315,11 +3351,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -3352,11 +3388,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -3394,11 +3430,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ]\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -3783,6 +3819,39 @@
                     }
                 }
             }
+        },
+        "/v1/users/{user_id}": {
+            "get": {
+                "summary": "Gets a user by ID",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/users/{user_id} \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/users/{user_id}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns user info. Currently only 'me' is accepted as user_id.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserInfoV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/user_id"
+                }
+            ]
         }
     },
     "openapi": "3.1.0",
@@ -4626,6 +4695,21 @@
                     "deployment"
                 ],
                 "title": "RetryDeploymentResponseV1",
+                "type": "object"
+            },
+            "DownloadDeploymentResponseV1": {
+                "description": "The response to a request to download a deployment's truss.",
+                "properties": {
+                    "download_url": {
+                        "description": "Presigned URL to download the truss tar file",
+                        "title": "Download Url",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "download_url"
+                ],
+                "title": "DownloadDeploymentResponseV1",
                 "type": "object"
             },
             "SortOrderV1": {
@@ -9413,6 +9497,20 @@
                         "title": "Environment Variables",
                         "type": "object"
                     },
+                    "model_metadata": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Model metadata persisted into model_config",
+                        "title": "Model Metadata"
+                    },
                     "autoscaling_settings": {
                         "anyOf": [
                             {
@@ -9572,6 +9670,20 @@
                         "description": "Environment variables for the model",
                         "title": "Environment Variables",
                         "type": "object"
+                    },
+                    "model_metadata": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Model metadata persisted into model_config",
+                        "title": "Model Metadata"
                     },
                     "autoscaling_settings": {
                         "anyOf": [
@@ -10640,6 +10752,60 @@
                 },
                 "title": "UsageSummaryV1",
                 "type": "object"
+            },
+            "UserInfoV1": {
+                "description": "A Baseten user.",
+                "properties": {
+                    "user_id": {
+                        "description": "Unique identifier for the user",
+                        "title": "User Id",
+                        "type": "string"
+                    },
+                    "email": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Email address of the user",
+                        "title": "Email"
+                    },
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Display name of the user",
+                        "title": "Name"
+                    },
+                    "workspace_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name of the user's workspace",
+                        "title": "Workspace Name"
+                    }
+                },
+                "required": [
+                    "user_id"
+                ],
+                "title": "UserInfoV1",
+                "type": "object"
             }
         },
         "parameters": {
@@ -10752,6 +10918,14 @@
                     "type": "string"
                 },
                 "name": "version_tag",
+                "in": "path",
+                "required": true
+            },
+            "user_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "user_id",
                 "in": "path",
                 "required": true
             }

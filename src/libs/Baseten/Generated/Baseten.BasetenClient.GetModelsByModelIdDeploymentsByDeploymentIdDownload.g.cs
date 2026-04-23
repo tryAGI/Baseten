@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLlmModelsByModelIdDeploymentsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetModelsByModelIdDeploymentsByDeploymentIdDownloadSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,96 +21,60 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLlmModelsByModelIdDeploymentsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetModelsByModelIdDeploymentsByDeploymentIdDownloadSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateLlmModelsByModelIdDeploymentsSecurityRequirement0,
+            {                s_GetModelsByModelIdDeploymentsByDeploymentIdDownloadSecurityRequirement0,
             };
-        partial void PrepareCreateLlmModelsByModelIdDeploymentsArguments(
+        partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdDownloadArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string modelId,
-            global::Baseten.CreateLLMModelVersionRequestV1 request);
-        partial void PrepareCreateLlmModelsByModelIdDeploymentsRequest(
+            ref string deploymentId);
+        partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdDownloadRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string modelId,
-            global::Baseten.CreateLLMModelVersionRequestV1 request);
-        partial void ProcessCreateLlmModelsByModelIdDeploymentsResponse(
+            string deploymentId);
+        partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdDownloadResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateLlmModelsByModelIdDeploymentsResponseContent(
+        partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdDownloadResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Creates a new BIS LLM deployment version
+        /// Gets a presigned download URL for a deployment's truss<br/>
+        /// Gets a presigned URL to download the truss tar file for a deployment.
         /// </summary>
         /// <param name="modelId"></param>
-        /// <param name="request"></param>
+        /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/llm_models/{model_id}/deployments \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "resources": null,<br/>
-        ///   "llm_version": null,<br/>
-        ///   "llm_config": null,<br/>
-        ///   "environment_variables": null,<br/>
-        ///   "model_metadata": null,<br/>
-        ///   "autoscaling_settings": {<br/>
-        ///     "autoscaling_window": 600,<br/>
-        ///     "concurrency_target": null,<br/>
-        ///     "max_replica": 5,<br/>
-        ///     "min_replica": 1,<br/>
-        ///     "scale_down_delay": 300,<br/>
-        ///     "target_in_flight_tokens": null,<br/>
-        ///     "target_utilization_percentage": null<br/>
-        ///   },<br/>
-        ///   "additional_autoscaling_config": {<br/>
-        ///     "metrics": [<br/>
-        ///       {<br/>
-        ///         "name": "in_flight_tokens",<br/>
-        ///         "target": 40000<br/>
-        ///       }<br/>
-        ///     ]<br/>
-        ///   },<br/>
-        ///   "metadata": {<br/>
-        ///     "environment": "production",<br/>
-        ///     "git_sha": "abc123"<br/>
-        ///   },<br/>
-        ///   "weights": [<br/>
-        ///     {<br/>
-        ///       "mount_location": "/models/base",<br/>
-        ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
-        ///     }<br/>
-        ///   ]<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/download \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelVersionV1> CreateLlmModelsByModelIdDeploymentsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.DownloadDeploymentResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdDownloadAsync(
             string modelId,
-
-            global::Baseten.CreateLLMModelVersionRequestV1 request,
+            string deploymentId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateLlmModelsByModelIdDeploymentsArguments(
+            PrepareGetModelsByModelIdDeploymentsByDeploymentIdDownloadArguments(
                 httpClient: HttpClient,
                 modelId: ref modelId,
-                request: request);
+                deploymentId: ref deploymentId);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateLlmModelsByModelIdDeploymentsSecurityRequirements,
-                operationName: "CreateLlmModelsByModelIdDeploymentsAsync");
+                securityRequirements: s_GetModelsByModelIdDeploymentsByDeploymentIdDownloadSecurityRequirements,
+                operationName: "GetModelsByModelIdDeploymentsByDeploymentIdDownloadAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -129,7 +93,7 @@ namespace Baseten
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/llm_models/{modelId}/deployments",
+                                path: $"/v1/models/{modelId}/deployments/{deploymentId}/download",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -137,7 +101,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -160,12 +124,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -174,11 +132,11 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateLlmModelsByModelIdDeploymentsRequest(
+                PrepareGetModelsByModelIdDeploymentsByDeploymentIdDownloadRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     modelId: modelId,
-                    request: request);
+                    deploymentId: deploymentId);
 
                 return __httpRequest;
             }
@@ -195,10 +153,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLlmModelsByModelIdDeployments",
-                                methodName: "CreateLlmModelsByModelIdDeploymentsAsync",
-                                pathTemplate: "$\"/v1/llm_models/{modelId}/deployments\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdDownload",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdDownloadAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/download\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -222,10 +180,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLlmModelsByModelIdDeployments",
-                                methodName: "CreateLlmModelsByModelIdDeploymentsAsync",
-                                pathTemplate: "$\"/v1/llm_models/{modelId}/deployments\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdDownload",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdDownloadAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/download\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -257,10 +215,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLlmModelsByModelIdDeployments",
-                                methodName: "CreateLlmModelsByModelIdDeploymentsAsync",
-                                pathTemplate: "$\"/v1/llm_models/{modelId}/deployments\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdDownload",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdDownloadAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/download\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -296,7 +254,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateLlmModelsByModelIdDeploymentsResponse(
+                ProcessGetModelsByModelIdDeploymentsByDeploymentIdDownloadResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -304,10 +262,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLlmModelsByModelIdDeployments",
-                                methodName: "CreateLlmModelsByModelIdDeploymentsAsync",
-                                pathTemplate: "$\"/v1/llm_models/{modelId}/deployments\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdDownload",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdDownloadAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/download\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -324,10 +282,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLlmModelsByModelIdDeployments",
-                                methodName: "CreateLlmModelsByModelIdDeploymentsAsync",
-                                pathTemplate: "$\"/v1/llm_models/{modelId}/deployments\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdDownload",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdDownloadAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/download\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -352,7 +310,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateLlmModelsByModelIdDeploymentsResponseContent(
+                                ProcessGetModelsByModelIdDeploymentsByDeploymentIdDownloadResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -362,7 +320,7 @@ namespace Baseten
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Baseten.LLMModelVersionV1.FromJson(__content, JsonSerializerContext) ??
+                                        global::Baseten.DownloadDeploymentResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -392,7 +350,7 @@ namespace Baseten
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Baseten.LLMModelVersionV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Baseten.DownloadDeploymentResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -430,79 +388,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Creates a new BIS LLM deployment version
-        /// </summary>
-        /// <param name="modelId"></param>
-        /// <param name="resources">
-        /// Resources allocated to the model
-        /// </param>
-        /// <param name="llmVersion">
-        /// Version of the helm chart to use<br/>
-        /// Default Value: 1.0
-        /// </param>
-        /// <param name="llmConfig">
-        /// Configuration specific to the LLM model
-        /// </param>
-        /// <param name="environmentVariables">
-        /// Environment variables for the model
-        /// </param>
-        /// <param name="modelMetadata">
-        /// Model metadata persisted into model_config<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="autoscalingSettings">
-        /// Autoscaling settings for the model<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="additionalAutoscalingConfig">
-        /// Additional autoscaling configuration (e.g. target in-flight tokens)<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="metadata">
-        /// User-defined metadata for the deployment<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="weights">
-        /// Weight configurations for BDN model weight distribution<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelVersionV1> CreateLlmModelsByModelIdDeploymentsAsync(
-            string modelId,
-            object resources,
-            string? llmVersion = default,
-            object? llmConfig = default,
-            object? environmentVariables = default,
-            object? modelMetadata = default,
-            global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
-            object? additionalAutoscalingConfig = default,
-            object? metadata = default,
-            global::System.Collections.Generic.IList<object>? weights = default,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.CreateLLMModelVersionRequestV1
-            {
-                Resources = resources,
-                LlmVersion = llmVersion,
-                LlmConfig = llmConfig,
-                EnvironmentVariables = environmentVariables,
-                ModelMetadata = modelMetadata,
-                AutoscalingSettings = autoscalingSettings,
-                AdditionalAutoscalingConfig = additionalAutoscalingConfig,
-                Metadata = metadata,
-                Weights = weights,
-            };
-
-            return await CreateLlmModelsByModelIdDeploymentsAsync(
-                modelId: modelId,
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
