@@ -2991,6 +2991,45 @@
                 }
             ]
         },
+        "/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints/{checkpoint_id}/files": {
+            "get": {
+                "summary": "Get trainer server checkpoint files.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints/{checkpoint_id}/files \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints/{checkpoint_id}/files\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Get presigned URLs for the files under a trainer server checkpoint. Returns a paginated list; deviates from Tinker's single-archive-URL shape because trainer weight sync writes an unzipped folder.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTrainerServerCheckpointFilesResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/session_id"
+                },
+                {
+                    "$ref": "#/components/parameters/trainer_server_id"
+                },
+                {
+                    "$ref": "#/components/parameters/checkpoint_id"
+                }
+            ]
+        },
         "/v1/training/capacity": {
             "get": {
                 "summary": "Get training GPU capacity.",
@@ -9125,6 +9164,43 @@
                 "title": "GetTrainerServerCheckpointsResponseV1",
                 "type": "object"
             },
+            "GetTrainerServerCheckpointFilesResponseV1": {
+                "description": "A response to fetch presigned URLs for files under a trainer server checkpoint.",
+                "properties": {
+                    "presigned_urls": {
+                        "description": "List of presigned URLs for checkpoint files.",
+                        "items": {
+                            "$ref": "#/components/schemas/CheckpointFile"
+                        },
+                        "title": "Presigned Urls",
+                        "type": "array"
+                    },
+                    "next_page_token": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Token to use for fetching the next page of results. None when there are no more results.",
+                        "title": "Next Page Token"
+                    },
+                    "total_count": {
+                        "description": "Total number of checkpoint files available.",
+                        "title": "Total Count",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "presigned_urls",
+                    "total_count"
+                ],
+                "title": "GetTrainerServerCheckpointFilesResponseV1",
+                "type": "object"
+            },
             "TrainingGpuCapacityItemV1": {
                 "description": "GPU capacity and current usage for one GPU type.",
                 "properties": {
@@ -10894,6 +10970,14 @@
                     "type": "string"
                 },
                 "name": "trainer_server_id",
+                "in": "path",
+                "required": true
+            },
+            "checkpoint_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "checkpoint_id",
                 "in": "path",
                 "required": true
             },
