@@ -51,7 +51,7 @@ namespace Baseten
         ///   "name": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.LLMModelV1> CreateLlmModelsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateLlmModelsAsync(
 
             global::Baseten.CreateLLMModelRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -98,7 +98,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.LLMModelV1> CreateLlmModelsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateLlmModelsAsync(
             object resources,
             string name,
             string? llmVersion = default,

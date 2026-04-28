@@ -90,7 +90,7 @@ namespace Baseten
         ///   ]<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelVersionV1> CreateLlmModelsByModelIdDeploymentsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateLlmModelsByModelIdDeploymentsAsync(
             string modelId,
 
             global::Baseten.CreateLLMModelVersionRequestV1 request,
@@ -362,7 +362,7 @@ namespace Baseten
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Baseten.LLMModelVersionV1.FromJson(__content, JsonSerializerContext) ??
+                                        global::Baseten.LLMModelHandleV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -392,7 +392,7 @@ namespace Baseten
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Baseten.LLMModelVersionV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Baseten.LLMModelHandleV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -471,7 +471,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelVersionV1> CreateLlmModelsByModelIdDeploymentsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateLlmModelsByModelIdDeploymentsAsync(
             string modelId,
             object resources,
             string? llmVersion = default,
