@@ -2,7 +2,7 @@
 
 namespace Baseten
 {
-    public sealed partial class LLMModelV1
+    public sealed partial class SignSSHCertificateRequestV1ReplicaId
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -34,14 +34,14 @@ namespace Baseten
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Baseten.LLMModelV1? FromJson(
+        public static global::Baseten.SignSSHCertificateRequestV1ReplicaId? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Baseten.LLMModelV1),
-                jsonSerializerContext) as global::Baseten.LLMModelV1;
+                typeof(global::Baseten.SignSSHCertificateRequestV1ReplicaId),
+                jsonSerializerContext) as global::Baseten.SignSSHCertificateRequestV1ReplicaId;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Baseten.LLMModelV1? FromJson(
+        public static global::Baseten.SignSSHCertificateRequestV1ReplicaId? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Baseten.LLMModelV1>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Baseten.SignSSHCertificateRequestV1ReplicaId>(
                 json,
                 jsonSerializerOptions);
         }
@@ -63,14 +63,14 @@ namespace Baseten
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Baseten.LLMModelV1?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Baseten.SignSSHCertificateRequestV1ReplicaId?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Baseten.LLMModelV1),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Baseten.LLMModelV1;
+                typeof(global::Baseten.SignSSHCertificateRequestV1ReplicaId),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Baseten.SignSSHCertificateRequestV1ReplicaId;
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Baseten.LLMModelV1?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Baseten.SignSSHCertificateRequestV1ReplicaId?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Baseten.LLMModelV1?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Baseten.SignSSHCertificateRequestV1ReplicaId?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

@@ -52,7 +52,7 @@ namespace Baseten
         ///   "name": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.LLMModelV1> CreateTeamsByTeamIdLlmModelsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateTeamsByTeamIdLlmModelsAsync(
             string teamId,
 
             global::Baseten.CreateLLMModelRequestV1 request,
@@ -101,7 +101,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.LLMModelV1> CreateTeamsByTeamIdLlmModelsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateTeamsByTeamIdLlmModelsAsync(
             string teamId,
             object resources,
             string name,

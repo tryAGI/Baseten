@@ -91,7 +91,7 @@ namespace Baseten
         ///   "name": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelV1> CreateTeamsByTeamIdLlmModelsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateTeamsByTeamIdLlmModelsAsync(
             string teamId,
 
             global::Baseten.CreateLLMModelRequestV1 request,
@@ -363,7 +363,7 @@ namespace Baseten
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Baseten.LLMModelV1.FromJson(__content, JsonSerializerContext) ??
+                                        global::Baseten.LLMModelHandleV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -393,7 +393,7 @@ namespace Baseten
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Baseten.LLMModelV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Baseten.LLMModelHandleV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -475,7 +475,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelV1> CreateTeamsByTeamIdLlmModelsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateTeamsByTeamIdLlmModelsAsync(
             string teamId,
             object resources,
             string name,

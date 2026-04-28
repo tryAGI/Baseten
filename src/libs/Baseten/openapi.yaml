@@ -1120,6 +1120,52 @@
                 }
             ]
         },
+        "/v1/models/{model_id}/deployments/{deployment_id}/ssh/sign": {
+            "post": {
+                "summary": "Sign an SSH certificate for an inference model.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/ssh/sign \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"public_key\": null,\n  \"replica_id\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/ssh/sign\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'public_key': None, 'replica_id': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SignSSHCertificateRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SignSSHCertificateResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
         "/v1/models/{model_id}/environments": {
             "get": {
                 "summary": "Get all environments",
@@ -3413,7 +3459,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/LLMModelV1"
+                                    "$ref": "#/components/schemas/LLMModelHandleV1"
                                 }
                             }
                         }
@@ -3450,7 +3496,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/LLMModelV1"
+                                    "$ref": "#/components/schemas/LLMModelHandleV1"
                                 }
                             }
                         }
@@ -3492,7 +3538,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/LLMModelVersionV1"
+                                    "$ref": "#/components/schemas/LLMModelHandleV1"
                                 }
                             }
                         }
@@ -4894,6 +4940,68 @@
                     }
                 },
                 "title": "TerminateReplicaResponseV1",
+                "type": "object"
+            },
+            "SignSSHCertificateRequestV1": {
+                "description": "Request to sign an SSH certificate for accessing a workload pod.",
+                "properties": {
+                    "public_key": {
+                        "description": "The user's SSH public key (e.g., 'ssh-ed25519 AAAA... user@host').",
+                        "title": "Public Key",
+                        "type": "string"
+                    },
+                    "replica_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The replica to connect to. Required for training jobs (e.g. '0'). Optional for inference (server picks a running replica if omitted).",
+                        "title": "Replica Id"
+                    }
+                },
+                "required": [
+                    "public_key"
+                ],
+                "title": "SignSSHCertificateRequestV1",
+                "type": "object"
+            },
+            "SignSSHCertificateResponseV1": {
+                "description": "Response containing a signed SSH certificate for proxy authentication.",
+                "properties": {
+                    "ssh_certificate": {
+                        "description": "The signed SSH certificate in OpenSSH format.",
+                        "title": "Ssh Certificate",
+                        "type": "string"
+                    },
+                    "jwt": {
+                        "description": "Signed JWT (ES256) for SSH proxy authorization.",
+                        "title": "Jwt",
+                        "type": "string"
+                    },
+                    "proxy_address": {
+                        "description": "Address of the SSH proxy to connect to (host:port).",
+                        "title": "Proxy Address",
+                        "type": "string"
+                    },
+                    "ssh_cert_expires_at": {
+                        "description": "When the certificate expires, in ISO 8601 format.",
+                        "format": "date-time",
+                        "title": "Ssh Cert Expires At",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "ssh_certificate",
+                    "jwt",
+                    "proxy_address",
+                    "ssh_cert_expires_at"
+                ],
+                "title": "SignSSHCertificateResponseV1",
                 "type": "object"
             },
             "EnvironmentV1": {
@@ -8611,61 +8719,6 @@
                 "title": "PatchInteractiveSessionResponseV1",
                 "type": "object"
             },
-            "SignSSHCertificateRequestV1": {
-                "description": "Request to sign an SSH certificate for accessing a workload pod.",
-                "properties": {
-                    "public_key": {
-                        "description": "The user's SSH public key (e.g., 'ssh-ed25519 AAAA... user@host').",
-                        "title": "Public Key",
-                        "type": "string"
-                    },
-                    "replica_id": {
-                        "description": "The replica to connect to (e.g. '0' for training, hash for inference).",
-                        "title": "Replica Id",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "public_key",
-                    "replica_id"
-                ],
-                "title": "SignSSHCertificateRequestV1",
-                "type": "object"
-            },
-            "SignSSHCertificateResponseV1": {
-                "description": "Response containing a signed SSH certificate for proxy authentication.",
-                "properties": {
-                    "ssh_certificate": {
-                        "description": "The signed SSH certificate in OpenSSH format.",
-                        "title": "Ssh Certificate",
-                        "type": "string"
-                    },
-                    "jwt": {
-                        "description": "Signed JWT (ES256) for SSH proxy authorization.",
-                        "title": "Jwt",
-                        "type": "string"
-                    },
-                    "proxy_address": {
-                        "description": "Address of the SSH proxy to connect to (host:port).",
-                        "title": "Proxy Address",
-                        "type": "string"
-                    },
-                    "ssh_cert_expires_at": {
-                        "description": "When the certificate expires, in ISO 8601 format.",
-                        "format": "date-time",
-                        "title": "Ssh Cert Expires At",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "ssh_certificate",
-                    "jwt",
-                    "proxy_address",
-                    "ssh_cert_expires_at"
-                ],
-                "title": "SignSSHCertificateResponseV1",
-                "type": "object"
-            },
             "FileSummary": {
                 "description": "Information about a file in the cache.",
                 "properties": {
@@ -9692,32 +9745,44 @@
                 "title": "CreateLLMModelRequestV1",
                 "type": "object"
             },
-            "LLMModelV1": {
-                "description": "A BIS LLM model",
+            "LLMModelHandleV1": {
+                "description": "Handle for a BIS LLM model deployment.",
                 "properties": {
-                    "id": {
+                    "model_id": {
                         "description": "Unique identifier of the model",
-                        "title": "Id",
+                        "title": "Model Id",
                         "type": "string"
                     },
-                    "created_at": {
-                        "description": "Time the model was created in ISO 8601 format",
-                        "format": "date-time",
-                        "title": "Created At",
+                    "version_id": {
+                        "description": "Unique identifier of the model version",
+                        "title": "Version Id",
                         "type": "string"
                     },
-                    "name": {
-                        "description": "Name of the model",
-                        "title": "Name",
+                    "hostname": {
+                        "description": "Hostname used to invoke the model",
+                        "title": "Hostname",
                         "type": "string"
+                    },
+                    "instance_type_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name of the instance type the model deployment is running on",
+                        "title": "Instance Type Name"
                     }
                 },
                 "required": [
-                    "id",
-                    "created_at",
-                    "name"
+                    "model_id",
+                    "version_id",
+                    "hostname"
                 ],
-                "title": "LLMModelV1",
+                "title": "LLMModelHandleV1",
                 "type": "object"
             },
             "CreateLLMModelVersionRequestV1": {
@@ -9858,34 +9923,6 @@
                     "resources"
                 ],
                 "title": "CreateLLMModelVersionRequestV1",
-                "type": "object"
-            },
-            "LLMModelVersionV1": {
-                "description": "A BIS LLM model version",
-                "properties": {
-                    "id": {
-                        "description": "Unique identifier of the model version",
-                        "title": "Id",
-                        "type": "string"
-                    },
-                    "created_at": {
-                        "description": "Time the model was created in ISO 8601 format",
-                        "format": "date-time",
-                        "title": "Created At",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Name of the model version",
-                        "title": "Name",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "id",
-                    "created_at",
-                    "name"
-                ],
-                "title": "LLMModelVersionV1",
                 "type": "object"
             },
             "LibraryListingV1": {

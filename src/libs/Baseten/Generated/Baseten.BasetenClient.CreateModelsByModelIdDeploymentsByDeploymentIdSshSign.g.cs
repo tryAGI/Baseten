@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateModelsByModelIdDeploymentsByDeploymentIdSshSignSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,52 +21,52 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateModelsByModelIdDeploymentsByDeploymentIdSshSignSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignSecurityRequirement0,
+            {                s_CreateModelsByModelIdDeploymentsByDeploymentIdSshSignSecurityRequirement0,
             };
-        partial void PrepareCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignArguments(
+        partial void PrepareCreateModelsByModelIdDeploymentsByDeploymentIdSshSignArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string trainingProjectId,
-            ref string trainingJobId,
+            ref string modelId,
+            ref string deploymentId,
             global::Baseten.SignSSHCertificateRequestV1 request);
-        partial void PrepareCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignRequest(
+        partial void PrepareCreateModelsByModelIdDeploymentsByDeploymentIdSshSignRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string trainingProjectId,
-            string trainingJobId,
+            string modelId,
+            string deploymentId,
             global::Baseten.SignSSHCertificateRequestV1 request);
-        partial void ProcessCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignResponse(
+        partial void ProcessCreateModelsByModelIdDeploymentsByDeploymentIdSshSignResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignResponseContent(
+        partial void ProcessCreateModelsByModelIdDeploymentsByDeploymentIdSshSignResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Sign an SSH certificate for a training job.<br/>
-        /// Signs a short-lived SSH certificate granting access to a specific training job pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
+        /// Sign an SSH certificate for an inference model.<br/>
+        /// Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
-        /// <param name="trainingProjectId"></param>
-        /// <param name="trainingJobId"></param>
+        /// <param name="modelId"></param>
+        /// <param name="deploymentId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/ssh/sign \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/ssh/sign \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "public_key": null,<br/>
         ///   "replica_id": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.SignSSHCertificateResponseV1> CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync(
-            string trainingProjectId,
-            string trainingJobId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.SignSSHCertificateResponseV1> CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync(
+            string modelId,
+            string deploymentId,
 
             global::Baseten.SignSSHCertificateRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -76,17 +76,17 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignArguments(
+            PrepareCreateModelsByModelIdDeploymentsByDeploymentIdSshSignArguments(
                 httpClient: HttpClient,
-                trainingProjectId: ref trainingProjectId,
-                trainingJobId: ref trainingJobId,
+                modelId: ref modelId,
+                deploymentId: ref deploymentId,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignSecurityRequirements,
-                operationName: "CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync");
+                securityRequirements: s_CreateModelsByModelIdDeploymentsByDeploymentIdSshSignSecurityRequirements,
+                operationName: "CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -105,7 +105,7 @@ namespace Baseten
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/ssh/sign",
+                                path: $"/v1/models/{modelId}/deployments/{deploymentId}/ssh/sign",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -150,11 +150,11 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignRequest(
+                PrepareCreateModelsByModelIdDeploymentsByDeploymentIdSshSignRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    trainingProjectId: trainingProjectId,
-                    trainingJobId: trainingJobId,
+                    modelId: modelId,
+                    deploymentId: deploymentId,
                     request: request);
 
                 return __httpRequest;
@@ -172,9 +172,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSign",
-                                methodName: "CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/ssh/sign\"",
+                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdSshSign",
+                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/ssh/sign\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -199,9 +199,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSign",
-                                methodName: "CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/ssh/sign\"",
+                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdSshSign",
+                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/ssh/sign\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -234,9 +234,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSign",
-                                methodName: "CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/ssh/sign\"",
+                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdSshSign",
+                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/ssh/sign\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -273,7 +273,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignResponse(
+                ProcessCreateModelsByModelIdDeploymentsByDeploymentIdSshSignResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -281,9 +281,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSign",
-                                methodName: "CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/ssh/sign\"",
+                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdSshSign",
+                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/ssh/sign\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -301,9 +301,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSign",
-                                methodName: "CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/ssh/sign\"",
+                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdSshSign",
+                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/ssh/sign\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -329,7 +329,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignResponseContent(
+                                ProcessCreateModelsByModelIdDeploymentsByDeploymentIdSshSignResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -409,11 +409,11 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Sign an SSH certificate for a training job.<br/>
-        /// Signs a short-lived SSH certificate granting access to a specific training job pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
+        /// Sign an SSH certificate for an inference model.<br/>
+        /// Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
-        /// <param name="trainingProjectId"></param>
-        /// <param name="trainingJobId"></param>
+        /// <param name="modelId"></param>
+        /// <param name="deploymentId"></param>
         /// <param name="publicKey">
         /// The user's SSH public key (e.g., 'ssh-ed25519 AAAA... user@host').
         /// </param>
@@ -424,9 +424,9 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.SignSSHCertificateResponseV1> CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync(
-            string trainingProjectId,
-            string trainingJobId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.SignSSHCertificateResponseV1> CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync(
+            string modelId,
+            string deploymentId,
             string publicKey,
             string? replicaId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -438,9 +438,9 @@ namespace Baseten
                 ReplicaId = replicaId,
             };
 
-            return await CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsync(
-                trainingProjectId: trainingProjectId,
-                trainingJobId: trainingJobId,
+            return await CreateModelsByModelIdDeploymentsByDeploymentIdSshSignAsync(
+                modelId: modelId,
+                deploymentId: deploymentId,
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

@@ -16,11 +16,11 @@ namespace Baseten
         public required string PublicKey { get; set; }
 
         /// <summary>
-        /// The replica to connect to (e.g. '0' for training, hash for inference).
+        /// The replica to connect to. Required for training jobs (e.g. '0'). Optional for inference (server picks a running replica if omitted).<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("replica_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ReplicaId { get; set; }
+        public string? ReplicaId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,17 +35,18 @@ namespace Baseten
         /// The user's SSH public key (e.g., 'ssh-ed25519 AAAA... user@host').
         /// </param>
         /// <param name="replicaId">
-        /// The replica to connect to (e.g. '0' for training, hash for inference).
+        /// The replica to connect to. Required for training jobs (e.g. '0'). Optional for inference (server picks a running replica if omitted).<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SignSSHCertificateRequestV1(
             string publicKey,
-            string replicaId)
+            string? replicaId)
         {
             this.PublicKey = publicKey ?? throw new global::System.ArgumentNullException(nameof(publicKey));
-            this.ReplicaId = replicaId ?? throw new global::System.ArgumentNullException(nameof(replicaId));
+            this.ReplicaId = replicaId;
         }
 
         /// <summary>
