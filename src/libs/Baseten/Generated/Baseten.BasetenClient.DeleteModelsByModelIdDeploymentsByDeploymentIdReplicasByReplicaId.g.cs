@@ -140,9 +140,9 @@ namespace Baseten
                 PrepareDeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId,
-                    deploymentId: deploymentId,
-                    replicaId: replicaId);
+                    modelId: modelId!,
+                    deploymentId: deploymentId!,
+                    replicaId: replicaId!);
 
                 return __httpRequest;
             }

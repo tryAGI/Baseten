@@ -135,8 +135,8 @@ namespace Baseten
                 PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    sessionId: sessionId,
-                    trainerServerId: trainerServerId);
+                    sessionId: sessionId!,
+                    trainerServerId: trainerServerId!);
 
                 return __httpRequest;
             }

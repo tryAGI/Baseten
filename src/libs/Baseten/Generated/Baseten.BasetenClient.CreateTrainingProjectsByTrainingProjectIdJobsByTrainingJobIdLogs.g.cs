@@ -155,8 +155,8 @@ namespace Baseten
                 PrepareCreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdLogsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    trainingProjectId: trainingProjectId,
-                    trainingJobId: trainingJobId,
+                    trainingProjectId: trainingProjectId!,
+                    trainingJobId: trainingJobId!,
                     request: request);
 
                 return __httpRequest;

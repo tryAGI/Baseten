@@ -130,7 +130,7 @@ namespace Baseten
                 PrepareGetModelApisSnapshotsByModelIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId);
+                    modelId: modelId!);
 
                 return __httpRequest;
             }

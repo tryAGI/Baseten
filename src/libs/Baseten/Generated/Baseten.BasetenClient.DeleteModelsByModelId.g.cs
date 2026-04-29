@@ -129,7 +129,7 @@ namespace Baseten
                 PrepareDeleteModelsByModelIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId);
+                    modelId: modelId!);
 
                 return __httpRequest;
             }

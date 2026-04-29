@@ -154,8 +154,8 @@ namespace Baseten
                 PrepareCreateModelsByModelIdEnvironmentsByEnvNamePromoteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId,
-                    envName: envName,
+                    modelId: modelId!,
+                    envName: envName!,
                     request: request);
 
                 return __httpRequest;

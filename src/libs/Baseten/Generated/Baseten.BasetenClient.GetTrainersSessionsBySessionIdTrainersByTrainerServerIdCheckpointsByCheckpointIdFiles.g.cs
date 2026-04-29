@@ -140,9 +140,9 @@ namespace Baseten
                 PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    sessionId: sessionId,
-                    trainerServerId: trainerServerId,
-                    checkpointId: checkpointId);
+                    sessionId: sessionId!,
+                    trainerServerId: trainerServerId!,
+                    checkpointId: checkpointId!);
 
                 return __httpRequest;
             }

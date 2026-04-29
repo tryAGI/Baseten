@@ -161,8 +161,8 @@ namespace Baseten
                 PrepareCreateChainsByChainIdEnvironmentsByEnvNameChainletSettingsInstanceTypesUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    chainId: chainId,
-                    envName: envName,
+                    chainId: chainId!,
+                    envName: envName!,
                     request: request);
 
                 return __httpRequest;

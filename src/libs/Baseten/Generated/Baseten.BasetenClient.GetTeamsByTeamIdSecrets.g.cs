@@ -129,7 +129,7 @@ namespace Baseten
                 PrepareGetTeamsByTeamIdSecretsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    teamId: teamId);
+                    teamId: teamId!);
 
                 return __httpRequest;
             }
