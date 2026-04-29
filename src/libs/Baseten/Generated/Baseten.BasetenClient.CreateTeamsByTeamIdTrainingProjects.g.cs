@@ -149,7 +149,7 @@ namespace Baseten
                 PrepareCreateTeamsByTeamIdTrainingProjectsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    teamId: teamId,
+                    teamId: teamId!,
                     request: request);
 
                 return __httpRequest;

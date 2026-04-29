@@ -183,7 +183,7 @@ namespace Baseten
                 PrepareCreateChainsByChainIdEnvironmentsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    chainId: chainId,
+                    chainId: chainId!,
                     request: request);
 
                 return __httpRequest;

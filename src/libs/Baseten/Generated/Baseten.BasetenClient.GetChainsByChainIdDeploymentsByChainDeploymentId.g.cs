@@ -134,8 +134,8 @@ namespace Baseten
                 PrepareGetChainsByChainIdDeploymentsByChainDeploymentIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    chainId: chainId,
-                    chainDeploymentId: chainDeploymentId);
+                    chainId: chainId!,
+                    chainDeploymentId: chainDeploymentId!);
 
                 return __httpRequest;
             }

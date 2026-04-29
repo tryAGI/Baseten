@@ -135,8 +135,8 @@ namespace Baseten
                 PrepareCreateModelsByModelIdDeploymentsByDeploymentIdActivateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId,
-                    deploymentId: deploymentId);
+                    modelId: modelId!,
+                    deploymentId: deploymentId!);
 
                 return __httpRequest;
             }

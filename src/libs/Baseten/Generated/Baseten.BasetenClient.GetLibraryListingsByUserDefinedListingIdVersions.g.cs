@@ -130,7 +130,7 @@ namespace Baseten
                 PrepareGetLibraryListingsByUserDefinedListingIdVersionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    userDefinedListingId: userDefinedListingId);
+                    userDefinedListingId: userDefinedListingId!);
 
                 return __httpRequest;
             }

@@ -135,8 +135,8 @@ namespace Baseten
                 PrepareCreateModelsByModelIdEnvironmentsByEnvNameCancelPromotionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId,
-                    envName: envName);
+                    modelId: modelId!,
+                    envName: envName!);
 
                 return __httpRequest;
             }

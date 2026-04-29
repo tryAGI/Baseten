@@ -164,7 +164,7 @@ namespace Baseten
                 PrepareCreateModelsByModelIdEnvironmentsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId,
+                    modelId: modelId!,
                     request: request);
 
                 return __httpRequest;

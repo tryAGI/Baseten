@@ -158,9 +158,9 @@ namespace Baseten
                 PrepareEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    trainingProjectId: trainingProjectId,
-                    trainingJobId: trainingJobId,
-                    sessionId: sessionId,
+                    trainingProjectId: trainingProjectId!,
+                    trainingJobId: trainingJobId!,
+                    sessionId: sessionId!,
                     request: request);
 
                 return __httpRequest;

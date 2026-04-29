@@ -151,7 +151,7 @@ namespace Baseten
                 PrepareCreateLibraryListingsByUserDefinedListingIdVersionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    userDefinedListingId: userDefinedListingId,
+                    userDefinedListingId: userDefinedListingId!,
                     request: request);
 
                 return __httpRequest;

@@ -135,8 +135,8 @@ namespace Baseten
                 PrepareGetChainsByChainIdEnvironmentsByEnvNameRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    chainId: chainId,
-                    envName: envName);
+                    chainId: chainId!,
+                    envName: envName!);
 
                 return __httpRequest;
             }

@@ -148,7 +148,7 @@ namespace Baseten
                 PrepareEditLibraryListingsByUserDefinedListingIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    userDefinedListingId: userDefinedListingId,
+                    userDefinedListingId: userDefinedListingId!,
                     request: request);
 
                 return __httpRequest;

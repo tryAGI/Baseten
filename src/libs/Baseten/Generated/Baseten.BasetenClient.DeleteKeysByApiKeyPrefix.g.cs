@@ -130,7 +130,7 @@ namespace Baseten
                 PrepareDeleteKeysByApiKeyPrefixRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    apiKeyPrefix: apiKeyPrefix);
+                    apiKeyPrefix: apiKeyPrefix!);
 
                 return __httpRequest;
             }

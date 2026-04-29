@@ -153,8 +153,8 @@ namespace Baseten
                 PrepareEditLibraryListingsByUserDefinedListingIdVersionsByVersionTagRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    userDefinedListingId: userDefinedListingId,
-                    versionTag: versionTag,
+                    userDefinedListingId: userDefinedListingId!,
+                    versionTag: versionTag!,
                     request: request);
 
                 return __httpRequest;

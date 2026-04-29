@@ -135,8 +135,8 @@ namespace Baseten
                 PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    trainingProjectId: trainingProjectId,
-                    trainingJobId: trainingJobId);
+                    trainingProjectId: trainingProjectId!,
+                    trainingJobId: trainingJobId!);
 
                 return __httpRequest;
             }

@@ -148,7 +148,7 @@ namespace Baseten
                 PrepareCreateTrainersSessionsBySessionIdSamplersRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    sessionId: sessionId,
+                    sessionId: sessionId!,
                     request: request);
 
                 return __httpRequest;

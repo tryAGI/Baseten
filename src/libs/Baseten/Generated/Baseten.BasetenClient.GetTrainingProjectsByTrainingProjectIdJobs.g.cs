@@ -130,7 +130,7 @@ namespace Baseten
                 PrepareGetTrainingProjectsByTrainingProjectIdJobsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    trainingProjectId: trainingProjectId);
+                    trainingProjectId: trainingProjectId!);
 
                 return __httpRequest;
             }
