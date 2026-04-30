@@ -1035,6 +1035,42 @@
                 }
             ]
         },
+        "/v1/models/{model_id}/deployments/{deployment_id}/config": {
+            "get": {
+                "summary": "Gets a deployment's config",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/config \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/config\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Gets the config of a deployment. Returns the parsed config and, when available, the original config.yaml text. Clients may also request 'application/yaml' (or 'text/yaml' / 'application/x-yaml') via the Accept header to receive the raw config.yaml directly; 406 is returned if no raw config is stored.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeploymentConfigResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
         "/v1/models/{model_id}/deployments/{deployment_id}/logs": {
             "post": {
                 "summary": "Gets the logs for a model deployment.",
@@ -4795,6 +4831,35 @@
                     "download_url"
                 ],
                 "title": "DownloadDeploymentResponseV1",
+                "type": "object"
+            },
+            "DeploymentConfigResponseV1": {
+                "description": "The config of a deployment.",
+                "properties": {
+                    "config": {
+                        "additionalProperties": true,
+                        "description": "The parsed config of the deployment",
+                        "title": "Config",
+                        "type": "object"
+                    },
+                    "raw_config": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The original config.yaml text submitted by the client, preserving comments, ordering, and formatting. Null if not available.",
+                        "title": "Raw Config"
+                    }
+                },
+                "required": [
+                    "config",
+                    "raw_config"
+                ],
+                "title": "DeploymentConfigResponseV1",
                 "type": "object"
             },
             "SortOrderV1": {
