@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// A checkpoint saved by a trainer server.
+    /// A checkpoint saved by a trainer.
     /// </summary>
     public sealed partial class TrainerServerCheckpointV1
     {
@@ -56,11 +56,18 @@ namespace Baseten
         public string? SyncStatus { get; set; }
 
         /// <summary>
-        /// The ID of the trainer server.
+        /// The TrainerServerCheckpoint database ID.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("trainer_server_id")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string TrainerServerId { get; set; }
+        public required string Id { get; set; }
+
+        /// <summary>
+        /// The ID of the trainer.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trainer_id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string TrainerId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -83,8 +90,11 @@ namespace Baseten
         /// <param name="sizeBytes">
         /// The size of the checkpoint in bytes.
         /// </param>
-        /// <param name="trainerServerId">
-        /// The ID of the trainer server.
+        /// <param name="id">
+        /// The TrainerServerCheckpoint database ID.
+        /// </param>
+        /// <param name="trainerId">
+        /// The ID of the trainer.
         /// </param>
         /// <param name="baseModel">
         /// The base model of the checkpoint.
@@ -104,7 +114,8 @@ namespace Baseten
             global::System.DateTime createdAt,
             string checkpointType,
             long sizeBytes,
-            string trainerServerId,
+            string id,
+            string trainerId,
             string? baseModel,
             object? loraAdapterConfig,
             string? syncStatus)
@@ -116,7 +127,8 @@ namespace Baseten
             this.LoraAdapterConfig = loraAdapterConfig;
             this.SizeBytes = sizeBytes;
             this.SyncStatus = syncStatus;
-            this.TrainerServerId = trainerServerId ?? throw new global::System.ArgumentNullException(nameof(trainerServerId));
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.TrainerId = trainerId ?? throw new global::System.ArgumentNullException(nameof(trainerId));
         }
 
         /// <summary>

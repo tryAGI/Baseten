@@ -4,19 +4,19 @@
 namespace Baseten
 {
     /// <summary>
-    /// A response to list checkpoints for a trainer server.
+    /// A response to list checkpoints for a trainer.
     /// </summary>
     public sealed partial class GetTrainerServerCheckpointsResponseV1
     {
         /// <summary>
-        /// The ID of the trainer server.
+        /// The ID of the trainer.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("trainer_server_id")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("trainer_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string TrainerServerId { get; set; }
+        public required string TrainerId { get; set; }
 
         /// <summary>
-        /// The checkpoints for the trainer server.
+        /// The checkpoints for the trainer.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("checkpoints")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,20 +31,20 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTrainerServerCheckpointsResponseV1" /> class.
         /// </summary>
-        /// <param name="trainerServerId">
-        /// The ID of the trainer server.
+        /// <param name="trainerId">
+        /// The ID of the trainer.
         /// </param>
         /// <param name="checkpoints">
-        /// The checkpoints for the trainer server.
+        /// The checkpoints for the trainer.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetTrainerServerCheckpointsResponseV1(
-            string trainerServerId,
+            string trainerId,
             global::System.Collections.Generic.IList<global::Baseten.TrainerServerCheckpointV1> checkpoints)
         {
-            this.TrainerServerId = trainerServerId ?? throw new global::System.ArgumentNullException(nameof(trainerServerId));
+            this.TrainerId = trainerId ?? throw new global::System.ArgumentNullException(nameof(trainerId));
             this.Checkpoints = checkpoints ?? throw new global::System.ArgumentNullException(nameof(checkpoints));
         }
 

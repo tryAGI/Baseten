@@ -1885,6 +1885,55 @@
                 }
             ]
         },
+        "/v1/chains/{chain_id}/deployments/{chain_deployment_id}/chainlets/{chainlet_id}/logs": {
+            "post": {
+                "summary": "Gets the logs for a chainlet within a chain deployment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/chainlets/{chainlet_id}/logs \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"start_epoch_millis\": null,\n  \"end_epoch_millis\": null,\n  \"direction\": null,\n  \"limit\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/chainlets/{chainlet_id}/logs\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetDeploymentLogsRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLogsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/chain_id"
+                },
+                {
+                    "$ref": "#/components/parameters/chain_deployment_id"
+                },
+                {
+                    "$ref": "#/components/parameters/chainlet_id"
+                }
+            ]
+        },
         "/v1/chains/{chain_id}/environments": {
             "get": {
                 "summary": "Get all chain environments",
@@ -2945,6 +2994,44 @@
                 }
             }
         },
+        "/v1/trainers/search": {
+            "post": {
+                "summary": "Search trainers.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/search \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"trainer_id\": \"k4q95w5\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/search\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'trainer_id': 'k4q95w5'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Search trainers visible to the requesting user.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchTrainersRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SearchTrainersResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/trainers/sessions": {
             "post": {
                 "summary": "Create a trainer session.",
@@ -3069,17 +3156,17 @@
                 }
             ]
         },
-        "/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints": {
+        "/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints": {
             "get": {
                 "summary": "List trainer server checkpoints.",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "List the checkpoints saved by a trainer server.",
@@ -3101,21 +3188,21 @@
                     "$ref": "#/components/parameters/session_id"
                 },
                 {
-                    "$ref": "#/components/parameters/trainer_server_id"
+                    "$ref": "#/components/parameters/trainer_id"
                 }
             ]
         },
-        "/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints/{checkpoint_id}/files": {
+        "/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints/{checkpoint_id}/files": {
             "get": {
                 "summary": "Get trainer server checkpoint files.",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints/{checkpoint_id}/files \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints/{checkpoint_id}/files \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints/{checkpoint_id}/files\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints/{checkpoint_id}/files\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Get presigned URLs for the files under a trainer server checkpoint. Returns a paginated list; deviates from Tinker's single-archive-URL shape because trainer weight sync writes an unzipped folder.",
@@ -3137,7 +3224,7 @@
                     "$ref": "#/components/parameters/session_id"
                 },
                 {
-                    "$ref": "#/components/parameters/trainer_server_id"
+                    "$ref": "#/components/parameters/trainer_id"
                 },
                 {
                     "$ref": "#/components/parameters/checkpoint_id"
@@ -9041,6 +9128,74 @@
                 "title": "SearchTrainingJobsResponseV1",
                 "type": "object"
             },
+            "SearchTrainersRequestV1": {
+                "description": "Filters for searching trainers visible to the requesting user.",
+                "properties": {
+                    "trainer_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Filter by trainer ID.",
+                        "examples": [
+                            "k4q95w5"
+                        ],
+                        "title": "Trainer Id"
+                    }
+                },
+                "title": "SearchTrainersRequestV1",
+                "type": "object"
+            },
+            "SearchedTrainerV1": {
+                "description": "Trainer entry returned by /v1/trainers/search.",
+                "properties": {
+                    "trainer_id": {
+                        "description": "The trainer ID.",
+                        "title": "Trainer Id",
+                        "type": "string"
+                    },
+                    "session_id": {
+                        "description": "The session ID this trainer belongs to.",
+                        "title": "Session Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "The HuggingFace base model the trainer is fine-tuning.",
+                        "title": "Base Model",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "trainer_id",
+                    "session_id",
+                    "base_model"
+                ],
+                "title": "SearchedTrainerV1",
+                "type": "object"
+            },
+            "SearchTrainersResponseV1": {
+                "description": "Trainers matching the search filters.",
+                "properties": {
+                    "trainers": {
+                        "description": "List of trainers.",
+                        "items": {
+                            "$ref": "#/components/schemas/SearchedTrainerV1"
+                        },
+                        "title": "Trainers",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "trainers"
+                ],
+                "title": "SearchTrainersResponseV1",
+                "type": "object"
+            },
             "CreateTrainerSessionRequestV1": {
                 "properties": {
                     "training_project_id": {
@@ -9211,7 +9366,7 @@
                 "type": "object"
             },
             "TrainerServerCheckpointV1": {
-                "description": "A checkpoint saved by a trainer server.",
+                "description": "A checkpoint saved by a trainer.",
                 "properties": {
                     "checkpoint_id": {
                         "description": "The ID of the checkpoint.",
@@ -9272,9 +9427,14 @@
                         "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
                         "title": "Sync Status"
                     },
-                    "trainer_server_id": {
-                        "description": "The ID of the trainer server.",
-                        "title": "Trainer Server Id",
+                    "id": {
+                        "description": "The TrainerServerCheckpoint database ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "trainer_id": {
+                        "description": "The ID of the trainer.",
+                        "title": "Trainer Id",
                         "type": "string"
                     }
                 },
@@ -9285,21 +9445,22 @@
                     "base_model",
                     "lora_adapter_config",
                     "size_bytes",
-                    "trainer_server_id"
+                    "id",
+                    "trainer_id"
                 ],
                 "title": "TrainerServerCheckpointV1",
                 "type": "object"
             },
             "GetTrainerServerCheckpointsResponseV1": {
-                "description": "A response to list checkpoints for a trainer server.",
+                "description": "A response to list checkpoints for a trainer.",
                 "properties": {
-                    "trainer_server_id": {
-                        "description": "The ID of the trainer server.",
-                        "title": "Trainer Server Id",
+                    "trainer_id": {
+                        "description": "The ID of the trainer.",
+                        "title": "Trainer Id",
                         "type": "string"
                     },
                     "checkpoints": {
-                        "description": "The checkpoints for the trainer server.",
+                        "description": "The checkpoints for the trainer.",
                         "items": {
                             "$ref": "#/components/schemas/TrainerServerCheckpointV1"
                         },
@@ -9308,7 +9469,7 @@
                     }
                 },
                 "required": [
-                    "trainer_server_id",
+                    "trainer_id",
                     "checkpoints"
                 ],
                 "title": "GetTrainerServerCheckpointsResponseV1",
@@ -11075,6 +11236,14 @@
                 "in": "path",
                 "required": true
             },
+            "chainlet_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "chainlet_id",
+                "in": "path",
+                "required": true
+            },
             "training_project_id": {
                 "schema": {
                     "type": "string"
@@ -11099,11 +11268,11 @@
                 "in": "path",
                 "required": true
             },
-            "trainer_server_id": {
+            "trainer_id": {
                 "schema": {
                     "type": "string"
                 },
-                "name": "trainer_server_id",
+                "name": "trainer_id",
                 "in": "path",
                 "required": true
             },
