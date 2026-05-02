@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateTrainersSearchSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,60 +21,61 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateTrainersSearchSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsSecurityRequirement0,
+            {                s_CreateTrainersSearchSecurityRequirement0,
             };
-        partial void PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsArguments(
+        partial void PrepareCreateTrainersSearchArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string sessionId,
-            ref string trainerServerId);
-        partial void PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsRequest(
+            global::Baseten.SearchTrainersRequestV1 request);
+        partial void PrepareCreateTrainersSearchRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string sessionId,
-            string trainerServerId);
-        partial void ProcessGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsResponse(
+            global::Baseten.SearchTrainersRequestV1 request);
+        partial void ProcessCreateTrainersSearchResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsResponseContent(
+        partial void ProcessCreateTrainersSearchResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// List trainer server checkpoints.<br/>
-        /// List the checkpoints saved by a trainer server.
+        /// Search trainers.<br/>
+        /// Search trainers visible to the requesting user.
         /// </summary>
-        /// <param name="sessionId"></param>
-        /// <param name="trainerServerId"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/trainers/search \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "trainer_id": "k4q95w5"<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.GetTrainerServerCheckpointsResponseV1> GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsAsync(
-            string sessionId,
-            string trainerServerId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.SearchTrainersResponseV1> CreateTrainersSearchAsync(
+
+            global::Baseten.SearchTrainersRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsArguments(
+            PrepareCreateTrainersSearchArguments(
                 httpClient: HttpClient,
-                sessionId: ref sessionId,
-                trainerServerId: ref trainerServerId);
+                request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsSecurityRequirements,
-                operationName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsAsync");
+                securityRequirements: s_CreateTrainersSearchSecurityRequirements,
+                operationName: "CreateTrainersSearchAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -93,7 +94,7 @@ namespace Baseten
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints",
+                                path: "/v1/trainers/search",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -101,7 +102,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Get,
+                    method: global::System.Net.Http.HttpMethod.Post,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -124,6 +125,12 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -132,11 +139,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsRequest(
+                PrepareCreateTrainersSearchRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    sessionId: sessionId!,
-                    trainerServerId: trainerServerId!);
+                    request: request);
 
                 return __httpRequest;
             }
@@ -153,10 +159,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpoints",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints\"",
-                                httpMethod: "GET",
+                                operationId: "createTrainersSearch",
+                                methodName: "CreateTrainersSearchAsync",
+                                pathTemplate: "\"/v1/trainers/search\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -180,10 +186,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpoints",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints\"",
-                                httpMethod: "GET",
+                                operationId: "createTrainersSearch",
+                                methodName: "CreateTrainersSearchAsync",
+                                pathTemplate: "\"/v1/trainers/search\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -215,10 +221,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpoints",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints\"",
-                                httpMethod: "GET",
+                                operationId: "createTrainersSearch",
+                                methodName: "CreateTrainersSearchAsync",
+                                pathTemplate: "\"/v1/trainers/search\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -254,7 +260,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsResponse(
+                ProcessCreateTrainersSearchResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -262,10 +268,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpoints",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints\"",
-                                httpMethod: "GET",
+                                operationId: "createTrainersSearch",
+                                methodName: "CreateTrainersSearchAsync",
+                                pathTemplate: "\"/v1/trainers/search\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -282,10 +288,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpoints",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints\"",
-                                httpMethod: "GET",
+                                operationId: "createTrainersSearch",
+                                methodName: "CreateTrainersSearchAsync",
+                                pathTemplate: "\"/v1/trainers/search\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -310,7 +316,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsResponseContent(
+                                ProcessCreateTrainersSearchResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -320,7 +326,7 @@ namespace Baseten
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Baseten.GetTrainerServerCheckpointsResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                        global::Baseten.SearchTrainersResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -350,7 +356,7 @@ namespace Baseten
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Baseten.GetTrainerServerCheckpointsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Baseten.SearchTrainersResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -388,6 +394,32 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Search trainers.<br/>
+        /// Search trainers visible to the requesting user.
+        /// </summary>
+        /// <param name="trainerId">
+        /// Filter by trainer ID.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Baseten.SearchTrainersResponseV1> CreateTrainersSearchAsync(
+            string? trainerId = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Baseten.SearchTrainersRequestV1
+            {
+                TrainerId = trainerId,
+            };
+
+            return await CreateTrainersSearchAsync(
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

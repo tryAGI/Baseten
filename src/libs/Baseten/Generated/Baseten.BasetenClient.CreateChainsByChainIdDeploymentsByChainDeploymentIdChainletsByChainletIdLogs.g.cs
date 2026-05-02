@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,65 +21,79 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesSecurityRequirement0,
+            {                s_CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsSecurityRequirement0,
             };
-        partial void PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesArguments(
+        partial void PrepareCreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string sessionId,
-            ref string trainerServerId,
-            ref string checkpointId);
-        partial void PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesRequest(
+            ref string chainId,
+            ref string chainDeploymentId,
+            ref string chainletId,
+            global::Baseten.GetDeploymentLogsRequestV1 request);
+        partial void PrepareCreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string sessionId,
-            string trainerServerId,
-            string checkpointId);
-        partial void ProcessGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesResponse(
+            string chainId,
+            string chainDeploymentId,
+            string chainletId,
+            global::Baseten.GetDeploymentLogsRequestV1 request);
+        partial void ProcessCreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesResponseContent(
+        partial void ProcessCreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get trainer server checkpoint files.<br/>
-        /// Get presigned URLs for the files under a trainer server checkpoint. Returns a paginated list; deviates from Tinker's single-archive-URL shape because trainer weight sync writes an unzipped folder.
+        /// Gets the logs for a chainlet within a chain deployment.<br/>
+        /// Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.
         /// </summary>
-        /// <param name="sessionId"></param>
-        /// <param name="trainerServerId"></param>
-        /// <param name="checkpointId"></param>
+        /// <param name="chainId"></param>
+        /// <param name="chainDeploymentId"></param>
+        /// <param name="chainletId"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers/{trainer_server_id}/checkpoints/{checkpoint_id}/files \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/chainlets/{chainlet_id}/logs \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "start_epoch_millis": null,<br/>
+        ///   "end_epoch_millis": null,<br/>
+        ///   "direction": null,<br/>
+        ///   "limit": null<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.GetTrainerServerCheckpointFilesResponseV1> GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesAsync(
-            string sessionId,
-            string trainerServerId,
-            string checkpointId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetLogsResponseV1> CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync(
+            string chainId,
+            string chainDeploymentId,
+            string chainletId,
+
+            global::Baseten.GetDeploymentLogsRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesArguments(
+            PrepareCreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsArguments(
                 httpClient: HttpClient,
-                sessionId: ref sessionId,
-                trainerServerId: ref trainerServerId,
-                checkpointId: ref checkpointId);
+                chainId: ref chainId,
+                chainDeploymentId: ref chainDeploymentId,
+                chainletId: ref chainletId,
+                request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesSecurityRequirements,
-                operationName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesAsync");
+                securityRequirements: s_CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsSecurityRequirements,
+                operationName: "CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -98,7 +112,7 @@ namespace Baseten
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints/{checkpointId}/files",
+                                path: $"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -106,7 +120,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Get,
+                    method: global::System.Net.Http.HttpMethod.Post,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -129,6 +143,12 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -137,12 +157,13 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesRequest(
+                PrepareCreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    sessionId: sessionId!,
-                    trainerServerId: trainerServerId!,
-                    checkpointId: checkpointId!);
+                    chainId: chainId!,
+                    chainDeploymentId: chainDeploymentId!,
+                    chainletId: chainletId!,
+                    request: request);
 
                 return __httpRequest;
             }
@@ -159,10 +180,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFiles",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints/{checkpointId}/files\"",
-                                httpMethod: "GET",
+                                operationId: "createChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -186,10 +207,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFiles",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints/{checkpointId}/files\"",
-                                httpMethod: "GET",
+                                operationId: "createChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -221,10 +242,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFiles",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints/{checkpointId}/files\"",
-                                httpMethod: "GET",
+                                operationId: "createChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -260,7 +281,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesResponse(
+                ProcessCreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -268,10 +289,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFiles",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints/{checkpointId}/files\"",
-                                httpMethod: "GET",
+                                operationId: "createChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -288,10 +309,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFiles",
-                                methodName: "GetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesAsync",
-                                pathTemplate: "$\"/v1/trainers/sessions/{sessionId}/trainers/{trainerServerId}/checkpoints/{checkpointId}/files\"",
-                                httpMethod: "GET",
+                                operationId: "createChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -316,7 +337,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetTrainersSessionsBySessionIdTrainersByTrainerServerIdCheckpointsByCheckpointIdFilesResponseContent(
+                                ProcessCreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -326,7 +347,7 @@ namespace Baseten
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Baseten.GetTrainerServerCheckpointFilesResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                        global::Baseten.GetLogsResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -356,7 +377,7 @@ namespace Baseten
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Baseten.GetTrainerServerCheckpointFilesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Baseten.GetLogsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -394,6 +415,59 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Gets the logs for a chainlet within a chain deployment.<br/>
+        /// Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.
+        /// </summary>
+        /// <param name="chainId"></param>
+        /// <param name="chainDeploymentId"></param>
+        /// <param name="chainletId"></param>
+        /// <param name="startEpochMillis">
+        /// Epoch millis timestamp to start fetching logs<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="endEpochMillis">
+        /// Epoch millis timestamp to end fetching logs<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="direction">
+        /// Sort order for logs<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Limit of logs to fetch in a single request<br/>
+        /// Default Value: 500
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetLogsResponseV1> CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync(
+            string chainId,
+            string chainDeploymentId,
+            string chainletId,
+            int? startEpochMillis = default,
+            int? endEpochMillis = default,
+            global::Baseten.SortOrderV1? direction = default,
+            int? limit = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Baseten.GetDeploymentLogsRequestV1
+            {
+                StartEpochMillis = startEpochMillis,
+                EndEpochMillis = endEpochMillis,
+                Direction = direction,
+                Limit = limit,
+            };
+
+            return await CreateChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync(
+                chainId: chainId,
+                chainDeploymentId: chainDeploymentId,
+                chainletId: chainletId,
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
