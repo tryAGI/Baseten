@@ -21,7 +21,8 @@ namespace Baseten
         ///   "model": null,<br/>
         ///   "max_seq_len": null,<br/>
         ///   "lora_rank": null,<br/>
-        ///   "seed": null<br/>
+        ///   "seed": null,<br/>
+        ///   "scale_down_delay_seconds": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainersSessionsBySessionIdTrainersAsync(
@@ -50,6 +51,10 @@ namespace Baseten
         /// Random seed for reproducibility.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="scaleDownDelaySeconds">
+        /// Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
+        /// Default Value: 3600
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -59,6 +64,7 @@ namespace Baseten
             int? maxSeqLen = default,
             int? loraRank = default,
             int? seed = default,
+            int? scaleDownDelaySeconds = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
