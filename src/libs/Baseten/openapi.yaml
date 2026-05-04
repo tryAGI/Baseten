@@ -3076,11 +3076,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_len\": null,\n  \"lora_rank\": null,\n  \"seed\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_len\": null,\n  \"lora_rank\": null,\n  \"seed\": null,\n  \"scale_down_delay_seconds\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_len': None, 'lora_rank': None, 'seed': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_len': None, 'lora_rank': None, 'seed': None, 'scale_down_delay_seconds': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a TrainerServer and an associated SamplingServer for the given trainer session.",
@@ -9266,6 +9266,13 @@
                         "default": null,
                         "description": "Random seed for reproducibility.",
                         "title": "Seed"
+                    },
+                    "scale_down_delay_seconds": {
+                        "default": 3600,
+                        "description": "Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).",
+                        "exclusiveMinimum": 0,
+                        "title": "Scale Down Delay Seconds",
+                        "type": "integer"
                     }
                 },
                 "required": [

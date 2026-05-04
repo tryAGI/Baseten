@@ -37,6 +37,13 @@ namespace Baseten
         public int? Seed { get; set; }
 
         /// <summary>
+        /// Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
+        /// Default Value: 3600
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scale_down_delay_seconds")]
+        public int? ScaleDownDelaySeconds { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +67,10 @@ namespace Baseten
         /// Random seed for reproducibility.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="scaleDownDelaySeconds">
+        /// Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
+        /// Default Value: 3600
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -67,12 +78,14 @@ namespace Baseten
             string model,
             int? maxSeqLen,
             int? loraRank,
-            int? seed)
+            int? seed,
+            int? scaleDownDelaySeconds)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.MaxSeqLen = maxSeqLen;
             this.LoraRank = loraRank;
             this.Seed = seed;
+            this.ScaleDownDelaySeconds = scaleDownDelaySeconds;
         }
 
         /// <summary>
