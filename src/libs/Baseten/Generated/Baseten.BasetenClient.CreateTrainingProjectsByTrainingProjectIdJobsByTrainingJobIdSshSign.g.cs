@@ -72,6 +72,44 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsResponseAsync(
+                trainingProjectId: trainingProjectId,
+                trainingJobId: trainingJobId,
+
+                request: request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Sign an SSH certificate for a training job.<br/>
+        /// Signs a short-lived SSH certificate granting access to a specific training job pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
+        /// </summary>
+        /// <param name="trainingProjectId"></param>
+        /// <param name="trainingJobId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/ssh/sign \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "public_key": null,<br/>
+        ///   "replica_id": null<br/>
+        /// }'
+        /// </remarks>
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.SignSSHCertificateResponseV1>> CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignAsResponseAsync(
+            string trainingProjectId,
+            string trainingJobId,
+
+            global::Baseten.SignSSHCertificateRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -104,6 +142,7 @@ namespace Baseten
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/ssh/sign",
                                 baseUri: HttpClient.BaseAddress);
@@ -185,6 +224,8 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -195,6 +236,11 @@ namespace Baseten
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Baseten.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -212,6 +258,8 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -221,8 +269,7 @@ namespace Baseten
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Baseten.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -231,6 +278,11 @@ namespace Baseten
                         __attempt < __maxAttempts &&
                         global::Baseten.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Baseten.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -247,14 +299,15 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Baseten.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -294,6 +347,8 @@ namespace Baseten
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -314,6 +369,8 @@ namespace Baseten
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -338,9 +395,13 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Baseten.SignSSHCertificateResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.SignSSHCertificateResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.SignSSHCertificateResponseV1>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -368,9 +429,13 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Baseten.SignSSHCertificateResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.SignSSHCertificateResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.SignSSHCertificateResponseV1>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

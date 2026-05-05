@@ -36,6 +36,33 @@ namespace Baseten
         /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
         /// </summary>
         /// <param name="sessionId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "model": null,<br/>
+        ///   "max_seq_len": null,<br/>
+        ///   "lora_rank": null,<br/>
+        ///   "seed": null,<br/>
+        ///   "scale_down_delay_seconds": null<br/>
+        /// }'
+        /// </remarks>
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>> CreateTrainersSessionsBySessionIdTrainersAsResponseAsync(
+            string sessionId,
+
+            global::Baseten.CreateTrainerServerRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create a trainer server.<br/>
+        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
+        /// </summary>
+        /// <param name="sessionId"></param>
         /// <param name="model">
         /// Base model ID (e.g. 'Qwen/Qwen3-8B').
         /// </param>
