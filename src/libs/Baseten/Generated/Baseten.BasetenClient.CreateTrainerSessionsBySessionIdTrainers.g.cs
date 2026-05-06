@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateTrainersSessionsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateTrainerSessionsBySessionIdTrainersSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,49 +21,59 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateTrainersSessionsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateTrainerSessionsBySessionIdTrainersSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateTrainersSessionsSecurityRequirement0,
+            {                s_CreateTrainerSessionsBySessionIdTrainersSecurityRequirement0,
             };
-        partial void PrepareCreateTrainersSessionsArguments(
+        partial void PrepareCreateTrainerSessionsBySessionIdTrainersArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateTrainerSessionRequestV1 request);
-        partial void PrepareCreateTrainersSessionsRequest(
+            ref string sessionId,
+            global::Baseten.CreateTrainerServerRequestV1 request);
+        partial void PrepareCreateTrainerSessionsBySessionIdTrainersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateTrainerSessionRequestV1 request);
-        partial void ProcessCreateTrainersSessionsResponse(
+            string sessionId,
+            global::Baseten.CreateTrainerServerRequestV1 request);
+        partial void ProcessCreateTrainerSessionsBySessionIdTrainersResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateTrainersSessionsResponseContent(
+        partial void ProcessCreateTrainerSessionsBySessionIdTrainersResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a trainer session.<br/>
-        /// Creates a TrainerSession for the given training project.
+        /// Create a trainer server.<br/>
+        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
         /// </summary>
+        /// <param name="sessionId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/trainers/sessions \<br/>
+        /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "training_project_id": null<br/>
+        ///   "model": null,<br/>
+        ///   "max_seq_len": null,<br/>
+        ///   "lora_rank": null,<br/>
+        ///   "seed": null,<br/>
+        ///   "scale_down_delay_seconds": null,<br/>
+        ///   "checkpoint_path": "bt://trainers:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerSessionResponseV1> CreateTrainersSessionsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainerSessionsBySessionIdTrainersAsync(
+            string sessionId,
 
-            global::Baseten.CreateTrainerSessionRequestV1 request,
+            global::Baseten.CreateTrainerServerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateTrainersSessionsAsResponseAsync(
+            var __response = await CreateTrainerSessionsBySessionIdTrainersAsResponseAsync(
+                sessionId: sessionId,
 
                 request: request,
                 requestOptions: requestOptions,
@@ -73,24 +83,31 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a trainer session.<br/>
-        /// Creates a TrainerSession for the given training project.
+        /// Create a trainer server.<br/>
+        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
         /// </summary>
+        /// <param name="sessionId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/trainers/sessions \<br/>
+        /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "training_project_id": null<br/>
+        ///   "model": null,<br/>
+        ///   "max_seq_len": null,<br/>
+        ///   "lora_rank": null,<br/>
+        ///   "seed": null,<br/>
+        ///   "scale_down_delay_seconds": null,<br/>
+        ///   "checkpoint_path": "bt://trainers:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerSessionResponseV1>> CreateTrainersSessionsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>> CreateTrainerSessionsBySessionIdTrainersAsResponseAsync(
+            string sessionId,
 
-            global::Baseten.CreateTrainerSessionRequestV1 request,
+            global::Baseten.CreateTrainerServerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -98,15 +115,16 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateTrainersSessionsArguments(
+            PrepareCreateTrainerSessionsBySessionIdTrainersArguments(
                 httpClient: HttpClient,
+                sessionId: ref sessionId,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateTrainersSessionsSecurityRequirements,
-                operationName: "CreateTrainersSessionsAsync");
+                securityRequirements: s_CreateTrainerSessionsBySessionIdTrainersSecurityRequirements,
+                operationName: "CreateTrainerSessionsBySessionIdTrainersAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -126,7 +144,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/trainers/sessions",
+                                path: $"/v1/trainer_sessions/{sessionId}/trainers",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -171,9 +189,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateTrainersSessionsRequest(
+                PrepareCreateTrainerSessionsBySessionIdTrainersRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    sessionId: sessionId!,
                     request: request);
 
                 return __httpRequest;
@@ -191,9 +210,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainersSessions",
-                                methodName: "CreateTrainersSessionsAsync",
-                                pathTemplate: "\"/v1/trainers/sessions\"",
+                                operationId: "createTrainerSessionsBySessionIdTrainers",
+                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
+                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -225,9 +244,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainersSessions",
-                                methodName: "CreateTrainersSessionsAsync",
-                                pathTemplate: "\"/v1/trainers/sessions\"",
+                                operationId: "createTrainerSessionsBySessionIdTrainers",
+                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
+                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -266,9 +285,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainersSessions",
-                                methodName: "CreateTrainersSessionsAsync",
-                                pathTemplate: "\"/v1/trainers/sessions\"",
+                                operationId: "createTrainerSessionsBySessionIdTrainers",
+                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
+                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -306,7 +325,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateTrainersSessionsResponse(
+                ProcessCreateTrainerSessionsBySessionIdTrainersResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -314,9 +333,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainersSessions",
-                                methodName: "CreateTrainersSessionsAsync",
-                                pathTemplate: "\"/v1/trainers/sessions\"",
+                                operationId: "createTrainerSessionsBySessionIdTrainers",
+                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
+                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -336,9 +355,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainersSessions",
-                                methodName: "CreateTrainersSessionsAsync",
-                                pathTemplate: "\"/v1/trainers/sessions\"",
+                                operationId: "createTrainerSessionsBySessionIdTrainers",
+                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
+                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -366,7 +385,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateTrainersSessionsResponseContent(
+                                ProcessCreateTrainerSessionsBySessionIdTrainersResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -375,9 +394,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateTrainerSessionResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.CreateTrainerServerResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerSessionResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -409,9 +428,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateTrainerSessionResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.CreateTrainerServerResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerSessionResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -454,26 +473,59 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a trainer session.<br/>
-        /// Creates a TrainerSession for the given training project.
+        /// Create a trainer server.<br/>
+        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
         /// </summary>
-        /// <param name="trainingProjectId">
-        /// ID of the training project to associate with.
+        /// <param name="sessionId"></param>
+        /// <param name="model">
+        /// Base model ID (e.g. 'Qwen/Qwen3-8B').
+        /// </param>
+        /// <param name="maxSeqLen">
+        /// Maximum sequence length for training.<br/>
+        /// Default Value: 32768
+        /// </param>
+        /// <param name="loraRank">
+        /// LoRA rank.<br/>
+        /// Default Value: 16
+        /// </param>
+        /// <param name="seed">
+        /// Random seed for reproducibility.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="scaleDownDelaySeconds">
+        /// Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
+        /// Default Value: 3600
+        /// </param>
+        /// <param name="checkpointPath">
+        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://trainers:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerSessionResponseV1> CreateTrainersSessionsAsync(
-            string trainingProjectId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainerSessionsBySessionIdTrainersAsync(
+            string sessionId,
+            string model,
+            int? maxSeqLen = default,
+            int? loraRank = default,
+            int? seed = default,
+            int? scaleDownDelaySeconds = default,
+            string? checkpointPath = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateTrainerSessionRequestV1
+            var __request = new global::Baseten.CreateTrainerServerRequestV1
             {
-                TrainingProjectId = trainingProjectId,
+                Model = model,
+                MaxSeqLen = maxSeqLen,
+                LoraRank = loraRank,
+                Seed = seed,
+                ScaleDownDelaySeconds = scaleDownDelaySeconds,
+                CheckpointPath = checkpointPath,
             };
 
-            return await CreateTrainersSessionsAsync(
+            return await CreateTrainerSessionsBySessionIdTrainersAsync(
+                sessionId: sessionId,
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

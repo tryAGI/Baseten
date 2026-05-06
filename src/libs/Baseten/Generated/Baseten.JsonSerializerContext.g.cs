@@ -65,6 +65,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.V1InteractiveSessionTriggerNullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetNullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.APIKeyCategoryJsonConverter),
 
             typeof(global::Baseten.JsonConverters.APIKeyCategoryNullableJsonConverter),
@@ -289,6 +293,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SearchedTrainerV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SearchTrainersResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SearchedTrainerV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckpointSearchRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerCheckpointTarget), TypeInfoPropertyName = "TrainerCheckpointTarget2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerServerCheckpointV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckpointSearchResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainerSessionRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerSessionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainerSessionResponseV1))]
@@ -298,7 +306,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainerServerResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateSamplingServerRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateSamplingServerResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerServerCheckpointV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetTrainerServerCheckpointsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainerServerCheckpointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetTrainerServerCheckpointFilesResponseV1))]
