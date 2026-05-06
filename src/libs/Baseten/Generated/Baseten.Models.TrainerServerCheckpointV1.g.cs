@@ -70,6 +70,14 @@ namespace Baseten
         public required string TrainerId { get; set; }
 
         /// <summary>
+        /// Whether this checkpoint is loadable by the sampler ('sampler') or by the trainer ('trainer').
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.TrainerCheckpointTarget Target { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -96,6 +104,9 @@ namespace Baseten
         /// <param name="trainerId">
         /// The ID of the trainer.
         /// </param>
+        /// <param name="target">
+        /// Whether this checkpoint is loadable by the sampler ('sampler') or by the trainer ('trainer').
+        /// </param>
         /// <param name="baseModel">
         /// The base model of the checkpoint.
         /// </param>
@@ -116,6 +127,7 @@ namespace Baseten
             long sizeBytes,
             string id,
             string trainerId,
+            global::Baseten.TrainerCheckpointTarget target,
             string? baseModel,
             object? loraAdapterConfig,
             string? syncStatus)
@@ -129,6 +141,7 @@ namespace Baseten
             this.SyncStatus = syncStatus;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.TrainerId = trainerId ?? throw new global::System.ArgumentNullException(nameof(trainerId));
+            this.Target = target;
         }
 
         /// <summary>

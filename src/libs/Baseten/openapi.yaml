@@ -3032,17 +3032,55 @@
                 }
             }
         },
-        "/v1/trainers/sessions": {
+        "/v1/trainers/checkpoints/search": {
+            "post": {
+                "summary": "Look up trainer checkpoint info by bt:// URI.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/checkpoints/search \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"checkpoint_path\": \"bt://trainers:k4q95w5/sampler_weights/step-100\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/checkpoints/search\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'checkpoint_path': 'bt://trainers:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Look up the metadata for a trainer checkpoint by its bt://trainers:<trainer_id>/(weights|sampler_weights)/<name> URI.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CheckpointSearchRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CheckpointSearchResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/trainer_sessions": {
             "post": {
                 "summary": "Create a trainer session.",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainer_sessions \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a TrainerSession for the given training project.",
@@ -3070,17 +3108,17 @@
                 }
             }
         },
-        "/v1/trainers/sessions/{session_id}/trainers": {
+        "/v1/trainer_sessions/{session_id}/trainers": {
             "post": {
                 "summary": "Create a trainer server.",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_len\": null,\n  \"lora_rank\": null,\n  \"seed\": null,\n  \"scale_down_delay_seconds\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_len\": null,\n  \"lora_rank\": null,\n  \"seed\": null,\n  \"scale_down_delay_seconds\": null,\n  \"checkpoint_path\": \"bt://trainers:k4q95w5/weights/step-100\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_len': None, 'lora_rank': None, 'seed': None, 'scale_down_delay_seconds': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_len': None, 'lora_rank': None, 'seed': None, 'scale_down_delay_seconds': None, 'checkpoint_path': 'bt://trainers:k4q95w5/weights/step-100'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a TrainerServer and an associated SamplingServer for the given trainer session.",
@@ -3113,17 +3151,17 @@
                 }
             ]
         },
-        "/v1/trainers/sessions/{session_id}/samplers": {
+        "/v1/trainer_sessions/{session_id}/samplers": {
             "post": {
                 "summary": "Create a sampling server.",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_length\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainer_sessions/{session_id}/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_length\": null,\n  \"checkpoint_path\": \"bt://trainers:k4q95w5/sampler_weights/step-100\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/sessions/{session_id}/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_length': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions/{session_id}/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_length': None, 'checkpoint_path': 'bt://trainers:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a standalone SamplingServer (not linked to a TrainerServer).",
@@ -9196,17 +9234,154 @@
                 "title": "SearchTrainersResponseV1",
                 "type": "object"
             },
-            "CreateTrainerSessionRequestV1": {
+            "CheckpointSearchRequestV1": {
+                "description": "Lookup body for ``POST /v1/trainers/checkpoints/search``.",
                 "properties": {
-                    "training_project_id": {
-                        "description": "ID of the training project to associate with.",
-                        "title": "Training Project Id",
+                    "checkpoint_path": {
+                        "description": "bt:// URI of a trainer checkpoint. Form: bt://trainers:<trainer_id>/(weights|sampler_weights)/<checkpoint_name>.",
+                        "examples": [
+                            "bt://trainers:k4q95w5/sampler_weights/step-100"
+                        ],
+                        "title": "Checkpoint Path",
                         "type": "string"
                     }
                 },
                 "required": [
-                    "training_project_id"
+                    "checkpoint_path"
                 ],
+                "title": "CheckpointSearchRequestV1",
+                "type": "object"
+            },
+            "TrainerCheckpointTarget": {
+                "description": "Whether a TrainerServerCheckpoint is loadable by the sampler or the trainer.\n\nSAMPLER checkpoints are consumed by the sampling server for inference;\nTRAINER checkpoints capture full trainer state for resuming training.\nMirrored in the bt:// URI as\n``bt://trainers:<trainer_id>/(sampler_weights|weights)/<name>``.",
+                "enum": [
+                    "sampler",
+                    "trainer"
+                ],
+                "title": "TrainerCheckpointTarget",
+                "type": "string"
+            },
+            "TrainerServerCheckpointV1": {
+                "description": "A checkpoint saved by a trainer.",
+                "properties": {
+                    "checkpoint_id": {
+                        "description": "The ID of the checkpoint.",
+                        "title": "Checkpoint Id",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "The timestamp of the checkpoint in ISO 8601 format.",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "checkpoint_type": {
+                        "description": "The type of checkpoint.",
+                        "title": "Checkpoint Type",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The base model of the checkpoint.",
+                        "title": "Base Model"
+                    },
+                    "lora_adapter_config": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The adapter config of the checkpoint.",
+                        "title": "Lora Adapter Config"
+                    },
+                    "size_bytes": {
+                        "description": "The size of the checkpoint in bytes.",
+                        "title": "Size Bytes",
+                        "type": "integer"
+                    },
+                    "sync_status": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
+                        "title": "Sync Status"
+                    },
+                    "id": {
+                        "description": "The TrainerServerCheckpoint database ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "trainer_id": {
+                        "description": "The ID of the trainer.",
+                        "title": "Trainer Id",
+                        "type": "string"
+                    },
+                    "target": {
+                        "$ref": "#/components/schemas/TrainerCheckpointTarget",
+                        "description": "Whether this checkpoint is loadable by the sampler ('sampler') or by the trainer ('trainer')."
+                    }
+                },
+                "required": [
+                    "checkpoint_id",
+                    "created_at",
+                    "checkpoint_type",
+                    "base_model",
+                    "lora_adapter_config",
+                    "size_bytes",
+                    "id",
+                    "trainer_id",
+                    "target"
+                ],
+                "title": "TrainerServerCheckpointV1",
+                "type": "object"
+            },
+            "CheckpointSearchResponseV1": {
+                "description": "Response for ``POST /v1/trainers/checkpoints/search``.",
+                "properties": {
+                    "checkpoint": {
+                        "$ref": "#/components/schemas/TrainerServerCheckpointV1",
+                        "description": "The checkpoint metadata (id, target, type, sizes, etc.)."
+                    }
+                },
+                "required": [
+                    "checkpoint"
+                ],
+                "title": "CheckpointSearchResponseV1",
+                "type": "object"
+            },
+            "CreateTrainerSessionRequestV1": {
+                "properties": {
+                    "training_project_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "ID of the training project to associate with. If omitted, a default project is created for the org.",
+                        "title": "Training Project Id"
+                    }
+                },
                 "title": "CreateTrainerSessionRequestV1",
                 "type": "object"
             },
@@ -9273,6 +9448,22 @@
                         "exclusiveMinimum": 0,
                         "title": "Scale Down Delay Seconds",
                         "type": "integer"
+                    },
+                    "checkpoint_path": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://trainers:<trainer_id>/weights/<checkpoint_name>.",
+                        "examples": [
+                            "bt://trainers:k4q95w5/weights/step-100"
+                        ],
+                        "title": "Checkpoint Path"
                     }
                 },
                 "required": [
@@ -9352,6 +9543,22 @@
                         "default": null,
                         "description": "Minimum max-sequence-length the sampler must support. If set, only instance-type entries whose configured max_seq_length is >= this value are considered. Omit to accept any entry.",
                         "title": "Max Seq Length"
+                    },
+                    "checkpoint_path": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://trainers:<trainer_id>/sampler_weights/<checkpoint_name>.",
+                        "examples": [
+                            "bt://trainers:k4q95w5/sampler_weights/step-100"
+                        ],
+                        "title": "Checkpoint Path"
                     }
                 },
                 "required": [
@@ -9370,92 +9577,6 @@
                     "sampling_server"
                 ],
                 "title": "CreateSamplingServerResponseV1",
-                "type": "object"
-            },
-            "TrainerServerCheckpointV1": {
-                "description": "A checkpoint saved by a trainer.",
-                "properties": {
-                    "checkpoint_id": {
-                        "description": "The ID of the checkpoint.",
-                        "title": "Checkpoint Id",
-                        "type": "string"
-                    },
-                    "created_at": {
-                        "description": "The timestamp of the checkpoint in ISO 8601 format.",
-                        "format": "date-time",
-                        "title": "Created At",
-                        "type": "string"
-                    },
-                    "checkpoint_type": {
-                        "description": "The type of checkpoint.",
-                        "title": "Checkpoint Type",
-                        "type": "string"
-                    },
-                    "base_model": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "The base model of the checkpoint.",
-                        "title": "Base Model"
-                    },
-                    "lora_adapter_config": {
-                        "anyOf": [
-                            {
-                                "additionalProperties": true,
-                                "type": "object"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "The adapter config of the checkpoint.",
-                        "title": "Lora Adapter Config"
-                    },
-                    "size_bytes": {
-                        "description": "The size of the checkpoint in bytes.",
-                        "title": "Size Bytes",
-                        "type": "integer"
-                    },
-                    "sync_status": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
-                        "title": "Sync Status"
-                    },
-                    "id": {
-                        "description": "The TrainerServerCheckpoint database ID.",
-                        "title": "Id",
-                        "type": "string"
-                    },
-                    "trainer_id": {
-                        "description": "The ID of the trainer.",
-                        "title": "Trainer Id",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "checkpoint_id",
-                    "created_at",
-                    "checkpoint_type",
-                    "base_model",
-                    "lora_adapter_config",
-                    "size_bytes",
-                    "id",
-                    "trainer_id"
-                ],
-                "title": "TrainerServerCheckpointV1",
                 "type": "object"
             },
             "GetTrainerServerCheckpointsResponseV1": {
