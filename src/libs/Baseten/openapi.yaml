@@ -3269,6 +3269,44 @@
                 }
             ]
         },
+        "/v1/loops/deployments/deactivate": {
+            "post": {
+                "summary": "Deactivate a loop deployment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/deployments/deactivate \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"base_model\": \"Qwen/Qwen3-8B\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/deactivate\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'base_model': 'Qwen/Qwen3-8B'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeactivateLoopDeploymentRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeactivateLoopDeploymentResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/training/capacity": {
             "get": {
                 "summary": "Get training GPU capacity.",
@@ -9418,13 +9456,13 @@
                         "type": "string"
                     },
                     "max_seq_len": {
-                        "default": 32768,
+                        "default": 131072,
                         "description": "Maximum sequence length for training.",
                         "title": "Max Seq Len",
                         "type": "integer"
                     },
                     "lora_rank": {
-                        "default": 16,
+                        "default": 64,
                         "description": "LoRA rank.",
                         "title": "Lora Rank",
                         "type": "integer"
@@ -9638,6 +9676,50 @@
                     "total_count"
                 ],
                 "title": "GetTrainerServerCheckpointFilesResponseV1",
+                "type": "object"
+            },
+            "DeactivateLoopDeploymentRequestV1": {
+                "description": "Request body for ``POST /v1/loops/deployments/deactivate``.",
+                "properties": {
+                    "base_model": {
+                        "description": "The base model ID whose active loop deployment should be deactivated.",
+                        "examples": [
+                            "Qwen/Qwen3-8B"
+                        ],
+                        "title": "Base Model",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "base_model"
+                ],
+                "title": "DeactivateLoopDeploymentRequestV1",
+                "type": "object"
+            },
+            "DeactivateLoopDeploymentResponseV1": {
+                "description": "Response for ``POST /v1/loops/deployments/deactivate``.",
+                "properties": {
+                    "id": {
+                        "description": "The deactivated loop deployment ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "The base model whose loop deployment was deactivated.",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserV1",
+                        "description": "The user who owned the loop deployment."
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_model",
+                    "user"
+                ],
+                "title": "DeactivateLoopDeploymentResponseV1",
                 "type": "object"
             },
             "TrainingGpuCapacityItemV1": {

@@ -70,11 +70,11 @@ namespace Baseten
         /// </param>
         /// <param name="maxSeqLen">
         /// Maximum sequence length for training.<br/>
-        /// Default Value: 32768
+        /// Default Value: 131072
         /// </param>
         /// <param name="loraRank">
         /// LoRA rank.<br/>
-        /// Default Value: 16
+        /// Default Value: 64
         /// </param>
         /// <param name="seed">
         /// Random seed for reproducibility.<br/>

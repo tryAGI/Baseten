@@ -17,14 +17,14 @@ namespace Baseten
 
         /// <summary>
         /// Maximum sequence length for training.<br/>
-        /// Default Value: 32768
+        /// Default Value: 131072
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_seq_len")]
         public int? MaxSeqLen { get; set; }
 
         /// <summary>
         /// LoRA rank.<br/>
-        /// Default Value: 16
+        /// Default Value: 64
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("lora_rank")]
         public int? LoraRank { get; set; }
@@ -64,11 +64,11 @@ namespace Baseten
         /// </param>
         /// <param name="maxSeqLen">
         /// Maximum sequence length for training.<br/>
-        /// Default Value: 32768
+        /// Default Value: 131072
         /// </param>
         /// <param name="loraRank">
         /// LoRA rank.<br/>
-        /// Default Value: 16
+        /// Default Value: 64
         /// </param>
         /// <param name="seed">
         /// Random seed for reproducibility.<br/>
