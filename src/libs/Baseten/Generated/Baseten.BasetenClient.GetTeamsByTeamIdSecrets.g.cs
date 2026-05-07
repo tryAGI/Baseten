@@ -42,7 +42,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Gets all secrets for a team
+        /// Gets all secrets for a team (metadata only, no plain text keys)
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -67,7 +67,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets all secrets for a team
+        /// Gets all secrets for a team (metadata only, no plain text keys)
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

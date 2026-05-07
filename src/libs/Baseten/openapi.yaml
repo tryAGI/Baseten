@@ -17,7 +17,7 @@
     "paths": {
         "/v1/secrets": {
             "get": {
-                "summary": "Gets all secrets",
+                "summary": "Gets all secrets (metadata only, no plain text keys)",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
@@ -53,7 +53,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/secrets\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'my_secret', 'value': 'my_secret_value'}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Creates a new secret or updates an existing secret if one with the provided name already exists. The name and creation date of the created or updated secret is returned.",
+                "description": "Creates or updates a secret by name. Scoped to the caller's primary team \u2014 use the team-scoped variant to target a specific team.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -80,7 +80,7 @@
         },
         "/v1/teams/{team_id}/secrets": {
             "get": {
-                "summary": "Gets all secrets for a team",
+                "summary": "Gets all secrets for a team (metadata only, no plain text keys)",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
@@ -1080,7 +1080,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/config\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Gets the config of a deployment. Returns the parsed config and, when available, the original config.yaml text. Clients may also request 'application/yaml' (or 'text/yaml' / 'application/x-yaml') via the Accept header to receive the raw config.yaml directly; 406 is returned if no raw config is stored.",
+                "description": "Returns the deployment's config. `output_format` query param picks the shape: 'raw' (config.yaml text), 'parsed' (dict with defaults), or 'both' (default).",
                 "responses": {
                     "200": {
                         "description": "",
@@ -1350,7 +1350,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Updates an environment's settings and returns the updated environment.",
+                "description": "Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -3434,7 +3434,7 @@
         },
         "/v1/api_keys": {
             "get": {
-                "summary": "Lists the user's API keys",
+                "summary": "Lists the user's API keys (metadata only, no plain text keys)",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
@@ -5029,13 +5029,21 @@
                 "type": "object"
             },
             "DeploymentConfigResponseV1": {
-                "description": "The config of a deployment.",
+                "description": "The config of a deployment. Fields are populated per `output_format`.",
                 "properties": {
                     "config": {
-                        "additionalProperties": true,
-                        "description": "The parsed config of the deployment",
-                        "title": "Config",
-                        "type": "object"
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The parsed config of the deployment.",
+                        "title": "Config"
                     },
                     "raw_config": {
                         "anyOf": [
@@ -5046,14 +5054,11 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "The original config.yaml text submitted by the client, preserving comments, ordering, and formatting. Null if not available.",
+                        "default": null,
+                        "description": "The original config.yaml text \u2014 preserves comments, ordering, formatting.",
                         "title": "Raw Config"
                     }
                 },
-                "required": [
-                    "config",
-                    "raw_config"
-                ],
                 "title": "DeploymentConfigResponseV1",
                 "type": "object"
             },

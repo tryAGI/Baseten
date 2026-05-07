@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Gets a deployment's config<br/>
-        /// Gets the config of a deployment. Returns the parsed config and, when available, the original config.yaml text. Clients may also request 'application/yaml' (or 'text/yaml' / 'application/x-yaml') via the Accept header to receive the raw config.yaml directly; 406 is returned if no raw config is stored.
+        /// Returns the deployment's config. `output_format` query param picks the shape: 'raw' (config.yaml text), 'parsed' (dict with defaults), or 'both' (default).
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
@@ -25,7 +25,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets a deployment's config<br/>
-        /// Gets the config of a deployment. Returns the parsed config and, when available, the original config.yaml text. Clients may also request 'application/yaml' (or 'text/yaml' / 'application/x-yaml') via the Accept header to receive the raw config.yaml directly; 406 is returned if no raw config is stored.
+        /// Returns the deployment's config. `output_format` query param picks the shape: 'raw' (config.yaml text), 'parsed' (dict with defaults), or 'both' (default).
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
