@@ -4,19 +4,20 @@
 namespace Baseten
 {
     /// <summary>
-    /// The config of a deployment.
+    /// The config of a deployment. Fields are populated per `output_format`.
     /// </summary>
     public sealed partial class DeploymentConfigResponseV1
     {
         /// <summary>
-        /// The parsed config of the deployment
+        /// The parsed config of the deployment.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("config")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required object Config { get; set; }
+        public object? Config { get; set; }
 
         /// <summary>
-        /// The original config.yaml text submitted by the client, preserving comments, ordering, and formatting. Null if not available.
+        /// The original config.yaml text — preserves comments, ordering, formatting.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("raw_config")]
         public string? RawConfig { get; set; }
@@ -31,19 +32,21 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="DeploymentConfigResponseV1" /> class.
         /// </summary>
         /// <param name="config">
-        /// The parsed config of the deployment
+        /// The parsed config of the deployment.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="rawConfig">
-        /// The original config.yaml text submitted by the client, preserving comments, ordering, and formatting. Null if not available.
+        /// The original config.yaml text — preserves comments, ordering, formatting.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DeploymentConfigResponseV1(
-            object config,
+            object? config,
             string? rawConfig)
         {
-            this.Config = config ?? throw new global::System.ArgumentNullException(nameof(config));
+            this.Config = config;
             this.RawConfig = rawConfig;
         }
 
