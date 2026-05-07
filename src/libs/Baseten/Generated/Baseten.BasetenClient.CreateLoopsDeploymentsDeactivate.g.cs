@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateTrainerSessionsBySessionIdTrainersSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsDeploymentsDeactivateSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,59 +21,49 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateTrainerSessionsBySessionIdTrainersSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsDeploymentsDeactivateSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateTrainerSessionsBySessionIdTrainersSecurityRequirement0,
+            {                s_CreateLoopsDeploymentsDeactivateSecurityRequirement0,
             };
-        partial void PrepareCreateTrainerSessionsBySessionIdTrainersArguments(
+        partial void PrepareCreateLoopsDeploymentsDeactivateArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string sessionId,
-            global::Baseten.CreateTrainerServerRequestV1 request);
-        partial void PrepareCreateTrainerSessionsBySessionIdTrainersRequest(
+            global::Baseten.DeactivateLoopDeploymentRequestV1 request);
+        partial void PrepareCreateLoopsDeploymentsDeactivateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string sessionId,
-            global::Baseten.CreateTrainerServerRequestV1 request);
-        partial void ProcessCreateTrainerSessionsBySessionIdTrainersResponse(
+            global::Baseten.DeactivateLoopDeploymentRequestV1 request);
+        partial void ProcessCreateLoopsDeploymentsDeactivateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateTrainerSessionsBySessionIdTrainersResponseContent(
+        partial void ProcessCreateLoopsDeploymentsDeactivateResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a trainer server.<br/>
-        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
+        /// Deactivate a loop deployment.<br/>
+        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
         /// </summary>
-        /// <param name="sessionId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \<br/>
+        /// --url https://api.baseten.co/v1/loops/deployments/deactivate \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "model": null,<br/>
-        ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
-        ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
-        ///   "checkpoint_path": "bt://trainers:k4q95w5/weights/step-100"<br/>
+        ///   "base_model": "Qwen/Qwen3-8B"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainerSessionsBySessionIdTrainersAsync(
-            string sessionId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopDeploymentResponseV1> CreateLoopsDeploymentsDeactivateAsync(
 
-            global::Baseten.CreateTrainerServerRequestV1 request,
+            global::Baseten.DeactivateLoopDeploymentRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateTrainerSessionsBySessionIdTrainersAsResponseAsync(
-                sessionId: sessionId,
+            var __response = await CreateLoopsDeploymentsDeactivateAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -83,31 +73,24 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a trainer server.<br/>
-        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
+        /// Deactivate a loop deployment.<br/>
+        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
         /// </summary>
-        /// <param name="sessionId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \<br/>
+        /// --url https://api.baseten.co/v1/loops/deployments/deactivate \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "model": null,<br/>
-        ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
-        ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
-        ///   "checkpoint_path": "bt://trainers:k4q95w5/weights/step-100"<br/>
+        ///   "base_model": "Qwen/Qwen3-8B"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>> CreateTrainerSessionsBySessionIdTrainersAsResponseAsync(
-            string sessionId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopDeploymentResponseV1>> CreateLoopsDeploymentsDeactivateAsResponseAsync(
 
-            global::Baseten.CreateTrainerServerRequestV1 request,
+            global::Baseten.DeactivateLoopDeploymentRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -115,16 +98,15 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateTrainerSessionsBySessionIdTrainersArguments(
+            PrepareCreateLoopsDeploymentsDeactivateArguments(
                 httpClient: HttpClient,
-                sessionId: ref sessionId,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateTrainerSessionsBySessionIdTrainersSecurityRequirements,
-                operationName: "CreateTrainerSessionsBySessionIdTrainersAsync");
+                securityRequirements: s_CreateLoopsDeploymentsDeactivateSecurityRequirements,
+                operationName: "CreateLoopsDeploymentsDeactivateAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -144,7 +126,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/trainer_sessions/{sessionId}/trainers",
+                                path: "/v1/loops/deployments/deactivate",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -189,10 +171,9 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateTrainerSessionsBySessionIdTrainersRequest(
+                PrepareCreateLoopsDeploymentsDeactivateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    sessionId: sessionId!,
                     request: request);
 
                 return __httpRequest;
@@ -210,9 +191,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainerSessionsBySessionIdTrainers",
-                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
-                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
+                                operationId: "createLoopsDeploymentsDeactivate",
+                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
+                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -244,9 +225,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainerSessionsBySessionIdTrainers",
-                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
-                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
+                                operationId: "createLoopsDeploymentsDeactivate",
+                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
+                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -285,9 +266,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainerSessionsBySessionIdTrainers",
-                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
-                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
+                                operationId: "createLoopsDeploymentsDeactivate",
+                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
+                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -325,7 +306,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateTrainerSessionsBySessionIdTrainersResponse(
+                ProcessCreateLoopsDeploymentsDeactivateResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -333,9 +314,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainerSessionsBySessionIdTrainers",
-                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
-                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
+                                operationId: "createLoopsDeploymentsDeactivate",
+                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
+                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -355,9 +336,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTrainerSessionsBySessionIdTrainers",
-                                methodName: "CreateTrainerSessionsBySessionIdTrainersAsync",
-                                pathTemplate: "$\"/v1/trainer_sessions/{sessionId}/trainers\"",
+                                operationId: "createLoopsDeploymentsDeactivate",
+                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
+                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -385,7 +366,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateTrainerSessionsBySessionIdTrainersResponseContent(
+                                ProcessCreateLoopsDeploymentsDeactivateResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -394,9 +375,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateTrainerServerResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.DeactivateLoopDeploymentResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopDeploymentResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -428,9 +409,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateTrainerServerResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.DeactivateLoopDeploymentResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopDeploymentResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -473,59 +454,26 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a trainer server.<br/>
-        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
+        /// Deactivate a loop deployment.<br/>
+        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
         /// </summary>
-        /// <param name="sessionId"></param>
-        /// <param name="model">
-        /// Base model ID (e.g. 'Qwen/Qwen3-8B').
-        /// </param>
-        /// <param name="maxSeqLen">
-        /// Maximum sequence length for training.<br/>
-        /// Default Value: 131072
-        /// </param>
-        /// <param name="loraRank">
-        /// LoRA rank.<br/>
-        /// Default Value: 64
-        /// </param>
-        /// <param name="seed">
-        /// Random seed for reproducibility.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="scaleDownDelaySeconds">
-        /// Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
-        /// Default Value: 3600
-        /// </param>
-        /// <param name="checkpointPath">
-        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://trainers:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// <param name="baseModel">
+        /// The base model ID whose active loop deployment should be deactivated.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainerSessionsBySessionIdTrainersAsync(
-            string sessionId,
-            string model,
-            int? maxSeqLen = default,
-            int? loraRank = default,
-            int? seed = default,
-            int? scaleDownDelaySeconds = default,
-            string? checkpointPath = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopDeploymentResponseV1> CreateLoopsDeploymentsDeactivateAsync(
+            string baseModel,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateTrainerServerRequestV1
+            var __request = new global::Baseten.DeactivateLoopDeploymentRequestV1
             {
-                Model = model,
-                MaxSeqLen = maxSeqLen,
-                LoraRank = loraRank,
-                Seed = seed,
-                ScaleDownDelaySeconds = scaleDownDelaySeconds,
-                CheckpointPath = checkpointPath,
+                BaseModel = baseModel,
             };
 
-            return await CreateTrainerSessionsBySessionIdTrainersAsync(
-                sessionId: sessionId,
+            return await CreateLoopsDeploymentsDeactivateAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
