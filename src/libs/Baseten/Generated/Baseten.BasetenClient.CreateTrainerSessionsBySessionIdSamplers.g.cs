@@ -59,7 +59,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "model": null,<br/>
         ///   "max_seq_length": null,<br/>
-        ///   "checkpoint_path": "bt://trainers:k4q95w5/sampler_weights/step-100"<br/>
+        ///   "checkpoint_path": "bt://loops:k4q95w5/sampler_weights/step-100"<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.CreateSamplingServerResponseV1> CreateTrainerSessionsBySessionIdSamplersAsync(
@@ -95,7 +95,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "model": null,<br/>
         ///   "max_seq_length": null,<br/>
-        ///   "checkpoint_path": "bt://trainers:k4q95w5/sampler_weights/step-100"<br/>
+        ///   "checkpoint_path": "bt://loops:k4q95w5/sampler_weights/step-100"<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateSamplingServerResponseV1>> CreateTrainerSessionsBySessionIdSamplersAsResponseAsync(
@@ -475,11 +475,11 @@ namespace Baseten
         /// Model to use for standalone samplers (eg, for baselines).
         /// </param>
         /// <param name="maxSeqLength">
-        /// Minimum max-sequence-length the sampler must support. If set, only instance-type entries whose configured max_seq_length is &gt;= this value are considered. Omit to accept any entry.<br/>
+        /// Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send. Omit to use the default for the base model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="checkpointPath">
-        /// Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://trainers:&lt;trainer_id&gt;/sampler_weights/&lt;checkpoint_name&gt;.<br/>
+        /// Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://loops:&lt;trainer_id&gt;/sampler_weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
