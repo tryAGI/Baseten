@@ -27,11 +27,11 @@ namespace Baseten
             };
         partial void PrepareCreateLoopsSamplersArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopSamplerRequestV1 request);
+            global::Baseten.CreateLoopsSamplerRequestV1 request);
         partial void PrepareCreateLoopsSamplersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopSamplerRequestV1 request);
+            global::Baseten.CreateLoopsSamplerRequestV1 request);
         partial void ProcessCreateLoopsSamplersResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -60,9 +60,9 @@ namespace Baseten
         ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSamplerResponseV1> CreateLoopsSamplersAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateLoopsSamplersAsync(
 
-            global::Baseten.CreateLoopSamplerRequestV1 request,
+            global::Baseten.CreateLoopsSamplerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -94,9 +94,9 @@ namespace Baseten
         ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSamplerResponseV1>> CreateLoopsSamplersAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>> CreateLoopsSamplersAsResponseAsync(
 
-            global::Baseten.CreateLoopSamplerRequestV1 request,
+            global::Baseten.CreateLoopsSamplerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -381,9 +381,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateLoopSamplerResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.CreateLoopsSamplerResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSamplerResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -415,9 +415,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateLoopSamplerResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.CreateLoopsSamplerResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSamplerResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -480,7 +480,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSamplerResponseV1> CreateLoopsSamplersAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateLoopsSamplersAsync(
             string sessionId,
             string baseModel,
             int? maxSeqLength = default,
@@ -488,7 +488,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateLoopSamplerRequestV1
+            var __request = new global::Baseten.CreateLoopsSamplerRequestV1
             {
                 SessionId = sessionId,
                 BaseModel = baseModel,

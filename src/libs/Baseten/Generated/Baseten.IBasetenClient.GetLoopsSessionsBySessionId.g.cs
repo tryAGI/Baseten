@@ -17,7 +17,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/sessions/{session_id} \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.GetLoopSessionResponseV1> GetLoopsSessionsBySessionIdAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.GetLoopsSessionResponseV1> GetLoopsSessionsBySessionIdAsync(
             string sessionId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -34,7 +34,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/sessions/{session_id} \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopSessionResponseV1>> GetLoopsSessionsBySessionIdAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopsSessionResponseV1>> GetLoopsSessionsBySessionIdAsResponseAsync(
             string sessionId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

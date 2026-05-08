@@ -22,7 +22,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/runs \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.ListLoopRunsResponseV1> GetLoopsRunsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.ListLoopsRunsResponseV1> GetLoopsRunsAsync(
             string? runId = default,
             string? baseModel = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -45,7 +45,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/runs \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopRunsResponseV1>> GetLoopsRunsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsRunsResponseV1>> GetLoopsRunsAsResponseAsync(
             string? runId = default,
             string? baseModel = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

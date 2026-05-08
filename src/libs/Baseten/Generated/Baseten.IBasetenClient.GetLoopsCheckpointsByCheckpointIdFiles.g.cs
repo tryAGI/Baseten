@@ -17,7 +17,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/files \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.LoopCheckpointFilesResponseV1> GetLoopsCheckpointsByCheckpointIdFilesAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.LoopsCheckpointFilesResponseV1> GetLoopsCheckpointsByCheckpointIdFilesAsync(
             string checkpointId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -34,7 +34,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/files \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopCheckpointFilesResponseV1>> GetLoopsCheckpointsByCheckpointIdFilesAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopsCheckpointFilesResponseV1>> GetLoopsCheckpointsByCheckpointIdFilesAsResponseAsync(
             string checkpointId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

@@ -66,7 +66,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/checkpoints \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.ListLoopCheckpointsResponseV1> GetLoopsCheckpointsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.ListLoopsCheckpointsResponseV1> GetLoopsCheckpointsAsync(
             string? runId = default,
             string? baseModel = default,
             string? checkpointPath = default,
@@ -104,7 +104,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/checkpoints \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopCheckpointsResponseV1>> GetLoopsCheckpointsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsCheckpointsResponseV1>> GetLoopsCheckpointsAsResponseAsync(
             string? runId = default,
             string? baseModel = default,
             string? checkpointPath = default,
@@ -393,9 +393,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.ListLoopCheckpointsResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.ListLoopsCheckpointsResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopCheckpointsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsCheckpointsResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -427,9 +427,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.ListLoopCheckpointsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.ListLoopsCheckpointsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopCheckpointsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsCheckpointsResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

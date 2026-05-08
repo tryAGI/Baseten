@@ -17,7 +17,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/deployments/{deployment_id}/deactivate \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopDeploymentResponseV1> CreateLoopsDeploymentsByDeploymentIdDeactivateAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopsDeploymentResponseV1> CreateLoopsDeploymentsByDeploymentIdDeactivateAsync(
             string deploymentId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -34,7 +34,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/deployments/{deployment_id}/deactivate \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopDeploymentResponseV1>> CreateLoopsDeploymentsByDeploymentIdDeactivateAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopsDeploymentResponseV1>> CreateLoopsDeploymentsByDeploymentIdDeactivateAsResponseAsync(
             string deploymentId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

@@ -25,7 +25,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/checkpoints \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.ListLoopCheckpointsResponseV1> GetLoopsCheckpointsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.ListLoopsCheckpointsResponseV1> GetLoopsCheckpointsAsync(
             string? runId = default,
             string? baseModel = default,
             string? checkpointPath = default,
@@ -52,7 +52,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/checkpoints \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopCheckpointsResponseV1>> GetLoopsCheckpointsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsCheckpointsResponseV1>> GetLoopsCheckpointsAsResponseAsync(
             string? runId = default,
             string? baseModel = default,
             string? checkpointPath = default,

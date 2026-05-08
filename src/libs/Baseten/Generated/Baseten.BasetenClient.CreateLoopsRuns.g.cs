@@ -27,11 +27,11 @@ namespace Baseten
             };
         partial void PrepareCreateLoopsRunsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopRunRequestV1 request);
+            global::Baseten.CreateLoopsRunRequestV1 request);
         partial void PrepareCreateLoopsRunsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopRunRequestV1 request);
+            global::Baseten.CreateLoopsRunRequestV1 request);
         partial void ProcessCreateLoopsRunsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -63,9 +63,9 @@ namespace Baseten
         ///   "path": "bt://loops:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopRunResponseV1> CreateLoopsRunsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
 
-            global::Baseten.CreateLoopRunRequestV1 request,
+            global::Baseten.CreateLoopsRunRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -100,9 +100,9 @@ namespace Baseten
         ///   "path": "bt://loops:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopRunResponseV1>> CreateLoopsRunsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsRunsAsResponseAsync(
 
-            global::Baseten.CreateLoopRunRequestV1 request,
+            global::Baseten.CreateLoopsRunRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -387,9 +387,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateLoopRunResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.CreateLoopsRunResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -421,9 +421,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateLoopRunResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.CreateLoopsRunResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -492,13 +492,13 @@ namespace Baseten
         /// Default Value: 3600
         /// </param>
         /// <param name="path">
-        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
+        /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopRunResponseV1> CreateLoopsRunsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
             string sessionId,
             string baseModel,
             int? maxSeqLen = default,
@@ -509,7 +509,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateLoopRunRequestV1
+            var __request = new global::Baseten.CreateLoopsRunRequestV1
             {
                 SessionId = sessionId,
                 BaseModel = baseModel,

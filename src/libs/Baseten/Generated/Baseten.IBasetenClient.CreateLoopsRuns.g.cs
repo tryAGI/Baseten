@@ -26,9 +26,9 @@ namespace Baseten
         ///   "path": "bt://loops:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopRunResponseV1> CreateLoopsRunsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
 
-            global::Baseten.CreateLoopRunRequestV1 request,
+            global::Baseten.CreateLoopsRunRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -53,9 +53,9 @@ namespace Baseten
         ///   "path": "bt://loops:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopRunResponseV1>> CreateLoopsRunsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsRunsAsResponseAsync(
 
-            global::Baseten.CreateLoopRunRequestV1 request,
+            global::Baseten.CreateLoopsRunRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -85,13 +85,13 @@ namespace Baseten
         /// Default Value: 3600
         /// </param>
         /// <param name="path">
-        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
+        /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopRunResponseV1> CreateLoopsRunsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
             string sessionId,
             string baseModel,
             int? maxSeqLen = default,
