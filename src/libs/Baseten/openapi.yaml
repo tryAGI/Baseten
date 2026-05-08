@@ -3287,7 +3287,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/CreateLoopSessionRequestV1"
+                                "$ref": "#/components/schemas/CreateLoopsSessionRequestV1"
                             }
                         }
                     },
@@ -3299,7 +3299,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CreateLoopSessionResponseV1"
+                                    "$ref": "#/components/schemas/CreateLoopsSessionResponseV1"
                                 }
                             }
                         }
@@ -3327,7 +3327,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetLoopSessionResponseV1"
+                                    "$ref": "#/components/schemas/GetLoopsSessionResponseV1"
                                 }
                             }
                         }
@@ -3404,7 +3404,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ListLoopRunsResponseV1"
+                                    "$ref": "#/components/schemas/ListLoopsRunsResponseV1"
                                 }
                             }
                         }
@@ -3428,7 +3428,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/CreateLoopRunRequestV1"
+                                "$ref": "#/components/schemas/CreateLoopsRunRequestV1"
                             }
                         }
                     },
@@ -3440,7 +3440,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CreateLoopRunResponseV1"
+                                    "$ref": "#/components/schemas/CreateLoopsRunResponseV1"
                                 }
                             }
                         }
@@ -3468,7 +3468,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetLoopRunResponseV1"
+                                    "$ref": "#/components/schemas/GetLoopsRunResponseV1"
                                 }
                             }
                         }
@@ -3501,7 +3501,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ListLoopSamplersResponseV1"
+                                    "$ref": "#/components/schemas/ListLoopsSamplersResponseV1"
                                 }
                             }
                         }
@@ -3525,7 +3525,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/CreateLoopSamplerRequestV1"
+                                "$ref": "#/components/schemas/CreateLoopsSamplerRequestV1"
                             }
                         }
                     },
@@ -3537,7 +3537,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CreateLoopSamplerResponseV1"
+                                    "$ref": "#/components/schemas/CreateLoopsSamplerResponseV1"
                                 }
                             }
                         }
@@ -3565,7 +3565,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetLoopSamplerResponseV1"
+                                    "$ref": "#/components/schemas/GetLoopsSamplerResponseV1"
                                 }
                             }
                         }
@@ -3663,7 +3663,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ListLoopCheckpointsResponseV1"
+                                    "$ref": "#/components/schemas/ListLoopsCheckpointsResponseV1"
                                 }
                             }
                         }
@@ -3691,7 +3691,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/LoopCheckpointFilesResponseV1"
+                                    "$ref": "#/components/schemas/LoopsCheckpointFilesResponseV1"
                                 }
                             }
                         }
@@ -3724,7 +3724,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ListLoopDeploymentsResponseV1"
+                                    "$ref": "#/components/schemas/ListLoopsDeploymentsResponseV1"
                                 }
                             }
                         }
@@ -3752,7 +3752,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/DeactivateLoopDeploymentResponseV1"
+                                    "$ref": "#/components/schemas/DeactivateLoopsDeploymentResponseV1"
                                 }
                             }
                         }
@@ -3785,7 +3785,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetLoopDeploymentResponseV1"
+                                    "$ref": "#/components/schemas/GetLoopsDeploymentResponseV1"
                                 }
                             }
                         }
@@ -10174,7 +10174,7 @@
                 "title": "GetTrainerServerCheckpointFilesResponseV1",
                 "type": "object"
             },
-            "CreateLoopSessionRequestV1": {
+            "CreateLoopsSessionRequestV1": {
                 "properties": {
                     "training_project_id": {
                         "anyOf": [
@@ -10190,10 +10190,10 @@
                         "title": "Training Project Id"
                     }
                 },
-                "title": "CreateLoopSessionRequestV1",
+                "title": "CreateLoopsSessionRequestV1",
                 "type": "object"
             },
-            "LoopSessionV1": {
+            "LoopsSessionV1": {
                 "properties": {
                     "id": {
                         "title": "Id",
@@ -10203,41 +10203,40 @@
                 "required": [
                     "id"
                 ],
-                "title": "LoopSessionV1",
+                "title": "LoopsSessionV1",
                 "type": "object"
             },
-            "CreateLoopSessionResponseV1": {
+            "CreateLoopsSessionResponseV1": {
                 "properties": {
                     "session": {
-                        "$ref": "#/components/schemas/LoopSessionV1"
+                        "$ref": "#/components/schemas/LoopsSessionV1"
                     }
                 },
                 "required": [
                     "session"
                 ],
-                "title": "CreateLoopSessionResponseV1",
+                "title": "CreateLoopsSessionResponseV1",
                 "type": "object"
             },
-            "GetLoopSessionResponseV1": {
+            "GetLoopsSessionResponseV1": {
                 "description": "Response for ``GET /v1/loops/sessions/<session_id>``.",
                 "properties": {
                     "session": {
-                        "$ref": "#/components/schemas/LoopSessionV1",
+                        "$ref": "#/components/schemas/LoopsSessionV1",
                         "description": "The Loops session."
                     }
                 },
                 "required": [
                     "session"
                 ],
-                "title": "GetLoopSessionResponseV1",
+                "title": "GetLoopsSessionResponseV1",
                 "type": "object"
             },
-            "LoopRunListItemV1": {
-                "description": "Run entry returned by ``GET /v1/loops/runs``.",
+            "LoopsRunV1": {
                 "properties": {
-                    "run_id": {
+                    "id": {
                         "description": "The run ID.",
-                        "title": "Run Id",
+                        "title": "Id",
                         "type": "string"
                     },
                     "session_id": {
@@ -10249,23 +10248,66 @@
                         "description": "The HuggingFace base model the run is fine-tuning.",
                         "title": "Base Model",
                         "type": "string"
+                    },
+                    "base_url": {
+                        "description": "The run's base URL.",
+                        "title": "Base Url",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Time the run was created in ISO 8601 format",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "sampler": {
+                        "$ref": "#/components/schemas/LoopsSamplerV1",
+                        "description": "The sampler bound to this run."
                     }
                 },
                 "required": [
-                    "run_id",
+                    "id",
                     "session_id",
-                    "base_model"
+                    "base_model",
+                    "base_url",
+                    "created_at",
+                    "sampler"
                 ],
-                "title": "LoopRunListItemV1",
+                "title": "LoopsRunV1",
                 "type": "object"
             },
-            "ListLoopRunsResponseV1": {
+            "LoopsSamplerV1": {
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "base_url": {
+                        "title": "Base Url",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Time the sampler was created in ISO 8601 format",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_url",
+                    "created_at"
+                ],
+                "title": "LoopsSamplerV1",
+                "type": "object"
+            },
+            "ListLoopsRunsResponseV1": {
                 "description": "Runs matching the query filters.",
                 "properties": {
                     "runs": {
                         "description": "List of runs.",
                         "items": {
-                            "$ref": "#/components/schemas/LoopRunListItemV1"
+                            "$ref": "#/components/schemas/LoopsRunV1"
                         },
                         "title": "Runs",
                         "type": "array"
@@ -10274,10 +10316,10 @@
                 "required": [
                     "runs"
                 ],
-                "title": "ListLoopRunsResponseV1",
+                "title": "ListLoopsRunsResponseV1",
                 "type": "object"
             },
-            "CreateLoopRunRequestV1": {
+            "CreateLoopsRunRequestV1": {
                 "properties": {
                     "session_id": {
                         "description": "ID of the Loops session this run belongs to.",
@@ -10331,7 +10373,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:<run_id>/weights/<checkpoint_name>.",
+                        "description": "Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:<run_id>/weights/<checkpoint_name>.",
                         "examples": [
                             "bt://loops:k4q95w5/weights/step-100"
                         ],
@@ -10342,83 +10384,42 @@
                     "session_id",
                     "base_model"
                 ],
-                "title": "CreateLoopRunRequestV1",
+                "title": "CreateLoopsRunRequestV1",
                 "type": "object"
             },
-            "LoopRunV1": {
-                "properties": {
-                    "id": {
-                        "title": "Id",
-                        "type": "string"
-                    },
-                    "base_url": {
-                        "title": "Base Url",
-                        "type": "string"
-                    },
-                    "sampler": {
-                        "$ref": "#/components/schemas/LoopSamplerV1",
-                        "description": "The sampler bound to this run."
-                    }
-                },
-                "required": [
-                    "id",
-                    "base_url",
-                    "sampler"
-                ],
-                "title": "LoopRunV1",
-                "type": "object"
-            },
-            "LoopSamplerV1": {
-                "properties": {
-                    "id": {
-                        "title": "Id",
-                        "type": "string"
-                    },
-                    "base_url": {
-                        "title": "Base Url",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "id",
-                    "base_url"
-                ],
-                "title": "LoopSamplerV1",
-                "type": "object"
-            },
-            "CreateLoopRunResponseV1": {
+            "CreateLoopsRunResponseV1": {
                 "properties": {
                     "run": {
-                        "$ref": "#/components/schemas/LoopRunV1"
+                        "$ref": "#/components/schemas/LoopsRunV1"
                     }
                 },
                 "required": [
                     "run"
                 ],
-                "title": "CreateLoopRunResponseV1",
+                "title": "CreateLoopsRunResponseV1",
                 "type": "object"
             },
-            "GetLoopRunResponseV1": {
+            "GetLoopsRunResponseV1": {
                 "description": "Response for ``GET /v1/loops/runs/<run_id>``.",
                 "properties": {
                     "run": {
-                        "$ref": "#/components/schemas/LoopRunV1",
+                        "$ref": "#/components/schemas/LoopsRunV1",
                         "description": "The Loops run with its associated sampler."
                     }
                 },
                 "required": [
                     "run"
                 ],
-                "title": "GetLoopRunResponseV1",
+                "title": "GetLoopsRunResponseV1",
                 "type": "object"
             },
-            "ListLoopSamplersResponseV1": {
+            "ListLoopsSamplersResponseV1": {
                 "description": "Response for ``GET /v1/loops/samplers``.\n\nReturns the caller's samplers, including those paired to runs and\nstandalone samplers. Ordered newest-first.",
                 "properties": {
                     "samplers": {
                         "description": "List of samplers.",
                         "items": {
-                            "$ref": "#/components/schemas/LoopSamplerV1"
+                            "$ref": "#/components/schemas/LoopsSamplerV1"
                         },
                         "title": "Samplers",
                         "type": "array"
@@ -10427,10 +10428,10 @@
                 "required": [
                     "samplers"
                 ],
-                "title": "ListLoopSamplersResponseV1",
+                "title": "ListLoopsSamplersResponseV1",
                 "type": "object"
             },
-            "CreateLoopSamplerRequestV1": {
+            "CreateLoopsSamplerRequestV1": {
                 "properties": {
                     "session_id": {
                         "description": "ID of the Loops session this sampler belongs to.",
@@ -10476,36 +10477,36 @@
                     "session_id",
                     "base_model"
                 ],
-                "title": "CreateLoopSamplerRequestV1",
+                "title": "CreateLoopsSamplerRequestV1",
                 "type": "object"
             },
-            "CreateLoopSamplerResponseV1": {
+            "CreateLoopsSamplerResponseV1": {
                 "properties": {
                     "sampler": {
-                        "$ref": "#/components/schemas/LoopSamplerV1"
+                        "$ref": "#/components/schemas/LoopsSamplerV1"
                     }
                 },
                 "required": [
                     "sampler"
                 ],
-                "title": "CreateLoopSamplerResponseV1",
+                "title": "CreateLoopsSamplerResponseV1",
                 "type": "object"
             },
-            "GetLoopSamplerResponseV1": {
+            "GetLoopsSamplerResponseV1": {
                 "description": "Response for ``GET /v1/loops/samplers/<sampler_id>``.",
                 "properties": {
                     "sampler": {
-                        "$ref": "#/components/schemas/LoopSamplerV1",
+                        "$ref": "#/components/schemas/LoopsSamplerV1",
                         "description": "The Loops sampler."
                     }
                 },
                 "required": [
                     "sampler"
                 ],
-                "title": "GetLoopSamplerResponseV1",
+                "title": "GetLoopsSamplerResponseV1",
                 "type": "object"
             },
-            "LoopCheckpointV1": {
+            "LoopsCheckpointV1": {
                 "description": "A checkpoint saved by a Loops run.",
                 "properties": {
                     "checkpoint_id": {
@@ -10579,7 +10580,7 @@
                     },
                     "target": {
                         "$ref": "#/components/schemas/TrainerCheckpointTarget",
-                        "description": "Whether this checkpoint is loadable by the sampler ('sampler') or by the trainer ('trainer')."
+                        "description": "Whether this checkpoint is loadable by the sampler or by the run."
                     }
                 },
                 "required": [
@@ -10593,16 +10594,16 @@
                     "run_id",
                     "target"
                 ],
-                "title": "LoopCheckpointV1",
+                "title": "LoopsCheckpointV1",
                 "type": "object"
             },
-            "ListLoopCheckpointsResponseV1": {
+            "ListLoopsCheckpointsResponseV1": {
                 "description": "Checkpoints matching the query filter.",
                 "properties": {
                     "checkpoints": {
                         "description": "Matching checkpoints.",
                         "items": {
-                            "$ref": "#/components/schemas/LoopCheckpointV1"
+                            "$ref": "#/components/schemas/LoopsCheckpointV1"
                         },
                         "title": "Checkpoints",
                         "type": "array"
@@ -10611,10 +10612,10 @@
                 "required": [
                     "checkpoints"
                 ],
-                "title": "ListLoopCheckpointsResponseV1",
+                "title": "ListLoopsCheckpointsResponseV1",
                 "type": "object"
             },
-            "LoopCheckpointFilesResponseV1": {
+            "LoopsCheckpointFilesResponseV1": {
                 "description": "Response with presigned URLs for files under a Loops checkpoint.",
                 "properties": {
                     "presigned_urls": {
@@ -10648,28 +10649,28 @@
                     "presigned_urls",
                     "total_count"
                 ],
-                "title": "LoopCheckpointFilesResponseV1",
+                "title": "LoopsCheckpointFilesResponseV1",
                 "type": "object"
             },
-            "LoopDeploymentStatusV1": {
-                "description": "Latest deployment status for a loop deployment.",
+            "LoopsDeploymentStatusV1": {
+                "description": "Latest deployment status for a Loops deployment.",
                 "properties": {
                     "name": {
                         "$ref": "#/components/schemas/Name",
-                        "description": "Latest status of the loop deployment."
+                        "description": "Latest status of the Loops deployment."
                     }
                 },
                 "required": [
                     "name"
                 ],
-                "title": "LoopDeploymentStatusV1",
+                "title": "LoopsDeploymentStatusV1",
                 "type": "object"
             },
-            "LoopDeploymentV1": {
-                "description": "A loop deployment \u2014 the long-lived inference + trainer pair owned by a user.\n\nThe associated samplers are not enumerated on this response. SamplingServers\ndon't FK to TrainerDeployment directly \u2014 they're owned by the parent\nTrainerSession (paired sampler per TrainerServer + standalone samplers).\nThe list-of-samplers view lives at ``GET /v1/loops/samplers`` (caller-scoped)\nrather than as a nested field here.",
+            "LoopsDeploymentV1": {
+                "description": "A Loops deployment \u2014 the long-lived run + sampler pair owned by a user.\n\nThe associated samplers are not enumerated on this response. The list of\nsamplers visible to the caller lives at ``GET /v1/loops/samplers``\n(caller-scoped) rather than as a nested field here.",
                 "properties": {
                     "id": {
-                        "description": "The loop deployment ID.",
+                        "description": "The Loops deployment ID.",
                         "title": "Id",
                         "type": "string"
                     },
@@ -10679,12 +10680,12 @@
                         "type": "string"
                     },
                     "base_url": {
-                        "description": "The base URL clients use to reach the trainer half of the deployment.",
+                        "description": "The run's base URL.",
                         "title": "Base Url",
                         "type": "string"
                     },
                     "status": {
-                        "$ref": "#/components/schemas/LoopDeploymentStatusV1",
+                        "$ref": "#/components/schemas/LoopsDeploymentStatusV1",
                         "description": "Latest deployment status."
                     }
                 },
@@ -10694,7 +10695,7 @@
                     "base_url",
                     "status"
                 ],
-                "title": "LoopDeploymentV1",
+                "title": "LoopsDeploymentV1",
                 "type": "object"
             },
             "Name": {
@@ -10708,13 +10709,13 @@
                 "title": "Name",
                 "type": "string"
             },
-            "ListLoopDeploymentsResponseV1": {
-                "description": "Response for ``GET /v1/loops/deployments``.\n\nReturns the caller's loop deployments whose latest status is not STOPPED\n(i.e. CREATED, DEPLOYING, RUNNING, or FAILED). Stopped deployments are\nexcluded so the list is a fit-for-purpose \"what's currently provisioned\nfor me\" view \u2014 the deactivate endpoint is the inverse pair.",
+            "ListLoopsDeploymentsResponseV1": {
+                "description": "Response for ``GET /v1/loops/deployments``.\n\nReturns the caller's Loops deployments whose latest status is not STOPPED\n(i.e. CREATED, DEPLOYING, RUNNING, or FAILED). Stopped deployments are\nexcluded so the list is a fit-for-purpose \"what's currently provisioned\nfor me\" view \u2014 the deactivate endpoint is the inverse pair.",
                 "properties": {
                     "deployments": {
-                        "description": "Active loop deployments.",
+                        "description": "Active Loops deployments.",
                         "items": {
-                            "$ref": "#/components/schemas/LoopDeploymentV1"
+                            "$ref": "#/components/schemas/LoopsDeploymentV1"
                         },
                         "title": "Deployments",
                         "type": "array"
@@ -10723,25 +10724,25 @@
                 "required": [
                     "deployments"
                 ],
-                "title": "ListLoopDeploymentsResponseV1",
+                "title": "ListLoopsDeploymentsResponseV1",
                 "type": "object"
             },
-            "DeactivateLoopDeploymentResponseV1": {
+            "DeactivateLoopsDeploymentResponseV1": {
                 "description": "Response for ``POST /v1/loops/deployments/<deployment_id>/deactivate``.",
                 "properties": {
                     "id": {
-                        "description": "The deactivated loop deployment ID.",
+                        "description": "The deactivated Loops deployment ID.",
                         "title": "Id",
                         "type": "string"
                     },
                     "base_model": {
-                        "description": "The base model whose loop deployment was deactivated.",
+                        "description": "The base model whose Loops deployment was deactivated.",
                         "title": "Base Model",
                         "type": "string"
                     },
                     "user": {
                         "$ref": "#/components/schemas/UserV1",
-                        "description": "The user who owned the loop deployment."
+                        "description": "The user who owned the Loops deployment."
                     }
                 },
                 "required": [
@@ -10749,21 +10750,21 @@
                     "base_model",
                     "user"
                 ],
-                "title": "DeactivateLoopDeploymentResponseV1",
+                "title": "DeactivateLoopsDeploymentResponseV1",
                 "type": "object"
             },
-            "GetLoopDeploymentResponseV1": {
+            "GetLoopsDeploymentResponseV1": {
                 "description": "Response for ``GET /v1/loops/deployments/<deployment_id>``.",
                 "properties": {
                     "deployment": {
-                        "$ref": "#/components/schemas/LoopDeploymentV1",
-                        "description": "The loop deployment."
+                        "$ref": "#/components/schemas/LoopsDeploymentV1",
+                        "description": "The Loops deployment."
                     }
                 },
                 "required": [
                     "deployment"
                 ],
-                "title": "GetLoopDeploymentResponseV1",
+                "title": "GetLoopsDeploymentResponseV1",
                 "type": "object"
             },
             "TrainingGpuCapacityItemV1": {

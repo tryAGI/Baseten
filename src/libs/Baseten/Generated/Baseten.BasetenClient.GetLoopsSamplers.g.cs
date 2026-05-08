@@ -51,7 +51,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/samplers \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.ListLoopSamplersResponseV1> GetLoopsSamplersAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.ListLoopsSamplersResponseV1> GetLoopsSamplersAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -74,7 +74,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/samplers \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopSamplersResponseV1>> GetLoopsSamplersAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsSamplersResponseV1>> GetLoopsSamplersAsResponseAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -349,9 +349,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.ListLoopSamplersResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.ListLoopsSamplersResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopSamplersResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsSamplersResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -383,9 +383,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.ListLoopSamplersResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.ListLoopsSamplersResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopSamplersResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsSamplersResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

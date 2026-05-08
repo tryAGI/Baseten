@@ -16,7 +16,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/samplers \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.ListLoopSamplersResponseV1> GetLoopsSamplersAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.ListLoopsSamplersResponseV1> GetLoopsSamplersAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -31,7 +31,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/samplers \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopSamplersResponseV1>> GetLoopsSamplersAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsSamplersResponseV1>> GetLoopsSamplersAsResponseAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -54,7 +54,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/files \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LoopCheckpointFilesResponseV1> GetLoopsCheckpointsByCheckpointIdFilesAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.LoopsCheckpointFilesResponseV1> GetLoopsCheckpointsByCheckpointIdFilesAsync(
             string checkpointId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -80,7 +80,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/files \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopCheckpointFilesResponseV1>> GetLoopsCheckpointsByCheckpointIdFilesAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopsCheckpointFilesResponseV1>> GetLoopsCheckpointsByCheckpointIdFilesAsResponseAsync(
             string checkpointId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -358,9 +358,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.LoopCheckpointFilesResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.LoopsCheckpointFilesResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopCheckpointFilesResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopsCheckpointFilesResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -392,9 +392,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.LoopCheckpointFilesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.LoopsCheckpointFilesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopCheckpointFilesResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopsCheckpointFilesResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

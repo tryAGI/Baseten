@@ -27,11 +27,11 @@ namespace Baseten
             };
         partial void PrepareCreateLoopsSessionsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopSessionRequestV1 request);
+            global::Baseten.CreateLoopsSessionRequestV1 request);
         partial void PrepareCreateLoopsSessionsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopSessionRequestV1 request);
+            global::Baseten.CreateLoopsSessionRequestV1 request);
         partial void ProcessCreateLoopsSessionsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -57,9 +57,9 @@ namespace Baseten
         ///   "training_project_id": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSessionResponseV1> CreateLoopsSessionsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSessionResponseV1> CreateLoopsSessionsAsync(
 
-            global::Baseten.CreateLoopSessionRequestV1 request,
+            global::Baseten.CreateLoopsSessionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -88,9 +88,9 @@ namespace Baseten
         ///   "training_project_id": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSessionResponseV1>> CreateLoopsSessionsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSessionResponseV1>> CreateLoopsSessionsAsResponseAsync(
 
-            global::Baseten.CreateLoopSessionRequestV1 request,
+            global::Baseten.CreateLoopsSessionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -375,9 +375,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateLoopSessionResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.CreateLoopsSessionResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSessionResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSessionResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -409,9 +409,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateLoopSessionResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.CreateLoopsSessionResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSessionResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSessionResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -464,12 +464,12 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSessionResponseV1> CreateLoopsSessionsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSessionResponseV1> CreateLoopsSessionsAsync(
             string? trainingProjectId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateLoopSessionRequestV1
+            var __request = new global::Baseten.CreateLoopsSessionRequestV1
             {
                 TrainingProjectId = trainingProjectId,
             };

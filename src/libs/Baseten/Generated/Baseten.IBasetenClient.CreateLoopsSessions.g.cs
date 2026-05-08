@@ -20,9 +20,9 @@ namespace Baseten
         ///   "training_project_id": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSessionResponseV1> CreateLoopsSessionsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSessionResponseV1> CreateLoopsSessionsAsync(
 
-            global::Baseten.CreateLoopSessionRequestV1 request,
+            global::Baseten.CreateLoopsSessionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -41,9 +41,9 @@ namespace Baseten
         ///   "training_project_id": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSessionResponseV1>> CreateLoopsSessionsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSessionResponseV1>> CreateLoopsSessionsAsResponseAsync(
 
-            global::Baseten.CreateLoopSessionRequestV1 request,
+            global::Baseten.CreateLoopsSessionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -57,7 +57,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSessionResponseV1> CreateLoopsSessionsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSessionResponseV1> CreateLoopsSessionsAsync(
             string? trainingProjectId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

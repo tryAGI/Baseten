@@ -23,9 +23,9 @@ namespace Baseten
         ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100"<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSamplerResponseV1> CreateLoopsSamplersAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateLoopsSamplersAsync(
 
-            global::Baseten.CreateLoopSamplerRequestV1 request,
+            global::Baseten.CreateLoopsSamplerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -47,9 +47,9 @@ namespace Baseten
         ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100"<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSamplerResponseV1>> CreateLoopsSamplersAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>> CreateLoopsSamplersAsResponseAsync(
 
-            global::Baseten.CreateLoopSamplerRequestV1 request,
+            global::Baseten.CreateLoopsSamplerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -73,7 +73,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSamplerResponseV1> CreateLoopsSamplersAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateLoopsSamplersAsync(
             string sessionId,
             string baseModel,
             int? maxSeqLength = default,
