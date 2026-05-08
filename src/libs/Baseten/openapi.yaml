@@ -3038,14 +3038,14 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/checkpoints/search \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"checkpoint_path\": \"bt://trainers:k4q95w5/sampler_weights/step-100\"\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainers/checkpoints/search \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"checkpoint_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/checkpoints/search\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'checkpoint_path': 'bt://trainers:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainers/checkpoints/search\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'checkpoint_path': 'bt://loops:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Look up the metadata for a trainer checkpoint by its bt://trainers:<trainer_id>/(weights|sampler_weights)/<name> URI.",
+                "description": "Look up the metadata for a trainer checkpoint by its bt://loops:<trainer_id>/(weights|sampler_weights)/<name> URI.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -3114,11 +3114,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_len\": null,\n  \"lora_rank\": null,\n  \"seed\": null,\n  \"scale_down_delay_seconds\": null,\n  \"checkpoint_path\": \"bt://trainers:k4q95w5/weights/step-100\"\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_len\": null,\n  \"lora_rank\": null,\n  \"seed\": null,\n  \"scale_down_delay_seconds\": null,\n  \"checkpoint_path\": \"bt://loops:k4q95w5/weights/step-100\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_len': None, 'lora_rank': None, 'seed': None, 'scale_down_delay_seconds': None, 'checkpoint_path': 'bt://trainers:k4q95w5/weights/step-100'}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_len': None, 'lora_rank': None, 'seed': None, 'scale_down_delay_seconds': None, 'checkpoint_path': 'bt://loops:k4q95w5/weights/step-100'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a TrainerServer and an associated SamplingServer for the given trainer session.",
@@ -3157,11 +3157,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainer_sessions/{session_id}/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_length\": null,\n  \"checkpoint_path\": \"bt://trainers:k4q95w5/sampler_weights/step-100\"\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/trainer_sessions/{session_id}/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"max_seq_length\": null,\n  \"checkpoint_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions/{session_id}/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_length': None, 'checkpoint_path': 'bt://trainers:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/trainer_sessions/{session_id}/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'max_seq_length': None, 'checkpoint_path': 'bt://loops:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a standalone SamplingServer (not linked to a TrainerServer).",
@@ -3269,30 +3269,483 @@
                 }
             ]
         },
-        "/v1/loops/deployments/deactivate": {
+        "/v1/loops/sessions": {
             "post": {
-                "summary": "Deactivate a loop deployment.",
+                "summary": "Create a Loops session.",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/deployments/deactivate \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"base_model\": \"Qwen/Qwen3-8B\"\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/sessions \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/deactivate\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'base_model': 'Qwen/Qwen3-8B'}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/sessions\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.",
+                "description": "Creates a Loops session for the given training project.",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/DeactivateLoopDeploymentRequestV1"
+                                "$ref": "#/components/schemas/CreateLoopSessionRequestV1"
                             }
                         }
                     },
                     "required": true
                 },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateLoopSessionResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/loops/sessions/{session_id}": {
+            "get": {
+                "summary": "Get a Loops session.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/sessions/{session_id} \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/sessions/{session_id}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Fetch a Loops session by ID.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLoopSessionResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/session_id"
+                }
+            ]
+        },
+        "/v1/loops/runs": {
+            "get": {
+                "summary": "List Loops runs.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "List Loops runs visible to the requesting user, optionally filtered by run id and/or base model.",
+                "parameters": [
+                    {
+                        "name": "run_id",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter by run ID.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                "k4q95w5"
+                            ],
+                            "title": "Run Id"
+                        }
+                    },
+                    {
+                        "name": "base_model",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter runs by base model name.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                "Qwen/Qwen3-8B"
+                            ],
+                            "title": "Base Model"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ListLoopRunsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a Loops run.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"max_seq_len\": null,\n  \"lora_rank\": null,\n  \"seed\": null,\n  \"scale_down_delay_seconds\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'max_seq_len': None, 'lora_rank': None, 'seed': None, 'scale_down_delay_seconds': None, 'path': 'bt://loops:k4q95w5/weights/step-100'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a Loops run with an associated sampler in the given session.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLoopRunRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateLoopRunResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/loops/runs/{run_id}": {
+            "get": {
+                "summary": "Get a Loops run.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/runs/{run_id} \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs/{run_id}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Fetch a Loops run by ID. Always includes the paired sampler \u2014 every run is provisioned with one at create time.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLoopRunResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/run_id"
+                }
+            ]
+        },
+        "/v1/loops/samplers": {
+            "get": {
+                "summary": "List Loops samplers.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "List Loops samplers visible to the requesting user.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ListLoopSamplersResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a Loops sampler.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/samplers \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a standalone Loops sampler not linked to a run.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLoopSamplerRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateLoopSamplerResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/loops/samplers/{sampler_id}": {
+            "get": {
+                "summary": "Get a Loops sampler.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/samplers/{sampler_id} \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers/{sampler_id}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Fetch a Loops sampler by ID.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLoopSamplerResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/sampler_id"
+                }
+            ]
+        },
+        "/v1/loops/checkpoints": {
+            "get": {
+                "summary": "List Loops checkpoints.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/checkpoints \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "List Loops checkpoints filtered by run id, base model, or bt:// URI. Provide exactly one filter.",
+                "parameters": [
+                    {
+                        "name": "run_id",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter by run ID. Returns all checkpoints saved by the run.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                "k4q95w5"
+                            ],
+                            "title": "Run Id"
+                        }
+                    },
+                    {
+                        "name": "base_model",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter by base model. Returns checkpoints across the caller's runs of this base model.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                "Qwen/Qwen3-8B"
+                            ],
+                            "title": "Base Model"
+                        }
+                    },
+                    {
+                        "name": "checkpoint_path",
+                        "in": "query",
+                        "required": false,
+                        "description": "bt:// URI of a Loops checkpoint. Form: bt://loops:<run_id>/(weights|sampler_weights)/<checkpoint_name>.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                "bt://loops:k4q95w5/sampler_weights/step-100"
+                            ],
+                            "title": "Checkpoint Path"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ListLoopCheckpointsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/loops/checkpoints/{checkpoint_id}/files": {
+            "get": {
+                "summary": "Get Loops checkpoint files.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/files \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/files\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Get presigned URLs for the files under a Loops checkpoint. Returns a paginated list.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoopCheckpointFilesResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/checkpoint_id"
+                }
+            ]
+        },
+        "/v1/loops/deployments": {
+            "get": {
+                "summary": "List Loops deployments.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/deployments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "List the caller's active Loops deployments. Excludes deployments whose latest status is stopped.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ListLoopDeploymentsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/loops/deployments/{deployment_id}/deactivate": {
+            "post": {
+                "summary": "Deactivate a Loops deployment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/deployments/{deployment_id}/deactivate \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/deactivate\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Shut down a Loops deployment by ID. Saved checkpoints remain accessible. Resolving base_model -> deployment_id is the caller's responsibility \u2014 list deployments and pick the active one.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -3305,7 +3758,45 @@
                         }
                     }
                 }
-            }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
+        "/v1/loops/deployments/{deployment_id}": {
+            "get": {
+                "summary": "Get a Loops deployment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/deployments/{deployment_id} \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Fetch a Loops deployment by ID, including its latest status.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLoopDeploymentResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
         },
         "/v1/training/capacity": {
             "get": {
@@ -9281,9 +9772,9 @@
                 "description": "Lookup body for ``POST /v1/trainers/checkpoints/search``.",
                 "properties": {
                     "checkpoint_path": {
-                        "description": "bt:// URI of a trainer checkpoint. Form: bt://trainers:<trainer_id>/(weights|sampler_weights)/<checkpoint_name>.",
+                        "description": "bt:// URI of a trainer checkpoint. Form: bt://loops:<trainer_id>/(weights|sampler_weights)/<checkpoint_name>.",
                         "examples": [
-                            "bt://trainers:k4q95w5/sampler_weights/step-100"
+                            "bt://loops:k4q95w5/sampler_weights/step-100"
                         ],
                         "title": "Checkpoint Path",
                         "type": "string"
@@ -9296,7 +9787,7 @@
                 "type": "object"
             },
             "TrainerCheckpointTarget": {
-                "description": "Whether a TrainerServerCheckpoint is loadable by the sampler or the trainer.\n\nSAMPLER checkpoints are consumed by the sampling server for inference;\nTRAINER checkpoints capture full trainer state for resuming training.\nMirrored in the bt:// URI as\n``bt://trainers:<trainer_id>/(sampler_weights|weights)/<name>``.",
+                "description": "Whether a TrainerServerCheckpoint is loadable by the sampler or the trainer.\n\nSAMPLER checkpoints are consumed by the sampling server for inference;\nTRAINER checkpoints capture full trainer state for resuming training.\nMirrored in the bt:// URI as\n``bt://loops:<trainer_id>/(sampler_weights|weights)/<name>``.",
                 "enum": [
                     "sampler",
                     "trainer"
@@ -9502,9 +9993,9 @@
                             }
                         ],
                         "default": null,
-                        "description": "Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://trainers:<trainer_id>/weights/<checkpoint_name>.",
+                        "description": "Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:<trainer_id>/weights/<checkpoint_name>.",
                         "examples": [
-                            "bt://trainers:k4q95w5/weights/step-100"
+                            "bt://loops:k4q95w5/weights/step-100"
                         ],
                         "title": "Checkpoint Path"
                     }
@@ -9584,7 +10075,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Minimum max-sequence-length the sampler must support. If set, only instance-type entries whose configured max_seq_length is >= this value are considered. Omit to accept any entry.",
+                        "description": "Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send. Omit to use the default for the base model.",
                         "title": "Max Seq Length"
                     },
                     "checkpoint_path": {
@@ -9597,9 +10088,9 @@
                             }
                         ],
                         "default": null,
-                        "description": "Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://trainers:<trainer_id>/sampler_weights/<checkpoint_name>.",
+                        "description": "Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://loops:<trainer_id>/sampler_weights/<checkpoint_name>.",
                         "examples": [
-                            "bt://trainers:k4q95w5/sampler_weights/step-100"
+                            "bt://loops:k4q95w5/sampler_weights/step-100"
                         ],
                         "title": "Checkpoint Path"
                     }
@@ -9683,26 +10174,560 @@
                 "title": "GetTrainerServerCheckpointFilesResponseV1",
                 "type": "object"
             },
-            "DeactivateLoopDeploymentRequestV1": {
-                "description": "Request body for ``POST /v1/loops/deployments/deactivate``.",
+            "CreateLoopSessionRequestV1": {
                 "properties": {
-                    "base_model": {
-                        "description": "The base model ID whose active loop deployment should be deactivated.",
-                        "examples": [
-                            "Qwen/Qwen3-8B"
+                    "training_project_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
                         ],
+                        "default": null,
+                        "description": "ID of the training project to associate with. If omitted, a default project is created for the org.",
+                        "title": "Training Project Id"
+                    }
+                },
+                "title": "CreateLoopSessionRequestV1",
+                "type": "object"
+            },
+            "LoopSessionV1": {
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "title": "LoopSessionV1",
+                "type": "object"
+            },
+            "CreateLoopSessionResponseV1": {
+                "properties": {
+                    "session": {
+                        "$ref": "#/components/schemas/LoopSessionV1"
+                    }
+                },
+                "required": [
+                    "session"
+                ],
+                "title": "CreateLoopSessionResponseV1",
+                "type": "object"
+            },
+            "GetLoopSessionResponseV1": {
+                "description": "Response for ``GET /v1/loops/sessions/<session_id>``.",
+                "properties": {
+                    "session": {
+                        "$ref": "#/components/schemas/LoopSessionV1",
+                        "description": "The Loops session."
+                    }
+                },
+                "required": [
+                    "session"
+                ],
+                "title": "GetLoopSessionResponseV1",
+                "type": "object"
+            },
+            "LoopRunListItemV1": {
+                "description": "Run entry returned by ``GET /v1/loops/runs``.",
+                "properties": {
+                    "run_id": {
+                        "description": "The run ID.",
+                        "title": "Run Id",
+                        "type": "string"
+                    },
+                    "session_id": {
+                        "description": "The session ID this run belongs to.",
+                        "title": "Session Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "The HuggingFace base model the run is fine-tuning.",
                         "title": "Base Model",
                         "type": "string"
                     }
                 },
                 "required": [
+                    "run_id",
+                    "session_id",
                     "base_model"
                 ],
-                "title": "DeactivateLoopDeploymentRequestV1",
+                "title": "LoopRunListItemV1",
+                "type": "object"
+            },
+            "ListLoopRunsResponseV1": {
+                "description": "Runs matching the query filters.",
+                "properties": {
+                    "runs": {
+                        "description": "List of runs.",
+                        "items": {
+                            "$ref": "#/components/schemas/LoopRunListItemV1"
+                        },
+                        "title": "Runs",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "runs"
+                ],
+                "title": "ListLoopRunsResponseV1",
+                "type": "object"
+            },
+            "CreateLoopRunRequestV1": {
+                "properties": {
+                    "session_id": {
+                        "description": "ID of the Loops session this run belongs to.",
+                        "title": "Session Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "Base model ID (e.g. 'Qwen/Qwen3-8B').",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
+                    "max_seq_len": {
+                        "default": 131072,
+                        "description": "Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send.",
+                        "title": "Max Seq Len",
+                        "type": "integer"
+                    },
+                    "lora_rank": {
+                        "default": 64,
+                        "description": "LoRA rank.",
+                        "title": "Lora Rank",
+                        "type": "integer"
+                    },
+                    "seed": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Random seed for reproducibility.",
+                        "title": "Seed"
+                    },
+                    "scale_down_delay_seconds": {
+                        "default": 3600,
+                        "description": "Seconds of inactivity before the run scales to zero. Must be positive. Defaults to 3600 (1 hour).",
+                        "exclusiveMinimum": 0,
+                        "title": "Scale Down Delay Seconds",
+                        "type": "integer"
+                    },
+                    "path": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:<run_id>/weights/<checkpoint_name>.",
+                        "examples": [
+                            "bt://loops:k4q95w5/weights/step-100"
+                        ],
+                        "title": "Path"
+                    }
+                },
+                "required": [
+                    "session_id",
+                    "base_model"
+                ],
+                "title": "CreateLoopRunRequestV1",
+                "type": "object"
+            },
+            "LoopRunV1": {
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "base_url": {
+                        "title": "Base Url",
+                        "type": "string"
+                    },
+                    "sampler": {
+                        "$ref": "#/components/schemas/LoopSamplerV1",
+                        "description": "The sampler bound to this run."
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_url",
+                    "sampler"
+                ],
+                "title": "LoopRunV1",
+                "type": "object"
+            },
+            "LoopSamplerV1": {
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "base_url": {
+                        "title": "Base Url",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_url"
+                ],
+                "title": "LoopSamplerV1",
+                "type": "object"
+            },
+            "CreateLoopRunResponseV1": {
+                "properties": {
+                    "run": {
+                        "$ref": "#/components/schemas/LoopRunV1"
+                    }
+                },
+                "required": [
+                    "run"
+                ],
+                "title": "CreateLoopRunResponseV1",
+                "type": "object"
+            },
+            "GetLoopRunResponseV1": {
+                "description": "Response for ``GET /v1/loops/runs/<run_id>``.",
+                "properties": {
+                    "run": {
+                        "$ref": "#/components/schemas/LoopRunV1",
+                        "description": "The Loops run with its associated sampler."
+                    }
+                },
+                "required": [
+                    "run"
+                ],
+                "title": "GetLoopRunResponseV1",
+                "type": "object"
+            },
+            "ListLoopSamplersResponseV1": {
+                "description": "Response for ``GET /v1/loops/samplers``.\n\nReturns the caller's samplers, including those paired to runs and\nstandalone samplers. Ordered newest-first.",
+                "properties": {
+                    "samplers": {
+                        "description": "List of samplers.",
+                        "items": {
+                            "$ref": "#/components/schemas/LoopSamplerV1"
+                        },
+                        "title": "Samplers",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "samplers"
+                ],
+                "title": "ListLoopSamplersResponseV1",
+                "type": "object"
+            },
+            "CreateLoopSamplerRequestV1": {
+                "properties": {
+                    "session_id": {
+                        "description": "ID of the Loops session this sampler belongs to.",
+                        "title": "Session Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "Base model ID for standalone samplers (e.g., for baselines).",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
+                    "max_seq_length": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send. Omit to use the default for the base model.",
+                        "title": "Max Seq Length"
+                    },
+                    "model_path": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://loops:<run_id>/sampler_weights/<checkpoint_name>.",
+                        "examples": [
+                            "bt://loops:k4q95w5/sampler_weights/step-100"
+                        ],
+                        "title": "Model Path"
+                    }
+                },
+                "required": [
+                    "session_id",
+                    "base_model"
+                ],
+                "title": "CreateLoopSamplerRequestV1",
+                "type": "object"
+            },
+            "CreateLoopSamplerResponseV1": {
+                "properties": {
+                    "sampler": {
+                        "$ref": "#/components/schemas/LoopSamplerV1"
+                    }
+                },
+                "required": [
+                    "sampler"
+                ],
+                "title": "CreateLoopSamplerResponseV1",
+                "type": "object"
+            },
+            "GetLoopSamplerResponseV1": {
+                "description": "Response for ``GET /v1/loops/samplers/<sampler_id>``.",
+                "properties": {
+                    "sampler": {
+                        "$ref": "#/components/schemas/LoopSamplerV1",
+                        "description": "The Loops sampler."
+                    }
+                },
+                "required": [
+                    "sampler"
+                ],
+                "title": "GetLoopSamplerResponseV1",
+                "type": "object"
+            },
+            "LoopCheckpointV1": {
+                "description": "A checkpoint saved by a Loops run.",
+                "properties": {
+                    "checkpoint_id": {
+                        "description": "The ID of the checkpoint.",
+                        "title": "Checkpoint Id",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "The timestamp of the checkpoint in ISO 8601 format.",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "checkpoint_type": {
+                        "description": "The type of checkpoint.",
+                        "title": "Checkpoint Type",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The base model of the checkpoint.",
+                        "title": "Base Model"
+                    },
+                    "lora_adapter_config": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The adapter config of the checkpoint.",
+                        "title": "Lora Adapter Config"
+                    },
+                    "size_bytes": {
+                        "description": "The size of the checkpoint in bytes.",
+                        "title": "Size Bytes",
+                        "type": "integer"
+                    },
+                    "sync_status": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
+                        "title": "Sync Status"
+                    },
+                    "id": {
+                        "description": "The checkpoint ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "run_id": {
+                        "description": "The ID of the run that produced the checkpoint.",
+                        "title": "Run Id",
+                        "type": "string"
+                    },
+                    "target": {
+                        "$ref": "#/components/schemas/TrainerCheckpointTarget",
+                        "description": "Whether this checkpoint is loadable by the sampler ('sampler') or by the trainer ('trainer')."
+                    }
+                },
+                "required": [
+                    "checkpoint_id",
+                    "created_at",
+                    "checkpoint_type",
+                    "base_model",
+                    "lora_adapter_config",
+                    "size_bytes",
+                    "id",
+                    "run_id",
+                    "target"
+                ],
+                "title": "LoopCheckpointV1",
+                "type": "object"
+            },
+            "ListLoopCheckpointsResponseV1": {
+                "description": "Checkpoints matching the query filter.",
+                "properties": {
+                    "checkpoints": {
+                        "description": "Matching checkpoints.",
+                        "items": {
+                            "$ref": "#/components/schemas/LoopCheckpointV1"
+                        },
+                        "title": "Checkpoints",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "checkpoints"
+                ],
+                "title": "ListLoopCheckpointsResponseV1",
+                "type": "object"
+            },
+            "LoopCheckpointFilesResponseV1": {
+                "description": "Response with presigned URLs for files under a Loops checkpoint.",
+                "properties": {
+                    "presigned_urls": {
+                        "description": "List of presigned URLs for checkpoint files.",
+                        "items": {
+                            "$ref": "#/components/schemas/CheckpointFile"
+                        },
+                        "title": "Presigned Urls",
+                        "type": "array"
+                    },
+                    "next_page_token": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Token to use for fetching the next page of results. None when there are no more results.",
+                        "title": "Next Page Token"
+                    },
+                    "total_count": {
+                        "description": "Total number of checkpoint files available.",
+                        "title": "Total Count",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "presigned_urls",
+                    "total_count"
+                ],
+                "title": "LoopCheckpointFilesResponseV1",
+                "type": "object"
+            },
+            "LoopDeploymentStatusV1": {
+                "description": "Latest deployment status for a loop deployment.",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/Name",
+                        "description": "Latest status of the loop deployment."
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "title": "LoopDeploymentStatusV1",
+                "type": "object"
+            },
+            "LoopDeploymentV1": {
+                "description": "A loop deployment \u2014 the long-lived inference + trainer pair owned by a user.\n\nThe associated samplers are not enumerated on this response. SamplingServers\ndon't FK to TrainerDeployment directly \u2014 they're owned by the parent\nTrainerSession (paired sampler per TrainerServer + standalone samplers).\nThe list-of-samplers view lives at ``GET /v1/loops/samplers`` (caller-scoped)\nrather than as a nested field here.",
+                "properties": {
+                    "id": {
+                        "description": "The loop deployment ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "The HuggingFace base model the deployment is fine-tuning.",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
+                    "base_url": {
+                        "description": "The base URL clients use to reach the trainer half of the deployment.",
+                        "title": "Base Url",
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/LoopDeploymentStatusV1",
+                        "description": "Latest deployment status."
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_model",
+                    "base_url",
+                    "status"
+                ],
+                "title": "LoopDeploymentV1",
+                "type": "object"
+            },
+            "Name": {
+                "enum": [
+                    "CREATED",
+                    "DEPLOYING",
+                    "RUNNING",
+                    "FAILED",
+                    "STOPPED"
+                ],
+                "title": "Name",
+                "type": "string"
+            },
+            "ListLoopDeploymentsResponseV1": {
+                "description": "Response for ``GET /v1/loops/deployments``.\n\nReturns the caller's loop deployments whose latest status is not STOPPED\n(i.e. CREATED, DEPLOYING, RUNNING, or FAILED). Stopped deployments are\nexcluded so the list is a fit-for-purpose \"what's currently provisioned\nfor me\" view \u2014 the deactivate endpoint is the inverse pair.",
+                "properties": {
+                    "deployments": {
+                        "description": "Active loop deployments.",
+                        "items": {
+                            "$ref": "#/components/schemas/LoopDeploymentV1"
+                        },
+                        "title": "Deployments",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "deployments"
+                ],
+                "title": "ListLoopDeploymentsResponseV1",
                 "type": "object"
             },
             "DeactivateLoopDeploymentResponseV1": {
-                "description": "Response for ``POST /v1/loops/deployments/deactivate``.",
+                "description": "Response for ``POST /v1/loops/deployments/<deployment_id>/deactivate``.",
                 "properties": {
                     "id": {
                         "description": "The deactivated loop deployment ID.",
@@ -9725,6 +10750,20 @@
                     "user"
                 ],
                 "title": "DeactivateLoopDeploymentResponseV1",
+                "type": "object"
+            },
+            "GetLoopDeploymentResponseV1": {
+                "description": "Response for ``GET /v1/loops/deployments/<deployment_id>``.",
+                "properties": {
+                    "deployment": {
+                        "$ref": "#/components/schemas/LoopDeploymentV1",
+                        "description": "The loop deployment."
+                    }
+                },
+                "required": [
+                    "deployment"
+                ],
+                "title": "GetLoopDeploymentResponseV1",
                 "type": "object"
             },
             "TrainingGpuCapacityItemV1": {
@@ -11496,6 +12535,22 @@
                     "type": "string"
                 },
                 "name": "checkpoint_id",
+                "in": "path",
+                "required": true
+            },
+            "run_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "run_id",
+                "in": "path",
+                "required": true
+            },
+            "sampler_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "sampler_id",
                 "in": "path",
                 "required": true
             },

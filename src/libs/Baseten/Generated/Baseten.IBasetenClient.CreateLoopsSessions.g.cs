@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Deactivate a loop deployment.<br/>
-        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
+        /// Create a Loops session.<br/>
+        /// Creates a Loops session for the given training project.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -14,20 +14,20 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/deployments/deactivate \<br/>
+        /// --url https://api.baseten.co/v1/loops/sessions \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "base_model": "Qwen/Qwen3-8B"<br/>
+        ///   "training_project_id": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopDeploymentResponseV1> CreateLoopsDeploymentsDeactivateAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSessionResponseV1> CreateLoopsSessionsAsync(
 
-            global::Baseten.DeactivateLoopDeploymentRequestV1 request,
+            global::Baseten.CreateLoopSessionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Deactivate a loop deployment.<br/>
-        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
+        /// Create a Loops session.<br/>
+        /// Creates a Loops session for the given training project.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -35,29 +35,30 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/deployments/deactivate \<br/>
+        /// --url https://api.baseten.co/v1/loops/sessions \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "base_model": "Qwen/Qwen3-8B"<br/>
+        ///   "training_project_id": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopDeploymentResponseV1>> CreateLoopsDeploymentsDeactivateAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopSessionResponseV1>> CreateLoopsSessionsAsResponseAsync(
 
-            global::Baseten.DeactivateLoopDeploymentRequestV1 request,
+            global::Baseten.CreateLoopSessionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Deactivate a loop deployment.<br/>
-        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
+        /// Create a Loops session.<br/>
+        /// Creates a Loops session for the given training project.
         /// </summary>
-        /// <param name="baseModel">
-        /// The base model ID whose active loop deployment should be deactivated.
+        /// <param name="trainingProjectId">
+        /// ID of the training project to associate with. If omitted, a default project is created for the org.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopDeploymentResponseV1> CreateLoopsDeploymentsDeactivateAsync(
-            string baseModel,
+        global::System.Threading.Tasks.Task<global::Baseten.CreateLoopSessionResponseV1> CreateLoopsSessionsAsync(
+            string? trainingProjectId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

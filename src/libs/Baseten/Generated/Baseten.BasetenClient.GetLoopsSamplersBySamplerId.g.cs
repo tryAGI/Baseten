@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsDeploymentsDeactivateSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetLoopsSamplersBySamplerIdSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,51 +21,46 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsDeploymentsDeactivateSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetLoopsSamplersBySamplerIdSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateLoopsDeploymentsDeactivateSecurityRequirement0,
+            {                s_GetLoopsSamplersBySamplerIdSecurityRequirement0,
             };
-        partial void PrepareCreateLoopsDeploymentsDeactivateArguments(
+        partial void PrepareGetLoopsSamplersBySamplerIdArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.DeactivateLoopDeploymentRequestV1 request);
-        partial void PrepareCreateLoopsDeploymentsDeactivateRequest(
+            ref string samplerId);
+        partial void PrepareGetLoopsSamplersBySamplerIdRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.DeactivateLoopDeploymentRequestV1 request);
-        partial void ProcessCreateLoopsDeploymentsDeactivateResponse(
+            string samplerId);
+        partial void ProcessGetLoopsSamplersBySamplerIdResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateLoopsDeploymentsDeactivateResponseContent(
+        partial void ProcessGetLoopsSamplersBySamplerIdResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Deactivate a loop deployment.<br/>
-        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
+        /// Get a Loops sampler.<br/>
+        /// Fetch a Loops sampler by ID.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="samplerId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/deployments/deactivate \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "base_model": "Qwen/Qwen3-8B"<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/loops/samplers/{sampler_id} \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopDeploymentResponseV1> CreateLoopsDeploymentsDeactivateAsync(
-
-            global::Baseten.DeactivateLoopDeploymentRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetLoopSamplerResponseV1> GetLoopsSamplersBySamplerIdAsync(
+            string samplerId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateLoopsDeploymentsDeactivateAsResponseAsync(
-
-                request: request,
+            var __response = await GetLoopsSamplersBySamplerIdAsResponseAsync(
+                samplerId: samplerId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -73,40 +68,34 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Deactivate a loop deployment.<br/>
-        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
+        /// Get a Loops sampler.<br/>
+        /// Fetch a Loops sampler by ID.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="samplerId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/deployments/deactivate \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "base_model": "Qwen/Qwen3-8B"<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/loops/samplers/{sampler_id} \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopDeploymentResponseV1>> CreateLoopsDeploymentsDeactivateAsResponseAsync(
-
-            global::Baseten.DeactivateLoopDeploymentRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopSamplerResponseV1>> GetLoopsSamplersBySamplerIdAsResponseAsync(
+            string samplerId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateLoopsDeploymentsDeactivateArguments(
+            PrepareGetLoopsSamplersBySamplerIdArguments(
                 httpClient: HttpClient,
-                request: request);
+                samplerId: ref samplerId);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateLoopsDeploymentsDeactivateSecurityRequirements,
-                operationName: "CreateLoopsDeploymentsDeactivateAsync");
+                securityRequirements: s_GetLoopsSamplersBySamplerIdSecurityRequirements,
+                operationName: "GetLoopsSamplersBySamplerIdAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -126,7 +115,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/loops/deployments/deactivate",
+                                path: $"/v1/loops/samplers/{samplerId}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -134,7 +123,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -157,12 +146,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -171,10 +154,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateLoopsDeploymentsDeactivateRequest(
+                PrepareGetLoopsSamplersBySamplerIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    request: request);
+                    samplerId: samplerId!);
 
                 return __httpRequest;
             }
@@ -191,10 +174,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsDeploymentsDeactivate",
-                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
-                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
-                                httpMethod: "POST",
+                                operationId: "getLoopsSamplersBySamplerId",
+                                methodName: "GetLoopsSamplersBySamplerIdAsync",
+                                pathTemplate: "$\"/v1/loops/samplers/{samplerId}\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -225,10 +208,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsDeploymentsDeactivate",
-                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
-                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
-                                httpMethod: "POST",
+                                operationId: "getLoopsSamplersBySamplerId",
+                                methodName: "GetLoopsSamplersBySamplerIdAsync",
+                                pathTemplate: "$\"/v1/loops/samplers/{samplerId}\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -266,10 +249,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsDeploymentsDeactivate",
-                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
-                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
-                                httpMethod: "POST",
+                                operationId: "getLoopsSamplersBySamplerId",
+                                methodName: "GetLoopsSamplersBySamplerIdAsync",
+                                pathTemplate: "$\"/v1/loops/samplers/{samplerId}\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -306,7 +289,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateLoopsDeploymentsDeactivateResponse(
+                ProcessGetLoopsSamplersBySamplerIdResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -314,10 +297,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsDeploymentsDeactivate",
-                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
-                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
-                                httpMethod: "POST",
+                                operationId: "getLoopsSamplersBySamplerId",
+                                methodName: "GetLoopsSamplersBySamplerIdAsync",
+                                pathTemplate: "$\"/v1/loops/samplers/{samplerId}\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -336,10 +319,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsDeploymentsDeactivate",
-                                methodName: "CreateLoopsDeploymentsDeactivateAsync",
-                                pathTemplate: "\"/v1/loops/deployments/deactivate\"",
-                                httpMethod: "POST",
+                                operationId: "getLoopsSamplersBySamplerId",
+                                methodName: "GetLoopsSamplersBySamplerIdAsync",
+                                pathTemplate: "$\"/v1/loops/samplers/{samplerId}\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -366,7 +349,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateLoopsDeploymentsDeactivateResponseContent(
+                                ProcessGetLoopsSamplersBySamplerIdResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -375,9 +358,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.DeactivateLoopDeploymentResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.GetLoopSamplerResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopDeploymentResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopSamplerResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -409,9 +392,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.DeactivateLoopDeploymentResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.GetLoopSamplerResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopDeploymentResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopSamplerResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -452,31 +435,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Deactivate a loop deployment.<br/>
-        /// Shut down the active loop deployment for a base model. Saved checkpoints remain accessible.
-        /// </summary>
-        /// <param name="baseModel">
-        /// The base model ID whose active loop deployment should be deactivated.
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopDeploymentResponseV1> CreateLoopsDeploymentsDeactivateAsync(
-            string baseModel,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.DeactivateLoopDeploymentRequestV1
-            {
-                BaseModel = baseModel,
-            };
-
-            return await CreateLoopsDeploymentsDeactivateAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

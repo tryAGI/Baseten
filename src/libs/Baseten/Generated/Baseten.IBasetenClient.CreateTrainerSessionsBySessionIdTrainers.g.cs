@@ -23,7 +23,7 @@ namespace Baseten
         ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
         ///   "scale_down_delay_seconds": null,<br/>
-        ///   "checkpoint_path": "bt://trainers:k4q95w5/weights/step-100"<br/>
+        ///   "checkpoint_path": "bt://loops:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainerSessionsBySessionIdTrainersAsync(
@@ -51,7 +51,7 @@ namespace Baseten
         ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
         ///   "scale_down_delay_seconds": null,<br/>
-        ///   "checkpoint_path": "bt://trainers:k4q95w5/weights/step-100"<br/>
+        ///   "checkpoint_path": "bt://loops:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>> CreateTrainerSessionsBySessionIdTrainersAsResponseAsync(
@@ -85,7 +85,7 @@ namespace Baseten
         /// Default Value: 3600
         /// </param>
         /// <param name="checkpointPath">
-        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://trainers:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
+        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

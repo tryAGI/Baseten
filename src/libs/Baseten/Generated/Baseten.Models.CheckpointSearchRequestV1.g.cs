@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class CheckpointSearchRequestV1
     {
         /// <summary>
-        /// bt:// URI of a trainer checkpoint. Form: bt://trainers:&lt;trainer_id&gt;/(weights|sampler_weights)/&lt;checkpoint_name&gt;.
+        /// bt:// URI of a trainer checkpoint. Form: bt://loops:&lt;trainer_id&gt;/(weights|sampler_weights)/&lt;checkpoint_name&gt;.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("checkpoint_path")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -25,7 +25,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="CheckpointSearchRequestV1" /> class.
         /// </summary>
         /// <param name="checkpointPath">
-        /// bt:// URI of a trainer checkpoint. Form: bt://trainers:&lt;trainer_id&gt;/(weights|sampler_weights)/&lt;checkpoint_name&gt;.
+        /// bt:// URI of a trainer checkpoint. Form: bt://loops:&lt;trainer_id&gt;/(weights|sampler_weights)/&lt;checkpoint_name&gt;.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

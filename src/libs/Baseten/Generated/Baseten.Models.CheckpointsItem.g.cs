@@ -34,6 +34,19 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBasetenLatestCheckpoint(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Baseten.BasetenLatestCheckpointConfig? value)
+        {
+            value = BasetenLatestCheckpoint;
+            return IsBasetenLatestCheckpoint;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Baseten.BasetenNamedCheckpointConfig? BasetenNamedCheckpoint { get; init; }
 #else
@@ -47,6 +60,19 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BasetenNamedCheckpoint))]
 #endif
         public bool IsBasetenNamedCheckpoint => BasetenNamedCheckpoint != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBasetenNamedCheckpoint(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Baseten.BasetenNamedCheckpointConfig? value)
+        {
+            value = BasetenNamedCheckpoint;
+            return IsBasetenNamedCheckpoint;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -126,8 +152,8 @@ namespace Baseten
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Baseten.BasetenLatestCheckpointConfig?, TResult>? basetenLatestCheckpoint = null,
-            global::System.Func<global::Baseten.BasetenNamedCheckpointConfig?, TResult>? basetenNamedCheckpoint = null,
+            global::System.Func<global::Baseten.BasetenLatestCheckpointConfig, TResult>? basetenLatestCheckpoint = null,
+            global::System.Func<global::Baseten.BasetenNamedCheckpointConfig, TResult>? basetenNamedCheckpoint = null,
             bool validate = true)
         {
             if (validate)
@@ -151,8 +177,32 @@ namespace Baseten
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Baseten.BasetenLatestCheckpointConfig?>? basetenLatestCheckpoint = null,
-            global::System.Action<global::Baseten.BasetenNamedCheckpointConfig?>? basetenNamedCheckpoint = null,
+            global::System.Action<global::Baseten.BasetenLatestCheckpointConfig>? basetenLatestCheckpoint = null,
+
+            global::System.Action<global::Baseten.BasetenNamedCheckpointConfig>? basetenNamedCheckpoint = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBasetenLatestCheckpoint)
+            {
+                basetenLatestCheckpoint?.Invoke(BasetenLatestCheckpoint!);
+            }
+            else if (IsBasetenNamedCheckpoint)
+            {
+                basetenNamedCheckpoint?.Invoke(BasetenNamedCheckpoint!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Baseten.BasetenLatestCheckpointConfig>? basetenLatestCheckpoint = null,
+            global::System.Action<global::Baseten.BasetenNamedCheckpointConfig>? basetenNamedCheckpoint = null,
             bool validate = true)
         {
             if (validate)

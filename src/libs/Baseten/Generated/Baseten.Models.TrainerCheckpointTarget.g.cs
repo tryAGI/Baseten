@@ -8,16 +8,16 @@ namespace Baseten
     /// SAMPLER checkpoints are consumed by the sampling server for inference;<br/>
     /// TRAINER checkpoints capture full trainer state for resuming training.<br/>
     /// Mirrored in the bt:// URI as<br/>
-    /// ``bt://trainers:&lt;trainer_id&gt;/(sampler_weights|weights)/&lt;name&gt;``.
+    /// ``bt://loops:&lt;trainer_id&gt;/(sampler_weights|weights)/&lt;name&gt;``.
     /// </summary>
     public enum TrainerCheckpointTarget
     {
         /// <summary>
-        /// //trainers:&lt;trainer_id&gt;/(sampler_weights|weights)/&lt;name&gt;``.
+        /// //loops:&lt;trainer_id&gt;/(sampler_weights|weights)/&lt;name&gt;``.
         /// </summary>
         Sampler,
         /// <summary>
-        /// //trainers:&lt;trainer_id&gt;/(sampler_weights|weights)/&lt;name&gt;``.
+        /// //loops:&lt;trainer_id&gt;/(sampler_weights|weights)/&lt;name&gt;``.
         /// </summary>
         Trainer,
     }

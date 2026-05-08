@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// Response for ``POST /v1/loops/deployments/deactivate``.
+    /// Response for ``POST /v1/loops/deployments/&lt;deployment_id&gt;/deactivate``.
     /// </summary>
     public sealed partial class DeactivateLoopDeploymentResponseV1
     {

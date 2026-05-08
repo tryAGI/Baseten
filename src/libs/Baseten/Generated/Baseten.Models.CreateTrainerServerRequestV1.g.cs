@@ -44,7 +44,7 @@ namespace Baseten
         public int? ScaleDownDelaySeconds { get; set; }
 
         /// <summary>
-        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://trainers:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
+        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("checkpoint_path")]
@@ -79,7 +79,7 @@ namespace Baseten
         /// Default Value: 3600
         /// </param>
         /// <param name="checkpointPath">
-        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://trainers:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
+        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
