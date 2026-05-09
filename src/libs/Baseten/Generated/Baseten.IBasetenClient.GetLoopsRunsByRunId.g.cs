@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Get a Loops run.<br/>
-        /// Fetch a Loops run by ID. Always includes the paired sampler — every run is provisioned with one at create time.
+        /// Fetch a Loops run by ID.
         /// </summary>
         /// <param name="runId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -23,7 +23,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get a Loops run.<br/>
-        /// Fetch a Loops run by ID. Always includes the paired sampler — every run is provisioned with one at create time.
+        /// Fetch a Loops run by ID.
         /// </summary>
         /// <param name="runId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

@@ -23,6 +23,13 @@ namespace Baseten
         public required string BaseUrl { get; set; }
 
         /// <summary>
+        /// The HuggingFace base model the sampler is serving.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_model")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string BaseModel { get; set; }
+
+        /// <summary>
         /// Time the sampler was created in ISO 8601 format
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -40,6 +47,9 @@ namespace Baseten
         /// </summary>
         /// <param name="id"></param>
         /// <param name="baseUrl"></param>
+        /// <param name="baseModel">
+        /// The HuggingFace base model the sampler is serving.
+        /// </param>
         /// <param name="createdAt">
         /// Time the sampler was created in ISO 8601 format
         /// </param>
@@ -49,10 +59,12 @@ namespace Baseten
         public LoopsSamplerV1(
             string id,
             string baseUrl,
+            string baseModel,
             global::System.DateTime createdAt)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
+            this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.CreatedAt = createdAt;
         }
 

@@ -3461,7 +3461,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs/{run_id}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Fetch a Loops run by ID. Always includes the paired sampler \u2014 every run is provisioned with one at create time.",
+                "description": "Fetch a Loops run by ID.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -10286,6 +10286,11 @@
                         "title": "Base Url",
                         "type": "string"
                     },
+                    "base_model": {
+                        "description": "The HuggingFace base model the sampler is serving.",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
                     "created_at": {
                         "description": "Time the sampler was created in ISO 8601 format",
                         "format": "date-time",
@@ -10296,6 +10301,7 @@
                 "required": [
                     "id",
                     "base_url",
+                    "base_model",
                     "created_at"
                 ],
                 "title": "LoopsSamplerV1",
@@ -10667,7 +10673,7 @@
                 "type": "object"
             },
             "LoopsDeploymentV1": {
-                "description": "A Loops deployment \u2014 the long-lived run + sampler pair owned by a user.\n\nThe associated samplers are not enumerated on this response. The list of\nsamplers visible to the caller lives at ``GET /v1/loops/samplers``\n(caller-scoped) rather than as a nested field here.",
+                "description": "A Loops deployment \u2014 the long-lived run + sampler pair owned by a user.\n\nThe deployment's current sampler is included inline. The full list of\nsamplers visible to the caller (across all deployments) lives at\n``GET /v1/loops/samplers``.",
                 "properties": {
                     "id": {
                         "description": "The Loops deployment ID.",
@@ -10687,13 +10693,18 @@
                     "status": {
                         "$ref": "#/components/schemas/LoopsDeploymentStatusV1",
                         "description": "Latest deployment status."
+                    },
+                    "sampler": {
+                        "$ref": "#/components/schemas/LoopsSamplerV1",
+                        "description": "The sampler bound to this deployment."
                     }
                 },
                 "required": [
                     "id",
                     "base_model",
                     "base_url",
-                    "status"
+                    "status",
+                    "sampler"
                 ],
                 "title": "LoopsDeploymentV1",
                 "type": "object"
