@@ -5,9 +5,9 @@ namespace Baseten
 {
     /// <summary>
     /// A Loops deployment — the long-lived run + sampler pair owned by a user.<br/>
-    /// The associated samplers are not enumerated on this response. The list of<br/>
-    /// samplers visible to the caller lives at ``GET /v1/loops/samplers``<br/>
-    /// (caller-scoped) rather than as a nested field here.
+    /// The deployment's current sampler is included inline. The full list of<br/>
+    /// samplers visible to the caller (across all deployments) lives at<br/>
+    /// ``GET /v1/loops/samplers``.
     /// </summary>
     public sealed partial class LoopsDeploymentV1
     {
@@ -40,6 +40,13 @@ namespace Baseten
         public required global::Baseten.LoopsDeploymentStatusV1 Status { get; set; }
 
         /// <summary>
+        /// The sampler bound to this deployment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sampler")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.LoopsSamplerV1 Sampler { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +67,9 @@ namespace Baseten
         /// <param name="status">
         /// Latest deployment status.
         /// </param>
+        /// <param name="sampler">
+        /// The sampler bound to this deployment.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -67,12 +77,14 @@ namespace Baseten
             string id,
             string baseModel,
             string baseUrl,
-            global::Baseten.LoopsDeploymentStatusV1 status)
+            global::Baseten.LoopsDeploymentStatusV1 status,
+            global::Baseten.LoopsSamplerV1 sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
+            this.Sampler = sampler ?? throw new global::System.ArgumentNullException(nameof(sampler));
         }
 
         /// <summary>
