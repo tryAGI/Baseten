@@ -69,5 +69,6 @@ namespace Baseten
         public UsageSummaryV1()
         {
         }
+
     }
 }

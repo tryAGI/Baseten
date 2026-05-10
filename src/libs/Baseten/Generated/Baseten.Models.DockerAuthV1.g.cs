@@ -120,5 +120,6 @@ namespace Baseten
         public DockerAuthV1()
         {
         }
+
     }
 }

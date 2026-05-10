@@ -46,5 +46,6 @@ namespace Baseten
         public ListLoopsDeploymentsResponseV1()
         {
         }
+
     }
 }

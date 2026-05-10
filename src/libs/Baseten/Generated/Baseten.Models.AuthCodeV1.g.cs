@@ -130,5 +130,6 @@ namespace Baseten
         public AuthCodeV1()
         {
         }
+
     }
 }

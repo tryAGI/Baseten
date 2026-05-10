@@ -91,5 +91,6 @@ namespace Baseten
         public DailyModelApiUsageV1()
         {
         }
+
     }
 }

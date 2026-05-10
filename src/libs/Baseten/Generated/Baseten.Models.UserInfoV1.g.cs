@@ -81,5 +81,6 @@ namespace Baseten
         public UserInfoV1()
         {
         }
+
     }
 }

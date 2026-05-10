@@ -65,5 +65,6 @@ namespace Baseten
         public ChainletEnvironmentSettingsV1()
         {
         }
+
     }
 }

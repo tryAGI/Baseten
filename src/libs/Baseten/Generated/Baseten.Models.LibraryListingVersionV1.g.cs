@@ -102,5 +102,6 @@ namespace Baseten
         public LibraryListingVersionV1()
         {
         }
+
     }
 }

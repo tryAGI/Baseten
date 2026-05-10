@@ -78,5 +78,6 @@ namespace Baseten
         public SignSSHCertificateResponseV1()
         {
         }
+
     }
 }

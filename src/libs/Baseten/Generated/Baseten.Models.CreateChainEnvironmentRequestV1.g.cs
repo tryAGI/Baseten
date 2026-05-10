@@ -68,5 +68,6 @@ namespace Baseten
         public CreateChainEnvironmentRequestV1()
         {
         }
+
     }
 }

@@ -56,5 +56,6 @@ namespace Baseten
         public DeploymentConfigResponseV1()
         {
         }
+
     }
 }

@@ -92,5 +92,6 @@ namespace Baseten
         public TrainingUsageV1()
         {
         }
+
     }
 }

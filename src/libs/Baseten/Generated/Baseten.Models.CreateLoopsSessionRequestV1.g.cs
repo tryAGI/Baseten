@@ -43,5 +43,6 @@ namespace Baseten
         public CreateLoopsSessionRequestV1()
         {
         }
+
     }
 }

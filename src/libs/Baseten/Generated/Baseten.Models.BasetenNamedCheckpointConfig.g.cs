@@ -79,5 +79,6 @@ namespace Baseten
         public BasetenNamedCheckpointConfig()
         {
         }
+
     }
 }
