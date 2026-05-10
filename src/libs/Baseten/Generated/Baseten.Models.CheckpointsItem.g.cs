@@ -47,6 +47,13 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        public global::Baseten.BasetenLatestCheckpointConfig PickBasetenLatestCheckpoint() => IsBasetenLatestCheckpoint
+            ? BasetenLatestCheckpoint!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenLatestCheckpoint' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Baseten.BasetenNamedCheckpointConfig? BasetenNamedCheckpoint { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Baseten
             value = BasetenNamedCheckpoint;
             return IsBasetenNamedCheckpoint;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Baseten.BasetenNamedCheckpointConfig PickBasetenNamedCheckpoint() => IsBasetenNamedCheckpoint
+            ? BasetenNamedCheckpoint!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenNamedCheckpoint' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -94,6 +108,11 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        public static CheckpointsItem FromBasetenLatestCheckpoint(global::Baseten.BasetenLatestCheckpointConfig? value) => new CheckpointsItem(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CheckpointsItem(global::Baseten.BasetenNamedCheckpointConfig value) => new CheckpointsItem((global::Baseten.BasetenNamedCheckpointConfig?)value);
 
         /// <summary>
@@ -108,6 +127,11 @@ namespace Baseten
         {
             BasetenNamedCheckpoint = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CheckpointsItem FromBasetenNamedCheckpoint(global::Baseten.BasetenNamedCheckpointConfig? value) => new CheckpointsItem(value);
 
         /// <summary>
         /// 
