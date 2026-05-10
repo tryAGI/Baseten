@@ -42,5 +42,6 @@ namespace Baseten
         public APIKeyV1()
         {
         }
+
     }
 }

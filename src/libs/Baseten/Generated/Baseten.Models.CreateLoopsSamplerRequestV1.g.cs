@@ -80,5 +80,6 @@ namespace Baseten
         public CreateLoopsSamplerRequestV1()
         {
         }
+
     }
 }

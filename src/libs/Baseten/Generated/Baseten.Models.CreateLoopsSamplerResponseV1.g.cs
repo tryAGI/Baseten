@@ -40,5 +40,6 @@ namespace Baseten
         public CreateLoopsSamplerResponseV1()
         {
         }
+
     }
 }

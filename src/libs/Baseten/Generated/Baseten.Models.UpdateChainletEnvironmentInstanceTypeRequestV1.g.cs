@@ -44,5 +44,6 @@ namespace Baseten
         public UpdateChainletEnvironmentInstanceTypeRequestV1()
         {
         }
+
     }
 }

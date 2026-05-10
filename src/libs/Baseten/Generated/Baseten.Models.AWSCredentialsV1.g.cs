@@ -66,5 +66,6 @@ namespace Baseten
         public AWSCredentialsV1()
         {
         }
+
     }
 }

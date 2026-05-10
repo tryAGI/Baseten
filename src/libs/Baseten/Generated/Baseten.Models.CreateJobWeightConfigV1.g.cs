@@ -109,5 +109,6 @@ namespace Baseten
         public CreateJobWeightConfigV1()
         {
         }
+
     }
 }

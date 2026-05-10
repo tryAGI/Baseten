@@ -96,5 +96,6 @@ namespace Baseten
         public RollingDeployConfigV1()
         {
         }
+
     }
 }

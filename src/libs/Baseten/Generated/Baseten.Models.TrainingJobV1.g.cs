@@ -179,5 +179,6 @@ namespace Baseten
         public TrainingJobV1()
         {
         }
+
     }
 }

@@ -66,5 +66,6 @@ namespace Baseten
         public SearchedTrainerV1()
         {
         }
+
     }
 }

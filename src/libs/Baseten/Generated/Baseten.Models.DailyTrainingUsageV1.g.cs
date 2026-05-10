@@ -67,5 +67,6 @@ namespace Baseten
         public DailyTrainingUsageV1()
         {
         }
+
     }
 }

@@ -43,5 +43,6 @@ namespace Baseten
         public ActivateResponseV1()
         {
         }
+
     }
 }

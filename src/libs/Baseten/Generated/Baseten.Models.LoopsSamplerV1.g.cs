@@ -74,5 +74,6 @@ namespace Baseten
         public LoopsSamplerV1()
         {
         }
+
     }
 }

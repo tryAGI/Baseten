@@ -42,5 +42,6 @@ namespace Baseten
         public SecretReferenceV1()
         {
         }
+
     }
 }

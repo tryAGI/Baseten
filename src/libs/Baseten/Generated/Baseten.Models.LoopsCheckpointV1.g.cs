@@ -150,5 +150,6 @@ namespace Baseten
         public LoopsCheckpointV1()
         {
         }
+
     }
 }
