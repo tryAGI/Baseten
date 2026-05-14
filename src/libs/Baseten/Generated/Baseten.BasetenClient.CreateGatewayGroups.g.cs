@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsRunsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateGatewayGroupsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,29 +21,29 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsRunsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateGatewayGroupsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateLoopsRunsSecurityRequirement0,
+            {                s_CreateGatewayGroupsSecurityRequirement0,
             };
-        partial void PrepareCreateLoopsRunsArguments(
+        partial void PrepareCreateGatewayGroupsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopsRunRequestV1 request);
-        partial void PrepareCreateLoopsRunsRequest(
+            global::Baseten.CreateGroupRequestV1 request);
+        partial void PrepareCreateGatewayGroupsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopsRunRequestV1 request);
-        partial void ProcessCreateLoopsRunsResponse(
+            global::Baseten.CreateGroupRequestV1 request);
+        partial void ProcessCreateGatewayGroupsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateLoopsRunsResponseContent(
+        partial void ProcessCreateGatewayGroupsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
+        /// Create a group<br/>
+        /// Creates a group and its endpoint configuration
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -51,25 +51,27 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/runs \<br/>
+        /// --url https://api.baseten.co/v1/gateway/groups \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "session_id": null,<br/>
-        ///   "base_model": null,<br/>
-        ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
-        ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
-        ///   "path": "bt://loops:k4q95w5/weights/step-100"<br/>
+        ///   "metadata": {<br/>
+        ///     "name": "Acme prod",<br/>
+        ///     "external_entity_id": "cust_42"<br/>
+        ///   },<br/>
+        ///   "models": null,<br/>
+        ///   "hierarchy": {<br/>
+        ///     "limit_enforcement": "INDEPENDENT",<br/>
+        ///     "parent_group_id": "abc123"<br/>
+        ///   }<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.GroupV1> CreateGatewayGroupsAsync(
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateGroupRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateLoopsRunsAsResponseAsync(
+            var __response = await CreateGatewayGroupsAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -79,8 +81,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
+        /// Create a group<br/>
+        /// Creates a group and its endpoint configuration
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -88,21 +90,23 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/runs \<br/>
+        /// --url https://api.baseten.co/v1/gateway/groups \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "session_id": null,<br/>
-        ///   "base_model": null,<br/>
-        ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
-        ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
-        ///   "path": "bt://loops:k4q95w5/weights/step-100"<br/>
+        ///   "metadata": {<br/>
+        ///     "name": "Acme prod",<br/>
+        ///     "external_entity_id": "cust_42"<br/>
+        ///   },<br/>
+        ///   "models": null,<br/>
+        ///   "hierarchy": {<br/>
+        ///     "limit_enforcement": "INDEPENDENT",<br/>
+        ///     "parent_group_id": "abc123"<br/>
+        ///   }<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsRunsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GroupV1>> CreateGatewayGroupsAsResponseAsync(
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateGroupRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -110,15 +114,15 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateLoopsRunsArguments(
+            PrepareCreateGatewayGroupsArguments(
                 httpClient: HttpClient,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateLoopsRunsSecurityRequirements,
-                operationName: "CreateLoopsRunsAsync");
+                securityRequirements: s_CreateGatewayGroupsSecurityRequirements,
+                operationName: "CreateGatewayGroupsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -138,7 +142,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/loops/runs",
+                                path: "/v1/gateway/groups",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -183,7 +187,7 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateLoopsRunsRequest(
+                PrepareCreateGatewayGroupsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     request: request);
@@ -203,9 +207,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayGroups",
+                                methodName: "CreateGatewayGroupsAsync",
+                                pathTemplate: "\"/v1/gateway/groups\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -237,9 +241,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayGroups",
+                                methodName: "CreateGatewayGroupsAsync",
+                                pathTemplate: "\"/v1/gateway/groups\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -278,9 +282,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayGroups",
+                                methodName: "CreateGatewayGroupsAsync",
+                                pathTemplate: "\"/v1/gateway/groups\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -318,7 +322,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateLoopsRunsResponse(
+                ProcessCreateGatewayGroupsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -326,9 +330,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayGroups",
+                                methodName: "CreateGatewayGroupsAsync",
+                                pathTemplate: "\"/v1/gateway/groups\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -348,9 +352,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayGroups",
+                                methodName: "CreateGatewayGroupsAsync",
+                                pathTemplate: "\"/v1/gateway/groups\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -378,7 +382,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateLoopsRunsResponseContent(
+                                ProcessCreateGatewayGroupsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -387,9 +391,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateLoopsRunResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.GroupV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GroupV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -421,9 +425,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateLoopsRunResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.GroupV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GroupV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -466,61 +470,36 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
+        /// Create a group<br/>
+        /// Creates a group and its endpoint configuration
         /// </summary>
-        /// <param name="sessionId">
-        /// ID of the Loops session this run belongs to.
+        /// <param name="metadata">
+        /// Group identity + display metadata.
         /// </param>
-        /// <param name="baseModel">
-        /// Base model ID (e.g. 'Qwen/Qwen3-8B').
+        /// <param name="models">
+        /// Per-model rate and usage limit configuration. Defines the group's complete model set. Must be non-empty.
         /// </param>
-        /// <param name="maxSeqLen">
-        /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="loraRank">
-        /// LoRA rank.<br/>
-        /// Default Value: 64
-        /// </param>
-        /// <param name="seed">
-        /// Random seed for reproducibility.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="scaleDownDelaySeconds">
-        /// Seconds of inactivity before the run scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
-        /// Default Value: 3600
-        /// </param>
-        /// <param name="path">
-        /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// <param name="hierarchy">
+        /// Parent linkage and limit enforcement mode. Immutable after creation.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
-            string sessionId,
-            string baseModel,
-            int? maxSeqLen = default,
-            int? loraRank = default,
-            int? seed = default,
-            int? scaleDownDelaySeconds = default,
-            string? path = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.GroupV1> CreateGatewayGroupsAsync(
+            global::Baseten.GroupMetadataV1 metadata,
+            global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1> models,
+            global::Baseten.GroupHierarchyV1 hierarchy,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateLoopsRunRequestV1
+            var __request = new global::Baseten.CreateGroupRequestV1
             {
-                SessionId = sessionId,
-                BaseModel = baseModel,
-                MaxSeqLen = maxSeqLen,
-                LoraRank = loraRank,
-                Seed = seed,
-                ScaleDownDelaySeconds = scaleDownDelaySeconds,
-                Path = path,
+                Metadata = metadata,
+                Models = models,
+                Hierarchy = hierarchy,
             };
 
-            return await CreateLoopsRunsAsync(
+            return await CreateGatewayGroupsAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
