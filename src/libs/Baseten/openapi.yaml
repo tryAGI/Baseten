@@ -4613,6 +4613,30 @@
                     }
                 ],
                 "description": "Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.",
+                "parameters": [
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": true,
+                        "description": "Start date (ISO 8601, UTC). Earliest queryable: 2026-01-01.",
+                        "schema": {
+                            "format": "date-time",
+                            "title": "Start Date",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": true,
+                        "description": "End date in ISO 8601 format (UTC). Date range cannot exceed 31 days.",
+                        "schema": {
+                            "format": "date-time",
+                            "title": "End Date",
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",

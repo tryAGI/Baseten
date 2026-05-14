@@ -26,10 +26,14 @@ namespace Baseten
             {                s_GetBillingUsageSummarySecurityRequirement0,
             };
         partial void PrepareGetBillingUsageSummaryArguments(
-            global::System.Net.Http.HttpClient httpClient);
+            global::System.Net.Http.HttpClient httpClient,
+            ref global::System.DateTime startDate,
+            ref global::System.DateTime endDate);
         partial void PrepareGetBillingUsageSummaryRequest(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::System.DateTime startDate,
+            global::System.DateTime endDate);
         partial void ProcessGetBillingUsageSummaryResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -43,6 +47,8 @@ namespace Baseten
         /// Gets billing usage summary for a date range<br/>
         /// Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.
         /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -52,10 +58,14 @@ namespace Baseten
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.UsageSummaryV1> GetBillingUsageSummaryAsync(
+            global::System.DateTime startDate,
+            global::System.DateTime endDate,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetBillingUsageSummaryAsResponseAsync(
+                startDate: startDate,
+                endDate: endDate,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -66,6 +76,8 @@ namespace Baseten
         /// Gets billing usage summary for a date range<br/>
         /// Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.
         /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -75,13 +87,17 @@ namespace Baseten
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UsageSummaryV1>> GetBillingUsageSummaryAsResponseAsync(
+            global::System.DateTime startDate,
+            global::System.DateTime endDate,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareGetBillingUsageSummaryArguments(
-                httpClient: HttpClient);
+                httpClient: HttpClient,
+                startDate: ref startDate,
+                endDate: ref endDate);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
@@ -109,6 +125,10 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: "/v1/billing/usage_summary",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddRequiredParameter("start_date", startDate.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                                .AddRequiredParameter("end_date", endDate.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -148,7 +168,9 @@ namespace Baseten
                     request: __httpRequest);
                 PrepareGetBillingUsageSummaryRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest);
+                    httpRequestMessage: __httpRequest,
+                    startDate: startDate!,
+                    endDate: endDate!);
 
                 return __httpRequest;
             }
