@@ -69,8 +69,8 @@ namespace Baseten
         /// Base model ID (e.g. 'Qwen/Qwen3-8B').
         /// </param>
         /// <param name="maxSeqLen">
-        /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send.<br/>
-        /// Default Value: 131072
+        /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="loraRank">
         /// LoRA rank.<br/>
