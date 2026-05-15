@@ -351,6 +351,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsCheckpointsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsCheckpointV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointFilesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsDeploymentStatusV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Name), TypeInfoPropertyName = "Name2")]

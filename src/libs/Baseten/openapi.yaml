@@ -3699,6 +3699,44 @@
                 }
             }
         },
+        "/v1/loops/checkpoints/validate": {
+            "post": {
+                "summary": "Validate a Loops checkpoint bt:// URI.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/checkpoints/validate \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"checkpoint_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints/validate\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'checkpoint_path': 'bt://loops:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Whether the caller can manage and use this checkpoint.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ValidateLoopsCheckpointRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateLoopsCheckpointResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/loops/checkpoints/{checkpoint_id}/files": {
             "get": {
                 "summary": "Get Loops checkpoint files.",
@@ -11001,6 +11039,30 @@
                     "checkpoints"
                 ],
                 "title": "ListLoopsCheckpointsResponseV1",
+                "type": "object"
+            },
+            "ValidateLoopsCheckpointRequestV1": {
+                "description": "Request body for ``POST /v1/loops/checkpoints/validate``.",
+                "properties": {
+                    "checkpoint_path": {
+                        "description": "bt:// URI of a sampler checkpoint. Form: bt://loops:<run_id>/sampler_weights/<checkpoint_name>.",
+                        "examples": [
+                            "bt://loops:k4q95w5/sampler_weights/step-100"
+                        ],
+                        "title": "Checkpoint Path",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "checkpoint_path"
+                ],
+                "title": "ValidateLoopsCheckpointRequestV1",
+                "type": "object"
+            },
+            "ValidateLoopsCheckpointResponseV1": {
+                "description": "Response for ``POST /v1/loops/checkpoints/validate``. Empty on success;\ninaccessible or malformed paths raise 400.",
+                "properties": {},
+                "title": "ValidateLoopsCheckpointResponseV1",
                 "type": "object"
             },
             "LoopsCheckpointFilesResponseV1": {
