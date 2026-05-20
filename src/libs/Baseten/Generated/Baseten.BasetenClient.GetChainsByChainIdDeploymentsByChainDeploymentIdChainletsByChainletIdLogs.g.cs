@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateModelsByModelIdDeploymentsByDeploymentIdLogsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,64 +21,84 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateModelsByModelIdDeploymentsByDeploymentIdLogsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateModelsByModelIdDeploymentsByDeploymentIdLogsSecurityRequirement0,
+            {                s_GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsSecurityRequirement0,
             };
-        partial void PrepareCreateModelsByModelIdDeploymentsByDeploymentIdLogsArguments(
+        partial void PrepareGetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string modelId,
-            ref string deploymentId,
-            global::Baseten.GetDeploymentLogsRequestV1 request);
-        partial void PrepareCreateModelsByModelIdDeploymentsByDeploymentIdLogsRequest(
+            int? startEpochMillis,
+            int? endEpochMillis,
+            global::Baseten.SortOrderV1? direction,
+            int? limit,
+            ref string chainId,
+            ref string chainDeploymentId,
+            ref string chainletId);
+        partial void PrepareGetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string modelId,
-            string deploymentId,
-            global::Baseten.GetDeploymentLogsRequestV1 request);
-        partial void ProcessCreateModelsByModelIdDeploymentsByDeploymentIdLogsResponse(
+            int? startEpochMillis,
+            int? endEpochMillis,
+            global::Baseten.SortOrderV1? direction,
+            int? limit,
+            string chainId,
+            string chainDeploymentId,
+            string chainletId);
+        partial void ProcessGetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateModelsByModelIdDeploymentsByDeploymentIdLogsResponseContent(
+        partial void ProcessGetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Gets the logs for a model deployment.<br/>
-        /// Gets all the logs for a model deployment in the given time range.
+        /// Gets the logs for a chainlet within a chain deployment.<br/>
+        /// Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.
         /// </summary>
-        /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
-        /// <param name="request"></param>
+        /// <param name="startEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="endEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="direction">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Default Value: 500
+        /// </param>
+        /// <param name="chainId"></param>
+        /// <param name="chainDeploymentId"></param>
+        /// <param name="chainletId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "start_epoch_millis": null,<br/>
-        ///   "end_epoch_millis": null,<br/>
-        ///   "direction": null,<br/>
-        ///   "limit": null<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/chainlets/{chainlet_id}/logs \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.GetLogsResponseV1> CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync(
-            string modelId,
-            string deploymentId,
-
-            global::Baseten.GetDeploymentLogsRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetLogsResponseV1> GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync(
+            string chainId,
+            string chainDeploymentId,
+            string chainletId,
+            int? startEpochMillis = default,
+            int? endEpochMillis = default,
+            global::Baseten.SortOrderV1? direction = default,
+            int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsResponseAsync(
-                modelId: modelId,
-                deploymentId: deploymentId,
-
-                request: request,
+            var __response = await GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsResponseAsync(
+                chainId: chainId,
+                chainDeploymentId: chainDeploymentId,
+                chainletId: chainletId,
+                startEpochMillis: startEpochMillis,
+                endEpochMillis: endEpochMillis,
+                direction: direction,
+                limit: limit,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -86,49 +106,60 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets the logs for a model deployment.<br/>
-        /// Gets all the logs for a model deployment in the given time range.
+        /// Gets the logs for a chainlet within a chain deployment.<br/>
+        /// Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.
         /// </summary>
-        /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
-        /// <param name="request"></param>
+        /// <param name="startEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="endEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="direction">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Default Value: 500
+        /// </param>
+        /// <param name="chainId"></param>
+        /// <param name="chainDeploymentId"></param>
+        /// <param name="chainletId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "start_epoch_millis": null,<br/>
-        ///   "end_epoch_millis": null,<br/>
-        ///   "direction": null,<br/>
-        ///   "limit": null<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/chainlets/{chainlet_id}/logs \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>> CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsResponseAsync(
-            string modelId,
-            string deploymentId,
-
-            global::Baseten.GetDeploymentLogsRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>> GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsResponseAsync(
+            string chainId,
+            string chainDeploymentId,
+            string chainletId,
+            int? startEpochMillis = default,
+            int? endEpochMillis = default,
+            global::Baseten.SortOrderV1? direction = default,
+            int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateModelsByModelIdDeploymentsByDeploymentIdLogsArguments(
+            PrepareGetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsArguments(
                 httpClient: HttpClient,
-                modelId: ref modelId,
-                deploymentId: ref deploymentId,
-                request: request);
+                startEpochMillis: startEpochMillis,
+                endEpochMillis: endEpochMillis,
+                direction: direction,
+                limit: limit,
+                chainId: ref chainId,
+                chainDeploymentId: ref chainDeploymentId,
+                chainletId: ref chainletId);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateModelsByModelIdDeploymentsByDeploymentIdLogsSecurityRequirements,
-                operationName: "CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync");
+                securityRequirements: s_GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsSecurityRequirements,
+                operationName: "GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -148,15 +179,21 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/models/{modelId}/deployments/{deploymentId}/logs",
+                                path: $"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("start_epoch_millis", startEpochMillis?.ToString())
+                                .AddOptionalParameter("end_epoch_millis", endEpochMillis?.ToString())
+                                .AddOptionalParameter("direction", direction?.ToString())
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -179,12 +216,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -193,12 +224,16 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateModelsByModelIdDeploymentsByDeploymentIdLogsRequest(
+                PrepareGetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId!,
-                    deploymentId: deploymentId!,
-                    request: request);
+                    startEpochMillis: startEpochMillis,
+                    endEpochMillis: endEpochMillis,
+                    direction: direction,
+                    limit: limit,
+                    chainId: chainId!,
+                    chainDeploymentId: chainDeploymentId!,
+                    chainletId: chainletId!);
 
                 return __httpRequest;
             }
@@ -215,10 +250,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
-                                httpMethod: "POST",
+                                operationId: "getChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -249,10 +284,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
-                                httpMethod: "POST",
+                                operationId: "getChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -290,10 +325,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
-                                httpMethod: "POST",
+                                operationId: "getChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -330,7 +365,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateModelsByModelIdDeploymentsByDeploymentIdLogsResponse(
+                ProcessGetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -338,10 +373,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
-                                httpMethod: "POST",
+                                operationId: "getChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -360,10 +395,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
-                                httpMethod: "POST",
+                                operationId: "getChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogs",
+                                methodName: "GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsAsync",
+                                pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}/chainlets/{chainletId}/logs\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -390,7 +425,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateModelsByModelIdDeploymentsByDeploymentIdLogsResponseContent(
+                                ProcessGetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -476,56 +511,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Gets the logs for a model deployment.<br/>
-        /// Gets all the logs for a model deployment in the given time range.
-        /// </summary>
-        /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
-        /// <param name="startEpochMillis">
-        /// Epoch millis timestamp to start fetching logs<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="endEpochMillis">
-        /// Epoch millis timestamp to end fetching logs<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="direction">
-        /// Sort order for logs<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="limit">
-        /// Limit of logs to fetch in a single request<br/>
-        /// Default Value: 500
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.GetLogsResponseV1> CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync(
-            string modelId,
-            string deploymentId,
-            int? startEpochMillis = default,
-            int? endEpochMillis = default,
-            global::Baseten.SortOrderV1? direction = default,
-            int? limit = default,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.GetDeploymentLogsRequestV1
-            {
-                StartEpochMillis = startEpochMillis,
-                EndEpochMillis = endEpochMillis,
-                Direction = direction,
-                Limit = limit,
-            };
-
-            return await CreateModelsByModelIdDeploymentsByDeploymentIdLogsAsync(
-                modelId: modelId,
-                deploymentId: deploymentId,
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

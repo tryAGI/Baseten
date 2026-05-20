@@ -27,11 +27,15 @@ namespace Baseten
             };
         partial void PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref int? pageSize,
+            ref int? pageToken,
             ref string trainingProjectId,
             ref string trainingJobId);
         partial void PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            int? pageSize,
+            int? pageToken,
             string trainingProjectId,
             string trainingJobId);
         partial void ProcessGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesResponse(
@@ -47,6 +51,12 @@ namespace Baseten
         /// Get training job checkpoint files.<br/>
         /// Get presigned URLs for all checkpoint files for a training job.
         /// </summary>
+        /// <param name="pageSize">
+        /// Default Value: 1000
+        /// </param>
+        /// <param name="pageToken">
+        /// Default Value: 0
+        /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -60,12 +70,16 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.GetTrainingJobCheckpointFilesResponseV1> GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesAsync(
             string trainingProjectId,
             string trainingJobId,
+            int? pageSize = default,
+            int? pageToken = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesAsResponseAsync(
                 trainingProjectId: trainingProjectId,
                 trainingJobId: trainingJobId,
+                pageSize: pageSize,
+                pageToken: pageToken,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -76,6 +90,12 @@ namespace Baseten
         /// Get training job checkpoint files.<br/>
         /// Get presigned URLs for all checkpoint files for a training job.
         /// </summary>
+        /// <param name="pageSize">
+        /// Default Value: 1000
+        /// </param>
+        /// <param name="pageToken">
+        /// Default Value: 0
+        /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -89,6 +109,8 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobCheckpointFilesResponseV1>> GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesAsResponseAsync(
             string trainingProjectId,
             string trainingJobId,
+            int? pageSize = default,
+            int? pageToken = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -96,6 +118,8 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesArguments(
                 httpClient: HttpClient,
+                pageSize: ref pageSize,
+                pageToken: ref pageToken,
                 trainingProjectId: ref trainingProjectId,
                 trainingJobId: ref trainingJobId);
 
@@ -125,6 +149,10 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/checkpoint_files",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("page_size", pageSize?.ToString())
+                                .AddOptionalParameter("page_token", pageToken?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -165,6 +193,8 @@ namespace Baseten
                 PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    pageSize: pageSize,
+                    pageToken: pageToken,
                     trainingProjectId: trainingProjectId!,
                     trainingJobId: trainingJobId!);
 
