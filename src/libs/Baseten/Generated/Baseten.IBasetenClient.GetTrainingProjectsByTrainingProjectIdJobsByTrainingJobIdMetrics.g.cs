@@ -5,14 +5,14 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get training job checkpoint files.<br/>
-        /// Get presigned URLs for all checkpoint files for a training job.
+        /// Get the metrics for a training job.<br/>
+        /// Get the metrics for a training job.
         /// </summary>
-        /// <param name="pageSize">
-        /// Default Value: 1000
+        /// <param name="endEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="pageToken">
-        /// Default Value: 0
+        /// <param name="startEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -21,25 +21,25 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoint_files \<br/>
+        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.GetTrainingJobCheckpointFilesResponseV1> GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.GetTrainingJobMetricsResponseV1> GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdMetricsAsync(
             string trainingProjectId,
             string trainingJobId,
-            int? pageSize = default,
-            int? pageToken = default,
+            int? endEpochMillis = default,
+            int? startEpochMillis = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get training job checkpoint files.<br/>
-        /// Get presigned URLs for all checkpoint files for a training job.
+        /// Get the metrics for a training job.<br/>
+        /// Get the metrics for a training job.
         /// </summary>
-        /// <param name="pageSize">
-        /// Default Value: 1000
+        /// <param name="endEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="pageToken">
-        /// Default Value: 0
+        /// <param name="startEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -48,14 +48,14 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoint_files \<br/>
+        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobCheckpointFilesResponseV1>> GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobMetricsResponseV1>> GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdMetricsAsResponseAsync(
             string trainingProjectId,
             string trainingJobId,
-            int? pageSize = default,
-            int? pageToken = default,
+            int? endEpochMillis = default,
+            int? startEpochMillis = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

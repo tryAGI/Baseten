@@ -27,11 +27,13 @@ namespace Baseten
             };
         partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdConfigArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::Baseten.DeploymentConfigOutputFormat? outputFormat,
             ref string modelId,
             ref string deploymentId);
         partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdConfigRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Baseten.DeploymentConfigOutputFormat? outputFormat,
             string modelId,
             string deploymentId);
         partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdConfigResponse(
@@ -47,6 +49,9 @@ namespace Baseten
         /// Gets a deployment's config<br/>
         /// Returns the deployment's config. `output_format` query param picks the shape: 'raw' (config.yaml text), 'parsed' (dict with defaults), or 'both' (default).
         /// </summary>
+        /// <param name="outputFormat">
+        /// Default Value: both
+        /// </param>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -60,12 +65,14 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.DeploymentConfigResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdConfigAsync(
             string modelId,
             string deploymentId,
+            global::Baseten.DeploymentConfigOutputFormat? outputFormat = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetModelsByModelIdDeploymentsByDeploymentIdConfigAsResponseAsync(
                 modelId: modelId,
                 deploymentId: deploymentId,
+                outputFormat: outputFormat,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -76,6 +83,9 @@ namespace Baseten
         /// Gets a deployment's config<br/>
         /// Returns the deployment's config. `output_format` query param picks the shape: 'raw' (config.yaml text), 'parsed' (dict with defaults), or 'both' (default).
         /// </summary>
+        /// <param name="outputFormat">
+        /// Default Value: both
+        /// </param>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -89,6 +99,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeploymentConfigResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdConfigAsResponseAsync(
             string modelId,
             string deploymentId,
+            global::Baseten.DeploymentConfigOutputFormat? outputFormat = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -96,6 +107,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetModelsByModelIdDeploymentsByDeploymentIdConfigArguments(
                 httpClient: HttpClient,
+                outputFormat: ref outputFormat,
                 modelId: ref modelId,
                 deploymentId: ref deploymentId);
 
@@ -125,6 +137,9 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/models/{modelId}/deployments/{deploymentId}/config",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("output_format", outputFormat?.ToValueString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -165,6 +180,7 @@ namespace Baseten
                 PrepareGetModelsByModelIdDeploymentsByDeploymentIdConfigRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    outputFormat: outputFormat,
                     modelId: modelId!,
                     deploymentId: deploymentId!);
 
