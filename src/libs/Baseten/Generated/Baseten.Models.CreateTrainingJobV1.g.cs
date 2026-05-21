@@ -140,5 +140,6 @@ namespace Baseten
         public CreateTrainingJobV1()
         {
         }
+
     }
 }

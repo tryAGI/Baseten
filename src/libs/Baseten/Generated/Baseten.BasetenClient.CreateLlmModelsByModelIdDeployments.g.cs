@@ -97,6 +97,70 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await CreateLlmModelsByModelIdDeploymentsAsResponseAsync(
+                modelId: modelId,
+
+                request: request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Creates a new BIS LLM deployment version
+        /// </summary>
+        /// <param name="modelId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/llm_models/{model_id}/deployments \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "resources": null,<br/>
+        ///   "llm_version": null,<br/>
+        ///   "llm_config": null,<br/>
+        ///   "environment_variables": null,<br/>
+        ///   "model_metadata": null,<br/>
+        ///   "autoscaling_settings": {<br/>
+        ///     "autoscaling_window": 600,<br/>
+        ///     "concurrency_target": null,<br/>
+        ///     "max_replica": 5,<br/>
+        ///     "min_replica": 1,<br/>
+        ///     "scale_down_delay": 300,<br/>
+        ///     "target_in_flight_tokens": null,<br/>
+        ///     "target_utilization_percentage": null<br/>
+        ///   },<br/>
+        ///   "additional_autoscaling_config": {<br/>
+        ///     "metrics": [<br/>
+        ///       {<br/>
+        ///         "name": "in_flight_tokens",<br/>
+        ///         "target": 40000<br/>
+        ///       }<br/>
+        ///     ]<br/>
+        ///   },<br/>
+        ///   "metadata": {<br/>
+        ///     "environment": "production",<br/>
+        ///     "git_sha": "abc123"<br/>
+        ///   },<br/>
+        ///   "weights": [<br/>
+        ///     {<br/>
+        ///       "mount_location": "/models/base",<br/>
+        ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
+        ///     }<br/>
+        ///   ]<br/>
+        /// }'
+        /// </remarks>
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LLMModelHandleV1>> CreateLlmModelsByModelIdDeploymentsAsResponseAsync(
+            string modelId,
+
+            global::Baseten.CreateLLMModelVersionRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -128,6 +192,7 @@ namespace Baseten
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/llm_models/{modelId}/deployments",
                                 baseUri: HttpClient.BaseAddress);
@@ -208,6 +273,8 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -218,6 +285,11 @@ namespace Baseten
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Baseten.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -235,6 +307,8 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -244,8 +318,7 @@ namespace Baseten
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Baseten.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -254,6 +327,11 @@ namespace Baseten
                         __attempt < __maxAttempts &&
                         global::Baseten.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Baseten.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -270,14 +348,15 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Baseten.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -317,6 +396,8 @@ namespace Baseten
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -337,6 +418,8 @@ namespace Baseten
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -361,9 +444,13 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Baseten.LLMModelHandleV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.LLMModelHandleV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.LLMModelHandleV1>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -391,9 +478,13 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Baseten.LLMModelHandleV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.LLMModelHandleV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.LLMModelHandleV1>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

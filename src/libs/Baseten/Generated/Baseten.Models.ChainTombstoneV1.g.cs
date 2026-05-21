@@ -54,5 +54,6 @@ namespace Baseten
         public ChainTombstoneV1()
         {
         }
+
     }
 }

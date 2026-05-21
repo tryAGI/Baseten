@@ -82,5 +82,6 @@ namespace Baseten
         public GetDeploymentLogsRequestV1()
         {
         }
+
     }
 }

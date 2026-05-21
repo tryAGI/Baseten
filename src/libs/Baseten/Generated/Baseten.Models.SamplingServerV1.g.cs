@@ -50,5 +50,6 @@ namespace Baseten
         public SamplingServerV1()
         {
         }
+
     }
 }

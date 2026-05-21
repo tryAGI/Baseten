@@ -55,5 +55,6 @@ namespace Baseten
         public SignSSHCertificateRequestV1()
         {
         }
+
     }
 }

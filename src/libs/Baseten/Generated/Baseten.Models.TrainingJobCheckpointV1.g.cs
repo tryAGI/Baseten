@@ -125,5 +125,6 @@ namespace Baseten
         public TrainingJobCheckpointV1()
         {
         }
+
     }
 }

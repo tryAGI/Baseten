@@ -62,6 +62,60 @@ namespace Baseten
         /// Creates a new BIS LLM deployment
         /// </summary>
         /// <param name="teamId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/teams/{team_id}/llm_models \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "resources": null,<br/>
+        ///   "llm_version": null,<br/>
+        ///   "llm_config": null,<br/>
+        ///   "environment_variables": null,<br/>
+        ///   "model_metadata": null,<br/>
+        ///   "autoscaling_settings": {<br/>
+        ///     "autoscaling_window": 600,<br/>
+        ///     "concurrency_target": null,<br/>
+        ///     "max_replica": 5,<br/>
+        ///     "min_replica": 1,<br/>
+        ///     "scale_down_delay": 300,<br/>
+        ///     "target_in_flight_tokens": null,<br/>
+        ///     "target_utilization_percentage": null<br/>
+        ///   },<br/>
+        ///   "additional_autoscaling_config": {<br/>
+        ///     "metrics": [<br/>
+        ///       {<br/>
+        ///         "name": "in_flight_tokens",<br/>
+        ///         "target": 40000<br/>
+        ///       }<br/>
+        ///     ]<br/>
+        ///   },<br/>
+        ///   "metadata": {<br/>
+        ///     "environment": "production",<br/>
+        ///     "git_sha": "abc123"<br/>
+        ///   },<br/>
+        ///   "weights": [<br/>
+        ///     {<br/>
+        ///       "mount_location": "/models/base",<br/>
+        ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
+        ///     }<br/>
+        ///   ],<br/>
+        ///   "name": null<br/>
+        /// }'
+        /// </remarks>
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LLMModelHandleV1>> CreateTeamsByTeamIdLlmModelsAsResponseAsync(
+            string teamId,
+
+            global::Baseten.CreateLLMModelRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Creates a new BIS LLM deployment
+        /// </summary>
+        /// <param name="teamId"></param>
         /// <param name="resources">
         /// Resources allocated to the model
         /// </param>

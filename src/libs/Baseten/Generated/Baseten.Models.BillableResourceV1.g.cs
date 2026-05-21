@@ -132,5 +132,6 @@ namespace Baseten
         public BillableResourceV1()
         {
         }
+
     }
 }

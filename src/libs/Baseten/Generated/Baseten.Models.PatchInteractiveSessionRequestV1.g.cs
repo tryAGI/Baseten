@@ -57,5 +57,6 @@ namespace Baseten
         public PatchInteractiveSessionRequestV1()
         {
         }
+
     }
 }

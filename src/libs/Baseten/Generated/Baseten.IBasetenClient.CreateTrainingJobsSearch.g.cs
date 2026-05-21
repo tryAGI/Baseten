@@ -35,6 +35,33 @@ namespace Baseten
         /// Search training jobs.<br/>
         /// Search training jobs for the organization.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/training_jobs/search \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "project_id": "n4q95w5",<br/>
+        ///   "job_id": "p7qr9qv",<br/>
+        ///   "statuses": [<br/>
+        ///     "TRAINING_JOB_RUNNING",<br/>
+        ///     "TRAINING_JOB_COMPLETED"<br/>
+        ///   ],<br/>
+        ///   "order_by": null<br/>
+        /// }'
+        /// </remarks>
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.SearchTrainingJobsResponseV1>> CreateTrainingJobsSearchAsResponseAsync(
+
+            global::Baseten.SearchTrainingJobsRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Search training jobs.<br/>
+        /// Search training jobs for the organization.
+        /// </summary>
         /// <param name="projectId">
         /// Filter the training jobs by project ID.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

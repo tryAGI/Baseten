@@ -1,0 +1,105 @@
+#nullable enable
+
+namespace Baseten
+{
+    public partial interface IBasetenClient
+    {
+        /// <summary>
+        /// Create a trainer server.<br/>
+        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "model": null,<br/>
+        ///   "max_seq_len": null,<br/>
+        ///   "lora_rank": null,<br/>
+        ///   "seed": null,<br/>
+        ///   "scale_down_delay_seconds": null,<br/>
+        ///   "checkpoint_path": "bt://loops:k4q95w5/weights/step-100"<br/>
+        /// }'
+        /// </remarks>
+        global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainerSessionsBySessionIdTrainersAsync(
+            string sessionId,
+
+            global::Baseten.CreateTrainerServerRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create a trainer server.<br/>
+        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "model": null,<br/>
+        ///   "max_seq_len": null,<br/>
+        ///   "lora_rank": null,<br/>
+        ///   "seed": null,<br/>
+        ///   "scale_down_delay_seconds": null,<br/>
+        ///   "checkpoint_path": "bt://loops:k4q95w5/weights/step-100"<br/>
+        /// }'
+        /// </remarks>
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateTrainerServerResponseV1>> CreateTrainerSessionsBySessionIdTrainersAsResponseAsync(
+            string sessionId,
+
+            global::Baseten.CreateTrainerServerRequestV1 request,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create a trainer server.<br/>
+        /// Creates a TrainerServer and an associated SamplingServer for the given trainer session.
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="model">
+        /// Base model ID (e.g. 'Qwen/Qwen3-8B').
+        /// </param>
+        /// <param name="maxSeqLen">
+        /// Maximum sequence length for training. Defaults to the maximum supported by the model configuration.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="loraRank">
+        /// LoRA rank.<br/>
+        /// Default Value: 64
+        /// </param>
+        /// <param name="seed">
+        /// Random seed for reproducibility.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="scaleDownDelaySeconds">
+        /// Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
+        /// Default Value: 3600
+        /// </param>
+        /// <param name="checkpointPath">
+        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        global::System.Threading.Tasks.Task<global::Baseten.CreateTrainerServerResponseV1> CreateTrainerSessionsBySessionIdTrainersAsync(
+            string sessionId,
+            string model,
+            int? maxSeqLen = default,
+            int? loraRank = default,
+            int? seed = default,
+            int? scaleDownDelaySeconds = default,
+            string? checkpointPath = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

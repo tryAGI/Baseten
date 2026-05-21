@@ -85,5 +85,6 @@ namespace Baseten
         public InteractiveSessionConfigV1()
         {
         }
+
     }
 }

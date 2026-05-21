@@ -121,5 +121,6 @@ namespace Baseten
         public UpdateAutoscalingSettingsV1()
         {
         }
+
     }
 }

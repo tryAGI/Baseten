@@ -21,5 +21,22 @@ namespace Baseten
             string userDefinedListingId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Deletes a library listing<br/>
+        /// Deletes a library listing and all of its associated versions. Any versions that are currently live will also be removed.
+        /// </summary>
+        /// <param name="userDefinedListingId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request DELETE \<br/>
+        /// --url https://api.baseten.co/v1/library_listings/{user_defined_listing_id} \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// </remarks>
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LibraryListingTombstoneV1>> DeleteLibraryListingsByUserDefinedListingIdAsResponseAsync(
+            string userDefinedListingId,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

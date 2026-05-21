@@ -27,11 +27,15 @@ namespace Baseten
             };
         partial void PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref int? pageSize,
+            ref int? pageToken,
             ref string trainingProjectId,
             ref string trainingJobId);
         partial void PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            int? pageSize,
+            int? pageToken,
             string trainingProjectId,
             string trainingJobId);
         partial void ProcessGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesResponse(
@@ -47,6 +51,12 @@ namespace Baseten
         /// Get training job checkpoint files.<br/>
         /// Get presigned URLs for all checkpoint files for a training job.
         /// </summary>
+        /// <param name="pageSize">
+        /// Default Value: 1000
+        /// </param>
+        /// <param name="pageToken">
+        /// Default Value: 0
+        /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -60,6 +70,47 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.GetTrainingJobCheckpointFilesResponseV1> GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesAsync(
             string trainingProjectId,
             string trainingJobId,
+            int? pageSize = default,
+            int? pageToken = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __response = await GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesAsResponseAsync(
+                trainingProjectId: trainingProjectId,
+                trainingJobId: trainingJobId,
+                pageSize: pageSize,
+                pageToken: pageToken,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Get training job checkpoint files.<br/>
+        /// Get presigned URLs for all checkpoint files for a training job.
+        /// </summary>
+        /// <param name="pageSize">
+        /// Default Value: 1000
+        /// </param>
+        /// <param name="pageToken">
+        /// Default Value: 0
+        /// </param>
+        /// <param name="trainingProjectId"></param>
+        /// <param name="trainingJobId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoint_files \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// </remarks>
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobCheckpointFilesResponseV1>> GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesAsResponseAsync(
+            string trainingProjectId,
+            string trainingJobId,
+            int? pageSize = default,
+            int? pageToken = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -67,6 +118,8 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesArguments(
                 httpClient: HttpClient,
+                pageSize: ref pageSize,
+                pageToken: ref pageToken,
                 trainingProjectId: ref trainingProjectId,
                 trainingJobId: ref trainingJobId);
 
@@ -92,9 +145,14 @@ namespace Baseten
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}/checkpoint_files",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("page_size", pageSize?.ToString())
+                                .AddOptionalParameter("page_token", pageToken?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -135,6 +193,8 @@ namespace Baseten
                 PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointFilesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    pageSize: pageSize,
+                    pageToken: pageToken,
                     trainingProjectId: trainingProjectId!,
                     trainingJobId: trainingJobId!);
 
@@ -166,6 +226,8 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -176,6 +238,11 @@ namespace Baseten
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Baseten.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -193,6 +260,8 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -202,8 +271,7 @@ namespace Baseten
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Baseten.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -212,6 +280,11 @@ namespace Baseten
                         __attempt < __maxAttempts &&
                         global::Baseten.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Baseten.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -228,14 +301,15 @@ namespace Baseten
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Baseten.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -275,6 +349,8 @@ namespace Baseten
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -295,6 +371,8 @@ namespace Baseten
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -319,9 +397,13 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Baseten.GetTrainingJobCheckpointFilesResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.GetTrainingJobCheckpointFilesResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobCheckpointFilesResponseV1>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -349,9 +431,13 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Baseten.GetTrainingJobCheckpointFilesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.GetTrainingJobCheckpointFilesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobCheckpointFilesResponseV1>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

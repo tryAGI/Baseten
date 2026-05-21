@@ -23,5 +23,24 @@ namespace Baseten
             string deploymentId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retries a failed deployment<br/>
+        /// Retries a failed deployment and returns the retry status and updated deployment.
+        /// </summary>
+        /// <param name="modelId"></param>
+        /// <param name="deploymentId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Baseten.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/retry \<br/>
+        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// </remarks>
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RetryDeploymentResponseV1>> CreateModelsByModelIdDeploymentsByDeploymentIdRetryAsResponseAsync(
+            string modelId,
+            string deploymentId,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

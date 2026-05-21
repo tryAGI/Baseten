@@ -16,15 +16,15 @@ namespace Baseten
         public required string Model { get; set; }
 
         /// <summary>
-        /// Maximum sequence length for training.<br/>
-        /// Default Value: 32768
+        /// Maximum sequence length for training. Defaults to the maximum supported by the model configuration.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_seq_len")]
         public int? MaxSeqLen { get; set; }
 
         /// <summary>
         /// LoRA rank.<br/>
-        /// Default Value: 16
+        /// Default Value: 64
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("lora_rank")]
         public int? LoraRank { get; set; }
@@ -35,6 +35,20 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
         public int? Seed { get; set; }
+
+        /// <summary>
+        /// Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
+        /// Default Value: 3600
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scale_down_delay_seconds")]
+        public int? ScaleDownDelaySeconds { get; set; }
+
+        /// <summary>
+        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("checkpoint_path")]
+        public string? CheckpointPath { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -49,15 +63,23 @@ namespace Baseten
         /// Base model ID (e.g. 'Qwen/Qwen3-8B').
         /// </param>
         /// <param name="maxSeqLen">
-        /// Maximum sequence length for training.<br/>
-        /// Default Value: 32768
+        /// Maximum sequence length for training. Defaults to the maximum supported by the model configuration.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="loraRank">
         /// LoRA rank.<br/>
-        /// Default Value: 16
+        /// Default Value: 64
         /// </param>
         /// <param name="seed">
         /// Random seed for reproducibility.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="scaleDownDelaySeconds">
+        /// Seconds of inactivity before the trainer scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
+        /// Default Value: 3600
+        /// </param>
+        /// <param name="checkpointPath">
+        /// Optional bt:// URI of an existing trainer-target checkpoint to resume training from. Form: bt://loops:&lt;trainer_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
@@ -67,12 +89,16 @@ namespace Baseten
             string model,
             int? maxSeqLen,
             int? loraRank,
-            int? seed)
+            int? seed,
+            int? scaleDownDelaySeconds,
+            string? checkpointPath)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.MaxSeqLen = maxSeqLen;
             this.LoraRank = loraRank;
             this.Seed = seed;
+            this.ScaleDownDelaySeconds = scaleDownDelaySeconds;
+            this.CheckpointPath = checkpointPath;
         }
 
         /// <summary>
@@ -81,5 +107,6 @@ namespace Baseten
         public CreateTrainerServerRequestV1()
         {
         }
+
     }
 }

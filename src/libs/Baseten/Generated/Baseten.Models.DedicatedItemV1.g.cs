@@ -90,5 +90,6 @@ namespace Baseten
         public DedicatedItemV1()
         {
         }
+
     }
 }

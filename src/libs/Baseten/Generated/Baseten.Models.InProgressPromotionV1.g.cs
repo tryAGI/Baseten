@@ -81,5 +81,6 @@ namespace Baseten
         public InProgressPromotionV1()
         {
         }
+
     }
 }
