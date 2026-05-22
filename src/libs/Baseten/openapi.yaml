@@ -4452,6 +4452,49 @@
                 }
             ]
         },
+        "/v1/loops/deployments/{deployment_id}/metrics": {
+            "post": {
+                "summary": "Get metrics for a Loops trainer deployment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/deployments/{deployment_id}/metrics \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"end_epoch_millis\": null,\n  \"start_epoch_millis\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'end_epoch_millis': None, 'start_epoch_millis': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate / concurrency / latency for the trainer pods. The sampler half of a Loops deployment is an OracleVersion and uses the existing model-metrics endpoint.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetLoopsDeploymentMetricsRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLoopsDeploymentMetricsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
         "/v1/training/capacity": {
             "get": {
                 "summary": "Get training GPU capacity.",
@@ -12394,6 +12437,311 @@
                     "deployment"
                 ],
                 "title": "GetLoopsDeploymentResponseV1",
+                "type": "object"
+            },
+            "GetLoopsDeploymentMetricsRequestV1": {
+                "description": "Time-range request for trainer deployment metrics.",
+                "properties": {
+                    "end_epoch_millis": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Epoch millis to end fetching metrics.",
+                        "title": "End Epoch Millis"
+                    },
+                    "start_epoch_millis": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Epoch millis to start fetching metrics.",
+                        "title": "Start Epoch Millis"
+                    }
+                },
+                "title": "GetLoopsDeploymentMetricsRequestV1",
+                "type": "object"
+            },
+            "InferenceVolumeByStatusDatapointV1": {
+                "description": "Request rate split by HTTP response code class.",
+                "properties": {
+                    "timestamp": {
+                        "description": "ISO 8601 timestamp.",
+                        "format": "date-time",
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "status_2xx": {
+                        "description": "2xx requests per second.",
+                        "title": "Status 2Xx",
+                        "type": "number"
+                    },
+                    "status_4xx": {
+                        "description": "4xx requests per second.",
+                        "title": "Status 4Xx",
+                        "type": "number"
+                    },
+                    "status_5xx": {
+                        "description": "5xx requests per second.",
+                        "title": "Status 5Xx",
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "timestamp",
+                    "status_2xx",
+                    "status_4xx",
+                    "status_5xx"
+                ],
+                "title": "InferenceVolumeByStatusDatapointV1",
+                "type": "object"
+            },
+            "LoopsDeploymentMetricsV1": {
+                "description": "Metrics for a trainer (Loops) deployment.\n\nService-level fields summarize HTTP traffic into the trainer pods (the\nKnative queue-proxy is the source). Compute fields are the leader-pod\naggregate; ``per_node_metrics`` carries the full multinode breakdown.",
+                "properties": {
+                    "inference_volume": {
+                        "description": "Number of inference requests per unit time (requests per second).",
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingJobMetricV1"
+                        },
+                        "title": "Inference Volume",
+                        "type": "array"
+                    },
+                    "concurrent_requests": {
+                        "description": "Number of in-progress concurrent inference requests. Source: the queue-proxy ``revision_queue_depth`` gauge on ``http-usermetric``.",
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingJobMetricV1"
+                        },
+                        "title": "Concurrent Requests",
+                        "type": "array"
+                    },
+                    "response_time_stats": {
+                        "description": "Percentiles of the response time distribution.",
+                        "items": {
+                            "$ref": "#/components/schemas/ResponseTimeDatapointV1"
+                        },
+                        "title": "Response Time Stats",
+                        "type": "array"
+                    },
+                    "inference_volume_by_status": {
+                        "description": "Request rate split by response code class.",
+                        "items": {
+                            "$ref": "#/components/schemas/InferenceVolumeByStatusDatapointV1"
+                        },
+                        "title": "Inference Volume By Status",
+                        "type": "array"
+                    },
+                    "gpu_memory_usage_bytes": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "Leader-pod GPU memory bytes per GPU rank.",
+                        "title": "Gpu Memory Usage Bytes",
+                        "type": "object"
+                    },
+                    "gpu_utilization": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "Leader-pod fractional GPU utilization per GPU rank.",
+                        "title": "Gpu Utilization",
+                        "type": "object"
+                    },
+                    "cpu_usage": {
+                        "description": "Leader-pod CPU usage in cores.",
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingJobMetricV1"
+                        },
+                        "title": "Cpu Usage",
+                        "type": "array"
+                    },
+                    "cpu_memory_usage_bytes": {
+                        "description": "Leader-pod CPU memory usage bytes.",
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingJobMetricV1"
+                        },
+                        "title": "Cpu Memory Usage Bytes",
+                        "type": "array"
+                    },
+                    "ephemeral_storage": {
+                        "$ref": "#/components/schemas/StorageMetricsV1",
+                        "description": "Leader-pod ephemeral storage usage."
+                    },
+                    "per_node_metrics": {
+                        "description": "Per-node compute breakdown for multinode trainer deployments.",
+                        "items": {
+                            "$ref": "#/components/schemas/LoopsDeploymentNodeMetricsV1"
+                        },
+                        "title": "Per Node Metrics",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "inference_volume",
+                    "concurrent_requests",
+                    "response_time_stats",
+                    "inference_volume_by_status",
+                    "gpu_memory_usage_bytes",
+                    "gpu_utilization",
+                    "cpu_usage",
+                    "cpu_memory_usage_bytes",
+                    "ephemeral_storage",
+                    "per_node_metrics"
+                ],
+                "title": "LoopsDeploymentMetricsV1",
+                "type": "object"
+            },
+            "LoopsDeploymentNodeMetricsV1": {
+                "description": "Per-node compute metrics for a multinode trainer deployment.",
+                "properties": {
+                    "node_id": {
+                        "description": "Identifier for the node.",
+                        "title": "Node Id",
+                        "type": "string"
+                    },
+                    "gpu_memory_usage_bytes": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "GPU memory usage bytes per GPU rank.",
+                        "title": "Gpu Memory Usage Bytes",
+                        "type": "object"
+                    },
+                    "gpu_utilization": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "Fractional GPU utilization per GPU rank.",
+                        "title": "Gpu Utilization",
+                        "type": "object"
+                    },
+                    "cpu_usage": {
+                        "description": "CPU usage in cores.",
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingJobMetricV1"
+                        },
+                        "title": "Cpu Usage",
+                        "type": "array"
+                    },
+                    "cpu_memory_usage_bytes": {
+                        "description": "CPU memory usage bytes.",
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingJobMetricV1"
+                        },
+                        "title": "Cpu Memory Usage Bytes",
+                        "type": "array"
+                    },
+                    "ephemeral_storage": {
+                        "$ref": "#/components/schemas/StorageMetricsV1",
+                        "description": "Ephemeral storage usage."
+                    }
+                },
+                "required": [
+                    "node_id",
+                    "gpu_memory_usage_bytes",
+                    "gpu_utilization",
+                    "cpu_usage",
+                    "cpu_memory_usage_bytes",
+                    "ephemeral_storage"
+                ],
+                "title": "LoopsDeploymentNodeMetricsV1",
+                "type": "object"
+            },
+            "ResponseTimeDatapointV1": {
+                "description": "Latency quantile datapoint.\n\nValues are reported in **milliseconds** to match the oracle/inference\n``response_time_stats`` convention. Source histogram is the queue-proxy's\n``revision_request_latencies_bucket`` whose bucket boundaries are in ms.",
+                "properties": {
+                    "timestamp": {
+                        "description": "ISO 8601 timestamp.",
+                        "format": "date-time",
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "p50": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "50th percentile request latency (milliseconds).",
+                        "title": "P50"
+                    },
+                    "p95": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "95th percentile request latency (milliseconds).",
+                        "title": "P95"
+                    },
+                    "p99": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "99th percentile request latency (milliseconds).",
+                        "title": "P99"
+                    }
+                },
+                "required": [
+                    "timestamp"
+                ],
+                "title": "ResponseTimeDatapointV1",
+                "type": "object"
+            },
+            "GetLoopsDeploymentMetricsResponseV1": {
+                "description": "Response for ``POST /v1/loops/deployments/<id>/metrics``.",
+                "properties": {
+                    "deployment_id": {
+                        "description": "The trainer deployment ID.",
+                        "title": "Deployment Id",
+                        "type": "string"
+                    },
+                    "metrics": {
+                        "$ref": "#/components/schemas/LoopsDeploymentMetricsV1",
+                        "description": "Metrics for the deployment."
+                    }
+                },
+                "required": [
+                    "deployment_id",
+                    "metrics"
+                ],
+                "title": "GetLoopsDeploymentMetricsResponseV1",
                 "type": "object"
             },
             "TrainingGpuCapacityItemV1": {
