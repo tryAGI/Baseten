@@ -11512,11 +11512,23 @@
                     "base_url": {
                         "title": "Base Url",
                         "type": "string"
+                    },
+                    "model_id": {
+                        "description": "Hashid of the underlying Baseten model.",
+                        "title": "Model Id",
+                        "type": "string"
+                    },
+                    "deployment_id": {
+                        "description": "Hashid of the specific model deployment (version).",
+                        "title": "Deployment Id",
+                        "type": "string"
                     }
                 },
                 "required": [
                     "id",
-                    "base_url"
+                    "base_url",
+                    "model_id",
+                    "deployment_id"
                 ],
                 "title": "SamplingServerV1",
                 "type": "object"
@@ -11832,13 +11844,25 @@
                         "format": "date-time",
                         "title": "Created At",
                         "type": "string"
+                    },
+                    "model_id": {
+                        "description": "Hashid of the underlying Baseten model.",
+                        "title": "Model Id",
+                        "type": "string"
+                    },
+                    "deployment_id": {
+                        "description": "Hashid of the specific model deployment (version).",
+                        "title": "Deployment Id",
+                        "type": "string"
                     }
                 },
                 "required": [
                     "id",
                     "base_url",
                     "base_model",
-                    "created_at"
+                    "created_at",
+                    "model_id",
+                    "deployment_id"
                 ],
                 "title": "LoopsSamplerV1",
                 "type": "object"
