@@ -57,7 +57,8 @@ namespace Baseten
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
         ///   "max_seq_length": null,<br/>
-        ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100"<br/>
+        ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100",<br/>
+        ///   "reuse_from_session_id": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateLoopsSamplersAsync(
@@ -91,7 +92,8 @@ namespace Baseten
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
         ///   "max_seq_length": null,<br/>
-        ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100"<br/>
+        ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100",<br/>
+        ///   "reuse_from_session_id": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>> CreateLoopsSamplersAsResponseAsync(
@@ -473,6 +475,10 @@ namespace Baseten
         /// Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/sampler_weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="reuseFromSessionId">
+        /// Optional Loops session ID whose deployment should be reused for this sampler. Same best-effort semantics as the run endpoint.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -481,6 +487,7 @@ namespace Baseten
             string baseModel,
             int? maxSeqLength = default,
             string? modelPath = default,
+            string? reuseFromSessionId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -490,6 +497,7 @@ namespace Baseten
                 BaseModel = baseModel,
                 MaxSeqLength = maxSeqLength,
                 ModelPath = modelPath,
+                ReuseFromSessionId = reuseFromSessionId,
             };
 
             return await CreateLoopsSamplersAsync(

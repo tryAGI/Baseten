@@ -60,7 +60,8 @@ namespace Baseten
         ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
         ///   "scale_down_delay_seconds": null,<br/>
-        ///   "path": "bt://loops:k4q95w5/weights/step-100"<br/>
+        ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
+        ///   "reuse_from_session_id": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
@@ -97,7 +98,8 @@ namespace Baseten
         ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
         ///   "scale_down_delay_seconds": null,<br/>
-        ///   "path": "bt://loops:k4q95w5/weights/step-100"<br/>
+        ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
+        ///   "reuse_from_session_id": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsRunsAsResponseAsync(
@@ -491,6 +493,10 @@ namespace Baseten
         /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="reuseFromSessionId">
+        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, or its sampler is unhealthy, a new deployment is provisioned instead.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -502,6 +508,7 @@ namespace Baseten
             int? seed = default,
             int? scaleDownDelaySeconds = default,
             string? path = default,
+            string? reuseFromSessionId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -514,6 +521,7 @@ namespace Baseten
                 Seed = seed,
                 ScaleDownDelaySeconds = scaleDownDelaySeconds,
                 Path = path,
+                ReuseFromSessionId = reuseFromSessionId,
             };
 
             return await CreateLoopsRunsAsync(

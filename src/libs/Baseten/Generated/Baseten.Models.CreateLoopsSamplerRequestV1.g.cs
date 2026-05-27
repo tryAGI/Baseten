@@ -37,6 +37,13 @@ namespace Baseten
         public string? ModelPath { get; set; }
 
         /// <summary>
+        /// Optional Loops session ID whose deployment should be reused for this sampler. Same best-effort semantics as the run endpoint.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reuse_from_session_id")]
+        public string? ReuseFromSessionId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -59,6 +66,10 @@ namespace Baseten
         /// Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/sampler_weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="reuseFromSessionId">
+        /// Optional Loops session ID whose deployment should be reused for this sampler. Same best-effort semantics as the run endpoint.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -66,12 +77,14 @@ namespace Baseten
             string sessionId,
             string baseModel,
             int? maxSeqLength,
-            string? modelPath)
+            string? modelPath,
+            string? reuseFromSessionId)
         {
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.MaxSeqLength = maxSeqLength;
             this.ModelPath = modelPath;
+            this.ReuseFromSessionId = reuseFromSessionId;
         }
 
         /// <summary>
