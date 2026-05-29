@@ -27,6 +27,10 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        ScaledToZero,
+        /// <summary>
+        /// 
+        /// </summary>
         Stopped,
     }
 
@@ -46,6 +50,7 @@ namespace Baseten
                 Name.Deploying => "DEPLOYING",
                 Name.Failed => "FAILED",
                 Name.Running => "RUNNING",
+                Name.ScaledToZero => "SCALED_TO_ZERO",
                 Name.Stopped => "STOPPED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -61,6 +66,7 @@ namespace Baseten
                 "DEPLOYING" => Name.Deploying,
                 "FAILED" => Name.Failed,
                 "RUNNING" => Name.Running,
+                "SCALED_TO_ZERO" => Name.ScaledToZero,
                 "STOPPED" => Name.Stopped,
                 _ => null,
             };

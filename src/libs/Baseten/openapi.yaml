@@ -4371,7 +4371,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "List the caller's active Loops deployments. Excludes deployments whose latest status is stopped.",
+                "description": "List the caller's Loops deployments. Returns every deployment regardless of status; clients filter terminal states.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -4483,6 +4483,114 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/GetLoopsDeploymentMetricsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
+        "/v1/loops/deployments/{deployment_id}/logs": {
+            "get": {
+                "summary": "Get logs for a Loops trainer deployment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/deployments/{deployment_id}/logs \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/logs\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Fetch logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.",
+                "parameters": [
+                    {
+                        "name": "start_epoch_millis",
+                        "in": "query",
+                        "required": false,
+                        "description": "Epoch millis timestamp to start fetching logs",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Start Epoch Millis"
+                        }
+                    },
+                    {
+                        "name": "end_epoch_millis",
+                        "in": "query",
+                        "required": false,
+                        "description": "Epoch millis timestamp to end fetching logs",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "End Epoch Millis"
+                        }
+                    },
+                    {
+                        "name": "direction",
+                        "in": "query",
+                        "required": false,
+                        "description": "Sort order for logs",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/SortOrderV1"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Limit of logs to fetch in a single request",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "maximum": 1000,
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": 500,
+                            "title": "Limit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLogsResponseV1"
                                 }
                             }
                         }
@@ -11824,6 +11932,20 @@
                 "title": "LoopsRunV1",
                 "type": "object"
             },
+            "LoopsSamplerStatusV1": {
+                "description": "The current status of a Loops sampler.",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/DeploymentStatusV1",
+                        "description": "The current status of the Loops sampler."
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "title": "LoopsSamplerStatusV1",
+                "type": "object"
+            },
             "LoopsSamplerV1": {
                 "properties": {
                     "id": {
@@ -11854,6 +11976,10 @@
                         "description": "Hashid of the specific model deployment (version).",
                         "title": "Deployment Id",
                         "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/LoopsSamplerStatusV1",
+                        "description": "The sampler's current status."
                     }
                 },
                 "required": [
@@ -11862,7 +11988,8 @@
                     "base_model",
                     "created_at",
                     "model_id",
-                    "deployment_id"
+                    "deployment_id",
+                    "status"
                 ],
                 "title": "LoopsSamplerV1",
                 "type": "object"
@@ -12425,6 +12552,7 @@
                     "CREATED",
                     "DEPLOYING",
                     "RUNNING",
+                    "SCALED_TO_ZERO",
                     "FAILED",
                     "STOPPED"
                 ],
@@ -12432,7 +12560,7 @@
                 "type": "string"
             },
             "ListLoopsDeploymentsResponseV1": {
-                "description": "Response for ``GET /v1/loops/deployments``.\n\nReturns the caller's Loops deployments whose latest status is not STOPPED\n(i.e. CREATED, DEPLOYING, RUNNING, or FAILED). Stopped deployments are\nexcluded so the list is a fit-for-purpose \"what's currently provisioned\nfor me\" view \u2014 the deactivate endpoint is the inverse pair.",
+                "description": "Response for ``GET /v1/loops/deployments``.\n\nReturns every Loops deployment owned by the caller, regardless of status\n(CREATED, DEPLOYING, RUNNING, STOPPED, or FAILED). Clients filter\nterminal-state deployments themselves.",
                 "properties": {
                     "deployments": {
                         "description": "Active Loops deployments.",
@@ -12792,6 +12920,66 @@
                     "metrics"
                 ],
                 "title": "GetLoopsDeploymentMetricsResponseV1",
+                "type": "object"
+            },
+            "GetLoopsDeploymentLogsRequestV1": {
+                "description": "Query parameters for fetching a Loops deployment's logs.",
+                "properties": {
+                    "start_epoch_millis": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Epoch millis timestamp to start fetching logs",
+                        "title": "Start Epoch Millis"
+                    },
+                    "end_epoch_millis": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Epoch millis timestamp to end fetching logs",
+                        "title": "End Epoch Millis"
+                    },
+                    "direction": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/SortOrderV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Sort order for logs"
+                    },
+                    "limit": {
+                        "anyOf": [
+                            {
+                                "maximum": 1000,
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": 500,
+                        "description": "Limit of logs to fetch in a single request",
+                        "title": "Limit"
+                    }
+                },
+                "title": "GetLoopsDeploymentLogsRequestV1",
                 "type": "object"
             },
             "TrainingGpuCapacityItemV1": {

@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// List Loops deployments.<br/>
-        /// List the caller's active Loops deployments. Excludes deployments whose latest status is stopped.
+        /// List the caller's Loops deployments. Returns every deployment regardless of status; clients filter terminal states.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -21,7 +21,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List Loops deployments.<br/>
-        /// List the caller's active Loops deployments. Excludes deployments whose latest status is stopped.
+        /// List the caller's Loops deployments. Returns every deployment regardless of status; clients filter terminal states.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

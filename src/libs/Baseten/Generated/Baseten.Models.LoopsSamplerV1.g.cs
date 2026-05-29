@@ -51,6 +51,13 @@ namespace Baseten
         public required string DeploymentId { get; set; }
 
         /// <summary>
+        /// The sampler's current status.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.LoopsSamplerStatusV1 Status { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -73,6 +80,9 @@ namespace Baseten
         /// <param name="deploymentId">
         /// Hashid of the specific model deployment (version).
         /// </param>
+        /// <param name="status">
+        /// The sampler's current status.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -82,7 +92,8 @@ namespace Baseten
             string baseModel,
             global::System.DateTime createdAt,
             string modelId,
-            string deploymentId)
+            string deploymentId,
+            global::Baseten.LoopsSamplerStatusV1 status)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
@@ -90,6 +101,7 @@ namespace Baseten
             this.CreatedAt = createdAt;
             this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
             this.DeploymentId = deploymentId ?? throw new global::System.ArgumentNullException(nameof(deploymentId));
+            this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
         }
 
         /// <summary>
