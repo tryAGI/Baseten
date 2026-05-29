@@ -5,10 +5,9 @@ namespace Baseten
 {
     /// <summary>
     /// Response for ``GET /v1/loops/deployments``.<br/>
-    /// Returns the caller's Loops deployments whose latest status is not STOPPED<br/>
-    /// (i.e. CREATED, DEPLOYING, RUNNING, or FAILED). Stopped deployments are<br/>
-    /// excluded so the list is a fit-for-purpose "what's currently provisioned<br/>
-    /// for me" view — the deactivate endpoint is the inverse pair.
+    /// Returns every Loops deployment owned by the caller, regardless of status<br/>
+    /// (CREATED, DEPLOYING, RUNNING, STOPPED, or FAILED). Clients filter<br/>
+    /// terminal-state deployments themselves.
     /// </summary>
     public sealed partial class ListLoopsDeploymentsResponseV1
     {

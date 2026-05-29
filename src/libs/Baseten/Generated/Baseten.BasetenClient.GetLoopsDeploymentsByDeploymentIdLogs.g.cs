@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetLoopsDeploymentsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetLoopsDeploymentsByDeploymentIdLogsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,41 +21,74 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetLoopsDeploymentsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetLoopsDeploymentsByDeploymentIdLogsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetLoopsDeploymentsSecurityRequirement0,
+            {                s_GetLoopsDeploymentsByDeploymentIdLogsSecurityRequirement0,
             };
-        partial void PrepareGetLoopsDeploymentsArguments(
-            global::System.Net.Http.HttpClient httpClient);
-        partial void PrepareGetLoopsDeploymentsRequest(
+        partial void PrepareGetLoopsDeploymentsByDeploymentIdLogsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
-        partial void ProcessGetLoopsDeploymentsResponse(
+            int? startEpochMillis,
+            int? endEpochMillis,
+            global::Baseten.SortOrderV1? direction,
+            int? limit,
+            ref string deploymentId);
+        partial void PrepareGetLoopsDeploymentsByDeploymentIdLogsRequest(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            int? startEpochMillis,
+            int? endEpochMillis,
+            global::Baseten.SortOrderV1? direction,
+            int? limit,
+            string deploymentId);
+        partial void ProcessGetLoopsDeploymentsByDeploymentIdLogsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetLoopsDeploymentsResponseContent(
+        partial void ProcessGetLoopsDeploymentsByDeploymentIdLogsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// List Loops deployments.<br/>
-        /// List the caller's Loops deployments. Returns every deployment regardless of status; clients filter terminal states.
+        /// Get logs for a Loops trainer deployment.<br/>
+        /// Fetch logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.
         /// </summary>
+        /// <param name="startEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="endEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="direction">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Default Value: 500
+        /// </param>
+        /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/loops/deployments \<br/>
+        /// --url https://api.baseten.co/v1/loops/deployments/{deployment_id}/logs \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.ListLoopsDeploymentsResponseV1> GetLoopsDeploymentsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetLogsResponseV1> GetLoopsDeploymentsByDeploymentIdLogsAsync(
+            string deploymentId,
+            int? startEpochMillis = default,
+            int? endEpochMillis = default,
+            global::Baseten.SortOrderV1? direction = default,
+            int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetLoopsDeploymentsAsResponseAsync(
+            var __response = await GetLoopsDeploymentsByDeploymentIdLogsAsResponseAsync(
+                deploymentId: deploymentId,
+                startEpochMillis: startEpochMillis,
+                endEpochMillis: endEpochMillis,
+                direction: direction,
+                limit: limit,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -63,31 +96,54 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// List Loops deployments.<br/>
-        /// List the caller's Loops deployments. Returns every deployment regardless of status; clients filter terminal states.
+        /// Get logs for a Loops trainer deployment.<br/>
+        /// Fetch logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.
         /// </summary>
+        /// <param name="startEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="endEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="direction">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Default Value: 500
+        /// </param>
+        /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/loops/deployments \<br/>
+        /// --url https://api.baseten.co/v1/loops/deployments/{deployment_id}/logs \<br/>
         /// --header "Authorization: Api-Key $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsDeploymentsResponseV1>> GetLoopsDeploymentsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>> GetLoopsDeploymentsByDeploymentIdLogsAsResponseAsync(
+            string deploymentId,
+            int? startEpochMillis = default,
+            int? endEpochMillis = default,
+            global::Baseten.SortOrderV1? direction = default,
+            int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetLoopsDeploymentsArguments(
-                httpClient: HttpClient);
+            PrepareGetLoopsDeploymentsByDeploymentIdLogsArguments(
+                httpClient: HttpClient,
+                startEpochMillis: startEpochMillis,
+                endEpochMillis: endEpochMillis,
+                direction: direction,
+                limit: limit,
+                deploymentId: ref deploymentId);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetLoopsDeploymentsSecurityRequirements,
-                operationName: "GetLoopsDeploymentsAsync");
+                securityRequirements: s_GetLoopsDeploymentsByDeploymentIdLogsSecurityRequirements,
+                operationName: "GetLoopsDeploymentsByDeploymentIdLogsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -107,8 +163,14 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/loops/deployments",
+                                path: $"/v1/loops/deployments/{deploymentId}/logs",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("start_epoch_millis", startEpochMillis?.ToString())
+                                .AddOptionalParameter("end_epoch_millis", endEpochMillis?.ToString())
+                                .AddOptionalParameter("direction", direction?.ToString())
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -146,9 +208,14 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetLoopsDeploymentsRequest(
+                PrepareGetLoopsDeploymentsByDeploymentIdLogsRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest);
+                    httpRequestMessage: __httpRequest,
+                    startEpochMillis: startEpochMillis,
+                    endEpochMillis: endEpochMillis,
+                    direction: direction,
+                    limit: limit,
+                    deploymentId: deploymentId!);
 
                 return __httpRequest;
             }
@@ -165,9 +232,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsDeployments",
-                                methodName: "GetLoopsDeploymentsAsync",
-                                pathTemplate: "\"/v1/loops/deployments\"",
+                                operationId: "getLoopsDeploymentsByDeploymentIdLogs",
+                                methodName: "GetLoopsDeploymentsByDeploymentIdLogsAsync",
+                                pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -199,9 +266,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsDeployments",
-                                methodName: "GetLoopsDeploymentsAsync",
-                                pathTemplate: "\"/v1/loops/deployments\"",
+                                operationId: "getLoopsDeploymentsByDeploymentIdLogs",
+                                methodName: "GetLoopsDeploymentsByDeploymentIdLogsAsync",
+                                pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -240,9 +307,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsDeployments",
-                                methodName: "GetLoopsDeploymentsAsync",
-                                pathTemplate: "\"/v1/loops/deployments\"",
+                                operationId: "getLoopsDeploymentsByDeploymentIdLogs",
+                                methodName: "GetLoopsDeploymentsByDeploymentIdLogsAsync",
+                                pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -280,7 +347,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetLoopsDeploymentsResponse(
+                ProcessGetLoopsDeploymentsByDeploymentIdLogsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -288,9 +355,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsDeployments",
-                                methodName: "GetLoopsDeploymentsAsync",
-                                pathTemplate: "\"/v1/loops/deployments\"",
+                                operationId: "getLoopsDeploymentsByDeploymentIdLogs",
+                                methodName: "GetLoopsDeploymentsByDeploymentIdLogsAsync",
+                                pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -310,9 +377,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsDeployments",
-                                methodName: "GetLoopsDeploymentsAsync",
-                                pathTemplate: "\"/v1/loops/deployments\"",
+                                operationId: "getLoopsDeploymentsByDeploymentIdLogs",
+                                methodName: "GetLoopsDeploymentsByDeploymentIdLogsAsync",
+                                pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -340,7 +407,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetLoopsDeploymentsResponseContent(
+                                ProcessGetLoopsDeploymentsByDeploymentIdLogsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -349,9 +416,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.ListLoopsDeploymentsResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.GetLogsResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsDeploymentsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -381,9 +448,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.ListLoopsDeploymentsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.GetLogsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsDeploymentsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
