@@ -55,6 +55,13 @@ namespace Baseten
         public int? TargetInFlightTokens { get; set; }
 
         /// <summary>
+        /// Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_scale_down_rate")]
+        public double? MaxScaleDownRate { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -85,6 +92,10 @@ namespace Baseten
         /// Target number of in-flight tokens for autoscaling decisions. Early access only.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="maxScaleDownRate">
+        /// Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -95,7 +106,8 @@ namespace Baseten
             int? autoscalingWindow,
             int? scaleDownDelay,
             int? targetUtilizationPercentage,
-            int? targetInFlightTokens)
+            int? targetInFlightTokens,
+            double? maxScaleDownRate)
         {
             this.MinReplica = minReplica;
             this.MaxReplica = maxReplica;
@@ -104,6 +116,7 @@ namespace Baseten
             this.ConcurrencyTarget = concurrencyTarget;
             this.TargetUtilizationPercentage = targetUtilizationPercentage;
             this.TargetInFlightTokens = targetInFlightTokens;
+            this.MaxScaleDownRate = maxScaleDownRate;
         }
 
         /// <summary>

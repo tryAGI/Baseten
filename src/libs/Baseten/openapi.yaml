@@ -723,11 +723,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 2.0\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 2.0}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates a development deployment's autoscaling settings and returns the update status.",
@@ -766,11 +766,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 2.0\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 2.0}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates a production deployment's autoscaling settings and returns the update status.",
@@ -809,11 +809,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 2.0\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 2.0}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates a deployment's autoscaling settings and returns the update status.",
@@ -1599,11 +1599,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/environments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"staging\",\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": true,\n    \"rolling_deploy_config\": null\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/environments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"staging\",\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": true,\n    \"rolling_deploy_config\": null\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'staging', 'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': True, 'rolling_deploy_config': None}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'staging', 'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': True, 'rolling_deploy_config': None}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates an environment for the specified model and returns the environment.",
@@ -1671,11 +1671,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": null,\n    \"rolling_deploy_config\": null\n  }\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": null,\n    \"rolling_deploy_config\": null\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.",
@@ -2364,11 +2364,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/chains/{chain_id}/environments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"staging\",\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": null,\n    \"rolling_deploy_config\": null\n  },\n  \"chainlet_settings\": [\n    {\n      \"autoscaling_settings\": {\n        \"autoscaling_window\": 800,\n        \"concurrency_target\": 4,\n        \"max_replica\": 3,\n        \"min_replica\": 2,\n        \"scale_down_delay\": 63,\n        \"target_in_flight_tokens\": null,\n        \"target_utilization_percentage\": null\n      },\n      \"chainlet_name\": \"HelloWorld\",\n      \"instance_type_id\": \"2x8\"\n    },\n    {\n      \"autoscaling_settings\": {\n        \"autoscaling_window\": null,\n        \"concurrency_target\": null,\n        \"max_replica\": 3,\n        \"min_replica\": 3,\n        \"scale_down_delay\": null,\n        \"target_in_flight_tokens\": null,\n        \"target_utilization_percentage\": null\n      },\n      \"chainlet_name\": \"RandInt\",\n      \"instance_type_id\": \"A10Gx8x32\"\n    }\n  ]\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/chains/{chain_id}/environments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"staging\",\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": null,\n    \"rolling_deploy_config\": null\n  },\n  \"chainlet_settings\": [\n    {\n      \"autoscaling_settings\": {\n        \"autoscaling_window\": 800,\n        \"concurrency_target\": 4,\n        \"max_replica\": 3,\n        \"max_scale_down_rate\": null,\n        \"min_replica\": 2,\n        \"scale_down_delay\": 63,\n        \"target_in_flight_tokens\": null,\n        \"target_utilization_percentage\": null\n      },\n      \"chainlet_name\": \"HelloWorld\",\n      \"instance_type_id\": \"2x8\"\n    },\n    {\n      \"autoscaling_settings\": {\n        \"autoscaling_window\": null,\n        \"concurrency_target\": null,\n        \"max_replica\": 3,\n        \"max_scale_down_rate\": null,\n        \"min_replica\": 3,\n        \"scale_down_delay\": null,\n        \"target_in_flight_tokens\": null,\n        \"target_utilization_percentage\": null\n      },\n      \"chainlet_name\": \"RandInt\",\n      \"instance_type_id\": \"A10Gx8x32\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/environments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'staging', 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}, 'chainlet_settings': [{'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 4, 'max_replica': 3, 'min_replica': 2, 'scale_down_delay': 63, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'chainlet_name': 'HelloWorld', 'instance_type_id': '2x8'}, {'autoscaling_settings': {'autoscaling_window': None, 'concurrency_target': None, 'max_replica': 3, 'min_replica': 3, 'scale_down_delay': None, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'chainlet_name': 'RandInt', 'instance_type_id': 'A10Gx8x32'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/environments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'staging', 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}, 'chainlet_settings': [{'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 4, 'max_replica': 3, 'max_scale_down_rate': None, 'min_replica': 2, 'scale_down_delay': 63, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'chainlet_name': 'HelloWorld', 'instance_type_id': '2x8'}, {'autoscaling_settings': {'autoscaling_window': None, 'concurrency_target': None, 'max_replica': 3, 'max_scale_down_rate': None, 'min_replica': 3, 'scale_down_delay': None, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'chainlet_name': 'RandInt', 'instance_type_id': 'A10Gx8x32'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Create a chain environment. Returns the resulting environment.",
@@ -2520,11 +2520,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/chains/{chain_id}/environments/{env_name}/chainlet_settings/autoscaling_settings \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"updates\": [\n    {\n      \"autoscaling_settings\": {\n        \"autoscaling_window\": 800,\n        \"concurrency_target\": 4,\n        \"max_replica\": 3,\n        \"min_replica\": 2,\n        \"scale_down_delay\": 63,\n        \"target_in_flight_tokens\": null,\n        \"target_utilization_percentage\": null\n      },\n      \"chainlet_name\": \"HelloWorld\"\n    }\n  ]\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/chains/{chain_id}/environments/{env_name}/chainlet_settings/autoscaling_settings \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"updates\": [\n    {\n      \"autoscaling_settings\": {\n        \"autoscaling_window\": 800,\n        \"concurrency_target\": 4,\n        \"max_replica\": 3,\n        \"max_scale_down_rate\": null,\n        \"min_replica\": 2,\n        \"scale_down_delay\": 63,\n        \"target_in_flight_tokens\": null,\n        \"target_utilization_percentage\": null\n      },\n      \"chainlet_name\": \"HelloWorld\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/environments/{env_name}/chainlet_settings/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'updates': [{'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 4, 'max_replica': 3, 'min_replica': 2, 'scale_down_delay': 63, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'chainlet_name': 'HelloWorld'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/environments/{env_name}/chainlet_settings/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'updates': [{'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 4, 'max_replica': 3, 'max_scale_down_rate': None, 'min_replica': 2, 'scale_down_delay': 63, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'chainlet_name': 'HelloWorld'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates a chainlet environment's autoscaling settings and returns the updated chainlet environment settings.",
@@ -4963,11 +4963,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -5000,11 +5000,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -5042,11 +5042,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ]\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Api-Key $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"llm_config\": null,\n  \"environment_variables\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Api-Key {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'llm_config': None, 'environment_variables': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -6547,6 +6547,19 @@
                         "default": null,
                         "description": "Target number of in-flight tokens for autoscaling decisions. Early access only.",
                         "title": "Target In Flight Tokens"
+                    },
+                    "max_scale_down_rate": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).",
+                        "title": "Max Scale Down Rate"
                     }
                 },
                 "required": [
@@ -6941,6 +6954,24 @@
                             40000
                         ],
                         "title": "Target In Flight Tokens"
+                    },
+                    "max_scale_down_rate": {
+                        "anyOf": [
+                            {
+                                "exclusiveMinimum": 1,
+                                "maximum": 2,
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).",
+                        "examples": [
+                            2.0
+                        ],
+                        "title": "Max Scale Down Rate"
                     }
                 },
                 "title": "UpdateAutoscalingSettingsV1",
@@ -7870,6 +7901,7 @@
                                 "autoscaling_window": 800,
                                 "concurrency_target": 3,
                                 "max_replica": 2,
+                                "max_scale_down_rate": null,
                                 "min_replica": 1,
                                 "scale_down_delay": 60,
                                 "target_in_flight_tokens": null,
@@ -7926,6 +7958,7 @@
                                 "autoscaling_window": 800,
                                 "concurrency_target": 3,
                                 "max_replica": 2,
+                                "max_scale_down_rate": null,
                                 "min_replica": 1,
                                 "scale_down_delay": 60,
                                 "target_in_flight_tokens": null,
@@ -8291,6 +8324,7 @@
                                 "autoscaling_window": 60,
                                 "concurrency_target": 1,
                                 "max_replica": 1,
+                                "max_scale_down_rate": null,
                                 "min_replica": 0,
                                 "scale_down_delay": 900,
                                 "target_in_flight_tokens": null,
@@ -8371,6 +8405,7 @@
                                         "autoscaling_window": 800,
                                         "concurrency_target": 4,
                                         "max_replica": 3,
+                                        "max_scale_down_rate": null,
                                         "min_replica": 2,
                                         "scale_down_delay": 63,
                                         "target_in_flight_tokens": null,
@@ -8384,6 +8419,7 @@
                                         "autoscaling_window": null,
                                         "concurrency_target": null,
                                         "max_replica": 3,
+                                        "max_scale_down_rate": null,
                                         "min_replica": 3,
                                         "scale_down_delay": null,
                                         "target_in_flight_tokens": null,
@@ -8588,6 +8624,7 @@
                                 "autoscaling_window": 800,
                                 "concurrency_target": 3,
                                 "max_replica": 2,
+                                "max_scale_down_rate": null,
                                 "min_replica": 1,
                                 "scale_down_delay": 60,
                                 "target_in_flight_tokens": null,
@@ -8615,6 +8652,7 @@
                                         "autoscaling_window": 800,
                                         "concurrency_target": 4,
                                         "max_replica": 3,
+                                        "max_scale_down_rate": null,
                                         "min_replica": 2,
                                         "scale_down_delay": 63,
                                         "target_in_flight_tokens": null,
@@ -8629,6 +8667,7 @@
                                         "autoscaling_window": null,
                                         "concurrency_target": null,
                                         "max_replica": null,
+                                        "max_scale_down_rate": null,
                                         "min_replica": 0,
                                         "scale_down_delay": null,
                                         "target_in_flight_tokens": null,
@@ -8641,6 +8680,7 @@
                                         "autoscaling_window": null,
                                         "concurrency_target": null,
                                         "max_replica": null,
+                                        "max_scale_down_rate": null,
                                         "min_replica": 0,
                                         "scale_down_delay": null,
                                         "target_in_flight_tokens": null,
@@ -12556,7 +12596,7 @@
                     "FAILED",
                     "STOPPED"
                 ],
-                "title": "Name",
+                "title": "LoopsDeploymentStatus",
                 "type": "string"
             },
             "ListLoopsDeploymentsResponseV1": {
@@ -13357,6 +13397,7 @@
                                 "autoscaling_window": 600,
                                 "concurrency_target": null,
                                 "max_replica": 5,
+                                "max_scale_down_rate": null,
                                 "min_replica": 1,
                                 "scale_down_delay": 300,
                                 "target_in_flight_tokens": null,
@@ -13543,6 +13584,7 @@
                                 "autoscaling_window": 600,
                                 "concurrency_target": null,
                                 "max_replica": 5,
+                                "max_scale_down_rate": null,
                                 "min_replica": 1,
                                 "scale_down_delay": 300,
                                 "target_in_flight_tokens": null,
