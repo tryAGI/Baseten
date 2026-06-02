@@ -26,6 +26,7 @@ namespace Baseten
         ///     "autoscaling_window": 600,<br/>
         ///     "concurrency_target": null,<br/>
         ///     "max_replica": 5,<br/>
+        ///     "max_scale_down_rate": null,<br/>
         ///     "min_replica": 1,<br/>
         ///     "scale_down_delay": 300,<br/>
         ///     "target_in_flight_tokens": null,<br/>
@@ -79,6 +80,7 @@ namespace Baseten
         ///     "autoscaling_window": 600,<br/>
         ///     "concurrency_target": null,<br/>
         ///     "max_replica": 5,<br/>
+        ///     "max_scale_down_rate": null,<br/>
         ///     "min_replica": 1,<br/>
         ///     "scale_down_delay": 300,<br/>
         ///     "target_in_flight_tokens": null,<br/>

@@ -63,7 +63,8 @@ namespace Baseten
         ///   "scale_down_delay": 120,<br/>
         ///   "concurrency_target": 2,<br/>
         ///   "target_utilization_percentage": 70,<br/>
-        ///   "target_in_flight_tokens": 40000<br/>
+        ///   "target_in_flight_tokens": 40000,<br/>
+        ///   "max_scale_down_rate": 2.0<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsProductionAutoscalingSettingsAsync(
@@ -103,7 +104,8 @@ namespace Baseten
         ///   "scale_down_delay": 120,<br/>
         ///   "concurrency_target": 2,<br/>
         ///   "target_utilization_percentage": 70,<br/>
-        ///   "target_in_flight_tokens": 40000<br/>
+        ///   "target_in_flight_tokens": 40000,<br/>
+        ///   "max_scale_down_rate": 2.0<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdDeploymentsProductionAutoscalingSettingsAsResponseAsync(
@@ -503,6 +505,10 @@ namespace Baseten
         /// Target number of in-flight tokens for autoscaling decisions. Early access only.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="maxScaleDownRate">
+        /// Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -515,6 +521,7 @@ namespace Baseten
             int? concurrencyTarget = default,
             int? targetUtilizationPercentage = default,
             int? targetInFlightTokens = default,
+            double? maxScaleDownRate = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -527,6 +534,7 @@ namespace Baseten
                 ConcurrencyTarget = concurrencyTarget,
                 TargetUtilizationPercentage = targetUtilizationPercentage,
                 TargetInFlightTokens = targetInFlightTokens,
+                MaxScaleDownRate = maxScaleDownRate,
             };
 
             return await EditModelsByModelIdDeploymentsProductionAutoscalingSettingsAsync(
