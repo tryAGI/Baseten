@@ -17,9 +17,9 @@ namespace Baseten
         /// <summary>
         /// Identifier of the publishing organization, as returned by `GET /v1/library_models`.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("org_foundation_name")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("lab_display_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string OrgFoundationName { get; set; }
+        public required string LabDisplayName { get; set; }
 
         /// <summary>
         /// Listing identifier within the publishing organization.
@@ -44,7 +44,7 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="LibraryListingSourceV1" /> class.
         /// </summary>
-        /// <param name="orgFoundationName">
+        /// <param name="labDisplayName">
         /// Identifier of the publishing organization, as returned by `GET /v1/library_models`.
         /// </param>
         /// <param name="userDefinedListingId">
@@ -61,13 +61,13 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LibraryListingSourceV1(
-            string orgFoundationName,
+            string labDisplayName,
             string userDefinedListingId,
             string? kind,
             string? deployedModelName)
         {
             this.Kind = kind;
-            this.OrgFoundationName = orgFoundationName ?? throw new global::System.ArgumentNullException(nameof(orgFoundationName));
+            this.LabDisplayName = labDisplayName ?? throw new global::System.ArgumentNullException(nameof(labDisplayName));
             this.UserDefinedListingId = userDefinedListingId ?? throw new global::System.ArgumentNullException(nameof(userDefinedListingId));
             this.DeployedModelName = deployedModelName;
         }
