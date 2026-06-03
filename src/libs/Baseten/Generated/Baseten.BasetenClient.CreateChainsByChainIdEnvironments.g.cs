@@ -72,6 +72,7 @@ namespace Baseten
         ///         "autoscaling_window": 800,<br/>
         ///         "concurrency_target": 4,<br/>
         ///         "max_replica": 3,<br/>
+        ///         "max_scale_down_rate": null,<br/>
         ///         "min_replica": 2,<br/>
         ///         "scale_down_delay": 63,<br/>
         ///         "target_in_flight_tokens": null,<br/>
@@ -85,6 +86,7 @@ namespace Baseten
         ///         "autoscaling_window": null,<br/>
         ///         "concurrency_target": null,<br/>
         ///         "max_replica": 3,<br/>
+        ///         "max_scale_down_rate": null,<br/>
         ///         "min_replica": 3,<br/>
         ///         "scale_down_delay": null,<br/>
         ///         "target_in_flight_tokens": null,<br/>
@@ -142,6 +144,7 @@ namespace Baseten
         ///         "autoscaling_window": 800,<br/>
         ///         "concurrency_target": 4,<br/>
         ///         "max_replica": 3,<br/>
+        ///         "max_scale_down_rate": null,<br/>
         ///         "min_replica": 2,<br/>
         ///         "scale_down_delay": 63,<br/>
         ///         "target_in_flight_tokens": null,<br/>
@@ -155,6 +158,7 @@ namespace Baseten
         ///         "autoscaling_window": null,<br/>
         ///         "concurrency_target": null,<br/>
         ///         "max_replica": 3,<br/>
+        ///         "max_scale_down_rate": null,<br/>
         ///         "min_replica": 3,<br/>
         ///         "scale_down_delay": null,<br/>
         ///         "target_in_flight_tokens": null,<br/>
