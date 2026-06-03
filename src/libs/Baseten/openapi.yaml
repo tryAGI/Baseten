@@ -6377,9 +6377,9 @@
                         "title": "Kind",
                         "type": "string"
                     },
-                    "org_foundation_name": {
+                    "lab_display_name": {
                         "description": "Identifier of the publishing organization, as returned by `GET /v1/library_models`.",
-                        "title": "Org Foundation Name",
+                        "title": "Lab Display Name",
                         "type": "string"
                     },
                     "user_defined_listing_id": {
@@ -6402,7 +6402,7 @@
                     }
                 },
                 "required": [
-                    "org_foundation_name",
+                    "lab_display_name",
                     "user_defined_listing_id"
                 ],
                 "title": "LibraryListingSourceV1",
