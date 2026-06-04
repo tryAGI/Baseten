@@ -20,9 +20,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "model": null,<br/>
         ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
         ///   "checkpoint_path": "bt://loops:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>
@@ -48,9 +46,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "model": null,<br/>
         ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
         ///   "checkpoint_path": "bt://loops:k4q95w5/weights/step-100"<br/>
         /// }'
         /// </remarks>

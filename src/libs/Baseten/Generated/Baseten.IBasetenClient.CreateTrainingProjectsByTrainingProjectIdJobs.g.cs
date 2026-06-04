@@ -40,7 +40,6 @@ namespace Baseten
         ///         "API_KEY": "your_api_key_here",<br/>
         ///         "PATH": "/usr/bin"<br/>
         ///       },<br/>
-        ///       "artifacts": null,<br/>
         ///       "enable_cache": true,<br/>
         ///       "cache_config": {<br/>
         ///         "enable_legacy_hf_mount": true,<br/>
@@ -115,7 +114,6 @@ namespace Baseten
         ///         "API_KEY": "your_api_key_here",<br/>
         ///         "PATH": "/usr/bin"<br/>
         ///       },<br/>
-        ///       "artifacts": null,<br/>
         ///       "enable_cache": true,<br/>
         ///       "cache_config": {<br/>
         ///         "enable_legacy_hf_mount": true,<br/>

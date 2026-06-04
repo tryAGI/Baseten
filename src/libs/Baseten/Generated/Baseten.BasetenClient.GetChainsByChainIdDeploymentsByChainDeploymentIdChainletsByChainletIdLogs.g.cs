@@ -31,6 +31,12 @@ namespace Baseten
             int? endEpochMillis,
             global::Baseten.SortOrderV1? direction,
             int? limit,
+            global::Baseten.LogLevelV1? minLevel,
+            ref string? replica,
+            ref string? requestId,
+            ref string? searchPattern,
+            global::System.Collections.Generic.IList<string>? includes,
+            global::System.Collections.Generic.IList<string>? excludes,
             ref string chainId,
             ref string chainDeploymentId,
             ref string chainletId);
@@ -41,6 +47,12 @@ namespace Baseten
             int? endEpochMillis,
             global::Baseten.SortOrderV1? direction,
             int? limit,
+            global::Baseten.LogLevelV1? minLevel,
+            string? replica,
+            string? requestId,
+            string? searchPattern,
+            global::System.Collections.Generic.IList<string>? includes,
+            global::System.Collections.Generic.IList<string>? excludes,
             string chainId,
             string chainDeploymentId,
             string chainletId);
@@ -69,6 +81,20 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 500
         /// </param>
+        /// <param name="minLevel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="replica">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="searchPattern">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="includes"></param>
+        /// <param name="excludes"></param>
         /// <param name="chainId"></param>
         /// <param name="chainDeploymentId"></param>
         /// <param name="chainletId"></param>
@@ -88,6 +114,12 @@ namespace Baseten
             int? endEpochMillis = default,
             global::Baseten.SortOrderV1? direction = default,
             int? limit = default,
+            global::Baseten.LogLevelV1? minLevel = default,
+            string? replica = default,
+            string? requestId = default,
+            string? searchPattern = default,
+            global::System.Collections.Generic.IList<string>? includes = default,
+            global::System.Collections.Generic.IList<string>? excludes = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -99,6 +131,12 @@ namespace Baseten
                 endEpochMillis: endEpochMillis,
                 direction: direction,
                 limit: limit,
+                minLevel: minLevel,
+                replica: replica,
+                requestId: requestId,
+                searchPattern: searchPattern,
+                includes: includes,
+                excludes: excludes,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -121,6 +159,20 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 500
         /// </param>
+        /// <param name="minLevel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="replica">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="searchPattern">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="includes"></param>
+        /// <param name="excludes"></param>
         /// <param name="chainId"></param>
         /// <param name="chainDeploymentId"></param>
         /// <param name="chainletId"></param>
@@ -140,6 +192,12 @@ namespace Baseten
             int? endEpochMillis = default,
             global::Baseten.SortOrderV1? direction = default,
             int? limit = default,
+            global::Baseten.LogLevelV1? minLevel = default,
+            string? replica = default,
+            string? requestId = default,
+            string? searchPattern = default,
+            global::System.Collections.Generic.IList<string>? includes = default,
+            global::System.Collections.Generic.IList<string>? excludes = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -151,6 +209,12 @@ namespace Baseten
                 endEpochMillis: endEpochMillis,
                 direction: direction,
                 limit: limit,
+                minLevel: minLevel,
+                replica: ref replica,
+                requestId: ref requestId,
+                searchPattern: ref searchPattern,
+                includes: includes,
+                excludes: excludes,
                 chainId: ref chainId,
                 chainDeploymentId: ref chainDeploymentId,
                 chainletId: ref chainletId);
@@ -186,6 +250,12 @@ namespace Baseten
                                 .AddOptionalParameter("end_epoch_millis", endEpochMillis?.ToString())
                                 .AddOptionalParameter("direction", direction?.ToString())
                                 .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("min_level", minLevel?.ToString())
+                                .AddOptionalParameter("replica", replica)
+                                .AddOptionalParameter("request_id", requestId)
+                                .AddOptionalParameter("search_pattern", searchPattern)
+                                .AddOptionalParameter("includes", includes, delimiter: ",", explode: true)
+                                .AddOptionalParameter("excludes", excludes, delimiter: ",", explode: true)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -231,6 +301,12 @@ namespace Baseten
                     endEpochMillis: endEpochMillis,
                     direction: direction,
                     limit: limit,
+                    minLevel: minLevel,
+                    replica: replica,
+                    requestId: requestId,
+                    searchPattern: searchPattern,
+                    includes: includes,
+                    excludes: excludes,
                     chainId: chainId!,
                     chainDeploymentId: chainDeploymentId!,
                     chainletId: chainletId!);

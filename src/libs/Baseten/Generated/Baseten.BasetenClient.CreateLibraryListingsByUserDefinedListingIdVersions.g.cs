@@ -58,9 +58,7 @@ namespace Baseten
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "display_name": null,<br/>
-        ///   "is_public": null,<br/>
         ///   "oracle_version_id": null,<br/>
-        ///   "allow_truss_download": null,<br/>
         ///   "version_tag": null<br/>
         /// }'
         /// </remarks>
@@ -96,9 +94,7 @@ namespace Baseten
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "display_name": null,<br/>
-        ///   "is_public": null,<br/>
         ///   "oracle_version_id": null,<br/>
-        ///   "allow_truss_download": null,<br/>
         ///   "version_tag": null<br/>
         /// }'
         /// </remarks>

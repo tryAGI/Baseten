@@ -55,8 +55,7 @@ namespace Baseten
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "display_name": null,<br/>
-        ///   "user_defined_id": null,<br/>
-        ///   "is_public": null<br/>
+        ///   "user_defined_id": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.LibraryListingV1> CreateLibraryListingsAsync(
@@ -88,8 +87,7 @@ namespace Baseten
         /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "display_name": null,<br/>
-        ///   "user_defined_id": null,<br/>
-        ///   "is_public": null<br/>
+        ///   "user_defined_id": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LibraryListingV1>> CreateLibraryListingsAsResponseAsync(

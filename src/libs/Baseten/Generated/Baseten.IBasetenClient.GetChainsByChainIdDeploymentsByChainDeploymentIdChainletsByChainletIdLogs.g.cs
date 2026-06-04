@@ -20,6 +20,20 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 500
         /// </param>
+        /// <param name="minLevel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="replica">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="searchPattern">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="includes"></param>
+        /// <param name="excludes"></param>
         /// <param name="chainId"></param>
         /// <param name="chainDeploymentId"></param>
         /// <param name="chainletId"></param>
@@ -39,6 +53,12 @@ namespace Baseten
             int? endEpochMillis = default,
             global::Baseten.SortOrderV1? direction = default,
             int? limit = default,
+            global::Baseten.LogLevelV1? minLevel = default,
+            string? replica = default,
+            string? requestId = default,
+            string? searchPattern = default,
+            global::System.Collections.Generic.IList<string>? includes = default,
+            global::System.Collections.Generic.IList<string>? excludes = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -57,6 +77,20 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 500
         /// </param>
+        /// <param name="minLevel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="replica">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="searchPattern">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="includes"></param>
+        /// <param name="excludes"></param>
         /// <param name="chainId"></param>
         /// <param name="chainDeploymentId"></param>
         /// <param name="chainletId"></param>
@@ -76,6 +110,12 @@ namespace Baseten
             int? endEpochMillis = default,
             global::Baseten.SortOrderV1? direction = default,
             int? limit = default,
+            global::Baseten.LogLevelV1? minLevel = default,
+            string? replica = default,
+            string? requestId = default,
+            string? searchPattern = default,
+            global::System.Collections.Generic.IList<string>? includes = default,
+            global::System.Collections.Generic.IList<string>? excludes = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -21,16 +21,13 @@ namespace Baseten
         ///     "raw_config": null,<br/>
         ///     "user_env": null,<br/>
         ///     "environment_name": null,<br/>
-        ///     "preserve_env_instance_type": null,<br/>
         ///     "deploy_timeout_minutes": null,<br/>
         ///     "deployment_name": null,<br/>
         ///     "labels": null<br/>
         ///   },<br/>
         ///   "name": null,<br/>
         ///   "team_id": null,<br/>
-        ///   "model_id": null,<br/>
-        ///   "dry_run": null,<br/>
-        ///   "is_development": null<br/>
+        ///   "model_id": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.PrepareModelUploadResponseV1> CreatePrepareModelUploadAsync(
@@ -55,16 +52,13 @@ namespace Baseten
         ///     "raw_config": null,<br/>
         ///     "user_env": null,<br/>
         ///     "environment_name": null,<br/>
-        ///     "preserve_env_instance_type": null,<br/>
         ///     "deploy_timeout_minutes": null,<br/>
         ///     "deployment_name": null,<br/>
         ///     "labels": null<br/>
         ///   },<br/>
         ///   "name": null,<br/>
         ///   "team_id": null,<br/>
-        ///   "model_id": null,<br/>
-        ///   "dry_run": null,<br/>
-        ///   "is_development": null<br/>
+        ///   "model_id": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.PrepareModelUploadResponseV1>> CreatePrepareModelUploadAsResponseAsync(
