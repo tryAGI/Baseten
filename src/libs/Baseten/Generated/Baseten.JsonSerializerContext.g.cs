@@ -33,6 +33,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.DeploymentConfigOutputFormatNullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.LogLevelV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LogLevelV1NullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.SortOrderV1JsonConverter),
 
             typeof(global::Baseten.JsonConverters.SortOrderV1NullableJsonConverter),
@@ -205,11 +209,13 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentConfigResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentConfigOutputFormat), TypeInfoPropertyName = "DeploymentConfigOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetDeploymentConfigRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LogLevelV1), TypeInfoPropertyName = "LogLevelV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LogV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLogsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LogV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SortOrderV1), TypeInfoPropertyName = "SortOrderV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetDeploymentLogsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TerminateReplicaResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SignSSHCertificateRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SignSSHCertificateResponseV1))]
@@ -274,7 +280,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BasetenLatestCheckpointConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BasetenNamedCheckpointConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateJobWeightConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobAcceleratorV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobCacheConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobCheckpointingConfig))]
@@ -497,6 +502,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DeploymentV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LogV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EnvironmentV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainletV1>))]
@@ -507,7 +513,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainletEnvironmentInstanceTypeUpdateV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingProjectV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingJobV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.CreateTrainingJobS3Artifact>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.CreateJobWeightConfigV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.CheckpointsItem>))]

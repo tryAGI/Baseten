@@ -59,8 +59,7 @@ namespace Baseten
         ///   "statuses": [<br/>
         ///     "TRAINING_JOB_RUNNING",<br/>
         ///     "TRAINING_JOB_COMPLETED"<br/>
-        ///   ],<br/>
-        ///   "order_by": null<br/>
+        ///   ]<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.SearchTrainingJobsResponseV1> CreateTrainingJobsSearchAsync(
@@ -96,8 +95,7 @@ namespace Baseten
         ///   "statuses": [<br/>
         ///     "TRAINING_JOB_RUNNING",<br/>
         ///     "TRAINING_JOB_COMPLETED"<br/>
-        ///   ],<br/>
-        ///   "order_by": null<br/>
+        ///   ]<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.SearchTrainingJobsResponseV1>> CreateTrainingJobsSearchAsResponseAsync(

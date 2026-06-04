@@ -57,9 +57,7 @@ namespace Baseten
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
         ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_session_id": null<br/>
         /// }'
@@ -95,9 +93,7 @@ namespace Baseten
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
         ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_session_id": null<br/>
         /// }'

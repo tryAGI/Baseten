@@ -37,6 +37,46 @@ namespace Baseten
         public int? Limit { get; set; }
 
         /// <summary>
+        /// Minimum log severity to include. Omit to return all log lines, including lines that have no level. Any explicit value returns lines at or above that severity and drops lines without a level.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("min_level")]
+        public global::Baseten.LogLevelV1? MinLevel { get; set; }
+
+        /// <summary>
+        /// Only return logs emitted by this replica (5-char short ID).<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("replica")]
+        public string? Replica { get; set; }
+
+        /// <summary>
+        /// Only return logs tagged with this inference request ID.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
+        public string? RequestId { get; set; }
+
+        /// <summary>
+        /// RE2 regular expression matched against the log message. Prefer `includes` and `excludes` for plain substring matches.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("search_pattern")]
+        public string? SearchPattern { get; set; }
+
+        /// <summary>
+        /// Case-sensitive substrings that must all appear in the log message.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("includes")]
+        public global::System.Collections.Generic.IList<string>? Includes { get; set; }
+
+        /// <summary>
+        /// Case-sensitive substrings; lines containing any of these are dropped.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("excludes")]
+        public global::System.Collections.Generic.IList<string>? Excludes { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -61,6 +101,28 @@ namespace Baseten
         /// Limit of logs to fetch in a single request<br/>
         /// Default Value: 500
         /// </param>
+        /// <param name="minLevel">
+        /// Minimum log severity to include. Omit to return all log lines, including lines that have no level. Any explicit value returns lines at or above that severity and drops lines without a level.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="replica">
+        /// Only return logs emitted by this replica (5-char short ID).<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestId">
+        /// Only return logs tagged with this inference request ID.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="searchPattern">
+        /// RE2 regular expression matched against the log message. Prefer `includes` and `excludes` for plain substring matches.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="includes">
+        /// Case-sensitive substrings that must all appear in the log message.
+        /// </param>
+        /// <param name="excludes">
+        /// Case-sensitive substrings; lines containing any of these are dropped.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -68,12 +130,24 @@ namespace Baseten
             int? startEpochMillis,
             int? endEpochMillis,
             global::Baseten.SortOrderV1? direction,
-            int? limit)
+            int? limit,
+            global::Baseten.LogLevelV1? minLevel,
+            string? replica,
+            string? requestId,
+            string? searchPattern,
+            global::System.Collections.Generic.IList<string>? includes,
+            global::System.Collections.Generic.IList<string>? excludes)
         {
             this.StartEpochMillis = startEpochMillis;
             this.EndEpochMillis = endEpochMillis;
             this.Direction = direction;
             this.Limit = limit;
+            this.MinLevel = minLevel;
+            this.Replica = replica;
+            this.RequestId = requestId;
+            this.SearchPattern = searchPattern;
+            this.Includes = includes;
+            this.Excludes = excludes;
         }
 
         /// <summary>
