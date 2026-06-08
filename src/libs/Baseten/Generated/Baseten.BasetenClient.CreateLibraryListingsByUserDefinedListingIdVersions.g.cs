@@ -482,6 +482,10 @@ namespace Baseten
         /// Whether users deploying this model can download the Truss<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="closedSource">
+        /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream). Only used when creating a new listing.<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="versionTag">
         /// Human-readable tag for this version
         /// </param>
@@ -495,6 +499,7 @@ namespace Baseten
             string? displayName = default,
             bool? isPublic = default,
             bool? allowTrussDownload = default,
+            bool? closedSource = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -504,6 +509,7 @@ namespace Baseten
                 IsPublic = isPublic,
                 OracleVersionId = oracleVersionId,
                 AllowTrussDownload = allowTrussDownload,
+                ClosedSource = closedSource,
                 VersionTag = versionTag,
             };
 

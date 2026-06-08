@@ -30,6 +30,13 @@ namespace Baseten
         public bool? IsPublic { get; set; }
 
         /// <summary>
+        /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("closed_source")]
+        public bool? ClosedSource { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -48,17 +55,23 @@ namespace Baseten
         /// Whether the listing is publicly accessible<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="closedSource">
+        /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateLibraryListingRequestV1(
             string displayName,
             string userDefinedId,
-            bool? isPublic)
+            bool? isPublic,
+            bool? closedSource)
         {
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.UserDefinedId = userDefinedId ?? throw new global::System.ArgumentNullException(nameof(userDefinedId));
             this.IsPublic = isPublic;
+            this.ClosedSource = closedSource;
         }
 
         /// <summary>
