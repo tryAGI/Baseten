@@ -37,6 +37,13 @@ namespace Baseten
         public bool? AllowTrussDownload { get; set; }
 
         /// <summary>
+        /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream). Only used when creating a new listing.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("closed_source")]
+        public bool? ClosedSource { get; set; }
+
+        /// <summary>
         /// Human-readable tag for this version
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("version_tag")]
@@ -70,6 +77,10 @@ namespace Baseten
         /// Whether users deploying this model can download the Truss<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="closedSource">
+        /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream). Only used when creating a new listing.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -78,12 +89,14 @@ namespace Baseten
             string versionTag,
             string? displayName,
             bool? isPublic,
-            bool? allowTrussDownload)
+            bool? allowTrussDownload,
+            bool? closedSource)
         {
             this.DisplayName = displayName;
             this.IsPublic = isPublic;
             this.OracleVersionId = oracleVersionId ?? throw new global::System.ArgumentNullException(nameof(oracleVersionId));
             this.AllowTrussDownload = allowTrussDownload;
+            this.ClosedSource = closedSource;
             this.VersionTag = versionTag ?? throw new global::System.ArgumentNullException(nameof(versionTag));
         }
 

@@ -14043,6 +14043,11 @@
                         "title": "Is Public",
                         "type": "boolean"
                     },
+                    "closed_source": {
+                        "description": "Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)",
+                        "title": "Closed Source",
+                        "type": "boolean"
+                    },
                     "created_at": {
                         "description": "Time the listing was created in ISO 8601 format",
                         "format": "date-time",
@@ -14060,6 +14065,7 @@
                     "display_name",
                     "user_defined_id",
                     "is_public",
+                    "closed_source",
                     "created_at",
                     "modified_at"
                 ],
@@ -14100,6 +14106,12 @@
                         "default": false,
                         "description": "Whether the listing is publicly accessible",
                         "title": "Is Public",
+                        "type": "boolean"
+                    },
+                    "closed_source": {
+                        "default": false,
+                        "description": "Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)",
+                        "title": "Closed Source",
                         "type": "boolean"
                     }
                 },
@@ -14259,6 +14271,12 @@
                         "default": false,
                         "description": "Whether users deploying this model can download the Truss",
                         "title": "Allow Truss Download",
+                        "type": "boolean"
+                    },
+                    "closed_source": {
+                        "default": false,
+                        "description": "Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream). Only used when creating a new listing.",
+                        "title": "Closed Source",
                         "type": "boolean"
                     },
                     "version_tag": {

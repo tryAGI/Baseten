@@ -30,6 +30,13 @@ namespace Baseten
         public required bool IsPublic { get; set; }
 
         /// <summary>
+        /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("closed_source")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool ClosedSource { get; set; }
+
+        /// <summary>
         /// Time the listing was created in ISO 8601 format
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -61,6 +68,9 @@ namespace Baseten
         /// <param name="isPublic">
         /// Whether the listing is publicly accessible
         /// </param>
+        /// <param name="closedSource">
+        /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)
+        /// </param>
         /// <param name="createdAt">
         /// Time the listing was created in ISO 8601 format
         /// </param>
@@ -74,12 +84,14 @@ namespace Baseten
             string displayName,
             string userDefinedId,
             bool isPublic,
+            bool closedSource,
             global::System.DateTime createdAt,
             global::System.DateTime modifiedAt)
         {
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.UserDefinedId = userDefinedId ?? throw new global::System.ArgumentNullException(nameof(userDefinedId));
             this.IsPublic = isPublic;
+            this.ClosedSource = closedSource;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;
         }
