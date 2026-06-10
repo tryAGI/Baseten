@@ -54,7 +54,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ChainDeploymentV1> GetChainsByChainIdDeploymentsByChainDeploymentIdAsync(
             string chainId,
@@ -82,7 +82,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ChainDeploymentV1>> GetChainsByChainIdDeploymentsByChainDeploymentIdAsResponseAsync(
             string chainId,

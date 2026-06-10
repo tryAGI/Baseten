@@ -55,7 +55,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.GetTrainerServerCheckpointsResponseV1> GetTrainerSessionsBySessionIdTrainersByTrainerIdCheckpointsAsync(
             string sessionId,
@@ -84,7 +84,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainerServerCheckpointsResponseV1>> GetTrainerSessionsBySessionIdTrainersByTrainerIdCheckpointsAsResponseAsync(
             string sessionId,

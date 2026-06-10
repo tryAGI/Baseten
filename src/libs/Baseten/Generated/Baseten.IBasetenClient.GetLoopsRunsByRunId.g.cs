@@ -15,7 +15,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/loops/runs/{run_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.GetLoopsRunResponseV1> GetLoopsRunsByRunIdAsync(
             string runId,
@@ -32,7 +32,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/loops/runs/{run_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopsRunResponseV1>> GetLoopsRunsByRunIdAsResponseAsync(
             string runId,

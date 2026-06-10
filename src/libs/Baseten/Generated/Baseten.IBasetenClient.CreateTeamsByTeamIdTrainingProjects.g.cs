@@ -16,7 +16,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/teams/{team_id}/training_projects \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "training_project": {<br/>
         ///     "name": "My Training Project"<br/>
@@ -41,7 +41,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/teams/{team_id}/training_projects \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "training_project": {<br/>
         ///     "name": "My Training Project"<br/>

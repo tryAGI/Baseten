@@ -15,7 +15,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.ChainDeploymentTombstoneV1> DeleteChainsByChainIdDeploymentsByChainDeploymentIdAsync(
             string chainId,
@@ -33,7 +33,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ChainDeploymentTombstoneV1>> DeleteChainsByChainIdDeploymentsByChainDeploymentIdAsResponseAsync(
             string chainId,

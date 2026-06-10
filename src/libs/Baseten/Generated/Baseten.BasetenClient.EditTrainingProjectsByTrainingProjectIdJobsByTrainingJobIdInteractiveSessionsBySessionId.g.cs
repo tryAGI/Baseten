@@ -61,7 +61,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request PATCH \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/interactive_sessions/{session_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "timeout_minutes": null,<br/>
         ///   "trigger": null<br/>
@@ -102,7 +102,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request PATCH \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/interactive_sessions/{session_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "timeout_minutes": null,<br/>
         ///   "trigger": null<br/>

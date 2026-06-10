@@ -55,7 +55,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request PATCH \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "min_replica": 0,<br/>
         ///   "max_replica": 7,<br/>
@@ -96,7 +96,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request PATCH \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "min_replica": 0,<br/>
         ///   "max_replica": 7,<br/>

@@ -55,7 +55,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/environments/{env_name} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ChainEnvironmentV1> GetChainsByChainIdEnvironmentsByEnvNameAsync(
             string chainId,
@@ -84,7 +84,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/environments/{env_name} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ChainEnvironmentV1>> GetChainsByChainIdEnvironmentsByEnvNameAsResponseAsync(
             string chainId,

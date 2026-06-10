@@ -101,7 +101,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.GetLogsResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdLogsAsync(
             string modelId,
@@ -176,7 +176,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdLogsAsResponseAsync(
             string modelId,
