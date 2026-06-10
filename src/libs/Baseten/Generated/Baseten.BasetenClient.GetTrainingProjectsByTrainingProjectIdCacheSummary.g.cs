@@ -52,7 +52,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/cache/summary \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.GetCacheSummaryResponseV1> GetTrainingProjectsByTrainingProjectIdCacheSummaryAsync(
             string trainingProjectId,
@@ -78,7 +78,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/cache/summary \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetCacheSummaryResponseV1>> GetTrainingProjectsByTrainingProjectIdCacheSummaryAsResponseAsync(
             string trainingProjectId,

@@ -55,7 +55,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/force_roll_forward_promotion \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.SignalPromotionResponseV1> CreateModelsByModelIdEnvironmentsByEnvNameForceRollForwardPromotionAsync(
             string modelId,
@@ -84,7 +84,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/force_roll_forward_promotion \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.SignalPromotionResponseV1>> CreateModelsByModelIdEnvironmentsByEnvNameForceRollForwardPromotionAsResponseAsync(
             string modelId,

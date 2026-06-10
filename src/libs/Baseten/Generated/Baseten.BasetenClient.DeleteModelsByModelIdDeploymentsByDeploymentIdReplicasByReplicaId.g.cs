@@ -58,7 +58,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/replicas/{replica_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.TerminateReplicaResponseV1> DeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdAsync(
             string modelId,
@@ -90,7 +90,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/replicas/{replica_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.TerminateReplicaResponseV1>> DeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdAsResponseAsync(
             string modelId,

@@ -52,7 +52,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/users/{user_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.UserInfoV1> GetUsersByUserIdAsync(
             string userId,
@@ -78,7 +78,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/users/{user_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UserInfoV1>> GetUsersByUserIdAsResponseAsync(
             string userId,

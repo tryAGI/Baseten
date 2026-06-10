@@ -52,7 +52,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/development/retry \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.RetryDeploymentResponseV1> CreateModelsByModelIdDeploymentsDevelopmentRetryAsync(
             string modelId,
@@ -78,7 +78,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/development/retry \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RetryDeploymentResponseV1>> CreateModelsByModelIdDeploymentsDevelopmentRetryAsResponseAsync(
             string modelId,

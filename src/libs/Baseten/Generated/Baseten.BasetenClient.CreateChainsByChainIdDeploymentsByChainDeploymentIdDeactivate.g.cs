@@ -55,7 +55,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/deactivate \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.DeactivateResponseV1> CreateChainsByChainIdDeploymentsByChainDeploymentIdDeactivateAsync(
             string chainId,
@@ -84,7 +84,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/deactivate \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateResponseV1>> CreateChainsByChainIdDeploymentsByChainDeploymentIdDeactivateAsResponseAsync(
             string chainId,

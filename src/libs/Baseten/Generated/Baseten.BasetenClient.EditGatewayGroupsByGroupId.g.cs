@@ -55,7 +55,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request PATCH \<br/>
         /// --url https://api.baseten.co/v1/gateway/groups/{group_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "metadata": {<br/>
         ///     "name": "Acme Prod"<br/>
@@ -92,7 +92,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request PATCH \<br/>
         /// --url https://api.baseten.co/v1/gateway/groups/{group_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "metadata": {<br/>
         ///     "name": "Acme Prod"<br/>

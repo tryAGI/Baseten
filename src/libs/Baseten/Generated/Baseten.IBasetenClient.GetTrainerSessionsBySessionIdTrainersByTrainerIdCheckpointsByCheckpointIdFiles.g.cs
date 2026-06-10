@@ -17,7 +17,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints/{checkpoint_id}/files \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.GetTrainerServerCheckpointFilesResponseV1> GetTrainerSessionsBySessionIdTrainersByTrainerIdCheckpointsByCheckpointIdFilesAsync(
             string sessionId,
@@ -38,7 +38,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/trainer_sessions/{session_id}/trainers/{trainer_id}/checkpoints/{checkpoint_id}/files \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainerServerCheckpointFilesResponseV1>> GetTrainerSessionsBySessionIdTrainersByTrainerIdCheckpointsByCheckpointIdFilesAsResponseAsync(
             string sessionId,

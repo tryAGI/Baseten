@@ -54,7 +54,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/gateway/groups/{group_id}/api_keys/{api_key_prefix} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.GatewayKeyInfoV1> GetGatewayGroupsByGroupIdApiKeysByApiKeyPrefixAsync(
             string groupId,
@@ -82,7 +82,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/gateway/groups/{group_id}/api_keys/{api_key_prefix} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GatewayKeyInfoV1>> GetGatewayGroupsByGroupIdApiKeysByApiKeyPrefixAsResponseAsync(
             string groupId,

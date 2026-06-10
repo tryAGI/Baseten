@@ -17,7 +17,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/environments/{env_name}/chainlet_settings/instance_types/update \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "updates": [<br/>
         ///     {<br/>
@@ -51,7 +51,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/chains/{chain_id}/environments/{env_name}/chainlet_settings/instance_types/update \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "updates": [<br/>
         ///     {<br/>

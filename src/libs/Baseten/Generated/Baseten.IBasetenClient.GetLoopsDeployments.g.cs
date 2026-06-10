@@ -14,7 +14,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/loops/deployments \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.ListLoopsDeploymentsResponseV1> GetLoopsDeploymentsAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -29,7 +29,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/loops/deployments \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsDeploymentsResponseV1>> GetLoopsDeploymentsAsResponseAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

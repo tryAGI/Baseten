@@ -52,7 +52,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/loops/samplers \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
@@ -87,7 +87,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/loops/samplers \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>

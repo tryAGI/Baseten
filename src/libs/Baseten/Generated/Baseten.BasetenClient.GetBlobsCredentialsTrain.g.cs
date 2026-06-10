@@ -48,7 +48,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/blobs/credentials/train \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.GetBlobCredentialsResponseV1> GetBlobsCredentialsTrainAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -70,7 +70,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/blobs/credentials/train \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetBlobCredentialsResponseV1>> GetBlobsCredentialsTrainAsResponseAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

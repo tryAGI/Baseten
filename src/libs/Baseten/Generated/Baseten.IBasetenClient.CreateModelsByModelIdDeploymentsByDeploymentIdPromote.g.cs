@@ -17,7 +17,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/promote \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "scale_down_previous_production": true,<br/>
         ///   "preserve_env_instance_type": true<br/>
@@ -43,7 +43,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/promote \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "scale_down_previous_production": true,<br/>
         ///   "preserve_env_instance_type": true<br/>

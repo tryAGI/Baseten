@@ -16,7 +16,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/teams/{team_id}/secrets/{secret_name} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.SecretTombstoneV1> DeleteTeamsByTeamIdSecretsBySecretNameAsync(
             string teamId,
@@ -35,7 +35,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/teams/{team_id}/secrets/{secret_name} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.SecretTombstoneV1>> DeleteTeamsByTeamIdSecretsBySecretNameAsResponseAsync(
             string teamId,
