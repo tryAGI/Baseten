@@ -723,11 +723,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 2.0\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 20\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 2.0}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 20}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates a development deployment's autoscaling settings and returns the update status.",
@@ -766,11 +766,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 2.0\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 20\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 2.0}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 20}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates a production deployment's autoscaling settings and returns the update status.",
@@ -809,11 +809,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 2.0\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"min_replica\": 0,\n  \"max_replica\": 7,\n  \"autoscaling_window\": 600,\n  \"scale_down_delay\": 120,\n  \"concurrency_target\": 2,\n  \"target_utilization_percentage\": 70,\n  \"target_in_flight_tokens\": 40000,\n  \"max_scale_down_rate\": 20\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 2.0}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2, 'target_utilization_percentage': 70, 'target_in_flight_tokens': 40000, 'max_scale_down_rate': 20}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates a deployment's autoscaling settings and returns the update status.",
@@ -6789,14 +6789,14 @@
                     "max_scale_down_rate": {
                         "anyOf": [
                             {
-                                "type": "number"
+                                "type": "integer"
                             },
                             {
                                 "type": "null"
                             }
                         ],
                         "default": null,
-                        "description": "Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).",
+                        "description": "Maximum percentage of replicas that can be removed per autoscaling window (1\u201350). E.g. 20 means at most 20% of replicas are removed per window.",
                         "title": "Max Scale Down Rate"
                     }
                 },
@@ -7196,8 +7196,8 @@
                     "max_scale_down_rate": {
                         "anyOf": [
                             {
-                                "exclusiveMinimum": 1,
-                                "maximum": 2,
+                                "maximum": 50,
+                                "minimum": 1,
                                 "type": "number"
                             },
                             {
@@ -7205,9 +7205,9 @@
                             }
                         ],
                         "default": null,
-                        "description": "Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).",
+                        "description": "Maximum percentage of replicas that can be removed per autoscaling window (1\u201350). E.g. 20 means at most 20% of replicas are removed per window.",
                         "examples": [
-                            2.0
+                            20
                         ],
                         "title": "Max Scale Down Rate"
                     }
