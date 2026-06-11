@@ -1347,7 +1347,7 @@
                         "name": "start_epoch_millis",
                         "in": "query",
                         "required": false,
-                        "description": "Epoch millis timestamp to start fetching logs",
+                        "description": "Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -1365,7 +1365,7 @@
                         "name": "end_epoch_millis",
                         "in": "query",
                         "required": false,
-                        "description": "Epoch millis timestamp to end fetching logs",
+                        "description": "Epoch milliseconds at which to stop fetching logs. Defaults to the current time.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -2334,7 +2334,7 @@
                         "name": "start_epoch_millis",
                         "in": "query",
                         "required": false,
-                        "description": "Epoch millis timestamp to start fetching logs",
+                        "description": "Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -2352,7 +2352,7 @@
                         "name": "end_epoch_millis",
                         "in": "query",
                         "required": false,
-                        "description": "Epoch millis timestamp to end fetching logs",
+                        "description": "Epoch milliseconds at which to stop fetching logs. Defaults to the current time.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -3139,7 +3139,7 @@
                         "name": "start_epoch_millis",
                         "in": "query",
                         "required": false,
-                        "description": "Epoch millis timestamp to start fetching logs",
+                        "description": "Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -3157,7 +3157,7 @@
                         "name": "end_epoch_millis",
                         "in": "query",
                         "required": false,
-                        "description": "Epoch millis timestamp to end fetching logs",
+                        "description": "Epoch milliseconds at which to stop fetching logs. Defaults to the current time.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -4735,7 +4735,7 @@
                         "name": "start_epoch_millis",
                         "in": "query",
                         "required": false,
-                        "description": "Epoch millis timestamp to start fetching logs",
+                        "description": "Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -4753,7 +4753,7 @@
                         "name": "end_epoch_millis",
                         "in": "query",
                         "required": false,
-                        "description": "Epoch millis timestamp to end fetching logs",
+                        "description": "Epoch milliseconds at which to stop fetching logs. Defaults to the current time.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -7198,7 +7198,7 @@
                             {
                                 "maximum": 50,
                                 "minimum": 1,
-                                "type": "number"
+                                "type": "integer"
                             },
                             {
                                 "type": "null"
@@ -7507,7 +7507,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Epoch millis timestamp to start fetching logs",
+                        "description": "Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.",
                         "title": "Start Epoch Millis"
                     },
                     "end_epoch_millis": {
@@ -7520,7 +7520,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Epoch millis timestamp to end fetching logs",
+                        "description": "Epoch milliseconds at which to stop fetching logs. Defaults to the current time.",
                         "title": "End Epoch Millis"
                     },
                     "direction": {
@@ -10650,7 +10650,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Epoch millis timestamp to start fetching logs",
+                        "description": "Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.",
                         "title": "Start Epoch Millis"
                     },
                     "end_epoch_millis": {
@@ -10663,7 +10663,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Epoch millis timestamp to end fetching logs",
+                        "description": "Epoch milliseconds at which to stop fetching logs. Defaults to the current time.",
                         "title": "End Epoch Millis"
                     },
                     "direction": {
@@ -12918,7 +12918,15 @@
                         "description": "Latest deployment status."
                     },
                     "sampler": {
-                        "$ref": "#/components/schemas/LoopsSamplerV1",
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LoopsSamplerV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
                         "description": "The sampler bound to this deployment."
                     }
                 },
@@ -12926,8 +12934,7 @@
                     "id",
                     "base_model",
                     "base_url",
-                    "status",
-                    "sampler"
+                    "status"
                 ],
                 "title": "LoopsDeploymentV1",
                 "type": "object"
@@ -13320,7 +13327,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Epoch millis timestamp to start fetching logs",
+                        "description": "Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.",
                         "title": "Start Epoch Millis"
                     },
                     "end_epoch_millis": {
@@ -13333,7 +13340,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Epoch millis timestamp to end fetching logs",
+                        "description": "Epoch milliseconds at which to stop fetching logs. Defaults to the current time.",
                         "title": "End Epoch Millis"
                     },
                     "direction": {
