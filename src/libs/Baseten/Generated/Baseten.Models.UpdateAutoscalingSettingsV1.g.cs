@@ -58,7 +58,7 @@ namespace Baseten
         public int? TargetInFlightTokens { get; set; }
 
         /// <summary>
-        /// Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).<br/>
+        /// Maximum percentage of replicas that can be removed per autoscaling window (1–50). E.g. 20 means at most 20% of replicas are removed per window.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_scale_down_rate")]
@@ -102,7 +102,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="maxScaleDownRate">
-        /// Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).<br/>
+        /// Maximum percentage of replicas that can be removed per autoscaling window (1–50). E.g. 20 means at most 20% of replicas are removed per window.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
