@@ -9,18 +9,18 @@ namespace Baseten
     public sealed partial class GetLoopsDeploymentLogsRequestV1
     {
         /// <summary>
-        /// Epoch millis timestamp to start fetching logs<br/>
+        /// Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_epoch_millis")]
-        public int? StartEpochMillis { get; set; }
+        public long? StartEpochMillis { get; set; }
 
         /// <summary>
-        /// Epoch millis timestamp to end fetching logs<br/>
+        /// Epoch milliseconds at which to stop fetching logs. Defaults to the current time.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_epoch_millis")]
-        public int? EndEpochMillis { get; set; }
+        public long? EndEpochMillis { get; set; }
 
         /// <summary>
         /// Sort order for logs<br/>
@@ -53,11 +53,11 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="GetLoopsDeploymentLogsRequestV1" /> class.
         /// </summary>
         /// <param name="startEpochMillis">
-        /// Epoch millis timestamp to start fetching logs<br/>
+        /// Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="endEpochMillis">
-        /// Epoch millis timestamp to end fetching logs<br/>
+        /// Epoch milliseconds at which to stop fetching logs. Defaults to the current time.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="direction">
@@ -76,8 +76,8 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetLoopsDeploymentLogsRequestV1(
-            int? startEpochMillis,
-            int? endEpochMillis,
+            long? startEpochMillis,
+            long? endEpochMillis,
             global::Baseten.SortOrderV1? direction,
             int? limit,
             global::Baseten.LogLevelV1? minLevel)

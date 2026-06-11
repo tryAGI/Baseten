@@ -119,7 +119,7 @@ namespace Baseten
             int? concurrencyTarget = default,
             int? targetUtilizationPercentage = default,
             int? targetInFlightTokens = default,
-            double? maxScaleDownRate = default,
+            int? maxScaleDownRate = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
