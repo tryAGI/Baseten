@@ -93,14 +93,6 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.APIKeyCategoryNullableJsonConverter),
 
-            typeof(global::Baseten.JsonConverters.ResourceKindJsonConverter),
-
-            typeof(global::Baseten.JsonConverters.ResourceKindNullableJsonConverter),
-
-            typeof(global::Baseten.JsonConverters.LimitEnforcementV1JsonConverter),
-
-            typeof(global::Baseten.JsonConverters.LimitEnforcementV1NullableJsonConverter),
-
             typeof(global::Baseten.JsonConverters.LimitTypeV1JsonConverter),
 
             typeof(global::Baseten.JsonConverters.LimitTypeV1NullableJsonConverter),
@@ -108,6 +100,14 @@ namespace Baseten
             typeof(global::Baseten.JsonConverters.RateLimitUnitV1JsonConverter),
 
             typeof(global::Baseten.JsonConverters.RateLimitUnitV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ResourceKindJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ResourceKindNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LimitEnforcementV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LimitEnforcementV1NullableJsonConverter),
 
             typeof(global::Baseten.JsonConverters.UsageLimitUnitV1JsonConverter),
 
@@ -118,6 +118,10 @@ namespace Baseten
             typeof(global::Baseten.JsonConverters.CheckpointsItemJsonConverter),
 
             typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
 
             typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
 
@@ -425,6 +429,17 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyTombstoneV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelWeightSnapshotV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelWeightSnapshotRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1), TypeInfoPropertyName = "LimitTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelAPIOrgDetailsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelAPIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>), TypeInfoPropertyName = "AnyOfDoubleString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RateLimitV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PaginationResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitUnitV1), TypeInfoPropertyName = "RateLimitUnitV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelAPIsResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelAPIV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelAPIsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLLMModelRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LLMModelHandleV1))]
@@ -445,7 +460,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind), TypeInfoPropertyName = "ResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ChainMetadataV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyDedicatedUsageV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>), TypeInfoPropertyName = "AnyOfDoubleString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyModelApiUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyTrainingUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DedicatedItemV1))]
@@ -468,8 +482,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EffectiveRateLimitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EffectiveUsageLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EffectiveUsageLimitV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1), TypeInfoPropertyName = "LimitTypeV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitUnitV1), TypeInfoPropertyName = "RateLimitUnitV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitUnitV1), TypeInfoPropertyName = "UsageLimitUnitV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupHierarchyV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitEnforcementV1), TypeInfoPropertyName = "LimitEnforcementV12")]
@@ -478,11 +490,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EffectiveModelConfigV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RateLimitV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.UsageLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PaginationResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GroupV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGroupRequestV1))]
@@ -536,6 +545,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsDeploymentNodeMetricsV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingGpuCapacityItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.APIKeyInfoV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RateLimitV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelAPIV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingVersionV1>))]
@@ -549,7 +560,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EffectiveUsageLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelConfigV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EffectiveModelConfigV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RateLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.UsageLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GroupV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GatewayKeyInfoV1>))]
