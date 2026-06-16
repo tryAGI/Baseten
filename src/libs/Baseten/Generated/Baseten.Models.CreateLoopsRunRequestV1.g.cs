@@ -51,6 +51,13 @@ namespace Baseten
         public int? ScaleDownDelaySeconds { get; set; }
 
         /// <summary>
+        /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
+        /// Default Value: 1
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("replicas")]
+        public int? Replicas { get; set; }
+
+        /// <summary>
         /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -58,7 +65,7 @@ namespace Baseten
         public string? Path { get; set; }
 
         /// <summary>
-        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, or its sampler is unhealthy, a new deployment is provisioned instead.<br/>
+        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reuse_from_session_id")]
@@ -95,12 +102,16 @@ namespace Baseten
         /// Seconds of inactivity before the run scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
         /// Default Value: 3600
         /// </param>
+        /// <param name="replicas">
+        /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
+        /// Default Value: 1
+        /// </param>
         /// <param name="path">
         /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="reuseFromSessionId">
-        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, or its sampler is unhealthy, a new deployment is provisioned instead.<br/>
+        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
@@ -113,6 +124,7 @@ namespace Baseten
             int? loraRank,
             int? seed,
             int? scaleDownDelaySeconds,
+            int? replicas,
             string? path,
             string? reuseFromSessionId)
         {
@@ -122,6 +134,7 @@ namespace Baseten
             this.LoraRank = loraRank;
             this.Seed = seed;
             this.ScaleDownDelaySeconds = scaleDownDelaySeconds;
+            this.Replicas = replicas;
             this.Path = path;
             this.ReuseFromSessionId = reuseFromSessionId;
         }
