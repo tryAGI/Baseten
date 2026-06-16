@@ -9,6 +9,13 @@ namespace Baseten
     public sealed partial class SecretV1
     {
         /// <summary>
+        /// Stable identifier for the secret. Unchanged across rotation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
+
+        /// <summary>
         /// Time the secret was created in ISO 8601 format
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -38,6 +45,9 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretV1" /> class.
         /// </summary>
+        /// <param name="id">
+        /// Stable identifier for the secret. Unchanged across rotation.
+        /// </param>
         /// <param name="createdAt">
         /// Time the secret was created in ISO 8601 format
         /// </param>
@@ -51,10 +61,12 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SecretV1(
+            string id,
             global::System.DateTime createdAt,
             string name,
             string teamName)
         {
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.CreatedAt = createdAt;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.TeamName = teamName ?? throw new global::System.ArgumentNullException(nameof(teamName));

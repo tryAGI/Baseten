@@ -52,7 +52,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/loops/deployments/{deployment_id}/deactivate \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopsDeploymentResponseV1> CreateLoopsDeploymentsByDeploymentIdDeactivateAsync(
             string deploymentId,
@@ -78,7 +78,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/loops/deployments/{deployment_id}/deactivate \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopsDeploymentResponseV1>> CreateLoopsDeploymentsByDeploymentIdDeactivateAsResponseAsync(
             string deploymentId,

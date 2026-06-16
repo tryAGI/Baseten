@@ -15,7 +15,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/library_listings/{user_defined_listing_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.LibraryListingV1> GetLibraryListingsByUserDefinedListingIdAsync(
             string userDefinedListingId,
@@ -32,7 +32,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/library_listings/{user_defined_listing_id} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LibraryListingV1>> GetLibraryListingsByUserDefinedListingIdAsResponseAsync(
             string userDefinedListingId,

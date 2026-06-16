@@ -54,12 +54,9 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/llm_models/{model_id}/deployments \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "resources": null,<br/>
-        ///   "llm_version": null,<br/>
-        ///   "llm_config": null,<br/>
-        ///   "environment_variables": null,<br/>
         ///   "model_metadata": null,<br/>
         ///   "autoscaling_settings": {<br/>
         ///     "autoscaling_window": 600,<br/>
@@ -119,12 +116,9 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/llm_models/{model_id}/deployments \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "resources": null,<br/>
-        ///   "llm_version": null,<br/>
-        ///   "llm_config": null,<br/>
-        ///   "environment_variables": null,<br/>
         ///   "model_metadata": null,<br/>
         ///   "autoscaling_settings": {<br/>
         ///     "autoscaling_window": 600,<br/>

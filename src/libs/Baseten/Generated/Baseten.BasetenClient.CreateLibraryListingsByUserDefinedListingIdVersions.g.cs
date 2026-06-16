@@ -55,12 +55,10 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/library_listings/{user_defined_listing_id}/versions \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "display_name": null,<br/>
-        ///   "is_public": null,<br/>
         ///   "oracle_version_id": null,<br/>
-        ///   "allow_truss_download": null,<br/>
         ///   "version_tag": null<br/>
         /// }'
         /// </remarks>
@@ -93,12 +91,10 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/library_listings/{user_defined_listing_id}/versions \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "display_name": null,<br/>
-        ///   "is_public": null,<br/>
         ///   "oracle_version_id": null,<br/>
-        ///   "allow_truss_download": null,<br/>
         ///   "version_tag": null<br/>
         /// }'
         /// </remarks>
@@ -486,6 +482,10 @@ namespace Baseten
         /// Whether users deploying this model can download the Truss<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="closedSource">
+        /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream). Only used when creating a new listing.<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="versionTag">
         /// Human-readable tag for this version
         /// </param>
@@ -499,6 +499,7 @@ namespace Baseten
             string? displayName = default,
             bool? isPublic = default,
             bool? allowTrussDownload = default,
+            bool? closedSource = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -508,6 +509,7 @@ namespace Baseten
                 IsPublic = isPublic,
                 OracleVersionId = oracleVersionId,
                 AllowTrussDownload = allowTrussDownload,
+                ClosedSource = closedSource,
                 VersionTag = versionTag,
             };
 

@@ -15,7 +15,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/api_keys/{api_key_prefix} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.APIKeyTombstoneV1> DeleteKeysByApiKeyPrefixAsync(
             string apiKeyPrefix,
@@ -32,7 +32,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/api_keys/{api_key_prefix} \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.APIKeyTombstoneV1>> DeleteKeysByApiKeyPrefixAsResponseAsync(
             string apiKeyPrefix,

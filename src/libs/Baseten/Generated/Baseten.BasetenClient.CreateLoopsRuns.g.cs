@@ -52,14 +52,12 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/loops/runs \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
         ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_session_id": null<br/>
         /// }'
@@ -90,14 +88,12 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/loops/runs \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
         ///   "max_seq_len": null,<br/>
-        ///   "lora_rank": null,<br/>
         ///   "seed": null,<br/>
-        ///   "scale_down_delay_seconds": null,<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_session_id": null<br/>
         /// }'
@@ -489,12 +485,16 @@ namespace Baseten
         /// Seconds of inactivity before the run scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
         /// Default Value: 3600
         /// </param>
+        /// <param name="replicas">
+        /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
+        /// Default Value: 1
+        /// </param>
         /// <param name="path">
         /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="reuseFromSessionId">
-        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, or its sampler is unhealthy, a new deployment is provisioned instead.<br/>
+        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -507,6 +507,7 @@ namespace Baseten
             int? loraRank = default,
             int? seed = default,
             int? scaleDownDelaySeconds = default,
+            int? replicas = default,
             string? path = default,
             string? reuseFromSessionId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -520,6 +521,7 @@ namespace Baseten
                 LoraRank = loraRank,
                 Seed = seed,
                 ScaleDownDelaySeconds = scaleDownDelaySeconds,
+                Replicas = replicas,
                 Path = path,
                 ReuseFromSessionId = reuseFromSessionId,
             };

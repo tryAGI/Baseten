@@ -14,7 +14,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/library_listings \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.LibraryListingsV1> GetLibraryListingsAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -29,7 +29,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request GET \<br/>
         /// --url https://api.baseten.co/v1/library_listings \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LibraryListingsV1>> GetLibraryListingsAsResponseAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

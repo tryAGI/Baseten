@@ -16,7 +16,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/activate \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.ActivateResponseV1> CreateModelsByModelIdDeploymentsByDeploymentIdActivateAsync(
             string modelId,
@@ -35,7 +35,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/activate \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ActivateResponseV1>> CreateModelsByModelIdDeploymentsByDeploymentIdActivateAsResponseAsync(
             string modelId,

@@ -58,7 +58,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/ssh/sign \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "public_key": null,<br/>
         ///   "replica_id": null<br/>
@@ -96,7 +96,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/ssh/sign \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "public_key": null,<br/>
         ///   "replica_id": null<br/>

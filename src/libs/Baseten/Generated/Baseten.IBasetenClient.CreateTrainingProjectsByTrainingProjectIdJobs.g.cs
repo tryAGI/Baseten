@@ -16,7 +16,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "training_job": {<br/>
         ///     "image": {<br/>
@@ -40,7 +40,6 @@ namespace Baseten
         ///         "API_KEY": "your_api_key_here",<br/>
         ///         "PATH": "/usr/bin"<br/>
         ///       },<br/>
-        ///       "artifacts": null,<br/>
         ///       "enable_cache": true,<br/>
         ///       "cache_config": {<br/>
         ///         "enable_legacy_hf_mount": true,<br/>
@@ -91,7 +90,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "training_job": {<br/>
         ///     "image": {<br/>
@@ -115,7 +114,6 @@ namespace Baseten
         ///         "API_KEY": "your_api_key_here",<br/>
         ///         "PATH": "/usr/bin"<br/>
         ///       },<br/>
-        ///       "artifacts": null,<br/>
         ///       "enable_cache": true,<br/>
         ///       "cache_config": {<br/>
         ///         "enable_legacy_hf_mount": true,<br/>

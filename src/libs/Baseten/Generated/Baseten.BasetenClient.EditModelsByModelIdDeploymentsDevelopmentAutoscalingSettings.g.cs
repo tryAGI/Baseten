@@ -55,7 +55,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request PATCH \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "min_replica": 0,<br/>
         ///   "max_replica": 7,<br/>
@@ -64,7 +64,7 @@ namespace Baseten
         ///   "concurrency_target": 2,<br/>
         ///   "target_utilization_percentage": 70,<br/>
         ///   "target_in_flight_tokens": 40000,<br/>
-        ///   "max_scale_down_rate": 2.0<br/>
+        ///   "max_scale_down_rate": 20<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsDevelopmentAutoscalingSettingsAsync(
@@ -96,7 +96,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request PATCH \<br/>
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "min_replica": 0,<br/>
         ///   "max_replica": 7,<br/>
@@ -105,7 +105,7 @@ namespace Baseten
         ///   "concurrency_target": 2,<br/>
         ///   "target_utilization_percentage": 70,<br/>
         ///   "target_in_flight_tokens": 40000,<br/>
-        ///   "max_scale_down_rate": 2.0<br/>
+        ///   "max_scale_down_rate": 20<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdDeploymentsDevelopmentAutoscalingSettingsAsResponseAsync(
@@ -506,7 +506,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="maxScaleDownRate">
-        /// Maximum rate at which replicas can scale down (e.g. 2.0 means at most halve replicas per window).<br/>
+        /// Maximum percentage of replicas that can be removed per autoscaling window (1–50). E.g. 20 means at most 20% of replicas are removed per window.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -521,7 +521,7 @@ namespace Baseten
             int? concurrencyTarget = default,
             int? targetUtilizationPercentage = default,
             int? targetInFlightTokens = default,
-            double? maxScaleDownRate = default,
+            int? maxScaleDownRate = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

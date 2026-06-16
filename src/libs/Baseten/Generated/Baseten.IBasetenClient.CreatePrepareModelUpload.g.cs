@@ -14,23 +14,20 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/prepare_model_upload \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "deployment": {<br/>
         ///     "config": null,<br/>
         ///     "raw_config": null,<br/>
         ///     "user_env": null,<br/>
         ///     "environment_name": null,<br/>
-        ///     "preserve_env_instance_type": null,<br/>
         ///     "deploy_timeout_minutes": null,<br/>
         ///     "deployment_name": null,<br/>
         ///     "labels": null<br/>
         ///   },<br/>
         ///   "name": null,<br/>
         ///   "team_id": null,<br/>
-        ///   "model_id": null,<br/>
-        ///   "dry_run": null,<br/>
-        ///   "is_development": null<br/>
+        ///   "model_id": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.PrepareModelUploadResponseV1> CreatePrepareModelUploadAsync(
@@ -48,23 +45,20 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/prepare_model_upload \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "deployment": {<br/>
         ///     "config": null,<br/>
         ///     "raw_config": null,<br/>
         ///     "user_env": null,<br/>
         ///     "environment_name": null,<br/>
-        ///     "preserve_env_instance_type": null,<br/>
         ///     "deploy_timeout_minutes": null,<br/>
         ///     "deployment_name": null,<br/>
         ///     "labels": null<br/>
         ///   },<br/>
         ///   "name": null,<br/>
         ///   "team_id": null,<br/>
-        ///   "model_id": null,<br/>
-        ///   "dry_run": null,<br/>
-        ///   "is_development": null<br/>
+        ///   "model_id": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.PrepareModelUploadResponseV1>> CreatePrepareModelUploadAsResponseAsync(

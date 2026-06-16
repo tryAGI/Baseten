@@ -40,11 +40,11 @@ namespace Baseten
         public required global::Baseten.LoopsDeploymentStatusV1 Status { get; set; }
 
         /// <summary>
-        /// The sampler bound to this deployment.
+        /// The sampler bound to this deployment.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sampler")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.LoopsSamplerV1 Sampler { get; set; }
+        public global::Baseten.LoopsSamplerV1? Sampler { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -68,7 +68,8 @@ namespace Baseten
         /// Latest deployment status.
         /// </param>
         /// <param name="sampler">
-        /// The sampler bound to this deployment.
+        /// The sampler bound to this deployment.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -78,13 +79,13 @@ namespace Baseten
             string baseModel,
             string baseUrl,
             global::Baseten.LoopsDeploymentStatusV1 status,
-            global::Baseten.LoopsSamplerV1 sampler)
+            global::Baseten.LoopsSamplerV1? sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
-            this.Sampler = sampler ?? throw new global::System.ArgumentNullException(nameof(sampler));
+            this.Sampler = sampler;
         }
 
         /// <summary>

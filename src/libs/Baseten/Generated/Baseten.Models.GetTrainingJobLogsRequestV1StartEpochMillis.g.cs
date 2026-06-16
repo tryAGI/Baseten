@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// Epoch millis timestamp to start fetching logs<br/>
+    /// Epoch milliseconds at which to start fetching logs. Defaults to 30 minutes before the end. The window from start to end must not exceed 7 days.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
     public sealed partial class GetTrainingJobLogsRequestV1StartEpochMillis

@@ -15,15 +15,14 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/training_jobs/search \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "project_id": "n4q95w5",<br/>
         ///   "job_id": "p7qr9qv",<br/>
         ///   "statuses": [<br/>
         ///     "TRAINING_JOB_RUNNING",<br/>
         ///     "TRAINING_JOB_COMPLETED"<br/>
-        ///   ],<br/>
-        ///   "order_by": null<br/>
+        ///   ]<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.SearchTrainingJobsResponseV1> CreateTrainingJobsSearchAsync(
@@ -42,15 +41,14 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/training_jobs/search \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "project_id": "n4q95w5",<br/>
         ///   "job_id": "p7qr9qv",<br/>
         ///   "statuses": [<br/>
         ///     "TRAINING_JOB_RUNNING",<br/>
         ///     "TRAINING_JOB_COMPLETED"<br/>
-        ///   ],<br/>
-        ///   "order_by": null<br/>
+        ///   ]<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.SearchTrainingJobsResponseV1>> CreateTrainingJobsSearchAsResponseAsync(

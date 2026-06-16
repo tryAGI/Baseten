@@ -17,7 +17,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/stop \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{}'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.StopTrainingJobResponseV1> CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdStopAsync(
@@ -40,7 +40,7 @@ namespace Baseten
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/stop \<br/>
-        /// --header "Authorization: Api-Key $BASETEN_API_KEY" \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{}'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.StopTrainingJobResponseV1>> CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdStopAsResponseAsync(
