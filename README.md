@@ -19,6 +19,13 @@ using Baseten;
 using var client = new BasetenClient(apiKey);
 ```
 
+### CLI
+
+```bash
+dotnet tool install --global Baseten.CLI --prerelease
+baseten api --help
+```
+
 <!-- EXAMPLES:START -->
 <!-- EXAMPLES:END -->
 

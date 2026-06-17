@@ -26,3 +26,21 @@ autosdk generate openapi.yaml \
   --output Generated \
   --security-scheme Http:Header:Bearer \
   --exclude-deprecated-operations
+
+rm -rf ../../cli/Baseten.CLI
+
+autosdk cli-project openapi.yaml \
+  --output ../../cli/Baseten.CLI \
+  --sdk-project ../../libs/Baseten/Baseten.csproj \
+  --targetFramework net10.0 \
+  --namespace Baseten \
+  --clientClassName BasetenClient \
+  --package-id Baseten.CLI \
+  --tool-command-name baseten \
+  --user-secrets-id Baseten.CLI \
+  --api-key-env-var BASETEN_API_KEY \
+  --base-url-env-var BASETEN_BASE_URL \
+  --cli-credential-file \
+  --cli-keep-api-group \
+  --exclude-deprecated-operations \
+  --security-scheme Http:Header:Bearer
