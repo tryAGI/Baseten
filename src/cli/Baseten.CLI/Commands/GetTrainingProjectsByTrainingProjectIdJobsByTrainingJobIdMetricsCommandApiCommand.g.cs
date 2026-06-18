@@ -31,6 +31,12 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
         Description = @"Epoch millis timestamp to start fetching metrics.",
     };
 
+    private static Option<int?> StepSeconds { get; } = new(
+        name: @"--step-seconds")
+    {
+        Description = @"Resolution of the returned series, in seconds. When omitted, a step is derived from the time range so large windows return fewer points.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.GetTrainingJobMetricsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -59,6 +65,7 @@ Get the metrics for a training job.");
                         command.Arguments.Add(TrainingJobId);
                         command.Options.Add(EndEpochMillis);
                         command.Options.Add(StartEpochMillis);
+                        command.Options.Add(StepSeconds);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -68,6 +75,7 @@ Get the metrics for a training job.");
                         var trainingJobId = parseResult.GetRequiredValue(TrainingJobId);
                         var endEpochMillis = parseResult.GetValue(EndEpochMillis);
                         var startEpochMillis = parseResult.GetValue(StartEpochMillis);
+                        var stepSeconds = parseResult.GetValue(StepSeconds);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -76,6 +84,7 @@ Get the metrics for a training job.");
                                     trainingJobId: trainingJobId,
                                     endEpochMillis: endEpochMillis,
                                     startEpochMillis: startEpochMillis,
+                                    stepSeconds: stepSeconds,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

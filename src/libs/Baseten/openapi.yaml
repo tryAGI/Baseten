@@ -1472,6 +1472,25 @@
                         }
                     },
                     {
+                        "name": "component",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only return logs from this component.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "maxLength": 256,
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Component"
+                        }
+                    },
+                    {
                         "name": "search_pattern",
                         "in": "query",
                         "required": false,
@@ -1545,11 +1564,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"start_epoch_millis\": null,\n  \"end_epoch_millis\": null,\n  \"direction\": null,\n  \"limit\": null,\n  \"min_level\": null,\n  \"replica\": null,\n  \"request_id\": null,\n  \"search_pattern\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"start_epoch_millis\": null,\n  \"end_epoch_millis\": null,\n  \"direction\": null,\n  \"limit\": null,\n  \"min_level\": null,\n  \"replica\": null,\n  \"request_id\": null,\n  \"component\": null,\n  \"search_pattern\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None, 'min_level': None, 'replica': None, 'request_id': None, 'search_pattern': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None, 'min_level': None, 'replica': None, 'request_id': None, 'component': None, 'search_pattern': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Use the GET form on this path instead.",
@@ -2459,6 +2478,25 @@
                         }
                     },
                     {
+                        "name": "component",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only return logs from this component.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "maxLength": 256,
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Component"
+                        }
+                    },
+                    {
                         "name": "search_pattern",
                         "in": "query",
                         "required": false,
@@ -3336,6 +3374,24 @@
                             "default": null,
                             "title": "Start Epoch Millis"
                         }
+                    },
+                    {
+                        "name": "step_seconds",
+                        "in": "query",
+                        "required": false,
+                        "description": "Resolution of the returned series, in seconds. When omitted, a step is derived from the time range so large windows return fewer points.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Step Seconds"
+                        }
                     }
                 ],
                 "responses": {
@@ -3364,11 +3420,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"end_epoch_millis\": null,\n  \"start_epoch_millis\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"end_epoch_millis\": null,\n  \"start_epoch_millis\": null,\n  \"step_seconds\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'end_epoch_millis': None, 'start_epoch_millis': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'end_epoch_millis': None, 'start_epoch_millis': None, 'step_seconds': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Use the GET form on this path instead.",
@@ -3837,24 +3893,14 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/sessions \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/sessions \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/sessions\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/sessions\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Creates a Loops session for the given training project.",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateLoopsSessionRequestV1"
-                            }
-                        }
-                    },
-                    "required": true
-                },
+                "description": "Creates a Loops session scoped to the calling org.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -4404,11 +4450,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/deployments/{deployment_id}/metrics \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"end_epoch_millis\": null,\n  \"start_epoch_millis\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/deployments/{deployment_id}/metrics \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"end_epoch_millis\": null,\n  \"start_epoch_millis\": null,\n  \"step_seconds\": null,\n  \"time_divisor_seconds\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'end_epoch_millis': None, 'start_epoch_millis': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'end_epoch_millis': None, 'start_epoch_millis': None, 'step_seconds': None, 'time_divisor_seconds': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate / concurrency / latency for the trainer pods. The sampler half of a Loops deployment is an OracleVersion and uses the existing model-metrics endpoint.",
@@ -7428,6 +7474,20 @@
                         "default": null,
                         "description": "Only return logs tagged with this inference request ID.",
                         "title": "Request Id"
+                    },
+                    "component": {
+                        "anyOf": [
+                            {
+                                "maxLength": 256,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only return logs from this component.",
+                        "title": "Component"
                     },
                     "search_pattern": {
                         "anyOf": [
@@ -10782,6 +10842,19 @@
                         "default": null,
                         "description": "Epoch millis timestamp to start fetching metrics.",
                         "title": "Start Epoch Millis"
+                    },
+                    "step_seconds": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Resolution of the returned series, in seconds. When omitted, a step is derived from the time range so large windows return fewer points.",
+                        "title": "Step Seconds"
                     }
                 },
                 "title": "GetTrainingJobMetricsRequestV1",
@@ -11559,25 +11632,6 @@
                     "supported_models"
                 ],
                 "title": "GetLoopsCapabilitiesResponseV1",
-                "type": "object"
-            },
-            "CreateLoopsSessionRequestV1": {
-                "properties": {
-                    "training_project_id": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "ID of the training project to associate with. If omitted, a default project is created for the org.",
-                        "title": "Training Project Id"
-                    }
-                },
-                "title": "CreateLoopsSessionRequestV1",
                 "type": "object"
             },
             "LoopsSessionV1": {
@@ -12399,6 +12453,32 @@
                         "default": null,
                         "description": "Epoch millis to start fetching metrics.",
                         "title": "Start Epoch Millis"
+                    },
+                    "step_seconds": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Resolution of the returned series, in seconds. When omitted, a step is derived from the time range so large windows return fewer points.",
+                        "title": "Step Seconds"
+                    },
+                    "time_divisor_seconds": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Unit of time for request-volume metrics, in seconds (e.g. 60 for requests/minute). Defaults to per-second.",
+                        "title": "Time Divisor Seconds"
                     }
                 },
                 "title": "GetLoopsDeploymentMetricsRequestV1",

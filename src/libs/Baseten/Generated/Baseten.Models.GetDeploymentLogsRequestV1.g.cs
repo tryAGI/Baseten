@@ -58,6 +58,13 @@ namespace Baseten
         public string? RequestId { get; set; }
 
         /// <summary>
+        /// Only return logs from this component.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("component")]
+        public string? Component { get; set; }
+
+        /// <summary>
         /// RE2 regular expression matched against the log message. Prefer `includes` and `excludes` for plain substring matches.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -113,6 +120,10 @@ namespace Baseten
         /// Only return logs tagged with this inference request ID.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="component">
+        /// Only return logs from this component.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="searchPattern">
         /// RE2 regular expression matched against the log message. Prefer `includes` and `excludes` for plain substring matches.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -134,6 +145,7 @@ namespace Baseten
             global::Baseten.LogLevelV1? minLevel,
             string? replica,
             string? requestId,
+            string? component,
             string? searchPattern,
             global::System.Collections.Generic.IList<string>? includes,
             global::System.Collections.Generic.IList<string>? excludes)
@@ -145,6 +157,7 @@ namespace Baseten
             this.MinLevel = minLevel;
             this.Replica = replica;
             this.RequestId = requestId;
+            this.Component = component;
             this.SearchPattern = searchPattern;
             this.Includes = includes;
             this.Excludes = excludes;

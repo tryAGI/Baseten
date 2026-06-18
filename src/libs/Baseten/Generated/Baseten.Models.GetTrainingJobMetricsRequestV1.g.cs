@@ -23,6 +23,13 @@ namespace Baseten
         public int? StartEpochMillis { get; set; }
 
         /// <summary>
+        /// Resolution of the returned series, in seconds. When omitted, a step is derived from the time range so large windows return fewer points.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("step_seconds")]
+        public int? StepSeconds { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -39,15 +46,21 @@ namespace Baseten
         /// Epoch millis timestamp to start fetching metrics.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="stepSeconds">
+        /// Resolution of the returned series, in seconds. When omitted, a step is derived from the time range so large windows return fewer points.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetTrainingJobMetricsRequestV1(
             int? endEpochMillis,
-            int? startEpochMillis)
+            int? startEpochMillis,
+            int? stepSeconds)
         {
             this.EndEpochMillis = endEpochMillis;
             this.StartEpochMillis = startEpochMillis;
+            this.StepSeconds = stepSeconds;
         }
 
         /// <summary>

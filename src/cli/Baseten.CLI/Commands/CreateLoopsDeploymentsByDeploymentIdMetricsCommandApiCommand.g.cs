@@ -24,6 +24,18 @@ internal static partial class CreateLoopsDeploymentsByDeploymentIdMetricsCommand
     {
         Description = @"Epoch millis to start fetching metrics.",
     };
+
+    private static Option<int?> StepSeconds { get; } = new(
+        name: @"--step-seconds")
+    {
+        Description = @"Resolution of the returned series, in seconds. When omitted, a step is derived from the time range so large windows return fewer points.",
+    };
+
+    private static Option<int?> TimeDivisorSeconds { get; } = new(
+        name: @"--time-divisor-seconds")
+    {
+        Description = @"Unit of time for request-volume metrics, in seconds (e.g. 60 for requests/minute). Defaults to per-second.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -68,6 +80,8 @@ Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate
                         command.Arguments.Add(DeploymentId);
                         command.Options.Add(EndEpochMillis);
                         command.Options.Add(StartEpochMillis);
+                        command.Options.Add(StepSeconds);
+                        command.Options.Add(TimeDivisorSeconds);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -96,6 +110,8 @@ Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate
                         var deploymentId = parseResult.GetRequiredValue(DeploymentId);
                         var endEpochMillis = CliRuntime.WasSpecified(parseResult, EndEpochMillis) ? parseResult.GetValue(EndEpochMillis) : (__requestBase is { } __EndEpochMillisBaseValue ? __EndEpochMillisBaseValue.EndEpochMillis : default);
                         var startEpochMillis = CliRuntime.WasSpecified(parseResult, StartEpochMillis) ? parseResult.GetValue(StartEpochMillis) : (__requestBase is { } __StartEpochMillisBaseValue ? __StartEpochMillisBaseValue.StartEpochMillis : default);
+                        var stepSeconds = CliRuntime.WasSpecified(parseResult, StepSeconds) ? parseResult.GetValue(StepSeconds) : (__requestBase is { } __StepSecondsBaseValue ? __StepSecondsBaseValue.StepSeconds : default);
+                        var timeDivisorSeconds = CliRuntime.WasSpecified(parseResult, TimeDivisorSeconds) ? parseResult.GetValue(TimeDivisorSeconds) : (__requestBase is { } __TimeDivisorSecondsBaseValue ? __TimeDivisorSecondsBaseValue.TimeDivisorSeconds : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -103,6 +119,8 @@ Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate
                                     deploymentId: deploymentId,
                                     endEpochMillis: endEpochMillis,
                                     startEpochMillis: startEpochMillis,
+                                    stepSeconds: stepSeconds,
+                                    timeDivisorSeconds: timeDivisorSeconds,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

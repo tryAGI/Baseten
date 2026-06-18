@@ -26,12 +26,10 @@ namespace Baseten
             {                s_CreateLoopsSessionsSecurityRequirement0,
             };
         partial void PrepareCreateLoopsSessionsArguments(
-            global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopsSessionRequestV1 request);
+            global::System.Net.Http.HttpClient httpClient);
         partial void PrepareCreateLoopsSessionsRequest(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopsSessionRequestV1 request);
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
         partial void ProcessCreateLoopsSessionsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -43,29 +41,21 @@ namespace Baseten
 
         /// <summary>
         /// Create a Loops session.<br/>
-        /// Creates a Loops session for the given training project.
+        /// Creates a Loops session scoped to the calling org.
         /// </summary>
-        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/loops/sessions \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "training_project_id": null<br/>
-        /// }'
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSessionResponseV1> CreateLoopsSessionsAsync(
-
-            global::Baseten.CreateLoopsSessionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await CreateLoopsSessionsAsResponseAsync(
-
-                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -74,33 +64,24 @@ namespace Baseten
         }
         /// <summary>
         /// Create a Loops session.<br/>
-        /// Creates a Loops session for the given training project.
+        /// Creates a Loops session scoped to the calling org.
         /// </summary>
-        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.baseten.co/v1/loops/sessions \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "training_project_id": null<br/>
-        /// }'
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSessionResponseV1>> CreateLoopsSessionsAsResponseAsync(
-
-            global::Baseten.CreateLoopsSessionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
             PrepareCreateLoopsSessionsArguments(
-                httpClient: HttpClient,
-                request: request);
+                httpClient: HttpClient);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
@@ -157,12 +138,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -173,8 +148,7 @@ namespace Baseten
                     request: __httpRequest);
                 PrepareCreateLoopsSessionsRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest,
-                    request: request);
+                    httpRequestMessage: __httpRequest);
 
                 return __httpRequest;
             }
@@ -448,32 +422,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Create a Loops session.<br/>
-        /// Creates a Loops session for the given training project.
-        /// </summary>
-        /// <param name="trainingProjectId">
-        /// ID of the training project to associate with. If omitted, a default project is created for the org.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSessionResponseV1> CreateLoopsSessionsAsync(
-            string? trainingProjectId = default,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.CreateLoopsSessionRequestV1
-            {
-                TrainingProjectId = trainingProjectId,
-            };
-
-            return await CreateLoopsSessionsAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

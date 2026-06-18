@@ -29,6 +29,7 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             int? endEpochMillis,
             int? startEpochMillis,
+            int? stepSeconds,
             ref string trainingProjectId,
             ref string trainingJobId);
         partial void PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdMetricsRequest(
@@ -36,6 +37,7 @@ namespace Baseten
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             int? endEpochMillis,
             int? startEpochMillis,
+            int? stepSeconds,
             string trainingProjectId,
             string trainingJobId);
         partial void ProcessGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdMetricsResponse(
@@ -57,6 +59,9 @@ namespace Baseten
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="stepSeconds">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -72,6 +77,7 @@ namespace Baseten
             string trainingJobId,
             int? endEpochMillis = default,
             int? startEpochMillis = default,
+            int? stepSeconds = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -80,6 +86,7 @@ namespace Baseten
                 trainingJobId: trainingJobId,
                 endEpochMillis: endEpochMillis,
                 startEpochMillis: startEpochMillis,
+                stepSeconds: stepSeconds,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -94,6 +101,9 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="startEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="stepSeconds">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="trainingProjectId"></param>
@@ -111,6 +121,7 @@ namespace Baseten
             string trainingJobId,
             int? endEpochMillis = default,
             int? startEpochMillis = default,
+            int? stepSeconds = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -120,6 +131,7 @@ namespace Baseten
                 httpClient: HttpClient,
                 endEpochMillis: endEpochMillis,
                 startEpochMillis: startEpochMillis,
+                stepSeconds: stepSeconds,
                 trainingProjectId: ref trainingProjectId,
                 trainingJobId: ref trainingJobId);
 
@@ -152,6 +164,7 @@ namespace Baseten
                             __pathBuilder
                                 .AddOptionalParameter("end_epoch_millis", endEpochMillis?.ToString())
                                 .AddOptionalParameter("start_epoch_millis", startEpochMillis?.ToString())
+                                .AddOptionalParameter("step_seconds", stepSeconds?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -195,6 +208,7 @@ namespace Baseten
                     httpRequestMessage: __httpRequest,
                     endEpochMillis: endEpochMillis,
                     startEpochMillis: startEpochMillis,
+                    stepSeconds: stepSeconds,
                     trainingProjectId: trainingProjectId!,
                     trainingJobId: trainingJobId!);
 

@@ -58,7 +58,9 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "end_epoch_millis": null,<br/>
-        ///   "start_epoch_millis": null<br/>
+        ///   "start_epoch_millis": null,<br/>
+        ///   "step_seconds": null,<br/>
+        ///   "time_divisor_seconds": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.GetLoopsDeploymentMetricsResponseV1> CreateLoopsDeploymentsByDeploymentIdMetricsAsync(
@@ -93,7 +95,9 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "end_epoch_millis": null,<br/>
-        ///   "start_epoch_millis": null<br/>
+        ///   "start_epoch_millis": null,<br/>
+        ///   "step_seconds": null,<br/>
+        ///   "time_divisor_seconds": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopsDeploymentMetricsResponseV1>> CreateLoopsDeploymentsByDeploymentIdMetricsAsResponseAsync(
@@ -473,6 +477,14 @@ namespace Baseten
         /// Epoch millis to start fetching metrics.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="stepSeconds">
+        /// Resolution of the returned series, in seconds. When omitted, a step is derived from the time range so large windows return fewer points.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="timeDivisorSeconds">
+        /// Unit of time for request-volume metrics, in seconds (e.g. 60 for requests/minute). Defaults to per-second.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -480,6 +492,8 @@ namespace Baseten
             string deploymentId,
             int? endEpochMillis = default,
             int? startEpochMillis = default,
+            int? stepSeconds = default,
+            int? timeDivisorSeconds = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -487,6 +501,8 @@ namespace Baseten
             {
                 EndEpochMillis = endEpochMillis,
                 StartEpochMillis = startEpochMillis,
+                StepSeconds = stepSeconds,
+                TimeDivisorSeconds = timeDivisorSeconds,
             };
 
             return await CreateLoopsDeploymentsByDeploymentIdMetricsAsync(

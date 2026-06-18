@@ -34,6 +34,7 @@ namespace Baseten
             global::Baseten.LogLevelV1? minLevel,
             ref string? replica,
             ref string? requestId,
+            ref string? component,
             ref string? searchPattern,
             global::System.Collections.Generic.IList<string>? includes,
             global::System.Collections.Generic.IList<string>? excludes,
@@ -50,6 +51,7 @@ namespace Baseten
             global::Baseten.LogLevelV1? minLevel,
             string? replica,
             string? requestId,
+            string? component,
             string? searchPattern,
             global::System.Collections.Generic.IList<string>? includes,
             global::System.Collections.Generic.IList<string>? excludes,
@@ -90,6 +92,9 @@ namespace Baseten
         /// <param name="requestId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="component">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="searchPattern">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -117,6 +122,7 @@ namespace Baseten
             global::Baseten.LogLevelV1? minLevel = default,
             string? replica = default,
             string? requestId = default,
+            string? component = default,
             string? searchPattern = default,
             global::System.Collections.Generic.IList<string>? includes = default,
             global::System.Collections.Generic.IList<string>? excludes = default,
@@ -134,6 +140,7 @@ namespace Baseten
                 minLevel: minLevel,
                 replica: replica,
                 requestId: requestId,
+                component: component,
                 searchPattern: searchPattern,
                 includes: includes,
                 excludes: excludes,
@@ -168,6 +175,9 @@ namespace Baseten
         /// <param name="requestId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="component">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="searchPattern">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -195,6 +205,7 @@ namespace Baseten
             global::Baseten.LogLevelV1? minLevel = default,
             string? replica = default,
             string? requestId = default,
+            string? component = default,
             string? searchPattern = default,
             global::System.Collections.Generic.IList<string>? includes = default,
             global::System.Collections.Generic.IList<string>? excludes = default,
@@ -212,6 +223,7 @@ namespace Baseten
                 minLevel: minLevel,
                 replica: ref replica,
                 requestId: ref requestId,
+                component: ref component,
                 searchPattern: ref searchPattern,
                 includes: includes,
                 excludes: excludes,
@@ -253,6 +265,7 @@ namespace Baseten
                                 .AddOptionalParameter("min_level", minLevel?.ToString())
                                 .AddOptionalParameter("replica", replica)
                                 .AddOptionalParameter("request_id", requestId)
+                                .AddOptionalParameter("component", component)
                                 .AddOptionalParameter("search_pattern", searchPattern)
                                 .AddOptionalParameter("includes", includes, delimiter: ",", explode: true)
                                 .AddOptionalParameter("excludes", excludes, delimiter: ",", explode: true)
@@ -304,6 +317,7 @@ namespace Baseten
                     minLevel: minLevel,
                     replica: replica,
                     requestId: requestId,
+                    component: component,
                     searchPattern: searchPattern,
                     includes: includes,
                     excludes: excludes,

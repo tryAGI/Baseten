@@ -7,27 +7,7 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class CreateLoopsSessionsCommandApiCommand
 {
-    private static Option<string?> TrainingProjectId { get; } = new(
-        name: @"--training-project-id")
-    {
-        Description = @"ID of the training project to associate with. If omitted, a default project is created for the org.",
-    };
-      private static Option<string?> Input { get; } = new(@"--input")
-      {
-          Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
-      };
 
-      private static Option<string?> RequestJson { get; } = new(@"--request-json")
-      {
-          Description = "Request body as JSON.",
-          Hidden = true,
-      };
-
-      private static Option<string?> RequestFile { get; } = new(@"--request-file")
-      {
-          Description = "Path to a JSON request file, or '-' for stdin.",
-          Hidden = true,
-      };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.CreateLoopsSessionResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -52,39 +32,19 @@ internal static partial class CreateLoopsSessionsCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"create-loops-sessions", @"Create a Loops session.
-Creates a Loops session for the given training project.");
-                        command.Options.Add(TrainingProjectId);
-          command.Options.Add(Input);
-          command.Options.Add(RequestJson);
-          command.Options.Add(RequestFile);
-          command.Validators.Add(result =>
-          {
-              var hasInput = result.GetResult(Input) is not null;
-              var hasRequestJson = result.GetResult(RequestJson) is not null;
-              var hasRequestFile = result.GetResult(RequestFile) is not null;
-              var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
-              if (specifiedCount > 1)
-              {
-                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
-              }
-          });
+Creates a Loops session scoped to the calling org.");
+
+
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.CreateLoopsSessionRequestV1>(
-                            parseResult,
-                            Input,
-                            RequestJson,
-                            RequestFile,
-                            global::Baseten.SourceGenerationContext.Default,
-                            cancellationToken).ConfigureAwait(false);
-                        var trainingProjectId = CliRuntime.WasSpecified(parseResult, TrainingProjectId) ? parseResult.GetValue(TrainingProjectId) : (__requestBase is { } __TrainingProjectIdBaseValue ? __TrainingProjectIdBaseValue.TrainingProjectId : default);
+
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.CreateLoopsSessionsAsync(
-                                    trainingProjectId: trainingProjectId,
+
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
