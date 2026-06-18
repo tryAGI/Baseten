@@ -67,6 +67,12 @@ internal static partial class GetChainsByChainIdDeploymentsByChainDeploymentIdCh
         Description = @"Only return logs tagged with this inference request ID.",
     };
 
+    private static Option<string?> Component { get; } = new(
+        name: @"--component")
+    {
+        Description = @"Only return logs from this component.",
+    };
+
     private static Option<string?> SearchPattern { get; } = new(
         name: @"--search-pattern")
     {
@@ -119,6 +125,7 @@ Resolves the chainlet (by ID, scoped to the given chain deployment) to its under
                         command.Options.Add(MinLevel);
                         command.Options.Add(Replica);
                         command.Options.Add(RequestId);
+                        command.Options.Add(Component);
                         command.Options.Add(SearchPattern);
                         command.Options.Add(Includes);
                         command.Options.Add(Excludes);
@@ -137,6 +144,7 @@ Resolves the chainlet (by ID, scoped to the given chain deployment) to its under
                         var minLevel = parseResult.GetValue(MinLevel);
                         var replica = parseResult.GetValue(Replica);
                         var requestId = parseResult.GetValue(RequestId);
+                        var component = parseResult.GetValue(Component);
                         var searchPattern = parseResult.GetValue(SearchPattern);
                         var includes = parseResult.GetValue(Includes);
                         var excludes = parseResult.GetValue(Excludes);
@@ -154,6 +162,7 @@ Resolves the chainlet (by ID, scoped to the given chain deployment) to its under
                                     minLevel: minLevel,
                                     replica: replica,
                                     requestId: requestId,
+                                    component: component,
                                     searchPattern: searchPattern,
                                     includes: includes,
                                     excludes: excludes,

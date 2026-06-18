@@ -61,6 +61,12 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdLogsCom
         Description = @"Only return logs tagged with this inference request ID.",
     };
 
+    private static Option<string?> Component { get; } = new(
+        name: @"--component")
+    {
+        Description = @"Only return logs from this component.",
+    };
+
     private static Option<string?> SearchPattern { get; } = new(
         name: @"--search-pattern")
     {
@@ -112,6 +118,7 @@ Gets all the logs for a model deployment in the given time range.");
                         command.Options.Add(MinLevel);
                         command.Options.Add(Replica);
                         command.Options.Add(RequestId);
+                        command.Options.Add(Component);
                         command.Options.Add(SearchPattern);
                         command.Options.Add(Includes);
                         command.Options.Add(Excludes);
@@ -129,6 +136,7 @@ Gets all the logs for a model deployment in the given time range.");
                         var minLevel = parseResult.GetValue(MinLevel);
                         var replica = parseResult.GetValue(Replica);
                         var requestId = parseResult.GetValue(RequestId);
+                        var component = parseResult.GetValue(Component);
                         var searchPattern = parseResult.GetValue(SearchPattern);
                         var includes = parseResult.GetValue(Includes);
                         var excludes = parseResult.GetValue(Excludes);
@@ -145,6 +153,7 @@ Gets all the logs for a model deployment in the given time range.");
                                     minLevel: minLevel,
                                     replica: replica,
                                     requestId: requestId,
+                                    component: component,
                                     searchPattern: searchPattern,
                                     includes: includes,
                                     excludes: excludes,

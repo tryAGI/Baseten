@@ -29,6 +29,9 @@ namespace Baseten
         /// <param name="requestId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="component">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="searchPattern">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -56,6 +59,7 @@ namespace Baseten
             global::Baseten.LogLevelV1? minLevel = default,
             string? replica = default,
             string? requestId = default,
+            string? component = default,
             string? searchPattern = default,
             global::System.Collections.Generic.IList<string>? includes = default,
             global::System.Collections.Generic.IList<string>? excludes = default,
@@ -86,6 +90,9 @@ namespace Baseten
         /// <param name="requestId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="component">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="searchPattern">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -113,6 +120,7 @@ namespace Baseten
             global::Baseten.LogLevelV1? minLevel = default,
             string? replica = default,
             string? requestId = default,
+            string? component = default,
             string? searchPattern = default,
             global::System.Collections.Generic.IList<string>? includes = default,
             global::System.Collections.Generic.IList<string>? excludes = default,

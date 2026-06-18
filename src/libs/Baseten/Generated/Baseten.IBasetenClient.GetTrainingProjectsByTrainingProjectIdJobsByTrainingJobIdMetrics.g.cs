@@ -14,6 +14,9 @@ namespace Baseten
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="stepSeconds">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -29,6 +32,7 @@ namespace Baseten
             string trainingJobId,
             int? endEpochMillis = default,
             int? startEpochMillis = default,
+            int? stepSeconds = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -39,6 +43,9 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="startEpochMillis">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="stepSeconds">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="trainingProjectId"></param>
@@ -56,6 +63,7 @@ namespace Baseten
             string trainingJobId,
             int? endEpochMillis = default,
             int? startEpochMillis = default,
+            int? stepSeconds = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
