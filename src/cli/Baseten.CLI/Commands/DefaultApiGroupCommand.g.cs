@@ -130,6 +130,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdConfigCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdDownloadCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdLogsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsDevelopmentCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsProductionCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsCommandApiCommand.Create());

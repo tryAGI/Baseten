@@ -1,0 +1,20 @@
+
+#nullable enable
+
+namespace Baseten
+{
+    /// <summary>
+    /// Epoch millis timestamp to end fetching metrics. Defaults to the current time. The window between start and end must not exceed 7 days.<br/>
+    /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+    /// </summary>
+    public sealed partial class GetDeploymentMetricsRequestV1EndEpochMillis
+    {
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+    }
+}
