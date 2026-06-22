@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsRunsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_DeleteGatewayEndpointsByEndpointIdSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,57 +21,45 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsRunsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_DeleteGatewayEndpointsByEndpointIdSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateLoopsRunsSecurityRequirement0,
+            {                s_DeleteGatewayEndpointsByEndpointIdSecurityRequirement0,
             };
-        partial void PrepareCreateLoopsRunsArguments(
+        partial void PrepareDeleteGatewayEndpointsByEndpointIdArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopsRunRequestV1 request);
-        partial void PrepareCreateLoopsRunsRequest(
+            ref string endpointId);
+        partial void PrepareDeleteGatewayEndpointsByEndpointIdRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopsRunRequestV1 request);
-        partial void ProcessCreateLoopsRunsResponse(
+            string endpointId);
+        partial void ProcessDeleteGatewayEndpointsByEndpointIdResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateLoopsRunsResponseContent(
+        partial void ProcessDeleteGatewayEndpointsByEndpointIdResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
+        /// Delete a Gateway endpoint
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="endpointId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/runs \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "session_id": null,<br/>
-        ///   "base_model": null,<br/>
-        ///   "name": null,<br/>
-        ///   "max_seq_len": null,<br/>
-        ///   "seed": null,<br/>
-        ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
-        ///   "reuse_from_session_id": null<br/>
-        /// }'
+        /// curl --request DELETE \<br/>
+        /// --url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
-
-            global::Baseten.CreateLoopsRunRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.EndpointTombstoneV1> DeleteGatewayEndpointsByEndpointIdAsync(
+            string endpointId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateLoopsRunsAsResponseAsync(
-
-                request: request,
+            var __response = await DeleteGatewayEndpointsByEndpointIdAsResponseAsync(
+                endpointId: endpointId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -79,46 +67,33 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
+        /// Delete a Gateway endpoint
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="endpointId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/runs \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "session_id": null,<br/>
-        ///   "base_model": null,<br/>
-        ///   "name": null,<br/>
-        ///   "max_seq_len": null,<br/>
-        ///   "seed": null,<br/>
-        ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
-        ///   "reuse_from_session_id": null<br/>
-        /// }'
+        /// curl --request DELETE \<br/>
+        /// --url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsRunsAsResponseAsync(
-
-            global::Baseten.CreateLoopsRunRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointTombstoneV1>> DeleteGatewayEndpointsByEndpointIdAsResponseAsync(
+            string endpointId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateLoopsRunsArguments(
+            PrepareDeleteGatewayEndpointsByEndpointIdArguments(
                 httpClient: HttpClient,
-                request: request);
+                endpointId: ref endpointId);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateLoopsRunsSecurityRequirements,
-                operationName: "CreateLoopsRunsAsync");
+                securityRequirements: s_DeleteGatewayEndpointsByEndpointIdSecurityRequirements,
+                operationName: "DeleteGatewayEndpointsByEndpointIdAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -138,7 +113,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/loops/runs",
+                                path: $"/v1/gateway/endpoints/{endpointId}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -146,7 +121,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Delete,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -169,12 +144,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -183,10 +152,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateLoopsRunsRequest(
+                PrepareDeleteGatewayEndpointsByEndpointIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    request: request);
+                    endpointId: endpointId!);
 
                 return __httpRequest;
             }
@@ -203,10 +172,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
-                                httpMethod: "POST",
+                                operationId: "deleteGatewayEndpointsByEndpointId",
+                                methodName: "DeleteGatewayEndpointsByEndpointIdAsync",
+                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -237,10 +206,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
-                                httpMethod: "POST",
+                                operationId: "deleteGatewayEndpointsByEndpointId",
+                                methodName: "DeleteGatewayEndpointsByEndpointIdAsync",
+                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -278,10 +247,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
-                                httpMethod: "POST",
+                                operationId: "deleteGatewayEndpointsByEndpointId",
+                                methodName: "DeleteGatewayEndpointsByEndpointIdAsync",
+                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -318,7 +287,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateLoopsRunsResponse(
+                ProcessDeleteGatewayEndpointsByEndpointIdResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -326,10 +295,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
-                                httpMethod: "POST",
+                                operationId: "deleteGatewayEndpointsByEndpointId",
+                                methodName: "DeleteGatewayEndpointsByEndpointIdAsync",
+                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -348,10 +317,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
-                                httpMethod: "POST",
+                                operationId: "deleteGatewayEndpointsByEndpointId",
+                                methodName: "DeleteGatewayEndpointsByEndpointIdAsync",
+                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -378,7 +347,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateLoopsRunsResponseContent(
+                                ProcessDeleteGatewayEndpointsByEndpointIdResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -387,9 +356,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateLoopsRunResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.EndpointTombstoneV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointTombstoneV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -419,9 +388,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateLoopsRunResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.EndpointTombstoneV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointTombstoneV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -460,84 +429,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
-        /// </summary>
-        /// <param name="sessionId">
-        /// ID of the Loops session this run belongs to.
-        /// </param>
-        /// <param name="baseModel">
-        /// Base model ID (e.g. 'Qwen/Qwen3-8B').
-        /// </param>
-        /// <param name="name">
-        /// Optional display name for the run. Defaults to the base model name when omitted.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="maxSeqLen">
-        /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="loraRank">
-        /// LoRA rank.<br/>
-        /// Default Value: 64
-        /// </param>
-        /// <param name="seed">
-        /// Random seed for reproducibility.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="scaleDownDelaySeconds">
-        /// Seconds of inactivity before the run scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
-        /// Default Value: 3600
-        /// </param>
-        /// <param name="replicas">
-        /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
-        /// Default Value: 1
-        /// </param>
-        /// <param name="path">
-        /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="reuseFromSessionId">
-        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
-            string sessionId,
-            string baseModel,
-            string? name = default,
-            int? maxSeqLen = default,
-            int? loraRank = default,
-            int? seed = default,
-            int? scaleDownDelaySeconds = default,
-            int? replicas = default,
-            string? path = default,
-            string? reuseFromSessionId = default,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.CreateLoopsRunRequestV1
-            {
-                SessionId = sessionId,
-                BaseModel = baseModel,
-                Name = name,
-                MaxSeqLen = maxSeqLen,
-                LoraRank = loraRank,
-                Seed = seed,
-                ScaleDownDelaySeconds = scaleDownDelaySeconds,
-                Replicas = replicas,
-                Path = path,
-                ReuseFromSessionId = reuseFromSessionId,
-            };
-
-            return await CreateLoopsRunsAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -23,6 +23,13 @@ namespace Baseten
         public required string BaseModel { get; set; }
 
         /// <summary>
+        /// Optional display name for the run. Defaults to the base model name when omitted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -86,6 +93,10 @@ namespace Baseten
         /// <param name="baseModel">
         /// Base model ID (e.g. 'Qwen/Qwen3-8B').
         /// </param>
+        /// <param name="name">
+        /// Optional display name for the run. Defaults to the base model name when omitted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="maxSeqLen">
         /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -120,6 +131,7 @@ namespace Baseten
         public CreateLoopsRunRequestV1(
             string sessionId,
             string baseModel,
+            string? name,
             int? maxSeqLen,
             int? loraRank,
             int? seed,
@@ -130,6 +142,7 @@ namespace Baseten
         {
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
+            this.Name = name;
             this.MaxSeqLen = maxSeqLen;
             this.LoraRank = loraRank;
             this.Seed = seed;

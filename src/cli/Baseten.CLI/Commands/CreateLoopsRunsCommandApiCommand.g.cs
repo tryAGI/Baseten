@@ -21,6 +21,12 @@ internal static partial class CreateLoopsRunsCommandApiCommand
         Required = true,
     };
 
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"Optional display name for the run. Defaults to the base model name when omitted.",
+    };
+
     private static Option<int?> MaxSeqLen { get; } = new(
         name: @"--max-seq-len")
     {
@@ -105,6 +111,7 @@ internal static partial class CreateLoopsRunsCommandApiCommand
 Creates a Loops run with an associated sampler in the given session.");
                         command.Options.Add(SessionId);
                         command.Options.Add(BaseModel);
+                        command.Options.Add(NameOption);
                         command.Options.Add(MaxSeqLen);
                         command.Options.Add(LoraRank);
                         command.Options.Add(Seed);
@@ -139,6 +146,7 @@ Creates a Loops run with an associated sampler in the given session.");
                             cancellationToken).ConfigureAwait(false);
                         var sessionId = parseResult.GetRequiredValue(SessionId);
                         var baseModel = parseResult.GetRequiredValue(BaseModel);
+                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
                         var maxSeqLen = CliRuntime.WasSpecified(parseResult, MaxSeqLen) ? parseResult.GetValue(MaxSeqLen) : (__requestBase is { } __MaxSeqLenBaseValue ? __MaxSeqLenBaseValue.MaxSeqLen : default);
                         var loraRank = CliRuntime.WasSpecified(parseResult, LoraRank) ? parseResult.GetValue(LoraRank) : (__requestBase is { } __LoraRankBaseValue ? __LoraRankBaseValue.LoraRank : default);
                         var seed = CliRuntime.WasSpecified(parseResult, Seed) ? parseResult.GetValue(Seed) : (__requestBase is { } __SeedBaseValue ? __SeedBaseValue.Seed : default);
@@ -152,6 +160,7 @@ Creates a Loops run with an associated sampler in the given session.");
                                 var response = await client.CreateLoopsRunsAsync(
                                     sessionId: sessionId,
                                     baseModel: baseModel,
+                                    name: name,
                                     maxSeqLen: maxSeqLen,
                                     loraRank: loraRank,
                                     seed: seed,

@@ -19,6 +19,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
+        ///   "name": null,<br/>
         ///   "max_seq_len": null,<br/>
         ///   "seed": null,<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
@@ -45,6 +46,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
+        ///   "name": null,<br/>
         ///   "max_seq_len": null,<br/>
         ///   "seed": null,<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
@@ -65,6 +67,10 @@ namespace Baseten
         /// </param>
         /// <param name="baseModel">
         /// Base model ID (e.g. 'Qwen/Qwen3-8B').
+        /// </param>
+        /// <param name="name">
+        /// Optional display name for the run. Defaults to the base model name when omitted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="maxSeqLen">
         /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.<br/>
@@ -100,6 +106,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
             string sessionId,
             string baseModel,
+            string? name = default,
             int? maxSeqLen = default,
             int? loraRank = default,
             int? seed = default,

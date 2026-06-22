@@ -16,6 +16,10 @@ namespace Baseten
         /// 
         /// </summary>
         BasetenNamedCheckpoint,
+        /// <summary>
+        /// 
+        /// </summary>
+        LoopsCheckpoint,
     }
 
     /// <summary>
@@ -32,6 +36,7 @@ namespace Baseten
             {
                 LoadCheckpointConfigCheckpointDiscriminatorTyp.BasetenLatestCheckpoint => "baseten_latest_checkpoint",
                 LoadCheckpointConfigCheckpointDiscriminatorTyp.BasetenNamedCheckpoint => "baseten_named_checkpoint",
+                LoadCheckpointConfigCheckpointDiscriminatorTyp.LoopsCheckpoint => "loops_checkpoint",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,6 +49,7 @@ namespace Baseten
             {
                 "baseten_latest_checkpoint" => LoadCheckpointConfigCheckpointDiscriminatorTyp.BasetenLatestCheckpoint,
                 "baseten_named_checkpoint" => LoadCheckpointConfigCheckpointDiscriminatorTyp.BasetenNamedCheckpoint,
+                "loops_checkpoint" => LoadCheckpointConfigCheckpointDiscriminatorTyp.LoopsCheckpoint,
                 _ => null,
             };
         }

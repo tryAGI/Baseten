@@ -35,12 +35,21 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.BasetenNamedCheckpointConfig)}");
                 basetenNamedCheckpoint = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.LoopsCheckpointConfig? loopsCheckpoint = default;
+            if (discriminator?.Typ == global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTyp.LoopsCheckpoint)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.LoopsCheckpointConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.LoopsCheckpointConfig> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.LoopsCheckpointConfig)}");
+                loopsCheckpoint = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Baseten.CheckpointsItem(
                 discriminator?.Typ,
                 basetenLatestCheckpoint,
 
-                basetenNamedCheckpoint
+                basetenNamedCheckpoint,
+
+                loopsCheckpoint
                 );
 
             return __value;
@@ -66,6 +75,12 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.BasetenNamedCheckpointConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.BasetenNamedCheckpointConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.BasetenNamedCheckpointConfig).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.BasetenNamedCheckpoint!, typeInfo);
+            }
+            else if (value.IsLoopsCheckpoint)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.LoopsCheckpointConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.LoopsCheckpointConfig?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.LoopsCheckpointConfig).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.LoopsCheckpoint!, typeInfo);
             }
         }
     }

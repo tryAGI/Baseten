@@ -87,6 +87,43 @@ namespace Baseten
         public global::Baseten.BasetenNamedCheckpointConfig PickBasetenNamedCheckpoint() => IsBasetenNamedCheckpoint
             ? BasetenNamedCheckpoint!
             : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenNamedCheckpoint' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Baseten.LoopsCheckpointConfig? LoopsCheckpoint { get; init; }
+#else
+        public global::Baseten.LoopsCheckpointConfig? LoopsCheckpoint { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LoopsCheckpoint))]
+#endif
+        public bool IsLoopsCheckpoint => LoopsCheckpoint != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickLoopsCheckpoint(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Baseten.LoopsCheckpointConfig? value)
+        {
+            value = LoopsCheckpoint;
+            return IsLoopsCheckpoint;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Baseten.LoopsCheckpointConfig PickLoopsCheckpoint() => IsLoopsCheckpoint
+            ? LoopsCheckpoint!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LoopsCheckpoint' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -136,22 +173,48 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator CheckpointsItem(global::Baseten.LoopsCheckpointConfig value) => new CheckpointsItem((global::Baseten.LoopsCheckpointConfig?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Baseten.LoopsCheckpointConfig?(CheckpointsItem @this) => @this.LoopsCheckpoint;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CheckpointsItem(global::Baseten.LoopsCheckpointConfig? value)
+        {
+            LoopsCheckpoint = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CheckpointsItem FromLoopsCheckpoint(global::Baseten.LoopsCheckpointConfig? value) => new CheckpointsItem(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CheckpointsItem(
             global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTyp? typ,
             global::Baseten.BasetenLatestCheckpointConfig? basetenLatestCheckpoint,
-            global::Baseten.BasetenNamedCheckpointConfig? basetenNamedCheckpoint
+            global::Baseten.BasetenNamedCheckpointConfig? basetenNamedCheckpoint,
+            global::Baseten.LoopsCheckpointConfig? loopsCheckpoint
             )
         {
             Typ = typ;
 
             BasetenLatestCheckpoint = basetenLatestCheckpoint;
             BasetenNamedCheckpoint = basetenNamedCheckpoint;
+            LoopsCheckpoint = loopsCheckpoint;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
+            LoopsCheckpoint as object ??
             BasetenNamedCheckpoint as object ??
             BasetenLatestCheckpoint as object 
             ;
@@ -161,7 +224,8 @@ namespace Baseten
         /// </summary>
         public override string? ToString() =>
             BasetenLatestCheckpoint?.ToString() ??
-            BasetenNamedCheckpoint?.ToString() 
+            BasetenNamedCheckpoint?.ToString() ??
+            LoopsCheckpoint?.ToString() 
             ;
 
         /// <summary>
@@ -169,7 +233,7 @@ namespace Baseten
         /// </summary>
         public bool Validate()
         {
-            return IsBasetenLatestCheckpoint && !IsBasetenNamedCheckpoint || !IsBasetenLatestCheckpoint && IsBasetenNamedCheckpoint;
+            return IsBasetenLatestCheckpoint && !IsBasetenNamedCheckpoint && !IsLoopsCheckpoint || !IsBasetenLatestCheckpoint && IsBasetenNamedCheckpoint && !IsLoopsCheckpoint || !IsBasetenLatestCheckpoint && !IsBasetenNamedCheckpoint && IsLoopsCheckpoint;
         }
 
         /// <summary>
@@ -178,6 +242,7 @@ namespace Baseten
         public TResult? Match<TResult>(
             global::System.Func<global::Baseten.BasetenLatestCheckpointConfig, TResult>? basetenLatestCheckpoint = null,
             global::System.Func<global::Baseten.BasetenNamedCheckpointConfig, TResult>? basetenNamedCheckpoint = null,
+            global::System.Func<global::Baseten.LoopsCheckpointConfig, TResult>? loopsCheckpoint = null,
             bool validate = true)
         {
             if (validate)
@@ -193,6 +258,10 @@ namespace Baseten
             {
                 return basetenNamedCheckpoint(BasetenNamedCheckpoint!);
             }
+            else if (IsLoopsCheckpoint && loopsCheckpoint != null)
+            {
+                return loopsCheckpoint(LoopsCheckpoint!);
+            }
 
             return default(TResult);
         }
@@ -204,6 +273,8 @@ namespace Baseten
             global::System.Action<global::Baseten.BasetenLatestCheckpointConfig>? basetenLatestCheckpoint = null,
 
             global::System.Action<global::Baseten.BasetenNamedCheckpointConfig>? basetenNamedCheckpoint = null,
+
+            global::System.Action<global::Baseten.LoopsCheckpointConfig>? loopsCheckpoint = null,
             bool validate = true)
         {
             if (validate)
@@ -218,6 +289,10 @@ namespace Baseten
             else if (IsBasetenNamedCheckpoint)
             {
                 basetenNamedCheckpoint?.Invoke(BasetenNamedCheckpoint!);
+            }
+            else if (IsLoopsCheckpoint)
+            {
+                loopsCheckpoint?.Invoke(LoopsCheckpoint!);
             }
         }
 
@@ -227,6 +302,7 @@ namespace Baseten
         public void Switch(
             global::System.Action<global::Baseten.BasetenLatestCheckpointConfig>? basetenLatestCheckpoint = null,
             global::System.Action<global::Baseten.BasetenNamedCheckpointConfig>? basetenNamedCheckpoint = null,
+            global::System.Action<global::Baseten.LoopsCheckpointConfig>? loopsCheckpoint = null,
             bool validate = true)
         {
             if (validate)
@@ -241,6 +317,10 @@ namespace Baseten
             else if (IsBasetenNamedCheckpoint)
             {
                 basetenNamedCheckpoint?.Invoke(BasetenNamedCheckpoint!);
+            }
+            else if (IsLoopsCheckpoint)
+            {
+                loopsCheckpoint?.Invoke(LoopsCheckpoint!);
             }
         }
 
@@ -255,6 +335,8 @@ namespace Baseten
                 typeof(global::Baseten.BasetenLatestCheckpointConfig),
                 BasetenNamedCheckpoint,
                 typeof(global::Baseten.BasetenNamedCheckpointConfig),
+                LoopsCheckpoint,
+                typeof(global::Baseten.LoopsCheckpointConfig),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -272,7 +354,8 @@ namespace Baseten
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.BasetenLatestCheckpointConfig?>.Default.Equals(BasetenLatestCheckpoint, other.BasetenLatestCheckpoint) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.BasetenNamedCheckpointConfig?>.Default.Equals(BasetenNamedCheckpoint, other.BasetenNamedCheckpoint) 
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.BasetenNamedCheckpointConfig?>.Default.Equals(BasetenNamedCheckpoint, other.BasetenNamedCheckpoint) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.LoopsCheckpointConfig?>.Default.Equals(LoopsCheckpoint, other.LoopsCheckpoint) 
                 ;
         }
 
