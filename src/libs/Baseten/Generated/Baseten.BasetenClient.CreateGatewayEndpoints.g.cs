@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsRunsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateGatewayEndpointsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,29 +21,29 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsRunsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateGatewayEndpointsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateLoopsRunsSecurityRequirement0,
+            {                s_CreateGatewayEndpointsSecurityRequirement0,
             };
-        partial void PrepareCreateLoopsRunsArguments(
+        partial void PrepareCreateGatewayEndpointsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopsRunRequestV1 request);
-        partial void PrepareCreateLoopsRunsRequest(
+            global::Baseten.CreateEndpointRequestV1 request);
+        partial void PrepareCreateGatewayEndpointsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopsRunRequestV1 request);
-        partial void ProcessCreateLoopsRunsResponse(
+            global::Baseten.CreateEndpointRequestV1 request);
+        partial void ProcessCreateGatewayEndpointsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateLoopsRunsResponseContent(
+        partial void ProcessCreateGatewayEndpointsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
+        /// Create a Gateway endpoint<br/>
+        /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -51,25 +51,26 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/runs \<br/>
+        /// --url https://api.baseten.co/v1/gateway/endpoints \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "session_id": null,<br/>
-        ///   "base_model": null,<br/>
-        ///   "name": null,<br/>
-        ///   "max_seq_len": null,<br/>
-        ///   "seed": null,<br/>
-        ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
-        ///   "reuse_from_session_id": null<br/>
+        ///   "slug": "baseten/mymodel-4",<br/>
+        ///   "targets": [<br/>
+        ///     {<br/>
+        ///       "model_id": "3kZ9xqd",<br/>
+        ///       "provider": "BASETEN",<br/>
+        ///       "target_model": "custom/model-name"<br/>
+        ///     }<br/>
+        ///   ]<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.EndpointV1> CreateGatewayEndpointsAsync(
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateEndpointRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateLoopsRunsAsResponseAsync(
+            var __response = await CreateGatewayEndpointsAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -79,8 +80,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
+        /// Create a Gateway endpoint<br/>
+        /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -88,21 +89,22 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/runs \<br/>
+        /// --url https://api.baseten.co/v1/gateway/endpoints \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "session_id": null,<br/>
-        ///   "base_model": null,<br/>
-        ///   "name": null,<br/>
-        ///   "max_seq_len": null,<br/>
-        ///   "seed": null,<br/>
-        ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
-        ///   "reuse_from_session_id": null<br/>
+        ///   "slug": "baseten/mymodel-4",<br/>
+        ///   "targets": [<br/>
+        ///     {<br/>
+        ///       "model_id": "3kZ9xqd",<br/>
+        ///       "provider": "BASETEN",<br/>
+        ///       "target_model": "custom/model-name"<br/>
+        ///     }<br/>
+        ///   ]<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsRunsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>> CreateGatewayEndpointsAsResponseAsync(
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateEndpointRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -110,15 +112,15 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateLoopsRunsArguments(
+            PrepareCreateGatewayEndpointsArguments(
                 httpClient: HttpClient,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateLoopsRunsSecurityRequirements,
-                operationName: "CreateLoopsRunsAsync");
+                securityRequirements: s_CreateGatewayEndpointsSecurityRequirements,
+                operationName: "CreateGatewayEndpointsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -138,7 +140,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/loops/runs",
+                                path: "/v1/gateway/endpoints",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -183,7 +185,7 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateLoopsRunsRequest(
+                PrepareCreateGatewayEndpointsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     request: request);
@@ -203,9 +205,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayEndpoints",
+                                methodName: "CreateGatewayEndpointsAsync",
+                                pathTemplate: "\"/v1/gateway/endpoints\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -237,9 +239,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayEndpoints",
+                                methodName: "CreateGatewayEndpointsAsync",
+                                pathTemplate: "\"/v1/gateway/endpoints\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -278,9 +280,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayEndpoints",
+                                methodName: "CreateGatewayEndpointsAsync",
+                                pathTemplate: "\"/v1/gateway/endpoints\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -318,7 +320,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateLoopsRunsResponse(
+                ProcessCreateGatewayEndpointsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -326,9 +328,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayEndpoints",
+                                methodName: "CreateGatewayEndpointsAsync",
+                                pathTemplate: "\"/v1/gateway/endpoints\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -348,9 +350,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRuns",
-                                methodName: "CreateLoopsRunsAsync",
-                                pathTemplate: "\"/v1/loops/runs\"",
+                                operationId: "createGatewayEndpoints",
+                                methodName: "CreateGatewayEndpointsAsync",
+                                pathTemplate: "\"/v1/gateway/endpoints\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -378,7 +380,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateLoopsRunsResponseContent(
+                                ProcessCreateGatewayEndpointsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -387,9 +389,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateLoopsRunResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.EndpointV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -419,9 +421,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateLoopsRunResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.EndpointV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -462,79 +464,31 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a Loops run.<br/>
-        /// Creates a Loops run with an associated sampler in the given session.
+        /// Create a Gateway endpoint<br/>
+        /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
         /// </summary>
-        /// <param name="sessionId">
-        /// ID of the Loops session this run belongs to.
+        /// <param name="slug">
+        /// Globally-unique slug of the form '{org_prefix}/{name}'.
         /// </param>
-        /// <param name="baseModel">
-        /// Base model ID (e.g. 'Qwen/Qwen3-8B').
-        /// </param>
-        /// <param name="name">
-        /// Optional display name for the run. Defaults to the base model name when omitted.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="maxSeqLen">
-        /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="loraRank">
-        /// LoRA rank.<br/>
-        /// Default Value: 64
-        /// </param>
-        /// <param name="seed">
-        /// Random seed for reproducibility.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="scaleDownDelaySeconds">
-        /// Seconds of inactivity before the run scales to zero. Must be positive. Defaults to 3600 (1 hour).<br/>
-        /// Default Value: 3600
-        /// </param>
-        /// <param name="replicas">
-        /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
-        /// Default Value: 1
-        /// </param>
-        /// <param name="path">
-        /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="reuseFromSessionId">
-        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// <param name="targets">
+        /// The endpoint's upstream targets. Exactly one target is supported at this time.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
-            string sessionId,
-            string baseModel,
-            string? name = default,
-            int? maxSeqLen = default,
-            int? loraRank = default,
-            int? seed = default,
-            int? scaleDownDelaySeconds = default,
-            int? replicas = default,
-            string? path = default,
-            string? reuseFromSessionId = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.EndpointV1> CreateGatewayEndpointsAsync(
+            string slug,
+            global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1> targets,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateLoopsRunRequestV1
+            var __request = new global::Baseten.CreateEndpointRequestV1
             {
-                SessionId = sessionId,
-                BaseModel = baseModel,
-                Name = name,
-                MaxSeqLen = maxSeqLen,
-                LoraRank = loraRank,
-                Seed = seed,
-                ScaleDownDelaySeconds = scaleDownDelaySeconds,
-                Replicas = replicas,
-                Path = path,
-                ReuseFromSessionId = reuseFromSessionId,
+                Slug = slug,
+                Targets = targets,
             };
 
-            return await CreateLoopsRunsAsync(
+            return await CreateGatewayEndpointsAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

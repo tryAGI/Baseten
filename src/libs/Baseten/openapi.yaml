@@ -4122,11 +4122,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a Loops run with an associated sampler in the given session.",
@@ -5700,6 +5700,162 @@
                     "$ref": "#/components/parameters/user_id"
                 }
             ]
+        },
+        "/v1/gateway/endpoints": {
+            "get": {
+                "summary": "List Gateway endpoints",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/gateway/endpoints \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EndpointsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a Gateway endpoint",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/gateway/endpoints \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"targets\": [\n    {\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'targets': [{'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateEndpointRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EndpointV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/gateway/endpoints/{endpoint_id}": {
+            "delete": {
+                "summary": "Delete a Gateway endpoint",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request DELETE \\\n--url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints/{endpoint_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"DELETE\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EndpointTombstoneV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/endpoint_id"
+                }
+            ],
+            "get": {
+                "summary": "Get a Gateway endpoint",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints/{endpoint_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EndpointV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update a Gateway endpoint",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"targets\": [\n    {\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints/{endpoint_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'targets': [{'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateEndpointRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EndpointV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
         "/v1/gateway/groups": {
             "get": {
@@ -10582,7 +10738,8 @@
                             "discriminator": {
                                 "mapping": {
                                     "baseten_latest_checkpoint": "#/components/schemas/BasetenLatestCheckpointConfig",
-                                    "baseten_named_checkpoint": "#/components/schemas/BasetenNamedCheckpointConfig"
+                                    "baseten_named_checkpoint": "#/components/schemas/BasetenNamedCheckpointConfig",
+                                    "loops_checkpoint": "#/components/schemas/LoopsCheckpointConfig"
                                 },
                                 "propertyName": "typ"
                             },
@@ -10592,6 +10749,9 @@
                                 },
                                 {
                                     "$ref": "#/components/schemas/BasetenNamedCheckpointConfig"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/LoopsCheckpointConfig"
                                 }
                             ]
                         },
@@ -10600,6 +10760,42 @@
                     }
                 },
                 "title": "LoadCheckpointConfig",
+                "type": "object"
+            },
+            "LoopsCheckpointConfig": {
+                "properties": {
+                    "run_id": {
+                        "description": "ID of the Loops run to load the checkpoint from",
+                        "title": "Run Id",
+                        "type": "string"
+                    },
+                    "checkpoint_name": {
+                        "description": "Name of the checkpoint to load",
+                        "title": "Checkpoint Name",
+                        "type": "string"
+                    },
+                    "target": {
+                        "default": "trainer",
+                        "description": "Which checkpoint target to load: 'trainer' (full training state) or 'sampler' (inference weights)",
+                        "enum": [
+                            "trainer",
+                            "sampler"
+                        ],
+                        "title": "Target",
+                        "type": "string"
+                    },
+                    "typ": {
+                        "const": "loops_checkpoint",
+                        "default": "loops_checkpoint",
+                        "title": "Typ",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "run_id",
+                    "checkpoint_name"
+                ],
+                "title": "LoopsCheckpointConfig",
                 "type": "object"
             },
             "RegistrySecretDockerAuthV1": {
@@ -12152,6 +12348,21 @@
                         "description": "Base model ID (e.g. 'Qwen/Qwen3-8B').",
                         "title": "Base Model",
                         "type": "string"
+                    },
+                    "name": {
+                        "anyOf": [
+                            {
+                                "maxLength": 255,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional display name for the run. Defaults to the base model name when omitted.",
+                        "title": "Name"
                     },
                     "max_seq_len": {
                         "anyOf": [
@@ -15112,6 +15323,326 @@
                 "title": "UserInfoV1",
                 "type": "object"
             },
+            "EndpointTargetV1": {
+                "description": "One configured upstream target of an endpoint.",
+                "properties": {
+                    "provider": {
+                        "$ref": "#/components/schemas/GatewayProvider",
+                        "description": "Upstream provider."
+                    },
+                    "secret_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Referenced secret, if any.",
+                        "title": "Secret Id"
+                    },
+                    "target_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Upstream model name, if any.",
+                        "title": "Target Model"
+                    },
+                    "model_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Baseten model, if any.",
+                        "title": "Model Id"
+                    }
+                },
+                "required": [
+                    "provider"
+                ],
+                "title": "EndpointTargetV1",
+                "type": "object"
+            },
+            "EndpointV1": {
+                "description": "A Gateway endpoint: a slug and its priority-ordered targets (index 0 tried first).",
+                "properties": {
+                    "id": {
+                        "description": "Stable identifier for the endpoint.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "Globally-unique routing slug.",
+                        "examples": [
+                            "baseten/mymodel-4"
+                        ],
+                        "title": "Slug",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Creation time, ISO 8601.",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "Last update time, ISO 8601.",
+                        "format": "date-time",
+                        "title": "Updated At",
+                        "type": "string"
+                    },
+                    "targets": {
+                        "description": "The endpoint's upstream targets. Exactly one target is supported at this time.",
+                        "items": {
+                            "$ref": "#/components/schemas/EndpointTargetV1"
+                        },
+                        "title": "Targets",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "slug",
+                    "created_at",
+                    "updated_at",
+                    "targets"
+                ],
+                "title": "EndpointV1",
+                "type": "object"
+            },
+            "GatewayProvider": {
+                "description": "Customer-facing provider for an endpoint target.\n\nExternal providers resolve to a fixed upstream host + protocol adapter via\n``_EXTERNAL_PROVIDER_CONFIGS``; ``BASETEN`` derives its host from the referenced oracle.",
+                "enum": [
+                    "ANTHROPIC",
+                    "OPENAI",
+                    "BASETEN"
+                ],
+                "title": "GatewayProvider",
+                "type": "string"
+            },
+            "EndpointsResponseV1": {
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/EndpointV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "EndpointsResponseV1",
+                "type": "object"
+            },
+            "EndpointTargetRequestV1": {
+                "description": "One desired upstream target. The customer picks a provider; Baseten owns the\nupstream host and protocol adapter.",
+                "properties": {
+                    "provider": {
+                        "$ref": "#/components/schemas/GatewayProvider",
+                        "description": "Upstream provider for this target.",
+                        "examples": [
+                            "ANTHROPIC",
+                            "OPENAI",
+                            "BASETEN"
+                        ]
+                    },
+                    "secret_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Secret holding the provider credential. Required for external providers.",
+                        "examples": [
+                            "3kZ9xqd"
+                        ],
+                        "title": "Secret Id"
+                    },
+                    "target_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Model name to send upstream. Required for external providers and optional for BASETEN targets.",
+                        "examples": [
+                            "gpt-4o"
+                        ],
+                        "title": "Target Model"
+                    },
+                    "model_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Baseten model to route to. Required for and only valid with BASETEN.",
+                        "examples": [
+                            "3kZ9xqd"
+                        ],
+                        "title": "Model Id"
+                    }
+                },
+                "required": [
+                    "provider"
+                ],
+                "title": "EndpointTargetRequestV1",
+                "type": "object"
+            },
+            "CreateEndpointRequestV1": {
+                "properties": {
+                    "slug": {
+                        "description": "Globally-unique slug of the form '{org_prefix}/{name}'.",
+                        "examples": [
+                            "baseten/mymodel-4"
+                        ],
+                        "title": "Slug",
+                        "type": "string"
+                    },
+                    "targets": {
+                        "description": "The endpoint's upstream targets. Exactly one target is supported at this time.",
+                        "examples": [
+                            [
+                                {
+                                    "model_id": "3kZ9xqd",
+                                    "provider": "BASETEN",
+                                    "target_model": "custom/model-name"
+                                }
+                            ],
+                            [
+                                {
+                                    "provider": "OPENAI",
+                                    "secret_id": "3kZ9xqd",
+                                    "target_model": "gpt-4o"
+                                }
+                            ]
+                        ],
+                        "items": {
+                            "$ref": "#/components/schemas/EndpointTargetRequestV1"
+                        },
+                        "maxItems": 1,
+                        "minItems": 1,
+                        "title": "Targets",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "slug",
+                    "targets"
+                ],
+                "title": "CreateEndpointRequestV1",
+                "type": "object"
+            },
+            "EndpointTombstoneV1": {
+                "properties": {
+                    "id": {
+                        "description": "Identifier of the deleted endpoint.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "Slug of the deleted endpoint.",
+                        "title": "Slug",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "slug"
+                ],
+                "title": "EndpointTombstoneV1",
+                "type": "object"
+            },
+            "UpdateEndpointRequestV1": {
+                "description": "PATCH body. Updates provided mutable fields; targets are replaced as a full list.",
+                "properties": {
+                    "slug": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "New globally-unique slug of the form '{org_prefix}/{name}'.",
+                        "examples": [
+                            "baseten/mymodel-4"
+                        ],
+                        "title": "Slug"
+                    },
+                    "targets": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/EndpointTargetRequestV1"
+                                },
+                                "maxItems": 1,
+                                "minItems": 1,
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The endpoint's upstream targets. Exactly one target is supported at this time.",
+                        "examples": [
+                            [
+                                {
+                                    "model_id": "3kZ9xqd",
+                                    "provider": "BASETEN",
+                                    "target_model": "custom/model-name"
+                                }
+                            ],
+                            [
+                                {
+                                    "provider": "OPENAI",
+                                    "secret_id": "3kZ9xqd",
+                                    "target_model": "gpt-4o"
+                                }
+                            ]
+                        ],
+                        "title": "Targets"
+                    }
+                },
+                "title": "UpdateEndpointRequestV1",
+                "type": "object"
+            },
             "EffectiveModelConfigV1": {
                 "properties": {
                     "slug": {
@@ -15840,6 +16371,14 @@
                     "type": "string"
                 },
                 "name": "user_id",
+                "in": "path",
+                "required": true
+            },
+            "endpoint_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "endpoint_id",
                 "in": "path",
                 "required": true
             },

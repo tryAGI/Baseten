@@ -13,6 +13,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateChainsByChainIdEnvironmentsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateChainsByChainIdEnvironmentsByEnvNameChainletSettingsInstanceTypesUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateChainsByChainIdEnvironmentsByEnvNamePromoteCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateGatewayEndpointsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGatewayGroupsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGatewayGroupsByGroupIdApiKeysCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGatewayGroupsByGroupIdApiKeysRegisterCommandApiCommand.Create());
@@ -67,6 +68,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdStopCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdDeploymentsByChainDeploymentIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteKeysByApiKeyPrefixCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteLibraryListingsByUserDefinedListingIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteLibraryListingsByUserDefinedListingIdVersionsByVersionTagCommandApiCommand.Create());
@@ -79,6 +81,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameChainletSettingsAutoscalingSettingsCommandApiCommand.Create());
+                         command.Subcommands.Add(EditGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditGatewayGroupsByGroupIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditLibraryListingsByUserDefinedListingIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditLibraryListingsByUserDefinedListingIdVersionsByVersionTagCommandApiCommand.Create());
@@ -97,6 +100,8 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsByChainIdEnvironmentsCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGatewayEndpointsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsByGroupIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsByGroupIdApiKeysCommandApiCommand.Create());
