@@ -1598,6 +1598,137 @@
                 "deprecated": true
             }
         },
+        "/v1/models/{model_id}/deployments/{deployment_id}/patches": {
+            "post": {
+                "summary": "Stage a patch against a development deployment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/patches \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"prev_patch_hash\": null,\n  \"next_patch_point\": {\n    \"content_hashes\": null,\n    \"config\": null\n  },\n  \"patch_ops\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/patches\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'prev_patch_hash': None, 'next_patch_point': {'content_hashes': None, 'config': None}, 'patch_ops': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Persists a patch durably without applying it; call the sync endpoint to apply staged patches to the running deployment. The target must be a development deployment (its archive created with `is_development` set to `true`); patching any other deployment is rejected.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateDeploymentPatchRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateDeploymentPatchResponseV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
+        "/v1/models/{model_id}/deployments/{deployment_id}/patches/state": {
+            "get": {
+                "summary": "Get a development deployment's patch state.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/patches/state \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/patches/state\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns the patch point the deployment is recorded as running and the latest staged-but-unsynced point, if any. The watch client computes its next patch off the pending point when present, else the running point.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetDeploymentPatchesStateResponseV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
+        "/v1/models/{model_id}/deployments/{deployment_id}/patches/sync": {
+            "post": {
+                "summary": "Sync staged patches to a development deployment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/patches/sync \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/patches/sync\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Applies any staged patches to the running deployment. A 2xx response means the sync reached a verdict: in sync, or a full push is required (needs_full_deploy_reason). A 503 means the sync was not attempted or failed recoverably and should be retried; any other error is terminal.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SyncDeploymentPatchesRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SyncDeploymentPatchesResponseV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
         "/v1/models/{model_id}/deployments/{deployment_id}/metrics": {
             "get": {
                 "summary": "Gets the metrics for a model deployment.",
@@ -6498,6 +6629,12 @@
                         "default": null,
                         "description": "User-provided key-value labels for the deployment.",
                         "title": "Labels"
+                    },
+                    "is_development": {
+                        "default": false,
+                        "description": "If true, push as a development deployment: the model's single mutable dev slot, created if absent and overwritten in place otherwise. The following fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.",
+                        "title": "Is Development",
+                        "type": "boolean"
                     }
                 },
                 "required": [
@@ -6556,12 +6693,6 @@
                         "default": false,
                         "description": "If true, validate the payload only and do not issue upload credentials. The response sets `creds`, `s3_bucket`, and `s3_key` to `null`.",
                         "title": "Dry Run",
-                        "type": "boolean"
-                    },
-                    "is_development": {
-                        "default": false,
-                        "description": "If true, validate a development-deployment push. Only valid when `name` is set. The following `deployment` fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.",
-                        "title": "Is Development",
                         "type": "boolean"
                     }
                 },
@@ -6812,12 +6943,6 @@
                         "default": false,
                         "description": "If true, the uploaded archive is not downloadable after creation. Locked at model creation; cannot be changed by subsequent deployments.",
                         "title": "Disable Archive Download",
-                        "type": "boolean"
-                    },
-                    "is_development": {
-                        "default": false,
-                        "description": "If true, push as a development deployment (the model's single mutable dev slot; overwrites any existing development deployment). The following `deployment` fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.",
-                        "title": "Is Development",
                         "type": "boolean"
                     }
                 },
@@ -7777,6 +7902,458 @@
                     }
                 },
                 "title": "GetDeploymentLogsRequestV1",
+                "type": "object"
+            },
+            "DeploymentPatchActionV1": {
+                "description": "How a patch op changes its target.",
+                "enum": [
+                    "ADD",
+                    "UPDATE",
+                    "REMOVE"
+                ],
+                "title": "DeploymentPatchActionV1",
+                "type": "string"
+            },
+            "DeploymentPatchOpConfigV1": {
+                "description": "Replace the config when config.yaml changes.\n\nConfig has no action: it is always a full replacement of the parsed config.\nDerived changes (environment variables, external data, requirements) are\nemitted as their own ops alongside this one.",
+                "properties": {
+                    "type": {
+                        "const": "config",
+                        "default": "config",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "config": {
+                        "additionalProperties": true,
+                        "description": "The full parsed config as a JSON object.",
+                        "title": "Config",
+                        "type": "object"
+                    },
+                    "path": {
+                        "default": "config.yaml",
+                        "description": "Config file path within the source.",
+                        "title": "Path",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "config"
+                ],
+                "title": "DeploymentPatchOpConfigV1",
+                "type": "object"
+            },
+            "DeploymentPatchOpEnvVarV1": {
+                "description": "Add, update, or remove a single environment variable.",
+                "properties": {
+                    "type": {
+                        "const": "environment_variable",
+                        "default": "environment_variable",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/DeploymentPatchActionV1",
+                        "description": "How this op changes the variable."
+                    },
+                    "name": {
+                        "description": "The environment variable name.",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "value": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The environment variable value. Required for add and update.",
+                        "title": "Value"
+                    }
+                },
+                "required": [
+                    "action",
+                    "name"
+                ],
+                "title": "DeploymentPatchOpEnvVarV1",
+                "type": "object"
+            },
+            "DeploymentPatchOpExternalDataV1": {
+                "description": "Add, update, or remove a single external data item.\n\nExternal data is referenced by config, not stored in the source. The backend\nonly adds or removes it, where adding re-downloads (overwriting any existing\nfile), so `update` is accepted and treated identically to `add`.",
+                "properties": {
+                    "type": {
+                        "const": "external_data",
+                        "default": "external_data",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/DeploymentPatchActionV1",
+                        "description": "How this op changes the item. `UPDATE` is treated identically to `ADD`."
+                    },
+                    "item": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The single external data item descriptor.",
+                        "title": "Item",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "action",
+                    "item"
+                ],
+                "title": "DeploymentPatchOpExternalDataV1",
+                "type": "object"
+            },
+            "DeploymentPatchOpModelCodeV1": {
+                "description": "Add, update, or remove a file under the model code directory.",
+                "properties": {
+                    "type": {
+                        "const": "model_code",
+                        "default": "model_code",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/DeploymentPatchActionV1",
+                        "description": "How this op changes the file."
+                    },
+                    "path": {
+                        "description": "File path relative to the model code directory.",
+                        "title": "Path",
+                        "type": "string"
+                    },
+                    "content": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "UTF-8 file content. Null for removals and binary files.",
+                        "title": "Content"
+                    },
+                    "content_bytes": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Base64-encoded content for binary files.",
+                        "title": "Content Bytes"
+                    },
+                    "hot_reload": {
+                        "default": false,
+                        "description": "Whether the running server can pick up this change without a restart.",
+                        "title": "Hot Reload",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "action",
+                    "path"
+                ],
+                "title": "DeploymentPatchOpModelCodeV1",
+                "type": "object"
+            },
+            "DeploymentPatchOpPackageV1": {
+                "description": "Add, update, or remove a file under the bundled packages directory.",
+                "properties": {
+                    "type": {
+                        "const": "package",
+                        "default": "package",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/DeploymentPatchActionV1",
+                        "description": "How this op changes the file."
+                    },
+                    "path": {
+                        "description": "File path relative to the bundled packages directory.",
+                        "title": "Path",
+                        "type": "string"
+                    },
+                    "content": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "UTF-8 file content. Null for removals and binary files.",
+                        "title": "Content"
+                    },
+                    "content_bytes": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Base64-encoded content for binary files.",
+                        "title": "Content Bytes"
+                    }
+                },
+                "required": [
+                    "action",
+                    "path"
+                ],
+                "title": "DeploymentPatchOpPackageV1",
+                "type": "object"
+            },
+            "DeploymentPatchOpPythonRequirementV1": {
+                "description": "Add, update, or remove a single Python requirement.",
+                "properties": {
+                    "type": {
+                        "const": "python_requirement",
+                        "default": "python_requirement",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/DeploymentPatchActionV1",
+                        "description": "How this op changes the requirement."
+                    },
+                    "requirement": {
+                        "description": "The requirement to apply. For removals this is the package name; otherwise the full requirements.txt-style line.",
+                        "title": "Requirement",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "action",
+                    "requirement"
+                ],
+                "title": "DeploymentPatchOpPythonRequirementV1",
+                "type": "object"
+            },
+            "DeploymentPatchPointV1": {
+                "description": "A patch point: the source state the next patch is computed against.\n\nThe content hash that identifies a point is derived from this state (see\n`DeploymentPatchPointWithHashV1.hash`), so a request only sends the state and\nthe server stamps the hash. A previous point's hash plus the current local\nsource is enough to compute the next patch, so the watch client reads the\npoint it is patching off of.",
+                "properties": {
+                    "content_hashes": {
+                        "additionalProperties": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "description": "Map of every non-ignored source path, relative and forward-slash, to its content hash: files map to the hex blake3 digest of their bytes, directories map to null. This is the full signature of the source tree and what the content hash is derived from.",
+                        "title": "Content Hashes",
+                        "type": "object"
+                    },
+                    "config": {
+                        "description": "The verbatim config.yaml text for this source state.",
+                        "title": "Config",
+                        "type": "string"
+                    },
+                    "requirements": {
+                        "description": "Requirements resolved from the config's requirements file, when it points at one. Empty when requirements are declared inline in the config.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Requirements",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "content_hashes",
+                    "config"
+                ],
+                "title": "DeploymentPatchPointV1",
+                "type": "object"
+            },
+            "CreateDeploymentPatchRequestV1": {
+                "description": "A patch to stage against the development deployment.\n\nStaging is durable on its own: the patch is persisted independently of the\nlater sync, so a failed sync does not lose it.",
+                "properties": {
+                    "prev_patch_hash": {
+                        "description": "Content hash of the patch point this patch is applied on - the link the staged patch must build on. A stale value (the base moved underneath the client) is rejected with a conflict.",
+                        "title": "Prev Patch Hash",
+                        "type": "string"
+                    },
+                    "next_patch_point": {
+                        "$ref": "#/components/schemas/DeploymentPatchPointV1",
+                        "description": "The source state after this patch. The server derives its content hash from `content_hashes`."
+                    },
+                    "patch_ops": {
+                        "description": "The ordered ops that make up this patch. At least one op is required; a patch that changes nothing is not a valid request. There is no op for a directory: a directory comes into existence when the first file under it is added, and is removed when its last file is removed, so directory creation and deletion happen implicitly through the file ops. Adding or removing an otherwise empty directory therefore produces no ops even though it changes the source hash; do not send a patch request for such a change.",
+                        "items": {
+                            "discriminator": {
+                                "mapping": {
+                                    "config": "#/components/schemas/DeploymentPatchOpConfigV1",
+                                    "environment_variable": "#/components/schemas/DeploymentPatchOpEnvVarV1",
+                                    "external_data": "#/components/schemas/DeploymentPatchOpExternalDataV1",
+                                    "model_code": "#/components/schemas/DeploymentPatchOpModelCodeV1",
+                                    "package": "#/components/schemas/DeploymentPatchOpPackageV1",
+                                    "python_requirement": "#/components/schemas/DeploymentPatchOpPythonRequirementV1"
+                                },
+                                "propertyName": "type"
+                            },
+                            "oneOf": [
+                                {
+                                    "$ref": "#/components/schemas/DeploymentPatchOpModelCodeV1"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/DeploymentPatchOpPackageV1"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/DeploymentPatchOpConfigV1"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/DeploymentPatchOpPythonRequirementV1"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/DeploymentPatchOpEnvVarV1"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/DeploymentPatchOpExternalDataV1"
+                                }
+                            ]
+                        },
+                        "minItems": 1,
+                        "title": "Patch Ops",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "prev_patch_hash",
+                    "next_patch_point",
+                    "patch_ops"
+                ],
+                "title": "CreateDeploymentPatchRequestV1",
+                "type": "object"
+            },
+            "DeploymentPatchPointWithHashV1": {
+                "description": "A patch point plus its server-assigned content hash, returned in responses.\n\nRequests omit the hash (the server derives it from the source state); responses\ninclude it so the watch client can echo it back as the next patch's\n`prev_patch_hash` without having to recompute the fold itself.",
+                "properties": {
+                    "content_hashes": {
+                        "additionalProperties": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "description": "Map of every non-ignored source path, relative and forward-slash, to its content hash: files map to the hex blake3 digest of their bytes, directories map to null. This is the full signature of the source tree and what the content hash is derived from.",
+                        "title": "Content Hashes",
+                        "type": "object"
+                    },
+                    "config": {
+                        "description": "The verbatim config.yaml text for this source state.",
+                        "title": "Config",
+                        "type": "string"
+                    },
+                    "requirements": {
+                        "description": "Requirements resolved from the config's requirements file, when it points at one. Empty when requirements are declared inline in the config.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Requirements",
+                        "type": "array"
+                    },
+                    "hash": {
+                        "description": "Content hash identifying this exact source state, and the link patches build on. It is derived deterministically from `content_hashes`, so a request need not send it - the server derives it. It is derived by sorting the `content_hashes` keys as paths, splitting each key on '/' into its path components and ordering the keys by comparing those component lists element by element, each component compared by Unicode code point (equivalently UTF-8 byte order). Treating '/' as a path separator this way, rather than as the ordinary character U+002F, means a key that is an ancestor path sorts before a sibling whose name extends the first differing component (so e.g. 'a/b' sorts before 'a.b'). A blake3 hasher is then built, and for each key in that order updated with the blake3 digest (32 raw bytes) of the key encoded as UTF-8, then, when the entry is a file (non-null value), with that file's digest as 32 raw bytes. The stream uses raw digest bytes, but the values in `content_hashes` are those digests hex-encoded (64 hex chars), so decode each value from hex first. Directory entries (null value) contribute only their key digest. The result is the hasher's own hex digest.",
+                        "title": "Hash",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "content_hashes",
+                    "config",
+                    "hash"
+                ],
+                "title": "DeploymentPatchPointWithHashV1",
+                "type": "object"
+            },
+            "CreateDeploymentPatchResponseV1": {
+                "description": "The created patch, represented by the patch point it produced.",
+                "properties": {
+                    "patch_point": {
+                        "$ref": "#/components/schemas/DeploymentPatchPointWithHashV1",
+                        "description": "The resulting patch point the staged patch produced; matches the pending point a subsequent state read returns."
+                    }
+                },
+                "required": [
+                    "patch_point"
+                ],
+                "title": "CreateDeploymentPatchResponseV1",
+                "type": "object"
+            },
+            "GetDeploymentPatchesStateResponseV1": {
+                "description": "The patch state of the development deployment.\n\nThe watch client computes its next patch off `pending_patch_point` when present,\nelse `running_patch_point`.",
+                "properties": {
+                    "running_patch_point": {
+                        "$ref": "#/components/schemas/DeploymentPatchPointWithHashV1",
+                        "description": "The patch point the deployment is recorded as running."
+                    },
+                    "pending_patch_point": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/DeploymentPatchPointWithHashV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The latest staged-but-unsynced patch point, or null when the deployment is recorded as caught up."
+                    }
+                },
+                "required": [
+                    "running_patch_point"
+                ],
+                "title": "GetDeploymentPatchesStateResponseV1",
+                "type": "object"
+            },
+            "SyncDeploymentPatchesRequestV1": {
+                "description": "Triggers a sync of any staged patches to the running deployment. Takes no\nfields: the deployment and its staged patches fully determine the sync.",
+                "properties": {},
+                "title": "SyncDeploymentPatchesRequestV1",
+                "type": "object"
+            },
+            "SyncDeploymentPatchesResponseV1": {
+                "description": "The outcome of a sync that ran.\n\nOperational failures (a transient patch failure, an invalid patch sequence)\nare surfaced as HTTP errors rather than fields here, so a 2xx means the sync\nreached a verdict.",
+                "properties": {
+                    "needs_full_deploy_reason": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "If set, the change cannot be patched and a full push is required; the value explains why. If null, the deployment is now in sync.",
+                        "title": "Needs Full Deploy Reason"
+                    }
+                },
+                "title": "SyncDeploymentPatchesResponseV1",
                 "type": "object"
             },
             "DeploymentMetricDescriptorV1": {
@@ -12186,6 +12763,11 @@
                         "title": "Session Id",
                         "type": "string"
                     },
+                    "name": {
+                        "description": "The run's display name.",
+                        "title": "Name",
+                        "type": "string"
+                    },
                     "base_model": {
                         "description": "The HuggingFace base model the run is fine-tuning.",
                         "title": "Base Model",
@@ -12210,6 +12792,7 @@
                 "required": [
                     "id",
                     "session_id",
+                    "name",
                     "base_model",
                     "base_url",
                     "created_at",
@@ -13344,6 +13927,51 @@
                 "title": "GetLoopsDeploymentLogsRequestV1",
                 "type": "object"
             },
+            "TeamTrainingGpuCapacityItemV1": {
+                "description": "Per-team GPU capacity and current usage for one GPU type.",
+                "properties": {
+                    "team_id": {
+                        "description": "Team identifier",
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "description": "Team name",
+                        "title": "Team Name",
+                        "type": "string"
+                    },
+                    "gpu_type": {
+                        "description": "GPU type identifier (e.g. H100, A100-40GB)",
+                        "title": "Gpu Type",
+                        "type": "string"
+                    },
+                    "baseline": {
+                        "description": "Baseline GPU allocation for the team. 0 if not configured.",
+                        "title": "Baseline",
+                        "type": "integer"
+                    },
+                    "limit": {
+                        "description": "Maximum concurrent GPUs of this type for this team",
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "usage_count": {
+                        "description": "GPUs currently in use by the team's active training jobs",
+                        "title": "Usage Count",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "team_id",
+                    "team_name",
+                    "gpu_type",
+                    "baseline",
+                    "limit",
+                    "usage_count"
+                ],
+                "title": "TeamTrainingGpuCapacityItemV1",
+                "type": "object"
+            },
             "TrainingGpuCapacityItemV1": {
                 "description": "GPU capacity and current usage for one GPU type.",
                 "properties": {
@@ -13381,11 +14009,19 @@
                 "description": "Response for the training GPU capacity endpoint.",
                 "properties": {
                     "gpu_capacities": {
-                        "description": "GPU capacity limits and current usage per GPU type",
+                        "description": "Org-level GPU capacity limits and current usage per GPU type",
                         "items": {
                             "$ref": "#/components/schemas/TrainingGpuCapacityItemV1"
                         },
                         "title": "Gpu Capacities",
+                        "type": "array"
+                    },
+                    "team_gpu_capacities": {
+                        "description": "Per-team GPU capacity limits and current usage per GPU type",
+                        "items": {
+                            "$ref": "#/components/schemas/TeamTrainingGpuCapacityItemV1"
+                        },
+                        "title": "Team Gpu Capacities",
                         "type": "array"
                     }
                 },

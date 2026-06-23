@@ -88,10 +88,6 @@ namespace Baseten
         /// If true, validate the payload only and do not issue upload credentials. The response sets `creds`, `s3_bucket`, and `s3_key` to `null`.<br/>
         /// Default Value: false
         /// </param>
-        /// <param name="isDevelopment">
-        /// If true, validate a development-deployment push. Only valid when `name` is set. The following `deployment` fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.<br/>
-        /// Default Value: false
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -101,7 +97,6 @@ namespace Baseten
             string? teamId = default,
             string? modelId = default,
             bool? dryRun = default,
-            bool? isDevelopment = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -44,13 +44,6 @@ namespace Baseten
         public bool? DisableArchiveDownload { get; set; }
 
         /// <summary>
-        /// If true, push as a development deployment (the model's single mutable dev slot; overwrites any existing development deployment). The following `deployment` fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("is_development")]
-        public bool? IsDevelopment { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -75,10 +68,6 @@ namespace Baseten
         /// If true, the uploaded archive is not downloadable after creation. Locked at model creation; cannot be changed by subsequent deployments.<br/>
         /// Default Value: false
         /// </param>
-        /// <param name="isDevelopment">
-        /// If true, push as a development deployment (the model's single mutable dev slot; overwrites any existing development deployment). The following `deployment` fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.<br/>
-        /// Default Value: false
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -87,15 +76,13 @@ namespace Baseten
             global::Baseten.DeploymentArchivePayloadV1 deployment,
             string s3Key,
             string? kind,
-            bool? disableArchiveDownload,
-            bool? isDevelopment)
+            bool? disableArchiveDownload)
         {
             this.Kind = kind;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Deployment = deployment ?? throw new global::System.ArgumentNullException(nameof(deployment));
             this.S3Key = s3Key ?? throw new global::System.ArgumentNullException(nameof(s3Key));
             this.DisableArchiveDownload = disableArchiveDownload;
-            this.IsDevelopment = isDevelopment;
         }
 
         /// <summary>

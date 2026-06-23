@@ -48,20 +48,12 @@ Returns GPU capacity limits (baseline and peak) and current usage for the organi
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
-                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
-                                        parseResult,
-                                        response,
-                                        global::Baseten.SourceGenerationContext.Default,
-                                        @"GpuCapacities",
-                                        cancellationToken).ConfigureAwait(false))
-                                {
                                 await CliRuntime.WriteResponseAsync(
                                     parseResult,
                                     response,
                                     global::Baseten.SourceGenerationContext.Default,
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
-                                }
             }, cancellationToken).ConfigureAwait(false));
         return command;
     }

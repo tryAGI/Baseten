@@ -41,6 +41,14 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.SortOrderV1NullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.DeploymentPatchActionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DeploymentPatchActionV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CreateDeploymentPatchRequestV1PatchOpDiscriminatorTypeJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CreateDeploymentPatchRequestV1PatchOpDiscriminatorTypeNullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.DeploymentMetricKindV1JsonConverter),
 
             typeof(global::Baseten.JsonConverters.DeploymentMetricKindV1NullableJsonConverter),
@@ -134,6 +142,8 @@ namespace Baseten
             typeof(global::Baseten.JsonConverters.UsageLimitUnitV1NullableJsonConverter),
 
             typeof(global::Baseten.JsonConverters.SourceJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.PatchOpsItemJsonConverter),
 
             typeof(global::Baseten.JsonConverters.CheckpointsItemJsonConverter),
 
@@ -240,11 +250,29 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SortOrderV1), TypeInfoPropertyName = "SortOrderV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetDeploymentLogsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchActionV1), TypeInfoPropertyName = "DeploymentPatchActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpConfigV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpEnvVarV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpExternalDataV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpModelCodeV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpPackageV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpPythonRequirementV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchPointV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.PatchOpsItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchOpsItem), TypeInfoPropertyName = "PatchOpsItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType), TypeInfoPropertyName = "CreateDeploymentPatchRequestV1PatchOpDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchPointWithHashV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetDeploymentPatchesStateResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SyncDeploymentPatchesRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SyncDeploymentPatchesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentMetricDescriptorV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentMetricUnitHintV1), TypeInfoPropertyName = "DeploymentMetricUnitHintV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentMetricKindV1), TypeInfoPropertyName = "DeploymentMetricKindV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentMetricModeV1), TypeInfoPropertyName = "DeploymentMetricModeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentMetricValueSetV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>))]
@@ -431,9 +459,11 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsDeploymentNodeMetricsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsDeploymentMetricsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsDeploymentLogsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TeamTrainingGpuCapacityItemV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingGpuCapacityItemV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetTrainingGpuCapacityResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingGpuCapacityItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TeamTrainingGpuCapacityItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetBlobCredentialsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyCategory), TypeInfoPropertyName = "APIKeyCategory2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateAPIKeyRequestV1))]
@@ -538,6 +568,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DeploymentV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LogV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.PatchOpsItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
@@ -573,6 +604,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.InferenceVolumeByStatusDatapointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsDeploymentNodeMetricsV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingGpuCapacityItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TeamTrainingGpuCapacityItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.APIKeyInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RateLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelAPIV1>))]

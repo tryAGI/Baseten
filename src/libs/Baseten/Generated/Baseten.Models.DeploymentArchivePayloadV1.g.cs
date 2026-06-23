@@ -68,6 +68,13 @@ namespace Baseten
         public object? Labels { get; set; }
 
         /// <summary>
+        /// If true, push as a development deployment: the model's single mutable dev slot, created if absent and overwritten in place otherwise. The following fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_development")]
+        public bool? IsDevelopment { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -107,6 +114,10 @@ namespace Baseten
         /// User-provided key-value labels for the deployment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="isDevelopment">
+        /// If true, push as a development deployment: the model's single mutable dev slot, created if absent and overwritten in place otherwise. The following fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -118,7 +129,8 @@ namespace Baseten
             bool? preserveEnvInstanceType,
             int? deployTimeoutMinutes,
             string? deploymentName,
-            object? labels)
+            object? labels,
+            bool? isDevelopment)
         {
             this.Config = config ?? throw new global::System.ArgumentNullException(nameof(config));
             this.RawConfig = rawConfig;
@@ -128,6 +140,7 @@ namespace Baseten
             this.DeployTimeoutMinutes = deployTimeoutMinutes;
             this.DeploymentName = deploymentName;
             this.Labels = labels;
+            this.IsDevelopment = isDevelopment;
         }
 
         /// <summary>
