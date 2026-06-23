@@ -3377,6 +3377,42 @@
                         }
                     }
                 }
+            },
+            "patch": {
+                "summary": "Update a training job.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"priority\": 0\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'priority': 0}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Update mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateTrainingJobRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UpdateTrainingJobResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/v1/training_projects/{training_project_id}/jobs/{training_job_id}/download": {
@@ -11776,6 +11812,40 @@
                     "training_job"
                 ],
                 "title": "GetTrainingJobResponseV1",
+                "type": "object"
+            },
+            "UpdateTrainingJobRequestV1": {
+                "description": "A request to update mutable fields on a training job.",
+                "properties": {
+                    "priority": {
+                        "description": "New queue priority for a PENDING training job. Higher values are dequeued first. Only jobs in the PENDING state can have their priority changed.",
+                        "examples": [
+                            0,
+                            10,
+                            100
+                        ],
+                        "title": "Priority",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "priority"
+                ],
+                "title": "UpdateTrainingJobRequestV1",
+                "type": "object"
+            },
+            "UpdateTrainingJobResponseV1": {
+                "description": "A response to updating a training job.",
+                "properties": {
+                    "training_job": {
+                        "$ref": "#/components/schemas/TrainingJobV1",
+                        "description": "The updated training job."
+                    }
+                },
+                "required": [
+                    "training_job"
+                ],
+                "title": "UpdateTrainingJobResponseV1",
                 "type": "object"
             },
             "DownloadTrainingJobResponseV1": {
