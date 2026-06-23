@@ -96,1431 +96,1447 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.InstanceTypeWithPriceV1? Type17 { get; set; }
+        public global::Baseten.LoopsUserConfigV1? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type18 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.InstanceTypePricesV1? Type19 { get; set; }
+        public global::Baseten.GetLoopsUserConfigResponseV1? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.InstanceTypeWithPriceV1>? Type20 { get; set; }
+        public global::Baseten.PatchLoopsUserConfigRequestV1? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentArchivePayloadV1? Type21 { get; set; }
+        public global::Baseten.PatchLoopsUserConfigResponseV1? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PrepareModelUploadRequestV1? Type22 { get; set; }
+        public global::Baseten.InstanceTypeWithPriceV1? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.AWSCredentialsV1? Type23 { get; set; }
+        public double? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PrepareModelUploadResponseV1? Type24 { get; set; }
+        public global::Baseten.InstanceTypePricesV1? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelV1? Type25 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.InstanceTypeWithPriceV1>? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelsV1? Type26 { get; set; }
+        public global::Baseten.DeploymentArchivePayloadV1? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ModelV1>? Type27 { get; set; }
+        public global::Baseten.PrepareModelUploadRequestV1? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LibraryListingSourceV1? Type28 { get; set; }
+        public global::Baseten.AWSCredentialsV1? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelArchiveSourceV1? Type29 { get; set; }
+        public global::Baseten.PrepareModelUploadResponseV1? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateModelRequestV1? Type30 { get; set; }
+        public global::Baseten.ModelV1? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.Source? Type31 { get; set; }
+        public global::Baseten.ModelsV1? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateModelRequestV1SourceDiscriminator? Type32 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ModelV1>? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateModelRequestV1SourceDiscriminatorKind? Type33 { get; set; }
+        public global::Baseten.LibraryListingSourceV1? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.AutoscalingSettingsV1? Type34 { get; set; }
+        public global::Baseten.ModelArchiveSourceV1? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentStatusV1? Type35 { get; set; }
+        public global::Baseten.CreateModelRequestV1? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentV1? Type36 { get; set; }
+        public global::Baseten.Source? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreatedModelDeploymentV1? Type37 { get; set; }
+        public global::Baseten.CreateModelRequestV1SourceDiscriminator? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelTombstoneV1? Type38 { get; set; }
+        public global::Baseten.CreateModelRequestV1SourceDiscriminatorKind? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentsV1? Type39 { get; set; }
+        public global::Baseten.AutoscalingSettingsV1? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.DeploymentV1>? Type40 { get; set; }
+        public global::Baseten.DeploymentStatusV1? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentArchiveSourceV1? Type41 { get; set; }
+        public global::Baseten.DeploymentV1? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateModelDeploymentRequestV1? Type42 { get; set; }
+        public global::Baseten.CreatedModelDeploymentV1? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminator? Type43 { get; set; }
+        public global::Baseten.ModelTombstoneV1? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind? Type44 { get; set; }
+        public global::Baseten.DeploymentsV1? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentTombstoneV1? Type45 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.DeploymentV1>? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateAutoscalingSettingsV1? Type46 { get; set; }
+        public global::Baseten.DeploymentArchiveSourceV1? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateAutoscalingSettingsStatusV1? Type47 { get; set; }
+        public global::Baseten.CreateModelDeploymentRequestV1? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateAutoscalingSettingsResponseV1? Type48 { get; set; }
+        public global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminator? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PromoteRequestV1? Type49 { get; set; }
+        public global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ActivateResponseV1? Type50 { get; set; }
+        public global::Baseten.DeploymentTombstoneV1? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeactivateResponseV1? Type51 { get; set; }
+        public global::Baseten.UpdateAutoscalingSettingsV1? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RetryDeploymentResponseV1? Type52 { get; set; }
+        public global::Baseten.UpdateAutoscalingSettingsStatusV1? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DownloadDeploymentResponseV1? Type53 { get; set; }
+        public global::Baseten.UpdateAutoscalingSettingsResponseV1? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentConfigResponseV1? Type54 { get; set; }
+        public global::Baseten.PromoteRequestV1? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentConfigOutputFormat? Type55 { get; set; }
+        public global::Baseten.ActivateResponseV1? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetDeploymentConfigRequestV1? Type56 { get; set; }
+        public global::Baseten.DeactivateResponseV1? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LogLevelV1? Type57 { get; set; }
+        public global::Baseten.RetryDeploymentResponseV1? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LogV1? Type58 { get; set; }
+        public global::Baseten.DownloadDeploymentResponseV1? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLogsResponseV1? Type59 { get; set; }
+        public global::Baseten.DeploymentConfigResponseV1? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.LogV1>? Type60 { get; set; }
+        public global::Baseten.DeploymentConfigOutputFormat? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SortOrderV1? Type61 { get; set; }
+        public global::Baseten.GetDeploymentConfigRequestV1? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetDeploymentLogsRequestV1? Type62 { get; set; }
+        public global::Baseten.LogLevelV1? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type63 { get; set; }
+        public global::Baseten.LogV1? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchActionV1? Type64 { get; set; }
+        public global::Baseten.GetLogsResponseV1? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchOpConfigV1? Type65 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LogV1>? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchOpEnvVarV1? Type66 { get; set; }
+        public global::Baseten.SortOrderV1? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchOpExternalDataV1? Type67 { get; set; }
+        public global::Baseten.GetDeploymentLogsRequestV1? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type68 { get; set; }
+        public global::Baseten.DeploymentPatchActionV1? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchOpModelCodeV1? Type69 { get; set; }
+        public global::Baseten.DeploymentPatchOpConfigV1? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchOpPackageV1? Type70 { get; set; }
+        public global::Baseten.DeploymentPatchOpEnvVarV1? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchOpPythonRequirementV1? Type71 { get; set; }
+        public global::Baseten.DeploymentPatchOpExternalDataV1? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchPointV1? Type72 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateDeploymentPatchRequestV1? Type73 { get; set; }
+        public global::Baseten.DeploymentPatchOpModelCodeV1? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.PatchOpsItem>? Type74 { get; set; }
+        public global::Baseten.DeploymentPatchOpPackageV1? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PatchOpsItem? Type75 { get; set; }
+        public global::Baseten.DeploymentPatchOpPythonRequirementV1? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminator? Type76 { get; set; }
+        public global::Baseten.DeploymentPatchPointV1? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType? Type77 { get; set; }
+        public global::Baseten.CreateDeploymentPatchRequestV1? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentPatchPointWithHashV1? Type78 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.PatchOpsItem>? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateDeploymentPatchResponseV1? Type79 { get; set; }
+        public global::Baseten.PatchOpsItem? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetDeploymentPatchesStateResponseV1? Type80 { get; set; }
+        public global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminator? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SyncDeploymentPatchesRequestV1? Type81 { get; set; }
+        public global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SyncDeploymentPatchesResponseV1? Type82 { get; set; }
+        public global::Baseten.DeploymentPatchPointWithHashV1? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentMetricDescriptorV1? Type83 { get; set; }
+        public global::Baseten.CreateDeploymentPatchResponseV1? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentMetricUnitHintV1? Type84 { get; set; }
+        public global::Baseten.GetDeploymentPatchesStateResponseV1? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentMetricKindV1? Type85 { get; set; }
+        public global::Baseten.SyncDeploymentPatchesRequestV1? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>? Type86 { get; set; }
+        public global::Baseten.SyncDeploymentPatchesResponseV1? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentMetricModeV1? Type87 { get; set; }
+        public global::Baseten.DeploymentMetricDescriptorV1? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeploymentMetricValueSetV1? Type88 { get; set; }
+        public global::Baseten.DeploymentMetricUnitHintV1? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? Type89 { get; set; }
+        public global::Baseten.DeploymentMetricKindV1? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<double>? Type90 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetDeploymentMetricsResponseV1? Type91 { get; set; }
+        public global::Baseten.DeploymentMetricModeV1? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.DeploymentMetricDescriptorV1>? Type92 { get; set; }
+        public global::Baseten.DeploymentMetricValueSetV1? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.DeploymentMetricValueSetV1>? Type93 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetDeploymentMetricsRequestV1? Type94 { get; set; }
+        public global::System.Collections.Generic.IList<double>? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TerminateReplicaResponseV1? Type95 { get; set; }
+        public global::Baseten.GetDeploymentMetricsResponseV1? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SignSSHCertificateRequestV1? Type96 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.DeploymentMetricDescriptorV1>? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SignSSHCertificateResponseV1? Type97 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.DeploymentMetricValueSetV1>? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EnvironmentV1? Type98 { get; set; }
+        public global::Baseten.GetDeploymentMetricsRequestV1? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.InProgressPromotionV1? Type99 { get; set; }
+        public global::Baseten.TerminateReplicaResponseV1? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PromotionSettingsV1? Type100 { get; set; }
+        public global::Baseten.SignSSHCertificateRequestV1? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.InProgressPromotionStatusV1? Type101 { get; set; }
+        public global::Baseten.SignSSHCertificateResponseV1? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PromotionCleanupStrategyV1? Type102 { get; set; }
+        public global::Baseten.EnvironmentV1? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RollingDeployConfigV1? Type103 { get; set; }
+        public global::Baseten.InProgressPromotionV1? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RollingDeployStrategyV1? Type104 { get; set; }
+        public global::Baseten.PromotionSettingsV1? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EnvironmentsV1? Type105 { get; set; }
+        public global::Baseten.InProgressPromotionStatusV1? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EnvironmentV1>? Type106 { get; set; }
+        public global::Baseten.PromotionCleanupStrategyV1? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdatePromotionSettingsV1? Type107 { get; set; }
+        public global::Baseten.RollingDeployConfigV1? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateRollingDeployConfigV1? Type108 { get; set; }
+        public global::Baseten.RollingDeployStrategyV1? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateEnvironmentRequestV1? Type109 { get; set; }
+        public global::Baseten.EnvironmentsV1? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateEnvironmentRequestV1? Type110 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EnvironmentV1>? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PromoteToEnvironmentRequestV1? Type111 { get; set; }
+        public global::Baseten.UpdatePromotionSettingsV1? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CancelPromotionStatusV1? Type112 { get; set; }
+        public global::Baseten.UpdateRollingDeployConfigV1? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CancelPromotionResponseV1? Type113 { get; set; }
+        public global::Baseten.CreateEnvironmentRequestV1? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SignalPromotionResponseV1? Type114 { get; set; }
+        public global::Baseten.UpdateEnvironmentRequestV1? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainV1? Type115 { get; set; }
+        public global::Baseten.PromoteToEnvironmentRequestV1? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainsV1? Type116 { get; set; }
+        public global::Baseten.CancelPromotionStatusV1? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ChainV1>? Type117 { get; set; }
+        public global::Baseten.CancelPromotionResponseV1? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainTombstoneV1? Type118 { get; set; }
+        public global::Baseten.SignalPromotionResponseV1? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainDeploymentV1? Type119 { get; set; }
+        public global::Baseten.ChainV1? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ChainletV1>? Type120 { get; set; }
+        public global::Baseten.ChainsV1? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainletV1? Type121 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ChainV1>? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainDeploymentsV1? Type122 { get; set; }
+        public global::Baseten.ChainTombstoneV1? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ChainDeploymentV1>? Type123 { get; set; }
+        public global::Baseten.ChainDeploymentV1? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainDeploymentTombstoneV1? Type124 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ChainletV1>? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainletEnvironmentSettingsRequestV1? Type125 { get; set; }
+        public global::Baseten.ChainletV1? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateChainEnvironmentRequestV1? Type126 { get; set; }
+        public global::Baseten.ChainDeploymentsV1? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentSettingsRequestV1>? Type127 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ChainDeploymentV1>? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainletEnvironmentSettingsV1? Type128 { get; set; }
+        public global::Baseten.ChainDeploymentTombstoneV1? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainEnvironmentV1? Type129 { get; set; }
+        public global::Baseten.ChainletEnvironmentSettingsRequestV1? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentSettingsV1>? Type130 { get; set; }
+        public global::Baseten.CreateChainEnvironmentRequestV1? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateChainEnvironmentRequestV1? Type131 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentSettingsRequestV1>? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateChainEnvironmentResponseV1? Type132 { get; set; }
+        public global::Baseten.ChainletEnvironmentSettingsV1? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PromoteToChainEnvironmentRequestV1? Type133 { get; set; }
+        public global::Baseten.ChainEnvironmentV1? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainletEnvironmentAutoscalingSettingsUpdateV1? Type134 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentSettingsV1>? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateChainletEnvironmentAutoscalingSettingsRequestV1? Type135 { get; set; }
+        public global::Baseten.UpdateChainEnvironmentRequestV1? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentAutoscalingSettingsUpdateV1>? Type136 { get; set; }
+        public global::Baseten.UpdateChainEnvironmentResponseV1? Type136 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainletEnvironmentInstanceTypeUpdateV1? Type137 { get; set; }
+        public global::Baseten.PromoteToChainEnvironmentRequestV1? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateChainletEnvironmentInstanceTypeRequestV1? Type138 { get; set; }
+        public global::Baseten.ChainletEnvironmentAutoscalingSettingsUpdateV1? Type138 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentInstanceTypeUpdateV1>? Type139 { get; set; }
+        public global::Baseten.UpdateChainletEnvironmentAutoscalingSettingsRequestV1? Type139 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateChainletEnvironmentInstanceTypeResponseV1? Type140 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentAutoscalingSettingsUpdateV1>? Type140 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpsertTrainingProjectV1? Type141 { get; set; }
+        public global::Baseten.ChainletEnvironmentInstanceTypeUpdateV1? Type141 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpsertTrainingProjectRequestV1? Type142 { get; set; }
+        public global::Baseten.UpdateChainletEnvironmentInstanceTypeRequestV1? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CheckpointSyncStatus? Type143 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentInstanceTypeUpdateV1>? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingJobV1? Type144 { get; set; }
+        public global::Baseten.UpdateChainletEnvironmentInstanceTypeResponseV1? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingProjectSummaryV1? Type145 { get; set; }
+        public global::Baseten.UpsertTrainingProjectV1? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UserV1? Type146 { get; set; }
+        public global::Baseten.UpsertTrainingProjectRequestV1? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingProjectV1? Type147 { get; set; }
+        public global::Baseten.CheckpointSyncStatus? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpsertTrainingProjectResponseV1? Type148 { get; set; }
+        public global::Baseten.TrainingJobV1? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ListTrainingProjectsResponseV1? Type149 { get; set; }
+        public global::Baseten.TrainingProjectSummaryV1? Type149 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.TrainingProjectV1>? Type150 { get; set; }
+        public global::Baseten.UserV1? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ListTrainingJobsResponseV1? Type151 { get; set; }
+        public global::Baseten.TrainingProjectV1? Type151 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.TrainingJobV1>? Type152 { get; set; }
+        public global::Baseten.UpsertTrainingProjectResponseV1? Type152 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.AwsIamDockerAuthV1? Type153 { get; set; }
+        public global::Baseten.ListTrainingProjectsResponseV1? Type153 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SecretReferenceV1? Type154 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.TrainingProjectV1>? Type154 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.AwsOidcDockerAuthV1? Type155 { get; set; }
+        public global::Baseten.ListTrainingJobsResponseV1? Type155 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.BasetenLatestCheckpointConfig? Type156 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.TrainingJobV1>? Type156 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.BasetenNamedCheckpointConfig? Type157 { get; set; }
+        public global::Baseten.AwsIamDockerAuthV1? Type157 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateJobWeightConfigV1? Type158 { get; set; }
+        public global::Baseten.SecretReferenceV1? Type158 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobAcceleratorV1? Type159 { get; set; }
+        public global::Baseten.AwsOidcDockerAuthV1? Type159 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobCacheConfig? Type160 { get; set; }
+        public global::Baseten.BasetenLatestCheckpointConfig? Type160 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobCheckpointingConfig? Type161 { get; set; }
+        public global::Baseten.BasetenNamedCheckpointConfig? Type161 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobComputeV1? Type162 { get; set; }
+        public global::Baseten.CreateJobWeightConfigV1? Type162 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobImageV1? Type163 { get; set; }
+        public global::Baseten.CreateTrainingJobAcceleratorV1? Type163 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DockerAuthV1? Type164 { get; set; }
+        public global::Baseten.CreateTrainingJobCacheConfig? Type164 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobRuntimeV1? Type165 { get; set; }
+        public global::Baseten.CreateTrainingJobCheckpointingConfig? Type165 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.AnyOf<string, global::Baseten.SecretReferenceV1>? Type166 { get; set; }
+        public global::Baseten.CreateTrainingJobComputeV1? Type166 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.CreateTrainingJobS3Artifact>? Type167 { get; set; }
+        public global::Baseten.CreateTrainingJobImageV1? Type167 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobS3Artifact? Type168 { get; set; }
+        public global::Baseten.DockerAuthV1? Type168 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoadCheckpointConfig? Type169 { get; set; }
+        public global::Baseten.CreateTrainingJobRuntimeV1? Type169 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobV1? Type170 { get; set; }
+        public global::Baseten.AnyOf<string, global::Baseten.SecretReferenceV1>? Type170 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrussUserEnv? Type171 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.CreateTrainingJobS3Artifact>? Type171 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.InteractiveSessionConfigV1? Type172 { get; set; }
+        public global::Baseten.CreateTrainingJobS3Artifact? Type172 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.CreateJobWeightConfigV1>? Type173 { get; set; }
+        public global::Baseten.LoadCheckpointConfig? Type173 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DockerAuthType? Type174 { get; set; }
+        public global::Baseten.CreateTrainingJobV1? Type174 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GcpServiceAccountJsonDockerAuthV1? Type175 { get; set; }
+        public global::Baseten.TrussUserEnv? Type175 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GcpOidcDockerAuthV1? Type176 { get; set; }
+        public global::Baseten.InteractiveSessionConfigV1? Type176 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RegistrySecretDockerAuthV1? Type177 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.CreateJobWeightConfigV1>? Type177 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GitInfo? Type178 { get; set; }
+        public global::Baseten.DockerAuthType? Type178 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.V1InteractiveSessionTrigger? Type179 { get; set; }
+        public global::Baseten.GcpServiceAccountJsonDockerAuthV1? Type179 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.V1InteractiveSessionProvider? Type180 { get; set; }
+        public global::Baseten.GcpOidcDockerAuthV1? Type180 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.V1InteractiveSessionAuthProvider? Type181 { get; set; }
+        public global::Baseten.RegistrySecretDockerAuthV1? Type181 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.CheckpointsItem>? Type182 { get; set; }
+        public global::Baseten.GitInfo? Type182 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CheckpointsItem? Type183 { get; set; }
+        public global::Baseten.V1InteractiveSessionTrigger? Type183 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsCheckpointConfig? Type184 { get; set; }
+        public global::Baseten.V1InteractiveSessionProvider? Type184 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoadCheckpointConfigCheckpointDiscriminator? Type185 { get; set; }
+        public global::Baseten.V1InteractiveSessionAuthProvider? Type185 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTyp? Type186 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.CheckpointsItem>? Type186 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsCheckpointConfigTarget? Type187 { get; set; }
+        public global::Baseten.CheckpointsItem? Type187 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobRequestV1? Type188 { get; set; }
+        public global::Baseten.LoopsCheckpointConfig? Type188 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateTrainingJobResponseV1? Type189 { get; set; }
+        public global::Baseten.LoadCheckpointConfigCheckpointDiscriminator? Type189 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingJobTombstoneV1? Type190 { get; set; }
+        public global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTyp? Type190 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingJobResponseV1? Type191 { get; set; }
+        public global::Baseten.LoopsCheckpointConfigTarget? Type191 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DownloadTrainingJobResponseV1? Type192 { get; set; }
+        public global::Baseten.CreateTrainingJobRequestV1? Type192 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RecreateTrainingJobResponseV1? Type193 { get; set; }
+        public global::Baseten.CreateTrainingJobResponseV1? Type193 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingJobLogsRequestV1? Type194 { get; set; }
+        public global::Baseten.TrainingJobTombstoneV1? Type194 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.StorageMetricsV1? Type195 { get; set; }
+        public global::Baseten.GetTrainingJobResponseV1? Type195 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.TrainingJobMetricV1>? Type196 { get; set; }
+        public global::Baseten.DownloadTrainingJobResponseV1? Type196 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingJobMetricV1? Type197 { get; set; }
+        public global::Baseten.RecreateTrainingJobResponseV1? Type197 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingJobMetricsV1? Type198 { get; set; }
+        public global::Baseten.GetTrainingJobLogsRequestV1? Type198 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Baseten.TrainingJobMetricV1>>? Type199 { get; set; }
+        public global::Baseten.StorageMetricsV1? Type199 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingJobNodeMetricsV1? Type200 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.TrainingJobMetricV1>? Type200 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingJobMetricsResponseV1? Type201 { get; set; }
+        public global::Baseten.TrainingJobMetricV1? Type201 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.TrainingJobNodeMetricsV1>? Type202 { get; set; }
+        public global::Baseten.TrainingJobMetricsV1? Type202 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingJobMetricsRequestV1? Type203 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.IList<global::Baseten.TrainingJobMetricV1>>? Type203 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.StopTrainingJobRequestV1? Type204 { get; set; }
+        public global::Baseten.TrainingJobNodeMetricsV1? Type204 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.StopTrainingJobResponseV1? Type205 { get; set; }
+        public global::Baseten.GetTrainingJobMetricsResponseV1? Type205 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingJobCheckpointV1? Type206 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.TrainingJobNodeMetricsV1>? Type206 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingJobCheckpointsResponseV1? Type207 { get; set; }
+        public global::Baseten.GetTrainingJobMetricsRequestV1? Type207 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.TrainingJobCheckpointV1>? Type208 { get; set; }
+        public global::Baseten.StopTrainingJobRequestV1? Type208 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CheckpointFile? Type209 { get; set; }
+        public global::Baseten.StopTrainingJobResponseV1? Type209 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingJobCheckpointFilesResponseV1? Type210 { get; set; }
+        public global::Baseten.TrainingJobCheckpointV1? Type210 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.CheckpointFile>? Type211 { get; set; }
+        public global::Baseten.GetTrainingJobCheckpointsResponseV1? Type211 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingJobCheckpointFilesRequestV1? Type212 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.TrainingJobCheckpointV1>? Type212 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.AuthCodeV1? Type213 { get; set; }
+        public global::Baseten.CheckpointFile? Type213 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetAuthCodesResponseV1? Type214 { get; set; }
+        public global::Baseten.GetTrainingJobCheckpointFilesResponseV1? Type214 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.AuthCodeV1>? Type215 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.CheckpointFile>? Type215 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PatchInteractiveSessionRequestV1? Type216 { get; set; }
+        public global::Baseten.GetTrainingJobCheckpointFilesRequestV1? Type216 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.InteractiveSessionV1? Type217 { get; set; }
+        public global::Baseten.AuthCodeV1? Type217 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PatchInteractiveSessionResponseV1? Type218 { get; set; }
+        public global::Baseten.GetAuthCodesResponseV1? Type218 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.FileSummary? Type219 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.AuthCodeV1>? Type219 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetCacheSummaryResponseV1? Type220 { get; set; }
+        public global::Baseten.PatchInteractiveSessionRequestV1? Type220 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.FileSummary>? Type221 { get; set; }
+        public global::Baseten.InteractiveSessionV1? Type221 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingProjectTombstoneV1? Type222 { get; set; }
+        public global::Baseten.PatchInteractiveSessionResponseV1? Type222 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingProjectResponseV1? Type223 { get; set; }
+        public global::Baseten.FileSummary? Type223 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.OrderByV1? Type224 { get; set; }
+        public global::Baseten.GetCacheSummaryResponseV1? Type224 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SearchTrainingJobsRequestV1? Type225 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.FileSummary>? Type225 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.OrderByV1>? Type226 { get; set; }
+        public global::Baseten.TrainingProjectTombstoneV1? Type226 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SearchTrainingJobsResponseV1? Type227 { get; set; }
+        public global::Baseten.GetTrainingProjectResponseV1? Type227 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.SupportedModelV1? Type228 { get; set; }
+        public global::Baseten.OrderByV1? Type228 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLoopsCapabilitiesResponseV1? Type229 { get; set; }
+        public global::Baseten.SearchTrainingJobsRequestV1? Type229 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SupportedModelV1>? Type230 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.OrderByV1>? Type230 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsSessionV1? Type231 { get; set; }
+        public global::Baseten.SearchTrainingJobsResponseV1? Type231 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLoopsSessionResponseV1? Type232 { get; set; }
+        public global::Baseten.SupportedModelV1? Type232 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLoopsSessionResponseV1? Type233 { get; set; }
+        public global::Baseten.GetLoopsCapabilitiesResponseV1? Type233 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsRunV1? Type234 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SupportedModelV1>? Type234 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsSamplerV1? Type235 { get; set; }
+        public global::Baseten.LoopsSessionV1? Type235 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsSamplerStatusV1? Type236 { get; set; }
+        public global::Baseten.CreateLoopsSessionResponseV1? Type236 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ListLoopsRunsResponseV1? Type237 { get; set; }
+        public global::Baseten.GetLoopsSessionResponseV1? Type237 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.LoopsRunV1>? Type238 { get; set; }
+        public global::Baseten.LoopsRunV1? Type238 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ListLoopsRunsQueryParamsV1? Type239 { get; set; }
+        public global::Baseten.LoopsSamplerV1? Type239 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLoopsRunRequestV1? Type240 { get; set; }
+        public global::Baseten.LoopsSamplerStatusV1? Type240 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLoopsRunResponseV1? Type241 { get; set; }
+        public global::Baseten.ListLoopsRunsResponseV1? Type241 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLoopsRunResponseV1? Type242 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LoopsRunV1>? Type242 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ListLoopsSamplersResponseV1? Type243 { get; set; }
+        public global::Baseten.ListLoopsRunsQueryParamsV1? Type243 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.LoopsSamplerV1>? Type244 { get; set; }
+        public global::Baseten.CreateLoopsRunRequestV1? Type244 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLoopsSamplerRequestV1? Type245 { get; set; }
+        public global::Baseten.CreateLoopsRunResponseV1? Type245 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLoopsSamplerResponseV1? Type246 { get; set; }
+        public global::Baseten.GetLoopsRunResponseV1? Type246 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLoopsSamplerResponseV1? Type247 { get; set; }
+        public global::Baseten.ListLoopsSamplersResponseV1? Type247 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsCheckpointV1? Type248 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LoopsSamplerV1>? Type248 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainerCheckpointTarget? Type249 { get; set; }
+        public global::Baseten.CreateLoopsSamplerRequestV1? Type249 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ListLoopsCheckpointsResponseV1? Type250 { get; set; }
+        public global::Baseten.CreateLoopsSamplerResponseV1? Type250 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.LoopsCheckpointV1>? Type251 { get; set; }
+        public global::Baseten.GetLoopsSamplerResponseV1? Type251 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ListLoopsCheckpointsQueryParamsV1? Type252 { get; set; }
+        public global::Baseten.LoopsCheckpointV1? Type252 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ValidateLoopsCheckpointRequestV1? Type253 { get; set; }
+        public global::Baseten.TrainerCheckpointTarget? Type253 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ValidateLoopsCheckpointResponseV1? Type254 { get; set; }
+        public global::Baseten.ListLoopsCheckpointsResponseV1? Type254 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsCheckpointFilesResponseV1? Type255 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LoopsCheckpointV1>? Type255 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsDeploymentStatusV1? Type256 { get; set; }
+        public global::Baseten.ListLoopsCheckpointsQueryParamsV1? Type256 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.Name? Type257 { get; set; }
+        public global::Baseten.ValidateLoopsCheckpointRequestV1? Type257 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsDeploymentV1? Type258 { get; set; }
+        public global::Baseten.ValidateLoopsCheckpointResponseV1? Type258 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ListLoopsDeploymentsResponseV1? Type259 { get; set; }
+        public global::Baseten.LoopsCheckpointFilesResponseV1? Type259 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.LoopsDeploymentV1>? Type260 { get; set; }
+        public global::Baseten.LoopsDeploymentStatusV1? Type260 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DeactivateLoopsDeploymentResponseV1? Type261 { get; set; }
+        public global::Baseten.Name? Type261 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLoopsDeploymentResponseV1? Type262 { get; set; }
+        public global::Baseten.LoopsDeploymentV1? Type262 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLoopsDeploymentMetricsRequestV1? Type263 { get; set; }
+        public global::Baseten.ListLoopsDeploymentsResponseV1? Type263 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.InferenceVolumeByStatusDatapointV1? Type264 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LoopsDeploymentV1>? Type264 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsDeploymentMetricsV1? Type265 { get; set; }
+        public global::Baseten.DeactivateLoopsDeploymentResponseV1? Type265 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ResponseTimeDatapointV1>? Type266 { get; set; }
+        public global::Baseten.GetLoopsDeploymentResponseV1? Type266 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ResponseTimeDatapointV1? Type267 { get; set; }
+        public global::Baseten.GetLoopsDeploymentMetricsRequestV1? Type267 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.InferenceVolumeByStatusDatapointV1>? Type268 { get; set; }
+        public global::Baseten.InferenceVolumeByStatusDatapointV1? Type268 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.LoopsDeploymentNodeMetricsV1>? Type269 { get; set; }
+        public global::Baseten.LoopsDeploymentMetricsV1? Type269 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LoopsDeploymentNodeMetricsV1? Type270 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ResponseTimeDatapointV1>? Type270 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLoopsDeploymentMetricsResponseV1? Type271 { get; set; }
+        public global::Baseten.ResponseTimeDatapointV1? Type271 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetLoopsDeploymentLogsRequestV1? Type272 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.InferenceVolumeByStatusDatapointV1>? Type272 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TeamTrainingGpuCapacityItemV1? Type273 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LoopsDeploymentNodeMetricsV1>? Type273 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingGpuCapacityItemV1? Type274 { get; set; }
+        public global::Baseten.LoopsDeploymentNodeMetricsV1? Type274 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetTrainingGpuCapacityResponseV1? Type275 { get; set; }
+        public global::Baseten.GetLoopsDeploymentMetricsResponseV1? Type275 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.TrainingGpuCapacityItemV1>? Type276 { get; set; }
+        public global::Baseten.GetLoopsDeploymentLogsRequestV1? Type276 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.TeamTrainingGpuCapacityItemV1>? Type277 { get; set; }
+        public global::Baseten.TeamTrainingGpuCapacityItemV1? Type277 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GetBlobCredentialsResponseV1? Type278 { get; set; }
+        public global::Baseten.TrainingGpuCapacityItemV1? Type278 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.APIKeyCategory? Type279 { get; set; }
+        public global::Baseten.GetTrainingGpuCapacityResponseV1? Type279 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateAPIKeyRequestV1? Type280 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.TrainingGpuCapacityItemV1>? Type280 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.APIKeyV1? Type281 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.TeamTrainingGpuCapacityItemV1>? Type281 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.APIKeyInfoV1? Type282 { get; set; }
+        public global::Baseten.GetBlobCredentialsResponseV1? Type282 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.APIKeysV1? Type283 { get; set; }
+        public global::Baseten.APIKeyCategory? Type283 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.APIKeyInfoV1>? Type284 { get; set; }
+        public global::Baseten.CreateAPIKeyRequestV1? Type284 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.APIKeyTombstoneV1? Type285 { get; set; }
+        public global::Baseten.APIKeyV1? Type285 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelWeightSnapshotV1? Type286 { get; set; }
+        public global::Baseten.APIKeyInfoV1? Type286 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateModelWeightSnapshotRequestV1? Type287 { get; set; }
+        public global::Baseten.APIKeysV1? Type287 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LimitTypeV1? Type288 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.APIKeyInfoV1>? Type288 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelAPIOrgDetailsV1? Type289 { get; set; }
+        public global::Baseten.APIKeyTombstoneV1? Type289 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelAPIV1? Type290 { get; set; }
+        public global::Baseten.ModelWeightSnapshotV1? Type290 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.AnyOf<double?, string>? Type291 { get; set; }
+        public global::Baseten.CreateModelWeightSnapshotRequestV1? Type291 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.RateLimitV1>? Type292 { get; set; }
+        public global::Baseten.LimitTypeV1? Type292 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RateLimitV1? Type293 { get; set; }
+        public global::Baseten.ModelAPIOrgDetailsV1? Type293 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.PaginationResponseV1? Type294 { get; set; }
+        public global::Baseten.ModelAPIV1? Type294 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RateLimitUnitV1? Type295 { get; set; }
+        public global::Baseten.AnyOf<double?, string>? Type295 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelAPIsResponseV1? Type296 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.RateLimitV1>? Type296 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ModelAPIV1>? Type297 { get; set; }
+        public global::Baseten.RateLimitV1? Type297 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelAPIsRequestV1? Type298 { get; set; }
+        public global::Baseten.PaginationResponseV1? Type298 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLLMModelRequestV1? Type299 { get; set; }
+        public global::Baseten.RateLimitUnitV1? Type299 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<object>? Type300 { get; set; }
+        public global::Baseten.ModelAPIsResponseV1? Type300 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LLMModelHandleV1? Type301 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ModelAPIV1>? Type301 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLLMModelVersionRequestV1? Type302 { get; set; }
+        public global::Baseten.ModelAPIsRequestV1? Type302 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LibraryListingV1? Type303 { get; set; }
+        public global::Baseten.CreateLLMModelRequestV1? Type303 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LibraryListingsV1? Type304 { get; set; }
+        public global::System.Collections.Generic.IList<object>? Type304 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.LibraryListingV1>? Type305 { get; set; }
+        public global::Baseten.LLMModelHandleV1? Type305 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLibraryListingRequestV1? Type306 { get; set; }
+        public global::Baseten.CreateLLMModelVersionRequestV1? Type306 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LibraryListingTombstoneV1? Type307 { get; set; }
+        public global::Baseten.LibraryListingV1? Type307 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateLibraryListingRequestV1? Type308 { get; set; }
+        public global::Baseten.LibraryListingsV1? Type308 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LibraryListingVersionV1? Type309 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LibraryListingV1>? Type309 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LibraryListingVersionsV1? Type310 { get; set; }
+        public global::Baseten.CreateLibraryListingRequestV1? Type310 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.LibraryListingVersionV1>? Type311 { get; set; }
+        public global::Baseten.LibraryListingTombstoneV1? Type311 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateLibraryListingVersionRequestV1? Type312 { get; set; }
+        public global::Baseten.UpdateLibraryListingRequestV1? Type312 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LibraryListingVersionTombstoneV1? Type313 { get; set; }
+        public global::Baseten.LibraryListingVersionV1? Type313 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateLibraryListingVersionRequestV1? Type314 { get; set; }
+        public global::Baseten.LibraryListingVersionsV1? Type314 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.BillableResourceV1? Type315 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LibraryListingVersionV1>? Type315 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ResourceKind? Type316 { get; set; }
+        public global::Baseten.CreateLibraryListingVersionRequestV1? Type316 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ChainMetadataV1? Type317 { get; set; }
+        public global::Baseten.LibraryListingVersionTombstoneV1? Type317 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DailyDedicatedUsageV1? Type318 { get; set; }
+        public global::Baseten.UpdateLibraryListingVersionRequestV1? Type318 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DailyModelApiUsageV1? Type319 { get; set; }
+        public global::Baseten.BillableResourceV1? Type319 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DailyTrainingUsageV1? Type320 { get; set; }
+        public global::Baseten.ResourceKind? Type320 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DedicatedItemV1? Type321 { get; set; }
+        public global::Baseten.ChainMetadataV1? Type321 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.DailyDedicatedUsageV1>? Type322 { get; set; }
+        public global::Baseten.DailyDedicatedUsageV1? Type322 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.DedicatedUsageV1? Type323 { get; set; }
+        public global::Baseten.DailyModelApiUsageV1? Type323 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.DedicatedItemV1>? Type324 { get; set; }
+        public global::Baseten.DailyTrainingUsageV1? Type324 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelApiItemV1? Type325 { get; set; }
+        public global::Baseten.DedicatedItemV1? Type325 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.DailyModelApiUsageV1>? Type326 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.DailyDedicatedUsageV1>? Type326 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelApisUsageV1? Type327 { get; set; }
+        public global::Baseten.DedicatedUsageV1? Type327 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ModelApiItemV1>? Type328 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.DedicatedItemV1>? Type328 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingItemV1? Type329 { get; set; }
+        public global::Baseten.ModelApiItemV1? Type329 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.DailyTrainingUsageV1>? Type330 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.DailyModelApiUsageV1>? Type330 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.TrainingUsageV1? Type331 { get; set; }
+        public global::Baseten.ModelApisUsageV1? Type331 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.TrainingItemV1>? Type332 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ModelApiItemV1>? Type332 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UsageSummaryV1? Type333 { get; set; }
+        public global::Baseten.TrainingItemV1? Type333 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UsageSummaryRequestV1? Type334 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.DailyTrainingUsageV1>? Type334 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UserInfoV1? Type335 { get; set; }
+        public global::Baseten.TrainingUsageV1? Type335 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EndpointTargetV1? Type336 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.TrainingItemV1>? Type336 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GatewayProvider? Type337 { get; set; }
+        public global::Baseten.UsageSummaryV1? Type337 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EndpointV1? Type338 { get; set; }
+        public global::Baseten.UsageSummaryRequestV1? Type338 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EndpointTargetV1>? Type339 { get; set; }
+        public global::Baseten.UserInfoV1? Type339 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EndpointsResponseV1? Type340 { get; set; }
+        public global::Baseten.EndpointTargetV1? Type340 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EndpointV1>? Type341 { get; set; }
+        public global::Baseten.GatewayProvider? Type341 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EndpointTargetRequestV1? Type342 { get; set; }
+        public global::Baseten.EndpointV1? Type342 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateEndpointRequestV1? Type343 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EndpointTargetV1>? Type343 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1>? Type344 { get; set; }
+        public global::Baseten.EndpointsResponseV1? Type344 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EndpointTombstoneV1? Type345 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EndpointV1>? Type345 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateEndpointRequestV1? Type346 { get; set; }
+        public global::Baseten.EndpointTargetRequestV1? Type346 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EffectiveModelConfigV1? Type347 { get; set; }
+        public global::Baseten.CreateEndpointRequestV1? Type347 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EffectiveRateLimitV1>? Type348 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1>? Type348 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EffectiveRateLimitV1? Type349 { get; set; }
+        public global::Baseten.EndpointTombstoneV1? Type349 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EffectiveUsageLimitV1>? Type350 { get; set; }
+        public global::Baseten.UpdateEndpointRequestV1? Type350 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.EffectiveUsageLimitV1? Type351 { get; set; }
+        public global::Baseten.EffectiveModelConfigV1? Type351 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UsageLimitUnitV1? Type352 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EffectiveRateLimitV1>? Type352 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GroupHierarchyV1? Type353 { get; set; }
+        public global::Baseten.EffectiveRateLimitV1? Type353 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.LimitEnforcementV1? Type354 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EffectiveUsageLimitV1>? Type354 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GroupMetadataV1? Type355 { get; set; }
+        public global::Baseten.EffectiveUsageLimitV1? Type355 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GroupV1? Type356 { get; set; }
+        public global::Baseten.UsageLimitUnitV1? Type356 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1>? Type357 { get; set; }
+        public global::Baseten.GroupHierarchyV1? Type357 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.ModelConfigV1? Type358 { get; set; }
+        public global::Baseten.LimitEnforcementV1? Type358 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EffectiveModelConfigV1>? Type359 { get; set; }
+        public global::Baseten.GroupMetadataV1? Type359 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.UsageLimitV1>? Type360 { get; set; }
+        public global::Baseten.GroupV1? Type360 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UsageLimitV1? Type361 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1>? Type361 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GroupsResponseV1? Type362 { get; set; }
+        public global::Baseten.ModelConfigV1? Type362 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GroupV1>? Type363 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EffectiveModelConfigV1>? Type363 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateGroupRequestV1? Type364 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.UsageLimitV1>? Type364 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateGroupMetadataV1? Type365 { get; set; }
+        public global::Baseten.UsageLimitV1? Type365 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateGroupRequestV1? Type366 { get; set; }
+        public global::Baseten.GroupsResponseV1? Type366 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.GatewayKeyInfoV1? Type367 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GroupV1>? Type367 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.KeysForGroupResponseV1? Type368 { get; set; }
+        public global::Baseten.CreateGroupRequestV1? Type368 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GatewayKeyInfoV1>? Type369 { get; set; }
+        public global::Baseten.UpdateGroupMetadataV1? Type369 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateApiKeyForGroupRequestV1? Type370 { get; set; }
+        public global::Baseten.UpdateGroupRequestV1? Type370 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.CreateApiKeyForGroupResponseV1? Type371 { get; set; }
+        public global::Baseten.GatewayKeyInfoV1? Type371 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RegisterAPIKeyRequestV1? Type372 { get; set; }
+        public global::Baseten.KeysForGroupResponseV1? Type372 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.RegisterAPIKeyResponseV1? Type373 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GatewayKeyInfoV1>? Type373 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Baseten.CreateApiKeyForGroupRequestV1? Type374 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Baseten.CreateApiKeyForGroupResponseV1? Type375 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Baseten.RegisterAPIKeyRequestV1? Type376 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Baseten.RegisterAPIKeyResponseV1? Type377 { get; set; }
 
         /// <summary>
         /// 
@@ -1537,23 +1553,23 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.InstanceTypeWithPriceV1>? ListType3 { get; set; }
+        public global::System.Collections.Generic.List<string>? ListType3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.ModelV1>? ListType4 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.InstanceTypeWithPriceV1>? ListType4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.DeploymentV1>? ListType5 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.ModelV1>? ListType5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.LogV1>? ListType6 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.DeploymentV1>? ListType6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<string>? ListType7 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.LogV1>? ListType7 { get; set; }
         /// <summary>
         /// 
         /// </summary>

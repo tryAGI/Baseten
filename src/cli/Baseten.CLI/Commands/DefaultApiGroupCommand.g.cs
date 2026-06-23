@@ -87,6 +87,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(EditGatewayGroupsByGroupIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditLibraryListingsByUserDefinedListingIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditLibraryListingsByUserDefinedListingIdVersionsByVersionTagCommandApiCommand.Create());
+                         command.Subcommands.Add(EditLoopsUserConfigCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsByDeploymentIdAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsDevelopmentAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsProductionAutoscalingSettingsCommandApiCommand.Create());
@@ -126,6 +127,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetLoopsSamplersCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsSamplersBySamplerIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsSessionsBySessionIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetLoopsUserConfigCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisByModelApiNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisSnapshotsCommandApiCommand.Create());

@@ -38,6 +38,13 @@ namespace Baseten
         public string? ModelId { get; set; }
 
         /// <summary>
+        /// Baseten model environment, if non-production.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("environment_name")]
+        public string? EnvironmentName { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -61,6 +68,10 @@ namespace Baseten
         /// Baseten model, if any.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="environmentName">
+        /// Baseten model environment, if non-production.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -68,12 +79,14 @@ namespace Baseten
             global::Baseten.GatewayProvider provider,
             string? secretId,
             string? targetModel,
-            string? modelId)
+            string? modelId,
+            string? environmentName)
         {
             this.Provider = provider;
             this.SecretId = secretId;
             this.TargetModel = targetModel;
             this.ModelId = modelId;
+            this.EnvironmentName = environmentName;
         }
 
         /// <summary>

@@ -270,6 +270,70 @@
                 }
             }
         },
+        "/v1/loops/user_config": {
+            "get": {
+                "summary": "Get the caller's Loops user config.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/user_config \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/user_config\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns the caller's Loops user config (per-user accelerator priorities). Null fields mean 'inherit the org-level allowlist'.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLoopsUserConfigResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Patch the caller's Loops user config.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/loops/user_config \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"trainer_accelerator_priority\": [\n    \"H100\",\n    \"H200\"\n  ],\n  \"sampler_accelerator_priority\": [\n    \"H100\",\n    \"H200\"\n  ]\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/user_config\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'trainer_accelerator_priority': ['H100', 'H200'], 'sampler_accelerator_priority': ['H100', 'H200']}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semantics per field: omit a field to leave it unchanged, send null to clear (inherit the org-level allowlist), or send a list to set the allowlist. Empty lists are rejected.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PatchLoopsUserConfigRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatchLoopsUserConfigResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/instance_type_prices": {
             "get": {
                 "summary": "Gets prices for available instance types.",
@@ -5863,11 +5927,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/gateway/endpoints \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"targets\": [\n    {\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/gateway/endpoints \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"targets\": [\n    {\n      \"environment_name\": \"staging\",\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'targets': [{'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'targets': [{'environment_name': 'staging', 'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.",
@@ -5956,11 +6020,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"targets\": [\n    {\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"targets\": [\n    {\n      \"environment_name\": \"staging\",\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints/{endpoint_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'targets': [{'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints/{endpoint_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'targets': [{'environment_name': 'staging', 'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.",
@@ -6497,6 +6561,138 @@
                     "instance_types"
                 ],
                 "title": "InstanceTypesV1",
+                "type": "object"
+            },
+            "LoopsUserConfigV1": {
+                "description": "The caller's Loops user-level config (accelerator priorities).",
+                "properties": {
+                    "trainer_accelerator_priority": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Ordered allowlist of GPU types for your Loops trainer deployments, highest priority first. Intersected with the org-level allowlist (org acts as a ceiling). Null means 'inherit the org-level allowlist'.",
+                        "examples": [
+                            [
+                                "H100",
+                                "H200"
+                            ]
+                        ],
+                        "title": "Trainer Accelerator Priority"
+                    },
+                    "sampler_accelerator_priority": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Ordered allowlist of GPU types for your Loops sampler deployments, highest priority first. Intersected with the org-level allowlist (org acts as a ceiling). Null means 'inherit the org-level allowlist'.",
+                        "examples": [
+                            [
+                                "H100",
+                                "H200"
+                            ]
+                        ],
+                        "title": "Sampler Accelerator Priority"
+                    }
+                },
+                "required": [
+                    "trainer_accelerator_priority",
+                    "sampler_accelerator_priority"
+                ],
+                "title": "LoopsUserConfigV1",
+                "type": "object"
+            },
+            "GetLoopsUserConfigResponseV1": {
+                "description": "Response for ``GET /v1/loops/user_config``.",
+                "properties": {
+                    "user_config": {
+                        "$ref": "#/components/schemas/LoopsUserConfigV1",
+                        "description": "The caller's Loops user config."
+                    }
+                },
+                "required": [
+                    "user_config"
+                ],
+                "title": "GetLoopsUserConfigResponseV1",
+                "type": "object"
+            },
+            "PatchLoopsUserConfigRequestV1": {
+                "description": "Request body for ``PATCH /v1/loops/user_config``.\n\nFollows JSON Merge Patch (RFC 7396) semantics per field: omit the field\nto leave it unchanged, send ``null`` to clear and inherit the org-level\nallowlist, send a list to set the allowlist. Empty lists are rejected\nbecause the storage layer normalizes ``null`` and ``[]`` identically, so\naccepting both would create two ways to spell the same intent.",
+                "properties": {
+                    "trainer_accelerator_priority": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Ordered list of GPU types for trainer deployments, highest priority first. Send a list to set; send null to clear (inherit org allowlist); omit to leave unchanged. Empty list is rejected.",
+                        "examples": [
+                            [
+                                "H100",
+                                "H200"
+                            ]
+                        ],
+                        "title": "Trainer Accelerator Priority"
+                    },
+                    "sampler_accelerator_priority": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Ordered list of GPU types for sampler deployments, highest priority first. Send a list to set; send null to clear (inherit org allowlist); omit to leave unchanged. Empty list is rejected.",
+                        "examples": [
+                            [
+                                "H100",
+                                "H200"
+                            ]
+                        ],
+                        "title": "Sampler Accelerator Priority"
+                    }
+                },
+                "title": "PatchLoopsUserConfigRequestV1",
+                "type": "object"
+            },
+            "PatchLoopsUserConfigResponseV1": {
+                "description": "Response for ``PATCH /v1/loops/user_config``.",
+                "properties": {
+                    "user_config": {
+                        "$ref": "#/components/schemas/LoopsUserConfigV1",
+                        "description": "The updated Loops user config."
+                    }
+                },
+                "required": [
+                    "user_config"
+                ],
+                "title": "PatchLoopsUserConfigResponseV1",
                 "type": "object"
             },
             "InstanceTypeWithPriceV1": {
@@ -16004,6 +16200,19 @@
                         "default": null,
                         "description": "Baseten model, if any.",
                         "title": "Model Id"
+                    },
+                    "environment_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Baseten model environment, if non-production.",
+                        "title": "Environment Name"
                     }
                 },
                 "required": [
@@ -16150,6 +16359,22 @@
                             "3kZ9xqd"
                         ],
                         "title": "Model Id"
+                    },
+                    "environment_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Baseten model environment to route to. Only valid with BASETEN. Omit or pass `production` to target production.",
+                        "examples": [
+                            "staging"
+                        ],
+                        "title": "Environment Name"
                     }
                 },
                 "required": [
@@ -16173,6 +16398,7 @@
                         "examples": [
                             [
                                 {
+                                    "environment_name": "staging",
                                     "model_id": "3kZ9xqd",
                                     "provider": "BASETEN",
                                     "target_model": "custom/model-name"
@@ -16260,6 +16486,7 @@
                         "examples": [
                             [
                                 {
+                                    "environment_name": "staging",
                                     "model_id": "3kZ9xqd",
                                     "provider": "BASETEN",
                                     "target_model": "custom/model-name"
