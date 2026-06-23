@@ -49,13 +49,6 @@ namespace Baseten
         public bool? DryRun { get; set; }
 
         /// <summary>
-        /// If true, validate a development-deployment push. Only valid when `name` is set. The following `deployment` fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.<br/>
-        /// Default Value: false
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("is_development")]
-        public bool? IsDevelopment { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -83,10 +76,6 @@ namespace Baseten
         /// If true, validate the payload only and do not issue upload credentials. The response sets `creds`, `s3_bucket`, and `s3_key` to `null`.<br/>
         /// Default Value: false
         /// </param>
-        /// <param name="isDevelopment">
-        /// If true, validate a development-deployment push. Only valid when `name` is set. The following `deployment` fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.<br/>
-        /// Default Value: false
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -95,15 +84,13 @@ namespace Baseten
             string? name,
             string? teamId,
             string? modelId,
-            bool? dryRun,
-            bool? isDevelopment)
+            bool? dryRun)
         {
             this.Deployment = deployment ?? throw new global::System.ArgumentNullException(nameof(deployment));
             this.Name = name;
             this.TeamId = teamId;
             this.ModelId = modelId;
             this.DryRun = dryRun;
-            this.IsDevelopment = isDevelopment;
         }
 
         /// <summary>

@@ -35,10 +35,6 @@ internal static partial class CreatePrepareModelUploadCommandApiCommand
     private static Option<bool?> DryRun { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--dry-run",
         description: @"If true, validate the payload only and do not issue upload credentials. The response sets `creds`, `s3_bucket`, and `s3_key` to `null`.");
-
-    private static Option<bool?> IsDevelopment { get; } = CliRuntime.CreateNullableBoolOption(
-        name: @"--is-development",
-        description: @"If true, validate a development-deployment push. Only valid when `name` is set. The following `deployment` fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.");
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -84,7 +80,6 @@ internal static partial class CreatePrepareModelUploadCommandApiCommand
                         command.Options.Add(TeamId);
                         command.Options.Add(ModelId);
                         command.Options.Add(DryRun);
-                        command.Options.Add(IsDevelopment);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -115,7 +110,6 @@ internal static partial class CreatePrepareModelUploadCommandApiCommand
                         var teamId = CliRuntime.WasSpecified(parseResult, TeamId) ? parseResult.GetValue(TeamId) : (__requestBase is { } __TeamIdBaseValue ? __TeamIdBaseValue.TeamId : default);
                         var modelId = CliRuntime.WasSpecified(parseResult, ModelId) ? parseResult.GetValue(ModelId) : (__requestBase is { } __ModelIdBaseValue ? __ModelIdBaseValue.ModelId : default);
                         var dryRun = CliRuntime.WasSpecified(parseResult, DryRun) ? parseResult.GetValue(DryRun) : (__requestBase is { } __DryRunBaseValue ? __DryRunBaseValue.DryRun : default);
-                        var isDevelopment = CliRuntime.WasSpecified(parseResult, IsDevelopment) ? parseResult.GetValue(IsDevelopment) : (__requestBase is { } __IsDevelopmentBaseValue ? __IsDevelopmentBaseValue.IsDevelopment : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -125,7 +119,6 @@ internal static partial class CreatePrepareModelUploadCommandApiCommand
                                     teamId: teamId,
                                     modelId: modelId,
                                     dryRun: dryRun,
-                                    isDevelopment: isDevelopment,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

@@ -23,6 +23,13 @@ namespace Baseten
         public required string SessionId { get; set; }
 
         /// <summary>
+        /// The run's display name.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Name { get; set; }
+
+        /// <summary>
         /// The HuggingFace base model the run is fine-tuning.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_model")]
@@ -65,6 +72,9 @@ namespace Baseten
         /// <param name="sessionId">
         /// The session ID this run belongs to.
         /// </param>
+        /// <param name="name">
+        /// The run's display name.
+        /// </param>
         /// <param name="baseModel">
         /// The HuggingFace base model the run is fine-tuning.
         /// </param>
@@ -83,6 +93,7 @@ namespace Baseten
         public LoopsRunV1(
             string id,
             string sessionId,
+            string name,
             string baseModel,
             string baseUrl,
             global::System.DateTime createdAt,
@@ -90,6 +101,7 @@ namespace Baseten
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.CreatedAt = createdAt;

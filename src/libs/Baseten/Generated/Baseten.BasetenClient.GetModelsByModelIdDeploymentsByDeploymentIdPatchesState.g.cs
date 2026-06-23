@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreatePrepareModelUploadSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,61 +21,51 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreatePrepareModelUploadSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreatePrepareModelUploadSecurityRequirement0,
+            {                s_GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateSecurityRequirement0,
             };
-        partial void PrepareCreatePrepareModelUploadArguments(
+        partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdPatchesStateArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.PrepareModelUploadRequestV1 request);
-        partial void PrepareCreatePrepareModelUploadRequest(
+            ref string modelId,
+            ref string deploymentId);
+        partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdPatchesStateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.PrepareModelUploadRequestV1 request);
-        partial void ProcessCreatePrepareModelUploadResponse(
+            string modelId,
+            string deploymentId);
+        partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdPatchesStateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreatePrepareModelUploadResponseContent(
+        partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdPatchesStateResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Validates a model push payload and issues upload credentials
+        /// Get a development deployment's patch state.<br/>
+        /// Returns the patch point the deployment is recorded as running and the latest staged-but-unsynced point, if any. The watch client computes its next patch off the pending point when present, else the running point.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="modelId"></param>
+        /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/prepare_model_upload \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "deployment": {<br/>
-        ///     "config": null,<br/>
-        ///     "raw_config": null,<br/>
-        ///     "user_env": null,<br/>
-        ///     "environment_name": null,<br/>
-        ///     "deploy_timeout_minutes": null,<br/>
-        ///     "deployment_name": null,<br/>
-        ///     "labels": null<br/>
-        ///   },<br/>
-        ///   "name": null,<br/>
-        ///   "team_id": null,<br/>
-        ///   "model_id": null<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/patches/state \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.PrepareModelUploadResponseV1> CreatePrepareModelUploadAsync(
-
-            global::Baseten.PrepareModelUploadRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetDeploymentPatchesStateResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsync(
+            string modelId,
+            string deploymentId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreatePrepareModelUploadAsResponseAsync(
-
-                request: request,
+            var __response = await GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsResponseAsync(
+                modelId: modelId,
+                deploymentId: deploymentId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -83,50 +73,37 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Validates a model push payload and issues upload credentials
+        /// Get a development deployment's patch state.<br/>
+        /// Returns the patch point the deployment is recorded as running and the latest staged-but-unsynced point, if any. The watch client computes its next patch off the pending point when present, else the running point.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="modelId"></param>
+        /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/prepare_model_upload \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "deployment": {<br/>
-        ///     "config": null,<br/>
-        ///     "raw_config": null,<br/>
-        ///     "user_env": null,<br/>
-        ///     "environment_name": null,<br/>
-        ///     "deploy_timeout_minutes": null,<br/>
-        ///     "deployment_name": null,<br/>
-        ///     "labels": null<br/>
-        ///   },<br/>
-        ///   "name": null,<br/>
-        ///   "team_id": null,<br/>
-        ///   "model_id": null<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/patches/state \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.PrepareModelUploadResponseV1>> CreatePrepareModelUploadAsResponseAsync(
-
-            global::Baseten.PrepareModelUploadRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetDeploymentPatchesStateResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsResponseAsync(
+            string modelId,
+            string deploymentId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreatePrepareModelUploadArguments(
+            PrepareGetModelsByModelIdDeploymentsByDeploymentIdPatchesStateArguments(
                 httpClient: HttpClient,
-                request: request);
+                modelId: ref modelId,
+                deploymentId: ref deploymentId);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreatePrepareModelUploadSecurityRequirements,
-                operationName: "CreatePrepareModelUploadAsync");
+                securityRequirements: s_GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateSecurityRequirements,
+                operationName: "GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -146,7 +123,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/prepare_model_upload",
+                                path: $"/v1/models/{modelId}/deployments/{deploymentId}/patches/state",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -154,7 +131,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -177,12 +154,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -191,10 +162,11 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreatePrepareModelUploadRequest(
+                PrepareGetModelsByModelIdDeploymentsByDeploymentIdPatchesStateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    request: request);
+                    modelId: modelId!,
+                    deploymentId: deploymentId!);
 
                 return __httpRequest;
             }
@@ -211,10 +183,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createPrepareModelUpload",
-                                methodName: "CreatePrepareModelUploadAsync",
-                                pathTemplate: "\"/v1/prepare_model_upload\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdPatchesState",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/patches/state\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -245,10 +217,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createPrepareModelUpload",
-                                methodName: "CreatePrepareModelUploadAsync",
-                                pathTemplate: "\"/v1/prepare_model_upload\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdPatchesState",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/patches/state\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -286,10 +258,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createPrepareModelUpload",
-                                methodName: "CreatePrepareModelUploadAsync",
-                                pathTemplate: "\"/v1/prepare_model_upload\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdPatchesState",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/patches/state\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -326,7 +298,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreatePrepareModelUploadResponse(
+                ProcessGetModelsByModelIdDeploymentsByDeploymentIdPatchesStateResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -334,10 +306,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createPrepareModelUpload",
-                                methodName: "CreatePrepareModelUploadAsync",
-                                pathTemplate: "\"/v1/prepare_model_upload\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdPatchesState",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/patches/state\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -356,10 +328,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createPrepareModelUpload",
-                                methodName: "CreatePrepareModelUploadAsync",
-                                pathTemplate: "\"/v1/prepare_model_upload\"",
-                                httpMethod: "POST",
+                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdPatchesState",
+                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/patches/state\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -386,7 +358,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreatePrepareModelUploadResponseContent(
+                                ProcessGetModelsByModelIdDeploymentsByDeploymentIdPatchesStateResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -395,9 +367,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.PrepareModelUploadResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.GetDeploymentPatchesStateResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.PrepareModelUploadResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetDeploymentPatchesStateResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -427,9 +399,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.PrepareModelUploadResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.GetDeploymentPatchesStateResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.PrepareModelUploadResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetDeploymentPatchesStateResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -468,54 +440,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Validates a model push payload and issues upload credentials
-        /// </summary>
-        /// <param name="deployment">
-        /// Deployment-level payload, identical to the payload sent at commit.
-        /// </param>
-        /// <param name="name">
-        /// Set to validate a new-model push. Exactly one of `name` or `model_id` is required.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="teamId">
-        /// Team the new model will belong to. Only valid when `name` is set; defaults to the organization's default team when omitted. Must not be set when `model_id` is set (the existing model already has a team).<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="modelId">
-        /// Set to validate an add-deployment push to an existing model. Exactly one of `name` or `model_id` is required.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="dryRun">
-        /// If true, validate the payload only and do not issue upload credentials. The response sets `creds`, `s3_bucket`, and `s3_key` to `null`.<br/>
-        /// Default Value: false
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.PrepareModelUploadResponseV1> CreatePrepareModelUploadAsync(
-            global::Baseten.DeploymentArchivePayloadV1 deployment,
-            string? name = default,
-            string? teamId = default,
-            string? modelId = default,
-            bool? dryRun = default,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.PrepareModelUploadRequestV1
-            {
-                Deployment = deployment,
-                Name = name,
-                TeamId = teamId,
-                ModelId = modelId,
-                DryRun = dryRun,
-            };
-
-            return await CreatePrepareModelUploadAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
