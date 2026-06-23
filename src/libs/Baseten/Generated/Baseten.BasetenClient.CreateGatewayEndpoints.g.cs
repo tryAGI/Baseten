@@ -57,6 +57,7 @@ namespace Baseten
         ///   "slug": "baseten/mymodel-4",<br/>
         ///   "targets": [<br/>
         ///     {<br/>
+        ///       "environment_name": "staging",<br/>
         ///       "model_id": "3kZ9xqd",<br/>
         ///       "provider": "BASETEN",<br/>
         ///       "target_model": "custom/model-name"<br/>
@@ -95,6 +96,7 @@ namespace Baseten
         ///   "slug": "baseten/mymodel-4",<br/>
         ///   "targets": [<br/>
         ///     {<br/>
+        ///       "environment_name": "staging",<br/>
         ///       "model_id": "3kZ9xqd",<br/>
         ///       "provider": "BASETEN",<br/>
         ///       "target_model": "custom/model-name"<br/>

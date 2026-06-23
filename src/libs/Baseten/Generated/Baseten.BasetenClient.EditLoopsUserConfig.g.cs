@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_EditGatewayEndpointsByEndpointIdSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_EditLoopsUserConfigSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,62 +21,56 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_EditGatewayEndpointsByEndpointIdSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_EditLoopsUserConfigSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_EditGatewayEndpointsByEndpointIdSecurityRequirement0,
+            {                s_EditLoopsUserConfigSecurityRequirement0,
             };
-        partial void PrepareEditGatewayEndpointsByEndpointIdArguments(
+        partial void PrepareEditLoopsUserConfigArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string endpointId,
-            global::Baseten.UpdateEndpointRequestV1 request);
-        partial void PrepareEditGatewayEndpointsByEndpointIdRequest(
+            global::Baseten.PatchLoopsUserConfigRequestV1 request);
+        partial void PrepareEditLoopsUserConfigRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string endpointId,
-            global::Baseten.UpdateEndpointRequestV1 request);
-        partial void ProcessEditGatewayEndpointsByEndpointIdResponse(
+            global::Baseten.PatchLoopsUserConfigRequestV1 request);
+        partial void ProcessEditLoopsUserConfigResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessEditGatewayEndpointsByEndpointIdResponseContent(
+        partial void ProcessEditLoopsUserConfigResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Update a Gateway endpoint<br/>
-        /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
+        /// Patch the caller's Loops user config.<br/>
+        /// Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semantics per field: omit a field to leave it unchanged, send null to clear (inherit the org-level allowlist), or send a list to set the allowlist. Empty lists are rejected.
         /// </summary>
-        /// <param name="endpointId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \<br/>
+        /// --url https://api.baseten.co/v1/loops/user_config \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "slug": "baseten/mymodel-4",<br/>
-        ///   "targets": [<br/>
-        ///     {<br/>
-        ///       "environment_name": "staging",<br/>
-        ///       "model_id": "3kZ9xqd",<br/>
-        ///       "provider": "BASETEN",<br/>
-        ///       "target_model": "custom/model-name"<br/>
-        ///     }<br/>
+        ///   "trainer_accelerator_priority": [<br/>
+        ///     "H100",<br/>
+        ///     "H200"<br/>
+        ///   ],<br/>
+        ///   "sampler_accelerator_priority": [<br/>
+        ///     "H100",<br/>
+        ///     "H200"<br/>
         ///   ]<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.EndpointV1> EditGatewayEndpointsByEndpointIdAsync(
-            string endpointId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.PatchLoopsUserConfigResponseV1> EditLoopsUserConfigAsync(
 
-            global::Baseten.UpdateEndpointRequestV1 request,
+            global::Baseten.PatchLoopsUserConfigRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await EditGatewayEndpointsByEndpointIdAsResponseAsync(
-                endpointId: endpointId,
+            var __response = await EditLoopsUserConfigAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -86,34 +80,31 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Update a Gateway endpoint<br/>
-        /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
+        /// Patch the caller's Loops user config.<br/>
+        /// Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semantics per field: omit a field to leave it unchanged, send null to clear (inherit the org-level allowlist), or send a list to set the allowlist. Empty lists are rejected.
         /// </summary>
-        /// <param name="endpointId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \<br/>
+        /// --url https://api.baseten.co/v1/loops/user_config \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "slug": "baseten/mymodel-4",<br/>
-        ///   "targets": [<br/>
-        ///     {<br/>
-        ///       "environment_name": "staging",<br/>
-        ///       "model_id": "3kZ9xqd",<br/>
-        ///       "provider": "BASETEN",<br/>
-        ///       "target_model": "custom/model-name"<br/>
-        ///     }<br/>
+        ///   "trainer_accelerator_priority": [<br/>
+        ///     "H100",<br/>
+        ///     "H200"<br/>
+        ///   ],<br/>
+        ///   "sampler_accelerator_priority": [<br/>
+        ///     "H100",<br/>
+        ///     "H200"<br/>
         ///   ]<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>> EditGatewayEndpointsByEndpointIdAsResponseAsync(
-            string endpointId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.PatchLoopsUserConfigResponseV1>> EditLoopsUserConfigAsResponseAsync(
 
-            global::Baseten.UpdateEndpointRequestV1 request,
+            global::Baseten.PatchLoopsUserConfigRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -121,16 +112,15 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareEditGatewayEndpointsByEndpointIdArguments(
+            PrepareEditLoopsUserConfigArguments(
                 httpClient: HttpClient,
-                endpointId: ref endpointId,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_EditGatewayEndpointsByEndpointIdSecurityRequirements,
-                operationName: "EditGatewayEndpointsByEndpointIdAsync");
+                securityRequirements: s_EditLoopsUserConfigSecurityRequirements,
+                operationName: "EditLoopsUserConfigAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -150,7 +140,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/gateway/endpoints/{endpointId}",
+                                path: "/v1/loops/user_config",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -195,10 +185,9 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareEditGatewayEndpointsByEndpointIdRequest(
+                PrepareEditLoopsUserConfigRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    endpointId: endpointId!,
                     request: request);
 
                 return __httpRequest;
@@ -216,9 +205,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editGatewayEndpointsByEndpointId",
-                                methodName: "EditGatewayEndpointsByEndpointIdAsync",
-                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                operationId: "editLoopsUserConfig",
+                                methodName: "EditLoopsUserConfigAsync",
+                                pathTemplate: "\"/v1/loops/user_config\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -250,9 +239,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editGatewayEndpointsByEndpointId",
-                                methodName: "EditGatewayEndpointsByEndpointIdAsync",
-                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                operationId: "editLoopsUserConfig",
+                                methodName: "EditLoopsUserConfigAsync",
+                                pathTemplate: "\"/v1/loops/user_config\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -291,9 +280,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editGatewayEndpointsByEndpointId",
-                                methodName: "EditGatewayEndpointsByEndpointIdAsync",
-                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                operationId: "editLoopsUserConfig",
+                                methodName: "EditLoopsUserConfigAsync",
+                                pathTemplate: "\"/v1/loops/user_config\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -331,7 +320,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessEditGatewayEndpointsByEndpointIdResponse(
+                ProcessEditLoopsUserConfigResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -339,9 +328,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editGatewayEndpointsByEndpointId",
-                                methodName: "EditGatewayEndpointsByEndpointIdAsync",
-                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                operationId: "editLoopsUserConfig",
+                                methodName: "EditLoopsUserConfigAsync",
+                                pathTemplate: "\"/v1/loops/user_config\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -361,9 +350,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editGatewayEndpointsByEndpointId",
-                                methodName: "EditGatewayEndpointsByEndpointIdAsync",
-                                pathTemplate: "$\"/v1/gateway/endpoints/{endpointId}\"",
+                                operationId: "editLoopsUserConfig",
+                                methodName: "EditLoopsUserConfigAsync",
+                                pathTemplate: "\"/v1/loops/user_config\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -391,7 +380,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessEditGatewayEndpointsByEndpointIdResponseContent(
+                                ProcessEditLoopsUserConfigResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -400,9 +389,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.EndpointV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.PatchLoopsUserConfigResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.PatchLoopsUserConfigResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -432,9 +421,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.EndpointV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.PatchLoopsUserConfigResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.PatchLoopsUserConfigResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -475,36 +464,33 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Update a Gateway endpoint<br/>
-        /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
+        /// Patch the caller's Loops user config.<br/>
+        /// Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semantics per field: omit a field to leave it unchanged, send null to clear (inherit the org-level allowlist), or send a list to set the allowlist. Empty lists are rejected.
         /// </summary>
-        /// <param name="endpointId"></param>
-        /// <param name="slug">
-        /// New globally-unique slug of the form '{org_prefix}/{name}'.<br/>
+        /// <param name="trainerAcceleratorPriority">
+        /// Ordered list of GPU types for trainer deployments, highest priority first. Send a list to set; send null to clear (inherit org allowlist); omit to leave unchanged. Empty list is rejected.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="targets">
-        /// The endpoint's upstream targets. Exactly one target is supported at this time.<br/>
+        /// <param name="samplerAcceleratorPriority">
+        /// Ordered list of GPU types for sampler deployments, highest priority first. Send a list to set; send null to clear (inherit org allowlist); omit to leave unchanged. Empty list is rejected.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.EndpointV1> EditGatewayEndpointsByEndpointIdAsync(
-            string endpointId,
-            string? slug = default,
-            global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1>? targets = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.PatchLoopsUserConfigResponseV1> EditLoopsUserConfigAsync(
+            global::System.Collections.Generic.IList<string>? trainerAcceleratorPriority = default,
+            global::System.Collections.Generic.IList<string>? samplerAcceleratorPriority = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.UpdateEndpointRequestV1
+            var __request = new global::Baseten.PatchLoopsUserConfigRequestV1
             {
-                Slug = slug,
-                Targets = targets,
+                TrainerAcceleratorPriority = trainerAcceleratorPriority,
+                SamplerAcceleratorPriority = samplerAcceleratorPriority,
             };
 
-            return await EditGatewayEndpointsByEndpointIdAsync(
-                endpointId: endpointId,
+            return await EditLoopsUserConfigAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
