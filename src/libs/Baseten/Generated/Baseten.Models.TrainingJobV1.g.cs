@@ -86,6 +86,14 @@ namespace Baseten
         public int? Priority { get; set; }
 
         /// <summary>
+        /// Capacity guarantee for the job. 'dedicated' is non-preemptible on-demand capacity; 'spot' is interruptible.<br/>
+        /// Default Value: dedicated
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
+        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+
+        /// <summary>
         /// The user who created the training job.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -138,6 +146,10 @@ namespace Baseten
         /// Queue priority. Higher values are dequeued first. NULL is treated as 0.<br/>
         /// Default Value: 0
         /// </param>
+        /// <param name="availabilityModel">
+        /// Capacity guarantee for the job. 'dedicated' is non-preemptible on-demand capacity; 'spot' is interruptible.<br/>
+        /// Default Value: dedicated
+        /// </param>
         /// <param name="user">
         /// The user who created the training job.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -157,6 +169,7 @@ namespace Baseten
             string? name,
             global::Baseten.CheckpointSyncStatus? checkpointSyncStatus,
             int? priority,
+            global::Baseten.V1AvailabilityModel? availabilityModel,
             global::Baseten.UserV1? user)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
@@ -170,6 +183,7 @@ namespace Baseten
             this.Name = name;
             this.CheckpointSyncStatus = checkpointSyncStatus;
             this.Priority = priority;
+            this.AvailabilityModel = availabilityModel;
             this.User = user;
         }
 

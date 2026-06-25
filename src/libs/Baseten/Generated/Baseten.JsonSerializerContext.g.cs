@@ -81,6 +81,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.CheckpointSyncStatusNullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1AvailabilityModelNullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.DockerAuthTypeJsonConverter),
 
             typeof(global::Baseten.JsonConverters.DockerAuthTypeNullableJsonConverter),
@@ -336,6 +340,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckpointSyncStatus), TypeInfoPropertyName = "CheckpointSyncStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingJobV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingProjectSummaryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.V1AvailabilityModel), TypeInfoPropertyName = "V1AvailabilityModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UserV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingProjectV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertTrainingProjectResponseV1))]
