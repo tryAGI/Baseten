@@ -37,6 +37,14 @@ namespace Baseten
         public global::Baseten.CreateTrainingJobAcceleratorV1? Accelerator { get; set; }
 
         /// <summary>
+        /// Capacity guarantee for the job. 'dedicated' (the default) runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress.<br/>
+        /// Default Value: dedicated
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
+        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -61,6 +69,10 @@ namespace Baseten
         /// GPU specification for the training job<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="availabilityModel">
+        /// Capacity guarantee for the job. 'dedicated' (the default) runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress.<br/>
+        /// Default Value: dedicated
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -68,12 +80,14 @@ namespace Baseten
             int? nodeCount,
             int? cpuCount,
             string? memory,
-            global::Baseten.CreateTrainingJobAcceleratorV1? accelerator)
+            global::Baseten.CreateTrainingJobAcceleratorV1? accelerator,
+            global::Baseten.V1AvailabilityModel? availabilityModel)
         {
             this.NodeCount = nodeCount;
             this.CpuCount = cpuCount;
             this.Memory = memory;
             this.Accelerator = accelerator;
+            this.AvailabilityModel = availabilityModel;
         }
 
         /// <summary>

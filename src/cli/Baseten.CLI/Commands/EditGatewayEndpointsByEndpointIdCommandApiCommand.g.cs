@@ -13,12 +13,6 @@ internal static partial class EditGatewayEndpointsByEndpointIdCommandApiCommand
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
-    private static Option<string?> Slug { get; } = new(
-        name: @"--slug")
-    {
-        Description = @"New globally-unique slug of the form '{org_prefix}/{name}'.",
-    };
-
     private static Option<global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1>?> Targets { get; } = new(
         name: @"--targets")
     {
@@ -66,7 +60,6 @@ internal static partial class EditGatewayEndpointsByEndpointIdCommandApiCommand
         var command = new Command(@"edit-gateway-endpoints-by-endpoint-id", @"Update a Gateway endpoint
 Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.");
                         command.Arguments.Add(EndpointId);
-                        command.Options.Add(Slug);
                         command.Options.Add(Targets);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -94,14 +87,12 @@ Updates the endpoint's provided mutable fields. If targets are provided, the ful
                             global::Baseten.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var endpointId = parseResult.GetRequiredValue(EndpointId);
-                        var slug = CliRuntime.WasSpecified(parseResult, Slug) ? parseResult.GetValue(Slug) : (__requestBase is { } __SlugBaseValue ? __SlugBaseValue.Slug : default);
                         var targets = CliRuntime.WasSpecified(parseResult, Targets) ? parseResult.GetValue(Targets) : (__requestBase is { } __TargetsBaseValue ? __TargetsBaseValue.Targets : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.EditGatewayEndpointsByEndpointIdAsync(
                                     endpointId: endpointId,
-                                    slug: slug,
                                     targets: targets,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

@@ -5,9 +5,9 @@ namespace Baseten
 {
     /// <summary>
     /// Response for ``GET /v1/loops/deployments``.<br/>
-    /// Returns every Loops deployment owned by the caller, regardless of status<br/>
-    /// (CREATED, DEPLOYING, RUNNING, STOPPED, or FAILED). Clients filter<br/>
-    /// terminal-state deployments themselves.
+    /// Defaults to the caller's own; pass ``?scope=org`` to list every deployment in<br/>
+    /// the caller's organization. Returns every deployment regardless of status;<br/>
+    /// clients filter terminal states.
     /// </summary>
     public sealed partial class ListLoopsDeploymentsResponseV1
     {

@@ -30,7 +30,8 @@ namespace Baseten
         ///       "accelerator": {<br/>
         ///         "accelerator": "H100",<br/>
         ///         "count": 2<br/>
-        ///       }<br/>
+        ///       },<br/>
+        ///       "availability_model": "spot"<br/>
         ///     },<br/>
         ///     "runtime": {<br/>
         ///       "start_commands": [<br/>
@@ -104,7 +105,8 @@ namespace Baseten
         ///       "accelerator": {<br/>
         ///         "accelerator": "H100",<br/>
         ///         "count": 2<br/>
-        ///       }<br/>
+        ///       },<br/>
+        ///       "availability_model": "spot"<br/>
         ///     },<br/>
         ///     "runtime": {<br/>
         ///       "start_commands": [<br/>

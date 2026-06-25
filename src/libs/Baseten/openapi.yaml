@@ -3285,11 +3285,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_job\": {\n    \"image\": {\n      \"base_image\": \"hello-world\",\n      \"docker_auth\": null\n    },\n    \"compute\": {\n      \"node_count\": 1,\n      \"cpu_count\": 1,\n      \"memory\": \"2Gi\",\n      \"accelerator\": {\n        \"accelerator\": \"H100\",\n        \"count\": 2\n      }\n    },\n    \"runtime\": {\n      \"start_commands\": [\n        \"python main.py\"\n      ],\n      \"environment_variables\": {\n        \"API_KEY\": \"your_api_key_here\",\n        \"PATH\": \"/usr/bin\"\n      },\n      \"enable_cache\": true,\n      \"cache_config\": {\n        \"enable_legacy_hf_mount\": true,\n        \"enabled\": true,\n        \"mount_base_path\": \"/root/.cache\",\n        \"require_cache_affinity\": true\n      },\n      \"checkpointing_config\": {\n        \"enabled\": true,\n        \"checkpoint_path\": \"/mnt/ckpts\",\n        \"volume_size_gib\": 10\n      },\n      \"load_checkpoint_config\": null\n    },\n    \"name\": \"gpt-oss-job\",\n    \"truss_user_env\": null,\n    \"interactive_session\": null,\n    \"weights\": [\n      {\n        \"allow_patterns\": null,\n        \"auth\": null,\n        \"auth_secret_name\": null,\n        \"ignore_patterns\": null,\n        \"mount_location\": \"/app/models/base\",\n        \"source\": \"hf://meta-llama/Llama-3-8B@main\"\n      }\n    ],\n    \"enable_baseten_workdir\": false,\n    \"priority\": 0\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_job\": {\n    \"image\": {\n      \"base_image\": \"hello-world\",\n      \"docker_auth\": null\n    },\n    \"compute\": {\n      \"node_count\": 1,\n      \"cpu_count\": 1,\n      \"memory\": \"2Gi\",\n      \"accelerator\": {\n        \"accelerator\": \"H100\",\n        \"count\": 2\n      },\n      \"availability_model\": \"spot\"\n    },\n    \"runtime\": {\n      \"start_commands\": [\n        \"python main.py\"\n      ],\n      \"environment_variables\": {\n        \"API_KEY\": \"your_api_key_here\",\n        \"PATH\": \"/usr/bin\"\n      },\n      \"enable_cache\": true,\n      \"cache_config\": {\n        \"enable_legacy_hf_mount\": true,\n        \"enabled\": true,\n        \"mount_base_path\": \"/root/.cache\",\n        \"require_cache_affinity\": true\n      },\n      \"checkpointing_config\": {\n        \"enabled\": true,\n        \"checkpoint_path\": \"/mnt/ckpts\",\n        \"volume_size_gib\": 10\n      },\n      \"load_checkpoint_config\": null\n    },\n    \"name\": \"gpt-oss-job\",\n    \"truss_user_env\": null,\n    \"interactive_session\": null,\n    \"weights\": [\n      {\n        \"allow_patterns\": null,\n        \"auth\": null,\n        \"auth_secret_name\": null,\n        \"ignore_patterns\": null,\n        \"mount_location\": \"/app/models/base\",\n        \"source\": \"hf://meta-llama/Llama-3-8B@main\"\n      }\n    ],\n    \"enable_baseten_workdir\": false,\n    \"priority\": 0\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_job': {'image': {'base_image': 'hello-world', 'docker_auth': None}, 'compute': {'node_count': 1, 'cpu_count': 1, 'memory': '2Gi', 'accelerator': {'accelerator': 'H100', 'count': 2}}, 'runtime': {'start_commands': ['python main.py'], 'environment_variables': {'API_KEY': 'your_api_key_here', 'PATH': '/usr/bin'}, 'enable_cache': True, 'cache_config': {'enable_legacy_hf_mount': True, 'enabled': True, 'mount_base_path': '/root/.cache', 'require_cache_affinity': True}, 'checkpointing_config': {'enabled': True, 'checkpoint_path': '/mnt/ckpts', 'volume_size_gib': 10}, 'load_checkpoint_config': None}, 'name': 'gpt-oss-job', 'truss_user_env': None, 'interactive_session': None, 'weights': [{'allow_patterns': None, 'auth': None, 'auth_secret_name': None, 'ignore_patterns': None, 'mount_location': '/app/models/base', 'source': 'hf://meta-llama/Llama-3-8B@main'}], 'enable_baseten_workdir': False, 'priority': 0}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_job': {'image': {'base_image': 'hello-world', 'docker_auth': None}, 'compute': {'node_count': 1, 'cpu_count': 1, 'memory': '2Gi', 'accelerator': {'accelerator': 'H100', 'count': 2}, 'availability_model': 'spot'}, 'runtime': {'start_commands': ['python main.py'], 'environment_variables': {'API_KEY': 'your_api_key_here', 'PATH': '/usr/bin'}, 'enable_cache': True, 'cache_config': {'enable_legacy_hf_mount': True, 'enabled': True, 'mount_base_path': '/root/.cache', 'require_cache_affinity': True}, 'checkpointing_config': {'enabled': True, 'checkpoint_path': '/mnt/ckpts', 'volume_size_gib': 10}, 'load_checkpoint_config': None}, 'name': 'gpt-oss-job', 'truss_user_env': None, 'interactive_session': None, 'weights': [{'allow_patterns': None, 'auth': None, 'auth_secret_name': None, 'ignore_patterns': None, 'mount_location': '/app/models/base', 'source': 'hf://meta-llama/Llama-3-8B@main'}], 'enable_baseten_workdir': False, 'priority': 0}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a training job with the specified configuration.",
@@ -4692,7 +4692,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "List the caller's Loops deployments. Returns every deployment regardless of status; clients filter terminal states.",
+                "description": "List Loops deployments. Defaults to the caller's own; pass ?scope=org to list every deployment in the caller's organization. Returns every deployment regardless of status; clients filter terminal states.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -6056,11 +6056,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"targets\": [\n    {\n      \"environment_name\": \"staging\",\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/gateway/endpoints/{endpoint_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"targets\": [\n    {\n      \"environment_name\": \"staging\",\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints/{endpoint_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'targets': [{'environment_name': 'staging', 'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints/{endpoint_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'targets': [{'environment_name': 'staging', 'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.",
@@ -10425,6 +10425,11 @@
                         "title": "Priority",
                         "type": "integer"
                     },
+                    "availability_model": {
+                        "$ref": "#/components/schemas/V1AvailabilityModel",
+                        "default": "dedicated",
+                        "description": "Capacity guarantee for the job. 'dedicated' is non-preemptible on-demand capacity; 'spot' is interruptible."
+                    },
                     "user": {
                         "anyOf": [
                             {
@@ -10549,6 +10554,15 @@
                 },
                 "title": "UserV1",
                 "type": "object"
+            },
+            "V1AvailabilityModel": {
+                "description": "Capacity guarantee under which a training job is scheduled.\n\n``DEDICATED`` is on-demand capacity that is not preempted (the default). ``SPOT`` is\ninterruptible capacity that may be preempted; the user is responsible for checkpointing\ntheir own progress. A managed/resumable model where the platform handles\ncheckpoint/resume on its own is intentionally not defined yet; it is planned for a\nfuture milestone.",
+                "enum": [
+                    "dedicated",
+                    "spot"
+                ],
+                "title": "V1AvailabilityModel",
+                "type": "string"
             },
             "UpsertTrainingProjectResponseV1": {
                 "description": "A response to upserting a training project.",
@@ -11005,6 +11019,14 @@
                                 "count": 2
                             }
                         ]
+                    },
+                    "availability_model": {
+                        "$ref": "#/components/schemas/V1AvailabilityModel",
+                        "default": "dedicated",
+                        "description": "Capacity guarantee for the job. 'dedicated' (the default) runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress.",
+                        "examples": [
+                            "spot"
+                        ]
                     }
                 },
                 "title": "CreateTrainingJobComputeV1",
@@ -11194,6 +11216,7 @@
                                     "accelerator": "H100",
                                     "count": 2
                                 },
+                                "availability_model": "spot",
                                 "cpu_count": 1,
                                 "memory": "2Gi",
                                 "node_count": 1
@@ -13247,8 +13270,9 @@
                     },
                     "scale_down_delay_seconds": {
                         "default": 3600,
-                        "description": "Seconds of inactivity before the run scales to zero. Must be positive. Defaults to 3600 (1 hour).",
+                        "description": "Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.",
                         "exclusiveMinimum": 0,
+                        "maximum": 3600,
                         "title": "Scale Down Delay Seconds",
                         "type": "integer"
                     },
@@ -13698,6 +13722,10 @@
                         "$ref": "#/components/schemas/LoopsDeploymentStatusV1",
                         "description": "Latest deployment status."
                     },
+                    "user": {
+                        "$ref": "#/components/schemas/UserV1",
+                        "description": "The user who owns the Loops deployment."
+                    },
                     "sampler": {
                         "anyOf": [
                             {
@@ -13715,7 +13743,8 @@
                     "id",
                     "base_model",
                     "base_url",
-                    "status"
+                    "status",
+                    "user"
                 ],
                 "title": "LoopsDeploymentV1",
                 "type": "object"
@@ -13733,7 +13762,7 @@
                 "type": "string"
             },
             "ListLoopsDeploymentsResponseV1": {
-                "description": "Response for ``GET /v1/loops/deployments``.\n\nReturns every Loops deployment owned by the caller, regardless of status\n(CREATED, DEPLOYING, RUNNING, STOPPED, or FAILED). Clients filter\nterminal-state deployments themselves.",
+                "description": "Response for ``GET /v1/loops/deployments``.\n\nDefaults to the caller's own; pass ``?scope=org`` to list every deployment in\nthe caller's organization. Returns every deployment regardless of status;\nclients filter terminal states.",
                 "properties": {
                     "deployments": {
                         "description": "Active Loops deployments.",
@@ -16519,24 +16548,8 @@
                 "type": "object"
             },
             "UpdateEndpointRequestV1": {
-                "description": "PATCH body. Updates provided mutable fields; targets are replaced as a full list.",
+                "description": "PATCH body. Replaces the endpoint's full target list. The slug is immutable\nafter creation; to change it, create a new endpoint and delete this one.",
                 "properties": {
-                    "slug": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "New globally-unique slug of the form '{org_prefix}/{name}'.",
-                        "examples": [
-                            "baseten/mymodel-4"
-                        ],
-                        "title": "Slug"
-                    },
                     "targets": {
                         "anyOf": [
                             {

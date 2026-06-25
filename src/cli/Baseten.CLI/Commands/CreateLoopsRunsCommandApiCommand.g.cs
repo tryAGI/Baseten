@@ -48,7 +48,7 @@ internal static partial class CreateLoopsRunsCommandApiCommand
     private static Option<int?> ScaleDownDelaySeconds { get; } = new(
         name: @"--scale-down-delay-seconds")
     {
-        Description = @"Seconds of inactivity before the run scales to zero. Must be positive. Defaults to 3600 (1 hour).",
+        Description = @"Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.",
     };
 
     private static Option<int?> Replicas { get; } = new(

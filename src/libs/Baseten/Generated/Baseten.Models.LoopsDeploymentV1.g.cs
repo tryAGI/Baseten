@@ -40,6 +40,13 @@ namespace Baseten
         public required global::Baseten.LoopsDeploymentStatusV1 Status { get; set; }
 
         /// <summary>
+        /// The user who owns the Loops deployment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.UserV1 User { get; set; }
+
+        /// <summary>
         /// The sampler bound to this deployment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -67,6 +74,9 @@ namespace Baseten
         /// <param name="status">
         /// Latest deployment status.
         /// </param>
+        /// <param name="user">
+        /// The user who owns the Loops deployment.
+        /// </param>
         /// <param name="sampler">
         /// The sampler bound to this deployment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -79,12 +89,14 @@ namespace Baseten
             string baseModel,
             string baseUrl,
             global::Baseten.LoopsDeploymentStatusV1 status,
+            global::Baseten.UserV1 user,
             global::Baseten.LoopsSamplerV1? sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
+            this.User = user ?? throw new global::System.ArgumentNullException(nameof(user));
             this.Sampler = sampler;
         }
 
