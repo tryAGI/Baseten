@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetModelsByModelIdDeploymentsByDeploymentIdLogsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetTrainingJobsByTrainingJobIdQueueContextSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,124 +21,46 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetModelsByModelIdDeploymentsByDeploymentIdLogsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetTrainingJobsByTrainingJobIdQueueContextSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetModelsByModelIdDeploymentsByDeploymentIdLogsSecurityRequirement0,
+            {                s_GetTrainingJobsByTrainingJobIdQueueContextSecurityRequirement0,
             };
-        partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdLogsArguments(
+        partial void PrepareGetTrainingJobsByTrainingJobIdQueueContextArguments(
             global::System.Net.Http.HttpClient httpClient,
-            int? startEpochMillis,
-            int? endEpochMillis,
-            global::Baseten.SortOrderV1? direction,
-            int? limit,
-            global::Baseten.LogLevelV1? minLevel,
-            ref string? replica,
-            ref string? requestId,
-            ref string? component,
-            ref string? searchPattern,
-            global::System.Collections.Generic.IList<string>? includes,
-            global::System.Collections.Generic.IList<string>? excludes,
-            ref string modelId,
-            ref string deploymentId);
-        partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdLogsRequest(
+            ref string trainingJobId);
+        partial void PrepareGetTrainingJobsByTrainingJobIdQueueContextRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            int? startEpochMillis,
-            int? endEpochMillis,
-            global::Baseten.SortOrderV1? direction,
-            int? limit,
-            global::Baseten.LogLevelV1? minLevel,
-            string? replica,
-            string? requestId,
-            string? component,
-            string? searchPattern,
-            global::System.Collections.Generic.IList<string>? includes,
-            global::System.Collections.Generic.IList<string>? excludes,
-            string modelId,
-            string deploymentId);
-        partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdLogsResponse(
+            string trainingJobId);
+        partial void ProcessGetTrainingJobsByTrainingJobIdQueueContextResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdLogsResponseContent(
+        partial void ProcessGetTrainingJobsByTrainingJobIdQueueContextResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Gets the logs for a model deployment.<br/>
-        /// Gets all the logs for a model deployment in the given time range, which defaults to the last 30 minutes. A failed or older deployment may only have logs from before that window; pass `start_epoch_millis` to widen it back to the build/deploy time.
+        /// Reconstruct queue context for a training job.<br/>
+        /// Returns the (org, gpu_type) capacity pool the job was gated by, jobs that were holding GPU capacity in that pool when this job was submitted, and every TrainingJobStatus event in [submitted_at, released_at] for those jobs — useful for understanding why a job sat in PENDING. Caller must be an org admin and the job must belong to the caller's org.
         /// </summary>
-        /// <param name="startEpochMillis">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="endEpochMillis">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="direction">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="limit">
-        /// Default Value: 500
-        /// </param>
-        /// <param name="minLevel">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="replica">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="requestId">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="component">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="searchPattern">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="includes"></param>
-        /// <param name="excludes"></param>
-        /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
+        /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs \<br/>
+        /// --url https://api.baseten.co/v1/training/jobs/{training_job_id}/queue_context \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.GetLogsResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdLogsAsync(
-            string modelId,
-            string deploymentId,
-            int? startEpochMillis = default,
-            int? endEpochMillis = default,
-            global::Baseten.SortOrderV1? direction = default,
-            int? limit = default,
-            global::Baseten.LogLevelV1? minLevel = default,
-            string? replica = default,
-            string? requestId = default,
-            string? component = default,
-            string? searchPattern = default,
-            global::System.Collections.Generic.IList<string>? includes = default,
-            global::System.Collections.Generic.IList<string>? excludes = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetTrainingJobQueueContextResponseV1> GetTrainingJobsByTrainingJobIdQueueContextAsync(
+            string trainingJobId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetModelsByModelIdDeploymentsByDeploymentIdLogsAsResponseAsync(
-                modelId: modelId,
-                deploymentId: deploymentId,
-                startEpochMillis: startEpochMillis,
-                endEpochMillis: endEpochMillis,
-                direction: direction,
-                limit: limit,
-                minLevel: minLevel,
-                replica: replica,
-                requestId: requestId,
-                component: component,
-                searchPattern: searchPattern,
-                includes: includes,
-                excludes: excludes,
+            var __response = await GetTrainingJobsByTrainingJobIdQueueContextAsResponseAsync(
+                trainingJobId: trainingJobId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -146,88 +68,34 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets the logs for a model deployment.<br/>
-        /// Gets all the logs for a model deployment in the given time range, which defaults to the last 30 minutes. A failed or older deployment may only have logs from before that window; pass `start_epoch_millis` to widen it back to the build/deploy time.
+        /// Reconstruct queue context for a training job.<br/>
+        /// Returns the (org, gpu_type) capacity pool the job was gated by, jobs that were holding GPU capacity in that pool when this job was submitted, and every TrainingJobStatus event in [submitted_at, released_at] for those jobs — useful for understanding why a job sat in PENDING. Caller must be an org admin and the job must belong to the caller's org.
         /// </summary>
-        /// <param name="startEpochMillis">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="endEpochMillis">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="direction">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="limit">
-        /// Default Value: 500
-        /// </param>
-        /// <param name="minLevel">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="replica">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="requestId">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="component">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="searchPattern">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="includes"></param>
-        /// <param name="excludes"></param>
-        /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
+        /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs \<br/>
+        /// --url https://api.baseten.co/v1/training/jobs/{training_job_id}/queue_context \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdLogsAsResponseAsync(
-            string modelId,
-            string deploymentId,
-            int? startEpochMillis = default,
-            int? endEpochMillis = default,
-            global::Baseten.SortOrderV1? direction = default,
-            int? limit = default,
-            global::Baseten.LogLevelV1? minLevel = default,
-            string? replica = default,
-            string? requestId = default,
-            string? component = default,
-            string? searchPattern = default,
-            global::System.Collections.Generic.IList<string>? includes = default,
-            global::System.Collections.Generic.IList<string>? excludes = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobQueueContextResponseV1>> GetTrainingJobsByTrainingJobIdQueueContextAsResponseAsync(
+            string trainingJobId,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetModelsByModelIdDeploymentsByDeploymentIdLogsArguments(
+            PrepareGetTrainingJobsByTrainingJobIdQueueContextArguments(
                 httpClient: HttpClient,
-                startEpochMillis: startEpochMillis,
-                endEpochMillis: endEpochMillis,
-                direction: direction,
-                limit: limit,
-                minLevel: minLevel,
-                replica: ref replica,
-                requestId: ref requestId,
-                component: ref component,
-                searchPattern: ref searchPattern,
-                includes: includes,
-                excludes: excludes,
-                modelId: ref modelId,
-                deploymentId: ref deploymentId);
+                trainingJobId: ref trainingJobId);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetModelsByModelIdDeploymentsByDeploymentIdLogsSecurityRequirements,
-                operationName: "GetModelsByModelIdDeploymentsByDeploymentIdLogsAsync");
+                securityRequirements: s_GetTrainingJobsByTrainingJobIdQueueContextSecurityRequirements,
+                operationName: "GetTrainingJobsByTrainingJobIdQueueContextAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -247,21 +115,8 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/models/{modelId}/deployments/{deploymentId}/logs",
+                                path: $"/v1/training/jobs/{trainingJobId}/queue_context",
                                 baseUri: HttpClient.BaseAddress);
-                            __pathBuilder
-                                .AddOptionalParameter("start_epoch_millis", startEpochMillis?.ToString())
-                                .AddOptionalParameter("end_epoch_millis", endEpochMillis?.ToString())
-                                .AddOptionalParameter("direction", direction?.ToString())
-                                .AddOptionalParameter("limit", limit?.ToString())
-                                .AddOptionalParameter("min_level", minLevel?.ToString())
-                                .AddOptionalParameter("replica", replica)
-                                .AddOptionalParameter("request_id", requestId)
-                                .AddOptionalParameter("component", component)
-                                .AddOptionalParameter("search_pattern", searchPattern)
-                                .AddOptionalParameter("includes", includes, delimiter: ",", explode: true)
-                                .AddOptionalParameter("excludes", excludes, delimiter: ",", explode: true)
-                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -299,22 +154,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetModelsByModelIdDeploymentsByDeploymentIdLogsRequest(
+                PrepareGetTrainingJobsByTrainingJobIdQueueContextRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    startEpochMillis: startEpochMillis,
-                    endEpochMillis: endEpochMillis,
-                    direction: direction,
-                    limit: limit,
-                    minLevel: minLevel,
-                    replica: replica,
-                    requestId: requestId,
-                    component: component,
-                    searchPattern: searchPattern,
-                    includes: includes,
-                    excludes: excludes,
-                    modelId: modelId!,
-                    deploymentId: deploymentId!);
+                    trainingJobId: trainingJobId!);
 
                 return __httpRequest;
             }
@@ -331,9 +174,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
+                                operationId: "getTrainingJobsByTrainingJobIdQueueContext",
+                                methodName: "GetTrainingJobsByTrainingJobIdQueueContextAsync",
+                                pathTemplate: "$\"/v1/training/jobs/{trainingJobId}/queue_context\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -365,9 +208,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
+                                operationId: "getTrainingJobsByTrainingJobIdQueueContext",
+                                methodName: "GetTrainingJobsByTrainingJobIdQueueContextAsync",
+                                pathTemplate: "$\"/v1/training/jobs/{trainingJobId}/queue_context\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -406,9 +249,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
+                                operationId: "getTrainingJobsByTrainingJobIdQueueContext",
+                                methodName: "GetTrainingJobsByTrainingJobIdQueueContextAsync",
+                                pathTemplate: "$\"/v1/training/jobs/{trainingJobId}/queue_context\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -446,7 +289,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetModelsByModelIdDeploymentsByDeploymentIdLogsResponse(
+                ProcessGetTrainingJobsByTrainingJobIdQueueContextResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -454,9 +297,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
+                                operationId: "getTrainingJobsByTrainingJobIdQueueContext",
+                                methodName: "GetTrainingJobsByTrainingJobIdQueueContextAsync",
+                                pathTemplate: "$\"/v1/training/jobs/{trainingJobId}/queue_context\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -476,9 +319,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdLogs",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdLogsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/logs\"",
+                                operationId: "getTrainingJobsByTrainingJobIdQueueContext",
+                                methodName: "GetTrainingJobsByTrainingJobIdQueueContextAsync",
+                                pathTemplate: "$\"/v1/training/jobs/{trainingJobId}/queue_context\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -506,7 +349,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetModelsByModelIdDeploymentsByDeploymentIdLogsResponseContent(
+                                ProcessGetTrainingJobsByTrainingJobIdQueueContextResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -515,9 +358,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.GetLogsResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.GetTrainingJobQueueContextResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobQueueContextResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -547,9 +390,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.GetLogsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.GetTrainingJobQueueContextResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLogsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetTrainingJobQueueContextResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
