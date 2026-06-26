@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Gets the logs for a model deployment.<br/>
-        /// Gets all the logs for a model deployment in the given time range.
+        /// Gets all the logs for a model deployment in the given time range, which defaults to the last 30 minutes. A failed or older deployment may only have logs from before that window; pass `start_epoch_millis` to widen it back to the build/deploy time.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -65,7 +65,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the logs for a model deployment.<br/>
-        /// Gets all the logs for a model deployment in the given time range.
+        /// Gets all the logs for a model deployment in the given time range, which defaults to the last 30 minutes. A failed or older deployment may only have logs from before that window; pass `start_epoch_millis` to widen it back to the build/deploy time.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

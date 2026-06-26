@@ -151,6 +151,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetTeamsByTeamIdModelsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingCapacityCommandApiCommand.Create());
+                         command.Subcommands.Add(GetTrainingJobsByTrainingJobIdQueueContextCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingProjectsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingProjectsByTrainingProjectIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingProjectsByTrainingProjectIdCacheSummaryCommandApiCommand.Create());
