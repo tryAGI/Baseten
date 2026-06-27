@@ -83,6 +83,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameChainletSettingsAutoscalingSettingsCommandApiCommand.Create());
+                         command.Subcommands.Add(EditEnvironmentGroupsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditGatewayGroupsByGroupIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditLibraryListingsByUserDefinedListingIdCommandApiCommand.Create());
@@ -92,6 +93,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsDevelopmentAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsProductionAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(EditTeamsByTeamIdEnvironmentGroupsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingUsageSummaryCommandApiCommand.Create());
@@ -104,6 +106,8 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsByChainIdEnvironmentsCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetEnvironmentGroupsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetEnvironmentGroupsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEndpointsCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsCommandApiCommand.Create());
@@ -148,6 +152,8 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetTeamsByTeamIdEnvironmentGroupsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetTeamsByTeamIdEnvironmentGroupsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdModelsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingCapacityCommandApiCommand.Create());
