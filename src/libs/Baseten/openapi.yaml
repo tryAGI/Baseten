@@ -215,6 +215,208 @@
                 }
             ]
         },
+        "/v1/environment_groups": {
+            "get": {
+                "summary": "Lists environment groups",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/environment_groups \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/environment_groups\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the environment groups for the team specified in the path, or for the caller's organization default team when no team is specified.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EnvironmentGroupsV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/environment_groups/{env_name}": {
+            "get": {
+                "summary": "Gets an environment group by name",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/environment_groups/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/environment_groups/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Gets a single environment group by name on the team specified in the path, or on the caller's organization default team when no team is specified.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EnvironmentGroupV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/env_name"
+                }
+            ],
+            "patch": {
+                "summary": "Updates an environment group's restriction settings",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/environment_groups/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"manage_access\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/environment_groups/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'manage_access': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Sets whether the environment is restricted and replaces the list of users granted manage access. Targets the team specified in the path, or the caller's organization default team when no team is specified.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateEnvironmentGroupRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EnvironmentGroupV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/teams/{team_id}/environment_groups": {
+            "get": {
+                "summary": "Lists environment groups",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/teams/{team_id}/environment_groups \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/environment_groups\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the environment groups for the team specified in the path, or for the caller's organization default team when no team is specified.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EnvironmentGroupsV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/team_id"
+                }
+            ]
+        },
+        "/v1/teams/{team_id}/environment_groups/{env_name}": {
+            "get": {
+                "summary": "Gets an environment group by name",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/teams/{team_id}/environment_groups/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/environment_groups/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Gets a single environment group by name on the team specified in the path, or on the caller's organization default team when no team is specified.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EnvironmentGroupV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/team_id"
+                },
+                {
+                    "$ref": "#/components/parameters/env_name"
+                }
+            ],
+            "patch": {
+                "summary": "Updates an environment group's restriction settings",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/teams/{team_id}/environment_groups/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"manage_access\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/environment_groups/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'manage_access': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Sets whether the environment is restricted and replaces the list of users granted manage access. Targets the team specified in the path, or the caller's organization default team when no team is specified.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateEnvironmentGroupRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EnvironmentGroupV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/teams": {
             "get": {
                 "summary": "Lists all teams",
@@ -6497,6 +6699,197 @@
                     "name"
                 ],
                 "title": "SecretTombstoneV1",
+                "type": "object"
+            },
+            "EnvironmentGroupManageAccessV1": {
+                "description": "Who is allowed to manage an environment group.",
+                "properties": {
+                    "is_restricted": {
+                        "description": "Whether the environment is restricted to a specific set of users.",
+                        "title": "Is Restricted",
+                        "type": "boolean"
+                    },
+                    "users": {
+                        "description": "Users who can manage the environment while it is restricted, including organization and team admins who always have access. Empty when the environment is unrestricted.",
+                        "items": {
+                            "$ref": "#/components/schemas/EnvironmentGroupUserV1"
+                        },
+                        "title": "Users",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "is_restricted"
+                ],
+                "title": "EnvironmentGroupManageAccessV1",
+                "type": "object"
+            },
+            "EnvironmentGroupUserV1": {
+                "description": "A user referenced by an environment group's manage access.",
+                "properties": {
+                    "user_id": {
+                        "description": "Unique identifier for the user.",
+                        "title": "User Id",
+                        "type": "string"
+                    },
+                    "email": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Email address of the user.",
+                        "title": "Email"
+                    },
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Display name of the user.",
+                        "title": "Name"
+                    }
+                },
+                "required": [
+                    "user_id"
+                ],
+                "title": "EnvironmentGroupUserV1",
+                "type": "object"
+            },
+            "EnvironmentGroupV1": {
+                "description": "A team-scoped grouping of same-named environments (e.g. \"production\", \"staging\").\n\nRestricting an environment group limits who can manage the environment of that name\nacross every model and chain in the team.",
+                "properties": {
+                    "name": {
+                        "description": "Name of the environment group, matching the environment name it governs.",
+                        "examples": [
+                            "staging"
+                        ],
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "description": "Unique identifier of the team the environment group belongs to.",
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "description": "Name of the team the environment group belongs to.",
+                        "title": "Team Name",
+                        "type": "string"
+                    },
+                    "manage_access": {
+                        "$ref": "#/components/schemas/EnvironmentGroupManageAccessV1",
+                        "description": "Settings controlling who can manage this environment group."
+                    }
+                },
+                "required": [
+                    "name",
+                    "team_id",
+                    "team_name",
+                    "manage_access"
+                ],
+                "title": "EnvironmentGroupV1",
+                "type": "object"
+            },
+            "PaginationResponseV1": {
+                "properties": {
+                    "has_more": {
+                        "description": "Whether more items exist after this page.",
+                        "title": "Has More",
+                        "type": "boolean"
+                    },
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor to pass into the next request. Null when there is no next page.",
+                        "title": "Cursor"
+                    }
+                },
+                "required": [
+                    "has_more"
+                ],
+                "title": "PaginationResponseV1",
+                "type": "object"
+            },
+            "EnvironmentGroupsV1": {
+                "description": "A page of environment groups.",
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/EnvironmentGroupV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "EnvironmentGroupsV1",
+                "type": "object"
+            },
+            "UpdateEnvironmentGroupManageAccessV1": {
+                "description": "Manage-access settings to apply to an environment group.",
+                "properties": {
+                    "is_restricted": {
+                        "description": "Whether to restrict this environment to a specific set of users.",
+                        "title": "Is Restricted",
+                        "type": "boolean"
+                    },
+                    "user_ids": {
+                        "description": "IDs of users granted manage access while restricted. Only meaningful when is_restricted is true.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "User Ids",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "is_restricted"
+                ],
+                "title": "UpdateEnvironmentGroupManageAccessV1",
+                "type": "object"
+            },
+            "UpdateEnvironmentGroupRequestV1": {
+                "description": "A request to update an existing environment group.",
+                "properties": {
+                    "manage_access": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateEnvironmentGroupManageAccessV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Manage-access settings to apply. Omit to leave manage access unchanged."
+                    }
+                },
+                "title": "UpdateEnvironmentGroupRequestV1",
                 "type": "object"
             },
             "TeamV1": {
@@ -15148,33 +15541,6 @@
                 "title": "ModelAPIV1",
                 "type": "object"
             },
-            "PaginationResponseV1": {
-                "properties": {
-                    "has_more": {
-                        "description": "Whether more items exist after this page.",
-                        "title": "Has More",
-                        "type": "boolean"
-                    },
-                    "cursor": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Opaque cursor to pass into the next request. Null when there is no next page.",
-                        "title": "Cursor"
-                    }
-                },
-                "required": [
-                    "has_more"
-                ],
-                "title": "PaginationResponseV1",
-                "type": "object"
-            },
             "RateLimitUnitV1": {
                 "enum": [
                     "SECOND",
@@ -17562,6 +17928,14 @@
                 "in": "path",
                 "required": true
             },
+            "env_name": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "env_name",
+                "in": "path",
+                "required": true
+            },
             "model_id": {
                 "schema": {
                     "type": "string"
@@ -17583,14 +17957,6 @@
                     "type": "string"
                 },
                 "name": "replica_id",
-                "in": "path",
-                "required": true
-            },
-            "env_name": {
-                "schema": {
-                    "type": "string"
-                },
-                "name": "env_name",
                 "in": "path",
                 "required": true
             },
