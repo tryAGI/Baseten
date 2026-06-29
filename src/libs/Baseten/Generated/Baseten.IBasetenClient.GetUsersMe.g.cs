@@ -5,37 +5,33 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Gets a user by ID<br/>
-        /// Returns info about a user in the caller's workspace.
+        /// Gets the authenticated user<br/>
+        /// Returns info about the user making the request.
         /// </summary>
-        /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/users/{user_id} \<br/>
+        /// --url https://api.baseten.co/v1/users/me \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.UserInfoV1> GetUsersByUserIdAsync(
-            string userId,
+        global::System.Threading.Tasks.Task<global::Baseten.UserInfoV1> GetUsersMeAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Gets a user by ID<br/>
-        /// Returns info about a user in the caller's workspace.
+        /// Gets the authenticated user<br/>
+        /// Returns info about the user making the request.
         /// </summary>
-        /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/users/{user_id} \<br/>
+        /// --url https://api.baseten.co/v1/users/me \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UserInfoV1>> GetUsersByUserIdAsResponseAsync(
-            string userId,
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UserInfoV1>> GetUsersMeAsResponseAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

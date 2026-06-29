@@ -169,7 +169,9 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdDownloadCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdMetricsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetUsersCommandApiCommand.Create());
                          command.Subcommands.Add(GetUsersByUserIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetUsersMeCommandApiCommand.Create());
         return command;
     }
 }

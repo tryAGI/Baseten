@@ -16,7 +16,7 @@ internal sealed record CreateLLMModelRequestV1OptionSet(
         return new CreateLLMModelRequestV1OptionSet(
                         LlmVersion: new Option<string?>($"--{normalizedPrefix}llm-version")
                 {
-                    Description = @"Version of the helm chart to use",
+                    Description = @"Version of the helm chart to use.",
                 },
                 NameOption: new Option<string>($"--{normalizedPrefix}name")
                 {
