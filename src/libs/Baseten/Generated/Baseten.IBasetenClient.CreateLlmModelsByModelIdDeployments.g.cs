@@ -18,6 +18,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "resources": null,<br/>
+        ///   "llm_version": null,<br/>
         ///   "model_metadata": null,<br/>
         ///   "autoscaling_settings": {<br/>
         ///     "autoscaling_window": 600,<br/>
@@ -69,6 +70,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "resources": null,<br/>
+        ///   "llm_version": null,<br/>
         ///   "model_metadata": null,<br/>
         ///   "autoscaling_settings": {<br/>
         ///     "autoscaling_window": 600,<br/>
@@ -114,8 +116,8 @@ namespace Baseten
         /// Resources allocated to the model
         /// </param>
         /// <param name="llmVersion">
-        /// Version of the helm chart to use<br/>
-        /// Default Value: 1.0
+        /// Version of the helm chart to use.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="llmConfig">
         /// Configuration specific to the LLM model

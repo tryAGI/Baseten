@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateTeamsByTeamIdLlmModelsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetUsersMeSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,86 +21,41 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateTeamsByTeamIdLlmModelsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetUsersMeSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateTeamsByTeamIdLlmModelsSecurityRequirement0,
+            {                s_GetUsersMeSecurityRequirement0,
             };
-        partial void PrepareCreateTeamsByTeamIdLlmModelsArguments(
+        partial void PrepareGetUsersMeArguments(
+            global::System.Net.Http.HttpClient httpClient);
+        partial void PrepareGetUsersMeRequest(
             global::System.Net.Http.HttpClient httpClient,
-            ref string teamId,
-            global::Baseten.CreateLLMModelRequestV1 request);
-        partial void PrepareCreateTeamsByTeamIdLlmModelsRequest(
-            global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string teamId,
-            global::Baseten.CreateLLMModelRequestV1 request);
-        partial void ProcessCreateTeamsByTeamIdLlmModelsResponse(
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
+        partial void ProcessGetUsersMeResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateTeamsByTeamIdLlmModelsResponseContent(
+        partial void ProcessGetUsersMeResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Creates a new BIS LLM deployment
+        /// Gets the authenticated user<br/>
+        /// Returns info about the user making the request.
         /// </summary>
-        /// <param name="teamId"></param>
-        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/teams/{team_id}/llm_models \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "resources": null,<br/>
-        ///   "llm_version": null,<br/>
-        ///   "model_metadata": null,<br/>
-        ///   "autoscaling_settings": {<br/>
-        ///     "autoscaling_window": 600,<br/>
-        ///     "concurrency_target": null,<br/>
-        ///     "max_replica": 5,<br/>
-        ///     "max_scale_down_rate": null,<br/>
-        ///     "min_replica": 1,<br/>
-        ///     "scale_down_delay": 300,<br/>
-        ///     "target_in_flight_tokens": null,<br/>
-        ///     "target_utilization_percentage": null<br/>
-        ///   },<br/>
-        ///   "additional_autoscaling_config": {<br/>
-        ///     "metrics": [<br/>
-        ///       {<br/>
-        ///         "name": "in_flight_tokens",<br/>
-        ///         "target": 40000<br/>
-        ///       }<br/>
-        ///     ]<br/>
-        ///   },<br/>
-        ///   "metadata": {<br/>
-        ///     "environment": "production",<br/>
-        ///     "git_sha": "abc123"<br/>
-        ///   },<br/>
-        ///   "weights": [<br/>
-        ///     {<br/>
-        ///       "mount_location": "/models/base",<br/>
-        ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
-        ///     }<br/>
-        ///   ],<br/>
-        ///   "name": null<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/users/me \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateTeamsByTeamIdLlmModelsAsync(
-            string teamId,
-
-            global::Baseten.CreateLLMModelRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.UserInfoV1> GetUsersMeAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateTeamsByTeamIdLlmModelsAsResponseAsync(
-                teamId: teamId,
-
-                request: request,
+            var __response = await GetUsersMeAsResponseAsync(
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -108,73 +63,31 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Creates a new BIS LLM deployment
+        /// Gets the authenticated user<br/>
+        /// Returns info about the user making the request.
         /// </summary>
-        /// <param name="teamId"></param>
-        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/teams/{team_id}/llm_models \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "resources": null,<br/>
-        ///   "llm_version": null,<br/>
-        ///   "model_metadata": null,<br/>
-        ///   "autoscaling_settings": {<br/>
-        ///     "autoscaling_window": 600,<br/>
-        ///     "concurrency_target": null,<br/>
-        ///     "max_replica": 5,<br/>
-        ///     "max_scale_down_rate": null,<br/>
-        ///     "min_replica": 1,<br/>
-        ///     "scale_down_delay": 300,<br/>
-        ///     "target_in_flight_tokens": null,<br/>
-        ///     "target_utilization_percentage": null<br/>
-        ///   },<br/>
-        ///   "additional_autoscaling_config": {<br/>
-        ///     "metrics": [<br/>
-        ///       {<br/>
-        ///         "name": "in_flight_tokens",<br/>
-        ///         "target": 40000<br/>
-        ///       }<br/>
-        ///     ]<br/>
-        ///   },<br/>
-        ///   "metadata": {<br/>
-        ///     "environment": "production",<br/>
-        ///     "git_sha": "abc123"<br/>
-        ///   },<br/>
-        ///   "weights": [<br/>
-        ///     {<br/>
-        ///       "mount_location": "/models/base",<br/>
-        ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
-        ///     }<br/>
-        ///   ],<br/>
-        ///   "name": null<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/users/me \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LLMModelHandleV1>> CreateTeamsByTeamIdLlmModelsAsResponseAsync(
-            string teamId,
-
-            global::Baseten.CreateLLMModelRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UserInfoV1>> GetUsersMeAsResponseAsync(
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateTeamsByTeamIdLlmModelsArguments(
-                httpClient: HttpClient,
-                teamId: ref teamId,
-                request: request);
+            PrepareGetUsersMeArguments(
+                httpClient: HttpClient);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateTeamsByTeamIdLlmModelsSecurityRequirements,
-                operationName: "CreateTeamsByTeamIdLlmModelsAsync");
+                securityRequirements: s_GetUsersMeSecurityRequirements,
+                operationName: "GetUsersMeAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -194,7 +107,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/teams/{teamId}/llm_models",
+                                path: "/v1/users/me",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -202,7 +115,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -225,12 +138,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -239,11 +146,9 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateTeamsByTeamIdLlmModelsRequest(
+                PrepareGetUsersMeRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest,
-                    teamId: teamId!,
-                    request: request);
+                    httpRequestMessage: __httpRequest);
 
                 return __httpRequest;
             }
@@ -260,10 +165,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdLlmModels",
-                                methodName: "CreateTeamsByTeamIdLlmModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/llm_models\"",
-                                httpMethod: "POST",
+                                operationId: "getUsersMe",
+                                methodName: "GetUsersMeAsync",
+                                pathTemplate: "\"/v1/users/me\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -294,10 +199,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdLlmModels",
-                                methodName: "CreateTeamsByTeamIdLlmModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/llm_models\"",
-                                httpMethod: "POST",
+                                operationId: "getUsersMe",
+                                methodName: "GetUsersMeAsync",
+                                pathTemplate: "\"/v1/users/me\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -335,10 +240,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdLlmModels",
-                                methodName: "CreateTeamsByTeamIdLlmModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/llm_models\"",
-                                httpMethod: "POST",
+                                operationId: "getUsersMe",
+                                methodName: "GetUsersMeAsync",
+                                pathTemplate: "\"/v1/users/me\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -375,7 +280,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateTeamsByTeamIdLlmModelsResponse(
+                ProcessGetUsersMeResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -383,10 +288,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdLlmModels",
-                                methodName: "CreateTeamsByTeamIdLlmModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/llm_models\"",
-                                httpMethod: "POST",
+                                operationId: "getUsersMe",
+                                methodName: "GetUsersMeAsync",
+                                pathTemplate: "\"/v1/users/me\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -405,10 +310,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdLlmModels",
-                                methodName: "CreateTeamsByTeamIdLlmModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/llm_models\"",
-                                httpMethod: "POST",
+                                operationId: "getUsersMe",
+                                methodName: "GetUsersMeAsync",
+                                pathTemplate: "\"/v1/users/me\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -435,7 +340,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateTeamsByTeamIdLlmModelsResponseContent(
+                                ProcessGetUsersMeResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -444,9 +349,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.LLMModelHandleV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.UserInfoV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.LLMModelHandleV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UserInfoV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -476,9 +381,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.LLMModelHandleV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.UserInfoV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.LLMModelHandleV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UserInfoV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -517,84 +422,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Creates a new BIS LLM deployment
-        /// </summary>
-        /// <param name="teamId"></param>
-        /// <param name="resources">
-        /// Resources allocated to the model
-        /// </param>
-        /// <param name="llmVersion">
-        /// Version of the helm chart to use.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="llmConfig">
-        /// Configuration specific to the LLM model
-        /// </param>
-        /// <param name="environmentVariables">
-        /// Environment variables for the model
-        /// </param>
-        /// <param name="modelMetadata">
-        /// Model metadata persisted into model_config<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="autoscalingSettings">
-        /// Autoscaling settings for the model<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="additionalAutoscalingConfig">
-        /// Additional autoscaling configuration (e.g. target in-flight tokens)<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="metadata">
-        /// User-defined metadata for the deployment<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="weights">
-        /// Weight configurations for BDN model weight distribution<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="name">
-        /// Name of the model
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateTeamsByTeamIdLlmModelsAsync(
-            string teamId,
-            object resources,
-            string name,
-            string? llmVersion = default,
-            object? llmConfig = default,
-            object? environmentVariables = default,
-            object? modelMetadata = default,
-            global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
-            object? additionalAutoscalingConfig = default,
-            object? metadata = default,
-            global::System.Collections.Generic.IList<object>? weights = default,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.CreateLLMModelRequestV1
-            {
-                Resources = resources,
-                LlmVersion = llmVersion,
-                LlmConfig = llmConfig,
-                EnvironmentVariables = environmentVariables,
-                ModelMetadata = modelMetadata,
-                AutoscalingSettings = autoscalingSettings,
-                AdditionalAutoscalingConfig = additionalAutoscalingConfig,
-                Metadata = metadata,
-                Weights = weights,
-                Name = name,
-            };
-
-            return await CreateTeamsByTeamIdLlmModelsAsync(
-                teamId: teamId,
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

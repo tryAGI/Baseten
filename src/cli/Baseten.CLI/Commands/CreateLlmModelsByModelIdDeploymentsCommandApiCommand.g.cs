@@ -23,7 +23,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
     private static Option<string?> LlmVersion { get; } = new(
         name: @"--llm-version")
     {
-        Description = @"Version of the helm chart to use",
+        Description = @"Version of the helm chart to use.",
     };
 
     private static Option<object?> LlmConfig { get; } = new(

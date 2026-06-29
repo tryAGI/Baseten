@@ -16,8 +16,8 @@ namespace Baseten
         public required object Resources { get; set; }
 
         /// <summary>
-        /// Version of the helm chart to use<br/>
-        /// Default Value: 1.0
+        /// Version of the helm chart to use.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llm_version")]
         public string? LlmVersion { get; set; }
@@ -82,8 +82,8 @@ namespace Baseten
         /// Resources allocated to the model
         /// </param>
         /// <param name="llmVersion">
-        /// Version of the helm chart to use<br/>
-        /// Default Value: 1.0
+        /// Version of the helm chart to use.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="llmConfig">
         /// Configuration specific to the LLM model

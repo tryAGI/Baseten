@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets a user by ID<br/>
-        /// Returns user info. Currently only 'me' is accepted as user_id.
+        /// Returns info about a user in the caller's workspace.
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -69,7 +69,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets a user by ID<br/>
-        /// Returns user info. Currently only 'me' is accepted as user_id.
+        /// Returns info about a user in the caller's workspace.
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
