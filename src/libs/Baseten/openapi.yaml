@@ -17688,11 +17688,12 @@
                 "type": "object"
             },
             "GatewayProvider": {
-                "description": "Customer-facing provider for an endpoint target.\n\nExternal providers resolve to a fixed upstream host + protocol adapter via\n``_EXTERNAL_PROVIDER_CONFIGS``; ``BASETEN`` derives its host from the referenced oracle.",
+                "description": "Customer-facing provider for an endpoint target.\n\nExternal providers resolve to a fixed upstream host + protocol adapter via\n``external_provider_configs()``; ``BASETEN`` derives its host from the referenced oracle.",
                 "enum": [
                     "ANTHROPIC",
                     "OPENAI",
-                    "BASETEN"
+                    "BASETEN",
+                    "BASETEN_MODEL_API"
                 ],
                 "title": "GatewayProvider",
                 "type": "string"
@@ -18248,6 +18249,7 @@
                         "items": {
                             "$ref": "#/components/schemas/ModelConfigV1"
                         },
+                        "minItems": 1,
                         "title": "Models",
                         "type": "array"
                     },
