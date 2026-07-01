@@ -6,7 +6,7 @@ namespace Baseten
     /// <summary>
     /// Customer-facing provider for an endpoint target.<br/>
     /// External providers resolve to a fixed upstream host + protocol adapter via<br/>
-    /// ``_EXTERNAL_PROVIDER_CONFIGS``; ``BASETEN`` derives its host from the referenced oracle.
+    /// ``external_provider_configs()``; ``BASETEN`` derives its host from the referenced oracle.
     /// </summary>
     public enum GatewayProvider
     {
@@ -18,6 +18,10 @@ namespace Baseten
         /// 
         /// </summary>
         Baseten,
+        /// <summary>
+        /// 
+        /// </summary>
+        BasetenModelApi,
         /// <summary>
         /// 
         /// </summary>
@@ -38,6 +42,7 @@ namespace Baseten
             {
                 GatewayProvider.Anthropic => "ANTHROPIC",
                 GatewayProvider.Baseten => "BASETEN",
+                GatewayProvider.BasetenModelApi => "BASETEN_MODEL_API",
                 GatewayProvider.Openai => "OPENAI",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -51,6 +56,7 @@ namespace Baseten
             {
                 "ANTHROPIC" => GatewayProvider.Anthropic,
                 "BASETEN" => GatewayProvider.Baseten,
+                "BASETEN_MODEL_API" => GatewayProvider.BasetenModelApi,
                 "OPENAI" => GatewayProvider.Openai,
                 _ => null,
             };
