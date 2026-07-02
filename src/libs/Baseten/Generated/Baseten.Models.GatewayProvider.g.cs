@@ -26,6 +26,10 @@ namespace Baseten
         /// 
         /// </summary>
         Openai,
+        /// <summary>
+        /// 
+        /// </summary>
+        Vertex,
     }
 
     /// <summary>
@@ -44,6 +48,7 @@ namespace Baseten
                 GatewayProvider.Baseten => "BASETEN",
                 GatewayProvider.BasetenModelApi => "BASETEN_MODEL_API",
                 GatewayProvider.Openai => "OPENAI",
+                GatewayProvider.Vertex => "VERTEX",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -58,6 +63,7 @@ namespace Baseten
                 "BASETEN" => GatewayProvider.Baseten,
                 "BASETEN_MODEL_API" => GatewayProvider.BasetenModelApi,
                 "OPENAI" => GatewayProvider.Openai,
+                "VERTEX" => GatewayProvider.Vertex,
                 _ => null,
             };
         }
