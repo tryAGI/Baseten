@@ -17693,7 +17693,8 @@
                     "ANTHROPIC",
                     "OPENAI",
                     "BASETEN",
-                    "BASETEN_MODEL_API"
+                    "BASETEN_MODEL_API",
+                    "VERTEX"
                 ],
                 "title": "GatewayProvider",
                 "type": "string"
