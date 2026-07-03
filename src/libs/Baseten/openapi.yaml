@@ -5434,6 +5434,42 @@
                         }
                     }
                 }
+            },
+            "patch": {
+                "summary": "Set a team's training GPU capacity.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/training/capacity \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"team_id\": null,\n  \"gpu_type\": null,\n  \"max_gpus\": 8\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training/capacity\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'team_id': None, 'gpu_type': None, 'max_gpus': 8}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Sets the max concurrent GPUs of a given type a team may use. Creates the limit if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a ceiling the org imposes on the team, not something the team manages for itself.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PatchTeamTrainingGpuCapacityRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatchTeamTrainingGpuCapacityResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/v1/training/jobs/{training_job_id}/queue_context": {
@@ -15256,6 +15292,52 @@
                 "title": "GetTrainingGpuCapacityResponseV1",
                 "type": "object"
             },
+            "PatchTeamTrainingGpuCapacityRequestV1": {
+                "description": "A request to set the GPU capacity ceiling for a (team, gpu_type) pair.\n\nCreates the limit if one doesn't already exist for this team and GPU type,\notherwise updates it in place.",
+                "properties": {
+                    "team_id": {
+                        "description": "Team identifier",
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "gpu_type": {
+                        "description": "GPU type identifier (e.g. H100, A100-40GB)",
+                        "title": "Gpu Type",
+                        "type": "string"
+                    },
+                    "max_gpus": {
+                        "description": "Max concurrent GPUs of this type the team may use",
+                        "examples": [
+                            8,
+                            16,
+                            32
+                        ],
+                        "title": "Max Gpus",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "team_id",
+                    "gpu_type",
+                    "max_gpus"
+                ],
+                "title": "PatchTeamTrainingGpuCapacityRequestV1",
+                "type": "object"
+            },
+            "PatchTeamTrainingGpuCapacityResponseV1": {
+                "description": "Response for setting a team's GPU capacity ceiling.",
+                "properties": {
+                    "team_gpu_capacity": {
+                        "$ref": "#/components/schemas/TeamTrainingGpuCapacityItemV1",
+                        "description": "The updated per-team GPU capacity limit"
+                    }
+                },
+                "required": [
+                    "team_gpu_capacity"
+                ],
+                "title": "PatchTeamTrainingGpuCapacityResponseV1",
+                "type": "object"
+            },
             "ActiveJobAtSubmitV1": {
                 "description": "One other job in the same (org, gpu_type) pool that was holding GPU\ncapacity at the moment the target was submitted.",
                 "properties": {
@@ -16076,7 +16158,7 @@
                             1000,
                             50000
                         ],
-                        "minimum": 1,
+                        "minimum": 0,
                         "title": "Threshold",
                         "type": "integer"
                     }
@@ -17963,7 +18045,7 @@
                             1000,
                             50000
                         ],
-                        "minimum": 1,
+                        "minimum": 0,
                         "title": "Threshold",
                         "type": "integer"
                     },
@@ -18007,7 +18089,7 @@
                         "examples": [
                             10000000
                         ],
-                        "minimum": 1,
+                        "minimum": 0,
                         "title": "Threshold",
                         "type": "integer"
                     },
@@ -18204,7 +18286,7 @@
                         "examples": [
                             10000000
                         ],
-                        "minimum": 1,
+                        "minimum": 0,
                         "title": "Threshold",
                         "type": "integer"
                     }

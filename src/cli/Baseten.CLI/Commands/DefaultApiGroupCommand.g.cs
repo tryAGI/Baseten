@@ -94,6 +94,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsProductionAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditTeamsByTeamIdEnvironmentGroupsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(EditTrainingCapacityCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingUsageSummaryCommandApiCommand.Create());
