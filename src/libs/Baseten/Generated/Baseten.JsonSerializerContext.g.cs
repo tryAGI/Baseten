@@ -485,6 +485,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetTrainingGpuCapacityResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingGpuCapacityItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TeamTrainingGpuCapacityItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchTeamTrainingGpuCapacityRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchTeamTrainingGpuCapacityResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ActiveJobAtSubmitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CapacityAtSubmitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PendingJobAheadAtSubmitV1))]
