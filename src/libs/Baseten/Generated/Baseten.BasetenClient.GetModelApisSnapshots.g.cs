@@ -40,7 +40,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get the latest model weight snapshot<br/>
+        /// Gets the latest model weight snapshot<br/>
         /// Gets the most recent model weight snapshot for the specified model.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -63,7 +63,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get the latest model weight snapshot<br/>
+        /// Gets the latest model weight snapshot<br/>
         /// Gets the most recent model weight snapshot for the specified model.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

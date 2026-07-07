@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// List Loops checkpoints.<br/>
-        /// List Loops checkpoints filtered by run id, base model, or bt:// URI. Provide exactly one filter.
+        /// Lists Loops checkpoints<br/>
+        /// Lists Loops checkpoints filtered by run id, base model, or bt:// URI. Provide exactly one filter.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -32,8 +32,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List Loops checkpoints.<br/>
-        /// List Loops checkpoints filtered by run id, base model, or bt:// URI. Provide exactly one filter.
+        /// Lists Loops checkpoints<br/>
+        /// Lists Loops checkpoints filtered by run id, base model, or bt:// URI. Provide exactly one filter.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

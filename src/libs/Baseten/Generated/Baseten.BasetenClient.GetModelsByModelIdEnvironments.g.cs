@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get all environments<br/>
-        /// Gets all environments for a given model
+        /// Gets all environments<br/>
+        /// Gets all environments for a given model.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,8 +68,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get all environments<br/>
-        /// Gets all environments for a given model
+        /// Gets all environments<br/>
+        /// Gets all environments for a given model.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

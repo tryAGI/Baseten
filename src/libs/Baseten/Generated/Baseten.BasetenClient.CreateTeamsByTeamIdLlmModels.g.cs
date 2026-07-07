@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Creates a new BIS LLM deployment
+        /// Creates a new BIS-LLM deployment
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="request"></param>
@@ -108,7 +108,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Creates a new BIS LLM deployment
+        /// Creates a new BIS-LLM deployment
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="request"></param>
@@ -519,7 +519,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Creates a new BIS LLM deployment
+        /// Creates a new BIS-LLM deployment
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="resources">

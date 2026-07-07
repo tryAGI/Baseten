@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// List training jobs.<br/>
-        /// List all training jobs for the training project.
+        /// Lists training jobs<br/>
+        /// Lists all training jobs for the training project.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,8 +22,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List training jobs.<br/>
-        /// List all training jobs for the training project.
+        /// Lists training jobs<br/>
+        /// Lists all training jobs for the training project.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

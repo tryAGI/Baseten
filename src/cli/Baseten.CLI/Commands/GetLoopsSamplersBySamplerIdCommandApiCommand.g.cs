@@ -35,8 +35,8 @@ internal static partial class GetLoopsSamplersBySamplerIdCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-loops-samplers-by-sampler-id", @"Get a Loops sampler.
-Fetch a Loops sampler by ID.");
+        var command = new Command(@"get-loops-samplers-by-sampler-id", @"Gets a Loops sampler
+Fetches a Loops sampler by ID.");
                         command.Arguments.Add(SamplerId);
 
 

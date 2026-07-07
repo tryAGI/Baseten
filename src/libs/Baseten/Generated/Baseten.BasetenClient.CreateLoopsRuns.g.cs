@@ -42,7 +42,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Create a Loops run.<br/>
+        /// Creates a Loops run<br/>
         /// Creates a Loops run with an associated sampler in the given session.
         /// </summary>
         /// <param name="request"></param>
@@ -79,7 +79,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a Loops run.<br/>
+        /// Creates a Loops run<br/>
         /// Creates a Loops run with an associated sampler in the given session.
         /// </summary>
         /// <param name="request"></param>
@@ -462,7 +462,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a Loops run.<br/>
+        /// Creates a Loops run<br/>
         /// Creates a Loops run with an associated sampler in the given session.
         /// </summary>
         /// <param name="sessionId">

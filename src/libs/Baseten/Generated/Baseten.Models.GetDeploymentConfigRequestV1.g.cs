@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class GetDeploymentConfigRequestV1
     {
         /// <summary>
-        /// 'raw': verbatim config.yaml with comments — not available for deployments created before 2026-04-30. 'parsed': dict with server-side defaults applied — always available. 'both': both fields populated.<br/>
+        /// 'raw': verbatim config.yaml with comments (not available for deployments created before 2026-04-30). 'parsed': dict with server-side defaults applied (always available). 'both': both fields populated.<br/>
         /// Default Value: both
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_format")]
@@ -26,7 +26,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="GetDeploymentConfigRequestV1" /> class.
         /// </summary>
         /// <param name="outputFormat">
-        /// 'raw': verbatim config.yaml with comments — not available for deployments created before 2026-04-30. 'parsed': dict with server-side defaults applied — always available. 'both': both fields populated.<br/>
+        /// 'raw': verbatim config.yaml with comments (not available for deployments created before 2026-04-30). 'parsed': dict with server-side defaults applied (always available). 'both': both fields populated.<br/>
         /// Default Value: both
         /// </param>
 #if NET7_0_OR_GREATER

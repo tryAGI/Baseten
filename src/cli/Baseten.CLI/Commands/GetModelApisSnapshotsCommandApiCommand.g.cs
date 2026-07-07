@@ -31,7 +31,7 @@ internal static partial class GetModelApisSnapshotsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-model-apis-snapshots", @"Get the latest model weight snapshot
+        var command = new Command(@"get-model-apis-snapshots", @"Gets the latest model weight snapshot
 Gets the most recent model weight snapshot for the specified model.");
 
 

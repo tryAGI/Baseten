@@ -65,7 +65,7 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdMetrics
 
     public static Command Create()
     {
-        var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-metrics", @"Gets the metrics for a model deployment.
+        var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-metrics", @"Gets the metrics for a model deployment
 Gets the metrics for a model deployment in the given time range.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

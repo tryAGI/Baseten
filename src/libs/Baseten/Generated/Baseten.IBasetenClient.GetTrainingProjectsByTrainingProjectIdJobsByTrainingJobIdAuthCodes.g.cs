@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get auth codes for a training job.<br/>
-        /// Get authentication codes for all nodes of a training job's interactive sessions.
+        /// Gets auth codes for a training job<br/>
+        /// Gets authentication codes for all nodes of a training job's interactive sessions.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -24,8 +24,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get auth codes for a training job.<br/>
-        /// Get authentication codes for all nodes of a training job's interactive sessions.
+        /// Gets auth codes for a training job<br/>
+        /// Gets authentication codes for all nodes of a training job's interactive sessions.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

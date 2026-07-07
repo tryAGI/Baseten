@@ -35,7 +35,7 @@ internal static partial class GetModelApisSnapshotsByModelIdCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-model-apis-snapshots-by-model-id", @"Get the latest model weight snapshot
+        var command = new Command(@"get-model-apis-snapshots-by-model-id", @"Gets the latest model weight snapshot
 Gets the most recent model weight snapshot for the specified model.");
                         command.Arguments.Add(ModelId);
 

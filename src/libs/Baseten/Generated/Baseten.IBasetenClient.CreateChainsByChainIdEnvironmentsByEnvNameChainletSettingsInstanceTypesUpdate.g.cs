@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Update a chainlet environment's instance type settings.<br/>
+        /// Updates a chainlet environment's instance type settings<br/>
         /// Updates a chainlet environment's instance type settings. The chainlet environment setting must exist. When updated, a new chain deployment is created and deployed. It is promoted to the chain environment according to promotion settings on the environment.
         /// </summary>
         /// <param name="chainId"></param>
@@ -39,7 +39,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a chainlet environment's instance type settings.<br/>
+        /// Updates a chainlet environment's instance type settings<br/>
         /// Updates a chainlet environment's instance type settings. The chainlet environment setting must exist. When updated, a new chain deployment is created and deployed. It is promoted to the chain environment according to promotion settings on the environment.
         /// </summary>
         /// <param name="chainId"></param>
@@ -73,7 +73,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a chainlet environment's instance type settings.<br/>
+        /// Updates a chainlet environment's instance type settings<br/>
         /// Updates a chainlet environment's instance type settings. The chainlet environment setting must exist. When updated, a new chain deployment is created and deployed. It is promoted to the chain environment according to promotion settings on the environment.
         /// </summary>
         /// <param name="chainId"></param>

@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get an environment's details<br/>
+        /// Gets an environment's details<br/>
         /// Gets an environment's details and returns the environment.
         /// </summary>
         /// <param name="modelId"></param>
@@ -73,7 +73,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get an environment's details<br/>
+        /// Gets an environment's details<br/>
         /// Gets an environment's details and returns the environment.
         /// </summary>
         /// <param name="modelId"></param>

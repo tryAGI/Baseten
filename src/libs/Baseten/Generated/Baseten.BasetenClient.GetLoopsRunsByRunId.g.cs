@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get a Loops run.<br/>
-        /// Fetch a Loops run by ID.
+        /// Gets a Loops run<br/>
+        /// Fetches a Loops run by ID.
         /// </summary>
         /// <param name="runId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,8 +68,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get a Loops run.<br/>
-        /// Fetch a Loops run by ID.
+        /// Gets a Loops run<br/>
+        /// Fetches a Loops run by ID.
         /// </summary>
         /// <param name="runId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

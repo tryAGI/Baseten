@@ -97,7 +97,7 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-teams-by-team-id-llm-models", @"Creates a new BIS LLM deployment");
+        var command = new Command(@"create-teams-by-team-id-llm-models", @"Creates a new BIS-LLM deployment");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(Resources);
                         command.Options.Add(LlmConfig);

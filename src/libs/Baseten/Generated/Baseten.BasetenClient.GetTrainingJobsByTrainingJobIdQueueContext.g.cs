@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Reconstruct queue context for a training job.<br/>
-        /// Returns the (org, gpu_type) capacity pool the job was gated by, jobs that were holding GPU capacity in that pool when this job was submitted, and every TrainingJobStatus event in [submitted_at, released_at] for those jobs — useful for understanding why a job sat in PENDING. Caller must be an org admin and the job must belong to the caller's org.
+        /// Reconstructs queue context for a training job<br/>
+        /// Returns the (org, gpu_type) capacity pool the job was gated by, jobs that were holding GPU capacity in that pool when this job was submitted, and every TrainingJobStatus event in [submitted_at, released_at] for those jobs, useful for understanding why a job sat in PENDING. Caller must be an org admin and the job must belong to the caller's org.
         /// </summary>
         /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,8 +68,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Reconstruct queue context for a training job.<br/>
-        /// Returns the (org, gpu_type) capacity pool the job was gated by, jobs that were holding GPU capacity in that pool when this job was submitted, and every TrainingJobStatus event in [submitted_at, released_at] for those jobs — useful for understanding why a job sat in PENDING. Caller must be an org admin and the job must belong to the caller's org.
+        /// Reconstructs queue context for a training job<br/>
+        /// Returns the (org, gpu_type) capacity pool the job was gated by, jobs that were holding GPU capacity in that pool when this job was submitted, and every TrainingJobStatus event in [submitted_at, released_at] for those jobs, useful for understanding why a job sat in PENDING. Caller must be an org admin and the job must belong to the caller's org.
         /// </summary>
         /// <param name="trainingJobId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

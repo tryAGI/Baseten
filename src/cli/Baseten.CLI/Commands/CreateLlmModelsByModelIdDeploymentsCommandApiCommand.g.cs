@@ -101,7 +101,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
 
     public static Command Create()
     {
-        var command = new Command(@"create-llm-models-by-model-id-deployments", @"Creates a new BIS LLM deployment version");
+        var command = new Command(@"create-llm-models-by-model-id-deployments", @"Creates a new BIS-LLM deployment version");
                         command.Arguments.Add(ModelId);
                         command.Options.Add(Resources);
                         command.Options.Add(LlmVersion);

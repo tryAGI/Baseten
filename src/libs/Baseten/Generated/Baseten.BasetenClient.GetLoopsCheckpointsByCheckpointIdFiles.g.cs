@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get Loops checkpoint files.<br/>
-        /// Get presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
+        /// Gets Loops checkpoint files<br/>
+        /// Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
         /// </summary>
         /// <param name="checkpointId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,8 +68,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get Loops checkpoint files.<br/>
-        /// Get presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
+        /// Gets Loops checkpoint files<br/>
+        /// Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
         /// </summary>
         /// <param name="checkpointId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

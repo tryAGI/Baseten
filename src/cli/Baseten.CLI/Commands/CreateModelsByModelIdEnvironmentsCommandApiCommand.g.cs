@@ -61,7 +61,7 @@ internal static partial class CreateModelsByModelIdEnvironmentsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-models-by-model-id-environments", @"Create an environment
+        var command = new Command(@"create-models-by-model-id-environments", @"Creates an environment
 Creates an environment for the specified model and returns the environment.");
                         command.Arguments.Add(ModelId);
                         command.Options.Add(NameOption);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);

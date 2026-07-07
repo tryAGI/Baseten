@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get a training job.<br/>
-        /// Get the details of an existing training job.
+        /// Gets a training job<br/>
+        /// Gets the details of an existing training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -24,8 +24,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get a training job.<br/>
-        /// Get the details of an existing training job.
+        /// Gets a training job<br/>
+        /// Gets the details of an existing training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

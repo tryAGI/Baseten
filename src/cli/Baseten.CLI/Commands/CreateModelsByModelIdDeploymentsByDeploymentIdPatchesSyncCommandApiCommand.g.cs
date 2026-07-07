@@ -57,7 +57,7 @@ internal static partial class CreateModelsByModelIdDeploymentsByDeploymentIdPatc
 
     public static Command Create()
     {
-        var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-patches-sync", @"Sync staged patches to a development deployment.
+        var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-patches-sync", @"Syncs staged patches to a development deployment
 Applies any staged patches to the running deployment. A 2xx response means the sync reached a verdict: in sync, or a full push is required (needs_full_deploy_reason). A 503 means the sync was not attempted or failed recoverably and should be retried; any other error is terminal.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

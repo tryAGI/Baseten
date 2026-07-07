@@ -113,7 +113,7 @@ internal static partial class GetChainsByChainIdDeploymentsByChainDeploymentIdCh
 
     public static Command Create()
     {
-        var command = new Command(@"get-chains-by-chain-id-deployments-by-chain-deployment-id-chainlets-by-chainlet-id-logs", @"Gets the logs for a chainlet within a chain deployment.
+        var command = new Command(@"get-chains-by-chain-id-deployments-by-chain-deployment-id-chainlets-by-chainlet-id-logs", @"Gets the logs for a chainlet within a chain deployment
 Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.");
                         command.Arguments.Add(ChainId);
                         command.Arguments.Add(ChainDeploymentId);

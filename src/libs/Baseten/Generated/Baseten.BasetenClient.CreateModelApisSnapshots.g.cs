@@ -42,7 +42,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Create a model weight snapshot<br/>
+        /// Creates a model weight snapshot<br/>
         /// Creates a model weight snapshot for the specified model and returns the snapshot.
         /// </summary>
         /// <param name="request"></param>
@@ -74,7 +74,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a model weight snapshot<br/>
+        /// Creates a model weight snapshot<br/>
         /// Creates a model weight snapshot for the specified model and returns the snapshot.
         /// </summary>
         /// <param name="request"></param>
@@ -452,7 +452,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a model weight snapshot<br/>
+        /// Creates a model weight snapshot<br/>
         /// Creates a model weight snapshot for the specified model and returns the snapshot.
         /// </summary>
         /// <param name="model">

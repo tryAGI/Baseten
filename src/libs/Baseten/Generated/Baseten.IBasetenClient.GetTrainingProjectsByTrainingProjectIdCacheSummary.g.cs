@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get training project cache summary.<br/>
-        /// Get the cache summary for the most recent training job in the project.
+        /// Gets training project cache summary<br/>
+        /// Gets the cache summary for the most recent training job in the project.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,8 +22,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get training project cache summary.<br/>
-        /// Get the cache summary for the most recent training job in the project.
+        /// Gets training project cache summary<br/>
+        /// Gets the cache summary for the most recent training job in the project.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

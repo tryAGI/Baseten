@@ -36,7 +36,7 @@ internal static partial class GetTeamsByTeamIdEnvironmentGroupsCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"get-teams-by-team-id-environment-groups", @"Lists environment groups
-Lists the environment groups for the team specified in the path, or for the caller's organization default team when no team is specified.");
+Lists environment groups. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.");
                         command.Arguments.Add(TeamId);
 
 

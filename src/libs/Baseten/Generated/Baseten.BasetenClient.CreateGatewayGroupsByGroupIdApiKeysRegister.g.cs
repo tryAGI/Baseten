@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Register an API key for a group<br/>
-        /// Registers a Gateway API key with provided value, name.
+        /// Registers an API key for a group<br/>
+        /// Registers a Gateway API key with the provided value and name.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -79,8 +79,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Register an API key for a group<br/>
-        /// Registers a Gateway API key with provided value, name.
+        /// Registers an API key for a group<br/>
+        /// Registers a Gateway API key with the provided value and name.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -461,8 +461,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Register an API key for a group<br/>
-        /// Registers a Gateway API key with provided value, name.
+        /// Registers an API key for a group<br/>
+        /// Registers a Gateway API key with the provided value and name.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="name">

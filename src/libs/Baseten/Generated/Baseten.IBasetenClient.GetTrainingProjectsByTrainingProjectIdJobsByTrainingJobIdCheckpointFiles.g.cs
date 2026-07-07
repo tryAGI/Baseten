@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get training job checkpoint files.<br/>
-        /// Get presigned URLs for all checkpoint files for a training job.
+        /// Gets training job checkpoint files<br/>
+        /// Gets presigned URLs for all checkpoint files for a training job.
         /// </summary>
         /// <param name="pageSize">
         /// Default Value: 1000
@@ -32,8 +32,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get training job checkpoint files.<br/>
-        /// Get presigned URLs for all checkpoint files for a training job.
+        /// Gets training job checkpoint files<br/>
+        /// Gets presigned URLs for all checkpoint files for a training job.
         /// </summary>
         /// <param name="pageSize">
         /// Default Value: 1000

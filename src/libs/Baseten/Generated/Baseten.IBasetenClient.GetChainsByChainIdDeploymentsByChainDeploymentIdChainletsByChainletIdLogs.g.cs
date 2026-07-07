@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Gets the logs for a chainlet within a chain deployment.<br/>
+        /// Gets the logs for a chainlet within a chain deployment<br/>
         /// Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.
         /// </summary>
         /// <param name="startEpochMillis">
@@ -66,7 +66,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Gets the logs for a chainlet within a chain deployment.<br/>
+        /// Gets the logs for a chainlet within a chain deployment<br/>
         /// Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.
         /// </summary>
         /// <param name="startEpochMillis">

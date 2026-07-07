@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get auth codes for a training job.<br/>
-        /// Get authentication codes for all nodes of a training job's interactive sessions.
+        /// Gets auth codes for a training job<br/>
+        /// Gets authentication codes for all nodes of a training job's interactive sessions.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -73,8 +73,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get auth codes for a training job.<br/>
-        /// Get authentication codes for all nodes of a training job's interactive sessions.
+        /// Gets auth codes for a training job<br/>
+        /// Gets authentication codes for all nodes of a training job's interactive sessions.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// Handle for a BIS LLM model deployment.
+    /// Handle for a BIS-LLM model deployment.
     /// </summary>
     public sealed partial class LLMModelHandleV1
     {

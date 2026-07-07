@@ -50,8 +50,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get the metrics for a training job.<br/>
-        /// Get the metrics for a training job.
+        /// Gets the metrics for a training job<br/>
+        /// Gets the metrics for a training job.
         /// </summary>
         /// <param name="endEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -94,8 +94,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get the metrics for a training job.<br/>
-        /// Get the metrics for a training job.
+        /// Gets the metrics for a training job<br/>
+        /// Gets the metrics for a training job.
         /// </summary>
         /// <param name="endEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

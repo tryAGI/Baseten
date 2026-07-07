@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get a training job.<br/>
-        /// Get the details of an existing training job.
+        /// Gets a training job<br/>
+        /// Gets the details of an existing training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -73,8 +73,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get a training job.<br/>
-        /// Get the details of an existing training job.
+        /// Gets a training job<br/>
+        /// Gets the details of an existing training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

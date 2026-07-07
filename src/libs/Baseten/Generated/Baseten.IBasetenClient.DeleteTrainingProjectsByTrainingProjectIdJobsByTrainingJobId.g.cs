@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Delete a training job.<br/>
+        /// Deletes a training job<br/>
         /// Deletes a training job. Stops it first if still running.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -24,7 +24,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete a training job.<br/>
+        /// Deletes a training job<br/>
         /// Deletes a training job. Stops it first if still running.
         /// </summary>
         /// <param name="trainingProjectId"></param>

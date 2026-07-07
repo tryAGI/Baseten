@@ -40,8 +40,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// List Loops samplers.<br/>
-        /// List Loops samplers visible to the requesting user.
+        /// Lists Loops samplers<br/>
+        /// Lists Loops samplers visible to the requesting user.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -63,8 +63,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// List Loops samplers.<br/>
-        /// List Loops samplers visible to the requesting user.
+        /// Lists Loops samplers<br/>
+        /// Lists Loops samplers visible to the requesting user.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

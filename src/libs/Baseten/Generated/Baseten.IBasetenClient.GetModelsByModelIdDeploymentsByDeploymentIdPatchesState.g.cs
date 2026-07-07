@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get a development deployment's patch state.<br/>
+        /// Gets a development deployment's patch state<br/>
         /// Returns the patch point the deployment is recorded as running and the latest staged-but-unsynced point, if any. The watch client computes its next patch off the pending point when present, else the running point.
         /// </summary>
         /// <param name="modelId"></param>
@@ -24,7 +24,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get a development deployment's patch state.<br/>
+        /// Gets a development deployment's patch state<br/>
         /// Returns the patch point the deployment is recorded as running and the latest staged-but-unsynced point, if any. The watch client computes its next patch off the pending point when present, else the running point.
         /// </summary>
         /// <param name="modelId"></param>

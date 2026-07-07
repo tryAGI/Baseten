@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get the uploaded training job as a S3 Artifact<br/>
-        /// Get the uploaded training job as a S3 Artifact
+        /// Gets presigned URLs for a training job's artifacts<br/>
+        /// Returns presigned S3 URLs for the artifacts uploaded by a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -24,8 +24,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get the uploaded training job as a S3 Artifact<br/>
-        /// Get the uploaded training job as a S3 Artifact
+        /// Gets presigned URLs for a training job's artifacts<br/>
+        /// Returns presigned S3 URLs for the artifacts uploaded by a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

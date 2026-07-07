@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Update a training job.<br/>
-        /// Update mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
+        /// Updates a training job<br/>
+        /// Updates mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -30,8 +30,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a training job.<br/>
-        /// Update mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
+        /// Updates a training job<br/>
+        /// Updates mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -55,8 +55,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a training job.<br/>
-        /// Update mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
+        /// Updates a training job<br/>
+        /// Updates mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

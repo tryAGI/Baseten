@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Create a chain environment<br/>
-        /// Create a chain environment. Returns the resulting environment.
+        /// Creates a chain environment<br/>
+        /// Creates a chain environment. Returns the resulting environment.
         /// </summary>
         /// <param name="chainId"></param>
         /// <param name="request"></param>
@@ -116,8 +116,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a chain environment<br/>
-        /// Create a chain environment. Returns the resulting environment.
+        /// Creates a chain environment<br/>
+        /// Creates a chain environment. Returns the resulting environment.
         /// </summary>
         /// <param name="chainId"></param>
         /// <param name="request"></param>
@@ -535,8 +535,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a chain environment<br/>
-        /// Create a chain environment. Returns the resulting environment.
+        /// Creates a chain environment<br/>
+        /// Creates a chain environment. Returns the resulting environment.
         /// </summary>
         /// <param name="chainId"></param>
         /// <param name="name">

@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Search training jobs.<br/>
-        /// Search training jobs for the organization.
+        /// Searches training jobs<br/>
+        /// Searches training jobs for the organization.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -78,8 +78,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Search training jobs.<br/>
-        /// Search training jobs for the organization.
+        /// Searches training jobs<br/>
+        /// Searches training jobs for the organization.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -460,8 +460,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Search training jobs.<br/>
-        /// Search training jobs for the organization.
+        /// Searches training jobs<br/>
+        /// Searches training jobs for the organization.
         /// </summary>
         /// <param name="projectId">
         /// Filter the training jobs by project ID.<br/>

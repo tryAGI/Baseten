@@ -57,7 +57,7 @@ internal static partial class CreateTrainingProjectsByTrainingProjectIdJobsByTra
 
     public static Command Create()
     {
-        var command = new Command(@"create-training-projects-by-training-project-id-jobs-by-training-job-id-stop", @"Stop a training job.
+        var command = new Command(@"create-training-projects-by-training-project-id-jobs-by-training-job-id-stop", @"Stops a training job
 Stops a training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);

@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get a Loops session.<br/>
-        /// Fetch a Loops session by ID.
+        /// Gets a Loops session<br/>
+        /// Fetches a Loops session by ID.
         /// </summary>
         /// <param name="sessionId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,8 +22,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get a Loops session.<br/>
-        /// Fetch a Loops session by ID.
+        /// Gets a Loops session<br/>
+        /// Fetches a Loops session by ID.
         /// </summary>
         /// <param name="sessionId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

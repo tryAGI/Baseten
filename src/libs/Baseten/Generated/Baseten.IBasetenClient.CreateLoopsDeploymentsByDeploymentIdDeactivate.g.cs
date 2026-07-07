@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Deactivate a Loops deployment.<br/>
-        /// Shut down a Loops deployment by ID. Saved checkpoints remain accessible. Resolving base_model -&gt; deployment_id is the caller's responsibility — list deployments and pick the active one.
+        /// Deactivates a Loops deployment<br/>
+        /// Shuts down a Loops deployment by ID. Saved checkpoints remain accessible. Resolving the base model to a deployment ID is the caller's responsibility: list deployments and pick the active one.
         /// </summary>
         /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,8 +22,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Deactivate a Loops deployment.<br/>
-        /// Shut down a Loops deployment by ID. Saved checkpoints remain accessible. Resolving base_model -&gt; deployment_id is the caller's responsibility — list deployments and pick the active one.
+        /// Deactivates a Loops deployment<br/>
+        /// Shuts down a Loops deployment by ID. Saved checkpoints remain accessible. Resolving the base model to a deployment ID is the caller's responsibility: list deployments and pick the active one.
         /// </summary>
         /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

@@ -31,8 +31,8 @@ internal static partial class GetLoopsSamplersCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-loops-samplers", @"List Loops samplers.
-List Loops samplers visible to the requesting user.");
+        var command = new Command(@"get-loops-samplers", @"Lists Loops samplers
+Lists Loops samplers visible to the requesting user.");
 
 
 

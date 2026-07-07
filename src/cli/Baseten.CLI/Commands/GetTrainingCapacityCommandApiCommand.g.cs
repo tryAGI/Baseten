@@ -31,7 +31,7 @@ internal static partial class GetTrainingCapacityCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-capacity", @"Get training GPU capacity.
+        var command = new Command(@"get-training-capacity", @"Gets training GPU capacity
 Returns GPU capacity limits (baseline and peak) and current usage for the organization.");
 
 

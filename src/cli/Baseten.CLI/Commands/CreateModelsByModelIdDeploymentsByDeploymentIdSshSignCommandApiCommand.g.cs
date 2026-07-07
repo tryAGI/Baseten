@@ -58,7 +58,7 @@ internal static partial class CreateModelsByModelIdDeploymentsByDeploymentIdSshS
 
     public static Command Create()
     {
-        var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-ssh-sign", @"Sign an SSH certificate for an inference model.
+        var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-ssh-sign", @"Signs an SSH certificate for an inference model
 Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);                        command.Options.Add(SignSSHCertificateRequestV1OptionSetOptions.PublicKey);

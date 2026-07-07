@@ -41,8 +41,8 @@ internal static partial class GetLoopsRunsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-loops-runs", @"List Loops runs.
-List Loops runs visible to the requesting user, optionally filtered by run id and/or base model.");
+        var command = new Command(@"get-loops-runs", @"Lists Loops runs
+Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model.");
                         command.Options.Add(RunId);
                         command.Options.Add(BaseModel);
 

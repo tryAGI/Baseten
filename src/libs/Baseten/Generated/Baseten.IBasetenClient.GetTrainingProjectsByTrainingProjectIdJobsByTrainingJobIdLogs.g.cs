@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get the logs for a training job.<br/>
-        /// Get the logs for a training job with the provided filters.
+        /// Gets the logs for a training job<br/>
+        /// Gets the logs for a training job with the provided filters.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -44,8 +44,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get the logs for a training job.<br/>
-        /// Get the logs for a training job with the provided filters.
+        /// Gets the logs for a training job<br/>
+        /// Gets the logs for a training job with the provided filters.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

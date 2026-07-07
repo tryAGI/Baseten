@@ -57,8 +57,8 @@ internal static partial class CreateGatewayGroupsByGroupIdApiKeysCommandApiComma
 
     public static Command Create()
     {
-        var command = new Command(@"create-gateway-groups-by-group-id-api-keys", @"Create an API key for a group
-Creates a new API key for the given group");
+        var command = new Command(@"create-gateway-groups-by-group-id-api-keys", @"Creates an API key for a group
+Creates a new API key for the given group.");
                         command.Arguments.Add(GroupId);
                         command.Options.Add(NameOption);
           command.Options.Add(Input);

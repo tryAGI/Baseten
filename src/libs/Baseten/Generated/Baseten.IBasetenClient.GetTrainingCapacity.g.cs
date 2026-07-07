@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get training GPU capacity.<br/>
+        /// Gets training GPU capacity<br/>
         /// Returns GPU capacity limits (baseline and peak) and current usage for the organization.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -20,7 +20,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get training GPU capacity.<br/>
+        /// Gets training GPU capacity<br/>
         /// Returns GPU capacity limits (baseline and peak) and current usage for the organization.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

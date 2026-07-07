@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Gets the logs for a model deployment.<br/>
+        /// Gets the logs for a model deployment<br/>
         /// Gets all the logs for a model deployment in the given time range, which defaults to the last 30 minutes. A failed or older deployment may only have logs from before that window; pass `start_epoch_millis` to widen it back to the build/deploy time.
         /// </summary>
         /// <param name="startEpochMillis">
@@ -64,7 +64,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Gets the logs for a model deployment.<br/>
+        /// Gets the logs for a model deployment<br/>
         /// Gets all the logs for a model deployment in the given time range, which defaults to the last 30 minutes. A failed or older deployment may only have logs from before that window; pass `start_epoch_millis` to widen it back to the build/deploy time.
         /// </summary>
         /// <param name="startEpochMillis">

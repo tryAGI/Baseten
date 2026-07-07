@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get a chain environment's details<br/>
+        /// Gets a chain environment's details<br/>
         /// Gets a chain environment's details and returns the chain environment.
         /// </summary>
         /// <param name="chainId"></param>
@@ -73,7 +73,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get a chain environment's details<br/>
+        /// Gets a chain environment's details<br/>
         /// Gets a chain environment's details and returns the chain environment.
         /// </summary>
         /// <param name="chainId"></param>

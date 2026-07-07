@@ -40,7 +40,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Create a Loops session.<br/>
+        /// Creates a Loops session<br/>
         /// Creates a Loops session scoped to the calling org.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -63,7 +63,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a Loops session.<br/>
+        /// Creates a Loops session<br/>
         /// Creates a Loops session scoped to the calling org.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

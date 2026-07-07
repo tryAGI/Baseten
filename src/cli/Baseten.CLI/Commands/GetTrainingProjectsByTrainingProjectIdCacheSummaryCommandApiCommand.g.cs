@@ -35,8 +35,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdCacheSummary
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-cache-summary", @"Get training project cache summary.
-Get the cache summary for the most recent training job in the project.");
+        var command = new Command(@"get-training-projects-by-training-project-id-cache-summary", @"Gets training project cache summary
+Gets the cache summary for the most recent training job in the project.");
                         command.Arguments.Add(TrainingProjectId);
 
 

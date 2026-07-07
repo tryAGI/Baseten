@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Create an API key for a group<br/>
-        /// Creates a new API key for the given group
+        /// Creates an API key for a group<br/>
+        /// Creates a new API key for the given group.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -28,8 +28,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create an API key for a group<br/>
-        /// Creates a new API key for the given group
+        /// Creates an API key for a group<br/>
+        /// Creates a new API key for the given group.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -51,8 +51,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create an API key for a group<br/>
-        /// Creates a new API key for the given group
+        /// Creates an API key for a group<br/>
+        /// Creates a new API key for the given group.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="name">

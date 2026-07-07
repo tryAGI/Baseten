@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Update a chainlet environment's autoscaling settings<br/>
+        /// Updates a chainlet environment's autoscaling settings<br/>
         /// Updates a chainlet environment's autoscaling settings and returns the updated chainlet environment settings.
         /// </summary>
         /// <param name="chainId"></param>
@@ -44,7 +44,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a chainlet environment's autoscaling settings<br/>
+        /// Updates a chainlet environment's autoscaling settings<br/>
         /// Updates a chainlet environment's autoscaling settings and returns the updated chainlet environment settings.
         /// </summary>
         /// <param name="chainId"></param>
@@ -83,7 +83,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a chainlet environment's autoscaling settings<br/>
+        /// Updates a chainlet environment's autoscaling settings<br/>
         /// Updates a chainlet environment's autoscaling settings and returns the updated chainlet environment settings.
         /// </summary>
         /// <param name="chainId"></param>

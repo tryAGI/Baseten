@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Search training jobs.<br/>
-        /// Search training jobs for the organization.
+        /// Searches training jobs<br/>
+        /// Searches training jobs for the organization.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -31,8 +31,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Search training jobs.<br/>
-        /// Search training jobs for the organization.
+        /// Searches training jobs<br/>
+        /// Searches training jobs for the organization.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -57,8 +57,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Search training jobs.<br/>
-        /// Search training jobs for the organization.
+        /// Searches training jobs<br/>
+        /// Searches training jobs for the organization.
         /// </summary>
         /// <param name="projectId">
         /// Filter the training jobs by project ID.<br/>

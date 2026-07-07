@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Create a group<br/>
-        /// Creates a group and its endpoint configuration
+        /// Creates a group<br/>
+        /// Creates a group and its endpoint configuration.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -81,8 +81,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a group<br/>
-        /// Creates a group and its endpoint configuration
+        /// Creates a group<br/>
+        /// Creates a group and its endpoint configuration.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -466,8 +466,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a group<br/>
-        /// Creates a group and its endpoint configuration
+        /// Creates a group<br/>
+        /// Creates a group and its endpoint configuration.
         /// </summary>
         /// <param name="metadata">
         /// Group identity + display metadata.

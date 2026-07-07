@@ -43,7 +43,7 @@ internal static partial class CreateTeamsByTeamIdModelsCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"create-teams-by-team-id-models", @"Creates a new model from a source
-Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently: `library_listing` — fork an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready — poll GET endpoint until status is ACTIVE.");
+Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(Source);
 

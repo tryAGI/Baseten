@@ -71,8 +71,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-logs", @"Get the logs for a training job.
-Get the logs for a training job with the provided filters.");
+        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-logs", @"Gets the logs for a training job
+Gets the logs for a training job with the provided filters.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
                         command.Options.Add(StartEpochMillis);

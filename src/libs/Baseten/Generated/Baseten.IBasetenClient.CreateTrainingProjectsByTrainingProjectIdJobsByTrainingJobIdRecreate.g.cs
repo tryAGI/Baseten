@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Recreate a training job<br/>
-        /// Create a new training job with the same configuration as an existing training job.
+        /// Recreates a training job<br/>
+        /// Creates a new training job with the same configuration as an existing training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -24,8 +24,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Recreate a training job<br/>
-        /// Create a new training job with the same configuration as an existing training job.
+        /// Recreates a training job<br/>
+        /// Creates a new training job with the same configuration as an existing training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

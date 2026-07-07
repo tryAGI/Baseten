@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get a Loops sampler.<br/>
-        /// Fetch a Loops sampler by ID.
+        /// Gets a Loops sampler<br/>
+        /// Fetches a Loops sampler by ID.
         /// </summary>
         /// <param name="samplerId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,8 +22,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get a Loops sampler.<br/>
-        /// Fetch a Loops sampler by ID.
+        /// Gets a Loops sampler<br/>
+        /// Fetches a Loops sampler by ID.
         /// </summary>
         /// <param name="samplerId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

@@ -48,7 +48,7 @@ internal static partial class CreateChainsByChainIdEnvironmentsByEnvNameChainlet
 
     public static Command Create()
     {
-        var command = new Command(@"create-chains-by-chain-id-environments-by-env-name-chainlet-settings-instance-types-update", @"Update a chainlet environment's instance type settings.
+        var command = new Command(@"create-chains-by-chain-id-environments-by-env-name-chainlet-settings-instance-types-update", @"Updates a chainlet environment's instance type settings
 Updates a chainlet environment's instance type settings. The chainlet environment setting must exist. When updated, a new chain deployment is created and deployed. It is promoted to the chain environment according to promotion settings on the environment.");
                         command.Arguments.Add(ChainId);
                         command.Arguments.Add(EnvName);

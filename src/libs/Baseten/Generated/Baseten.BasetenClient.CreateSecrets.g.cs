@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Upserts a secret<br/>
-        /// Creates or updates a secret by name. Scoped to the caller's primary team — use the team-scoped variant to target a specific team.
+        /// Creates or updates a secret by name. Scoped to the caller's primary team; use the team-scoped variant to target a specific team.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -75,7 +75,7 @@ namespace Baseten
         }
         /// <summary>
         /// Upserts a secret<br/>
-        /// Creates or updates a secret by name. Scoped to the caller's primary team — use the team-scoped variant to target a specific team.
+        /// Creates or updates a secret by name. Scoped to the caller's primary team; use the team-scoped variant to target a specific team.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -453,7 +453,7 @@ namespace Baseten
         }
         /// <summary>
         /// Upserts a secret<br/>
-        /// Creates or updates a secret by name. Scoped to the caller's primary team — use the team-scoped variant to target a specific team.
+        /// Creates or updates a secret by name. Scoped to the caller's primary team; use the team-scoped variant to target a specific team.
         /// </summary>
         /// <param name="name">
         /// Name of the new or existing secret

@@ -17,7 +17,7 @@ namespace Baseten
 
         /// <summary>
         /// The maximum surge percentage for rolling deploys.<br/>
-        /// Default Value: 10
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_surge_percent")]
         public int? MaxSurgePercent { get; set; }
@@ -58,7 +58,7 @@ namespace Baseten
         /// </param>
         /// <param name="maxSurgePercent">
         /// The maximum surge percentage for rolling deploys.<br/>
-        /// Default Value: 10
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="maxUnavailablePercent">
         /// The maximum unavailable percentage for rolling deploys.<br/>

@@ -41,8 +41,8 @@ internal static partial class CreateTrainingProjectsByTrainingProjectIdJobsByTra
 
     public static Command Create()
     {
-        var command = new Command(@"create-training-projects-by-training-project-id-jobs-by-training-job-id-recreate", @"Recreate a training job
-Create a new training job with the same configuration as an existing training job.");
+        var command = new Command(@"create-training-projects-by-training-project-id-jobs-by-training-job-id-recreate", @"Recreates a training job
+Creates a new training job with the same configuration as an existing training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
 

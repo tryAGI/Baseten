@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Creates a new model from a source<br/>
-        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently: `library_listing` — fork an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready — poll GET endpoint until status is ACTIVE.
+        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="request"></param>
@@ -29,7 +29,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new model from a source<br/>
-        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently: `library_listing` — fork an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready — poll GET endpoint until status is ACTIVE.
+        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="request"></param>
@@ -52,7 +52,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new model from a source<br/>
-        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently: `library_listing` — fork an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready — poll GET endpoint until status is ACTIVE.
+        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="source">

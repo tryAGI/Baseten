@@ -42,7 +42,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Patch the caller's Loops user config.<br/>
+        /// Patches the caller's Loops user config<br/>
         /// Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semantics per field: omit a field to leave it unchanged, send null to clear (inherit the org-level allowlist), or send a list to set the allowlist. Empty lists are rejected.
         /// </summary>
         /// <param name="request"></param>
@@ -80,7 +80,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Patch the caller's Loops user config.<br/>
+        /// Patches the caller's Loops user config<br/>
         /// Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semantics per field: omit a field to leave it unchanged, send null to clear (inherit the org-level allowlist), or send a list to set the allowlist. Empty lists are rejected.
         /// </summary>
         /// <param name="request"></param>
@@ -464,7 +464,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Patch the caller's Loops user config.<br/>
+        /// Patches the caller's Loops user config<br/>
         /// Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semantics per field: omit a field to leave it unchanged, send null to clear (inherit the org-level allowlist), or send a list to set the allowlist. Empty lists are rejected.
         /// </summary>
         /// <param name="trainerAcceleratorPriority">

@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Create a Gateway endpoint<br/>
+        /// Creates a Gateway endpoint<br/>
         /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
         /// </summary>
         /// <param name="request"></param>
@@ -34,7 +34,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create a Gateway endpoint<br/>
+        /// Creates a Gateway endpoint<br/>
         /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
         /// </summary>
         /// <param name="request"></param>
@@ -63,7 +63,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create a Gateway endpoint<br/>
+        /// Creates a Gateway endpoint<br/>
         /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
         /// </summary>
         /// <param name="slug">

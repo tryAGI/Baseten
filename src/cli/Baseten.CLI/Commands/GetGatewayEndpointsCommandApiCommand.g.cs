@@ -31,7 +31,7 @@ internal static partial class GetGatewayEndpointsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-gateway-endpoints", @"List Gateway endpoints");
+        var command = new Command(@"get-gateway-endpoints", @"Lists Gateway endpoints");
 
 
 

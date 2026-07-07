@@ -50,8 +50,8 @@ internal static partial class CreateGatewayGroupsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-gateway-groups", @"Create a group
-Creates a group and its endpoint configuration");
+        var command = new Command(@"create-gateway-groups", @"Creates a group
+Creates a group and its endpoint configuration.");
                         command.Options.Add(Metadata);
                         command.Options.Add(Models);
                         command.Options.Add(Hierarchy);

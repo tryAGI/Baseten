@@ -46,7 +46,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Sync staged patches to a development deployment.<br/>
+        /// Syncs staged patches to a development deployment<br/>
         /// Applies any staged patches to the running deployment. A 2xx response means the sync reached a verdict: in sync, or a full push is required (needs_full_deploy_reason). A 503 means the sync was not attempted or failed recoverably and should be retried; any other error is terminal.
         /// </summary>
         /// <param name="modelId"></param>
@@ -81,7 +81,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Sync staged patches to a development deployment.<br/>
+        /// Syncs staged patches to a development deployment<br/>
         /// Applies any staged patches to the running deployment. A 2xx response means the sync reached a verdict: in sync, or a full push is required (needs_full_deploy_reason). A 503 means the sync was not attempted or failed recoverably and should be retried; any other error is terminal.
         /// </summary>
         /// <param name="modelId"></param>
@@ -464,7 +464,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Sync staged patches to a development deployment.<br/>
+        /// Syncs staged patches to a development deployment<br/>
         /// Applies any staged patches to the running deployment. A 2xx response means the sync reached a verdict: in sync, or a full push is required (needs_full_deploy_reason). A 503 means the sync was not attempted or failed recoverably and should be retried; any other error is terminal.
         /// </summary>
         /// <param name="modelId"></param>

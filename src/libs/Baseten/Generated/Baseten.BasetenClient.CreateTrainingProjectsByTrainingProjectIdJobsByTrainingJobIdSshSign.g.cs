@@ -46,7 +46,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Sign an SSH certificate for a training job.<br/>
+        /// Signs an SSH certificate for a training job<br/>
         /// Signs a short-lived SSH certificate granting access to a specific training job pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -84,7 +84,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Sign an SSH certificate for a training job.<br/>
+        /// Signs an SSH certificate for a training job<br/>
         /// Signs a short-lived SSH certificate granting access to a specific training job pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -470,7 +470,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Sign an SSH certificate for a training job.<br/>
+        /// Signs an SSH certificate for a training job<br/>
         /// Signs a short-lived SSH certificate granting access to a specific training job pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="trainingProjectId"></param>

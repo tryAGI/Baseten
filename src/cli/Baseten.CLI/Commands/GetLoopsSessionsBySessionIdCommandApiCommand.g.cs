@@ -35,8 +35,8 @@ internal static partial class GetLoopsSessionsBySessionIdCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-loops-sessions-by-session-id", @"Get a Loops session.
-Fetch a Loops session by ID.");
+        var command = new Command(@"get-loops-sessions-by-session-id", @"Gets a Loops session
+Fetches a Loops session by ID.");
                         command.Arguments.Add(SessionId);
 
 

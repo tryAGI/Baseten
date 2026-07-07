@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Update an environment's settings<br/>
+        /// Updates an environment's settings<br/>
         /// Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.
         /// </summary>
         /// <param name="modelId"></param>
@@ -47,7 +47,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update an environment's settings<br/>
+        /// Updates an environment's settings<br/>
         /// Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.
         /// </summary>
         /// <param name="modelId"></param>
@@ -89,7 +89,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update an environment's settings<br/>
+        /// Updates an environment's settings<br/>
         /// Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.
         /// </summary>
         /// <param name="modelId"></param>

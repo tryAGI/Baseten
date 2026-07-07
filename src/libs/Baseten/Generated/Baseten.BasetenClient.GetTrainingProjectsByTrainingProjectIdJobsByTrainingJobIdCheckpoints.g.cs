@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get training job checkpoints.<br/>
-        /// Get the checkpoints for a training job.
+        /// Gets training job checkpoints<br/>
+        /// Gets the checkpoints for a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -73,8 +73,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get training job checkpoints.<br/>
-        /// Get the checkpoints for a training job.
+        /// Gets training job checkpoints<br/>
+        /// Gets the checkpoints for a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

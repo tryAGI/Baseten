@@ -42,7 +42,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Set a team's training GPU capacity.<br/>
+        /// Sets a team's training GPU capacity<br/>
         /// Sets the max concurrent GPUs of a given type a team may use. Creates the limit if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a ceiling the org imposes on the team, not something the team manages for itself.
         /// </summary>
         /// <param name="request"></param>
@@ -75,7 +75,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Set a team's training GPU capacity.<br/>
+        /// Sets a team's training GPU capacity<br/>
         /// Sets the max concurrent GPUs of a given type a team may use. Creates the limit if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a ceiling the org imposes on the team, not something the team manages for itself.
         /// </summary>
         /// <param name="request"></param>
@@ -454,7 +454,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Set a team's training GPU capacity.<br/>
+        /// Sets a team's training GPU capacity<br/>
         /// Sets the max concurrent GPUs of a given type a team may use. Creates the limit if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a ceiling the org imposes on the team, not something the team manages for itself.
         /// </summary>
         /// <param name="teamId">

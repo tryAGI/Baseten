@@ -42,7 +42,7 @@ internal static partial class DeleteLibraryListingsByUserDefinedListingIdVersion
     public static Command Create()
     {
         var command = new Command(@"delete-library-listings-by-user-defined-listing-id-versions-by-version-tag", @"Deletes a library listing version
-Deletes a specific version of a library listing. Deleting a live version will fail with a 400 error — demote the version first by setting another version as live.");
+Deletes a specific version of a library listing. Deleting a live version will fail with a 400 error; demote the version first by setting another version as live.");
                         command.Arguments.Add(UserDefinedListingId);
                         command.Arguments.Add(VersionTag);
 

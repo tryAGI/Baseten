@@ -48,8 +48,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Patch an interactive session.<br/>
-        /// Update specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
+        /// Patches an interactive session<br/>
+        /// Updates specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -89,8 +89,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Patch an interactive session.<br/>
-        /// Update specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
+        /// Patches an interactive session<br/>
+        /// Updates specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -479,8 +479,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Patch an interactive session.<br/>
-        /// Update specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
+        /// Patches an interactive session<br/>
+        /// Updates specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

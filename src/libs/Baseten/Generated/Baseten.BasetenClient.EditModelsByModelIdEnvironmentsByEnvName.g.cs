@@ -46,7 +46,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Update an environment's settings<br/>
+        /// Updates an environment's settings<br/>
         /// Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.
         /// </summary>
         /// <param name="modelId"></param>
@@ -100,7 +100,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Update an environment's settings<br/>
+        /// Updates an environment's settings<br/>
         /// Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.
         /// </summary>
         /// <param name="modelId"></param>
@@ -502,7 +502,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Update an environment's settings<br/>
+        /// Updates an environment's settings<br/>
         /// Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.
         /// </summary>
         /// <param name="modelId"></param>

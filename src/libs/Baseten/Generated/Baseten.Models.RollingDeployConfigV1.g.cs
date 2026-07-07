@@ -18,7 +18,7 @@ namespace Baseten
 
         /// <summary>
         /// The maximum surge percentage for rolling deploys.<br/>
-        /// Default Value: 10
+        /// Default Value: 25
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_surge_percent")]
         public int? MaxSurgePercent { get; set; }
@@ -59,7 +59,7 @@ namespace Baseten
         /// </param>
         /// <param name="maxSurgePercent">
         /// The maximum surge percentage for rolling deploys.<br/>
-        /// Default Value: 10
+        /// Default Value: 25
         /// </param>
         /// <param name="maxUnavailablePercent">
         /// The maximum unavailable percentage for rolling deploys.<br/>

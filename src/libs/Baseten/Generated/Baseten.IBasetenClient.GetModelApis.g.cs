@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// List Model APIs.<br/>
-        /// List Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.
+        /// Lists Model APIs<br/>
+        /// Lists Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -32,8 +32,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List Model APIs.<br/>
-        /// List Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.
+        /// Lists Model APIs<br/>
+        /// Lists Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

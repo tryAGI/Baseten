@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// A request to create a BIS LLM model
+    /// A request to create a BIS-LLM model
     /// </summary>
     public sealed partial class CreateLLMModelRequestV1
     {

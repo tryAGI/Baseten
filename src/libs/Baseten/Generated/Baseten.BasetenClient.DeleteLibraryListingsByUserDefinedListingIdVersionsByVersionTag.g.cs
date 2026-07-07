@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Deletes a library listing version<br/>
-        /// Deletes a specific version of a library listing. Deleting a live version will fail with a 400 error — demote the version first by setting another version as live.
+        /// Deletes a specific version of a library listing. Deleting a live version will fail with a 400 error; demote the version first by setting another version as live.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="versionTag"></param>
@@ -74,7 +74,7 @@ namespace Baseten
         }
         /// <summary>
         /// Deletes a library listing version<br/>
-        /// Deletes a specific version of a library listing. Deleting a live version will fail with a 400 error — demote the version first by setting another version as live.
+        /// Deletes a specific version of a library listing. Deleting a live version will fail with a 400 error; demote the version first by setting another version as live.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="versionTag"></param>

@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get Loops server capabilities.<br/>
+        /// Gets Loops server capabilities<br/>
         /// Returns the list of models supported by the Loops server, including each model's maximum context length.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -20,7 +20,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get Loops server capabilities.<br/>
+        /// Gets Loops server capabilities<br/>
         /// Returns the list of models supported by the Loops server, including each model's maximum context length.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
