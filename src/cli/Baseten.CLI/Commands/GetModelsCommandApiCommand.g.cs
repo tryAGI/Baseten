@@ -7,7 +7,11 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetModelsCommandApiCommand
 {
-
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"When set, returns only models with this exact name, if any. On a team-scoped route this matches at most one model; on the org-wide route it may match models in multiple teams, since names are unique only within a team.",
+    };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ModelsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -32,18 +36,18 @@ internal static partial class GetModelsCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"get-models", @"Gets all models");
-
+                        command.Options.Add(NameOption);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-
+                        var name = parseResult.GetValue(NameOption);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetModelsAsync(
-
+                                    name: name,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

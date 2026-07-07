@@ -13,6 +13,12 @@ internal static partial class GetTeamsByTeamIdModelsCommandApiCommand
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"When set, returns only models with this exact name, if any. On a team-scoped route this matches at most one model; on the org-wide route it may match models in multiple teams, since names are unique only within a team.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ModelsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -37,17 +43,20 @@ internal static partial class GetTeamsByTeamIdModelsCommandApiCommand
     {
         var command = new Command(@"get-teams-by-team-id-models", @"Gets all models");
                         command.Arguments.Add(TeamId);
+                        command.Options.Add(NameOption);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
                         var teamId = parseResult.GetRequiredValue(TeamId);
+                        var name = parseResult.GetValue(NameOption);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetTeamsByTeamIdModelsAsync(
                                     teamId: teamId,
+                                    name: name,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

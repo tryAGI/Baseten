@@ -13,6 +13,12 @@ internal static partial class GetModelsByModelIdDeploymentsCommandApiCommand
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"When set, returns only the deployment with this exact name, if any.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.DeploymentsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -37,17 +43,20 @@ internal static partial class GetModelsByModelIdDeploymentsCommandApiCommand
     {
         var command = new Command(@"get-models-by-model-id-deployments", @"Gets all deployments of a model");
                         command.Arguments.Add(ModelId);
+                        command.Options.Add(NameOption);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
                         var modelId = parseResult.GetRequiredValue(ModelId);
+                        var name = parseResult.GetValue(NameOption);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetModelsByModelIdDeploymentsAsync(
                                     modelId: modelId,
+                                    name: name,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
