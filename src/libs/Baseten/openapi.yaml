@@ -431,6 +431,26 @@
                     }
                 ],
                 "description": "Returns a list of all teams the authenticated user has access to.",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "description": "When set, returns only the team with this exact name, if any.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Name"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -646,6 +666,26 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "description": "When set, returns only models with this exact name, if any. On a team-scoped route this matches at most one model; on the org-wide route it may match models in multiple teams, since names are unique only within a team.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Name"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -707,6 +747,26 @@
                     {
                         "lang": "python",
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "description": "When set, returns only models with this exact name, if any. On a team-scoped route this matches at most one model; on the org-wide route it may match models in multiple teams, since names are unique only within a team.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Name"
+                        }
                     }
                 ],
                 "responses": {
@@ -832,6 +892,26 @@
                     {
                         "lang": "python",
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "description": "When set, returns only the deployment with this exact name, if any.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Name"
+                        }
                     }
                 ],
                 "responses": {
@@ -6481,6 +6561,24 @@
                             "title": "Limit",
                             "type": "integer"
                         }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": false,
+                        "description": "When set, returns only users with this exact email, if any.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Email"
+                        }
                     }
                 ],
                 "responses": {
@@ -7337,6 +7435,26 @@
                 "title": "TeamsV1",
                 "type": "object"
             },
+            "TeamsRequestV1": {
+                "description": "Request parameters for listing teams.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "When set, returns only the team with this exact name, if any.",
+                        "title": "Name"
+                    }
+                },
+                "title": "TeamsRequestV1",
+                "type": "object"
+            },
             "InstanceTypeV1": {
                 "description": "An instance type.",
                 "properties": {
@@ -7928,6 +8046,26 @@
                 "title": "ModelsV1",
                 "type": "object"
             },
+            "ModelsRequestV1": {
+                "description": "Request parameters for listing models.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "When set, returns only models with this exact name, if any. On a team-scoped route this matches at most one model; on the org-wide route it may match models in multiple teams, since names are unique only within a team.",
+                        "title": "Name"
+                    }
+                },
+                "title": "ModelsRequestV1",
+                "type": "object"
+            },
             "LibraryListingSourceV1": {
                 "description": "Create a model by forking a library listing accessible to the caller's organization.",
                 "properties": {
@@ -8313,6 +8451,26 @@
                     "deployments"
                 ],
                 "title": "DeploymentsV1",
+                "type": "object"
+            },
+            "DeploymentsRequestV1": {
+                "description": "Request parameters for listing a model's deployments.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "When set, returns only the deployment with this exact name, if any.",
+                        "title": "Name"
+                    }
+                },
+                "title": "DeploymentsRequestV1",
                 "type": "object"
             },
             "DeploymentArchiveSourceV1": {
@@ -17670,6 +17828,19 @@
                         "minimum": 1,
                         "title": "Limit",
                         "type": "integer"
+                    },
+                    "email": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "When set, returns only users with this exact email, if any.",
+                        "title": "Email"
                     }
                 },
                 "title": "UsersRequestV1",

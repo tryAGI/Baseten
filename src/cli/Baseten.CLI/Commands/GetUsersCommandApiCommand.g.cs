@@ -19,6 +19,12 @@ internal static partial class GetUsersCommandApiCommand
         Description = @"Maximum number of items to return.",
     };
 
+    private static Option<string?> Email { get; } = new(
+        name: @"--email")
+    {
+        Description = @"When set, returns only users with this exact email, if any.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.UsersResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -45,6 +51,7 @@ internal static partial class GetUsersCommandApiCommand
 Returns the workspace's members. Only actual joined members are returned; service accounts, invited users, and pending join requests are excluded.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
+                        command.Options.Add(Email);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -52,12 +59,14 @@ Returns the workspace's members. Only actual joined members are returned; servic
             {
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
+                        var email = parseResult.GetValue(Email);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetUsersAsync(
                                     cursor: cursor,
                                     limit: limit,
+                                    email: email,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

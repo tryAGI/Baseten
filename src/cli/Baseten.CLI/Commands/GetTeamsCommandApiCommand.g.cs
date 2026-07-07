@@ -7,7 +7,11 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetTeamsCommandApiCommand
 {
-
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"When set, returns only the team with this exact name, if any.",
+    };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.TeamsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -33,18 +37,18 @@ internal static partial class GetTeamsCommandApiCommand
     {
         var command = new Command(@"get-teams", @"Lists all teams
 Returns a list of all teams the authenticated user has access to.");
-
+                        command.Options.Add(NameOption);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-
+                        var name = parseResult.GetValue(NameOption);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetTeamsAsync(
-
+                                    name: name,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

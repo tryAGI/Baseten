@@ -27,10 +27,12 @@ namespace Baseten
             };
         partial void PrepareGetTeamsByTeamIdModelsArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? name,
             ref string teamId);
         partial void PrepareGetTeamsByTeamIdModelsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? name,
             string teamId);
         partial void ProcessGetTeamsByTeamIdModelsResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -44,6 +46,9 @@ namespace Baseten
         /// <summary>
         /// Gets all models
         /// </summary>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -55,11 +60,13 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ModelsV1> GetTeamsByTeamIdModelsAsync(
             string teamId,
+            string? name = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetTeamsByTeamIdModelsAsResponseAsync(
                 teamId: teamId,
+                name: name,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -69,6 +76,9 @@ namespace Baseten
         /// <summary>
         /// Gets all models
         /// </summary>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -80,6 +90,7 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ModelsV1>> GetTeamsByTeamIdModelsAsResponseAsync(
             string teamId,
+            string? name = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -87,6 +98,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetTeamsByTeamIdModelsArguments(
                 httpClient: HttpClient,
+                name: ref name,
                 teamId: ref teamId);
 
 
@@ -115,6 +127,9 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/teams/{teamId}/models",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("name", name)
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -155,6 +170,7 @@ namespace Baseten
                 PrepareGetTeamsByTeamIdModelsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    name: name,
                     teamId: teamId!);
 
                 return __httpRequest;

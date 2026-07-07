@@ -27,10 +27,12 @@ namespace Baseten
             };
         partial void PrepareGetModelsByModelIdDeploymentsArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? name,
             ref string modelId);
         partial void PrepareGetModelsByModelIdDeploymentsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? name,
             string modelId);
         partial void ProcessGetModelsByModelIdDeploymentsResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -44,6 +46,9 @@ namespace Baseten
         /// <summary>
         /// Gets all deployments of a model
         /// </summary>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -55,11 +60,13 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.DeploymentsV1> GetModelsByModelIdDeploymentsAsync(
             string modelId,
+            string? name = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetModelsByModelIdDeploymentsAsResponseAsync(
                 modelId: modelId,
+                name: name,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -69,6 +76,9 @@ namespace Baseten
         /// <summary>
         /// Gets all deployments of a model
         /// </summary>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -80,6 +90,7 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeploymentsV1>> GetModelsByModelIdDeploymentsAsResponseAsync(
             string modelId,
+            string? name = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -87,6 +98,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetModelsByModelIdDeploymentsArguments(
                 httpClient: HttpClient,
+                name: ref name,
                 modelId: ref modelId);
 
 
@@ -115,6 +127,9 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/models/{modelId}/deployments",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("name", name)
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -155,6 +170,7 @@ namespace Baseten
                 PrepareGetModelsByModelIdDeploymentsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    name: name,
                     modelId: modelId!);
 
                 return __httpRequest;
