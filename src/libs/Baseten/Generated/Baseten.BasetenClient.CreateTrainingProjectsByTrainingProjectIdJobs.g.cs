@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Create a training job.<br/>
+        /// Creates a training job<br/>
         /// Creates a training job with the specified configuration.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -130,7 +130,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create a training job.<br/>
+        /// Creates a training job<br/>
         /// Creates a training job with the specified configuration.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -563,7 +563,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create a training job.<br/>
+        /// Creates a training job<br/>
         /// Creates a training job with the specified configuration.
         /// </summary>
         /// <param name="trainingProjectId"></param>

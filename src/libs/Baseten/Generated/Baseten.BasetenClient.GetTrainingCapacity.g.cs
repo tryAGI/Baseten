@@ -40,7 +40,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get training GPU capacity.<br/>
+        /// Gets training GPU capacity<br/>
         /// Returns GPU capacity limits (baseline and peak) and current usage for the organization.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -63,7 +63,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get training GPU capacity.<br/>
+        /// Gets training GPU capacity<br/>
         /// Returns GPU capacity limits (baseline and peak) and current usage for the organization.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

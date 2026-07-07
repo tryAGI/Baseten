@@ -31,7 +31,7 @@ internal static partial class GetGatewayGroupsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-gateway-groups", @"List groups");
+        var command = new Command(@"get-gateway-groups", @"Lists groups");
 
 
 

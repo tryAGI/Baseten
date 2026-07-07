@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get training job checkpoints.<br/>
-        /// Get the checkpoints for a training job.
+        /// Gets training job checkpoints<br/>
+        /// Gets the checkpoints for a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -24,8 +24,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get training job checkpoints.<br/>
-        /// Get the checkpoints for a training job.
+        /// Gets training job checkpoints<br/>
+        /// Gets the checkpoints for a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

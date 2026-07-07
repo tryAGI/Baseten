@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Upsert a training project in a specific team.<br/>
+        /// Upserts a training project in a specific team<br/>
         /// Upserts a training project with the specified metadata for a team.
         /// </summary>
         /// <param name="teamId"></param>
@@ -80,7 +80,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Upsert a training project in a specific team.<br/>
+        /// Upserts a training project in a specific team<br/>
         /// Upserts a training project with the specified metadata for a team.
         /// </summary>
         /// <param name="teamId"></param>
@@ -463,7 +463,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Upsert a training project in a specific team.<br/>
+        /// Upserts a training project in a specific team<br/>
         /// Upserts a training project with the specified metadata for a team.
         /// </summary>
         /// <param name="teamId"></param>

@@ -35,7 +35,7 @@ internal static partial class GetGatewayGroupsByGroupIdApiKeysCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-gateway-groups-by-group-id-api-keys", @"List API keys for a group");
+        var command = new Command(@"get-gateway-groups-by-group-id-api-keys", @"Lists API keys for a group");
                         command.Arguments.Add(GroupId);
 
 

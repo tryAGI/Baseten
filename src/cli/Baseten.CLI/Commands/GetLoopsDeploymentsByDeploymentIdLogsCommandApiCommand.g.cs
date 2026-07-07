@@ -65,8 +65,8 @@ internal static partial class GetLoopsDeploymentsByDeploymentIdLogsCommandApiCom
 
     public static Command Create()
     {
-        var command = new Command(@"get-loops-deployments-by-deployment-id-logs", @"Get logs for a Loops trainer deployment.
-Fetch logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.");
+        var command = new Command(@"get-loops-deployments-by-deployment-id-logs", @"Gets logs for a Loops trainer deployment
+Fetches logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.");
                         command.Arguments.Add(DeploymentId);
                         command.Options.Add(StartEpochMillis);
                         command.Options.Add(EndEpochMillis);

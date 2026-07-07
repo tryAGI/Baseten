@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Register an API key for a group<br/>
-        /// Registers a Gateway API key with provided value, name.
+        /// Registers an API key for a group<br/>
+        /// Registers a Gateway API key with the provided value and name.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -29,8 +29,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Register an API key for a group<br/>
-        /// Registers a Gateway API key with provided value, name.
+        /// Registers an API key for a group<br/>
+        /// Registers a Gateway API key with the provided value and name.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -53,8 +53,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Register an API key for a group<br/>
-        /// Registers a Gateway API key with provided value, name.
+        /// Registers an API key for a group<br/>
+        /// Registers a Gateway API key with the provided value and name.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="name">

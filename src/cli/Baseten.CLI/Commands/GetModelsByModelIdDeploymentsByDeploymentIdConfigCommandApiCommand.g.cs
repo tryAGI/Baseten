@@ -22,7 +22,7 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdConfigC
     private static Option<global::Baseten.DeploymentConfigOutputFormat?> OutputFormat { get; } = new(
         name: @"--output-format")
     {
-        Description = @"'raw': verbatim config.yaml with comments — not available for deployments created before 2026-04-30. 'parsed': dict with server-side defaults applied — always available. 'both': both fields populated.",
+        Description = @"'raw': verbatim config.yaml with comments (not available for deployments created before 2026-04-30). 'parsed': dict with server-side defaults applied (always available). 'both': both fields populated.",
     };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.DeploymentConfigResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)

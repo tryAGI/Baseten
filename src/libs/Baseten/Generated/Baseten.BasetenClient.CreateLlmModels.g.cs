@@ -42,7 +42,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Creates a new BIS LLM deployment
+        /// Creates a new BIS-LLM deployment
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -103,7 +103,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Creates a new BIS LLM deployment
+        /// Creates a new BIS-LLM deployment
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -510,7 +510,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Creates a new BIS LLM deployment
+        /// Creates a new BIS-LLM deployment
         /// </summary>
         /// <param name="resources">
         /// Resources allocated to the model

@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get the latest model weight snapshot<br/>
+        /// Gets the latest model weight snapshot<br/>
         /// Gets the most recent model weight snapshot for the specified model.
         /// </summary>
         /// <param name="modelId"></param>
@@ -22,7 +22,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get the latest model weight snapshot<br/>
+        /// Gets the latest model weight snapshot<br/>
         /// Gets the most recent model weight snapshot for the specified model.
         /// </summary>
         /// <param name="modelId"></param>

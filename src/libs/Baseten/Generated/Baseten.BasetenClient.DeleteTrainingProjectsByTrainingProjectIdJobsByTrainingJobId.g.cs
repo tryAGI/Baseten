@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Delete a training job.<br/>
+        /// Deletes a training job<br/>
         /// Deletes a training job. Stops it first if still running.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -73,7 +73,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Delete a training job.<br/>
+        /// Deletes a training job<br/>
         /// Deletes a training job. Stops it first if still running.
         /// </summary>
         /// <param name="trainingProjectId"></param>

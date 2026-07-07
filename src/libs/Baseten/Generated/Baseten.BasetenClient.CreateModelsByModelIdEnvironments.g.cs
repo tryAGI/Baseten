@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Create an environment<br/>
+        /// Creates an environment<br/>
         /// Creates an environment for the specified model and returns the environment.
         /// </summary>
         /// <param name="modelId"></param>
@@ -96,7 +96,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create an environment<br/>
+        /// Creates an environment<br/>
         /// Creates an environment for the specified model and returns the environment.
         /// </summary>
         /// <param name="modelId"></param>
@@ -495,7 +495,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create an environment<br/>
+        /// Creates an environment<br/>
         /// Creates an environment for the specified model and returns the environment.
         /// </summary>
         /// <param name="modelId"></param>

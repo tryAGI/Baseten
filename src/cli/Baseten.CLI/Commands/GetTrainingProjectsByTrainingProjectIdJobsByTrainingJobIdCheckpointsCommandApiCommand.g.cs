@@ -41,8 +41,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-checkpoints", @"Get training job checkpoints.
-Get the checkpoints for a training job.");
+        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-checkpoints", @"Gets training job checkpoints
+Gets the checkpoints for a training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
 

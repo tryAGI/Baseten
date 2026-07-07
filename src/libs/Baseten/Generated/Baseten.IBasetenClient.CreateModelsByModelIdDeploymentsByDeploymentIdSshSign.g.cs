@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Sign an SSH certificate for an inference model.<br/>
+        /// Signs an SSH certificate for an inference model<br/>
         /// Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="modelId"></param>
@@ -31,7 +31,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Sign an SSH certificate for an inference model.<br/>
+        /// Signs an SSH certificate for an inference model<br/>
         /// Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="modelId"></param>
@@ -57,7 +57,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Sign an SSH certificate for an inference model.<br/>
+        /// Signs an SSH certificate for an inference model<br/>
         /// Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="modelId"></param>

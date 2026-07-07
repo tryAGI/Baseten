@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Stage a patch against a development deployment.<br/>
+        /// Stages a patch against a development deployment<br/>
         /// Persists a patch durably without applying it; call the sync endpoint to apply staged patches to the running deployment. The target must be a development deployment (its archive created with `is_development` set to `true`); patching any other deployment is rejected.
         /// </summary>
         /// <param name="modelId"></param>
@@ -35,7 +35,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Stage a patch against a development deployment.<br/>
+        /// Stages a patch against a development deployment<br/>
         /// Persists a patch durably without applying it; call the sync endpoint to apply staged patches to the running deployment. The target must be a development deployment (its archive created with `is_development` set to `true`); patching any other deployment is rejected.
         /// </summary>
         /// <param name="modelId"></param>
@@ -65,7 +65,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Stage a patch against a development deployment.<br/>
+        /// Stages a patch against a development deployment<br/>
         /// Persists a patch durably without applying it; call the sync endpoint to apply staged patches to the running deployment. The target must be a development deployment (its archive created with `is_development` set to `true`); patching any other deployment is rejected.
         /// </summary>
         /// <param name="modelId"></param>

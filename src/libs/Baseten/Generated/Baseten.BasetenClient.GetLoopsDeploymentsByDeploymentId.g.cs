@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get a Loops deployment.<br/>
-        /// Fetch a Loops deployment by ID, including its latest status.
+        /// Gets a Loops deployment<br/>
+        /// Fetches a Loops deployment by ID, including its latest status.
         /// </summary>
         /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,8 +68,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get a Loops deployment.<br/>
-        /// Fetch a Loops deployment by ID, including its latest status.
+        /// Gets a Loops deployment<br/>
+        /// Fetches a Loops deployment by ID, including its latest status.
         /// </summary>
         /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

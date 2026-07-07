@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Creates a new BIS LLM deployment version
+        /// Creates a new BIS-LLM deployment version
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="request"></param>
@@ -57,7 +57,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Creates a new BIS LLM deployment version
+        /// Creates a new BIS-LLM deployment version
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="request"></param>
@@ -109,7 +109,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Creates a new BIS LLM deployment version
+        /// Creates a new BIS-LLM deployment version
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="resources">

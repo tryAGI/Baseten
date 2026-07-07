@@ -59,8 +59,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-metrics", @"Get the metrics for a training job.
-Get the metrics for a training job.");
+        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-metrics", @"Gets the metrics for a training job
+Gets the metrics for a training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
                         command.Options.Add(EndEpochMillis);

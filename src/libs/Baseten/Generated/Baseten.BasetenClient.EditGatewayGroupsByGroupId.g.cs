@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Update a group<br/>
-        /// Updates the group's mutable fields
+        /// Updates a group<br/>
+        /// Updates the group's mutable fields.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -81,8 +81,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Update a group<br/>
-        /// Updates the group's mutable fields
+        /// Updates a group<br/>
+        /// Updates the group's mutable fields.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -465,8 +465,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Update a group<br/>
-        /// Updates the group's mutable fields
+        /// Updates a group<br/>
+        /// Updates the group's mutable fields.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="metadata">

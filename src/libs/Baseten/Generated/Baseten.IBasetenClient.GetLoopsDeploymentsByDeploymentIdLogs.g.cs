@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get logs for a Loops trainer deployment.<br/>
-        /// Fetch logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.
+        /// Gets logs for a Loops trainer deployment<br/>
+        /// Fetches logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -42,8 +42,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get logs for a Loops trainer deployment.<br/>
-        /// Fetch logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.
+        /// Gets logs for a Loops trainer deployment<br/>
+        /// Fetches logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

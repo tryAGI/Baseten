@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get metrics for a Loops trainer deployment.<br/>
+        /// Gets metrics for a Loops trainer deployment<br/>
         /// Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate / concurrency / latency for the trainer pods. The sampler half of a Loops deployment is an OracleVersion and uses the existing model-metrics endpoint.
         /// </summary>
         /// <param name="deploymentId"></param>
@@ -31,7 +31,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get metrics for a Loops trainer deployment.<br/>
+        /// Gets metrics for a Loops trainer deployment<br/>
         /// Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate / concurrency / latency for the trainer pods. The sampler half of a Loops deployment is an OracleVersion and uses the existing model-metrics endpoint.
         /// </summary>
         /// <param name="deploymentId"></param>
@@ -57,7 +57,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get metrics for a Loops trainer deployment.<br/>
+        /// Gets metrics for a Loops trainer deployment<br/>
         /// Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate / concurrency / latency for the trainer pods. The sampler half of a Loops deployment is an OracleVersion and uses the existing model-metrics endpoint.
         /// </summary>
         /// <param name="deploymentId"></param>

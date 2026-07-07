@@ -53,7 +53,7 @@ internal static partial class EditEnvironmentGroupsByEnvNameCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"edit-environment-groups-by-env-name", @"Updates an environment group's restriction settings
-Sets whether the environment is restricted and replaces the list of users granted manage access. Targets the team specified in the path, or the caller's organization default team when no team is specified.");
+Sets whether the environment is restricted and replaces the list of users granted manage access. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.");
                         command.Arguments.Add(EnvName);                        command.Options.Add(ManageAccessOptions.IsRestricted);
                         command.Options.Add(ManageAccessOptions.UserIds);
           command.Options.Add(Input);

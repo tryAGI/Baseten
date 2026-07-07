@@ -41,7 +41,7 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameCommandApiC
 
     public static Command Create()
     {
-        var command = new Command(@"get-models-by-model-id-environments-by-env-name", @"Get an environment's details
+        var command = new Command(@"get-models-by-model-id-environments-by-env-name", @"Gets an environment's details
 Gets an environment's details and returns the environment.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

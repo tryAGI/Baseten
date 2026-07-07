@@ -46,7 +46,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Stop a training job.<br/>
+        /// Stops a training job<br/>
         /// Stops a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -81,7 +81,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Stop a training job.<br/>
+        /// Stops a training job<br/>
         /// Stops a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -464,7 +464,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Stop a training job.<br/>
+        /// Stops a training job<br/>
         /// Stops a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>

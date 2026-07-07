@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// List Loops runs.<br/>
-        /// List Loops runs visible to the requesting user, optionally filtered by run id and/or base model.
+        /// Lists Loops runs<br/>
+        /// Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -77,8 +77,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// List Loops runs.<br/>
-        /// List Loops runs visible to the requesting user, optionally filtered by run id and/or base model.
+        /// Lists Loops runs<br/>
+        /// Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

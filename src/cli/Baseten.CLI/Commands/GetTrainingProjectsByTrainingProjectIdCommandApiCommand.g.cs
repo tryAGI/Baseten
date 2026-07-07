@@ -35,8 +35,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdCommandApiCo
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects-by-training-project-id", @"Get a training project.
-Get the details of an existing training project.");
+        var command = new Command(@"get-training-projects-by-training-project-id", @"Gets a training project
+Gets the details of an existing training project.");
                         command.Arguments.Add(TrainingProjectId);
 
 

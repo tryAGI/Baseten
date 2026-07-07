@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get Loops checkpoint files.<br/>
-        /// Get presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
+        /// Gets Loops checkpoint files<br/>
+        /// Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
         /// </summary>
         /// <param name="checkpointId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,8 +22,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get Loops checkpoint files.<br/>
-        /// Get presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
+        /// Gets Loops checkpoint files<br/>
+        /// Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
         /// </summary>
         /// <param name="checkpointId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

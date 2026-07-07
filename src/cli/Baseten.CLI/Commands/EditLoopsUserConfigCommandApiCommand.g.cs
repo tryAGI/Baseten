@@ -57,7 +57,7 @@ internal static partial class EditLoopsUserConfigCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"edit-loops-user-config", @"Patch the caller's Loops user config.
+        var command = new Command(@"edit-loops-user-config", @"Patches the caller's Loops user config
 Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semantics per field: omit a field to leave it unchanged, send null to clear (inherit the org-level allowlist), or send a list to set the allowlist. Empty lists are rejected.");
                         command.Options.Add(TrainerAcceleratorPriority);
                         command.Options.Add(SamplerAcceleratorPriority);

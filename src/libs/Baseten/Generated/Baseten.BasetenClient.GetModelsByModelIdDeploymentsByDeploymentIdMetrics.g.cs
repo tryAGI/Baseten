@@ -52,7 +52,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Gets the metrics for a model deployment.<br/>
+        /// Gets the metrics for a model deployment<br/>
         /// Gets the metrics for a model deployment in the given time range.
         /// </summary>
         /// <param name="mode">
@@ -100,7 +100,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets the metrics for a model deployment.<br/>
+        /// Gets the metrics for a model deployment<br/>
         /// Gets the metrics for a model deployment in the given time range.
         /// </summary>
         /// <param name="mode">

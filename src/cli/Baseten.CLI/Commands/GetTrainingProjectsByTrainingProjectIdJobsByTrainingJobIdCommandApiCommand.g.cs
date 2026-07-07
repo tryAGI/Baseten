@@ -41,8 +41,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id", @"Get a training job.
-Get the details of an existing training job.");
+        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id", @"Gets a training job
+Gets the details of an existing training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
 

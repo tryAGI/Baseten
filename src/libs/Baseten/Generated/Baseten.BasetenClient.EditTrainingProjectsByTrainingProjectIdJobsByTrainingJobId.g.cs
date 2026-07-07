@@ -46,8 +46,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Update a training job.<br/>
-        /// Update mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
+        /// Updates a training job<br/>
+        /// Updates mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -83,8 +83,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Update a training job.<br/>
-        /// Update mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
+        /// Updates a training job<br/>
+        /// Updates mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -468,8 +468,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Update a training job.<br/>
-        /// Update mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
+        /// Updates a training job<br/>
+        /// Updates mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

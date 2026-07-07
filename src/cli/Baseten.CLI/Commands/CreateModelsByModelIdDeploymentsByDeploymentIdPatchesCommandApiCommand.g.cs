@@ -62,7 +62,7 @@ internal static partial class CreateModelsByModelIdDeploymentsByDeploymentIdPatc
 
     public static Command Create()
     {
-        var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-patches", @"Stage a patch against a development deployment.
+        var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-patches", @"Stages a patch against a development deployment
 Persists a patch durably without applying it; call the sync endpoint to apply staged patches to the running deployment. The target must be a development deployment (its archive created with `is_development` set to `true`); patching any other deployment is rejected.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

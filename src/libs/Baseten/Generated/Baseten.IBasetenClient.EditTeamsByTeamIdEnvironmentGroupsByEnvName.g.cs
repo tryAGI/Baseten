@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Updates an environment group's restriction settings<br/>
-        /// Sets whether the environment is restricted and replaces the list of users granted manage access. Targets the team specified in the path, or the caller's organization default team when no team is specified.
+        /// Sets whether the environment is restricted and replaces the list of users granted manage access. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="envName"></param>
@@ -31,7 +31,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates an environment group's restriction settings<br/>
-        /// Sets whether the environment is restricted and replaces the list of users granted manage access. Targets the team specified in the path, or the caller's organization default team when no team is specified.
+        /// Sets whether the environment is restricted and replaces the list of users granted manage access. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="envName"></param>
@@ -56,7 +56,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates an environment group's restriction settings<br/>
-        /// Sets whether the environment is restricted and replaces the list of users granted manage access. Targets the team specified in the path, or the caller's organization default team when no team is specified.
+        /// Sets whether the environment is restricted and replaces the list of users granted manage access. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="envName"></param>

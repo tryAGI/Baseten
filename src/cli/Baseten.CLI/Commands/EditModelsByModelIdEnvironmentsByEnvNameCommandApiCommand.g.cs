@@ -60,7 +60,7 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
 
     public static Command Create()
     {
-        var command = new Command(@"edit-models-by-model-id-environments-by-env-name", @"Update an environment's settings
+        var command = new Command(@"edit-models-by-model-id-environments-by-env-name", @"Updates an environment's settings
 Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);

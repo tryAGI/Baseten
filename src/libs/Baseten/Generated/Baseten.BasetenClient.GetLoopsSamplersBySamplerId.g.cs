@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get a Loops sampler.<br/>
-        /// Fetch a Loops sampler by ID.
+        /// Gets a Loops sampler<br/>
+        /// Fetches a Loops sampler by ID.
         /// </summary>
         /// <param name="samplerId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,8 +68,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get a Loops sampler.<br/>
-        /// Fetch a Loops sampler by ID.
+        /// Gets a Loops sampler<br/>
+        /// Fetches a Loops sampler by ID.
         /// </summary>
         /// <param name="samplerId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

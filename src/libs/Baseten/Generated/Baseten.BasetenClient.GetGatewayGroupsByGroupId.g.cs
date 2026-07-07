@@ -42,7 +42,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get a group
+        /// Gets a group
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -67,7 +67,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get a group
+        /// Gets a group
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

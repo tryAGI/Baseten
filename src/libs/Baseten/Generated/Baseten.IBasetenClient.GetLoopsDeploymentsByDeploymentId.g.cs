@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get a Loops deployment.<br/>
-        /// Fetch a Loops deployment by ID, including its latest status.
+        /// Gets a Loops deployment<br/>
+        /// Fetches a Loops deployment by ID, including its latest status.
         /// </summary>
         /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,8 +22,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get a Loops deployment.<br/>
-        /// Fetch a Loops deployment by ID, including its latest status.
+        /// Gets a Loops deployment<br/>
+        /// Fetches a Loops deployment by ID, including its latest status.
         /// </summary>
         /// <param name="deploymentId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

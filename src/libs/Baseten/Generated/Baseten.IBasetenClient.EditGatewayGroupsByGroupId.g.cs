@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Update a group<br/>
-        /// Updates the group's mutable fields
+        /// Updates a group<br/>
+        /// Updates the group's mutable fields.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -31,8 +31,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a group<br/>
-        /// Updates the group's mutable fields
+        /// Updates a group<br/>
+        /// Updates the group's mutable fields.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -57,8 +57,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a group<br/>
-        /// Updates the group's mutable fields
+        /// Updates a group<br/>
+        /// Updates the group's mutable fields.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="metadata">

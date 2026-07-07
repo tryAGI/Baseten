@@ -42,7 +42,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Delete a training project.<br/>
+        /// Deletes a training project<br/>
         /// Deletes a training project and all associated training jobs.
         /// </summary>
         /// <param name="trainingProjectId"></param>
@@ -68,7 +68,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Delete a training project.<br/>
+        /// Deletes a training project<br/>
         /// Deletes a training project and all associated training jobs.
         /// </summary>
         /// <param name="trainingProjectId"></param>

@@ -35,8 +35,8 @@ internal static partial class GetChainsByChainIdEnvironmentsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-chains-by-chain-id-environments", @"Get all chain environments
-Gets all chain environments for a given chain");
+        var command = new Command(@"get-chains-by-chain-id-environments", @"Gets all chain environments
+Gets all chain environments for a given chain.");
                         command.Arguments.Add(ChainId);
 
 

@@ -36,7 +36,7 @@ internal static partial class CreateModelApisSnapshotsByModelIdCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-model-apis-snapshots-by-model-id", @"Create a model weight snapshot
+        var command = new Command(@"create-model-apis-snapshots-by-model-id", @"Creates a model weight snapshot
 Creates a model weight snapshot for the specified model and returns the snapshot.");
                         command.Arguments.Add(ModelId);                        command.Options.Add(CreateModelWeightSnapshotRequestV1OptionSetOptions.Model);
                         command.Options.Add(CreateModelWeightSnapshotRequestV1OptionSetOptions.SnapshotUri);

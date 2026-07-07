@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Create a model weight snapshot<br/>
+        /// Creates a model weight snapshot<br/>
         /// Creates a model weight snapshot for the specified model and returns the snapshot.
         /// </summary>
         /// <param name="request"></param>
@@ -27,7 +27,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create a model weight snapshot<br/>
+        /// Creates a model weight snapshot<br/>
         /// Creates a model weight snapshot for the specified model and returns the snapshot.
         /// </summary>
         /// <param name="request"></param>
@@ -49,7 +49,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create a model weight snapshot<br/>
+        /// Creates a model weight snapshot<br/>
         /// Creates a model weight snapshot for the specified model and returns the snapshot.
         /// </summary>
         /// <param name="model">

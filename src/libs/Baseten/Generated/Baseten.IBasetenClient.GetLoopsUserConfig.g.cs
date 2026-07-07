@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get the caller's Loops user config.<br/>
+        /// Gets the caller's Loops user config<br/>
         /// Returns the caller's Loops user config (per-user accelerator priorities). Null fields mean 'inherit the org-level allowlist'.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -20,7 +20,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get the caller's Loops user config.<br/>
+        /// Gets the caller's Loops user config<br/>
         /// Returns the caller's Loops user config (per-user accelerator priorities). Null fields mean 'inherit the org-level allowlist'.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

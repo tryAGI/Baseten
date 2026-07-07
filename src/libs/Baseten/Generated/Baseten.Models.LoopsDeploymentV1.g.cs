@@ -19,6 +19,13 @@ namespace Baseten
         public required string Id { get; set; }
 
         /// <summary>
+        /// The ID of the run currently active on this deployment, if any. Null when the deployment's runs have been marked inactive (e.g. scale-to-zero) without a successor.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("active_run_id")]
+        public string? ActiveRunId { get; set; }
+
+        /// <summary>
         /// The HuggingFace base model the deployment is fine-tuning.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_model")]
@@ -77,6 +84,10 @@ namespace Baseten
         /// <param name="user">
         /// The user who owns the Loops deployment.
         /// </param>
+        /// <param name="activeRunId">
+        /// The ID of the run currently active on this deployment, if any. Null when the deployment's runs have been marked inactive (e.g. scale-to-zero) without a successor.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="sampler">
         /// The sampler bound to this deployment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -90,9 +101,11 @@ namespace Baseten
             string baseUrl,
             global::Baseten.LoopsDeploymentStatusV1 status,
             global::Baseten.UserV1 user,
+            string? activeRunId,
             global::Baseten.LoopsSamplerV1? sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.ActiveRunId = activeRunId;
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));

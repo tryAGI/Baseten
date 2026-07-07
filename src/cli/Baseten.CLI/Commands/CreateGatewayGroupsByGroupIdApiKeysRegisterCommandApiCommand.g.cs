@@ -64,8 +64,8 @@ internal static partial class CreateGatewayGroupsByGroupIdApiKeysRegisterCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-gateway-groups-by-group-id-api-keys-register", @"Register an API key for a group
-Registers a Gateway API key with provided value, name.");
+        var command = new Command(@"create-gateway-groups-by-group-id-api-keys-register", @"Registers an API key for a group
+Registers a Gateway API key with the provided value and name.");
                         command.Arguments.Add(GroupId);
                         command.Options.Add(NameOption);
                         command.Options.Add(Key);

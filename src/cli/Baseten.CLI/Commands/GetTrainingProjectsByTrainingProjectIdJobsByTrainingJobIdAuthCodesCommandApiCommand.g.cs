@@ -41,8 +41,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-auth-codes", @"Get auth codes for a training job.
-Get authentication codes for all nodes of a training job's interactive sessions.");
+        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-auth-codes", @"Gets auth codes for a training job
+Gets authentication codes for all nodes of a training job's interactive sessions.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
 

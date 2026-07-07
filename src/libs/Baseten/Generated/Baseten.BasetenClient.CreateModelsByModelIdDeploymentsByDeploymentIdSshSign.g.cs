@@ -46,7 +46,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Sign an SSH certificate for an inference model.<br/>
+        /// Signs an SSH certificate for an inference model<br/>
         /// Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="modelId"></param>
@@ -84,7 +84,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Sign an SSH certificate for an inference model.<br/>
+        /// Signs an SSH certificate for an inference model<br/>
         /// Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="modelId"></param>
@@ -470,7 +470,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Sign an SSH certificate for an inference model.<br/>
+        /// Signs an SSH certificate for an inference model<br/>
         /// Signs a short-lived SSH certificate granting access to a running inference model pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.
         /// </summary>
         /// <param name="modelId"></param>

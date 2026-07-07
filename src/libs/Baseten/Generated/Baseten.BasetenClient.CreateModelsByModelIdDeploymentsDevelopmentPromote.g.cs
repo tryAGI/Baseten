@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Promotes a development deployment to production<br/>
-        /// Creates a new production deployment from the development deployment, the currently building deployment is returned.
+        /// Creates a new production deployment from the development deployment and returns the deployment that is building.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="request"></param>
@@ -80,7 +80,7 @@ namespace Baseten
         }
         /// <summary>
         /// Promotes a development deployment to production<br/>
-        /// Creates a new production deployment from the development deployment, the currently building deployment is returned.
+        /// Creates a new production deployment from the development deployment and returns the deployment that is building.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="request"></param>
@@ -462,7 +462,7 @@ namespace Baseten
         }
         /// <summary>
         /// Promotes a development deployment to production<br/>
-        /// Creates a new production deployment from the development deployment, the currently building deployment is returned.
+        /// Creates a new production deployment from the development deployment and returns the deployment that is building.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="scaleDownPreviousProduction">

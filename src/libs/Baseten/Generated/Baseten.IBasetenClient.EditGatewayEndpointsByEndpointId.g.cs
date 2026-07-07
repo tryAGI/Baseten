@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Update a Gateway endpoint<br/>
+        /// Updates a Gateway endpoint<br/>
         /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
         /// </summary>
         /// <param name="endpointId"></param>
@@ -35,7 +35,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a Gateway endpoint<br/>
+        /// Updates a Gateway endpoint<br/>
         /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
         /// </summary>
         /// <param name="endpointId"></param>
@@ -65,7 +65,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update a Gateway endpoint<br/>
+        /// Updates a Gateway endpoint<br/>
         /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
         /// </summary>
         /// <param name="endpointId"></param>

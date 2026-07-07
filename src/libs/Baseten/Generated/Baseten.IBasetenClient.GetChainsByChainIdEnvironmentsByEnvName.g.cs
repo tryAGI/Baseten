@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get a chain environment's details<br/>
+        /// Gets a chain environment's details<br/>
         /// Gets a chain environment's details and returns the chain environment.
         /// </summary>
         /// <param name="chainId"></param>
@@ -24,7 +24,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get a chain environment's details<br/>
+        /// Gets a chain environment's details<br/>
         /// Gets a chain environment's details and returns the chain environment.
         /// </summary>
         /// <param name="chainId"></param>

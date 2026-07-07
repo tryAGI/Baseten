@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Recreate a training job<br/>
-        /// Create a new training job with the same configuration as an existing training job.
+        /// Recreates a training job<br/>
+        /// Creates a new training job with the same configuration as an existing training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -73,8 +73,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Recreate a training job<br/>
-        /// Create a new training job with the same configuration as an existing training job.
+        /// Recreates a training job<br/>
+        /// Creates a new training job with the same configuration as an existing training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

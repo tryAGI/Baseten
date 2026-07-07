@@ -36,8 +36,8 @@ internal static partial class CreateLoopsCheckpointsValidateCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-loops-checkpoints-validate", @"Validate a Loops checkpoint bt:// URI.
-Whether the caller can manage and use this checkpoint.");
+        var command = new Command(@"create-loops-checkpoints-validate", @"Validates a Loops checkpoint bt:// URI
+Returns whether the caller can manage and use this checkpoint.");
                         command.Options.Add(CheckpointPath);
 
 

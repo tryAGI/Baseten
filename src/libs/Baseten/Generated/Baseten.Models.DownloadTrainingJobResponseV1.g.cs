@@ -4,12 +4,12 @@
 namespace Baseten
 {
     /// <summary>
-    /// A response that includes the artifacts for a training job
+    /// A response with presigned URLs for a training job's artifacts.
     /// </summary>
     public sealed partial class DownloadTrainingJobResponseV1
     {
         /// <summary>
-        /// Presigned URL's for the artifacts
+        /// Presigned URLs for the job's uploaded artifacts.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("artifact_presigned_urls")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -25,7 +25,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="DownloadTrainingJobResponseV1" /> class.
         /// </summary>
         /// <param name="artifactPresignedUrls">
-        /// Presigned URL's for the artifacts
+        /// Presigned URLs for the job's uploaded artifacts.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

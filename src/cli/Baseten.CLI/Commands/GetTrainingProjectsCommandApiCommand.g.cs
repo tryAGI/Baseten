@@ -31,8 +31,8 @@ internal static partial class GetTrainingProjectsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects", @"List training projects.
-List all training projects for the organization.");
+        var command = new Command(@"get-training-projects", @"Lists training projects
+Lists all training projects for the organization.");
 
 
 

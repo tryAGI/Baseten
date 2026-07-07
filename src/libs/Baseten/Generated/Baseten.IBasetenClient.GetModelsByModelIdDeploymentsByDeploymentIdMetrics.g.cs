@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Gets the metrics for a model deployment.<br/>
+        /// Gets the metrics for a model deployment<br/>
         /// Gets the metrics for a model deployment in the given time range.
         /// </summary>
         /// <param name="mode">
@@ -39,7 +39,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Gets the metrics for a model deployment.<br/>
+        /// Gets the metrics for a model deployment<br/>
         /// Gets the metrics for a model deployment in the given time range.
         /// </summary>
         /// <param name="mode">

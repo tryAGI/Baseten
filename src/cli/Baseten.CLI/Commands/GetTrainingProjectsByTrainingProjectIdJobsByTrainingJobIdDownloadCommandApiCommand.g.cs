@@ -41,8 +41,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     public static Command Create()
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-download", @"Get the uploaded training job as a S3 Artifact
-Get the uploaded training job as a S3 Artifact");
+        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-download", @"Gets presigned URLs for a training job's artifacts
+Returns presigned S3 URLs for the artifacts uploaded by a training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
 

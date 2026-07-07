@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get the uploaded training job as a S3 Artifact<br/>
-        /// Get the uploaded training job as a S3 Artifact
+        /// Gets presigned URLs for a training job's artifacts<br/>
+        /// Returns presigned S3 URLs for the artifacts uploaded by a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -73,8 +73,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get the uploaded training job as a S3 Artifact<br/>
-        /// Get the uploaded training job as a S3 Artifact
+        /// Gets presigned URLs for a training job's artifacts<br/>
+        /// Returns presigned S3 URLs for the artifacts uploaded by a training job.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

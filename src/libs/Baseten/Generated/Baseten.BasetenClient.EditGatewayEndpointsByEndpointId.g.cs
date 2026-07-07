@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Update a Gateway endpoint<br/>
+        /// Updates a Gateway endpoint<br/>
         /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
         /// </summary>
         /// <param name="endpointId"></param>
@@ -85,7 +85,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Update a Gateway endpoint<br/>
+        /// Updates a Gateway endpoint<br/>
         /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
         /// </summary>
         /// <param name="endpointId"></param>
@@ -473,7 +473,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Update a Gateway endpoint<br/>
+        /// Updates a Gateway endpoint<br/>
         /// Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.
         /// </summary>
         /// <param name="endpointId"></param>

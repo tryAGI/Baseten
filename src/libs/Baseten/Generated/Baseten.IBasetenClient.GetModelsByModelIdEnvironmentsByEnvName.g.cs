@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get an environment's details<br/>
+        /// Gets an environment's details<br/>
         /// Gets an environment's details and returns the environment.
         /// </summary>
         /// <param name="modelId"></param>
@@ -24,7 +24,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get an environment's details<br/>
+        /// Gets an environment's details<br/>
         /// Gets an environment's details and returns the environment.
         /// </summary>
         /// <param name="modelId"></param>

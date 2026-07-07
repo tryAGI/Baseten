@@ -31,7 +31,7 @@ internal static partial class GetLoopsUserConfigCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-loops-user-config", @"Get the caller's Loops user config.
+        var command = new Command(@"get-loops-user-config", @"Gets the caller's Loops user config
 Returns the caller's Loops user config (per-user accelerator priorities). Null fields mean 'inherit the org-level allowlist'.");
 
 

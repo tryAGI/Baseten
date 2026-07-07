@@ -63,8 +63,8 @@ internal static partial class EditGatewayGroupsByGroupIdCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"edit-gateway-groups-by-group-id", @"Update a group
-Updates the group's mutable fields");
+        var command = new Command(@"edit-gateway-groups-by-group-id", @"Updates a group
+Updates the group's mutable fields.");
                         command.Arguments.Add(GroupId);
                         command.Options.Add(Metadata);
                         command.Options.Add(Models);

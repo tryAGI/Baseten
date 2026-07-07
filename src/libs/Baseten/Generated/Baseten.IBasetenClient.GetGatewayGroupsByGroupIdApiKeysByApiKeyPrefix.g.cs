@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get an API key for a group
+        /// Gets an API key for a group
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="apiKeyPrefix"></param>
@@ -23,7 +23,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get an API key for a group
+        /// Gets an API key for a group
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="apiKeyPrefix"></param>

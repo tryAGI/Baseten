@@ -68,7 +68,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Gets the logs for a chainlet within a chain deployment.<br/>
+        /// Gets the logs for a chainlet within a chain deployment<br/>
         /// Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.
         /// </summary>
         /// <param name="startEpochMillis">
@@ -151,7 +151,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets the logs for a chainlet within a chain deployment.<br/>
+        /// Gets the logs for a chainlet within a chain deployment<br/>
         /// Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.
         /// </summary>
         /// <param name="startEpochMillis">

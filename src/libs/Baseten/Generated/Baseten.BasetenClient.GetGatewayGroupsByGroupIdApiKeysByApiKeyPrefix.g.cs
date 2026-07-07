@@ -44,7 +44,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get an API key for a group
+        /// Gets an API key for a group
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="apiKeyPrefix"></param>
@@ -72,7 +72,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get an API key for a group
+        /// Gets an API key for a group
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="apiKeyPrefix"></param>

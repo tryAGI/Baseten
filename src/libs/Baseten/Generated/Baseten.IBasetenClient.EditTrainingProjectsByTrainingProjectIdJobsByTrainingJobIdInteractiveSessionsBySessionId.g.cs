@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Patch an interactive session.<br/>
-        /// Update specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
+        /// Patches an interactive session<br/>
+        /// Updates specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -33,8 +33,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Patch an interactive session.<br/>
-        /// Update specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
+        /// Patches an interactive session<br/>
+        /// Updates specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -61,8 +61,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Patch an interactive session.<br/>
-        /// Update specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
+        /// Patches an interactive session<br/>
+        /// Updates specific fields on a training job's interactive session. Only provided (non-null) fields are updated.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

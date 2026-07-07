@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get all chain environments<br/>
-        /// Gets all chain environments for a given chain
+        /// Gets all chain environments<br/>
+        /// Gets all chain environments for a given chain.
         /// </summary>
         /// <param name="chainId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,8 +68,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get all chain environments<br/>
-        /// Gets all chain environments for a given chain
+        /// Gets all chain environments<br/>
+        /// Gets all chain environments for a given chain.
         /// </summary>
         /// <param name="chainId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

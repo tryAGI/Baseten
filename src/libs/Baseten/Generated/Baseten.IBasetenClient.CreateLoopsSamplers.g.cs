@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Create a Loops sampler.<br/>
+        /// Creates a Loops sampler<br/>
         /// Creates a standalone Loops sampler not linked to a run.
         /// </summary>
         /// <param name="request"></param>
@@ -30,7 +30,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create a Loops sampler.<br/>
+        /// Creates a Loops sampler<br/>
         /// Creates a standalone Loops sampler not linked to a run.
         /// </summary>
         /// <param name="request"></param>
@@ -55,7 +55,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create a Loops sampler.<br/>
+        /// Creates a Loops sampler<br/>
         /// Creates a standalone Loops sampler not linked to a run.
         /// </summary>
         /// <param name="sessionId">

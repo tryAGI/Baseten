@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// List training jobs.<br/>
-        /// List all training jobs for the training project.
+        /// Lists training jobs<br/>
+        /// Lists all training jobs for the training project.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -68,8 +68,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// List training jobs.<br/>
-        /// List all training jobs for the training project.
+        /// Lists training jobs<br/>
+        /// Lists all training jobs for the training project.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

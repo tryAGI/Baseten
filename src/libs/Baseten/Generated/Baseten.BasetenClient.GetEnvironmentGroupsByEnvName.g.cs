@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets an environment group by name<br/>
-        /// Gets a single environment group by name on the team specified in the path, or on the caller's organization default team when no team is specified.
+        /// Gets a single environment group by name. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.
         /// </summary>
         /// <param name="envName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -69,7 +69,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets an environment group by name<br/>
-        /// Gets a single environment group by name on the team specified in the path, or on the caller's organization default team when no team is specified.
+        /// Gets a single environment group by name. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.
         /// </summary>
         /// <param name="envName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

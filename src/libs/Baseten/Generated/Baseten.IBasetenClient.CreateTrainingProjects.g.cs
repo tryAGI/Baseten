@@ -5,7 +5,7 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Upsert a training project.<br/>
+        /// Upserts a training project<br/>
         /// Upserts a training project with the specified metadata.
         /// </summary>
         /// <param name="request"></param>
@@ -28,7 +28,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Upsert a training project.<br/>
+        /// Upserts a training project<br/>
         /// Upserts a training project with the specified metadata.
         /// </summary>
         /// <param name="request"></param>
@@ -51,7 +51,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Upsert a training project.<br/>
+        /// Upserts a training project<br/>
         /// Upserts a training project with the specified metadata.
         /// </summary>
         /// <param name="trainingProject">

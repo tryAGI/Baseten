@@ -44,8 +44,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Create an API key for a group<br/>
-        /// Creates a new API key for the given group
+        /// Creates an API key for a group<br/>
+        /// Creates a new API key for the given group.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -78,8 +78,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Create an API key for a group<br/>
-        /// Creates a new API key for the given group
+        /// Creates an API key for a group<br/>
+        /// Creates a new API key for the given group.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="request"></param>
@@ -459,8 +459,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Create an API key for a group<br/>
-        /// Creates a new API key for the given group
+        /// Creates an API key for a group<br/>
+        /// Creates a new API key for the given group.
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="name">

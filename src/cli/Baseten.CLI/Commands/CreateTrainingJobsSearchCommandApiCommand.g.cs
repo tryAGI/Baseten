@@ -69,8 +69,8 @@ internal static partial class CreateTrainingJobsSearchCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-training-jobs-search", @"Search training jobs.
-Search training jobs for the organization.");
+        var command = new Command(@"create-training-jobs-search", @"Searches training jobs
+Searches training jobs for the organization.");
                         command.Options.Add(ProjectId);
                         command.Options.Add(JobId);
                         command.Options.Add(Statuses);

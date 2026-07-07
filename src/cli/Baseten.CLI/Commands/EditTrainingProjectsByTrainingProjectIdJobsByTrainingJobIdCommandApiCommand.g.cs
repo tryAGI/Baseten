@@ -48,8 +48,8 @@ internal static partial class EditTrainingProjectsByTrainingProjectIdJobsByTrain
 
     public static Command Create()
     {
-        var command = new Command(@"edit-training-projects-by-training-project-id-jobs-by-training-job-id", @"Update a training job.
-Update mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.");
+        var command = new Command(@"edit-training-projects-by-training-project-id-jobs-by-training-job-id", @"Updates a training job
+Updates mutable fields on a training job. Currently supports changing the queue priority of a PENDING job; higher priorities are dequeued first.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
                         command.Options.Add(Priority);

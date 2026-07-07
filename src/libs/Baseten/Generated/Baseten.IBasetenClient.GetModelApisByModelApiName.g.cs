@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Get a Model API.<br/>
-        /// Fetch a Model API by name, with workspace overlay when added.
+        /// Gets a Model API<br/>
+        /// Fetches a Model API by name, with workspace overlay when added.
         /// </summary>
         /// <param name="modelApiName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -22,8 +22,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get a Model API.<br/>
-        /// Fetch a Model API by name, with workspace overlay when added.
+        /// Gets a Model API<br/>
+        /// Fetches a Model API by name, with workspace overlay when added.
         /// </summary>
         /// <param name="modelApiName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

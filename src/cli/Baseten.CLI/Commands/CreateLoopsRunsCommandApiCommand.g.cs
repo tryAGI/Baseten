@@ -107,7 +107,7 @@ internal static partial class CreateLoopsRunsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-loops-runs", @"Create a Loops run.
+        var command = new Command(@"create-loops-runs", @"Creates a Loops run
 Creates a Loops run with an associated sampler in the given session.");
                         command.Options.Add(SessionId);
                         command.Options.Add(BaseModel);

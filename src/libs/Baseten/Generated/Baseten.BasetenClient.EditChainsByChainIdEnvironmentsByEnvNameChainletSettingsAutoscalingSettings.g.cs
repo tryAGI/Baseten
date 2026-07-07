@@ -46,7 +46,7 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Update a chainlet environment's autoscaling settings<br/>
+        /// Updates a chainlet environment's autoscaling settings<br/>
         /// Updates a chainlet environment's autoscaling settings and returns the updated chainlet environment settings.
         /// </summary>
         /// <param name="chainId"></param>
@@ -97,7 +97,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Update a chainlet environment's autoscaling settings<br/>
+        /// Updates a chainlet environment's autoscaling settings<br/>
         /// Updates a chainlet environment's autoscaling settings and returns the updated chainlet environment settings.
         /// </summary>
         /// <param name="chainId"></param>
@@ -496,7 +496,7 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Update a chainlet environment's autoscaling settings<br/>
+        /// Updates a chainlet environment's autoscaling settings<br/>
         /// Updates a chainlet environment's autoscaling settings and returns the updated chainlet environment settings.
         /// </summary>
         /// <param name="chainId"></param>

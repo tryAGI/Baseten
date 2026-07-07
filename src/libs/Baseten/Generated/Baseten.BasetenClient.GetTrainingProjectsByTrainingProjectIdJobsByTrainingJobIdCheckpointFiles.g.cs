@@ -48,8 +48,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Get training job checkpoint files.<br/>
-        /// Get presigned URLs for all checkpoint files for a training job.
+        /// Gets training job checkpoint files<br/>
+        /// Gets presigned URLs for all checkpoint files for a training job.
         /// </summary>
         /// <param name="pageSize">
         /// Default Value: 1000
@@ -87,8 +87,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Get training job checkpoint files.<br/>
-        /// Get presigned URLs for all checkpoint files for a training job.
+        /// Gets training job checkpoint files<br/>
+        /// Gets presigned URLs for all checkpoint files for a training job.
         /// </summary>
         /// <param name="pageSize">
         /// Default Value: 1000

@@ -42,8 +42,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Validate a Loops checkpoint bt:// URI.<br/>
-        /// Whether the caller can manage and use this checkpoint.
+        /// Validates a Loops checkpoint bt:// URI<br/>
+        /// Returns whether the caller can manage and use this checkpoint.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -73,8 +73,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Validate a Loops checkpoint bt:// URI.<br/>
-        /// Whether the caller can manage and use this checkpoint.
+        /// Validates a Loops checkpoint bt:// URI<br/>
+        /// Returns whether the caller can manage and use this checkpoint.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -450,8 +450,8 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Validate a Loops checkpoint bt:// URI.<br/>
-        /// Whether the caller can manage and use this checkpoint.
+        /// Validates a Loops checkpoint bt:// URI<br/>
+        /// Returns whether the caller can manage and use this checkpoint.
         /// </summary>
         /// <param name="checkpointPath">
         /// bt:// URI of a sampler checkpoint. Form: bt://loops:&lt;run_id&gt;/sampler_weights/&lt;checkpoint_name&gt;.
