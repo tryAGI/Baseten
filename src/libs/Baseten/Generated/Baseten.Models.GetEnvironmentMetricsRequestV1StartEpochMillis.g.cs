@@ -4,9 +4,10 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    /// Epoch millis timestamp to start fetching metrics. Defaults to one hour before the end.<br/>
+    /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
-    public sealed partial class DeploymentMetricValueSetV1ValueItem
+    public sealed partial class GetEnvironmentMetricsRequestV1StartEpochMillis
     {
 
         /// <summary>

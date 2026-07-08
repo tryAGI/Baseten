@@ -24,6 +24,22 @@ namespace Baseten
         public required global::Baseten.AnyOf<double?, string> Subtotal { get; set; }
 
         /// <summary>
+        /// Compute cost incurred on this date in dollars
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("compute_cost")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.AnyOf<double?, string> ComputeCost { get; set; }
+
+        /// <summary>
+        /// Model distribution surcharge incurred on this date in dollars
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("surcharge_cost")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.AnyOf<double?, string> SurchargeCost { get; set; }
+
+        /// <summary>
         /// Minutes used on this date
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("minutes")]
@@ -52,6 +68,12 @@ namespace Baseten
         /// <param name="subtotal">
         /// Subtotal cost incurred on this date in dollars
         /// </param>
+        /// <param name="computeCost">
+        /// Compute cost incurred on this date in dollars
+        /// </param>
+        /// <param name="surchargeCost">
+        /// Model distribution surcharge incurred on this date in dollars
+        /// </param>
         /// <param name="minutes">
         /// Minutes used on this date
         /// </param>
@@ -64,11 +86,15 @@ namespace Baseten
         public DailyDedicatedUsageV1(
             global::System.DateTime date,
             global::Baseten.AnyOf<double?, string> subtotal,
+            global::Baseten.AnyOf<double?, string> computeCost,
+            global::Baseten.AnyOf<double?, string> surchargeCost,
             int minutes,
             int inferenceRequests)
         {
             this.Date = date;
             this.Subtotal = subtotal;
+            this.ComputeCost = computeCost;
+            this.SurchargeCost = surchargeCost;
             this.Minutes = minutes;
             this.InferenceRequests = inferenceRequests;
         }

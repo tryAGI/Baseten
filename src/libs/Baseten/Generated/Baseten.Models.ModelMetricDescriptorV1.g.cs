@@ -10,7 +10,7 @@ namespace Baseten
     /// or volume by status). ``label_sets`` enumerates those series in order; each<br/>
     /// value set's value for this metric is a list aligned to that order.
     /// </summary>
-    public sealed partial class DeploymentMetricDescriptorV1
+    public sealed partial class ModelMetricDescriptorV1
     {
         /// <summary>
         /// Canonical metric name.
@@ -23,17 +23,17 @@ namespace Baseten
         /// Advisory unit of the metric's values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unit_hint")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.DeploymentMetricUnitHintV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.ModelMetricUnitHintV1JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.DeploymentMetricUnitHintV1 UnitHint { get; set; }
+        public required global::Baseten.ModelMetricUnitHintV1 UnitHint { get; set; }
 
         /// <summary>
         /// Semantic hint for how the metric behaves (GAUGE, COUNTER, HISTOGRAM).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.DeploymentMetricKindV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.ModelMetricKindV1JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.DeploymentMetricKindV1 Kind { get; set; }
+        public required global::Baseten.ModelMetricKindV1 Kind { get; set; }
 
         /// <summary>
         /// The metric's series, in order. Each entry is the set of labels identifying one series; the value at the same index in each value set's ``values`` is that series' value. A plain metric has a single entry with no labels (`{}`). A histogram has one entry per quantile plus an average, e.g. {'quantile': '0.5'} … {'quantile': '0.99'}, {'stat': 'avg'}. A by-status metric has one entry per status, e.g. {'status': '2xx'}.
@@ -49,7 +49,7 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeploymentMetricDescriptorV1" /> class.
+        /// Initializes a new instance of the <see cref="ModelMetricDescriptorV1" /> class.
         /// </summary>
         /// <param name="name">
         /// Canonical metric name.
@@ -66,10 +66,10 @@ namespace Baseten
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public DeploymentMetricDescriptorV1(
+        public ModelMetricDescriptorV1(
             string name,
-            global::Baseten.DeploymentMetricUnitHintV1 unitHint,
-            global::Baseten.DeploymentMetricKindV1 kind,
+            global::Baseten.ModelMetricUnitHintV1 unitHint,
+            global::Baseten.ModelMetricKindV1 kind,
             global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>> labelSets)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
@@ -79,9 +79,9 @@ namespace Baseten
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeploymentMetricDescriptorV1" /> class.
+        /// Initializes a new instance of the <see cref="ModelMetricDescriptorV1" /> class.
         /// </summary>
-        public DeploymentMetricDescriptorV1()
+        public ModelMetricDescriptorV1()
         {
         }
 

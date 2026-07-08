@@ -14,7 +14,7 @@ namespace Baseten
     /// - ``RATIO``: a dimensionless ratio. Usually in ``[0, 1]`` but may exceed 1<br/>
     ///   (e.g. CPU usage in cores = cpu-seconds/second).
     /// </summary>
-    public enum DeploymentMetricUnitHintV1
+    public enum ModelMetricUnitHintV1
     {
         /// <summary>
         /// a size in bytes.
@@ -45,37 +45,37 @@ namespace Baseten
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class DeploymentMetricUnitHintV1Extensions
+    public static class ModelMetricUnitHintV1Extensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this DeploymentMetricUnitHintV1 value)
+        public static string ToValueString(this ModelMetricUnitHintV1 value)
         {
             return value switch
             {
-                DeploymentMetricUnitHintV1.Bytes => "BYTES",
-                DeploymentMetricUnitHintV1.Count => "COUNT",
-                DeploymentMetricUnitHintV1.Mebibytes => "MEBIBYTES",
-                DeploymentMetricUnitHintV1.PerSecond => "PER_SECOND",
-                DeploymentMetricUnitHintV1.Ratio => "RATIO",
-                DeploymentMetricUnitHintV1.Seconds => "SECONDS",
+                ModelMetricUnitHintV1.Bytes => "BYTES",
+                ModelMetricUnitHintV1.Count => "COUNT",
+                ModelMetricUnitHintV1.Mebibytes => "MEBIBYTES",
+                ModelMetricUnitHintV1.PerSecond => "PER_SECOND",
+                ModelMetricUnitHintV1.Ratio => "RATIO",
+                ModelMetricUnitHintV1.Seconds => "SECONDS",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static DeploymentMetricUnitHintV1? ToEnum(string value)
+        public static ModelMetricUnitHintV1? ToEnum(string value)
         {
             return value switch
             {
-                "BYTES" => DeploymentMetricUnitHintV1.Bytes,
-                "COUNT" => DeploymentMetricUnitHintV1.Count,
-                "MEBIBYTES" => DeploymentMetricUnitHintV1.Mebibytes,
-                "PER_SECOND" => DeploymentMetricUnitHintV1.PerSecond,
-                "RATIO" => DeploymentMetricUnitHintV1.Ratio,
-                "SECONDS" => DeploymentMetricUnitHintV1.Seconds,
+                "BYTES" => ModelMetricUnitHintV1.Bytes,
+                "COUNT" => ModelMetricUnitHintV1.Count,
+                "MEBIBYTES" => ModelMetricUnitHintV1.Mebibytes,
+                "PER_SECOND" => ModelMetricUnitHintV1.PerSecond,
+                "RATIO" => ModelMetricUnitHintV1.Ratio,
+                "SECONDS" => ModelMetricUnitHintV1.Seconds,
                 _ => null,
             };
         }

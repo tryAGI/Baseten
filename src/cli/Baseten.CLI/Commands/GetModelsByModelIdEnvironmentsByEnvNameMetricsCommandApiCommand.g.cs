@@ -5,7 +5,7 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdMetricsCommandApiCommand
+internal static partial class GetModelsByModelIdEnvironmentsByEnvNameMetricsCommandApiCommand
 {
     private static Argument<string> ModelId { get; } = new(
         name: @"model-id")
@@ -13,8 +13,8 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdMetrics
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
-    private static Argument<string> DeploymentId { get; } = new(
-        name: @"deployment-id")
+    private static Argument<string> EnvName { get; } = new(
+        name: @"env-name")
     {
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
@@ -65,10 +65,10 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdMetrics
 
     public static Command Create()
     {
-        var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-metrics", @"Gets the metrics for a model deployment
-Gets the metrics for a model deployment in the given time range.");
+        var command = new Command(@"get-models-by-model-id-environments-by-env-name-metrics", @"Gets the metrics for a model environment.
+Gets metrics aggregated across every deployment that was active on the environment in the given time range. In series mode the window is split at each promotion so that every point reflects the deployment(s) serving the environment at that time.");
                         command.Arguments.Add(ModelId);
-                        command.Arguments.Add(DeploymentId);
+                        command.Arguments.Add(EnvName);
                         command.Options.Add(Mode);
                         command.Options.Add(StartEpochMillis);
                         command.Options.Add(EndEpochMillis);
@@ -79,7 +79,7 @@ Gets the metrics for a model deployment in the given time range.");
             await CliRuntime.RunAsync(async () =>
             {
                         var modelId = parseResult.GetRequiredValue(ModelId);
-                        var deploymentId = parseResult.GetRequiredValue(DeploymentId);
+                        var envName = parseResult.GetRequiredValue(EnvName);
                         var mode = parseResult.GetValue(Mode);
                         var startEpochMillis = parseResult.GetValue(StartEpochMillis);
                         var endEpochMillis = parseResult.GetValue(EndEpochMillis);
@@ -87,9 +87,9 @@ Gets the metrics for a model deployment in the given time range.");
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync(
+                                var response = await client.GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync(
                                     modelId: modelId,
-                                    deploymentId: deploymentId,
+                                    envName: envName,
                                     mode: mode,
                                     startEpochMillis: startEpochMillis,
                                     endEpochMillis: endEpochMillis,

@@ -4,9 +4,9 @@
 namespace Baseten
 {
     /// <summary>
-    /// Query params for ``GET /v1/models/.../deployments/.../metrics``.
+    /// Query params for ``GET /v1/models/.../environments/.../metrics``.
     /// </summary>
-    public sealed partial class GetDeploymentMetricsRequestV1
+    public sealed partial class GetEnvironmentMetricsRequestV1
     {
         /// <summary>
         /// 'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration.<br/>
@@ -43,7 +43,7 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetDeploymentMetricsRequestV1" /> class.
+        /// Initializes a new instance of the <see cref="GetEnvironmentMetricsRequestV1" /> class.
         /// </summary>
         /// <param name="mode">
         /// 'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration.<br/>
@@ -63,7 +63,7 @@ namespace Baseten
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public GetDeploymentMetricsRequestV1(
+        public GetEnvironmentMetricsRequestV1(
             global::Baseten.ModelMetricModeV1? mode,
             int? startEpochMillis,
             int? endEpochMillis,
@@ -76,9 +76,9 @@ namespace Baseten
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetDeploymentMetricsRequestV1" /> class.
+        /// Initializes a new instance of the <see cref="GetEnvironmentMetricsRequestV1" /> class.
         /// </summary>
-        public GetDeploymentMetricsRequestV1()
+        public GetEnvironmentMetricsRequestV1()
         {
         }
 

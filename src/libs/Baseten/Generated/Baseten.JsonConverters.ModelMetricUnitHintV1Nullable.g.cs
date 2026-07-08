@@ -3,10 +3,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class DeploymentMetricModeV1NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.DeploymentMetricModeV1?>
+    public sealed class ModelMetricUnitHintV1NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.ModelMetricUnitHintV1?>
     {
         /// <inheritdoc />
-        public override global::Baseten.DeploymentMetricModeV1? Read(
+        public override global::Baseten.ModelMetricUnitHintV1? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.DeploymentMetricModeV1Extensions.ToEnum(stringValue);
+                        return global::Baseten.ModelMetricUnitHintV1Extensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Baseten.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Baseten.DeploymentMetricModeV1)numValue;
+                    return (global::Baseten.ModelMetricUnitHintV1)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Baseten.DeploymentMetricModeV1?);
+                    return default(global::Baseten.ModelMetricUnitHintV1?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.DeploymentMetricModeV1? value,
+            global::Baseten.ModelMetricUnitHintV1? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace Baseten.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Baseten.DeploymentMetricModeV1Extensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Baseten.ModelMetricUnitHintV1Extensions.ToValueString(value.Value));
             }
         }
     }

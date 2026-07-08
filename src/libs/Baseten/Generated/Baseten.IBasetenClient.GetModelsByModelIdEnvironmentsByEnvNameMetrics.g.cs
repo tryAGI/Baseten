@@ -5,8 +5,8 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Gets the metrics for a model deployment<br/>
-        /// Gets the metrics for a model deployment in the given time range.
+        /// Gets the metrics for a model environment.<br/>
+        /// Gets metrics aggregated across every deployment that was active on the environment in the given time range. In series mode the window is split at each promotion so that every point reflects the deployment(s) serving the environment at that time.
         /// </summary>
         /// <param name="mode">
         /// How metric values are aggregated over the request.<br/>
@@ -20,18 +20,18 @@ namespace Baseten
         /// </param>
         /// <param name="metrics"></param>
         /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
+        /// <param name="envName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.GetModelMetricsResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.GetModelMetricsResponseV1> GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync(
             string modelId,
-            string deploymentId,
+            string envName,
             global::Baseten.ModelMetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
@@ -39,8 +39,8 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Gets the metrics for a model deployment<br/>
-        /// Gets the metrics for a model deployment in the given time range.
+        /// Gets the metrics for a model environment.<br/>
+        /// Gets metrics aggregated across every deployment that was active on the environment in the given time range. In series mode the window is split at each promotion so that every point reflects the deployment(s) serving the environment at that time.
         /// </summary>
         /// <param name="mode">
         /// How metric values are aggregated over the request.<br/>
@@ -54,18 +54,18 @@ namespace Baseten
         /// </param>
         /// <param name="metrics"></param>
         /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
+        /// <param name="envName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>> GetModelsByModelIdEnvironmentsByEnvNameMetricsAsResponseAsync(
             string modelId,
-            string deploymentId,
+            string envName,
             global::Baseten.ModelMetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,

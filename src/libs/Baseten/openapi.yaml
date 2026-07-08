@@ -2129,7 +2129,7 @@
                         "required": false,
                         "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration.",
                         "schema": {
-                            "$ref": "#/components/schemas/DeploymentMetricModeV1",
+                            "$ref": "#/components/schemas/ModelMetricModeV1",
                             "default": "CURRENT"
                         }
                     },
@@ -2173,7 +2173,7 @@
                         "name": "metrics",
                         "in": "query",
                         "required": false,
-                        "description": "Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_replicas_active, baseten_inference_requests_total, and baseten_end_to_end_response_time_seconds. Unknown names are rejected; valid names that do not apply to the deployment are omitted from the response.",
+                        "description": "Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_replicas_active, baseten_inference_requests_total, and baseten_end_to_end_response_time_seconds. Unknown names are rejected; valid names that do not apply are omitted from the response.",
                         "schema": {
                             "items": {
                                 "type": "string"
@@ -2189,7 +2189,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetDeploymentMetricsResponseV1"
+                                    "$ref": "#/components/schemas/GetModelMetricsResponseV1"
                                 }
                             }
                         }
@@ -2654,6 +2654,104 @@
                         }
                     }
                 }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/env_name"
+                }
+            ]
+        },
+        "/v1/models/{model_id}/environments/{env_name}/metrics": {
+            "get": {
+                "summary": "Gets the metrics for a model environment.",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Gets metrics aggregated across every deployment that was active on the environment in the given time range. In series mode the window is split at each promotion so that every point reflects the deployment(s) serving the environment at that time.",
+                "parameters": [
+                    {
+                        "name": "mode",
+                        "in": "query",
+                        "required": false,
+                        "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration.",
+                        "schema": {
+                            "$ref": "#/components/schemas/ModelMetricModeV1",
+                            "default": "CURRENT"
+                        }
+                    },
+                    {
+                        "name": "start_epoch_millis",
+                        "in": "query",
+                        "required": false,
+                        "description": "Epoch millis timestamp to start fetching metrics. Defaults to one hour before the end.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Start Epoch Millis"
+                        }
+                    },
+                    {
+                        "name": "end_epoch_millis",
+                        "in": "query",
+                        "required": false,
+                        "description": "Epoch millis timestamp to end fetching metrics. Defaults to the current time. The window between start and end must not exceed 7 days.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "End Epoch Millis"
+                        }
+                    },
+                    {
+                        "name": "metrics",
+                        "in": "query",
+                        "required": false,
+                        "description": "Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_replicas_active, baseten_inference_requests_total, and baseten_end_to_end_response_time_seconds. Unknown names are rejected; valid names that do not apply are omitted from the response.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Metrics",
+                            "type": "array"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetModelMetricsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
             },
             "parameters": [
                 {
@@ -9566,7 +9664,7 @@
                 "title": "SyncDeploymentPatchesResponseV1",
                 "type": "object"
             },
-            "DeploymentMetricDescriptorV1": {
+            "ModelMetricDescriptorV1": {
                 "description": "Describes one metric. Its position in the response ``metric_descriptors``\nlist is the index used to read that metric out of each value set's ``values``.\n\nA metric may break down into multiple labeled series (e.g. latency quantiles,\nor volume by status). ``label_sets`` enumerates those series in order; each\nvalue set's value for this metric is a list aligned to that order.",
                 "properties": {
                     "name": {
@@ -9575,11 +9673,11 @@
                         "type": "string"
                     },
                     "unit_hint": {
-                        "$ref": "#/components/schemas/DeploymentMetricUnitHintV1",
+                        "$ref": "#/components/schemas/ModelMetricUnitHintV1",
                         "description": "Advisory unit of the metric's values."
                     },
                     "kind": {
-                        "$ref": "#/components/schemas/DeploymentMetricKindV1",
+                        "$ref": "#/components/schemas/ModelMetricKindV1",
                         "description": "Semantic hint for how the metric behaves (GAUGE, COUNTER, HISTOGRAM)."
                     },
                     "label_sets": {
@@ -9600,30 +9698,30 @@
                     "kind",
                     "label_sets"
                 ],
-                "title": "DeploymentMetricDescriptorV1",
+                "title": "ModelMetricDescriptorV1",
                 "type": "object"
             },
-            "DeploymentMetricKindV1": {
-                "description": "Semantic hint for how a metric behaves, to aid client rendering and\naggregation. It does not describe the value's shape \u2014 that is carried by the\ndescriptor's ``label_sets`` (a metric may break down into multiple series).\n\n- ``GAUGE``: an instantaneous value (e.g. queue size, running requests).\n- ``COUNTER``: a cumulative total over the step (e.g. tokens, restarts).\n- ``HISTOGRAM``: a distribution, exposed as quantile/average series.",
+            "ModelMetricKindV1": {
+                "description": "Semantic hint for how a metric behaves, to aid client rendering and\naggregation. It does not describe the value's shape (that is carried by the\ndescriptor's ``label_sets``; a metric may break down into multiple series).\n\n- ``GAUGE``: an instantaneous value (e.g. queue size, running requests).\n- ``COUNTER``: a cumulative total over the step (e.g. tokens, restarts).\n- ``HISTOGRAM``: a distribution, exposed as quantile/average series.",
                 "enum": [
                     "GAUGE",
                     "COUNTER",
                     "HISTOGRAM"
                 ],
-                "title": "DeploymentMetricKindV1",
+                "title": "ModelMetricKindV1",
                 "type": "string"
             },
-            "DeploymentMetricModeV1": {
+            "ModelMetricModeV1": {
                 "description": "How metric values are aggregated over the request.",
                 "enum": [
                     "CURRENT",
                     "SUMMARY",
                     "SERIES"
                 ],
-                "title": "DeploymentMetricModeV1",
+                "title": "ModelMetricModeV1",
                 "type": "string"
             },
-            "DeploymentMetricUnitHintV1": {
+            "ModelMetricUnitHintV1": {
                 "description": "Advisory unit of a metric's values. Values are reported as scraped, so the\nhint describes the raw value (e.g. GPU memory is reported in mebibytes).\n\n- ``PER_SECOND``: a rate per second.\n- ``SECONDS``: a duration in seconds.\n- ``BYTES``: a size in bytes.\n- ``MEBIBYTES``: a size in mebibytes (MiB).\n- ``COUNT``: a dimensionless tally of discrete things.\n- ``RATIO``: a dimensionless ratio. Usually in ``[0, 1]`` but may exceed 1\n  (e.g. CPU usage in cores = cpu-seconds/second).",
                 "enum": [
                     "PER_SECOND",
@@ -9633,10 +9731,10 @@
                     "COUNT",
                     "RATIO"
                 ],
-                "title": "DeploymentMetricUnitHintV1",
+                "title": "ModelMetricUnitHintV1",
                 "type": "string"
             },
-            "DeploymentMetricValueSetV1": {
+            "ModelMetricValueSetV1": {
                 "description": "The metric values for one time step. ``values`` is aligned by index to the\nresponse ``metric_descriptors`` list.",
                 "properties": {
                     "start_epoch_millis": {
@@ -9667,11 +9765,11 @@
                     "start_epoch_millis",
                     "values"
                 ],
-                "title": "DeploymentMetricValueSetV1",
+                "title": "ModelMetricValueSetV1",
                 "type": "object"
             },
-            "GetDeploymentMetricsResponseV1": {
-                "description": "Deployment metrics over a time window, index-mapped: metric descriptors\nappear once in ``metric_descriptors``; each value set's ``values`` are aligned\nto that order.",
+            "GetModelMetricsResponseV1": {
+                "description": "Model metrics over a time window, index-mapped: metric descriptors appear once\nin ``metric_descriptors``; each value set's ``values`` are aligned to that order.",
                 "properties": {
                     "start_epoch_millis": {
                         "description": "Start of the returned window.",
@@ -9684,7 +9782,7 @@
                         "type": "integer"
                     },
                     "mode": {
-                        "$ref": "#/components/schemas/DeploymentMetricModeV1",
+                        "$ref": "#/components/schemas/ModelMetricModeV1",
                         "description": "The aggregation mode used."
                     },
                     "step_seconds": {
@@ -9702,7 +9800,7 @@
                     "metric_descriptors": {
                         "description": "Descriptors for each metric; position defines the values index.",
                         "items": {
-                            "$ref": "#/components/schemas/DeploymentMetricDescriptorV1"
+                            "$ref": "#/components/schemas/ModelMetricDescriptorV1"
                         },
                         "title": "Metric Descriptors",
                         "type": "array"
@@ -9710,7 +9808,7 @@
                     "metric_values": {
                         "description": "Metric values per time step covering the window. In summary mode this always contains exactly one value set spanning the whole window.",
                         "items": {
-                            "$ref": "#/components/schemas/DeploymentMetricValueSetV1"
+                            "$ref": "#/components/schemas/ModelMetricValueSetV1"
                         },
                         "title": "Metric Values",
                         "type": "array"
@@ -9724,14 +9822,14 @@
                     "metric_descriptors",
                     "metric_values"
                 ],
-                "title": "GetDeploymentMetricsResponseV1",
+                "title": "GetModelMetricsResponseV1",
                 "type": "object"
             },
             "GetDeploymentMetricsRequestV1": {
                 "description": "Query params for ``GET /v1/models/.../deployments/.../metrics``.",
                 "properties": {
                     "mode": {
-                        "$ref": "#/components/schemas/DeploymentMetricModeV1",
+                        "$ref": "#/components/schemas/ModelMetricModeV1",
                         "default": "CURRENT",
                         "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration."
                     },
@@ -9762,7 +9860,7 @@
                         "title": "End Epoch Millis"
                     },
                     "metrics": {
-                        "description": "Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_replicas_active, baseten_inference_requests_total, and baseten_end_to_end_response_time_seconds. Unknown names are rejected; valid names that do not apply to the deployment are omitted from the response.",
+                        "description": "Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_replicas_active, baseten_inference_requests_total, and baseten_end_to_end_response_time_seconds. Unknown names are rejected; valid names that do not apply are omitted from the response.",
                         "items": {
                             "type": "string"
                         },
@@ -10616,6 +10714,52 @@
                     }
                 },
                 "title": "GetEnvironmentLogsRequestV1",
+                "type": "object"
+            },
+            "GetEnvironmentMetricsRequestV1": {
+                "description": "Query params for ``GET /v1/models/.../environments/.../metrics``.",
+                "properties": {
+                    "mode": {
+                        "$ref": "#/components/schemas/ModelMetricModeV1",
+                        "default": "CURRENT",
+                        "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration."
+                    },
+                    "start_epoch_millis": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Epoch millis timestamp to start fetching metrics. Defaults to one hour before the end.",
+                        "title": "Start Epoch Millis"
+                    },
+                    "end_epoch_millis": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Epoch millis timestamp to end fetching metrics. Defaults to the current time. The window between start and end must not exceed 7 days.",
+                        "title": "End Epoch Millis"
+                    },
+                    "metrics": {
+                        "description": "Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_replicas_active, baseten_inference_requests_total, and baseten_end_to_end_response_time_seconds. Unknown names are rejected; valid names that do not apply are omitted from the response.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Metrics",
+                        "type": "array"
+                    }
+                },
+                "title": "GetEnvironmentMetricsRequestV1",
                 "type": "object"
             },
             "PromoteToEnvironmentRequestV1": {
@@ -17211,6 +17355,32 @@
                         "description": "Subtotal cost incurred on this date in dollars",
                         "title": "Subtotal"
                     },
+                    "compute_cost": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            }
+                        ],
+                        "description": "Compute cost incurred on this date in dollars",
+                        "title": "Compute Cost"
+                    },
+                    "surcharge_cost": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            }
+                        ],
+                        "description": "Model distribution surcharge incurred on this date in dollars",
+                        "title": "Surcharge Cost"
+                    },
                     "minutes": {
                         "description": "Minutes used on this date",
                         "title": "Minutes",
@@ -17225,6 +17395,8 @@
                 "required": [
                     "date",
                     "subtotal",
+                    "compute_cost",
+                    "surcharge_cost",
                     "minutes",
                     "inference_requests"
                 ],
@@ -17332,6 +17504,32 @@
                         "description": "Subtotal cost in dollars for this billable resource",
                         "title": "Subtotal"
                     },
+                    "compute_cost": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            }
+                        ],
+                        "description": "Compute cost in dollars for this billable resource",
+                        "title": "Compute Cost"
+                    },
+                    "surcharge_cost": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            }
+                        ],
+                        "description": "Model distribution surcharge in dollars for this billable resource",
+                        "title": "Surcharge Cost"
+                    },
                     "minutes": {
                         "description": "Total minutes used for this billable resource",
                         "title": "Minutes",
@@ -17354,6 +17552,8 @@
                 "required": [
                     "billable_resource",
                     "subtotal",
+                    "compute_cost",
+                    "surcharge_cost",
                     "minutes",
                     "inference_requests"
                 ],

@@ -4,9 +4,9 @@
 namespace Baseten
 {
     /// <summary>
-    /// Seconds per step; populated only in SERIES mode, null otherwise.
+    /// 
     /// </summary>
-    public sealed partial class GetDeploymentMetricsResponseV1StepSeconds
+    public sealed partial class ModelMetricValueSetV1ValueItem
     {
 
         /// <summary>
