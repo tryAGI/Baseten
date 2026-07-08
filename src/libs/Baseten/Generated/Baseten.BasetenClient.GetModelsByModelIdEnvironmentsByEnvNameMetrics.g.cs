@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetModelsByModelIdDeploymentsByDeploymentIdMetricsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetModelsByModelIdEnvironmentsByEnvNameMetricsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,19 +21,19 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetModelsByModelIdDeploymentsByDeploymentIdMetricsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetModelsByModelIdEnvironmentsByEnvNameMetricsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetModelsByModelIdDeploymentsByDeploymentIdMetricsSecurityRequirement0,
+            {                s_GetModelsByModelIdEnvironmentsByEnvNameMetricsSecurityRequirement0,
             };
-        partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdMetricsArguments(
+        partial void PrepareGetModelsByModelIdEnvironmentsByEnvNameMetricsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Baseten.ModelMetricModeV1? mode,
             int? startEpochMillis,
             int? endEpochMillis,
             global::System.Collections.Generic.IList<string>? metrics,
             ref string modelId,
-            ref string deploymentId);
-        partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdMetricsRequest(
+            ref string envName);
+        partial void PrepareGetModelsByModelIdEnvironmentsByEnvNameMetricsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::Baseten.ModelMetricModeV1? mode,
@@ -41,19 +41,19 @@ namespace Baseten
             int? endEpochMillis,
             global::System.Collections.Generic.IList<string>? metrics,
             string modelId,
-            string deploymentId);
-        partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdMetricsResponse(
+            string envName);
+        partial void ProcessGetModelsByModelIdEnvironmentsByEnvNameMetricsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetModelsByModelIdDeploymentsByDeploymentIdMetricsResponseContent(
+        partial void ProcessGetModelsByModelIdEnvironmentsByEnvNameMetricsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Gets the metrics for a model deployment<br/>
-        /// Gets the metrics for a model deployment in the given time range.
+        /// Gets the metrics for a model environment.<br/>
+        /// Gets metrics aggregated across every deployment that was active on the environment in the given time range. In series mode the window is split at each promotion so that every point reflects the deployment(s) serving the environment at that time.
         /// </summary>
         /// <param name="mode">
         /// How metric values are aggregated over the request.<br/>
@@ -67,18 +67,18 @@ namespace Baseten
         /// </param>
         /// <param name="metrics"></param>
         /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
+        /// <param name="envName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.GetModelMetricsResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetModelMetricsResponseV1> GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync(
             string modelId,
-            string deploymentId,
+            string envName,
             global::Baseten.ModelMetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
@@ -86,9 +86,9 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsResponseAsync(
+            var __response = await GetModelsByModelIdEnvironmentsByEnvNameMetricsAsResponseAsync(
                 modelId: modelId,
-                deploymentId: deploymentId,
+                envName: envName,
                 mode: mode,
                 startEpochMillis: startEpochMillis,
                 endEpochMillis: endEpochMillis,
@@ -100,8 +100,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets the metrics for a model deployment<br/>
-        /// Gets the metrics for a model deployment in the given time range.
+        /// Gets the metrics for a model environment.<br/>
+        /// Gets metrics aggregated across every deployment that was active on the environment in the given time range. In series mode the window is split at each promotion so that every point reflects the deployment(s) serving the environment at that time.
         /// </summary>
         /// <param name="mode">
         /// How metric values are aggregated over the request.<br/>
@@ -115,18 +115,18 @@ namespace Baseten
         /// </param>
         /// <param name="metrics"></param>
         /// <param name="modelId"></param>
-        /// <param name="deploymentId"></param>
+        /// <param name="envName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>> GetModelsByModelIdEnvironmentsByEnvNameMetricsAsResponseAsync(
             string modelId,
-            string deploymentId,
+            string envName,
             global::Baseten.ModelMetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
@@ -136,20 +136,20 @@ namespace Baseten
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetModelsByModelIdDeploymentsByDeploymentIdMetricsArguments(
+            PrepareGetModelsByModelIdEnvironmentsByEnvNameMetricsArguments(
                 httpClient: HttpClient,
                 mode: ref mode,
                 startEpochMillis: startEpochMillis,
                 endEpochMillis: endEpochMillis,
                 metrics: metrics,
                 modelId: ref modelId,
-                deploymentId: ref deploymentId);
+                envName: ref envName);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetModelsByModelIdDeploymentsByDeploymentIdMetricsSecurityRequirements,
-                operationName: "GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync");
+                securityRequirements: s_GetModelsByModelIdEnvironmentsByEnvNameMetricsSecurityRequirements,
+                operationName: "GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -169,7 +169,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/models/{modelId}/deployments/{deploymentId}/metrics",
+                                path: $"/v1/models/{modelId}/environments/{envName}/metrics",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("mode", mode?.ToValueString())
@@ -214,7 +214,7 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetModelsByModelIdDeploymentsByDeploymentIdMetricsRequest(
+                PrepareGetModelsByModelIdEnvironmentsByEnvNameMetricsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     mode: mode,
@@ -222,7 +222,7 @@ namespace Baseten
                     endEpochMillis: endEpochMillis,
                     metrics: metrics,
                     modelId: modelId!,
-                    deploymentId: deploymentId!);
+                    envName: envName!);
 
                 return __httpRequest;
             }
@@ -239,9 +239,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdMetrics",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/metrics\"",
+                                operationId: "getModelsByModelIdEnvironmentsByEnvNameMetrics",
+                                methodName: "GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}/metrics\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -273,9 +273,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdMetrics",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/metrics\"",
+                                operationId: "getModelsByModelIdEnvironmentsByEnvNameMetrics",
+                                methodName: "GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}/metrics\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -314,9 +314,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdMetrics",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/metrics\"",
+                                operationId: "getModelsByModelIdEnvironmentsByEnvNameMetrics",
+                                methodName: "GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}/metrics\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -354,7 +354,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetModelsByModelIdDeploymentsByDeploymentIdMetricsResponse(
+                ProcessGetModelsByModelIdEnvironmentsByEnvNameMetricsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -362,9 +362,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdMetrics",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/metrics\"",
+                                operationId: "getModelsByModelIdEnvironmentsByEnvNameMetrics",
+                                methodName: "GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}/metrics\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -384,9 +384,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getModelsByModelIdDeploymentsByDeploymentIdMetrics",
-                                methodName: "GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/metrics\"",
+                                operationId: "getModelsByModelIdEnvironmentsByEnvNameMetrics",
+                                methodName: "GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}/metrics\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -414,7 +414,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetModelsByModelIdDeploymentsByDeploymentIdMetricsResponseContent(
+                                ProcessGetModelsByModelIdEnvironmentsByEnvNameMetricsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);

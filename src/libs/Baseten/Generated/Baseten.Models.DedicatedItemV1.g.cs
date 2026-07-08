@@ -24,6 +24,22 @@ namespace Baseten
         public required global::Baseten.AnyOf<double?, string> Subtotal { get; set; }
 
         /// <summary>
+        /// Compute cost in dollars for this billable resource
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("compute_cost")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.AnyOf<double?, string> ComputeCost { get; set; }
+
+        /// <summary>
+        /// Model distribution surcharge in dollars for this billable resource
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("surcharge_cost")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.AnyOf<double?, string> SurchargeCost { get; set; }
+
+        /// <summary>
         /// Total minutes used for this billable resource
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("minutes")]
@@ -58,6 +74,12 @@ namespace Baseten
         /// <param name="subtotal">
         /// Subtotal cost in dollars for this billable resource
         /// </param>
+        /// <param name="computeCost">
+        /// Compute cost in dollars for this billable resource
+        /// </param>
+        /// <param name="surchargeCost">
+        /// Model distribution surcharge in dollars for this billable resource
+        /// </param>
         /// <param name="minutes">
         /// Total minutes used for this billable resource
         /// </param>
@@ -73,12 +95,16 @@ namespace Baseten
         public DedicatedItemV1(
             global::Baseten.BillableResourceV1 billableResource,
             global::Baseten.AnyOf<double?, string> subtotal,
+            global::Baseten.AnyOf<double?, string> computeCost,
+            global::Baseten.AnyOf<double?, string> surchargeCost,
             int minutes,
             int inferenceRequests,
             global::System.Collections.Generic.IList<global::Baseten.DailyDedicatedUsageV1>? daily)
         {
             this.BillableResource = billableResource ?? throw new global::System.ArgumentNullException(nameof(billableResource));
             this.Subtotal = subtotal;
+            this.ComputeCost = computeCost;
+            this.SurchargeCost = surchargeCost;
             this.Minutes = minutes;
             this.InferenceRequests = inferenceRequests;
             this.Daily = daily;
