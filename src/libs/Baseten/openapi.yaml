@@ -5783,7 +5783,7 @@
         },
         "/v1/api_keys": {
             "get": {
-                "summary": "Lists the user's API keys (metadata only, no plain text keys)",
+                "summary": "Lists API keys (metadata only, no plain text keys)",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
@@ -5794,6 +5794,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/api_keys\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
+                "description": "Returns metadata for your personal API keys and the workspace and team API keys you can manage. Organization admins also receive every member's personal API keys, each with an owner identifying the member it belongs to.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -16187,6 +16188,18 @@
                         "default": null,
                         "description": "The name of the team associated with the API key",
                         "title": "Team Name"
+                    },
+                    "owner": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/APIKeyOwnerV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The user who owns the API key. Only present for personal API keys."
                     }
                 },
                 "required": [
@@ -16194,6 +16207,47 @@
                     "type"
                 ],
                 "title": "APIKeyInfoV1",
+                "type": "object"
+            },
+            "APIKeyOwnerV1": {
+                "description": "The user who owns a personal API key.",
+                "properties": {
+                    "user_id": {
+                        "description": "Unique identifier for the user",
+                        "title": "User Id",
+                        "type": "string"
+                    },
+                    "email": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Email address of the user",
+                        "title": "Email"
+                    },
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Display name of the user",
+                        "title": "Name"
+                    }
+                },
+                "required": [
+                    "user_id"
+                ],
+                "title": "APIKeyOwnerV1",
                 "type": "object"
             },
             "APIKeysV1": {

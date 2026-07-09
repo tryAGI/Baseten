@@ -45,6 +45,13 @@ namespace Baseten
         public string? TeamName { get; set; }
 
         /// <summary>
+        /// The user who owns the API key. Only present for personal API keys.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("owner")]
+        public global::Baseten.APIKeyOwnerV1? Owner { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -71,6 +78,10 @@ namespace Baseten
         /// The name of the team associated with the API key<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="owner">
+        /// The user who owns the API key. Only present for personal API keys.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -79,13 +90,15 @@ namespace Baseten
             global::Baseten.APIKeyCategory type,
             string? name,
             global::System.Collections.Generic.IList<string>? modelIds,
-            string? teamName)
+            string? teamName,
+            global::Baseten.APIKeyOwnerV1? owner)
         {
             this.Prefix = prefix ?? throw new global::System.ArgumentNullException(nameof(prefix));
             this.Name = name;
             this.Type = type;
             this.ModelIds = modelIds;
             this.TeamName = teamName;
+            this.Owner = owner;
         }
 
         /// <summary>
