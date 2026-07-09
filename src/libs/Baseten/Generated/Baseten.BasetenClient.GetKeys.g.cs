@@ -40,7 +40,8 @@ namespace Baseten
             ref string content);
 
         /// <summary>
-        /// Lists the user's API keys (metadata only, no plain text keys)
+        /// Lists API keys (metadata only, no plain text keys)<br/>
+        /// Returns metadata for your personal API keys and the workspace and team API keys you can manage. Organization admins also receive every member's personal API keys, each with an owner identifying the member it belongs to.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -62,7 +63,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Lists the user's API keys (metadata only, no plain text keys)
+        /// Lists API keys (metadata only, no plain text keys)<br/>
+        /// Returns metadata for your personal API keys and the workspace and team API keys you can manage. Organization admins also receive every member's personal API keys, each with an owner identifying the member it belongs to.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

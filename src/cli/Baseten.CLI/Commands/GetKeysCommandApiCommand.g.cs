@@ -31,7 +31,8 @@ internal static partial class GetKeysCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"get-keys", @"Lists the user's API keys (metadata only, no plain text keys)");
+        var command = new Command(@"get-keys", @"Lists API keys (metadata only, no plain text keys)
+Returns metadata for your personal API keys and the workspace and team API keys you can manage. Organization admins also receive every member's personal API keys, each with an owner identifying the member it belongs to.");
 
 
 

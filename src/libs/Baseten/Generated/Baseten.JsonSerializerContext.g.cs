@@ -512,6 +512,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateAPIKeyRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyInfoV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyOwnerV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeysV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.APIKeyInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyTombstoneV1))]
