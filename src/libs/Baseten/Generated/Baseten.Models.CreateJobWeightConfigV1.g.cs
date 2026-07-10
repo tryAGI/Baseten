@@ -5,14 +5,14 @@ namespace Baseten
 {
     /// <summary>
     /// Weight source configuration for MDN (Model Distribution Network).<br/>
-    /// Enables training jobs to mount external model weights from HuggingFace, S3, GCS, or R2<br/>
-    /// via MDN's caching and CSI mounting infrastructure. Weights are mirrored once and<br/>
-    /// deduplicated across training jobs.
+    /// Enables training jobs to mount external model weights from HuggingFace, S3, GCS, R2,<br/>
+    /// or CoreWeave via MDN's caching and CSI mounting infrastructure. Weights are mirrored<br/>
+    /// once and deduplicated across training jobs.
     /// </summary>
     public sealed partial class CreateJobWeightConfigV1
     {
         /// <summary>
-        /// Weight source URI. Supported formats: hf://, s3://, gs://, r2://
+        /// Weight source URI. Supported formats: hf://, s3://, gs://, r2://, cw://
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -63,7 +63,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="CreateJobWeightConfigV1" /> class.
         /// </summary>
         /// <param name="source">
-        /// Weight source URI. Supported formats: hf://, s3://, gs://, r2://
+        /// Weight source URI. Supported formats: hf://, s3://, gs://, r2://, cw://
         /// </param>
         /// <param name="mountLocation">
         /// Path where weights will be mounted in the container

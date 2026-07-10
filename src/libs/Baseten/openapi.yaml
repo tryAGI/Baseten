@@ -12013,15 +12013,16 @@
                 "type": "object"
             },
             "CreateJobWeightConfigV1": {
-                "description": "Weight source configuration for MDN (Model Distribution Network).\n\nEnables training jobs to mount external model weights from HuggingFace, S3, GCS, or R2\nvia MDN's caching and CSI mounting infrastructure. Weights are mirrored once and\ndeduplicated across training jobs.",
+                "description": "Weight source configuration for MDN (Model Distribution Network).\n\nEnables training jobs to mount external model weights from HuggingFace, S3, GCS, R2,\nor CoreWeave via MDN's caching and CSI mounting infrastructure. Weights are mirrored\nonce and deduplicated across training jobs.",
                 "properties": {
                     "source": {
-                        "description": "Weight source URI. Supported formats: hf://, s3://, gs://, r2://",
+                        "description": "Weight source URI. Supported formats: hf://, s3://, gs://, r2://, cw://",
                         "examples": [
                             "hf://meta-llama/Llama-3-8B@main",
                             "s3://my-bucket/models/llama",
                             "gs://my-bucket/models/llama",
-                            "r2://account_id.bucket/models/llama"
+                            "r2://account_id.bucket/models/llama",
+                            "cw://my-bucket/models/llama"
                         ],
                         "title": "Source",
                         "type": "string"
