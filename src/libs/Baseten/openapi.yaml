@@ -18221,7 +18221,8 @@
                     "OPENAI",
                     "BASETEN",
                     "BASETEN_MODEL_API",
-                    "VERTEX"
+                    "VERTEX",
+                    "OPENAI_COMPATIBLE"
                 ],
                 "title": "GatewayProvider",
                 "type": "string"
