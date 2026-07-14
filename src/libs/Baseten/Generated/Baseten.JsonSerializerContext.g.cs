@@ -570,6 +570,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsersRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointTargetV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider), TypeInfoPropertyName = "GatewayProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.VertexTargetConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EndpointTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointsResponseV1))]

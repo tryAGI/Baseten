@@ -53,6 +53,13 @@ namespace Baseten
         public string? EnvironmentName { get; set; }
 
         /// <summary>
+        /// Google Vertex configuration. Required for and only valid with VERTEX.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("vertex_config")]
+        public global::Baseten.VertexTargetConfigV1? VertexConfig { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -84,6 +91,10 @@ namespace Baseten
         /// Baseten model environment to route to. Only valid with BASETEN. Omit or pass `production` to target production.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="vertexConfig">
+        /// Google Vertex configuration. Required for and only valid with VERTEX.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -93,7 +104,8 @@ namespace Baseten
             string? targetModel,
             string? baseUrl,
             string? modelId,
-            string? environmentName)
+            string? environmentName,
+            global::Baseten.VertexTargetConfigV1? vertexConfig)
         {
             this.Provider = provider;
             this.SecretId = secretId;
@@ -101,6 +113,7 @@ namespace Baseten
             this.BaseUrl = baseUrl;
             this.ModelId = modelId;
             this.EnvironmentName = environmentName;
+            this.VertexConfig = vertexConfig;
         }
 
         /// <summary>
