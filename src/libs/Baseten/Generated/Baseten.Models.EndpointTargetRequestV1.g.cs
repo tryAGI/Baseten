@@ -32,6 +32,13 @@ namespace Baseten
         public string? TargetModel { get; set; }
 
         /// <summary>
+        /// HTTPS base URL of the upstream OpenAI-compatible server. Must not include a port. Required for and only valid with OPENAI_COMPATIBLE.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_url")]
+        public string? BaseUrl { get; set; }
+
+        /// <summary>
         /// Baseten model to route to. Required for and only valid with BASETEN.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -65,6 +72,10 @@ namespace Baseten
         /// Model name to send upstream. Required for external providers and optional for BASETEN targets.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="baseUrl">
+        /// HTTPS base URL of the upstream OpenAI-compatible server. Must not include a port. Required for and only valid with OPENAI_COMPATIBLE.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="modelId">
         /// Baseten model to route to. Required for and only valid with BASETEN.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -80,12 +91,14 @@ namespace Baseten
             global::Baseten.GatewayProvider provider,
             string? secretId,
             string? targetModel,
+            string? baseUrl,
             string? modelId,
             string? environmentName)
         {
             this.Provider = provider;
             this.SecretId = secretId;
             this.TargetModel = targetModel;
+            this.BaseUrl = baseUrl;
             this.ModelId = modelId;
             this.EnvironmentName = environmentName;
         }

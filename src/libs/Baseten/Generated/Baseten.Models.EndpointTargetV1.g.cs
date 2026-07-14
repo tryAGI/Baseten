@@ -31,6 +31,13 @@ namespace Baseten
         public string? TargetModel { get; set; }
 
         /// <summary>
+        /// Custom OpenAI-compatible base URL, if any.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_url")]
+        public string? BaseUrl { get; set; }
+
+        /// <summary>
         /// Baseten model, if any.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -64,6 +71,10 @@ namespace Baseten
         /// Upstream model name, if any.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="baseUrl">
+        /// Custom OpenAI-compatible base URL, if any.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="modelId">
         /// Baseten model, if any.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -79,12 +90,14 @@ namespace Baseten
             global::Baseten.GatewayProvider provider,
             string? secretId,
             string? targetModel,
+            string? baseUrl,
             string? modelId,
             string? environmentName)
         {
             this.Provider = provider;
             this.SecretId = secretId;
             this.TargetModel = targetModel;
+            this.BaseUrl = baseUrl;
             this.ModelId = modelId;
             this.EnvironmentName = environmentName;
         }
