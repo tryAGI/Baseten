@@ -18172,6 +18172,18 @@
                         "default": null,
                         "description": "Baseten model environment, if non-production.",
                         "title": "Environment Name"
+                    },
+                    "vertex_config": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VertexTargetConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Google Vertex configuration, if any."
                     }
                 },
                 "required": [
@@ -18239,6 +18251,33 @@
                 ],
                 "title": "GatewayProvider",
                 "type": "string"
+            },
+            "VertexTargetConfigV1": {
+                "properties": {
+                    "project_id": {
+                        "description": "Google Cloud project ID or project number.",
+                        "examples": [
+                            "my-gcp-project",
+                            "464036093014"
+                        ],
+                        "title": "Project Id",
+                        "type": "string"
+                    },
+                    "location": {
+                        "description": "Google Cloud location.",
+                        "examples": [
+                            "global"
+                        ],
+                        "title": "Location",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "project_id",
+                    "location"
+                ],
+                "title": "VertexTargetConfigV1",
+                "type": "object"
             },
             "EndpointsResponseV1": {
                 "properties": {
@@ -18354,6 +18393,18 @@
                             "staging"
                         ],
                         "title": "Environment Name"
+                    },
+                    "vertex_config": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VertexTargetConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Google Vertex configuration. Required for and only valid with VERTEX."
                     }
                 },
                 "required": [
