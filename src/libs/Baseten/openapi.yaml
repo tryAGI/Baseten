@@ -18134,6 +18134,19 @@
                         "description": "Upstream model name, if any.",
                         "title": "Target Model"
                     },
+                    "base_url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Custom OpenAI-compatible base URL, if any.",
+                        "title": "Base Url"
+                    },
                     "model_id": {
                         "anyOf": [
                             {
@@ -18258,6 +18271,7 @@
                         "examples": [
                             "ANTHROPIC",
                             "OPENAI",
+                            "OPENAI_COMPATIBLE",
                             "BASETEN"
                         ]
                     },
@@ -18292,6 +18306,22 @@
                             "gpt-4o"
                         ],
                         "title": "Target Model"
+                    },
+                    "base_url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "HTTPS base URL of the upstream OpenAI-compatible server. Must not include a port. Required for and only valid with OPENAI_COMPATIBLE.",
+                        "examples": [
+                            "https://my-vllm.example.com"
+                        ],
+                        "title": "Base Url"
                     },
                     "model_id": {
                         "anyOf": [
@@ -18358,6 +18388,14 @@
                                     "provider": "OPENAI",
                                     "secret_id": "3kZ9xqd",
                                     "target_model": "gpt-4o"
+                                }
+                            ],
+                            [
+                                {
+                                    "base_url": "https://my-vllm.example.com",
+                                    "provider": "OPENAI_COMPATIBLE",
+                                    "secret_id": "3kZ9xqd",
+                                    "target_model": "my-model"
                                 }
                             ]
                         ],
@@ -18430,6 +18468,14 @@
                                     "provider": "OPENAI",
                                     "secret_id": "3kZ9xqd",
                                     "target_model": "gpt-4o"
+                                }
+                            ],
+                            [
+                                {
+                                    "base_url": "https://my-vllm.example.com",
+                                    "provider": "OPENAI_COMPATIBLE",
+                                    "secret_id": "3kZ9xqd",
+                                    "target_model": "my-model"
                                 }
                             ]
                         ],
