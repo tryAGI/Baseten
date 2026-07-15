@@ -13,6 +13,38 @@ namespace Baseten
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
+            typeof(global::Baseten.JsonConverters.AuditLogActorTypeV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogActorTypeV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogApiKeyTypeV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogApiKeyTypeV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventTypeV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventTypeV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogPromotionControlActionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogPromotionControlActionV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogSourceV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogSourceV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventTypeGroupV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventTypeGroupV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogSortDirectionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogSortDirectionV1NullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.CreateModelRequestV1SourceDiscriminatorKindJsonConverter),
 
             typeof(global::Baseten.JsonConverters.CreateModelRequestV1SourceDiscriminatorKindNullableJsonConverter),
@@ -145,6 +177,8 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.UsageLimitUnitV1NullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.EventDataJsonConverter),
+
             typeof(global::Baseten.JsonConverters.SourceJsonConverter),
 
             typeof(global::Baseten.JsonConverters.PatchOpsItemJsonConverter),
@@ -197,7 +231,9 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.UnixTimestampJsonConverter),
         })]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, object>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SecretV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
@@ -238,6 +274,66 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PrepareModelUploadRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AWSCredentialsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PrepareModelUploadResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogActorTypeV1), TypeInfoPropertyName = "AuditLogActorTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogActorV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyTypeV1), TypeInfoPropertyName = "AuditLogApiKeyTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeV1), TypeInfoPropertyName = "AuditLogEventTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EventData), TypeInfoPropertyName = "EventData2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeployedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentActivatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentDeactivatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentRetriedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentPromotedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainDeployedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainDeploymentActivatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainDeploymentDeactivatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainDeploymentPromotedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainletInstanceTypeChangedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainDeploymentDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainEnvironmentCreatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventChainEnvironmentUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventSecretUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventSecretDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventApiKeyCreatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventApiKeyDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointCreatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventUserInvitedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventUserJoinedOrganizationV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventUserRoleUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventUserTeamRoleUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventUserRemovedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventEnvironmentCreatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventEnvironmentUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventEnvironmentDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventReplicaTerminatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelPromotionControlActionV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventSshCertificateSignedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType), TypeInfoPropertyName = "AuditLogEntryV1EventDataDiscriminatorEventType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSourceV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingSettingsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1), TypeInfoPropertyName = "AuditLogPromotionControlActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListAuditLogsResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEntryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeGroupV1), TypeInfoPropertyName = "AuditLogEventTypeGroupV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSortDirectionV1), TypeInfoPropertyName = "AuditLogSortDirectionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListAuditLogsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEventTypeGroupV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogSourceV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelV1>))]
@@ -282,7 +378,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpEnvVarV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpExternalDataV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpModelCodeV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpPackageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchOpPythonRequirementV1))]
@@ -607,6 +702,285 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateApiKeyForGroupResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RegisterAPIKeyRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RegisterAPIKeyResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogActorTypeV1?), TypeInfoPropertyName = "NullableAuditLogActorTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyTypeV1?), TypeInfoPropertyName = "NullableAuditLogApiKeyTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EventData?), TypeInfoPropertyName = "NullableEventData2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType?), TypeInfoPropertyName = "NullableAuditLogEntryV1EventDataDiscriminatorEventType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1?), TypeInfoPropertyName = "NullableAuditLogPromotionControlActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeGroupV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeGroupV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSortDirectionV1?), TypeInfoPropertyName = "NullableAuditLogSortDirectionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Source?), TypeInfoPropertyName = "NullableSource2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelRequestV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableCreateModelRequestV1SourceDiscriminatorKind2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentStatusV1?), TypeInfoPropertyName = "NullableDeploymentStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableCreateModelDeploymentRequestV1SourceDiscriminatorKind2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1?), TypeInfoPropertyName = "NullableUpdateAutoscalingSettingsStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentConfigOutputFormat?), TypeInfoPropertyName = "NullableDeploymentConfigOutputFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LogLevelV1?), TypeInfoPropertyName = "NullableLogLevelV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SortOrderV1?), TypeInfoPropertyName = "NullableSortOrderV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchActionV1?), TypeInfoPropertyName = "NullableDeploymentPatchActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchOpsItem?), TypeInfoPropertyName = "NullablePatchOpsItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType?), TypeInfoPropertyName = "NullableCreateDeploymentPatchRequestV1PatchOpDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricUnitHintV1?), TypeInfoPropertyName = "NullableModelMetricUnitHintV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricKindV1?), TypeInfoPropertyName = "NullableModelMetricKindV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricModeV1?), TypeInfoPropertyName = "NullableModelMetricModeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.InProgressPromotionStatusV1?), TypeInfoPropertyName = "NullableInProgressPromotionStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PromotionCleanupStrategyV1?), TypeInfoPropertyName = "NullablePromotionCleanupStrategyV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RollingDeployStrategyV1?), TypeInfoPropertyName = "NullableRollingDeployStrategyV12")]
+    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+        Converters = new global::System.Type[]
+        {
+            typeof(global::Baseten.JsonConverters.AuditLogActorTypeV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogActorTypeV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogApiKeyTypeV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogApiKeyTypeV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventTypeV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventTypeV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogPromotionControlActionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogPromotionControlActionV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogSourceV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogSourceV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventTypeGroupV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventTypeGroupV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogSortDirectionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogSortDirectionV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CreateModelRequestV1SourceDiscriminatorKindJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CreateModelRequestV1SourceDiscriminatorKindNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DeploymentStatusV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DeploymentStatusV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CreateModelDeploymentRequestV1SourceDiscriminatorKindJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CreateModelDeploymentRequestV1SourceDiscriminatorKindNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DeploymentConfigOutputFormatJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DeploymentConfigOutputFormatNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LogLevelV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LogLevelV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.SortOrderV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.SortOrderV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DeploymentPatchActionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DeploymentPatchActionV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CreateDeploymentPatchRequestV1PatchOpDiscriminatorTypeJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CreateDeploymentPatchRequestV1PatchOpDiscriminatorTypeNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ModelMetricKindV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ModelMetricKindV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ModelMetricModeV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ModelMetricModeV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ModelMetricUnitHintV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ModelMetricUnitHintV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.InProgressPromotionStatusV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.InProgressPromotionStatusV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.PromotionCleanupStrategyV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.PromotionCleanupStrategyV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.RollingDeployStrategyV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.RollingDeployStrategyV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CancelPromotionStatusV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CancelPromotionStatusV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CheckpointSyncStatusJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CheckpointSyncStatusNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1AvailabilityModelNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DockerAuthTypeJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.DockerAuthTypeNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LoadCheckpointConfigCheckpointDiscriminatorTypJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LoadCheckpointConfigCheckpointDiscriminatorTypNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LoopsCheckpointConfigTargetJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LoopsCheckpointConfigTargetNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1InteractiveSessionAuthProviderJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1InteractiveSessionAuthProviderNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1InteractiveSessionProviderJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1InteractiveSessionProviderNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1InteractiveSessionTriggerJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.V1InteractiveSessionTriggerNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.NameJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.NameNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.APIKeyCategoryJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.APIKeyCategoryNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LimitTypeV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LimitTypeV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.RateLimitUnitV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.RateLimitUnitV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ResourceKindJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.ResourceKindNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.GatewayProviderJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.GatewayProviderNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LimitEnforcementV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LimitEnforcementV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.UsageLimitUnitV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.UsageLimitUnitV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.EventDataJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.SourceJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.PatchOpsItemJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.CheckpointsItemJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>),
+
+            typeof(global::Baseten.JsonConverters.UnixTimestampJsonConverter),
+        })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CancelPromotionStatusV1?), TypeInfoPropertyName = "NullableCancelPromotionStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckpointSyncStatus?), TypeInfoPropertyName = "NullableCheckpointSyncStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.V1AvailabilityModel?), TypeInfoPropertyName = "NullableV1AvailabilityModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<string, global::Baseten.SecretReferenceV1>?), TypeInfoPropertyName = "NullableAnyOfStringSecretReferenceV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DockerAuthType?), TypeInfoPropertyName = "NullableDockerAuthType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.V1InteractiveSessionTrigger?), TypeInfoPropertyName = "NullableV1InteractiveSessionTrigger2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.V1InteractiveSessionProvider?), TypeInfoPropertyName = "NullableV1InteractiveSessionProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.V1InteractiveSessionAuthProvider?), TypeInfoPropertyName = "NullableV1InteractiveSessionAuthProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckpointsItem?), TypeInfoPropertyName = "NullableCheckpointsItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTyp?), TypeInfoPropertyName = "NullableLoadCheckpointConfigCheckpointDiscriminatorTyp2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointConfigTarget?), TypeInfoPropertyName = "NullableLoopsCheckpointConfigTarget2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerCheckpointTarget?), TypeInfoPropertyName = "NullableTrainerCheckpointTarget2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Name?), TypeInfoPropertyName = "NullableName2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyCategory?), TypeInfoPropertyName = "NullableAPIKeyCategory2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1?), TypeInfoPropertyName = "NullableLimitTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>?), TypeInfoPropertyName = "NullableAnyOfDoubleString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitUnitV1?), TypeInfoPropertyName = "NullableRateLimitUnitV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider?), TypeInfoPropertyName = "NullableGatewayProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitUnitV1?), TypeInfoPropertyName = "NullableUsageLimitUnitV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitEnforcementV1?), TypeInfoPropertyName = "NullableLimitEnforcementV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SecretV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EnvironmentGroupUserV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EnvironmentGroupV1>))]
@@ -614,6 +988,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TeamV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.InstanceTypeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.InstanceTypeWithPriceV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEntryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventTypeGroupV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogSourceV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DeploymentV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LogV1>))]
@@ -680,7 +1057,159 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.UsageLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GroupV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GatewayKeyInfoV1>))]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
+        private static readonly global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver Resolver = global::System.Text.Json.Serialization.Metadata.JsonTypeInfoResolver.Combine(
+            SourceGenerationContextChunk0.Default,
+
+            SourceGenerationContextChunk1.Default
+            );
+
+        private static readonly global::System.Text.Json.JsonSerializerOptions DefaultOptions = CreateDefaultOptions();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SourceGenerationContext Default { get; } = new(DefaultOptions);
+
+        private SourceGenerationContext(global::System.Text.Json.JsonSerializerOptions options)
+            : base(options)
+        {
+        }
+
+        /// <inheritdoc />
+        protected override global::System.Text.Json.JsonSerializerOptions? GeneratedSerializerOptions => DefaultOptions;
+
+        /// <inheritdoc />
+        public override global::System.Text.Json.Serialization.Metadata.JsonTypeInfo? GetTypeInfo(global::System.Type type)
+        {
+            return Resolver.GetTypeInfo(type, Options);
+        }
+
+        private static global::System.Text.Json.JsonSerializerOptions CreateDefaultOptions()
+        {
+            var options = new global::System.Text.Json.JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                TypeInfoResolver = Resolver,
+            };
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogActorTypeV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogActorTypeV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogApiKeyTypeV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogApiKeyTypeV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEventTypeV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEventTypeV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogPromotionControlActionV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogPromotionControlActionV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogSourceV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogSourceV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEventTypeGroupV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEventTypeGroupV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogSortDirectionV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogSortDirectionV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CreateModelRequestV1SourceDiscriminatorKindJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CreateModelRequestV1SourceDiscriminatorKindNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.DeploymentStatusV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.DeploymentStatusV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CreateModelDeploymentRequestV1SourceDiscriminatorKindJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CreateModelDeploymentRequestV1SourceDiscriminatorKindNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.DeploymentConfigOutputFormatJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.DeploymentConfigOutputFormatNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LogLevelV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LogLevelV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.SortOrderV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.SortOrderV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.DeploymentPatchActionV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.DeploymentPatchActionV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CreateDeploymentPatchRequestV1PatchOpDiscriminatorTypeJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CreateDeploymentPatchRequestV1PatchOpDiscriminatorTypeNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.ModelMetricKindV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.ModelMetricKindV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.ModelMetricModeV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.ModelMetricModeV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.ModelMetricUnitHintV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.ModelMetricUnitHintV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.InProgressPromotionStatusV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.InProgressPromotionStatusV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.PromotionCleanupStrategyV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.PromotionCleanupStrategyV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.RollingDeployStrategyV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.RollingDeployStrategyV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CancelPromotionStatusV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CancelPromotionStatusV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CheckpointSyncStatusJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CheckpointSyncStatusNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.V1AvailabilityModelNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.DockerAuthTypeJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.DockerAuthTypeNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LoadCheckpointConfigCheckpointDiscriminatorTypJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LoadCheckpointConfigCheckpointDiscriminatorTypNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LoopsCheckpointConfigTargetJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LoopsCheckpointConfigTargetNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionAuthProviderJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionAuthProviderNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionProviderJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionProviderNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionTriggerJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionTriggerNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.TrainerCheckpointTargetJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.TrainerCheckpointTargetNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.NameJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.NameNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.APIKeyCategoryJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.APIKeyCategoryNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LimitTypeV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LimitTypeV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.RateLimitUnitV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.RateLimitUnitV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.ResourceKindJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.ResourceKindNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.GatewayProviderJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.GatewayProviderNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LimitEnforcementV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LimitEnforcementV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.UsageLimitUnitV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.UsageLimitUnitV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.EventDataJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.SourceJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.PatchOpsItemJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.CheckpointsItemJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.UnixTimestampJsonConverter());
+
+            return options;
+        }
     }
 }
