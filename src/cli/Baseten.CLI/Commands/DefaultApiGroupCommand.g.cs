@@ -97,11 +97,13 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(EditTrainingCapacityCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingUsageSummaryCommandApiCommand.Create());
                          command.Subcommands.Add(GetBlobsCredentialsModelCommandApiCommand.Create());
                          command.Subcommands.Add(GetBlobsCredentialsTrainCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsByChainIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetChainsByChainIdAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsByChainIdDeploymentsCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsByChainIdDeploymentsByChainDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetChainsByChainIdDeploymentsByChainDeploymentIdChainletsByChainletIdLogsCommandApiCommand.Create());
@@ -140,6 +142,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelApisSnapshotsByModelIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdConfigCommandApiCommand.Create());
