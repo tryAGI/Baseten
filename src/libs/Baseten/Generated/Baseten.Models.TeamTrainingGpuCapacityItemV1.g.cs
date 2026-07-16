@@ -51,6 +51,20 @@ namespace Baseten
         public required int UsageCount { get; set; }
 
         /// <summary>
+        /// Portion of usage_count from dedicated (on-demand) jobs.<br/>
+        /// Default Value: 0
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dedicated_usage_count")]
+        public int? DedicatedUsageCount { get; set; }
+
+        /// <summary>
+        /// Portion of usage_count from spot jobs.<br/>
+        /// Default Value: 0
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("spot_usage_count")]
+        public int? SpotUsageCount { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -77,6 +91,14 @@ namespace Baseten
         /// <param name="usageCount">
         /// GPUs currently in use by the team's active training jobs
         /// </param>
+        /// <param name="dedicatedUsageCount">
+        /// Portion of usage_count from dedicated (on-demand) jobs.<br/>
+        /// Default Value: 0
+        /// </param>
+        /// <param name="spotUsageCount">
+        /// Portion of usage_count from spot jobs.<br/>
+        /// Default Value: 0
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -86,7 +108,9 @@ namespace Baseten
             string gpuType,
             int baseline,
             int limit,
-            int usageCount)
+            int usageCount,
+            int? dedicatedUsageCount,
+            int? spotUsageCount)
         {
             this.TeamId = teamId ?? throw new global::System.ArgumentNullException(nameof(teamId));
             this.TeamName = teamName ?? throw new global::System.ArgumentNullException(nameof(teamName));
@@ -94,6 +118,8 @@ namespace Baseten
             this.Baseline = baseline;
             this.Limit = limit;
             this.UsageCount = usageCount;
+            this.DedicatedUsageCount = dedicatedUsageCount;
+            this.SpotUsageCount = spotUsageCount;
         }
 
         /// <summary>
