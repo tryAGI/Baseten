@@ -19087,6 +19087,18 @@
                         "description": "GPUs currently in use by the team's active training jobs",
                         "title": "Usage Count",
                         "type": "integer"
+                    },
+                    "dedicated_usage_count": {
+                        "default": 0,
+                        "description": "Portion of usage_count from dedicated (on-demand) jobs.",
+                        "title": "Dedicated Usage Count",
+                        "type": "integer"
+                    },
+                    "spot_usage_count": {
+                        "default": 0,
+                        "description": "Portion of usage_count from spot jobs.",
+                        "title": "Spot Usage Count",
+                        "type": "integer"
                     }
                 },
                 "required": [
@@ -19121,6 +19133,18 @@
                     "usage_count": {
                         "description": "GPUs currently in use by active training jobs",
                         "title": "Usage Count",
+                        "type": "integer"
+                    },
+                    "dedicated_usage_count": {
+                        "default": 0,
+                        "description": "Portion of usage_count from dedicated (on-demand) jobs, which run against the baseline.",
+                        "title": "Dedicated Usage Count",
+                        "type": "integer"
+                    },
+                    "spot_usage_count": {
+                        "default": 0,
+                        "description": "Portion of usage_count from spot jobs, which burst into the peak and may push usage above the limit.",
+                        "title": "Spot Usage Count",
                         "type": "integer"
                     }
                 },
