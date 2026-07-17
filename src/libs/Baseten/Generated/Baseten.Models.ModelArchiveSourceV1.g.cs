@@ -30,11 +30,11 @@ namespace Baseten
         public required global::Baseten.DeploymentArchivePayloadV1 Deployment { get; set; }
 
         /// <summary>
-        /// S3 key of the uploaded archive, from the credentials returned by `POST /v1/prepare_model_upload`.
+        /// S3 key of the uploaded archive, from the credentials returned by `POST /v1/prepare_model_upload`. Omit for model formats that are not built from an archive (for example, BIS-LLM), where prepare issues no upload target.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("s3_key")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string S3Key { get; set; }
+        public string? S3Key { get; set; }
 
         /// <summary>
         /// If true, the uploaded archive is not downloadable after creation. Locked at model creation; cannot be changed by subsequent deployments.<br/>
@@ -58,11 +58,12 @@ namespace Baseten
         /// <param name="deployment">
         /// Deployment-level configuration for the model's first deployment.
         /// </param>
-        /// <param name="s3Key">
-        /// S3 key of the uploaded archive, from the credentials returned by `POST /v1/prepare_model_upload`.
-        /// </param>
         /// <param name="kind">
         /// Default Value: model_archive
+        /// </param>
+        /// <param name="s3Key">
+        /// S3 key of the uploaded archive, from the credentials returned by `POST /v1/prepare_model_upload`. Omit for model formats that are not built from an archive (for example, BIS-LLM), where prepare issues no upload target.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="disableArchiveDownload">
         /// If true, the uploaded archive is not downloadable after creation. Locked at model creation; cannot be changed by subsequent deployments.<br/>
@@ -74,14 +75,14 @@ namespace Baseten
         public ModelArchiveSourceV1(
             string name,
             global::Baseten.DeploymentArchivePayloadV1 deployment,
-            string s3Key,
             string? kind,
+            string? s3Key,
             bool? disableArchiveDownload)
         {
             this.Kind = kind;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Deployment = deployment ?? throw new global::System.ArgumentNullException(nameof(deployment));
-            this.S3Key = s3Key ?? throw new global::System.ArgumentNullException(nameof(s3Key));
+            this.S3Key = s3Key;
             this.DisableArchiveDownload = disableArchiveDownload;
         }
 

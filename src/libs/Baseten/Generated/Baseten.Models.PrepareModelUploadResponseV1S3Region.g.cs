@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// AWS region the S3 bucket resides in.<br/>
+    /// AWS region the S3 bucket resides in. Null when no archive upload is required.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
     public sealed partial class PrepareModelUploadResponseV1S3Region
