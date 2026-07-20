@@ -18086,6 +18086,7 @@
                     "lora_rank": {
                         "default": 64,
                         "description": "LoRA rank.",
+                        "minimum": 1,
                         "title": "Lora Rank",
                         "type": "integer"
                     },
