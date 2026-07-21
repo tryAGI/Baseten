@@ -16,11 +16,18 @@ namespace Baseten
         public required string SessionId { get; set; }
 
         /// <summary>
-        /// Base model ID for standalone samplers (e.g., for baselines).
+        /// Base model ID for a standalone sampler (for example, a baseline). Required unless run_id is set, in which case the base model is inherited from the run.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_model")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string BaseModel { get; set; }
+        public string? BaseModel { get; set; }
+
+        /// <summary>
+        /// ID of an existing run to attach this sampler to. When set, the sampler is paired to the run and weight-syncs from its trainer, and base_model is inherited from the run. Omit to create a standalone sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("run_id")]
+        public string? RunId { get; set; }
 
         /// <summary>
         /// Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send. Omit to use the default for the base model.<br/>
@@ -37,7 +44,7 @@ namespace Baseten
         public string? ModelPath { get; set; }
 
         /// <summary>
-        /// Optional Loops session ID whose deployment should be reused for this sampler. Same best-effort semantics as the run endpoint.<br/>
+        /// Optional Loops session ID to reuse infrastructure from. Best-effort.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reuse_from_session_id")]
@@ -56,7 +63,12 @@ namespace Baseten
         /// ID of the Loops session this sampler belongs to.
         /// </param>
         /// <param name="baseModel">
-        /// Base model ID for standalone samplers (e.g., for baselines).
+        /// Base model ID for a standalone sampler (for example, a baseline). Required unless run_id is set, in which case the base model is inherited from the run.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="runId">
+        /// ID of an existing run to attach this sampler to. When set, the sampler is paired to the run and weight-syncs from its trainer, and base_model is inherited from the run. Omit to create a standalone sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="maxSeqLength">
         /// Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send. Omit to use the default for the base model.<br/>
@@ -67,7 +79,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="reuseFromSessionId">
-        /// Optional Loops session ID whose deployment should be reused for this sampler. Same best-effort semantics as the run endpoint.<br/>
+        /// Optional Loops session ID to reuse infrastructure from. Best-effort.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
@@ -75,13 +87,15 @@ namespace Baseten
 #endif
         public CreateLoopsSamplerRequestV1(
             string sessionId,
-            string baseModel,
+            string? baseModel,
+            string? runId,
             int? maxSeqLength,
             string? modelPath,
             string? reuseFromSessionId)
         {
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
-            this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
+            this.BaseModel = baseModel;
+            this.RunId = runId;
             this.MaxSeqLength = maxSeqLength;
             this.ModelPath = modelPath;
             this.ReuseFromSessionId = reuseFromSessionId;

@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsSamplersSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsTrainersSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,29 +21,29 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsSamplersSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsTrainersSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateLoopsSamplersSecurityRequirement0,
+            {                s_CreateLoopsTrainersSecurityRequirement0,
             };
-        partial void PrepareCreateLoopsSamplersArguments(
+        partial void PrepareCreateLoopsTrainersArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopsSamplerRequestV1 request);
-        partial void PrepareCreateLoopsSamplersRequest(
+            global::Baseten.CreateLoopsRunRequestV1 request);
+        partial void PrepareCreateLoopsTrainersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopsSamplerRequestV1 request);
-        partial void ProcessCreateLoopsSamplersResponse(
+            global::Baseten.CreateLoopsRunRequestV1 request);
+        partial void ProcessCreateLoopsTrainersResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateLoopsSamplersResponseContent(
+        partial void ProcessCreateLoopsTrainersResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Creates a Loops sampler<br/>
-        /// Creates a standalone Loops sampler not linked to a run.
+        /// Creates a Loops trainer<br/>
+        /// Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -51,24 +51,25 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/samplers \<br/>
+        /// --url https://api.baseten.co/v1/loops/trainers \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
-        ///   "run_id": null,<br/>
-        ///   "max_seq_length": null,<br/>
-        ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100",<br/>
+        ///   "name": null,<br/>
+        ///   "max_seq_len": null,<br/>
+        ///   "seed": null,<br/>
+        ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_session_id": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateLoopsSamplersAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsTrainersAsync(
 
-            global::Baseten.CreateLoopsSamplerRequestV1 request,
+            global::Baseten.CreateLoopsRunRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateLoopsSamplersAsResponseAsync(
+            var __response = await CreateLoopsTrainersAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -78,8 +79,8 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Creates a Loops sampler<br/>
-        /// Creates a standalone Loops sampler not linked to a run.
+        /// Creates a Loops trainer<br/>
+        /// Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -87,20 +88,21 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/samplers \<br/>
+        /// --url https://api.baseten.co/v1/loops/trainers \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
-        ///   "run_id": null,<br/>
-        ///   "max_seq_length": null,<br/>
-        ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100",<br/>
+        ///   "name": null,<br/>
+        ///   "max_seq_len": null,<br/>
+        ///   "seed": null,<br/>
+        ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_session_id": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>> CreateLoopsSamplersAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsTrainersAsResponseAsync(
 
-            global::Baseten.CreateLoopsSamplerRequestV1 request,
+            global::Baseten.CreateLoopsRunRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -108,15 +110,15 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateLoopsSamplersArguments(
+            PrepareCreateLoopsTrainersArguments(
                 httpClient: HttpClient,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateLoopsSamplersSecurityRequirements,
-                operationName: "CreateLoopsSamplersAsync");
+                securityRequirements: s_CreateLoopsTrainersSecurityRequirements,
+                operationName: "CreateLoopsTrainersAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -136,7 +138,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/loops/samplers",
+                                path: "/v1/loops/trainers",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -181,7 +183,7 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateLoopsSamplersRequest(
+                PrepareCreateLoopsTrainersRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     request: request);
@@ -201,9 +203,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsSamplers",
-                                methodName: "CreateLoopsSamplersAsync",
-                                pathTemplate: "\"/v1/loops/samplers\"",
+                                operationId: "createLoopsTrainers",
+                                methodName: "CreateLoopsTrainersAsync",
+                                pathTemplate: "\"/v1/loops/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -235,9 +237,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsSamplers",
-                                methodName: "CreateLoopsSamplersAsync",
-                                pathTemplate: "\"/v1/loops/samplers\"",
+                                operationId: "createLoopsTrainers",
+                                methodName: "CreateLoopsTrainersAsync",
+                                pathTemplate: "\"/v1/loops/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -276,9 +278,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsSamplers",
-                                methodName: "CreateLoopsSamplersAsync",
-                                pathTemplate: "\"/v1/loops/samplers\"",
+                                operationId: "createLoopsTrainers",
+                                methodName: "CreateLoopsTrainersAsync",
+                                pathTemplate: "\"/v1/loops/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -316,7 +318,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateLoopsSamplersResponse(
+                ProcessCreateLoopsTrainersResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -324,9 +326,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsSamplers",
-                                methodName: "CreateLoopsSamplersAsync",
-                                pathTemplate: "\"/v1/loops/samplers\"",
+                                operationId: "createLoopsTrainers",
+                                methodName: "CreateLoopsTrainersAsync",
+                                pathTemplate: "\"/v1/loops/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -346,9 +348,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsSamplers",
-                                methodName: "CreateLoopsSamplersAsync",
-                                pathTemplate: "\"/v1/loops/samplers\"",
+                                operationId: "createLoopsTrainers",
+                                methodName: "CreateLoopsTrainersAsync",
+                                pathTemplate: "\"/v1/loops/trainers\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -376,7 +378,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateLoopsSamplersResponseContent(
+                                ProcessCreateLoopsTrainersResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -385,9 +387,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreateLoopsSamplerResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.CreateLoopsRunResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -417,9 +419,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreateLoopsSamplerResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.CreateLoopsRunResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -460,56 +462,79 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Creates a Loops sampler<br/>
-        /// Creates a standalone Loops sampler not linked to a run.
+        /// Creates a Loops trainer<br/>
+        /// Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.
         /// </summary>
         /// <param name="sessionId">
-        /// ID of the Loops session this sampler belongs to.
+        /// ID of the Loops session this run belongs to.
         /// </param>
         /// <param name="baseModel">
-        /// Base model ID for a standalone sampler (for example, a baseline). Required unless run_id is set, in which case the base model is inherited from the run.<br/>
+        /// Base model ID (e.g. 'Qwen/Qwen3-8B').
+        /// </param>
+        /// <param name="name">
+        /// Optional display name for the run. Defaults to the base model name when omitted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="runId">
-        /// ID of an existing run to attach this sampler to. When set, the sampler is paired to the run and weight-syncs from its trainer, and base_model is inherited from the run. Omit to create a standalone sampler.<br/>
+        /// <param name="maxSeqLen">
+        /// Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="maxSeqLength">
-        /// Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send. Omit to use the default for the base model.<br/>
+        /// <param name="loraRank">
+        /// LoRA rank.<br/>
+        /// Default Value: 64
+        /// </param>
+        /// <param name="seed">
+        /// Random seed for reproducibility.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="modelPath">
-        /// Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/sampler_weights/&lt;checkpoint_name&gt;.<br/>
+        /// <param name="scaleDownDelaySeconds">
+        /// Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.<br/>
+        /// Default Value: 3600
+        /// </param>
+        /// <param name="replicas">
+        /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
+        /// Default Value: 1
+        /// </param>
+        /// <param name="path">
+        /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="reuseFromSessionId">
-        /// Optional Loops session ID to reuse infrastructure from. Best-effort.<br/>
+        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateLoopsSamplersAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsTrainersAsync(
             string sessionId,
-            string? baseModel = default,
-            string? runId = default,
-            int? maxSeqLength = default,
-            string? modelPath = default,
+            string baseModel,
+            string? name = default,
+            int? maxSeqLen = default,
+            int? loraRank = default,
+            int? seed = default,
+            int? scaleDownDelaySeconds = default,
+            int? replicas = default,
+            string? path = default,
             string? reuseFromSessionId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateLoopsSamplerRequestV1
+            var __request = new global::Baseten.CreateLoopsRunRequestV1
             {
                 SessionId = sessionId,
                 BaseModel = baseModel,
-                RunId = runId,
-                MaxSeqLength = maxSeqLength,
-                ModelPath = modelPath,
+                Name = name,
+                MaxSeqLen = maxSeqLen,
+                LoraRank = loraRank,
+                Seed = seed,
+                ScaleDownDelaySeconds = scaleDownDelaySeconds,
+                Replicas = replicas,
+                Path = path,
                 ReuseFromSessionId = reuseFromSessionId,
             };
 
-            return await CreateLoopsSamplersAsync(
+            return await CreateLoopsTrainersAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

@@ -4,10 +4,10 @@
 namespace Baseten
 {
     /// <summary>
-    /// Optional Loops session ID to reuse infrastructure from. Best-effort.<br/>
+    /// Base model ID for a standalone sampler (for example, a baseline). Required unless run_id is set, in which case the base model is inherited from the run.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
-    public sealed partial class CreateLoopsSamplerRequestV1ReuseFromSessionId
+    public sealed partial class CreateLoopsSamplerRequestV1BaseModel
     {
 
         /// <summary>

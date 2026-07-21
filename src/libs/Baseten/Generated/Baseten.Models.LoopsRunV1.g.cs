@@ -58,11 +58,11 @@ namespace Baseten
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// The sampler bound to this run.
+        /// The sampler bound to this run, or null for a trainer-only run that has not yet created a sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sampler")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.LoopsSamplerV1 Sampler { get; set; }
+        public global::Baseten.LoopsSamplerV1? Sampler { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -95,7 +95,8 @@ namespace Baseten
         /// Time the run was created in ISO 8601 format
         /// </param>
         /// <param name="sampler">
-        /// The sampler bound to this run.
+        /// The sampler bound to this run, or null for a trainer-only run that has not yet created a sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -108,7 +109,7 @@ namespace Baseten
             string baseModel,
             string baseUrl,
             global::System.DateTime createdAt,
-            global::Baseten.LoopsSamplerV1 sampler)
+            global::Baseten.LoopsSamplerV1? sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
@@ -117,7 +118,7 @@ namespace Baseten
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.CreatedAt = createdAt;
-            this.Sampler = sampler ?? throw new global::System.ArgumentNullException(nameof(sampler));
+            this.Sampler = sampler;
         }
 
         /// <summary>

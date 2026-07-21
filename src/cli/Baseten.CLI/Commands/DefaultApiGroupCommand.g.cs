@@ -28,6 +28,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateLoopsRunsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsSamplersCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsSessionsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateLoopsTrainersCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelApisSnapshotsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelApisSnapshotsByModelIdCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsCommandApiCommand.Create());
