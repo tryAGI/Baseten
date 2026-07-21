@@ -5,7 +5,7 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class CreateLoopsRunsCommandApiCommand
+internal static partial class CreateLoopsTrainersCommandApiCommand
 {
     private static readonly CreateLoopsRunRequestV1OptionSet CreateLoopsRunRequestV1OptionSetOptions = CreateLoopsRunRequestV1OptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
@@ -47,8 +47,8 @@ internal static partial class CreateLoopsRunsCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-loops-runs", @"Creates a Loops run
-Creates a Loops run with an associated sampler in the given session.");
+        var command = new Command(@"create-loops-trainers", @"Creates a Loops trainer
+Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.");
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.SessionId);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.BaseModel);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.NameOption);
@@ -96,7 +96,7 @@ Creates a Loops run with an associated sampler in the given session.");
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.CreateLoopsRunsAsync(
+                                var response = await client.CreateLoopsTrainersAsync(
                                     sessionId: sessionId,
                                     baseModel: baseModel,
                                     name: name,

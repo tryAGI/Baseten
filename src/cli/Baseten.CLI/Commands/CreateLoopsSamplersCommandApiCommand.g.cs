@@ -14,11 +14,16 @@ internal static partial class CreateLoopsSamplersCommandApiCommand
         Required = true,
     };
 
-    private static Option<string> BaseModel { get; } = new(
+    private static Option<string?> BaseModel { get; } = new(
         name: @"--base-model")
     {
-        Description = @"Base model ID for standalone samplers (e.g., for baselines).",
-        Required = true,
+        Description = @"Base model ID for a standalone sampler (for example, a baseline). Required unless run_id is set, in which case the base model is inherited from the run.",
+    };
+
+    private static Option<string?> RunId { get; } = new(
+        name: @"--run-id")
+    {
+        Description = @"ID of an existing run to attach this sampler to. When set, the sampler is paired to the run and weight-syncs from its trainer, and base_model is inherited from the run. Omit to create a standalone sampler.",
     };
 
     private static Option<int?> MaxSeqLength { get; } = new(
@@ -36,7 +41,7 @@ internal static partial class CreateLoopsSamplersCommandApiCommand
     private static Option<string?> ReuseFromSessionId { get; } = new(
         name: @"--reuse-from-session-id")
     {
-        Description = @"Optional Loops session ID whose deployment should be reused for this sampler. Same best-effort semantics as the run endpoint.",
+        Description = @"Optional Loops session ID to reuse infrastructure from. Best-effort.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -81,6 +86,7 @@ internal static partial class CreateLoopsSamplersCommandApiCommand
 Creates a standalone Loops sampler not linked to a run.");
                         command.Options.Add(SessionId);
                         command.Options.Add(BaseModel);
+                        command.Options.Add(RunId);
                         command.Options.Add(MaxSeqLength);
                         command.Options.Add(ModelPath);
                         command.Options.Add(ReuseFromSessionId);
@@ -110,7 +116,8 @@ Creates a standalone Loops sampler not linked to a run.");
                             global::Baseten.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var sessionId = parseResult.GetRequiredValue(SessionId);
-                        var baseModel = parseResult.GetRequiredValue(BaseModel);
+                        var baseModel = CliRuntime.WasSpecified(parseResult, BaseModel) ? parseResult.GetValue(BaseModel) : (__requestBase is { } __BaseModelBaseValue ? __BaseModelBaseValue.BaseModel : default);
+                        var runId = CliRuntime.WasSpecified(parseResult, RunId) ? parseResult.GetValue(RunId) : (__requestBase is { } __RunIdBaseValue ? __RunIdBaseValue.RunId : default);
                         var maxSeqLength = CliRuntime.WasSpecified(parseResult, MaxSeqLength) ? parseResult.GetValue(MaxSeqLength) : (__requestBase is { } __MaxSeqLengthBaseValue ? __MaxSeqLengthBaseValue.MaxSeqLength : default);
                         var modelPath = CliRuntime.WasSpecified(parseResult, ModelPath) ? parseResult.GetValue(ModelPath) : (__requestBase is { } __ModelPathBaseValue ? __ModelPathBaseValue.ModelPath : default);
                         var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, ReuseFromSessionId) ? parseResult.GetValue(ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
@@ -120,6 +127,7 @@ Creates a standalone Loops sampler not linked to a run.");
                                 var response = await client.CreateLoopsSamplersAsync(
                                     sessionId: sessionId,
                                     baseModel: baseModel,
+                                    runId: runId,
                                     maxSeqLength: maxSeqLength,
                                     modelPath: modelPath,
                                     reuseFromSessionId: reuseFromSessionId,

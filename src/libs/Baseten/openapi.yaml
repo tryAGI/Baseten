@@ -5682,6 +5682,44 @@
                 }
             ]
         },
+        "/v1/loops/trainers": {
+            "post": {
+                "summary": "Creates a Loops trainer",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLoopsRunRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateLoopsRunResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/loops/samplers": {
             "get": {
                 "summary": "Lists Loops samplers",
@@ -5714,11 +5752,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a standalone Loops sampler not linked to a run.",
@@ -17907,8 +17945,16 @@
                         "type": "string"
                     },
                     "sampler": {
-                        "$ref": "#/components/schemas/LoopsSamplerV1",
-                        "description": "The sampler bound to this run."
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LoopsSamplerV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The sampler bound to this run, or null for a trainer-only run that has not yet created a sampler."
                     }
                 },
                 "required": [
@@ -17918,8 +17964,7 @@
                     "name",
                     "base_model",
                     "base_url",
-                    "created_at",
-                    "sampler"
+                    "created_at"
                 ],
                 "title": "LoopsRunV1",
                 "type": "object"
@@ -18207,9 +18252,30 @@
                         "type": "string"
                     },
                     "base_model": {
-                        "description": "Base model ID for standalone samplers (e.g., for baselines).",
-                        "title": "Base Model",
-                        "type": "string"
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Base model ID for a standalone sampler (for example, a baseline). Required unless run_id is set, in which case the base model is inherited from the run.",
+                        "title": "Base Model"
+                    },
+                    "run_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "ID of an existing run to attach this sampler to. When set, the sampler is paired to the run and weight-syncs from its trainer, and base_model is inherited from the run. Omit to create a standalone sampler.",
+                        "title": "Run Id"
                     },
                     "max_seq_length": {
                         "anyOf": [
@@ -18250,13 +18316,12 @@
                             }
                         ],
                         "default": null,
-                        "description": "Optional Loops session ID whose deployment should be reused for this sampler. Same best-effort semantics as the run endpoint.",
+                        "description": "Optional Loops session ID to reuse infrastructure from. Best-effort.",
                         "title": "Reuse From Session Id"
                     }
                 },
                 "required": [
-                    "session_id",
-                    "base_model"
+                    "session_id"
                 ],
                 "title": "CreateLoopsSamplerRequestV1",
                 "type": "object"
