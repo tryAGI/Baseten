@@ -23,6 +23,13 @@ namespace Baseten
         public required int MaxContextLength { get; set; }
 
         /// <summary>
+        /// Whether the model accepts image inputs alongside text.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supports_vision_language")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool SupportsVisionLanguage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +44,20 @@ namespace Baseten
         /// <param name="maxContextLength">
         /// The maximum context length (in tokens) supported by this model.
         /// </param>
+        /// <param name="supportsVisionLanguage">
+        /// Whether the model accepts image inputs alongside text.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SupportedModelV1(
             string modelName,
-            int maxContextLength)
+            int maxContextLength,
+            bool supportsVisionLanguage)
         {
             this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
             this.MaxContextLength = maxContextLength;
+            this.SupportsVisionLanguage = supportsVisionLanguage;
         }
 
         /// <summary>

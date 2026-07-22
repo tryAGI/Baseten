@@ -62,53 +62,8 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelId { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelName { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environment_name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string EnvironmentName { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deployment_type")]
-        public string? DeploymentType { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redeploy_on_promotion")]
         public bool? RedeployOnPromotion { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_while_promoting")]
-        public bool? RampUpWhilePromoting { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_duration_seconds")]
-        public int? RampUpDurationSeconds { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_step_size")]
-        public int? RampUpStepSize { get; set; }
 
         /// <summary>
         /// 
@@ -155,6 +110,51 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_while_promoting")]
+        public bool? RampUpWhilePromoting { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_duration_seconds")]
+        public int? RampUpDurationSeconds { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_step_size")]
+        public int? RampUpStepSize { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ModelId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ModelName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("environment_name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string EnvironmentName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deployment_type")]
+        public string? DeploymentType { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <default>"ENVIRONMENT_UPDATED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "ENVIRONMENT_UPDATED";
@@ -163,7 +163,7 @@ namespace Baseten
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous_settings")]
-        public global::Baseten.AuditLogEventAutoscalingSettingsV1? PreviousSettings { get; set; }
+        public global::Baseten.AuditLogEventEnvironmentSettingsV1? PreviousSettings { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -185,11 +185,7 @@ namespace Baseten
         /// <param name="targetUtilizationPercentage"></param>
         /// <param name="targetInFlightTokens"></param>
         /// <param name="maxScaleDownRate"></param>
-        /// <param name="deploymentType"></param>
         /// <param name="redeployOnPromotion"></param>
-        /// <param name="rampUpWhilePromoting"></param>
-        /// <param name="rampUpDurationSeconds"></param>
-        /// <param name="rampUpStepSize"></param>
         /// <param name="rollingDeploy"></param>
         /// <param name="rollingDeployStrategy"></param>
         /// <param name="maxUnavailablePercent"></param>
@@ -197,6 +193,10 @@ namespace Baseten
         /// <param name="stabilizationTimeSeconds"></param>
         /// <param name="replicaOverheadPercent"></param>
         /// <param name="promotionCleanupStrategy"></param>
+        /// <param name="rampUpWhilePromoting"></param>
+        /// <param name="rampUpDurationSeconds"></param>
+        /// <param name="rampUpStepSize"></param>
+        /// <param name="deploymentType"></param>
         /// <param name="previousSettings"></param>
         /// <param name="eventType"></param>
 #if NET7_0_OR_GREATER
@@ -214,11 +214,7 @@ namespace Baseten
             int? targetUtilizationPercentage,
             int? targetInFlightTokens,
             double? maxScaleDownRate,
-            string? deploymentType,
             bool? redeployOnPromotion,
-            bool? rampUpWhilePromoting,
-            int? rampUpDurationSeconds,
-            int? rampUpStepSize,
             bool? rollingDeploy,
             string? rollingDeployStrategy,
             int? maxUnavailablePercent,
@@ -226,7 +222,11 @@ namespace Baseten
             int? stabilizationTimeSeconds,
             int? replicaOverheadPercent,
             string? promotionCleanupStrategy,
-            global::Baseten.AuditLogEventAutoscalingSettingsV1? previousSettings,
+            bool? rampUpWhilePromoting,
+            int? rampUpDurationSeconds,
+            int? rampUpStepSize,
+            string? deploymentType,
+            global::Baseten.AuditLogEventEnvironmentSettingsV1? previousSettings,
             string eventType = "ENVIRONMENT_UPDATED")
         {
             this.MinReplica = minReplica;
@@ -237,14 +237,7 @@ namespace Baseten
             this.TargetUtilizationPercentage = targetUtilizationPercentage;
             this.TargetInFlightTokens = targetInFlightTokens;
             this.MaxScaleDownRate = maxScaleDownRate;
-            this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
-            this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
-            this.EnvironmentName = environmentName ?? throw new global::System.ArgumentNullException(nameof(environmentName));
-            this.DeploymentType = deploymentType;
             this.RedeployOnPromotion = redeployOnPromotion;
-            this.RampUpWhilePromoting = rampUpWhilePromoting;
-            this.RampUpDurationSeconds = rampUpDurationSeconds;
-            this.RampUpStepSize = rampUpStepSize;
             this.RollingDeploy = rollingDeploy;
             this.RollingDeployStrategy = rollingDeployStrategy;
             this.MaxUnavailablePercent = maxUnavailablePercent;
@@ -252,6 +245,13 @@ namespace Baseten
             this.StabilizationTimeSeconds = stabilizationTimeSeconds;
             this.ReplicaOverheadPercent = replicaOverheadPercent;
             this.PromotionCleanupStrategy = promotionCleanupStrategy;
+            this.RampUpWhilePromoting = rampUpWhilePromoting;
+            this.RampUpDurationSeconds = rampUpDurationSeconds;
+            this.RampUpStepSize = rampUpStepSize;
+            this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
+            this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
+            this.EnvironmentName = environmentName ?? throw new global::System.ArgumentNullException(nameof(environmentName));
+            this.DeploymentType = deploymentType;
             this.EventType = eventType;
             this.PreviousSettings = previousSettings;
         }
