@@ -5465,7 +5465,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/capabilities\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns the list of models supported by the Loops server, including each model's maximum context length.",
+                "description": "Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -9933,29 +9933,6 @@
                         ],
                         "title": "Max Scale Down Rate"
                     },
-                    "model_id": {
-                        "title": "Model Id",
-                        "type": "string"
-                    },
-                    "model_name": {
-                        "title": "Model Name",
-                        "type": "string"
-                    },
-                    "environment_name": {
-                        "title": "Environment Name",
-                        "type": "string"
-                    },
-                    "deployment_type": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Deployment Type"
-                    },
                     "redeploy_on_promotion": {
                         "anyOf": [
                             {
@@ -9966,39 +9943,6 @@
                             }
                         ],
                         "title": "Redeploy On Promotion"
-                    },
-                    "ramp_up_while_promoting": {
-                        "anyOf": [
-                            {
-                                "type": "boolean"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Ramp Up While Promoting"
-                    },
-                    "ramp_up_duration_seconds": {
-                        "anyOf": [
-                            {
-                                "type": "integer"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Ramp Up Duration Seconds"
-                    },
-                    "ramp_up_step_size": {
-                        "anyOf": [
-                            {
-                                "type": "integer"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Ramp Up Step Size"
                     },
                     "rolling_deploy": {
                         "anyOf": [
@@ -10077,6 +10021,62 @@
                         ],
                         "title": "Promotion Cleanup Strategy"
                     },
+                    "ramp_up_while_promoting": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up While Promoting"
+                    },
+                    "ramp_up_duration_seconds": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up Duration Seconds"
+                    },
+                    "ramp_up_step_size": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up Step Size"
+                    },
+                    "model_id": {
+                        "title": "Model Id",
+                        "type": "string"
+                    },
+                    "model_name": {
+                        "title": "Model Name",
+                        "type": "string"
+                    },
+                    "environment_name": {
+                        "title": "Environment Name",
+                        "type": "string"
+                    },
+                    "deployment_type": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Deployment Type"
+                    },
                     "event_type": {
                         "const": "ENVIRONMENT_CREATED",
                         "title": "Event Type",
@@ -10092,14 +10092,7 @@
                     "target_utilization_percentage",
                     "target_in_flight_tokens",
                     "max_scale_down_rate",
-                    "model_id",
-                    "model_name",
-                    "environment_name",
-                    "deployment_type",
                     "redeploy_on_promotion",
-                    "ramp_up_while_promoting",
-                    "ramp_up_duration_seconds",
-                    "ramp_up_step_size",
                     "rolling_deploy",
                     "rolling_deploy_strategy",
                     "max_unavailable_percent",
@@ -10107,6 +10100,13 @@
                     "stabilization_time_seconds",
                     "replica_overhead_percent",
                     "promotion_cleanup_strategy",
+                    "ramp_up_while_promoting",
+                    "ramp_up_duration_seconds",
+                    "ramp_up_step_size",
+                    "model_id",
+                    "model_name",
+                    "environment_name",
+                    "deployment_type",
                     "event_type"
                 ],
                 "title": "AuditLogEventEnvironmentCreatedV1",
@@ -10141,6 +10141,223 @@
                     "environment_name"
                 ],
                 "title": "AuditLogEventEnvironmentDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventEnvironmentSettingsV1": {
+                "additionalProperties": false,
+                "description": "Full environment settings (autoscaling + rolling promotion + deprecated canary);\nshared base for the environment events and the type of their previous_settings\nsnapshots. Not itself a payload in the discriminated union.",
+                "properties": {
+                    "min_replica": {
+                        "title": "Min Replica",
+                        "type": "integer"
+                    },
+                    "max_replica": {
+                        "title": "Max Replica",
+                        "type": "integer"
+                    },
+                    "concurrency_target": {
+                        "title": "Concurrency Target",
+                        "type": "integer"
+                    },
+                    "autoscaling_window": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Autoscaling Window"
+                    },
+                    "scale_down_delay": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Scale Down Delay"
+                    },
+                    "target_utilization_percentage": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Target Utilization Percentage"
+                    },
+                    "target_in_flight_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Target In Flight Tokens"
+                    },
+                    "max_scale_down_rate": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Max Scale Down Rate"
+                    },
+                    "redeploy_on_promotion": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Redeploy On Promotion"
+                    },
+                    "rolling_deploy": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Rolling Deploy"
+                    },
+                    "rolling_deploy_strategy": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Rolling Deploy Strategy"
+                    },
+                    "max_unavailable_percent": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Max Unavailable Percent"
+                    },
+                    "max_surge_percent": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Max Surge Percent"
+                    },
+                    "stabilization_time_seconds": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Stabilization Time Seconds"
+                    },
+                    "replica_overhead_percent": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Replica Overhead Percent"
+                    },
+                    "promotion_cleanup_strategy": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Promotion Cleanup Strategy"
+                    },
+                    "ramp_up_while_promoting": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up While Promoting"
+                    },
+                    "ramp_up_duration_seconds": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up Duration Seconds"
+                    },
+                    "ramp_up_step_size": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up Step Size"
+                    }
+                },
+                "required": [
+                    "min_replica",
+                    "max_replica",
+                    "concurrency_target",
+                    "autoscaling_window",
+                    "scale_down_delay",
+                    "target_utilization_percentage",
+                    "target_in_flight_tokens",
+                    "max_scale_down_rate",
+                    "redeploy_on_promotion",
+                    "rolling_deploy",
+                    "rolling_deploy_strategy",
+                    "max_unavailable_percent",
+                    "max_surge_percent",
+                    "stabilization_time_seconds",
+                    "replica_overhead_percent",
+                    "promotion_cleanup_strategy",
+                    "ramp_up_while_promoting",
+                    "ramp_up_duration_seconds",
+                    "ramp_up_step_size"
+                ],
+                "title": "AuditLogEventEnvironmentSettingsV1",
                 "type": "object"
             },
             "AuditLogEventEnvironmentUpdatedV1": {
@@ -10214,29 +10431,6 @@
                         ],
                         "title": "Max Scale Down Rate"
                     },
-                    "model_id": {
-                        "title": "Model Id",
-                        "type": "string"
-                    },
-                    "model_name": {
-                        "title": "Model Name",
-                        "type": "string"
-                    },
-                    "environment_name": {
-                        "title": "Environment Name",
-                        "type": "string"
-                    },
-                    "deployment_type": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Deployment Type"
-                    },
                     "redeploy_on_promotion": {
                         "anyOf": [
                             {
@@ -10247,39 +10441,6 @@
                             }
                         ],
                         "title": "Redeploy On Promotion"
-                    },
-                    "ramp_up_while_promoting": {
-                        "anyOf": [
-                            {
-                                "type": "boolean"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Ramp Up While Promoting"
-                    },
-                    "ramp_up_duration_seconds": {
-                        "anyOf": [
-                            {
-                                "type": "integer"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Ramp Up Duration Seconds"
-                    },
-                    "ramp_up_step_size": {
-                        "anyOf": [
-                            {
-                                "type": "integer"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "title": "Ramp Up Step Size"
                     },
                     "rolling_deploy": {
                         "anyOf": [
@@ -10358,6 +10519,62 @@
                         ],
                         "title": "Promotion Cleanup Strategy"
                     },
+                    "ramp_up_while_promoting": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up While Promoting"
+                    },
+                    "ramp_up_duration_seconds": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up Duration Seconds"
+                    },
+                    "ramp_up_step_size": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Ramp Up Step Size"
+                    },
+                    "model_id": {
+                        "title": "Model Id",
+                        "type": "string"
+                    },
+                    "model_name": {
+                        "title": "Model Name",
+                        "type": "string"
+                    },
+                    "environment_name": {
+                        "title": "Environment Name",
+                        "type": "string"
+                    },
+                    "deployment_type": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Deployment Type"
+                    },
                     "event_type": {
                         "const": "ENVIRONMENT_UPDATED",
                         "title": "Event Type",
@@ -10366,7 +10583,7 @@
                     "previous_settings": {
                         "anyOf": [
                             {
-                                "$ref": "#/components/schemas/AuditLogEventAutoscalingSettingsV1"
+                                "$ref": "#/components/schemas/AuditLogEventEnvironmentSettingsV1"
                             },
                             {
                                 "type": "null"
@@ -10383,14 +10600,7 @@
                     "target_utilization_percentage",
                     "target_in_flight_tokens",
                     "max_scale_down_rate",
-                    "model_id",
-                    "model_name",
-                    "environment_name",
-                    "deployment_type",
                     "redeploy_on_promotion",
-                    "ramp_up_while_promoting",
-                    "ramp_up_duration_seconds",
-                    "ramp_up_step_size",
                     "rolling_deploy",
                     "rolling_deploy_strategy",
                     "max_unavailable_percent",
@@ -10398,6 +10608,13 @@
                     "stabilization_time_seconds",
                     "replica_overhead_percent",
                     "promotion_cleanup_strategy",
+                    "ramp_up_while_promoting",
+                    "ramp_up_duration_seconds",
+                    "ramp_up_step_size",
+                    "model_id",
+                    "model_name",
+                    "environment_name",
+                    "deployment_type",
                     "event_type",
                     "previous_settings"
                 ],
@@ -17840,11 +18057,17 @@
                         "description": "The maximum context length (in tokens) supported by this model.",
                         "title": "Max Context Length",
                         "type": "integer"
+                    },
+                    "supports_vision_language": {
+                        "description": "Whether the model accepts image inputs alongside text.",
+                        "title": "Supports Vision Language",
+                        "type": "boolean"
                     }
                 },
                 "required": [
                     "model_name",
-                    "max_context_length"
+                    "max_context_length",
+                    "supports_vision_language"
                 ],
                 "title": "SupportedModelV1",
                 "type": "object"
@@ -18261,7 +18484,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Base model ID for a standalone sampler (for example, a baseline). Required unless run_id is set, in which case the base model is inherited from the run.",
+                        "description": "Base model ID for a standalone sampler (for example, a baseline).",
                         "title": "Base Model"
                     },
                     "run_id": {
@@ -18287,7 +18510,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send. Omit to use the default for the base model.",
+                        "description": "Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send.",
                         "title": "Max Seq Length"
                     },
                     "model_path": {
@@ -18300,7 +18523,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://loops:<run_id>/sampler_weights/<checkpoint_name>.",
+                        "description": "bt:// URI of an existing sampler checkpoint to serve. Form: bt://loops:<run_id>/sampler_weights/<checkpoint_name>.",
                         "examples": [
                             "bt://loops:k4q95w5/sampler_weights/step-100"
                         ],

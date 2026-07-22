@@ -41,7 +41,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets Loops server capabilities<br/>
-        /// Returns the list of models supported by the Loops server, including each model's maximum context length.
+        /// Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -64,7 +64,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets Loops server capabilities<br/>
-        /// Returns the list of models supported by the Loops server, including each model's maximum context length.
+        /// Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

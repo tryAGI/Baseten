@@ -17,7 +17,7 @@ internal static partial class CreateLoopsSamplersCommandApiCommand
     private static Option<string?> BaseModel { get; } = new(
         name: @"--base-model")
     {
-        Description = @"Base model ID for a standalone sampler (for example, a baseline). Required unless run_id is set, in which case the base model is inherited from the run.",
+        Description = @"Base model ID for a standalone sampler (for example, a baseline).",
     };
 
     private static Option<string?> RunId { get; } = new(
@@ -29,13 +29,13 @@ internal static partial class CreateLoopsSamplersCommandApiCommand
     private static Option<int?> MaxSeqLength { get; } = new(
         name: @"--max-seq-length")
     {
-        Description = @"Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send. Omit to use the default for the base model.",
+        Description = @"Maximum prompt length (in tokens) the sampler must handle. Set this to the longest prompt you plan to send.",
     };
 
     private static Option<string?> ModelPath { get; } = new(
         name: @"--model-path")
     {
-        Description = @"Optional bt:// URI of an existing sampler-target checkpoint to load weights from on startup. Form: bt://loops:<run_id>/sampler_weights/<checkpoint_name>.",
+        Description = @"bt:// URI of an existing sampler checkpoint to serve. Form: bt://loops:<run_id>/sampler_weights/<checkpoint_name>.",
     };
 
     private static Option<string?> ReuseFromSessionId { get; } = new(

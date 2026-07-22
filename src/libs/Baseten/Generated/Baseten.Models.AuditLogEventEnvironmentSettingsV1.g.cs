@@ -4,9 +4,11 @@
 namespace Baseten
 {
     /// <summary>
-    /// A model environment was created.
+    /// Full environment settings (autoscaling + rolling promotion + deprecated canary);<br/>
+    /// shared base for the environment events and the type of their previous_settings<br/>
+    /// snapshots. Not itself a payload in the discriminated union.
     /// </summary>
-    public sealed partial class AuditLogEventEnvironmentCreatedV1
+    public sealed partial class AuditLogEventEnvironmentSettingsV1
     {
         /// <summary>
         /// 
@@ -126,54 +128,17 @@ namespace Baseten
         public int? RampUpStepSize { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelId { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelName { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environment_name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string EnvironmentName { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deployment_type")]
-        public string? DeploymentType { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <default>"ENVIRONMENT_CREATED"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
-        public string EventType { get; set; } = "ENVIRONMENT_CREATED";
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuditLogEventEnvironmentCreatedV1" /> class.
+        /// Initializes a new instance of the <see cref="AuditLogEventEnvironmentSettingsV1" /> class.
         /// </summary>
         /// <param name="minReplica"></param>
         /// <param name="maxReplica"></param>
         /// <param name="concurrencyTarget"></param>
-        /// <param name="modelId"></param>
-        /// <param name="modelName"></param>
-        /// <param name="environmentName"></param>
         /// <param name="autoscalingWindow"></param>
         /// <param name="scaleDownDelay"></param>
         /// <param name="targetUtilizationPercentage"></param>
@@ -190,18 +155,13 @@ namespace Baseten
         /// <param name="rampUpWhilePromoting"></param>
         /// <param name="rampUpDurationSeconds"></param>
         /// <param name="rampUpStepSize"></param>
-        /// <param name="deploymentType"></param>
-        /// <param name="eventType"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public AuditLogEventEnvironmentCreatedV1(
+        public AuditLogEventEnvironmentSettingsV1(
             int minReplica,
             int maxReplica,
             int concurrencyTarget,
-            string modelId,
-            string modelName,
-            string environmentName,
             int? autoscalingWindow,
             int? scaleDownDelay,
             int? targetUtilizationPercentage,
@@ -217,9 +177,7 @@ namespace Baseten
             string? promotionCleanupStrategy,
             bool? rampUpWhilePromoting,
             int? rampUpDurationSeconds,
-            int? rampUpStepSize,
-            string? deploymentType,
-            string eventType = "ENVIRONMENT_CREATED")
+            int? rampUpStepSize)
         {
             this.MinReplica = minReplica;
             this.MaxReplica = maxReplica;
@@ -240,17 +198,12 @@ namespace Baseten
             this.RampUpWhilePromoting = rampUpWhilePromoting;
             this.RampUpDurationSeconds = rampUpDurationSeconds;
             this.RampUpStepSize = rampUpStepSize;
-            this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
-            this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
-            this.EnvironmentName = environmentName ?? throw new global::System.ArgumentNullException(nameof(environmentName));
-            this.DeploymentType = deploymentType;
-            this.EventType = eventType;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuditLogEventEnvironmentCreatedV1" /> class.
+        /// Initializes a new instance of the <see cref="AuditLogEventEnvironmentSettingsV1" /> class.
         /// </summary>
-        public AuditLogEventEnvironmentCreatedV1()
+        public AuditLogEventEnvironmentSettingsV1()
         {
         }
 
