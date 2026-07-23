@@ -24,6 +24,10 @@ namespace Baseten
         /// 
         /// </summary>
         WorkspaceManageAll,
+        /// <summary>
+        /// 
+        /// </summary>
+        WorkspaceManageApiKeys,
     }
 
     /// <summary>
@@ -42,6 +46,7 @@ namespace Baseten
                 APIKeyCategory.WorkspaceExportMetrics => "WORKSPACE_EXPORT_METRICS",
                 APIKeyCategory.WorkspaceInvoke => "WORKSPACE_INVOKE",
                 APIKeyCategory.WorkspaceManageAll => "WORKSPACE_MANAGE_ALL",
+                APIKeyCategory.WorkspaceManageApiKeys => "WORKSPACE_MANAGE_API_KEYS",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,6 +61,7 @@ namespace Baseten
                 "WORKSPACE_EXPORT_METRICS" => APIKeyCategory.WorkspaceExportMetrics,
                 "WORKSPACE_INVOKE" => APIKeyCategory.WorkspaceInvoke,
                 "WORKSPACE_MANAGE_ALL" => APIKeyCategory.WorkspaceManageAll,
+                "WORKSPACE_MANAGE_API_KEYS" => APIKeyCategory.WorkspaceManageApiKeys,
                 _ => null,
             };
         }

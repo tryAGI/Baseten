@@ -4,10 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// Latency quantile datapoint.<br/>
-    /// Values are reported in **milliseconds** to match the oracle/inference<br/>
-    /// ``response_time_stats`` convention. Source histogram is the queue-proxy's<br/>
-    /// ``revision_request_latencies_bucket`` whose bucket boundaries are in ms.
+    /// Latency quantile datapoint. Values are reported in milliseconds.
     /// </summary>
     public sealed partial class ResponseTimeDatapointV1
     {

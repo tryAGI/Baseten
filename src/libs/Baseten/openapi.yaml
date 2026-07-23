@@ -8770,6 +8770,7 @@
                 "enum": [
                     "PERSONAL",
                     "CREATOR_SERVICE_ACCOUNT",
+                    "MANAGE_API_KEYS_SERVICE_ACCOUNT",
                     "INVOKE_ALL_MODELS_SERVICE_ACCOUNT",
                     "INVOKE_ALLOWED_MODELS_SERVICE_ACCOUNT",
                     "INVOKE_SCOPED_ENVS_AND_MODELS_SERVICE_ACCOUNT",
@@ -19212,7 +19213,7 @@
                 "type": "object"
             },
             "ResponseTimeDatapointV1": {
-                "description": "Latency quantile datapoint.\n\nValues are reported in **milliseconds** to match the oracle/inference\n``response_time_stats`` convention. Source histogram is the queue-proxy's\n``revision_request_latencies_bucket`` whose bucket boundaries are in ms.",
+                "description": "Latency quantile datapoint. Values are reported in milliseconds.",
                 "properties": {
                     "timestamp": {
                         "description": "ISO 8601 timestamp.",
@@ -19916,7 +19917,8 @@
                     "PERSONAL",
                     "WORKSPACE_MANAGE_ALL",
                     "WORKSPACE_EXPORT_METRICS",
-                    "WORKSPACE_INVOKE"
+                    "WORKSPACE_INVOKE",
+                    "WORKSPACE_MANAGE_API_KEYS"
                 ],
                 "title": "APIKeyCategory",
                 "type": "string"
@@ -19945,6 +19947,7 @@
                         "description": "Type of the API key.",
                         "examples": [
                             "PERSONAL",
+                            "WORKSPACE_MANAGE_API_KEYS",
                             "WORKSPACE_EXPORT_METRICS",
                             "WORKSPACE_INVOKE",
                             "WORKSPACE_MANAGE_ALL"
@@ -20022,6 +20025,7 @@
                         "description": "Type of the API key.",
                         "examples": [
                             "PERSONAL",
+                            "WORKSPACE_MANAGE_API_KEYS",
                             "WORKSPACE_EXPORT_METRICS",
                             "WORKSPACE_INVOKE",
                             "WORKSPACE_MANAGE_ALL"
