@@ -26,6 +26,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateLoopsDeploymentsByDeploymentIdDeactivateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsDeploymentsByDeploymentIdMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsRunsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateLoopsRunsByRunIdDeactivateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsSamplersCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsSessionsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsTrainersCommandApiCommand.Create());
@@ -157,12 +158,14 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameMetricsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetRegionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdEnvironmentGroupsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdEnvironmentGroupsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdModelsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetTeamsByTeamIdRegionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingCapacityCommandApiCommand.Create());
                          command.Subcommands.Add(GetTrainingJobsByTrainingJobIdQueueContextCommandApiCommand.Create());
