@@ -43,6 +43,10 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        ManageApiKeysServiceAccount,
+        /// <summary>
+        /// 
+        /// </summary>
         Personal,
     }
 
@@ -66,6 +70,7 @@ namespace Baseten
                 AuditLogApiKeyTypeV1.InvokeAllModelsServiceAccount => "INVOKE_ALL_MODELS_SERVICE_ACCOUNT",
                 AuditLogApiKeyTypeV1.InvokeAllSharedEndpointsServiceAccount => "INVOKE_ALL_SHARED_ENDPOINTS_SERVICE_ACCOUNT",
                 AuditLogApiKeyTypeV1.InvokeScopedEnvsAndModelsServiceAccount => "INVOKE_SCOPED_ENVS_AND_MODELS_SERVICE_ACCOUNT",
+                AuditLogApiKeyTypeV1.ManageApiKeysServiceAccount => "MANAGE_API_KEYS_SERVICE_ACCOUNT",
                 AuditLogApiKeyTypeV1.Personal => "PERSONAL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -85,6 +90,7 @@ namespace Baseten
                 "INVOKE_ALL_MODELS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.InvokeAllModelsServiceAccount,
                 "INVOKE_ALL_SHARED_ENDPOINTS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.InvokeAllSharedEndpointsServiceAccount,
                 "INVOKE_SCOPED_ENVS_AND_MODELS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.InvokeScopedEnvsAndModelsServiceAccount,
+                "MANAGE_API_KEYS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.ManageApiKeysServiceAccount,
                 "PERSONAL" => AuditLogApiKeyTypeV1.Personal,
                 _ => null,
             };
