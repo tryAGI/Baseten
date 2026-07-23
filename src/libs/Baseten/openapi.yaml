@@ -498,6 +498,69 @@
                 }
             ]
         },
+        "/v1/regions": {
+            "get": {
+                "summary": "Lists regions available to the organization",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/regions \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/regions\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the regions available for new deployments in the caller's organization.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RegionsV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/teams/{team_id}/regions": {
+            "get": {
+                "summary": "Lists regions available to a team",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/teams/{team_id}/regions \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/regions\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the regions the team specified in the path can place deployments in.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RegionsV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/team_id"
+                }
+            ]
+        },
         "/v1/instance_types": {
             "get": {
                 "summary": "Gets all available instance types",
@@ -5649,6 +5712,39 @@
                 }
             }
         },
+        "/v1/loops/runs/{run_id}/deactivate": {
+            "post": {
+                "summary": "Deactivates a Loops run",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs/{run_id}/deactivate \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs/{run_id}/deactivate\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Shuts down a Loops run by ID, tearing down both the run and its paired sampler. Saved checkpoints remain accessible.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeactivateLoopsRunResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/run_id"
+                }
+            ]
+        },
         "/v1/loops/runs/{run_id}": {
             "get": {
                 "summary": "Gets a Loops run",
@@ -8209,6 +8305,50 @@
                     }
                 },
                 "title": "TeamsRequestV1",
+                "type": "object"
+            },
+            "RegionV1": {
+                "description": "A region that deployments can be placed in.",
+                "properties": {
+                    "slug": {
+                        "description": "Stable identifier for the region, used when selecting a deployment region.",
+                        "examples": [
+                            "us"
+                        ],
+                        "title": "Slug",
+                        "type": "string"
+                    },
+                    "display_name": {
+                        "description": "Human-readable name of the region.",
+                        "examples": [
+                            "United States"
+                        ],
+                        "title": "Display Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "slug",
+                    "display_name"
+                ],
+                "title": "RegionV1",
+                "type": "object"
+            },
+            "RegionsV1": {
+                "description": "A list of regions.",
+                "properties": {
+                    "regions": {
+                        "items": {
+                            "$ref": "#/components/schemas/RegionV1"
+                        },
+                        "title": "Regions",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "regions"
+                ],
+                "title": "RegionsV1",
                 "type": "object"
             },
             "InstanceTypeV1": {
@@ -18434,6 +18574,32 @@
                     "run"
                 ],
                 "title": "CreateLoopsRunResponseV1",
+                "type": "object"
+            },
+            "DeactivateLoopsRunResponseV1": {
+                "description": "Response for ``POST /v1/loops/runs/<run_id>/deactivate``.",
+                "properties": {
+                    "id": {
+                        "description": "The deactivated Loops run ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "The base model whose Loops run was deactivated.",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserV1",
+                        "description": "The user who owns the Loops run."
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_model",
+                    "user"
+                ],
+                "title": "DeactivateLoopsRunResponseV1",
                 "type": "object"
             },
             "GetLoopsRunResponseV1": {
