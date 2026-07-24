@@ -5617,7 +5617,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model.",
+                "description": "Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model. Defaults to the caller's own runs; pass ?scope=org to list every run in the caller's organization.",
                 "parameters": [
                     {
                         "name": "run_id",
@@ -5659,6 +5659,27 @@
                                 "Qwen/Qwen3-8B"
                             ],
                             "title": "Base Model"
+                        }
+                    },
+                    {
+                        "name": "scope",
+                        "in": "query",
+                        "required": false,
+                        "description": "Defaults to the caller's own runs; pass 'org' to list every run in the caller's organization.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                "org"
+                            ],
+                            "title": "Scope"
                         }
                     }
                 ],
@@ -18270,6 +18291,29 @@
                 "title": "GetLoopsSessionResponseV1",
                 "type": "object"
             },
+            "LoopsRunStatusNameV1": {
+                "description": "A Loops run's lifecycle state: ACTIVE or INACTIVE.",
+                "enum": [
+                    "ACTIVE",
+                    "INACTIVE"
+                ],
+                "title": "LoopsRunStatusNameV1",
+                "type": "string"
+            },
+            "LoopsRunStatusV1": {
+                "description": "The current status of a Loops run.",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/LoopsRunStatusNameV1",
+                        "description": "ACTIVE while the run is live; INACTIVE once replaced by a newer run or shut down."
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "title": "LoopsRunStatusV1",
+                "type": "object"
+            },
             "LoopsRunV1": {
                 "properties": {
                     "id": {
@@ -18308,6 +18352,14 @@
                         "title": "Created At",
                         "type": "string"
                     },
+                    "status": {
+                        "$ref": "#/components/schemas/LoopsRunStatusV1",
+                        "description": "The run's current status."
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserV1",
+                        "description": "The user who owns the run."
+                    },
                     "sampler": {
                         "anyOf": [
                             {
@@ -18328,7 +18380,9 @@
                     "name",
                     "base_model",
                     "base_url",
-                    "created_at"
+                    "created_at",
+                    "status",
+                    "user"
                 ],
                 "title": "LoopsRunV1",
                 "type": "object"
@@ -18414,7 +18468,7 @@
                 "type": "object"
             },
             "ListLoopsRunsQueryParamsV1": {
-                "description": "Query-string filters for ``GET /v1/loops/runs``.\n\nBoth filters are optional and can be combined; omit both to list all\nruns visible to the caller.",
+                "description": "Query-string filters for ``GET /v1/loops/runs``.\n\nAll filters are optional and can be combined; omit them to list the caller's\nown runs. Pass ``scope=org`` to list every run in the caller's organization\ninstead.",
                 "properties": {
                     "run_id": {
                         "anyOf": [
@@ -18447,6 +18501,22 @@
                             "Qwen/Qwen3-8B"
                         ],
                         "title": "Base Model"
+                    },
+                    "scope": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Defaults to the caller's own runs; pass 'org' to list every run in the caller's organization.",
+                        "examples": [
+                            "org"
+                        ],
+                        "title": "Scope"
                     }
                 },
                 "title": "ListLoopsRunsQueryParamsV1",

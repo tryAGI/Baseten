@@ -141,6 +141,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.V1InteractiveSessionTriggerNullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.LoopsRunStatusNameV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LoopsRunStatusNameV1NullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetJsonConverter),
 
             typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetNullableJsonConverter),
@@ -552,6 +556,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSessionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSessionResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsSessionResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusNameV1), TypeInfoPropertyName = "LoopsRunStatusNameV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSamplerV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSamplerStatusV1))]
@@ -729,8 +735,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SortOrderV1?), TypeInfoPropertyName = "NullableSortOrderV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchActionV1?), TypeInfoPropertyName = "NullableDeploymentPatchActionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchOpsItem?), TypeInfoPropertyName = "NullablePatchOpsItem2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType?), TypeInfoPropertyName = "NullableCreateDeploymentPatchRequestV1PatchOpDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricUnitHintV1?), TypeInfoPropertyName = "NullableModelMetricUnitHintV12")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -870,6 +874,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.V1InteractiveSessionTriggerNullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.LoopsRunStatusNameV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.LoopsRunStatusNameV1NullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetJsonConverter),
 
             typeof(global::Baseten.JsonConverters.TrainerCheckpointTargetNullableJsonConverter),
@@ -960,6 +968,8 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.UnixTimestampJsonConverter),
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType?), TypeInfoPropertyName = "NullableCreateDeploymentPatchRequestV1PatchOpDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricUnitHintV1?), TypeInfoPropertyName = "NullableModelMetricUnitHintV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricKindV1?), TypeInfoPropertyName = "NullableModelMetricKindV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricModeV1?), TypeInfoPropertyName = "NullableModelMetricModeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.InProgressPromotionStatusV1?), TypeInfoPropertyName = "NullableInProgressPromotionStatusV12")]
@@ -976,6 +986,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckpointsItem?), TypeInfoPropertyName = "NullableCheckpointsItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTyp?), TypeInfoPropertyName = "NullableLoadCheckpointConfigCheckpointDiscriminatorTyp2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointConfigTarget?), TypeInfoPropertyName = "NullableLoopsCheckpointConfigTarget2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusNameV1?), TypeInfoPropertyName = "NullableLoopsRunStatusNameV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerCheckpointTarget?), TypeInfoPropertyName = "NullableTrainerCheckpointTarget2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Name?), TypeInfoPropertyName = "NullableName2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyCategory?), TypeInfoPropertyName = "NullableAPIKeyCategory2")]
@@ -1169,6 +1180,8 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionProviderNullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionTriggerJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.V1InteractiveSessionTriggerNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LoopsRunStatusNameV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.LoopsRunStatusNameV1NullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.TrainerCheckpointTargetJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.TrainerCheckpointTargetNullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.NameJsonConverter());
