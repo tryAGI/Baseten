@@ -60,6 +60,7 @@ namespace Baseten
         ///   "max_seq_len": null,<br/>
         ///   "seed": null,<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
+        ///   "reuse_from_run_id": null,<br/>
         ///   "reuse_from_session_id": null<br/>
         /// }'
         /// </remarks>
@@ -97,6 +98,7 @@ namespace Baseten
         ///   "max_seq_len": null,<br/>
         ///   "seed": null,<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
+        ///   "reuse_from_run_id": null,<br/>
         ///   "reuse_from_session_id": null<br/>
         /// }'
         /// </remarks>
@@ -499,8 +501,12 @@ namespace Baseten
         /// Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:&lt;run_id&gt;/weights/&lt;checkpoint_name&gt;.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="reuseFromRunId">
+        /// Optional ID of a prior Loops run whose trainer and/or sampler should be reused for this run instead of provisioning fresh. The prior run must use the same base model and belong to the same team.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="reuseFromSessionId">
-        /// Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.<br/>
+        /// Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -516,6 +522,7 @@ namespace Baseten
             int? scaleDownDelaySeconds = default,
             int? replicas = default,
             string? path = default,
+            string? reuseFromRunId = default,
             string? reuseFromSessionId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -531,6 +538,7 @@ namespace Baseten
                 ScaleDownDelaySeconds = scaleDownDelaySeconds,
                 Replicas = replicas,
                 Path = path,
+                ReuseFromRunId = reuseFromRunId,
                 ReuseFromSessionId = reuseFromSessionId,
             };
 

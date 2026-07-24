@@ -44,7 +44,7 @@ namespace Baseten
         public string? ModelPath { get; set; }
 
         /// <summary>
-        /// Optional Loops session ID to reuse infrastructure from. Best-effort.<br/>
+        /// Optional ID of a prior Loops session to reuse a trainer and/or sampler from. Deprecated.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reuse_from_session_id")]
@@ -79,7 +79,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="reuseFromSessionId">
-        /// Optional Loops session ID to reuse infrastructure from. Best-effort.<br/>
+        /// Optional ID of a prior Loops session to reuse a trainer and/or sampler from. Deprecated.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER

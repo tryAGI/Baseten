@@ -14,6 +14,7 @@ internal sealed record CreateLoopsRunRequestV1OptionSet(
                      Option<int?> ScaleDownDelaySeconds,
                      Option<int?> Replicas,
                      Option<string?> Path,
+                     Option<string?> ReuseFromRunId,
                      Option<string?> ReuseFromSessionId)
 {
     public static CreateLoopsRunRequestV1OptionSet Create(string? prefix = null)
@@ -60,9 +61,13 @@ internal sealed record CreateLoopsRunRequestV1OptionSet(
                 {
                     Description = @"Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:<run_id>/weights/<checkpoint_name>.",
                 },
+                ReuseFromRunId: new Option<string?>($"--{normalizedPrefix}reuse-from-run-id")
+                {
+                    Description = @"Optional ID of a prior Loops run whose trainer and/or sampler should be reused for this run instead of provisioning fresh. The prior run must use the same base model and belong to the same team.",
+                },
                 ReuseFromSessionId: new Option<string?>($"--{normalizedPrefix}reuse-from-session-id")
                 {
-                    Description = @"Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.",
+                    Description = @"Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.",
                 }
         );
     }
