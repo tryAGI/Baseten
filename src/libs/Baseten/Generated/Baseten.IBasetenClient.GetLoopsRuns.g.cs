@@ -6,12 +6,15 @@ namespace Baseten
     {
         /// <summary>
         /// Lists Loops runs<br/>
-        /// Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model.
+        /// Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model. Defaults to the caller's own runs; pass ?scope=org to list every run in the caller's organization.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseModel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="scope">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -25,16 +28,20 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.ListLoopsRunsResponseV1> GetLoopsRunsAsync(
             string? runId = default,
             string? baseModel = default,
+            string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Lists Loops runs<br/>
-        /// Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model.
+        /// Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model. Defaults to the caller's own runs; pass ?scope=org to list every run in the caller's organization.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseModel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="scope">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -48,6 +55,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsRunsResponseV1>> GetLoopsRunsAsResponseAsync(
             string? runId = default,
             string? baseModel = default,
+            string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

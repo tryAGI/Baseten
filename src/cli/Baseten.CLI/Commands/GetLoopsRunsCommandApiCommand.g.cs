@@ -19,6 +19,12 @@ internal static partial class GetLoopsRunsCommandApiCommand
         Description = @"Filter runs by base model name.",
     };
 
+    private static Option<string?> Scope { get; } = new(
+        name: @"--scope")
+    {
+        Description = @"Defaults to the caller's own runs; pass 'org' to list every run in the caller's organization.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ListLoopsRunsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -42,9 +48,10 @@ internal static partial class GetLoopsRunsCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"get-loops-runs", @"Lists Loops runs
-Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model.");
+Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model. Defaults to the caller's own runs; pass ?scope=org to list every run in the caller's organization.");
                         command.Options.Add(RunId);
                         command.Options.Add(BaseModel);
+                        command.Options.Add(Scope);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -52,12 +59,14 @@ Lists Loops runs visible to the requesting user, optionally filtered by run id a
             {
                         var runId = parseResult.GetValue(RunId);
                         var baseModel = parseResult.GetValue(BaseModel);
+                        var scope = parseResult.GetValue(Scope);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetLoopsRunsAsync(
                                     runId: runId,
                                     baseModel: baseModel,
+                                    scope: scope,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
