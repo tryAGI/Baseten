@@ -41,7 +41,7 @@ internal static partial class CreateLoopsSamplersCommandApiCommand
     private static Option<string?> ReuseFromSessionId { get; } = new(
         name: @"--reuse-from-session-id")
     {
-        Description = @"Optional Loops session ID to reuse infrastructure from. Best-effort.",
+        Description = @"Optional ID of a prior Loops session to reuse a trainer and/or sampler from. Deprecated.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

@@ -5701,11 +5701,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a Loops run with an associated sampler in the given session.",
@@ -5805,11 +5805,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.",
@@ -18613,6 +18613,19 @@
                         ],
                         "title": "Path"
                     },
+                    "reuse_from_run_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional ID of a prior Loops run whose trainer and/or sampler should be reused for this run instead of provisioning fresh. The prior run must use the same base model and belong to the same team.",
+                        "title": "Reuse From Run Id"
+                    },
                     "reuse_from_session_id": {
                         "anyOf": [
                             {
@@ -18623,7 +18636,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Optional Loops session ID whose trainer deployment should be reused for this run, sharing the infrastructure across sessions instead of provisioning fresh. The named session must belong to the same team. Reuse is best-effort: if the prior deployment is stopped, failed, its sampler is unhealthy, or this run requests replicas != 1, a new deployment is provisioned instead.",
+                        "description": "Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.",
                         "title": "Reuse From Session Id"
                     }
                 },
@@ -18776,7 +18789,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Optional Loops session ID to reuse infrastructure from. Best-effort.",
+                        "description": "Optional ID of a prior Loops session to reuse a trainer and/or sampler from. Deprecated.",
                         "title": "Reuse From Session Id"
                     }
                 },

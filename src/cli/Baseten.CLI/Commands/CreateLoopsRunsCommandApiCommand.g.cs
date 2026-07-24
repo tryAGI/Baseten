@@ -58,6 +58,7 @@ Creates a Loops run with an associated sampler in the given session.");
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Replicas);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Path);
+                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -92,6 +93,7 @@ Creates a Loops run with an associated sampler in the given session.");
                         var scaleDownDelaySeconds = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds) : (__requestBase is { } __ScaleDownDelaySecondsBaseValue ? __ScaleDownDelaySecondsBaseValue.ScaleDownDelaySeconds : default);
                         var replicas = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Replicas) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Replicas) : (__requestBase is { } __ReplicasBaseValue ? __ReplicasBaseValue.Replicas : default);
                         var path = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Path) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Path) : (__requestBase is { } __PathBaseValue ? __PathBaseValue.Path : default);
+                        var reuseFromRunId = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId) : (__requestBase is { } __ReuseFromRunIdBaseValue ? __ReuseFromRunIdBaseValue.ReuseFromRunId : default);
                         var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -106,6 +108,7 @@ Creates a Loops run with an associated sampler in the given session.");
                                     scaleDownDelaySeconds: scaleDownDelaySeconds,
                                     replicas: replicas,
                                     path: path,
+                                    reuseFromRunId: reuseFromRunId,
                                     reuseFromSessionId: reuseFromSessionId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
