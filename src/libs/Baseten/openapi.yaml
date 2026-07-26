@@ -21470,6 +21470,32 @@
                         ],
                         "default": null,
                         "description": "Chain metadata if this is a chainlet deployment"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Unique identifier of the team that owns the resource. Only present for organizations with multiple teams enabled.",
+                        "title": "Team Id"
+                    },
+                    "team_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name of the team that owns the resource. Only present for organizations with multiple teams enabled.",
+                        "title": "Team Name"
                     }
                 },
                 "required": [

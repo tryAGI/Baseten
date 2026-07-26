@@ -66,6 +66,20 @@ namespace Baseten
         public global::Baseten.ChainMetadataV1? ChainMetadata { get; set; }
 
         /// <summary>
+        /// Unique identifier of the team that owns the resource. Only present for organizations with multiple teams enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
+        public string? TeamId { get; set; }
+
+        /// <summary>
+        /// Name of the team that owns the resource. Only present for organizations with multiple teams enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_name")]
+        public string? TeamName { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -103,6 +117,14 @@ namespace Baseten
         /// Chain metadata if this is a chainlet deployment<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="teamId">
+        /// Unique identifier of the team that owns the resource. Only present for organizations with multiple teams enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="teamName">
+        /// Name of the team that owns the resource. Only present for organizations with multiple teams enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -114,7 +136,9 @@ namespace Baseten
             string? modelName,
             string? instanceType,
             string? environmentName,
-            global::Baseten.ChainMetadataV1? chainMetadata)
+            global::Baseten.ChainMetadataV1? chainMetadata,
+            string? teamId,
+            string? teamName)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Kind = kind;
@@ -124,6 +148,8 @@ namespace Baseten
             this.InstanceType = instanceType;
             this.EnvironmentName = environmentName;
             this.ChainMetadata = chainMetadata;
+            this.TeamId = teamId;
+            this.TeamName = teamName;
         }
 
         /// <summary>
