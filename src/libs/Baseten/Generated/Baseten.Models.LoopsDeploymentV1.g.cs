@@ -26,6 +26,13 @@ namespace Baseten
         public string? ActiveRunId { get; set; }
 
         /// <summary>
+        /// The ID of the most recent run on this deployment, active or not, so idle deployments still expose a usable run handle. Null only if the deployment has no runs.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("latest_run_id")]
+        public string? LatestRunId { get; set; }
+
+        /// <summary>
         /// The HuggingFace base model the deployment is fine-tuning.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_model")]
@@ -52,6 +59,27 @@ namespace Baseten
         [global::System.Text.Json.Serialization.JsonPropertyName("user")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Baseten.UserV1 User { get; set; }
+
+        /// <summary>
+        /// Time the deployment was created in ISO 8601 format.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Instance type backing the trainer.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("instance_type")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.InstanceTypeV1 InstanceType { get; set; }
+
+        /// <summary>
+        /// Number of nodes backing the trainer.<br/>
+        /// Default Value: 1
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_count")]
+        public int? NodeCount { get; set; }
 
         /// <summary>
         /// The sampler bound to this deployment.<br/>
@@ -84,9 +112,23 @@ namespace Baseten
         /// <param name="user">
         /// The user who owns the Loops deployment.
         /// </param>
+        /// <param name="createdAt">
+        /// Time the deployment was created in ISO 8601 format.
+        /// </param>
+        /// <param name="instanceType">
+        /// Instance type backing the trainer.
+        /// </param>
         /// <param name="activeRunId">
         /// The ID of the run currently active on this deployment, if any. Null when the deployment's runs have been marked inactive (e.g. scale-to-zero) without a successor.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="latestRunId">
+        /// The ID of the most recent run on this deployment, active or not, so idle deployments still expose a usable run handle. Null only if the deployment has no runs.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="nodeCount">
+        /// Number of nodes backing the trainer.<br/>
+        /// Default Value: 1
         /// </param>
         /// <param name="sampler">
         /// The sampler bound to this deployment.<br/>
@@ -101,15 +143,23 @@ namespace Baseten
             string baseUrl,
             global::Baseten.LoopsDeploymentStatusV1 status,
             global::Baseten.UserV1 user,
+            global::System.DateTime createdAt,
+            global::Baseten.InstanceTypeV1 instanceType,
             string? activeRunId,
+            string? latestRunId,
+            int? nodeCount,
             global::Baseten.LoopsSamplerV1? sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.ActiveRunId = activeRunId;
+            this.LatestRunId = latestRunId;
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
             this.User = user ?? throw new global::System.ArgumentNullException(nameof(user));
+            this.CreatedAt = createdAt;
+            this.InstanceType = instanceType ?? throw new global::System.ArgumentNullException(nameof(instanceType));
+            this.NodeCount = nodeCount;
             this.Sampler = sampler;
         }
 
