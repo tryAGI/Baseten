@@ -32,7 +32,7 @@ internal static partial class GetLoopsSamplersCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"get-loops-samplers", @"Lists Loops samplers
-Lists Loops samplers visible to the requesting user.");
+Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.");
 
 
 

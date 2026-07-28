@@ -5850,7 +5850,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Lists Loops samplers visible to the requesting user.",
+                "description": "Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -18435,6 +18435,28 @@
                     "status": {
                         "$ref": "#/components/schemas/LoopsSamplerStatusV1",
                         "description": "The sampler's current status."
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserV1",
+                        "description": "The user who owns the sampler."
+                    },
+                    "instance_type": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/InstanceTypeV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Instance type serving the sampler."
+                    },
+                    "node_count": {
+                        "default": 1,
+                        "description": "Number of nodes serving the sampler.",
+                        "title": "Node Count",
+                        "type": "integer"
                     }
                 },
                 "required": [
@@ -18444,7 +18466,8 @@
                     "created_at",
                     "model_id",
                     "deployment_id",
-                    "status"
+                    "status",
+                    "user"
                 ],
                 "title": "LoopsSamplerV1",
                 "type": "object"
@@ -19094,6 +19117,19 @@
                         "description": "The ID of the run currently active on this deployment, if any. Null when the deployment's runs have been marked inactive (e.g. scale-to-zero) without a successor.",
                         "title": "Active Run Id"
                     },
+                    "latest_run_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The ID of the most recent run on this deployment, active or not, so idle deployments still expose a usable run handle. Null only if the deployment has no runs.",
+                        "title": "Latest Run Id"
+                    },
                     "base_model": {
                         "description": "The HuggingFace base model the deployment is fine-tuning.",
                         "title": "Base Model",
@@ -19111,6 +19147,22 @@
                     "user": {
                         "$ref": "#/components/schemas/UserV1",
                         "description": "The user who owns the Loops deployment."
+                    },
+                    "created_at": {
+                        "description": "Time the deployment was created in ISO 8601 format.",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "instance_type": {
+                        "$ref": "#/components/schemas/InstanceTypeV1",
+                        "description": "Instance type backing the trainer."
+                    },
+                    "node_count": {
+                        "default": 1,
+                        "description": "Number of nodes backing the trainer.",
+                        "title": "Node Count",
+                        "type": "integer"
                     },
                     "sampler": {
                         "anyOf": [
@@ -19130,7 +19182,9 @@
                     "base_model",
                     "base_url",
                     "status",
-                    "user"
+                    "user",
+                    "created_at",
+                    "instance_type"
                 ],
                 "title": "LoopsDeploymentV1",
                 "type": "object"

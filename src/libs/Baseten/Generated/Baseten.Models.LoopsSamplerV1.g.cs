@@ -58,6 +58,27 @@ namespace Baseten
         public required global::Baseten.LoopsSamplerStatusV1 Status { get; set; }
 
         /// <summary>
+        /// The user who owns the sampler.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.UserV1 User { get; set; }
+
+        /// <summary>
+        /// Instance type serving the sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("instance_type")]
+        public global::Baseten.InstanceTypeV1? InstanceType { get; set; }
+
+        /// <summary>
+        /// Number of nodes serving the sampler.<br/>
+        /// Default Value: 1
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_count")]
+        public int? NodeCount { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -83,6 +104,17 @@ namespace Baseten
         /// <param name="status">
         /// The sampler's current status.
         /// </param>
+        /// <param name="user">
+        /// The user who owns the sampler.
+        /// </param>
+        /// <param name="instanceType">
+        /// Instance type serving the sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="nodeCount">
+        /// Number of nodes serving the sampler.<br/>
+        /// Default Value: 1
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -93,7 +125,10 @@ namespace Baseten
             global::System.DateTime createdAt,
             string modelId,
             string deploymentId,
-            global::Baseten.LoopsSamplerStatusV1 status)
+            global::Baseten.LoopsSamplerStatusV1 status,
+            global::Baseten.UserV1 user,
+            global::Baseten.InstanceTypeV1? instanceType,
+            int? nodeCount)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
@@ -102,6 +137,9 @@ namespace Baseten
             this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
             this.DeploymentId = deploymentId ?? throw new global::System.ArgumentNullException(nameof(deploymentId));
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
+            this.User = user ?? throw new global::System.ArgumentNullException(nameof(user));
+            this.InstanceType = instanceType;
+            this.NodeCount = nodeCount;
         }
 
         /// <summary>
