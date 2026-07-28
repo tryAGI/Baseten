@@ -103,6 +103,10 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        ModelDeploymentBackpressurePolicyChanged,
+        /// <summary>
+        /// 
+        /// </summary>
         ModelDeploymentDeactivated,
         /// <summary>
         /// 
@@ -213,6 +217,7 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeployed => "MODEL_DEPLOYED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentActivated => "MODEL_DEPLOYMENT_ACTIVATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentAutoscalingSettingsChanged => "MODEL_DEPLOYMENT_AUTOSCALING_SETTINGS_CHANGED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentBackpressurePolicyChanged => "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentDeactivated => "MODEL_DEPLOYMENT_DEACTIVATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentDeleted => "MODEL_DEPLOYMENT_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentInstanceTypeChanged => "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED",
@@ -265,6 +270,7 @@ namespace Baseten
                 "MODEL_DEPLOYED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeployed,
                 "MODEL_DEPLOYMENT_ACTIVATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentActivated,
                 "MODEL_DEPLOYMENT_AUTOSCALING_SETTINGS_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentAutoscalingSettingsChanged,
+                "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentBackpressurePolicyChanged,
                 "MODEL_DEPLOYMENT_DEACTIVATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentDeactivated,
                 "MODEL_DEPLOYMENT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentDeleted,
                 "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentInstanceTypeChanged,
