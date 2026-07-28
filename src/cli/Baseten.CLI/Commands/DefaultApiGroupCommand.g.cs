@@ -92,6 +92,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(EditLibraryListingsByUserDefinedListingIdVersionsByVersionTagCommandApiCommand.Create());
                          command.Subcommands.Add(EditLoopsUserConfigCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsByDeploymentIdAutoscalingSettingsCommandApiCommand.Create());
+                         command.Subcommands.Add(EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsDevelopmentAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsProductionAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());

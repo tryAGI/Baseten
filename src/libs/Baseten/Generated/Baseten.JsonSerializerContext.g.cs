@@ -61,6 +61,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1NullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.RequestBackpressurePolicyV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.RequestBackpressurePolicyV1NullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.DeploymentConfigOutputFormatJsonConverter),
 
             typeof(global::Baseten.JsonConverters.DeploymentConfigOutputFormatNullableJsonConverter),
@@ -293,6 +297,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentRetriedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentPromotedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeploymentDeletedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventModelDeletedV1))]
@@ -368,6 +373,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1), TypeInfoPropertyName = "UpdateAutoscalingSettingsStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1), TypeInfoPropertyName = "RequestBackpressurePolicyV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRequestBackpressurePolicyRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PromoteRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ActivateResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeactivateResponseV1))]
@@ -730,11 +737,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentStatusV1?), TypeInfoPropertyName = "NullableDeploymentStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableCreateModelDeploymentRequestV1SourceDiscriminatorKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1?), TypeInfoPropertyName = "NullableUpdateAutoscalingSettingsStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1?), TypeInfoPropertyName = "NullableRequestBackpressurePolicyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentConfigOutputFormat?), TypeInfoPropertyName = "NullableDeploymentConfigOutputFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LogLevelV1?), TypeInfoPropertyName = "NullableLogLevelV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SortOrderV1?), TypeInfoPropertyName = "NullableSortOrderV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchActionV1?), TypeInfoPropertyName = "NullableDeploymentPatchActionV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchOpsItem?), TypeInfoPropertyName = "NullablePatchOpsItem2")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -793,6 +797,10 @@ namespace Baseten
             typeof(global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1JsonConverter),
 
             typeof(global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1NullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.RequestBackpressurePolicyV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.RequestBackpressurePolicyV1NullableJsonConverter),
 
             typeof(global::Baseten.JsonConverters.DeploymentConfigOutputFormatJsonConverter),
 
@@ -968,6 +976,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.UnixTimestampJsonConverter),
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LogLevelV1?), TypeInfoPropertyName = "NullableLogLevelV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SortOrderV1?), TypeInfoPropertyName = "NullableSortOrderV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchActionV1?), TypeInfoPropertyName = "NullableDeploymentPatchActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchOpsItem?), TypeInfoPropertyName = "NullablePatchOpsItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType?), TypeInfoPropertyName = "NullableCreateDeploymentPatchRequestV1PatchOpDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricUnitHintV1?), TypeInfoPropertyName = "NullableModelMetricUnitHintV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricKindV1?), TypeInfoPropertyName = "NullableModelMetricKindV12")]
@@ -1140,6 +1152,8 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.CreateModelDeploymentRequestV1SourceDiscriminatorKindNullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1NullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.RequestBackpressurePolicyV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.RequestBackpressurePolicyV1NullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.DeploymentConfigOutputFormatJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.DeploymentConfigOutputFormatNullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.LogLevelV1JsonConverter());

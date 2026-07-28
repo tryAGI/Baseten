@@ -1702,6 +1702,51 @@
                 }
             ]
         },
+        "/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_policy": {
+            "patch": {
+                "summary": "Updates a deployment's request backpressure policy",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_policy \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"request_backpressure_policy\": \"reject_on_full\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_policy\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'request_backpressure_policy': 'reject_on_full'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRequestBackpressurePolicyRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UpdateAutoscalingSettingsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
         "/v1/models/{model_id}/deployments/development/promote": {
             "post": {
                 "summary": "Promotes a development deployment to production",
@@ -8988,6 +9033,7 @@
                                 "MODEL_DEPLOYED": "#/components/schemas/AuditLogEventModelDeployedV1",
                                 "MODEL_DEPLOYMENT_ACTIVATED": "#/components/schemas/AuditLogEventModelDeploymentActivatedV1",
                                 "MODEL_DEPLOYMENT_AUTOSCALING_SETTINGS_CHANGED": "#/components/schemas/AuditLogEventModelDeploymentAutoscalingSettingsChangedV1",
+                                "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED": "#/components/schemas/AuditLogEventModelDeploymentBackpressurePolicyChangedV1",
                                 "MODEL_DEPLOYMENT_DEACTIVATED": "#/components/schemas/AuditLogEventModelDeploymentDeactivatedV1",
                                 "MODEL_DEPLOYMENT_DELETED": "#/components/schemas/AuditLogEventModelDeploymentDeletedV1",
                                 "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED": "#/components/schemas/AuditLogEventModelDeploymentInstanceTypeChangedV1",
@@ -9028,6 +9074,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventModelDeploymentAutoscalingSettingsChangedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventModelDeploymentBackpressurePolicyChangedV1"
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventModelDeploymentInstanceTypeChangedV1"
@@ -11132,6 +11181,47 @@
                 "title": "AuditLogEventModelDeploymentAutoscalingSettingsChangedV1",
                 "type": "object"
             },
+            "AuditLogEventModelDeploymentBackpressurePolicyChangedV1": {
+                "additionalProperties": false,
+                "description": "A model deployment's request backpressure policy was changed.",
+                "properties": {
+                    "event_type": {
+                        "const": "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "model_id": {
+                        "title": "Model Id",
+                        "type": "string"
+                    },
+                    "model_name": {
+                        "title": "Model Name",
+                        "type": "string"
+                    },
+                    "deployment_id": {
+                        "title": "Deployment Id",
+                        "type": "string"
+                    },
+                    "deployment_name": {
+                        "title": "Deployment Name",
+                        "type": "string"
+                    },
+                    "request_backpressure_policy": {
+                        "title": "Request Backpressure Policy",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "model_id",
+                    "model_name",
+                    "deployment_id",
+                    "deployment_name",
+                    "request_backpressure_policy"
+                ],
+                "title": "AuditLogEventModelDeploymentBackpressurePolicyChangedV1",
+                "type": "object"
+            },
             "AuditLogEventModelDeploymentDeactivatedV1": {
                 "additionalProperties": false,
                 "description": "A model deployment was deactivated.",
@@ -11572,6 +11662,7 @@
                     "MODEL_DEPLOYMENT_RETRIED",
                     "MODEL_DEPLOYMENT_PROMOTED",
                     "MODEL_DEPLOYMENT_AUTOSCALING_SETTINGS_CHANGED",
+                    "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED",
                     "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED",
                     "MODEL_DEPLOYMENT_DELETED",
                     "MODEL_DELETED",
@@ -11873,6 +11964,7 @@
                     "PROMOTED",
                     "ACTIVATED_DEACTIVATED",
                     "AUTOSCALING_SETTINGS",
+                    "BACKPRESSURE_POLICY",
                     "INSTANCE_TYPE_CHANGED",
                     "ENVIRONMENT_SETTINGS",
                     "REPLICA_TERMINATED",
@@ -12791,6 +12883,32 @@
                     "message"
                 ],
                 "title": "UpdateAutoscalingSettingsResponseV1",
+                "type": "object"
+            },
+            "RequestBackpressurePolicyV1": {
+                "enum": [
+                    "queue_on_full",
+                    "reject_on_full"
+                ],
+                "title": "RequestBackpressurePolicyV1",
+                "type": "string"
+            },
+            "UpdateRequestBackpressurePolicyRequestV1": {
+                "additionalProperties": false,
+                "description": "Request body for ``PATCH /v1/models/.../deployments/.../request_backpressure_policy``.",
+                "properties": {
+                    "request_backpressure_policy": {
+                        "$ref": "#/components/schemas/RequestBackpressurePolicyV1",
+                        "description": "Controls how the deployment handles requests when at capacity. queue_on_full (default) queues requests while reject_on_full returns HTTP 429.",
+                        "examples": [
+                            "reject_on_full"
+                        ]
+                    }
+                },
+                "required": [
+                    "request_backpressure_policy"
+                ],
+                "title": "UpdateRequestBackpressurePolicyRequestV1",
                 "type": "object"
             },
             "PromoteRequestV1": {
