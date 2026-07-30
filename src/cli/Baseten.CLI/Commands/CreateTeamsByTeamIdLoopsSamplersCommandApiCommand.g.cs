@@ -5,8 +5,13 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class CreateLoopsSamplersCommandApiCommand
+internal static partial class CreateTeamsByTeamIdLoopsSamplersCommandApiCommand
 {
+    private static Argument<string> TeamId { get; } = new(
+        name: @"team-id")
+    {
+        Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
+    };
     private static readonly CreateLoopsSamplerRequestV1OptionSet CreateLoopsSamplerRequestV1OptionSetOptions = CreateLoopsSamplerRequestV1OptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -47,9 +52,9 @@ internal static partial class CreateLoopsSamplersCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"create-loops-samplers", @"Creates a Loops sampler
-Creates a standalone Loops sampler not linked to a run.");
-                        command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.SessionId);
+        var command = new Command(@"create-teams-by-team-id-loops-samplers", @"Creates a Loops sampler in a team
+Creates a standalone Loops sampler not linked to a run; the sampler belongs to the given team.");
+                        command.Arguments.Add(TeamId);                        command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.SessionId);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.BaseModel);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.RunId);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.MaxSeqLength);
@@ -79,7 +84,8 @@ Creates a standalone Loops sampler not linked to a run.");
                             RequestJson,
                             RequestFile,
                             global::Baseten.SourceGenerationContext.Default,
-                            cancellationToken).ConfigureAwait(false);                        var sessionId = parseResult.GetRequiredValue(CreateLoopsSamplerRequestV1OptionSetOptions.SessionId);
+                            cancellationToken).ConfigureAwait(false);
+                        var teamId = parseResult.GetRequiredValue(TeamId);                        var sessionId = parseResult.GetRequiredValue(CreateLoopsSamplerRequestV1OptionSetOptions.SessionId);
                         var baseModel = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.BaseModel) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.BaseModel) : (__requestBase is { } __BaseModelBaseValue ? __BaseModelBaseValue.BaseModel : default);
                         var runId = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.RunId) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.RunId) : (__requestBase is { } __RunIdBaseValue ? __RunIdBaseValue.RunId : default);
                         var maxSeqLength = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.MaxSeqLength) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.MaxSeqLength) : (__requestBase is { } __MaxSeqLengthBaseValue ? __MaxSeqLengthBaseValue.MaxSeqLength : default);
@@ -88,7 +94,8 @@ Creates a standalone Loops sampler not linked to a run.");
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.CreateLoopsSamplersAsync(
+                                var response = await client.CreateTeamsByTeamIdLoopsSamplersAsync(
+                                    teamId: teamId,
                                     sessionId: sessionId,
                                     baseModel: baseModel,
                                     runId: runId,

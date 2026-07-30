@@ -61,6 +61,10 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdApiKeysCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdLlmModelsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateTeamsByTeamIdLoopsRunsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateTeamsByTeamIdLoopsSamplersCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateTeamsByTeamIdLoopsSessionsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateTeamsByTeamIdLoopsTrainersCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdModelsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdTrainingProjectsCommandApiCommand.Create());
@@ -165,6 +169,8 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetTeamsByTeamIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdEnvironmentGroupsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdEnvironmentGroupsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetTeamsByTeamIdLoopsRunsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetTeamsByTeamIdLoopsSamplersCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdModelsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdRegionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdSecretsCommandApiCommand.Create());
