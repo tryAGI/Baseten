@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Updates a library listing<br/>
-        /// Updates the display name of a library listing.
+        /// Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="request"></param>
@@ -19,7 +19,8 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "display_name": null,<br/>
-        ///   "is_public": null<br/>
+        ///   "is_public": null,<br/>
+        ///   "metadata": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.LibraryListingV1> EditLibraryListingsByUserDefinedListingIdAsync(
@@ -30,7 +31,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a library listing<br/>
-        /// Updates the display name of a library listing.
+        /// Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="request"></param>
@@ -43,7 +44,8 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "display_name": null,<br/>
-        ///   "is_public": null<br/>
+        ///   "is_public": null,<br/>
+        ///   "metadata": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LibraryListingV1>> EditLibraryListingsByUserDefinedListingIdAsResponseAsync(
@@ -54,7 +56,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a library listing<br/>
-        /// Updates the display name of a library listing.
+        /// Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="displayName">
@@ -65,6 +67,10 @@ namespace Baseten
         /// Whether the listing is publicly accessible<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="metadata">
+        /// Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -72,6 +78,7 @@ namespace Baseten
             string userDefinedListingId,
             string? displayName = default,
             bool? isPublic = default,
+            global::Baseten.LibraryListingMetadataV1? metadata = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

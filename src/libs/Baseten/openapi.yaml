@@ -7183,14 +7183,14 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/library_listings/{user_defined_listing_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"display_name\": null,\n  \"is_public\": null\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/library_listings/{user_defined_listing_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"display_name\": null,\n  \"is_public\": null,\n  \"metadata\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/library_listings/{user_defined_listing_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'display_name': None, 'is_public': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/library_listings/{user_defined_listing_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'display_name': None, 'is_public': None, 'metadata': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Updates the display name of a library listing.",
+                "description": "Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -7350,14 +7350,14 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/library_listings/{user_defined_listing_id}/versions/{version_tag} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"is_live\": null,\n  \"allow_truss_download\": null\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/library_listings/{user_defined_listing_id}/versions/{version_tag} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"is_live\": null,\n  \"allow_truss_download\": null,\n  \"benchmark\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/library_listings/{user_defined_listing_id}/versions/{version_tag}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'is_live': None, 'allow_truss_download': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/library_listings/{user_defined_listing_id}/versions/{version_tag}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'is_live': None, 'allow_truss_download': None, 'benchmark': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Updates a library listing version. Setting is_live to true will demote the current live version.",
+                "description": "Updates a library listing version. Setting is_live to true will demote the current live version. When a benchmark is provided, it replaces the stored benchmark.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -21242,6 +21242,70 @@
                 "title": "CreateLLMModelVersionRequestV1",
                 "type": "object"
             },
+            "LibraryListingMetadataV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "parameter_count": {
+                        "title": "Parameter Count",
+                        "type": "integer"
+                    },
+                    "context_length": {
+                        "title": "Context Length",
+                        "type": "integer"
+                    },
+                    "input_modalities": {
+                        "default": [
+                            "text"
+                        ],
+                        "items": {
+                            "enum": [
+                                "text",
+                                "image"
+                            ],
+                            "type": "string"
+                        },
+                        "title": "Input Modalities",
+                        "type": "array"
+                    },
+                    "output_modalities": {
+                        "default": [
+                            "text"
+                        ],
+                        "items": {
+                            "enum": [
+                                "text",
+                                "image"
+                            ],
+                            "type": "string"
+                        },
+                        "title": "Output Modalities",
+                        "type": "array"
+                    },
+                    "license": {
+                        "title": "License",
+                        "type": "string"
+                    },
+                    "variant": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Variant"
+                    }
+                },
+                "required": [
+                    "parameter_count",
+                    "context_length",
+                    "license"
+                ],
+                "title": "LibraryListingMetadataV1",
+                "type": "object"
+            },
             "LibraryListingV1": {
                 "description": "A library listing.",
                 "properties": {
@@ -21276,6 +21340,18 @@
                         "format": "date-time",
                         "title": "Modified At",
                         "type": "string"
+                    },
+                    "metadata": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LibraryListingMetadataV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Model-level metadata for this listing, if it has been uploaded."
                     }
                 },
                 "required": [
@@ -21388,9 +21464,53 @@
                         "default": null,
                         "description": "Whether the listing is publicly accessible",
                         "title": "Is Public"
+                    },
+                    "metadata": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LibraryListingMetadataV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected."
                     }
                 },
                 "title": "UpdateLibraryListingRequestV1",
+                "type": "object"
+            },
+            "BenchmarkSnapshotV1": {
+                "properties": {
+                    "run_id": {
+                        "title": "Run Id",
+                        "type": "string"
+                    },
+                    "hardware": {
+                        "title": "Hardware",
+                        "type": "string"
+                    },
+                    "measured_at": {
+                        "format": "date",
+                        "title": "Measured At",
+                        "type": "string"
+                    },
+                    "metrics": {
+                        "additionalProperties": {
+                            "type": "number"
+                        },
+                        "title": "Metrics",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "run_id",
+                    "hardware",
+                    "measured_at",
+                    "metrics"
+                ],
+                "title": "BenchmarkSnapshotV1",
                 "type": "object"
             },
             "LibraryListingVersionV1": {
@@ -21427,6 +21547,18 @@
                         "format": "date-time",
                         "title": "Modified At",
                         "type": "string"
+                    },
+                    "benchmark": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/BenchmarkSnapshotV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Benchmark snapshot for this version, if one has been uploaded."
                     }
                 },
                 "required": [
@@ -21558,6 +21690,18 @@
                         "default": null,
                         "description": "Whether users deploying this model can download the Truss",
                         "title": "Allow Truss Download"
+                    },
+                    "benchmark": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/BenchmarkSnapshotV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Benchmark snapshot for this version. When provided, replaces the stored benchmark."
                     }
                 },
                 "title": "UpdateLibraryListingVersionRequestV1",

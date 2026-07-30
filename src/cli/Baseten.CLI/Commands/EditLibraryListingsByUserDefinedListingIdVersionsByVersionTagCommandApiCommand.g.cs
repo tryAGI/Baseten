@@ -26,6 +26,12 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdVersionsB
     private static Option<bool?> AllowTrussDownload { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--allow-truss-download",
         description: @"Whether users deploying this model can download the Truss");
+
+    private static Option<global::Baseten.BenchmarkSnapshotV1?> Benchmark { get; } = new(
+        name: @"--benchmark")
+    {
+        Description = @"Benchmark snapshot for this version. When provided, replaces the stored benchmark.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -66,11 +72,12 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdVersionsB
     public static Command Create()
     {
         var command = new Command(@"edit-library-listings-by-user-defined-listing-id-versions-by-version-tag", @"Updates a library listing version
-Updates a library listing version. Setting is_live to true will demote the current live version.");
+Updates a library listing version. Setting is_live to true will demote the current live version. When a benchmark is provided, it replaces the stored benchmark.");
                         command.Arguments.Add(UserDefinedListingId);
                         command.Arguments.Add(VersionTag);
                         command.Options.Add(IsLive);
                         command.Options.Add(AllowTrussDownload);
+                        command.Options.Add(Benchmark);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -100,6 +107,7 @@ Updates a library listing version. Setting is_live to true will demote the curre
                         var versionTag = parseResult.GetRequiredValue(VersionTag);
                         var isLive = CliRuntime.WasSpecified(parseResult, IsLive) ? parseResult.GetValue(IsLive) : (__requestBase is { } __IsLiveBaseValue ? __IsLiveBaseValue.IsLive : default);
                         var allowTrussDownload = CliRuntime.WasSpecified(parseResult, AllowTrussDownload) ? parseResult.GetValue(AllowTrussDownload) : (__requestBase is { } __AllowTrussDownloadBaseValue ? __AllowTrussDownloadBaseValue.AllowTrussDownload : default);
+                        var benchmark = CliRuntime.WasSpecified(parseResult, Benchmark) ? parseResult.GetValue(Benchmark) : (__requestBase is { } __BenchmarkBaseValue ? __BenchmarkBaseValue.Benchmark : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -108,6 +116,7 @@ Updates a library listing version. Setting is_live to true will demote the curre
                                     versionTag: versionTag,
                                     isLive: isLive,
                                     allowTrussDownload: allowTrussDownload,
+                                    benchmark: benchmark,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
