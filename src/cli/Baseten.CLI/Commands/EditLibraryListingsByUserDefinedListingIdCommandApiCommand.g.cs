@@ -22,6 +22,12 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdCommandAp
     private static Option<bool?> IsPublic { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--is-public",
         description: @"Whether the listing is publicly accessible");
+
+    private static Option<global::Baseten.LibraryListingMetadataV1?> Metadata { get; } = new(
+        name: @"--metadata")
+    {
+        Description = @"Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -62,10 +68,11 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdCommandAp
     public static Command Create()
     {
         var command = new Command(@"edit-library-listings-by-user-defined-listing-id", @"Updates a library listing
-Updates the display name of a library listing.");
+Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.");
                         command.Arguments.Add(UserDefinedListingId);
                         command.Options.Add(DisplayName);
                         command.Options.Add(IsPublic);
+                        command.Options.Add(Metadata);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -94,6 +101,7 @@ Updates the display name of a library listing.");
                         var userDefinedListingId = parseResult.GetRequiredValue(UserDefinedListingId);
                         var displayName = CliRuntime.WasSpecified(parseResult, DisplayName) ? parseResult.GetValue(DisplayName) : (__requestBase is { } __DisplayNameBaseValue ? __DisplayNameBaseValue.DisplayName : default);
                         var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : (__requestBase is { } __IsPublicBaseValue ? __IsPublicBaseValue.IsPublic : default);
+                        var metadata = CliRuntime.WasSpecified(parseResult, Metadata) ? parseResult.GetValue(Metadata) : (__requestBase is { } __MetadataBaseValue ? __MetadataBaseValue.Metadata : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -101,6 +109,7 @@ Updates the display name of a library listing.");
                                     userDefinedListingId: userDefinedListingId,
                                     displayName: displayName,
                                     isPublic: isPublic,
+                                    metadata: metadata,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

@@ -47,7 +47,7 @@ namespace Baseten
 
         /// <summary>
         /// Updates a library listing version<br/>
-        /// Updates a library listing version. Setting is_live to true will demote the current live version.
+        /// Updates a library listing version. Setting is_live to true will demote the current live version. When a benchmark is provided, it replaces the stored benchmark.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="versionTag"></param>
@@ -61,7 +61,8 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "is_live": null,<br/>
-        ///   "allow_truss_download": null<br/>
+        ///   "allow_truss_download": null,<br/>
+        ///   "benchmark": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.LibraryListingVersionV1> EditLibraryListingsByUserDefinedListingIdVersionsByVersionTagAsync(
@@ -85,7 +86,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates a library listing version<br/>
-        /// Updates a library listing version. Setting is_live to true will demote the current live version.
+        /// Updates a library listing version. Setting is_live to true will demote the current live version. When a benchmark is provided, it replaces the stored benchmark.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="versionTag"></param>
@@ -99,7 +100,8 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "is_live": null,<br/>
-        ///   "allow_truss_download": null<br/>
+        ///   "allow_truss_download": null,<br/>
+        ///   "benchmark": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LibraryListingVersionV1>> EditLibraryListingsByUserDefinedListingIdVersionsByVersionTagAsResponseAsync(
@@ -471,7 +473,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates a library listing version<br/>
-        /// Updates a library listing version. Setting is_live to true will demote the current live version.
+        /// Updates a library listing version. Setting is_live to true will demote the current live version. When a benchmark is provided, it replaces the stored benchmark.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="versionTag"></param>
@@ -483,6 +485,10 @@ namespace Baseten
         /// Whether users deploying this model can download the Truss<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="benchmark">
+        /// Benchmark snapshot for this version. When provided, replaces the stored benchmark.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -491,6 +497,7 @@ namespace Baseten
             string versionTag,
             bool? isLive = default,
             bool? allowTrussDownload = default,
+            global::Baseten.BenchmarkSnapshotV1? benchmark = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -498,6 +505,7 @@ namespace Baseten
             {
                 IsLive = isLive,
                 AllowTrussDownload = allowTrussDownload,
+                Benchmark = benchmark,
             };
 
             return await EditLibraryListingsByUserDefinedListingIdVersionsByVersionTagAsync(

@@ -23,6 +23,13 @@ namespace Baseten
         public bool? IsPublic { get; set; }
 
         /// <summary>
+        /// Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::Baseten.LibraryListingMetadataV1? Metadata { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -39,15 +46,21 @@ namespace Baseten
         /// Whether the listing is publicly accessible<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="metadata">
+        /// Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateLibraryListingRequestV1(
             string? displayName,
-            bool? isPublic)
+            bool? isPublic,
+            global::Baseten.LibraryListingMetadataV1? metadata)
         {
             this.DisplayName = displayName;
             this.IsPublic = isPublic;
+            this.Metadata = metadata;
         }
 
         /// <summary>

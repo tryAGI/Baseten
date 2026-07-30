@@ -23,6 +23,13 @@ namespace Baseten
         public bool? AllowTrussDownload { get; set; }
 
         /// <summary>
+        /// Benchmark snapshot for this version. When provided, replaces the stored benchmark.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("benchmark")]
+        public global::Baseten.BenchmarkSnapshotV1? Benchmark { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -39,15 +46,21 @@ namespace Baseten
         /// Whether users deploying this model can download the Truss<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="benchmark">
+        /// Benchmark snapshot for this version. When provided, replaces the stored benchmark.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateLibraryListingVersionRequestV1(
             bool? isLive,
-            bool? allowTrussDownload)
+            bool? allowTrussDownload,
+            global::Baseten.BenchmarkSnapshotV1? benchmark)
         {
             this.IsLive = isLive;
             this.AllowTrussDownload = allowTrussDownload;
+            this.Benchmark = benchmark;
         }
 
         /// <summary>
