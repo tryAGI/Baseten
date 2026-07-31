@@ -11,6 +11,12 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schedules")]
+        public global::System.Collections.Generic.IList<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>? Schedules { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("min_replica")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MinReplica { get; set; }
@@ -180,6 +186,7 @@ namespace Baseten
         /// <param name="modelId"></param>
         /// <param name="modelName"></param>
         /// <param name="environmentName"></param>
+        /// <param name="schedules"></param>
         /// <param name="autoscalingWindow"></param>
         /// <param name="scaleDownDelay"></param>
         /// <param name="targetUtilizationPercentage"></param>
@@ -209,6 +216,7 @@ namespace Baseten
             string modelId,
             string modelName,
             string environmentName,
+            global::System.Collections.Generic.IList<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>? schedules,
             int? autoscalingWindow,
             int? scaleDownDelay,
             int? targetUtilizationPercentage,
@@ -229,6 +237,7 @@ namespace Baseten
             global::Baseten.AuditLogEventEnvironmentSettingsV1? previousSettings,
             string eventType = "ENVIRONMENT_UPDATED")
         {
+            this.Schedules = schedules;
             this.MinReplica = minReplica;
             this.MaxReplica = maxReplica;
             this.ConcurrencyTarget = concurrencyTarget;

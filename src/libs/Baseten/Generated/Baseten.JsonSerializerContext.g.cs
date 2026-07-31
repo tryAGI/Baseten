@@ -25,6 +25,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeNullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.AuditLogEventAutoscalingScheduleActionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventAutoscalingScheduleActionV1NullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.AuditLogEventTypeV1JsonConverter),
 
             typeof(global::Baseten.JsonConverters.AuditLogEventTypeV1NullableJsonConverter),
@@ -345,8 +349,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType), TypeInfoPropertyName = "AuditLogEntryV1EventDataDiscriminatorEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSourceV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleActionV1), TypeInfoPropertyName = "AuditLogEventAutoscalingScheduleActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleChangeV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventEnvironmentSettingsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1), TypeInfoPropertyName = "AuditLogPromotionControlActionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListAuditLogsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEntryV1>))]
@@ -743,10 +751,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyTypeV1?), TypeInfoPropertyName = "NullableAuditLogApiKeyTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EventData?), TypeInfoPropertyName = "NullableEventData2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType?), TypeInfoPropertyName = "NullableAuditLogEntryV1EventDataDiscriminatorEventType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1?), TypeInfoPropertyName = "NullableAuditLogPromotionControlActionV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeGroupV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeGroupV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSortDirectionV1?), TypeInfoPropertyName = "NullableAuditLogSortDirectionV12")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -769,6 +773,10 @@ namespace Baseten
             typeof(global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeJsonConverter),
 
             typeof(global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeNullableJsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventAutoscalingScheduleActionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.AuditLogEventAutoscalingScheduleActionV1NullableJsonConverter),
 
             typeof(global::Baseten.JsonConverters.AuditLogEventTypeV1JsonConverter),
 
@@ -992,6 +1000,11 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.UnixTimestampJsonConverter),
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType?), TypeInfoPropertyName = "NullableAuditLogEntryV1EventDataDiscriminatorEventType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleActionV1?), TypeInfoPropertyName = "NullableAuditLogEventAutoscalingScheduleActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1?), TypeInfoPropertyName = "NullableAuditLogPromotionControlActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeGroupV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeGroupV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSortDirectionV1?), TypeInfoPropertyName = "NullableAuditLogSortDirectionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Source?), TypeInfoPropertyName = "NullableSource2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelRequestV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableCreateModelRequestV1SourceDiscriminatorKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentStatusV1?), TypeInfoPropertyName = "NullableDeploymentStatusV12")]
@@ -1042,6 +1055,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RegionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.InstanceTypeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.InstanceTypeWithPriceV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEntryV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventTypeGroupV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogSourceV1>))]
@@ -1161,6 +1175,8 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.AuditLogApiKeyTypeV1NullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEntryV1EventDataDiscriminatorEventTypeNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEventAutoscalingScheduleActionV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEventAutoscalingScheduleActionV1NullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEventTypeV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AuditLogEventTypeV1NullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AuditLogPromotionControlActionV1JsonConverter());

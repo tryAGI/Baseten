@@ -9594,6 +9594,205 @@
                 "title": "AuditLogEventApiKeyDeletedV1",
                 "type": "object"
             },
+            "AuditLogEventAutoscalingScheduleActionV1": {
+                "description": "What an autoscaling change did to one schedule.",
+                "enum": [
+                    "CREATED",
+                    "UPDATED",
+                    "DELETED",
+                    "UNCHANGED"
+                ],
+                "title": "AuditLogEventAutoscalingScheduleActionV1",
+                "type": "string"
+            },
+            "AuditLogEventAutoscalingScheduleChangeV1": {
+                "additionalProperties": false,
+                "description": "What an autoscaling change did to one schedule, and the schedule on either side of it.\n`previous` is null on a create, `current` on a delete, and an unchanged schedule carries only\n`current`. Not itself a payload in the discriminated union.",
+                "properties": {
+                    "action": {
+                        "$ref": "#/components/schemas/AuditLogEventAutoscalingScheduleActionV1"
+                    },
+                    "schedule_id": {
+                        "title": "Schedule Id",
+                        "type": "string"
+                    },
+                    "previous": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventAutoscalingScheduleSettingsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "current": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventAutoscalingScheduleSettingsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "action",
+                    "schedule_id",
+                    "previous",
+                    "current"
+                ],
+                "title": "AuditLogEventAutoscalingScheduleChangeV1",
+                "type": "object"
+            },
+            "AuditLogEventAutoscalingScheduleSettingsV1": {
+                "additionalProperties": false,
+                "description": "One autoscaling schedule: its recurrence window plus the autoscaling settings it applies while\nactive. Not itself a payload in the discriminated union.",
+                "properties": {
+                    "min_replica": {
+                        "title": "Min Replica",
+                        "type": "integer"
+                    },
+                    "max_replica": {
+                        "title": "Max Replica",
+                        "type": "integer"
+                    },
+                    "concurrency_target": {
+                        "title": "Concurrency Target",
+                        "type": "integer"
+                    },
+                    "autoscaling_window": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Autoscaling Window"
+                    },
+                    "scale_down_delay": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Scale Down Delay"
+                    },
+                    "target_utilization_percentage": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Target Utilization Percentage"
+                    },
+                    "target_in_flight_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Target In Flight Tokens"
+                    },
+                    "max_scale_down_rate": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Max Scale Down Rate"
+                    },
+                    "schedule_name": {
+                        "title": "Schedule Name",
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "cadence": {
+                        "title": "Cadence",
+                        "type": "string"
+                    },
+                    "timezone": {
+                        "title": "Timezone",
+                        "type": "string"
+                    },
+                    "weekdays": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Weekdays",
+                        "type": "array"
+                    },
+                    "start_hour": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Start Hour"
+                    },
+                    "start_minute": {
+                        "title": "Start Minute",
+                        "type": "integer"
+                    },
+                    "end_hour": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "End Hour"
+                    },
+                    "end_minute": {
+                        "title": "End Minute",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "min_replica",
+                    "max_replica",
+                    "concurrency_target",
+                    "autoscaling_window",
+                    "scale_down_delay",
+                    "target_utilization_percentage",
+                    "target_in_flight_tokens",
+                    "max_scale_down_rate",
+                    "schedule_name",
+                    "enabled",
+                    "cadence",
+                    "timezone",
+                    "weekdays",
+                    "start_hour",
+                    "start_minute",
+                    "end_hour",
+                    "end_minute"
+                ],
+                "title": "AuditLogEventAutoscalingScheduleSettingsV1",
+                "type": "object"
+            },
             "AuditLogEventAutoscalingSettingsV1": {
                 "additionalProperties": false,
                 "description": "Autoscaling settings for a deployment or environment.",
@@ -10854,6 +11053,20 @@
                 "additionalProperties": false,
                 "description": "A model environment's settings were updated.",
                 "properties": {
+                    "schedules": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/AuditLogEventAutoscalingScheduleChangeV1"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Schedules"
+                    },
                     "min_replica": {
                         "title": "Min Replica",
                         "type": "integer"
@@ -11082,6 +11295,7 @@
                     }
                 },
                 "required": [
+                    "schedules",
                     "min_replica",
                     "max_replica",
                     "concurrency_target",
@@ -11330,6 +11544,20 @@
                 "additionalProperties": false,
                 "description": "A model deployment's autoscaling settings were changed.",
                 "properties": {
+                    "schedules": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/AuditLogEventAutoscalingScheduleChangeV1"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Schedules"
+                    },
                     "min_replica": {
                         "title": "Min Replica",
                         "type": "integer"
@@ -11441,6 +11669,7 @@
                     }
                 },
                 "required": [
+                    "schedules",
                     "min_replica",
                     "max_replica",
                     "concurrency_target",
