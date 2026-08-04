@@ -31,6 +31,13 @@ namespace Baseten
         public string? ApiKeyPrefix { get; set; }
 
         /// <summary>
+        /// Display name of the acting API key, when the actor is an API key.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("api_key_name")]
+        public string? ApiKeyName { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,17 +57,23 @@ namespace Baseten
         /// Prefix of the acting API key, when the actor is an API key.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="apiKeyName">
+        /// Display name of the acting API key, when the actor is an API key.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AuditLogActorV1(
             global::Baseten.AuditLogActorTypeV1 type,
             string? email,
-            string? apiKeyPrefix)
+            string? apiKeyPrefix,
+            string? apiKeyName)
         {
             this.Type = type;
             this.Email = email;
             this.ApiKeyPrefix = apiKeyPrefix;
+            this.ApiKeyName = apiKeyName;
         }
 
         /// <summary>

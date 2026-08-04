@@ -9242,6 +9242,19 @@
                         "default": null,
                         "description": "Prefix of the acting API key, when the actor is an API key.",
                         "title": "Api Key Prefix"
+                    },
+                    "api_key_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Display name of the acting API key, when the actor is an API key.",
+                        "title": "Api Key Name"
                     }
                 },
                 "required": [
