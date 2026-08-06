@@ -27,10 +27,14 @@ namespace Baseten
             };
         partial void PrepareGetLoopsCheckpointsByCheckpointIdFilesArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref int? pageSize,
+            ref int? pageToken,
             ref string checkpointId);
         partial void PrepareGetLoopsCheckpointsByCheckpointIdFilesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            int? pageSize,
+            int? pageToken,
             string checkpointId);
         partial void ProcessGetLoopsCheckpointsByCheckpointIdFilesResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -45,6 +49,12 @@ namespace Baseten
         /// Gets Loops checkpoint files<br/>
         /// Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
         /// </summary>
+        /// <param name="pageSize">
+        /// Default Value: 1000
+        /// </param>
+        /// <param name="pageToken">
+        /// Default Value: 0
+        /// </param>
         /// <param name="checkpointId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -56,11 +66,15 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.LoopsCheckpointFilesResponseV1> GetLoopsCheckpointsByCheckpointIdFilesAsync(
             string checkpointId,
+            int? pageSize = default,
+            int? pageToken = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetLoopsCheckpointsByCheckpointIdFilesAsResponseAsync(
                 checkpointId: checkpointId,
+                pageSize: pageSize,
+                pageToken: pageToken,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -71,6 +85,12 @@ namespace Baseten
         /// Gets Loops checkpoint files<br/>
         /// Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.
         /// </summary>
+        /// <param name="pageSize">
+        /// Default Value: 1000
+        /// </param>
+        /// <param name="pageToken">
+        /// Default Value: 0
+        /// </param>
         /// <param name="checkpointId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -82,6 +102,8 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.LoopsCheckpointFilesResponseV1>> GetLoopsCheckpointsByCheckpointIdFilesAsResponseAsync(
             string checkpointId,
+            int? pageSize = default,
+            int? pageToken = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -89,6 +111,8 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetLoopsCheckpointsByCheckpointIdFilesArguments(
                 httpClient: HttpClient,
+                pageSize: ref pageSize,
+                pageToken: ref pageToken,
                 checkpointId: ref checkpointId);
 
 
@@ -117,6 +141,10 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/loops/checkpoints/{checkpointId}/files",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("page_size", pageSize?.ToString())
+                                .AddOptionalParameter("page_token", pageToken?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -157,6 +185,8 @@ namespace Baseten
                 PrepareGetLoopsCheckpointsByCheckpointIdFilesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    pageSize: pageSize,
+                    pageToken: pageToken,
                     checkpointId: checkpointId!);
 
                 return __httpRequest;
