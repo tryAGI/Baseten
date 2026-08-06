@@ -7,7 +7,11 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetLoopsSamplersCommandApiCommand
 {
-
+    private static Option<string?> Scope { get; } = new(
+        name: @"--scope")
+    {
+        Description = @"Defaults to the caller's own samplers; pass 'org' to include samplers owned by other users in the caller's organization.",
+    };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ListLoopsSamplersResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -33,18 +37,18 @@ internal static partial class GetLoopsSamplersCommandApiCommand
     {
         var command = new Command(@"get-loops-samplers", @"Lists Loops samplers
 Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.");
-
+                        command.Options.Add(Scope);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-
+                        var scope = parseResult.GetValue(Scope);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetLoopsSamplersAsync(
-
+                                    scope: scope,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

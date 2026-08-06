@@ -13,6 +13,18 @@ internal static partial class GetLoopsCheckpointsByCheckpointIdFilesCommandApiCo
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<int?> PageSize { get; } = new(
+        name: @"--page-size")
+    {
+        Description = @"Max files per page (default 1000).",
+    };
+
+    private static Option<int?> PageToken { get; } = new(
+        name: @"--page-token")
+    {
+        Description = @"Offset into the file list (default 0).",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.LoopsCheckpointFilesResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -38,17 +50,23 @@ internal static partial class GetLoopsCheckpointsByCheckpointIdFilesCommandApiCo
         var command = new Command(@"get-loops-checkpoints-by-checkpoint-id-files", @"Gets Loops checkpoint files
 Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.");
                         command.Arguments.Add(CheckpointId);
+                        command.Options.Add(PageSize);
+                        command.Options.Add(PageToken);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
                         var checkpointId = parseResult.GetRequiredValue(CheckpointId);
+                        var pageSize = parseResult.GetValue(PageSize);
+                        var pageToken = parseResult.GetValue(PageToken);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetLoopsCheckpointsByCheckpointIdFilesAsync(
                                     checkpointId: checkpointId,
+                                    pageSize: pageSize,
+                                    pageToken: pageToken,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

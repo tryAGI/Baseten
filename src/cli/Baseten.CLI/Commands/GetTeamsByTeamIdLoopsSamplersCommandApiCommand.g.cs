@@ -13,6 +13,12 @@ internal static partial class GetTeamsByTeamIdLoopsSamplersCommandApiCommand
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<string?> Scope { get; } = new(
+        name: @"--scope")
+    {
+        Description = @"Defaults to the caller's own samplers; pass 'org' to include samplers owned by other users in the caller's organization.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ListLoopsSamplersResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -36,19 +42,22 @@ internal static partial class GetTeamsByTeamIdLoopsSamplersCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"get-teams-by-team-id-loops-samplers", @"Lists a team's Loops samplers
-Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user.");
+Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.");
                         command.Arguments.Add(TeamId);
+                        command.Options.Add(Scope);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
                         var teamId = parseResult.GetRequiredValue(TeamId);
+                        var scope = parseResult.GetValue(Scope);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetTeamsByTeamIdLoopsSamplersAsync(
                                     teamId: teamId,
+                                    scope: scope,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

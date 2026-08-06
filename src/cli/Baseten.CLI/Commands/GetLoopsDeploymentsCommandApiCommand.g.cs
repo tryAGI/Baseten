@@ -7,7 +7,11 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetLoopsDeploymentsCommandApiCommand
 {
-
+    private static Option<string?> Scope { get; } = new(
+        name: @"--scope")
+    {
+        Description = @"Defaults to the caller's own deployments; pass 'org' to list every deployment in the caller's organization.",
+    };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ListLoopsDeploymentsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -33,18 +37,18 @@ internal static partial class GetLoopsDeploymentsCommandApiCommand
     {
         var command = new Command(@"get-loops-deployments", @"Lists Loops deployments
 Lists Loops deployments. Defaults to the caller's own; pass ?scope=org to list every deployment in the caller's organization. Returns every deployment regardless of status; clients filter terminal states.");
-
+                        command.Options.Add(Scope);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-
+                        var scope = parseResult.GetValue(Scope);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetLoopsDeploymentsAsync(
-
+                                    scope: scope,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
