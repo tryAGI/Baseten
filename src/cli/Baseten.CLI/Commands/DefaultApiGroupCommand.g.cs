@@ -147,6 +147,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelApisByModelApiNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisSnapshotsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisSnapshotsByModelIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelApisUsageCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdAuditLogsCommandApiCommand.Create());
