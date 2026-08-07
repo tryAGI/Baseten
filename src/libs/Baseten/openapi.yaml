@@ -7276,6 +7276,164 @@
                 }
             }
         },
+        "/v1/model_apis/usage": {
+            "get": {
+                "summary": "Gets Model APIs token usage in time buckets",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/model_apis/usage \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/usage\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.",
+                "parameters": [
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "required": true,
+                        "description": "Start of the query range (ISO 8601, UTC), inclusive. Snapped down to the start of its bucket. Ignored when you pass a cursor.",
+                        "schema": {
+                            "format": "date-time",
+                            "title": "Start Time",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "required": false,
+                        "description": "End of the query range (ISO 8601, UTC), exclusive. Defaults to the current time.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "End Time"
+                        }
+                    },
+                    {
+                        "name": "bucket_width",
+                        "in": "query",
+                        "required": false,
+                        "description": "Width of each time bucket: 1m, 1h, or 1d. Defaults to 1d.",
+                        "schema": {
+                            "$ref": "#/components/schemas/BucketWidth",
+                            "default": "1d"
+                        }
+                    },
+                    {
+                        "name": "group_by",
+                        "in": "query",
+                        "required": false,
+                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to api_key.",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/components/schemas/UsageDimension"
+                            },
+                            "title": "Group By",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "api_keys",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only usage for these API key prefixes, repeated once per prefix.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Api Keys",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "models",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only usage for these models, repeated once per model.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Models",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "service_tiers",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only usage for these service tiers, repeated once per tier.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Service Tiers",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Number of time buckets to return. Defaults and maximums depend on bucket_width: 1d defaults to 7 and allows 31, 1h defaults to 24 and allows 168, 1m defaults to 60 and allows 1440.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Limit"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor from the pagination.cursor field of a previous response. Pass the same query parameters alongside it, apart from start_time, which the cursor supplies.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ModelApisUsageResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/model_apis/{model_api_name}": {
             "get": {
                 "summary": "Gets a Model API",
@@ -21582,6 +21740,248 @@
                     }
                 },
                 "title": "ModelAPIsRequestV1",
+                "type": "object"
+            },
+            "ModelApisUsageBucketV1": {
+                "description": "One time bucket and the usage recorded in it.",
+                "properties": {
+                    "start_time": {
+                        "description": "Start of the bucket (inclusive), UTC",
+                        "format": "date-time",
+                        "title": "Start Time",
+                        "type": "string"
+                    },
+                    "end_time": {
+                        "description": "End of the bucket (exclusive), UTC",
+                        "format": "date-time",
+                        "title": "End Time",
+                        "type": "string"
+                    },
+                    "results": {
+                        "description": "Usage totals for this bucket, ordered by total tokens descending",
+                        "items": {
+                            "$ref": "#/components/schemas/ModelApisUsageResultV1"
+                        },
+                        "title": "Results",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "start_time",
+                    "end_time"
+                ],
+                "title": "ModelApisUsageBucketV1",
+                "type": "object"
+            },
+            "ModelApisUsageResultV1": {
+                "description": "Usage totals for one combination of the requested dimensions, within one bucket.",
+                "properties": {
+                    "api_key_prefix": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Prefix of the API key the usage is attributed to. Null when not grouping by api_key.",
+                        "title": "Api Key Prefix"
+                    },
+                    "model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Model that served the usage. Null when not grouping by model.",
+                        "title": "Model"
+                    },
+                    "service_tier": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Service tier the usage was served on. Null when not grouping by service_tier.",
+                        "title": "Service Tier"
+                    },
+                    "input_tokens": {
+                        "description": "Total input tokens, cached and uncached combined.",
+                        "title": "Input Tokens",
+                        "type": "integer"
+                    },
+                    "cached_input_tokens": {
+                        "description": "Input tokens served from the prompt cache.",
+                        "title": "Cached Input Tokens",
+                        "type": "integer"
+                    },
+                    "uncached_input_tokens": {
+                        "description": "Input tokens not served from the prompt cache.",
+                        "title": "Uncached Input Tokens",
+                        "type": "integer"
+                    },
+                    "output_tokens": {
+                        "description": "Total output tokens.",
+                        "title": "Output Tokens",
+                        "type": "integer"
+                    },
+                    "request_count": {
+                        "description": "Total number of requests.",
+                        "title": "Request Count",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "input_tokens",
+                    "cached_input_tokens",
+                    "uncached_input_tokens",
+                    "output_tokens",
+                    "request_count"
+                ],
+                "title": "ModelApisUsageResultV1",
+                "type": "object"
+            },
+            "ModelApisUsageResponseV1": {
+                "description": "A page of Model APIs token usage: contiguous time buckets, ordered oldest first.",
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/ModelApisUsageBucketV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "ModelApisUsageResponseV1",
+                "type": "object"
+            },
+            "BucketWidth": {
+                "enum": [
+                    "1m",
+                    "1h",
+                    "1d"
+                ],
+                "title": "BucketWidth",
+                "type": "string"
+            },
+            "UsageDimension": {
+                "enum": [
+                    "api_key",
+                    "model",
+                    "service_tier"
+                ],
+                "title": "UsageDimension",
+                "type": "string"
+            },
+            "ModelApisUsageRequestV1": {
+                "properties": {
+                    "start_time": {
+                        "description": "Start of the query range (ISO 8601, UTC), inclusive. Snapped down to the start of its bucket. Ignored when you pass a cursor.",
+                        "format": "date-time",
+                        "title": "Start Time",
+                        "type": "string"
+                    },
+                    "end_time": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "End of the query range (ISO 8601, UTC), exclusive. Defaults to the current time.",
+                        "title": "End Time"
+                    },
+                    "bucket_width": {
+                        "$ref": "#/components/schemas/BucketWidth",
+                        "default": "1d",
+                        "description": "Width of each time bucket: 1m, 1h, or 1d. Defaults to 1d."
+                    },
+                    "group_by": {
+                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to api_key.",
+                        "items": {
+                            "$ref": "#/components/schemas/UsageDimension"
+                        },
+                        "title": "Group By",
+                        "type": "array"
+                    },
+                    "api_keys": {
+                        "description": "Return only usage for these API key prefixes, repeated once per prefix.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Api Keys",
+                        "type": "array"
+                    },
+                    "models": {
+                        "description": "Return only usage for these models, repeated once per model.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Models",
+                        "type": "array"
+                    },
+                    "service_tiers": {
+                        "description": "Return only usage for these service tiers, repeated once per tier.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Service Tiers",
+                        "type": "array"
+                    },
+                    "limit": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Number of time buckets to return. Defaults and maximums depend on bucket_width: 1d defaults to 7 and allows 31, 1h defaults to 24 and allows 168, 1m defaults to 60 and allows 1440.",
+                        "title": "Limit"
+                    },
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor from the pagination.cursor field of a previous response. Pass the same query parameters alongside it, apart from start_time, which the cursor supplies.",
+                        "title": "Cursor"
+                    }
+                },
+                "required": [
+                    "start_time"
+                ],
+                "title": "ModelApisUsageRequestV1",
                 "type": "object"
             },
             "CreateLLMModelRequestV1": {
