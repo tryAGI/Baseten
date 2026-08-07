@@ -44,6 +44,13 @@ namespace Baseten
         public required global::Baseten.InstanceTypeV1 InstanceType { get; set; }
 
         /// <summary>
+        /// Number of nodes the job runs on. The instance type describes a single node, so the job's total GPU count is gpu_count multiplied by node_count.<br/>
+        /// Default Value: 1
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("node_count")]
+        public int? NodeCount { get; set; }
+
+        /// <summary>
         /// Time the job was updated in ISO 8601 format.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("updated_at")]
@@ -134,6 +141,10 @@ namespace Baseten
         /// Error message if the training job failed.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="nodeCount">
+        /// Number of nodes the job runs on. The instance type describes a single node, so the job's total GPU count is gpu_count multiplied by node_count.<br/>
+        /// Default Value: 1
+        /// </param>
         /// <param name="name">
         /// Name of the training job.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -166,6 +177,7 @@ namespace Baseten
             string trainingProjectId,
             global::Baseten.TrainingProjectSummaryV1 trainingProject,
             string? errorMessage,
+            int? nodeCount,
             string? name,
             global::Baseten.CheckpointSyncStatus? checkpointSyncStatus,
             int? priority,
@@ -177,6 +189,7 @@ namespace Baseten
             this.CurrentStatus = currentStatus ?? throw new global::System.ArgumentNullException(nameof(currentStatus));
             this.ErrorMessage = errorMessage;
             this.InstanceType = instanceType ?? throw new global::System.ArgumentNullException(nameof(instanceType));
+            this.NodeCount = nodeCount;
             this.UpdatedAt = updatedAt;
             this.TrainingProjectId = trainingProjectId ?? throw new global::System.ArgumentNullException(nameof(trainingProjectId));
             this.TrainingProject = trainingProject ?? throw new global::System.ArgumentNullException(nameof(trainingProject));
