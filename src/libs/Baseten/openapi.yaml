@@ -1568,6 +1568,42 @@
                         }
                     }
                 }
+            },
+            "patch": {
+                "summary": "Updates a model's deployment by ID",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"my-deployment\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'name': 'my-deployment'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates the mutable fields of a deployment and returns the updated deployment.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateDeploymentRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeploymentV1"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/v1/models/{model_id}/deployments/development/autoscaling_settings": {
@@ -13515,6 +13551,32 @@
                     "model_id"
                 ],
                 "title": "DeploymentTombstoneV1",
+                "type": "object"
+            },
+            "UpdateDeploymentRequestV1": {
+                "additionalProperties": false,
+                "description": "A request to update a deployment.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "maxLength": 255,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "New name for the deployment, unique among the model's deployments. Only alphanumeric characters, hyphens, underscores, and periods are allowed.",
+                        "examples": [
+                            "my-deployment"
+                        ],
+                        "title": "Name"
+                    }
+                },
+                "title": "UpdateDeploymentRequestV1",
                 "type": "object"
             },
             "UpdateAutoscalingSettingsV1": {
