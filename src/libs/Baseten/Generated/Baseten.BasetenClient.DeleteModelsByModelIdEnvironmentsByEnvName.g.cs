@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateGatewayEndpointsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_DeleteModelsByModelIdEnvironmentsByEnvNameSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,60 +21,51 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateGatewayEndpointsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_DeleteModelsByModelIdEnvironmentsByEnvNameSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateGatewayEndpointsSecurityRequirement0,
+            {                s_DeleteModelsByModelIdEnvironmentsByEnvNameSecurityRequirement0,
             };
-        partial void PrepareCreateGatewayEndpointsArguments(
+        partial void PrepareDeleteModelsByModelIdEnvironmentsByEnvNameArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateEndpointRequestV1 request);
-        partial void PrepareCreateGatewayEndpointsRequest(
+            ref string modelId,
+            ref string envName);
+        partial void PrepareDeleteModelsByModelIdEnvironmentsByEnvNameRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateEndpointRequestV1 request);
-        partial void ProcessCreateGatewayEndpointsResponse(
+            string modelId,
+            string envName);
+        partial void ProcessDeleteModelsByModelIdEnvironmentsByEnvNameResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateGatewayEndpointsResponseContent(
+        partial void ProcessDeleteModelsByModelIdEnvironmentsByEnvNameResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Creates a Gateway endpoint<br/>
-        /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
+        /// Deletes an environment<br/>
+        /// Deletes an environment and returns its tombstone. Any in-progress promotion to the environment is canceled, and the deployment currently serving the environment is scaled down to zero replicas rather than deleted. The production environment cannot be deleted.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="modelId"></param>
+        /// <param name="envName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/gateway/endpoints \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "slug": "baseten/mymodel-4",<br/>
-        ///   "region": "UNRESTRICTED",<br/>
-        ///   "targets": [<br/>
-        ///     {<br/>
-        ///       "environment_name": "staging",<br/>
-        ///       "model_id": "3kZ9xqd",<br/>
-        ///       "provider": "BASETEN",<br/>
-        ///       "target_model": "custom/model-name"<br/>
-        ///     }<br/>
-        ///   ]<br/>
-        /// }'
+        /// curl --request DELETE \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.EndpointV1> CreateGatewayEndpointsAsync(
-
-            global::Baseten.CreateEndpointRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.EnvironmentTombstoneV1> DeleteModelsByModelIdEnvironmentsByEnvNameAsync(
+            string modelId,
+            string envName,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateGatewayEndpointsAsResponseAsync(
-
-                request: request,
+            var __response = await DeleteModelsByModelIdEnvironmentsByEnvNameAsResponseAsync(
+                modelId: modelId,
+                envName: envName,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -82,49 +73,37 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Creates a Gateway endpoint<br/>
-        /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
+        /// Deletes an environment<br/>
+        /// Deletes an environment and returns its tombstone. Any in-progress promotion to the environment is canceled, and the deployment currently serving the environment is scaled down to zero replicas rather than deleted. The production environment cannot be deleted.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="modelId"></param>
+        /// <param name="envName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/gateway/endpoints \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "slug": "baseten/mymodel-4",<br/>
-        ///   "region": "UNRESTRICTED",<br/>
-        ///   "targets": [<br/>
-        ///     {<br/>
-        ///       "environment_name": "staging",<br/>
-        ///       "model_id": "3kZ9xqd",<br/>
-        ///       "provider": "BASETEN",<br/>
-        ///       "target_model": "custom/model-name"<br/>
-        ///     }<br/>
-        ///   ]<br/>
-        /// }'
+        /// curl --request DELETE \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>> CreateGatewayEndpointsAsResponseAsync(
-
-            global::Baseten.CreateEndpointRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.EnvironmentTombstoneV1>> DeleteModelsByModelIdEnvironmentsByEnvNameAsResponseAsync(
+            string modelId,
+            string envName,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateGatewayEndpointsArguments(
+            PrepareDeleteModelsByModelIdEnvironmentsByEnvNameArguments(
                 httpClient: HttpClient,
-                request: request);
+                modelId: ref modelId,
+                envName: ref envName);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateGatewayEndpointsSecurityRequirements,
-                operationName: "CreateGatewayEndpointsAsync");
+                securityRequirements: s_DeleteModelsByModelIdEnvironmentsByEnvNameSecurityRequirements,
+                operationName: "DeleteModelsByModelIdEnvironmentsByEnvNameAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -144,7 +123,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/gateway/endpoints",
+                                path: $"/v1/models/{modelId}/environments/{envName}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -152,7 +131,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Delete,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -175,12 +154,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -189,10 +162,11 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateGatewayEndpointsRequest(
+                PrepareDeleteModelsByModelIdEnvironmentsByEnvNameRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    request: request);
+                    modelId: modelId!,
+                    envName: envName!);
 
                 return __httpRequest;
             }
@@ -209,10 +183,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createGatewayEndpoints",
-                                methodName: "CreateGatewayEndpointsAsync",
-                                pathTemplate: "\"/v1/gateway/endpoints\"",
-                                httpMethod: "POST",
+                                operationId: "deleteModelsByModelIdEnvironmentsByEnvName",
+                                methodName: "DeleteModelsByModelIdEnvironmentsByEnvNameAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -243,10 +217,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createGatewayEndpoints",
-                                methodName: "CreateGatewayEndpointsAsync",
-                                pathTemplate: "\"/v1/gateway/endpoints\"",
-                                httpMethod: "POST",
+                                operationId: "deleteModelsByModelIdEnvironmentsByEnvName",
+                                methodName: "DeleteModelsByModelIdEnvironmentsByEnvNameAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -284,10 +258,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createGatewayEndpoints",
-                                methodName: "CreateGatewayEndpointsAsync",
-                                pathTemplate: "\"/v1/gateway/endpoints\"",
-                                httpMethod: "POST",
+                                operationId: "deleteModelsByModelIdEnvironmentsByEnvName",
+                                methodName: "DeleteModelsByModelIdEnvironmentsByEnvNameAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -324,7 +298,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateGatewayEndpointsResponse(
+                ProcessDeleteModelsByModelIdEnvironmentsByEnvNameResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -332,10 +306,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createGatewayEndpoints",
-                                methodName: "CreateGatewayEndpointsAsync",
-                                pathTemplate: "\"/v1/gateway/endpoints\"",
-                                httpMethod: "POST",
+                                operationId: "deleteModelsByModelIdEnvironmentsByEnvName",
+                                methodName: "DeleteModelsByModelIdEnvironmentsByEnvNameAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -354,10 +328,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createGatewayEndpoints",
-                                methodName: "CreateGatewayEndpointsAsync",
-                                pathTemplate: "\"/v1/gateway/endpoints\"",
-                                httpMethod: "POST",
+                                operationId: "deleteModelsByModelIdEnvironmentsByEnvName",
+                                methodName: "DeleteModelsByModelIdEnvironmentsByEnvNameAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/environments/{envName}\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -384,7 +358,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateGatewayEndpointsResponseContent(
+                                ProcessDeleteModelsByModelIdEnvironmentsByEnvNameResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -393,9 +367,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.EndpointV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.EnvironmentTombstoneV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EnvironmentTombstoneV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -425,9 +399,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.EndpointV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.EnvironmentTombstoneV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EndpointV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.EnvironmentTombstoneV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -466,42 +440,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Creates a Gateway endpoint<br/>
-        /// Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.
-        /// </summary>
-        /// <param name="slug">
-        /// Globally-unique slug of the form '{org_prefix}/{name}'.
-        /// </param>
-        /// <param name="region">
-        /// Region the new routing serves.<br/>
-        /// Default Value: UNRESTRICTED
-        /// </param>
-        /// <param name="targets">
-        /// The endpoint's upstream targets. Exactly one target is supported at this time.
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.EndpointV1> CreateGatewayEndpointsAsync(
-            string slug,
-            global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1> targets,
-            global::Baseten.SharedEndpointRegionV1? region = default,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.CreateEndpointRequestV1
-            {
-                Slug = slug,
-                Region = region,
-                Targets = targets,
-            };
-
-            return await CreateGatewayEndpointsAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

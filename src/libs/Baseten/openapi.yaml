@@ -2880,6 +2880,40 @@
             }
         },
         "/v1/models/{model_id}/environments/{env_name}": {
+            "delete": {
+                "summary": "Deletes an environment",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request DELETE \\\n--url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"DELETE\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Deletes an environment and returns its tombstone. Any in-progress promotion to the environment is canceled, and the deployment currently serving the environment is scaled down to zero replicas rather than deleted. The production environment cannot be deleted.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EnvironmentTombstoneV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/env_name"
+                }
+            ],
             "get": {
                 "summary": "Gets an environment's details",
                 "x-codeSamples": [
@@ -2906,14 +2940,6 @@
                     }
                 }
             },
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/model_id"
-                },
-                {
-                    "$ref": "#/components/parameters/env_name"
-                }
-            ],
             "patch": {
                 "summary": "Updates an environment's settings",
                 "x-codeSamples": [
@@ -8140,11 +8166,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/gateway/endpoints \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"targets\": [\n    {\n      \"environment_name\": \"staging\",\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/gateway/endpoints \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"slug\": \"baseten/mymodel-4\",\n  \"region\": \"UNRESTRICTED\",\n  \"targets\": [\n    {\n      \"environment_name\": \"staging\",\n      \"model_id\": \"3kZ9xqd\",\n      \"provider\": \"BASETEN\",\n      \"target_model\": \"custom/model-name\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'targets': [{'environment_name': 'staging', 'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/endpoints\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'slug': 'baseten/mymodel-4', 'region': 'UNRESTRICTED', 'targets': [{'environment_name': 'staging', 'model_id': '3kZ9xqd', 'provider': 'BASETEN', 'target_model': 'custom/model-name'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.",
@@ -15382,6 +15408,33 @@
                     "name"
                 ],
                 "title": "CreateEnvironmentRequestV1",
+                "type": "object"
+            },
+            "EnvironmentTombstoneV1": {
+                "description": "An environment tombstone.",
+                "properties": {
+                    "name": {
+                        "description": "Name of the environment",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "model_id": {
+                        "description": "Unique identifier of the model",
+                        "title": "Model Id",
+                        "type": "string"
+                    },
+                    "deleted": {
+                        "description": "Whether the environment was deleted",
+                        "title": "Deleted",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "name",
+                    "model_id",
+                    "deleted"
+                ],
+                "title": "EnvironmentTombstoneV1",
                 "type": "object"
             },
             "UpdateEnvironmentRequestV1": {
@@ -23844,6 +23897,10 @@
                         "title": "Slug",
                         "type": "string"
                     },
+                    "region": {
+                        "$ref": "#/components/schemas/SharedEndpointRegionV1",
+                        "description": "Region this endpoint's routing serves."
+                    },
                     "created_at": {
                         "description": "Creation time, ISO 8601.",
                         "format": "date-time",
@@ -23868,6 +23925,7 @@
                 "required": [
                     "id",
                     "slug",
+                    "region",
                     "created_at",
                     "updated_at",
                     "targets"
@@ -23886,6 +23944,14 @@
                     "OPENAI_COMPATIBLE"
                 ],
                 "title": "GatewayProvider",
+                "type": "string"
+            },
+            "SharedEndpointRegionV1": {
+                "enum": [
+                    "UNRESTRICTED",
+                    "EU"
+                ],
+                "title": "SharedEndpointRegionV1",
                 "type": "string"
             },
             "VertexTargetConfigV1": {
@@ -24058,6 +24124,11 @@
                         ],
                         "title": "Slug",
                         "type": "string"
+                    },
+                    "region": {
+                        "$ref": "#/components/schemas/SharedEndpointRegionV1",
+                        "default": "UNRESTRICTED",
+                        "description": "Region the new routing serves."
                     },
                     "targets": {
                         "description": "The endpoint's upstream targets. Exactly one target is supported at this time.",

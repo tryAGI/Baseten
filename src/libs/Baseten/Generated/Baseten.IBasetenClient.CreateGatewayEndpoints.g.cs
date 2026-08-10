@@ -18,6 +18,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "slug": "baseten/mymodel-4",<br/>
+        ///   "region": "UNRESTRICTED",<br/>
         ///   "targets": [<br/>
         ///     {<br/>
         ///       "environment_name": "staging",<br/>
@@ -47,6 +48,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "slug": "baseten/mymodel-4",<br/>
+        ///   "region": "UNRESTRICTED",<br/>
         ///   "targets": [<br/>
         ///     {<br/>
         ///       "environment_name": "staging",<br/>
@@ -69,6 +71,10 @@ namespace Baseten
         /// <param name="slug">
         /// Globally-unique slug of the form '{org_prefix}/{name}'.
         /// </param>
+        /// <param name="region">
+        /// Region the new routing serves.<br/>
+        /// Default Value: UNRESTRICTED
+        /// </param>
         /// <param name="targets">
         /// The endpoint's upstream targets. Exactly one target is supported at this time.
         /// </param>
@@ -78,6 +84,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.EndpointV1> CreateGatewayEndpointsAsync(
             string slug,
             global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1> targets,
+            global::Baseten.SharedEndpointRegionV1? region = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
