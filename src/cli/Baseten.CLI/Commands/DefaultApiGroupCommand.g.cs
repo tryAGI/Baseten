@@ -83,6 +83,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteModelsByModelIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdDeploymentsByDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteSecretsBySecretNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTeamsByTeamIdSecretsBySecretNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdCommandApiCommand.Create());

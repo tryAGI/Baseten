@@ -16,6 +16,14 @@ namespace Baseten
         public required string Slug { get; set; }
 
         /// <summary>
+        /// Region the new routing serves.<br/>
+        /// Default Value: UNRESTRICTED
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("region")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.SharedEndpointRegionV1JsonConverter))]
+        public global::Baseten.SharedEndpointRegionV1? Region { get; set; }
+
+        /// <summary>
         /// The endpoint's upstream targets. Exactly one target is supported at this time.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("targets")]
@@ -37,14 +45,20 @@ namespace Baseten
         /// <param name="targets">
         /// The endpoint's upstream targets. Exactly one target is supported at this time.
         /// </param>
+        /// <param name="region">
+        /// Region the new routing serves.<br/>
+        /// Default Value: UNRESTRICTED
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateEndpointRequestV1(
             string slug,
-            global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1> targets)
+            global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1> targets,
+            global::Baseten.SharedEndpointRegionV1? region)
         {
             this.Slug = slug ?? throw new global::System.ArgumentNullException(nameof(slug));
+            this.Region = region;
             this.Targets = targets ?? throw new global::System.ArgumentNullException(nameof(targets));
         }
 

@@ -23,6 +23,14 @@ namespace Baseten
         public required string Slug { get; set; }
 
         /// <summary>
+        /// Region this endpoint's routing serves.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("region")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.SharedEndpointRegionV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.SharedEndpointRegionV1 Region { get; set; }
+
+        /// <summary>
         /// Creation time, ISO 8601.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -58,6 +66,9 @@ namespace Baseten
         /// <param name="slug">
         /// Globally-unique routing slug.
         /// </param>
+        /// <param name="region">
+        /// Region this endpoint's routing serves.
+        /// </param>
         /// <param name="createdAt">
         /// Creation time, ISO 8601.
         /// </param>
@@ -73,12 +84,14 @@ namespace Baseten
         public EndpointV1(
             string id,
             string slug,
+            global::Baseten.SharedEndpointRegionV1 region,
             global::System.DateTime createdAt,
             global::System.DateTime updatedAt,
             global::System.Collections.Generic.IList<global::Baseten.EndpointTargetV1> targets)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Slug = slug ?? throw new global::System.ArgumentNullException(nameof(slug));
+            this.Region = region;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.Targets = targets ?? throw new global::System.ArgumentNullException(nameof(targets));

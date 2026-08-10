@@ -197,6 +197,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.GatewayProviderNullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.SharedEndpointRegionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.SharedEndpointRegionV1NullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.LimitEnforcementV1JsonConverter),
 
             typeof(global::Baseten.JsonConverters.LimitEnforcementV1NullableJsonConverter),
@@ -458,6 +462,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdatePromotionSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRollingDeployConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateEnvironmentRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EnvironmentTombstoneV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateEnvironmentRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetEnvironmentLogsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetEnvironmentMetricsRequestV1))]
@@ -727,6 +732,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider), TypeInfoPropertyName = "GatewayProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.VertexTargetConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SharedEndpointRegionV1), TypeInfoPropertyName = "SharedEndpointRegionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EndpointTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EndpointV1>))]
@@ -757,8 +763,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGroupRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayKeyInfoV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.KeysForGroupResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GatewayKeyInfoV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateApiKeyForGroupRequestV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -954,6 +958,10 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.GatewayProviderNullableJsonConverter),
 
+            typeof(global::Baseten.JsonConverters.SharedEndpointRegionV1JsonConverter),
+
+            typeof(global::Baseten.JsonConverters.SharedEndpointRegionV1NullableJsonConverter),
+
             typeof(global::Baseten.JsonConverters.LimitEnforcementV1JsonConverter),
 
             typeof(global::Baseten.JsonConverters.LimitEnforcementV1NullableJsonConverter),
@@ -1016,6 +1024,8 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.UnixTimestampJsonConverter),
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GatewayKeyInfoV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateApiKeyForGroupRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateApiKeyForGroupResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RegisterAPIKeyRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RegisterAPIKeyResponseV1))]
@@ -1074,6 +1084,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingMetadataV1OutputModalitie?), TypeInfoPropertyName = "NullableLibraryListingMetadataV1OutputModalitie2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider?), TypeInfoPropertyName = "NullableGatewayProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SharedEndpointRegionV1?), TypeInfoPropertyName = "NullableSharedEndpointRegionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitUnitV1?), TypeInfoPropertyName = "NullableUsageLimitUnitV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitEnforcementV1?), TypeInfoPropertyName = "NullableLimitEnforcementV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SecretV1>))]
@@ -1293,6 +1304,8 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.ResourceKindNullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.GatewayProviderJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.GatewayProviderNullableJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.SharedEndpointRegionV1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.SharedEndpointRegionV1NullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.LimitEnforcementV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.LimitEnforcementV1NullableJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.UsageLimitUnitV1JsonConverter());
