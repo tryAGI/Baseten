@@ -398,6 +398,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind), TypeInfoPropertyName = "CreateModelDeploymentRequestV1SourceDiscriminatorKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentTombstoneV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateDeploymentRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1), TypeInfoPropertyName = "UpdateAutoscalingSettingsStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsResponseV1))]
@@ -762,7 +763,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGroupMetadataV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGroupRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayKeyInfoV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.KeysForGroupResponseV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1024,6 +1024,7 @@ namespace Baseten
 
             typeof(global::Baseten.JsonConverters.UnixTimestampJsonConverter),
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.KeysForGroupResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GatewayKeyInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateApiKeyForGroupRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateApiKeyForGroupResponseV1))]
