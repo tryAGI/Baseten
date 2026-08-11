@@ -23,10 +23,6 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        BackpressurePolicy,
-        /// <summary>
-        /// 
-        /// </summary>
         Deleted,
         /// <summary>
         /// 
@@ -56,6 +52,10 @@ namespace Baseten
         /// 
         /// </summary>
         ReplicaTerminated,
+        /// <summary>
+        /// 
+        /// </summary>
+        RequestBackpressureSettings,
         /// <summary>
         /// 
         /// </summary>
@@ -89,7 +89,6 @@ namespace Baseten
                 AuditLogEventTypeGroupV1.ActivatedDeactivated => "ACTIVATED_DEACTIVATED",
                 AuditLogEventTypeGroupV1.ApiKeys => "API_KEYS",
                 AuditLogEventTypeGroupV1.AutoscalingSettings => "AUTOSCALING_SETTINGS",
-                AuditLogEventTypeGroupV1.BackpressurePolicy => "BACKPRESSURE_POLICY",
                 AuditLogEventTypeGroupV1.Deleted => "DELETED",
                 AuditLogEventTypeGroupV1.Deployed => "DEPLOYED",
                 AuditLogEventTypeGroupV1.DirectoryGroupManagement => "DIRECTORY_GROUP_MANAGEMENT",
@@ -98,6 +97,7 @@ namespace Baseten
                 AuditLogEventTypeGroupV1.InstanceTypeChanged => "INSTANCE_TYPE_CHANGED",
                 AuditLogEventTypeGroupV1.Promoted => "PROMOTED",
                 AuditLogEventTypeGroupV1.ReplicaTerminated => "REPLICA_TERMINATED",
+                AuditLogEventTypeGroupV1.RequestBackpressureSettings => "REQUEST_BACKPRESSURE_SETTINGS",
                 AuditLogEventTypeGroupV1.Secrets => "SECRETS",
                 AuditLogEventTypeGroupV1.Ssh => "SSH",
                 AuditLogEventTypeGroupV1.UserManagement => "USER_MANAGEMENT",
@@ -115,7 +115,6 @@ namespace Baseten
                 "ACTIVATED_DEACTIVATED" => AuditLogEventTypeGroupV1.ActivatedDeactivated,
                 "API_KEYS" => AuditLogEventTypeGroupV1.ApiKeys,
                 "AUTOSCALING_SETTINGS" => AuditLogEventTypeGroupV1.AutoscalingSettings,
-                "BACKPRESSURE_POLICY" => AuditLogEventTypeGroupV1.BackpressurePolicy,
                 "DELETED" => AuditLogEventTypeGroupV1.Deleted,
                 "DEPLOYED" => AuditLogEventTypeGroupV1.Deployed,
                 "DIRECTORY_GROUP_MANAGEMENT" => AuditLogEventTypeGroupV1.DirectoryGroupManagement,
@@ -124,6 +123,7 @@ namespace Baseten
                 "INSTANCE_TYPE_CHANGED" => AuditLogEventTypeGroupV1.InstanceTypeChanged,
                 "PROMOTED" => AuditLogEventTypeGroupV1.Promoted,
                 "REPLICA_TERMINATED" => AuditLogEventTypeGroupV1.ReplicaTerminated,
+                "REQUEST_BACKPRESSURE_SETTINGS" => AuditLogEventTypeGroupV1.RequestBackpressureSettings,
                 "SECRETS" => AuditLogEventTypeGroupV1.Secrets,
                 "SSH" => AuditLogEventTypeGroupV1.Ssh,
                 "USER_MANAGEMENT" => AuditLogEventTypeGroupV1.UserManagement,

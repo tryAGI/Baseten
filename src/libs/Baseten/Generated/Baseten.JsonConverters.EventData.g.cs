@@ -63,12 +63,12 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1)}");
                 modelDeploymentAutoscalingSettingsChanged = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1? modelDeploymentBackpressurePolicyChanged = default;
-            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentBackpressurePolicyChanged)
+            global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1? modelDeploymentRequestBackpressureSettingsChanged = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRequestBackpressureSettingsChanged)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1)}");
-                modelDeploymentBackpressurePolicyChanged = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1)}");
+                modelDeploymentRequestBackpressureSettingsChanged = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1? modelDeploymentInstanceTypeChanged = default;
             if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentInstanceTypeChanged)
@@ -337,7 +337,7 @@ namespace Baseten.JsonConverters
 
                 modelDeploymentAutoscalingSettingsChanged,
 
-                modelDeploymentBackpressurePolicyChanged,
+                modelDeploymentRequestBackpressureSettingsChanged,
 
                 modelDeploymentInstanceTypeChanged,
 
@@ -460,11 +460,11 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentAutoscalingSettingsChanged!, typeInfo);
             }
-            else if (value.IsModelDeploymentBackpressurePolicyChanged)
+            else if (value.IsModelDeploymentRequestBackpressureSettingsChanged)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentBackpressurePolicyChanged!, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentRequestBackpressureSettingsChanged!, typeInfo);
             }
             else if (value.IsModelDeploymentInstanceTypeChanged)
             {

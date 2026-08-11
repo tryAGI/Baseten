@@ -248,7 +248,7 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentBackpressurePolicyChangedV1? Type55 { get; set; }
+        public global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -576,7 +576,7 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UpdateRequestBackpressurePolicyRequestV1? Type137 { get; set; }
+        public global::Baseten.UpdateRequestBackpressureSettingsRequestV1? Type137 { get; set; }
         /// <summary>
         /// 
         /// </summary>

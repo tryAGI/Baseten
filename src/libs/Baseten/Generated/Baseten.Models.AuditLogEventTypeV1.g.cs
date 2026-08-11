@@ -103,10 +103,6 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        ModelDeploymentBackpressurePolicyChanged,
-        /// <summary>
-        /// 
-        /// </summary>
         ModelDeploymentDeactivated,
         /// <summary>
         /// 
@@ -120,6 +116,10 @@ namespace Baseten
         /// 
         /// </summary>
         ModelDeploymentPromoted,
+        /// <summary>
+        /// 
+        /// </summary>
+        ModelDeploymentRequestBackpressureSettingsChanged,
         /// <summary>
         /// 
         /// </summary>
@@ -217,11 +217,11 @@ namespace Baseten
                 AuditLogEventTypeV1.ModelDeployed => "MODEL_DEPLOYED",
                 AuditLogEventTypeV1.ModelDeploymentActivated => "MODEL_DEPLOYMENT_ACTIVATED",
                 AuditLogEventTypeV1.ModelDeploymentAutoscalingSettingsChanged => "MODEL_DEPLOYMENT_AUTOSCALING_SETTINGS_CHANGED",
-                AuditLogEventTypeV1.ModelDeploymentBackpressurePolicyChanged => "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED",
                 AuditLogEventTypeV1.ModelDeploymentDeactivated => "MODEL_DEPLOYMENT_DEACTIVATED",
                 AuditLogEventTypeV1.ModelDeploymentDeleted => "MODEL_DEPLOYMENT_DELETED",
                 AuditLogEventTypeV1.ModelDeploymentInstanceTypeChanged => "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED",
                 AuditLogEventTypeV1.ModelDeploymentPromoted => "MODEL_DEPLOYMENT_PROMOTED",
+                AuditLogEventTypeV1.ModelDeploymentRequestBackpressureSettingsChanged => "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED",
                 AuditLogEventTypeV1.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEventTypeV1.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
                 AuditLogEventTypeV1.ReplicaTerminated => "REPLICA_TERMINATED",
@@ -270,11 +270,11 @@ namespace Baseten
                 "MODEL_DEPLOYED" => AuditLogEventTypeV1.ModelDeployed,
                 "MODEL_DEPLOYMENT_ACTIVATED" => AuditLogEventTypeV1.ModelDeploymentActivated,
                 "MODEL_DEPLOYMENT_AUTOSCALING_SETTINGS_CHANGED" => AuditLogEventTypeV1.ModelDeploymentAutoscalingSettingsChanged,
-                "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED" => AuditLogEventTypeV1.ModelDeploymentBackpressurePolicyChanged,
                 "MODEL_DEPLOYMENT_DEACTIVATED" => AuditLogEventTypeV1.ModelDeploymentDeactivated,
                 "MODEL_DEPLOYMENT_DELETED" => AuditLogEventTypeV1.ModelDeploymentDeleted,
                 "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED" => AuditLogEventTypeV1.ModelDeploymentInstanceTypeChanged,
                 "MODEL_DEPLOYMENT_PROMOTED" => AuditLogEventTypeV1.ModelDeploymentPromoted,
+                "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED" => AuditLogEventTypeV1.ModelDeploymentRequestBackpressureSettingsChanged,
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEventTypeV1.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEventTypeV1.ModelPromotionControlAction,
                 "REPLICA_TERMINATED" => AuditLogEventTypeV1.ReplicaTerminated,

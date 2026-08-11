@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicySecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,32 +21,32 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicySecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicySecurityRequirement0,
+            {                s_EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsSecurityRequirement0,
             };
-        partial void PrepareEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyArguments(
+        partial void PrepareEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string modelId,
             ref string deploymentId,
-            global::Baseten.UpdateRequestBackpressurePolicyRequestV1 request);
-        partial void PrepareEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyRequest(
+            global::Baseten.UpdateRequestBackpressureSettingsRequestV1 request);
+        partial void PrepareEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string modelId,
             string deploymentId,
-            global::Baseten.UpdateRequestBackpressurePolicyRequestV1 request);
-        partial void ProcessEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyResponse(
+            global::Baseten.UpdateRequestBackpressureSettingsRequestV1 request);
+        partial void ProcessEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyResponseContent(
+        partial void ProcessEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Updates a deployment's request backpressure policy
+        /// Updates a deployment's request backpressure settings
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
@@ -56,21 +56,21 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_policy \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_settings \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "request_backpressure_policy": "reject_on_full"<br/>
+        ///   "policy": "reject_on_full"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
             string modelId,
             string deploymentId,
 
-            global::Baseten.UpdateRequestBackpressurePolicyRequestV1 request,
+            global::Baseten.UpdateRequestBackpressureSettingsRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsResponseAsync(
+            var __response = await EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsResponseAsync(
                 modelId: modelId,
                 deploymentId: deploymentId,
 
@@ -82,7 +82,7 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Updates a deployment's request backpressure policy
+        /// Updates a deployment's request backpressure settings
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
@@ -92,17 +92,17 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_policy \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_settings \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "request_backpressure_policy": "reject_on_full"<br/>
+        ///   "policy": "reject_on_full"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsResponseAsync(
             string modelId,
             string deploymentId,
 
-            global::Baseten.UpdateRequestBackpressurePolicyRequestV1 request,
+            global::Baseten.UpdateRequestBackpressureSettingsRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -110,7 +110,7 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyArguments(
+            PrepareEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsArguments(
                 httpClient: HttpClient,
                 modelId: ref modelId,
                 deploymentId: ref deploymentId,
@@ -119,8 +119,8 @@ namespace Baseten
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicySecurityRequirements,
-                operationName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync");
+                securityRequirements: s_EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsSecurityRequirements,
+                operationName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -140,7 +140,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_policy",
+                                path: $"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_settings",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -185,7 +185,7 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyRequest(
+                PrepareEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     modelId: modelId!,
@@ -207,9 +207,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicy",
-                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_policy\"",
+                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettings",
+                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_settings\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -241,9 +241,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicy",
-                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_policy\"",
+                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettings",
+                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_settings\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -282,9 +282,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicy",
-                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_policy\"",
+                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettings",
+                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_settings\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -322,7 +322,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyResponse(
+                ProcessEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -330,9 +330,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicy",
-                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_policy\"",
+                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettings",
+                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_settings\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -352,9 +352,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicy",
-                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync",
-                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_policy\"",
+                                operationId: "editModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettings",
+                                methodName: "EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/request_backpressure_settings\"",
                                 httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -382,7 +382,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyResponseContent(
+                                ProcessEditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -466,29 +466,30 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Updates a deployment's request backpressure policy
+        /// Updates a deployment's request backpressure settings
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="requestBackpressurePolicy">
-        /// Controls how the deployment handles requests when at capacity. queue_on_full (default) queues requests while reject_on_full returns HTTP 429.
+        /// <param name="policy">
+        /// Controls how the deployment handles requests when at capacity. queue_on_full (default) queues requests while reject_on_full returns HTTP 429.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
             string modelId,
             string deploymentId,
-            global::Baseten.RequestBackpressurePolicyV1 requestBackpressurePolicy,
+            global::Baseten.RequestBackpressurePolicyV1? policy = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.UpdateRequestBackpressurePolicyRequestV1
+            var __request = new global::Baseten.UpdateRequestBackpressureSettingsRequestV1
             {
-                RequestBackpressurePolicy = requestBackpressurePolicy,
+                Policy = policy,
             };
 
-            return await EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressurePolicyAsync(
+            return await EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
                 modelId: modelId,
                 deploymentId: deploymentId,
                 request: __request,

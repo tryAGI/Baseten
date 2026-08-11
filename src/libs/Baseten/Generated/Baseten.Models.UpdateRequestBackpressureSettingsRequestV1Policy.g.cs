@@ -4,10 +4,10 @@
 namespace Baseten
 {
     /// <summary>
-    /// Opaque cursor from the pagination.cursor field of a previous response<br/>
+    /// Controls how the deployment handles requests when at capacity. queue_on_full (default) queues requests while reject_on_full returns HTTP 429.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
-    public sealed partial class ModelApisUsageRequestV1Cursor
+    public sealed partial class UpdateRequestBackpressureSettingsRequestV1Policy
     {
 
         /// <summary>

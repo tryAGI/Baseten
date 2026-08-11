@@ -27,7 +27,7 @@ namespace Baseten
             };
         partial void PrepareGetModelApisUsageArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::System.DateTime startTime,
+            global::System.DateTime? startTime,
             global::System.DateTime? endTime,
             ref global::Baseten.BucketWidth? bucketWidth,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy,
@@ -39,7 +39,7 @@ namespace Baseten
         partial void PrepareGetModelApisUsageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::System.DateTime startTime,
+            global::System.DateTime? startTime,
             global::System.DateTime? endTime,
             global::Baseten.BucketWidth? bucketWidth,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy,
@@ -61,7 +61,9 @@ namespace Baseten
         /// Gets Model APIs token usage in time buckets<br/>
         /// Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.
         /// </summary>
-        /// <param name="startTime"></param>
+        /// <param name="startTime">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="endTime">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -87,7 +89,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ModelApisUsageResponseV1> GetModelApisUsageAsync(
-            global::System.DateTime startTime,
+            global::System.DateTime? startTime = default,
             global::System.DateTime? endTime = default,
             global::Baseten.BucketWidth? bucketWidth = default,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy = default,
@@ -119,7 +121,9 @@ namespace Baseten
         /// Gets Model APIs token usage in time buckets<br/>
         /// Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.
         /// </summary>
-        /// <param name="startTime"></param>
+        /// <param name="startTime">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="endTime">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -145,7 +149,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ModelApisUsageResponseV1>> GetModelApisUsageAsResponseAsync(
-            global::System.DateTime startTime,
+            global::System.DateTime? startTime = default,
             global::System.DateTime? endTime = default,
             global::Baseten.BucketWidth? bucketWidth = default,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy = default,
@@ -161,7 +165,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetModelApisUsageArguments(
                 httpClient: HttpClient,
-                startTime: ref startTime,
+                startTime: startTime,
                 endTime: endTime,
                 bucketWidth: ref bucketWidth,
                 groupBy: groupBy,
@@ -198,7 +202,7 @@ namespace Baseten
                                 path: "/v1/model_apis/usage",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
-                                .AddRequiredParameter("start_time", startTime.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                                .AddOptionalParameter("start_time", startTime?.ToString())
                                 .AddOptionalParameter("end_time", endTime?.ToString())
                                 .AddOptionalParameter("bucket_width", bucketWidth?.ToValueString())
                                 .AddOptionalParameter("group_by", groupBy, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
@@ -248,7 +252,7 @@ namespace Baseten
                 PrepareGetModelApisUsageRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    startTime: startTime!,
+                    startTime: startTime,
                     endTime: endTime,
                     bucketWidth: bucketWidth,
                     groupBy: groupBy,
