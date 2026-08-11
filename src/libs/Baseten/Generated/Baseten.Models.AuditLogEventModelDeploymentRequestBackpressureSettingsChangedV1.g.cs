@@ -4,16 +4,16 @@
 namespace Baseten
 {
     /// <summary>
-    /// A model deployment's request backpressure policy was changed.
+    /// A model deployment's request backpressure settings were changed.
     /// </summary>
-    public sealed partial class AuditLogEventModelDeploymentBackpressurePolicyChangedV1
+    public sealed partial class AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <default>"MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED"</default>
+        /// <default>"MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
-        public string EventType { get; set; } = "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED";
+        public string EventType { get; set; } = "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED";
 
         /// <summary>
         /// 
@@ -46,9 +46,9 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("request_backpressure_policy")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("policy")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string RequestBackpressurePolicy { get; set; }
+        public required string Policy { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -57,37 +57,37 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuditLogEventModelDeploymentBackpressurePolicyChangedV1" /> class.
+        /// Initializes a new instance of the <see cref="AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1" /> class.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="modelName"></param>
         /// <param name="deploymentId"></param>
         /// <param name="deploymentName"></param>
-        /// <param name="requestBackpressurePolicy"></param>
+        /// <param name="policy"></param>
         /// <param name="eventType"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public AuditLogEventModelDeploymentBackpressurePolicyChangedV1(
+        public AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1(
             string modelId,
             string modelName,
             string deploymentId,
             string deploymentName,
-            string requestBackpressurePolicy,
-            string eventType = "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED")
+            string policy,
+            string eventType = "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED")
         {
             this.EventType = eventType;
             this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
             this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
             this.DeploymentId = deploymentId ?? throw new global::System.ArgumentNullException(nameof(deploymentId));
             this.DeploymentName = deploymentName ?? throw new global::System.ArgumentNullException(nameof(deploymentName));
-            this.RequestBackpressurePolicy = requestBackpressurePolicy ?? throw new global::System.ArgumentNullException(nameof(requestBackpressurePolicy));
+            this.Policy = policy ?? throw new global::System.ArgumentNullException(nameof(policy));
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuditLogEventModelDeploymentBackpressurePolicyChangedV1" /> class.
+        /// Initializes a new instance of the <see cref="AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1" /> class.
         /// </summary>
-        public AuditLogEventModelDeploymentBackpressurePolicyChangedV1()
+        public AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1()
         {
         }
 

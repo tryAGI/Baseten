@@ -8,7 +8,9 @@ namespace Baseten
         /// Gets Model APIs token usage in time buckets<br/>
         /// Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.
         /// </summary>
-        /// <param name="startTime"></param>
+        /// <param name="startTime">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="endTime">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -34,7 +36,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.ModelApisUsageResponseV1> GetModelApisUsageAsync(
-            global::System.DateTime startTime,
+            global::System.DateTime? startTime = default,
             global::System.DateTime? endTime = default,
             global::Baseten.BucketWidth? bucketWidth = default,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy = default,
@@ -49,7 +51,9 @@ namespace Baseten
         /// Gets Model APIs token usage in time buckets<br/>
         /// Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.
         /// </summary>
-        /// <param name="startTime"></param>
+        /// <param name="startTime">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="endTime">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -75,7 +79,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ModelApisUsageResponseV1>> GetModelApisUsageAsResponseAsync(
-            global::System.DateTime startTime,
+            global::System.DateTime? startTime = default,
             global::System.DateTime? endTime = default,
             global::Baseten.BucketWidth? bucketWidth = default,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy = default,

@@ -7,11 +7,10 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetModelApisUsageCommandApiCommand
 {
-    private static Option<global::System.DateTime> StartTime { get; } = new(
+    private static Option<global::System.DateTime?> StartTime { get; } = new(
         name: @"--start-time")
     {
-        Description = @"Start of the query range (ISO 8601, UTC), inclusive. Snapped down to the start of its bucket. Ignored when you pass a cursor.",
-        Required = true,
+        Description = @"Start of the query range (ISO 8601, UTC), inclusive. Snapped down to the start of its bucket. Required on the first page, and ignored when you pass a cursor.",
     };
 
     private static Option<global::System.DateTime?> EndTime { get; } = new(
@@ -29,7 +28,7 @@ internal static partial class GetModelApisUsageCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.UsageDimension>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to api_key.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to model.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> ApiKeys { get; } = new(
@@ -59,7 +58,7 @@ internal static partial class GetModelApisUsageCommandApiCommand
     private static Option<string?> Cursor { get; } = new(
         name: @"--cursor")
     {
-        Description = @"Opaque cursor from the pagination.cursor field of a previous response. Pass the same query parameters alongside it, apart from start_time, which the cursor supplies.",
+        Description = @"Opaque cursor from the pagination.cursor field of a previous response",
     };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ModelApisUsageResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
@@ -100,7 +99,7 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var startTime = parseResult.GetRequiredValue(StartTime);
+                        var startTime = parseResult.GetValue(StartTime);
                         var endTime = parseResult.GetValue(EndTime);
                         var bucketWidth = parseResult.GetValue(BucketWidth);
                         var groupBy = parseResult.GetValue(GroupBy);

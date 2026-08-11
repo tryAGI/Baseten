@@ -103,10 +103,6 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        ModelDeploymentBackpressurePolicyChanged,
-        /// <summary>
-        /// 
-        /// </summary>
         ModelDeploymentDeactivated,
         /// <summary>
         /// 
@@ -120,6 +116,10 @@ namespace Baseten
         /// 
         /// </summary>
         ModelDeploymentPromoted,
+        /// <summary>
+        /// 
+        /// </summary>
+        ModelDeploymentRequestBackpressureSettingsChanged,
         /// <summary>
         /// 
         /// </summary>
@@ -217,11 +217,11 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeployed => "MODEL_DEPLOYED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentActivated => "MODEL_DEPLOYMENT_ACTIVATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentAutoscalingSettingsChanged => "MODEL_DEPLOYMENT_AUTOSCALING_SETTINGS_CHANGED",
-                AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentBackpressurePolicyChanged => "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentDeactivated => "MODEL_DEPLOYMENT_DEACTIVATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentDeleted => "MODEL_DEPLOYMENT_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentInstanceTypeChanged => "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentPromoted => "MODEL_DEPLOYMENT_PROMOTED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRequestBackpressureSettingsChanged => "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ReplicaTerminated => "REPLICA_TERMINATED",
@@ -270,11 +270,11 @@ namespace Baseten
                 "MODEL_DEPLOYED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeployed,
                 "MODEL_DEPLOYMENT_ACTIVATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentActivated,
                 "MODEL_DEPLOYMENT_AUTOSCALING_SETTINGS_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentAutoscalingSettingsChanged,
-                "MODEL_DEPLOYMENT_BACKPRESSURE_POLICY_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentBackpressurePolicyChanged,
                 "MODEL_DEPLOYMENT_DEACTIVATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentDeactivated,
                 "MODEL_DEPLOYMENT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentDeleted,
                 "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentInstanceTypeChanged,
                 "MODEL_DEPLOYMENT_PROMOTED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentPromoted,
+                "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRequestBackpressureSettingsChanged,
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelPromotionControlAction,
                 "REPLICA_TERMINATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ReplicaTerminated,

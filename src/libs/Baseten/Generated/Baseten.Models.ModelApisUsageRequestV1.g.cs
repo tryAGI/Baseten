@@ -9,11 +9,11 @@ namespace Baseten
     public sealed partial class ModelApisUsageRequestV1
     {
         /// <summary>
-        /// Start of the query range (ISO 8601, UTC), inclusive. Snapped down to the start of its bucket. Ignored when you pass a cursor.
+        /// Start of the query range (ISO 8601, UTC), inclusive. Snapped down to the start of its bucket. Required on the first page, and ignored when you pass a cursor.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_time")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.DateTime StartTime { get; set; }
+        public global::System.DateTime? StartTime { get; set; }
 
         /// <summary>
         /// End of the query range (ISO 8601, UTC), exclusive. Defaults to the current time.<br/>
@@ -31,7 +31,7 @@ namespace Baseten
         public global::Baseten.BucketWidth? BucketWidth { get; set; }
 
         /// <summary>
-        /// Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to api_key.
+        /// Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
         public global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? GroupBy { get; set; }
@@ -62,7 +62,7 @@ namespace Baseten
         public int? Limit { get; set; }
 
         /// <summary>
-        /// Opaque cursor from the pagination.cursor field of a previous response. Pass the same query parameters alongside it, apart from start_time, which the cursor supplies.<br/>
+        /// Opaque cursor from the pagination.cursor field of a previous response<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cursor")]
@@ -78,7 +78,8 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="ModelApisUsageRequestV1" /> class.
         /// </summary>
         /// <param name="startTime">
-        /// Start of the query range (ISO 8601, UTC), inclusive. Snapped down to the start of its bucket. Ignored when you pass a cursor.
+        /// Start of the query range (ISO 8601, UTC), inclusive. Snapped down to the start of its bucket. Required on the first page, and ignored when you pass a cursor.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="endTime">
         /// End of the query range (ISO 8601, UTC), exclusive. Defaults to the current time.<br/>
@@ -89,7 +90,7 @@ namespace Baseten
         /// Default Value: 1d
         /// </param>
         /// <param name="groupBy">
-        /// Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to api_key.
+        /// Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to model.
         /// </param>
         /// <param name="apiKeys">
         /// Return only usage for these API key prefixes, repeated once per prefix.
@@ -105,14 +106,14 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="cursor">
-        /// Opaque cursor from the pagination.cursor field of a previous response. Pass the same query parameters alongside it, apart from start_time, which the cursor supplies.<br/>
+        /// Opaque cursor from the pagination.cursor field of a previous response<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ModelApisUsageRequestV1(
-            global::System.DateTime startTime,
+            global::System.DateTime? startTime,
             global::System.DateTime? endTime,
             global::Baseten.BucketWidth? bucketWidth,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy,

@@ -4,10 +4,9 @@
 namespace Baseten
 {
     /// <summary>
-    /// Opaque cursor from the pagination.cursor field of a previous response<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
-    public sealed partial class ModelApisUsageRequestV1Cursor
+    public sealed partial class GetModelApisUsageStartTime
     {
 
         /// <summary>
