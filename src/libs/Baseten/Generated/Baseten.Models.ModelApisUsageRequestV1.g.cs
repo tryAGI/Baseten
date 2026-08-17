@@ -31,10 +31,10 @@ namespace Baseten
         public global::Baseten.BucketWidth? BucketWidth { get; set; }
 
         /// <summary>
-        /// Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to model.
+        /// Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
-        public global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? GroupBy { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? GroupBy { get; set; }
 
         /// <summary>
         /// Return only usage for these API key prefixes, repeated once per prefix.
@@ -47,12 +47,6 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         public global::System.Collections.Generic.IList<string>? Models { get; set; }
-
-        /// <summary>
-        /// Return only usage for these service tiers, repeated once per tier.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("service_tiers")]
-        public global::System.Collections.Generic.IList<string>? ServiceTiers { get; set; }
 
         /// <summary>
         /// Number of time buckets to return. Defaults and maximums depend on bucket_width: 1d defaults to 7 and allows 31, 1h defaults to 24 and allows 168, 1m defaults to 60 and allows 1440.<br/>
@@ -90,16 +84,13 @@ namespace Baseten
         /// Default Value: 1d
         /// </param>
         /// <param name="groupBy">
-        /// Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to model.
+        /// Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.
         /// </param>
         /// <param name="apiKeys">
         /// Return only usage for these API key prefixes, repeated once per prefix.
         /// </param>
         /// <param name="models">
         /// Return only usage for these models, repeated once per model.
-        /// </param>
-        /// <param name="serviceTiers">
-        /// Return only usage for these service tiers, repeated once per tier.
         /// </param>
         /// <param name="limit">
         /// Number of time buckets to return. Defaults and maximums depend on bucket_width: 1d defaults to 7 and allows 31, 1h defaults to 24 and allows 168, 1m defaults to 60 and allows 1440.<br/>
@@ -116,10 +107,9 @@ namespace Baseten
             global::System.DateTime? startTime,
             global::System.DateTime? endTime,
             global::Baseten.BucketWidth? bucketWidth,
-            global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy,
+            global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy,
             global::System.Collections.Generic.IList<string>? apiKeys,
             global::System.Collections.Generic.IList<string>? models,
-            global::System.Collections.Generic.IList<string>? serviceTiers,
             int? limit,
             string? cursor)
         {
@@ -129,7 +119,6 @@ namespace Baseten
             this.GroupBy = groupBy;
             this.ApiKeys = apiKeys;
             this.Models = models;
-            this.ServiceTiers = serviceTiers;
             this.Limit = limit;
             this.Cursor = cursor;
         }

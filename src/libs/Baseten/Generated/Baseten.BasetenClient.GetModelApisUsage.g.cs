@@ -30,10 +30,9 @@ namespace Baseten
             global::System.DateTime? startTime,
             global::System.DateTime? endTime,
             ref global::Baseten.BucketWidth? bucketWidth,
-            global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy,
+            global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy,
             global::System.Collections.Generic.IList<string>? apiKeys,
             global::System.Collections.Generic.IList<string>? models,
-            global::System.Collections.Generic.IList<string>? serviceTiers,
             int? limit,
             ref string? cursor);
         partial void PrepareGetModelApisUsageRequest(
@@ -42,10 +41,9 @@ namespace Baseten
             global::System.DateTime? startTime,
             global::System.DateTime? endTime,
             global::Baseten.BucketWidth? bucketWidth,
-            global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy,
+            global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy,
             global::System.Collections.Generic.IList<string>? apiKeys,
             global::System.Collections.Generic.IList<string>? models,
-            global::System.Collections.Generic.IList<string>? serviceTiers,
             int? limit,
             string? cursor);
         partial void ProcessGetModelApisUsageResponse(
@@ -73,7 +71,6 @@ namespace Baseten
         /// <param name="groupBy"></param>
         /// <param name="apiKeys"></param>
         /// <param name="models"></param>
-        /// <param name="serviceTiers"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -92,10 +89,9 @@ namespace Baseten
             global::System.DateTime? startTime = default,
             global::System.DateTime? endTime = default,
             global::Baseten.BucketWidth? bucketWidth = default,
-            global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy = default,
+            global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy = default,
             global::System.Collections.Generic.IList<string>? apiKeys = default,
             global::System.Collections.Generic.IList<string>? models = default,
-            global::System.Collections.Generic.IList<string>? serviceTiers = default,
             int? limit = default,
             string? cursor = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -108,7 +104,6 @@ namespace Baseten
                 groupBy: groupBy,
                 apiKeys: apiKeys,
                 models: models,
-                serviceTiers: serviceTiers,
                 limit: limit,
                 cursor: cursor,
                 requestOptions: requestOptions,
@@ -133,7 +128,6 @@ namespace Baseten
         /// <param name="groupBy"></param>
         /// <param name="apiKeys"></param>
         /// <param name="models"></param>
-        /// <param name="serviceTiers"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -152,10 +146,9 @@ namespace Baseten
             global::System.DateTime? startTime = default,
             global::System.DateTime? endTime = default,
             global::Baseten.BucketWidth? bucketWidth = default,
-            global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy = default,
+            global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy = default,
             global::System.Collections.Generic.IList<string>? apiKeys = default,
             global::System.Collections.Generic.IList<string>? models = default,
-            global::System.Collections.Generic.IList<string>? serviceTiers = default,
             int? limit = default,
             string? cursor = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -171,7 +164,6 @@ namespace Baseten
                 groupBy: groupBy,
                 apiKeys: apiKeys,
                 models: models,
-                serviceTiers: serviceTiers,
                 limit: limit,
                 cursor: ref cursor);
 
@@ -208,7 +200,6 @@ namespace Baseten
                                 .AddOptionalParameter("group_by", groupBy, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                                 .AddOptionalParameter("api_keys", apiKeys, delimiter: ",", explode: true)
                                 .AddOptionalParameter("models", models, delimiter: ",", explode: true)
-                                .AddOptionalParameter("service_tiers", serviceTiers, delimiter: ",", explode: true)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("cursor", cursor)
                                 ;
@@ -258,7 +249,6 @@ namespace Baseten
                     groupBy: groupBy,
                     apiKeys: apiKeys,
                     models: models,
-                    serviceTiers: serviceTiers,
                     limit: limit,
                     cursor: cursor);
 
