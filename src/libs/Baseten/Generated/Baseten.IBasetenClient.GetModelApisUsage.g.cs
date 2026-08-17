@@ -20,7 +20,6 @@ namespace Baseten
         /// <param name="groupBy"></param>
         /// <param name="apiKeys"></param>
         /// <param name="models"></param>
-        /// <param name="serviceTiers"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -39,10 +38,9 @@ namespace Baseten
             global::System.DateTime? startTime = default,
             global::System.DateTime? endTime = default,
             global::Baseten.BucketWidth? bucketWidth = default,
-            global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy = default,
+            global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy = default,
             global::System.Collections.Generic.IList<string>? apiKeys = default,
             global::System.Collections.Generic.IList<string>? models = default,
-            global::System.Collections.Generic.IList<string>? serviceTiers = default,
             int? limit = default,
             string? cursor = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -63,7 +61,6 @@ namespace Baseten
         /// <param name="groupBy"></param>
         /// <param name="apiKeys"></param>
         /// <param name="models"></param>
-        /// <param name="serviceTiers"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -82,10 +79,9 @@ namespace Baseten
             global::System.DateTime? startTime = default,
             global::System.DateTime? endTime = default,
             global::Baseten.BucketWidth? bucketWidth = default,
-            global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? groupBy = default,
+            global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy = default,
             global::System.Collections.Generic.IList<string>? apiKeys = default,
             global::System.Collections.Generic.IList<string>? models = default,
-            global::System.Collections.Generic.IList<string>? serviceTiers = default,
             int? limit = default,
             string? cursor = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

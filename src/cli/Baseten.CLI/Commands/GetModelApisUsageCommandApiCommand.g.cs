@@ -25,10 +25,10 @@ internal static partial class GetModelApisUsageCommandApiCommand
         Description = @"Width of each time bucket: 1m, 1h, or 1d. Defaults to 1d.",
     };
 
-    private static Option<global::System.Collections.Generic.IList<global::Baseten.UsageDimension>?> GroupBy { get; } = new(
+    private static Option<global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to model.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> ApiKeys { get; } = new(
@@ -41,12 +41,6 @@ internal static partial class GetModelApisUsageCommandApiCommand
         name: @"--models")
     {
         Description = @"Return only usage for these models, repeated once per model.",
-    };
-
-    private static Option<global::System.Collections.Generic.IList<string>?> ServiceTiers { get; } = new(
-        name: @"--service-tiers")
-    {
-        Description = @"Return only usage for these service tiers, repeated once per tier.",
     };
 
     private static Option<int?> Limit { get; } = new(
@@ -91,7 +85,6 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                         command.Options.Add(GroupBy);
                         command.Options.Add(ApiKeys);
                         command.Options.Add(Models);
-                        command.Options.Add(ServiceTiers);
                         command.Options.Add(Limit);
                         command.Options.Add(Cursor);
 
@@ -105,7 +98,6 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                         var groupBy = parseResult.GetValue(GroupBy);
                         var apiKeys = parseResult.GetValue(ApiKeys);
                         var models = parseResult.GetValue(Models);
-                        var serviceTiers = parseResult.GetValue(ServiceTiers);
                         var limit = parseResult.GetValue(Limit);
                         var cursor = parseResult.GetValue(Cursor);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -118,7 +110,6 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                                     groupBy: groupBy,
                                     apiKeys: apiKeys,
                                     models: models,
-                                    serviceTiers: serviceTiers,
                                     limit: limit,
                                     cursor: cursor,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

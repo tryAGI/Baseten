@@ -7405,10 +7405,10 @@
                         "name": "group_by",
                         "in": "query",
                         "required": false,
-                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to model.",
+                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.",
                         "schema": {
                             "items": {
-                                "$ref": "#/components/schemas/UsageDimension"
+                                "$ref": "#/components/schemas/UsageDimensionV1"
                             },
                             "title": "Group By",
                             "type": "array"
@@ -7437,19 +7437,6 @@
                                 "type": "string"
                             },
                             "title": "Models",
-                            "type": "array"
-                        }
-                    },
-                    {
-                        "name": "service_tiers",
-                        "in": "query",
-                        "required": false,
-                        "description": "Return only usage for these service tiers, repeated once per tier.",
-                        "schema": {
-                            "items": {
-                                "type": "string"
-                            },
-                            "title": "Service Tiers",
                             "type": "array"
                         }
                     },
@@ -21940,19 +21927,6 @@
                         "description": "Model that served the usage. Null when not grouping by model.",
                         "title": "Model"
                     },
-                    "service_tier": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Service tier the usage was served on. Null when not grouping by service_tier.",
-                        "title": "Service Tier"
-                    },
                     "input_tokens": {
                         "description": "Total input tokens, cached and uncached combined.",
                         "title": "Input Tokens",
@@ -22021,13 +21995,12 @@
                 "title": "BucketWidth",
                 "type": "string"
             },
-            "UsageDimension": {
+            "UsageDimensionV1": {
                 "enum": [
                     "api_key",
-                    "model",
-                    "service_tier"
+                    "model"
                 ],
-                "title": "UsageDimension",
+                "title": "UsageDimensionV1",
                 "type": "string"
             },
             "ModelApisUsageRequestV1": {
@@ -22066,9 +22039,9 @@
                         "description": "Width of each time bucket: 1m, 1h, or 1d. Defaults to 1d."
                     },
                     "group_by": {
-                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, model, service_tier. Defaults to model.",
+                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.",
                         "items": {
-                            "$ref": "#/components/schemas/UsageDimension"
+                            "$ref": "#/components/schemas/UsageDimensionV1"
                         },
                         "title": "Group By",
                         "type": "array"
@@ -22087,14 +22060,6 @@
                             "type": "string"
                         },
                         "title": "Models",
-                        "type": "array"
-                    },
-                    "service_tiers": {
-                        "description": "Return only usage for these service tiers, repeated once per tier.",
-                        "items": {
-                            "type": "string"
-                        },
-                        "title": "Service Tiers",
                         "type": "array"
                     },
                     "limit": {

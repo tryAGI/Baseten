@@ -3,10 +3,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class UsageDimensionJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.UsageDimension>
+    public sealed class UsageDimensionV1NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.UsageDimensionV1?>
     {
         /// <inheritdoc />
-        public override global::Baseten.UsageDimension Read(
+        public override global::Baseten.UsageDimensionV1? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.UsageDimensionExtensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.UsageDimensionV1Extensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Baseten.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Baseten.UsageDimension)numValue;
+                    return (global::Baseten.UsageDimensionV1)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Baseten.UsageDimension);
+                    return default(global::Baseten.UsageDimensionV1?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.UsageDimension value,
+            global::Baseten.UsageDimensionV1? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Baseten.UsageDimensionExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Baseten.UsageDimensionV1Extensions.ToValueString(value.Value));
+            }
         }
     }
 }

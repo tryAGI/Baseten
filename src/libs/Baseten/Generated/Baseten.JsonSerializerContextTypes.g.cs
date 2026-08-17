@@ -1688,7 +1688,7 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        public global::Baseten.UsageDimension? Type415 { get; set; }
+        public global::Baseten.UsageDimensionV1? Type415 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -1696,7 +1696,7 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.UsageDimension>? Type417 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? Type417 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -2285,7 +2285,7 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.UsageDimension>? ListType60 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.UsageDimensionV1>? ListType60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
