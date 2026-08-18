@@ -23,6 +23,13 @@ namespace Baseten
         public bool? IsPublic { get; set; }
 
         /// <summary>
+        /// Whether the listing is trending<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trending")]
+        public bool? Trending { get; set; }
+
+        /// <summary>
         /// Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -46,6 +53,10 @@ namespace Baseten
         /// Whether the listing is publicly accessible<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="trending">
+        /// Whether the listing is trending<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="metadata">
         /// Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -56,10 +67,12 @@ namespace Baseten
         public UpdateLibraryListingRequestV1(
             string? displayName,
             bool? isPublic,
+            bool? trending,
             global::Baseten.LibraryListingMetadataV1? metadata)
         {
             this.DisplayName = displayName;
             this.IsPublic = isPublic;
+            this.Trending = trending;
             this.Metadata = metadata;
         }
 

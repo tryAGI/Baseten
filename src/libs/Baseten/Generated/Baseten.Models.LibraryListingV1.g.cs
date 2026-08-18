@@ -30,6 +30,12 @@ namespace Baseten
         public required bool IsPublic { get; set; }
 
         /// <summary>
+        /// Whether the listing is trending
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trending")]
+        public bool? Trending { get; set; }
+
+        /// <summary>
         /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("closed_source")]
@@ -84,6 +90,9 @@ namespace Baseten
         /// <param name="modifiedAt">
         /// Time the listing was last modified
         /// </param>
+        /// <param name="trending">
+        /// Whether the listing is trending
+        /// </param>
         /// <param name="metadata">
         /// Model-level metadata for this listing, if it has been uploaded.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -98,11 +107,13 @@ namespace Baseten
             bool closedSource,
             global::System.DateTime createdAt,
             global::System.DateTime modifiedAt,
+            bool? trending,
             global::Baseten.LibraryListingMetadataV1? metadata)
         {
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.UserDefinedId = userDefinedId ?? throw new global::System.ArgumentNullException(nameof(userDefinedId));
             this.IsPublic = isPublic;
+            this.Trending = trending;
             this.ClosedSource = closedSource;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;
