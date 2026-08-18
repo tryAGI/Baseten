@@ -9,18 +9,16 @@ namespace Baseten
     public sealed partial class LibraryListingMetadataV1
     {
         /// <summary>
-        /// 
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parameter_count")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ParameterCount { get; set; }
+        public int? ParameterCount { get; set; }
 
         /// <summary>
-        /// 
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context_length")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ContextLength { get; set; }
+        public int? ContextLength { get; set; }
 
         /// <summary>
         /// Default Value: [text]
@@ -48,6 +46,24 @@ namespace Baseten
         public string? Variant { get; set; }
 
         /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("publisher")]
+        public string? Publisher { get; set; }
+
+        /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_api_slug")]
+        public string? ModelApiSlug { get; set; }
+
+        /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("release_date")]
+        public global::System.DateTime? ReleaseDate { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -56,9 +72,13 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="LibraryListingMetadataV1" /> class.
         /// </summary>
-        /// <param name="parameterCount"></param>
-        /// <param name="contextLength"></param>
         /// <param name="license"></param>
+        /// <param name="parameterCount">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="contextLength">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="inputModalities">
         /// Default Value: [text]
         /// </param>
@@ -68,16 +88,28 @@ namespace Baseten
         /// <param name="variant">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="publisher">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="modelApiSlug">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="releaseDate">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LibraryListingMetadataV1(
-            int parameterCount,
-            int contextLength,
             string license,
+            int? parameterCount,
+            int? contextLength,
             global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1InputModalitie>? inputModalities,
             global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1OutputModalitie>? outputModalities,
-            string? variant)
+            string? variant,
+            string? publisher,
+            string? modelApiSlug,
+            global::System.DateTime? releaseDate)
         {
             this.ParameterCount = parameterCount;
             this.ContextLength = contextLength;
@@ -85,6 +117,9 @@ namespace Baseten
             this.OutputModalities = outputModalities;
             this.License = license ?? throw new global::System.ArgumentNullException(nameof(license));
             this.Variant = variant;
+            this.Publisher = publisher;
+            this.ModelApiSlug = modelApiSlug;
+            this.ReleaseDate = releaseDate;
         }
 
         /// <summary>

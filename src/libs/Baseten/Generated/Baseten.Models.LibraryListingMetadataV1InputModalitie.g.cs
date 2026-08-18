@@ -11,11 +11,23 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        Audio,
+        /// <summary>
+        /// 
+        /// </summary>
+        Embedding,
+        /// <summary>
+        /// 
+        /// </summary>
         Image,
         /// <summary>
         /// 
         /// </summary>
         Text,
+        /// <summary>
+        /// 
+        /// </summary>
+        Video,
     }
 
     /// <summary>
@@ -30,8 +42,11 @@ namespace Baseten
         {
             return value switch
             {
+                LibraryListingMetadataV1InputModalitie.Audio => "audio",
+                LibraryListingMetadataV1InputModalitie.Embedding => "embedding",
                 LibraryListingMetadataV1InputModalitie.Image => "image",
                 LibraryListingMetadataV1InputModalitie.Text => "text",
+                LibraryListingMetadataV1InputModalitie.Video => "video",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +57,11 @@ namespace Baseten
         {
             return value switch
             {
+                "audio" => LibraryListingMetadataV1InputModalitie.Audio,
+                "embedding" => LibraryListingMetadataV1InputModalitie.Embedding,
                 "image" => LibraryListingMetadataV1InputModalitie.Image,
                 "text" => LibraryListingMetadataV1InputModalitie.Text,
+                "video" => LibraryListingMetadataV1InputModalitie.Video,
                 _ => null,
             };
         }

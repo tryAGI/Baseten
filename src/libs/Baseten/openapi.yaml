@@ -7772,14 +7772,14 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/library_listings/{user_defined_listing_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"display_name\": null,\n  \"is_public\": null,\n  \"metadata\": null\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/library_listings/{user_defined_listing_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"display_name\": null,\n  \"is_public\": null,\n  \"trending\": null,\n  \"metadata\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/library_listings/{user_defined_listing_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'display_name': None, 'is_public': None, 'metadata': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/library_listings/{user_defined_listing_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'display_name': None, 'is_public': None, 'trending': None, 'metadata': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.",
+                "description": "Updates a library listing. Supported fields are the display name, public visibility, trending status, and the model-level metadata. When metadata is provided, it replaces the stored metadata.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -22438,12 +22438,28 @@
                 "additionalProperties": false,
                 "properties": {
                     "parameter_count": {
-                        "title": "Parameter Count",
-                        "type": "integer"
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Parameter Count"
                     },
                     "context_length": {
-                        "title": "Context Length",
-                        "type": "integer"
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Context Length"
                     },
                     "input_modalities": {
                         "default": [
@@ -22452,7 +22468,10 @@
                         "items": {
                             "enum": [
                                 "text",
-                                "image"
+                                "image",
+                                "audio",
+                                "video",
+                                "embedding"
                             ],
                             "type": "string"
                         },
@@ -22466,7 +22485,10 @@
                         "items": {
                             "enum": [
                                 "text",
-                                "image"
+                                "image",
+                                "audio",
+                                "video",
+                                "embedding"
                             ],
                             "type": "string"
                         },
@@ -22488,11 +22510,46 @@
                         ],
                         "default": null,
                         "title": "Variant"
+                    },
+                    "publisher": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Publisher"
+                    },
+                    "model_api_slug": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Model Api Slug"
+                    },
+                    "release_date": {
+                        "anyOf": [
+                            {
+                                "format": "date",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Release Date"
                     }
                 },
                 "required": [
-                    "parameter_count",
-                    "context_length",
                     "license"
                 ],
                 "title": "LibraryListingMetadataV1",
@@ -22515,6 +22572,18 @@
                         "description": "Whether the listing is publicly accessible",
                         "title": "Is Public",
                         "type": "boolean"
+                    },
+                    "trending": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Whether the listing is trending",
+                        "title": "Trending"
                     },
                     "closed_source": {
                         "description": "Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)",
@@ -22550,6 +22619,7 @@
                     "display_name",
                     "user_defined_id",
                     "is_public",
+                    "trending",
                     "closed_source",
                     "created_at",
                     "modified_at"
@@ -22656,6 +22726,19 @@
                         "default": null,
                         "description": "Whether the listing is publicly accessible",
                         "title": "Is Public"
+                    },
+                    "trending": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Whether the listing is trending",
+                        "title": "Trending"
                     },
                     "metadata": {
                         "anyOf": [

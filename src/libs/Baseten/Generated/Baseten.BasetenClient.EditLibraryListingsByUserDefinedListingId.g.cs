@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Updates a library listing<br/>
-        /// Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
+        /// Updates a library listing. Supported fields are the display name, public visibility, trending status, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="request"></param>
@@ -59,6 +59,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "display_name": null,<br/>
         ///   "is_public": null,<br/>
+        ///   "trending": null,<br/>
         ///   "metadata": null<br/>
         /// }'
         /// </remarks>
@@ -81,7 +82,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates a library listing<br/>
-        /// Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
+        /// Updates a library listing. Supported fields are the display name, public visibility, trending status, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="request"></param>
@@ -95,6 +96,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "display_name": null,<br/>
         ///   "is_public": null,<br/>
+        ///   "trending": null,<br/>
         ///   "metadata": null<br/>
         /// }'
         /// </remarks>
@@ -464,7 +466,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates a library listing<br/>
-        /// Updates a library listing. Supported fields are the display name, public visibility, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
+        /// Updates a library listing. Supported fields are the display name, public visibility, trending status, and the model-level metadata. When metadata is provided, it replaces the stored metadata.
         /// </summary>
         /// <param name="userDefinedListingId"></param>
         /// <param name="displayName">
@@ -473,6 +475,10 @@ namespace Baseten
         /// </param>
         /// <param name="isPublic">
         /// Whether the listing is publicly accessible<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="trending">
+        /// Whether the listing is trending<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="metadata">
@@ -486,6 +492,7 @@ namespace Baseten
             string userDefinedListingId,
             string? displayName = default,
             bool? isPublic = default,
+            bool? trending = default,
             global::Baseten.LibraryListingMetadataV1? metadata = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -494,6 +501,7 @@ namespace Baseten
             {
                 DisplayName = displayName,
                 IsPublic = isPublic,
+                Trending = trending,
                 Metadata = metadata,
             };
 
