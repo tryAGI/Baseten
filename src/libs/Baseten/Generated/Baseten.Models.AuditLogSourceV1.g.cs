@@ -23,6 +23,10 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        System,
+        /// <summary>
+        /// 
+        /// </summary>
         Ui,
     }
 
@@ -41,6 +45,7 @@ namespace Baseten
                 AuditLogSourceV1.Api => "API",
                 AuditLogSourceV1.Mcp => "MCP",
                 AuditLogSourceV1.Other => "OTHER",
+                AuditLogSourceV1.System => "SYSTEM",
                 AuditLogSourceV1.Ui => "UI",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -55,6 +60,7 @@ namespace Baseten
                 "API" => AuditLogSourceV1.Api,
                 "MCP" => AuditLogSourceV1.Mcp,
                 "OTHER" => AuditLogSourceV1.Other,
+                "SYSTEM" => AuditLogSourceV1.System,
                 "UI" => AuditLogSourceV1.Ui,
                 _ => null,
             };
