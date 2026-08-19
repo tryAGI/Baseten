@@ -12760,6 +12760,7 @@
                     "UI",
                     "API",
                     "MCP",
+                    "SYSTEM",
                     "OTHER"
                 ],
                 "title": "AuditLogSourceV1",
@@ -13367,6 +13368,18 @@
                         "default": null,
                         "description": "User-provided key-value labels for the deployment",
                         "title": "Labels"
+                    },
+                    "region": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/RegionV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The selected region for the deployment, if any"
                     }
                 },
                 "required": [

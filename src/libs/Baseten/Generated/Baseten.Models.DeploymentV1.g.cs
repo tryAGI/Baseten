@@ -91,6 +91,13 @@ namespace Baseten
         public object? Labels { get; set; }
 
         /// <summary>
+        /// The selected region for the deployment, if any<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("region")]
+        public global::Baseten.RegionV1? Region { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -136,6 +143,10 @@ namespace Baseten
         /// User-provided key-value labels for the deployment<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="region">
+        /// The selected region for the deployment, if any<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -151,7 +162,8 @@ namespace Baseten
             global::Baseten.AutoscalingSettingsV1? autoscalingSettings,
             string? instanceTypeName,
             string? environment,
-            object? labels)
+            object? labels,
+            global::Baseten.RegionV1? region)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.CreatedAt = createdAt;
@@ -165,6 +177,7 @@ namespace Baseten
             this.InstanceTypeName = instanceTypeName;
             this.Environment = environment;
             this.Labels = labels;
+            this.Region = region;
         }
 
         /// <summary>
