@@ -23,6 +23,13 @@ namespace Baseten
         public global::Baseten.UpdatePromotionSettingsV1? PromotionSettings { get; set; }
 
         /// <summary>
+        /// Request backpressure settings for the environment.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_backpressure_settings")]
+        public global::Baseten.UpdateRequestBackpressureSettingsV1? RequestBackpressureSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -39,15 +46,21 @@ namespace Baseten
         /// Promotion settings for the environment<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="requestBackpressureSettings">
+        /// Request backpressure settings for the environment.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateEnvironmentRequestV1(
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings,
-            global::Baseten.UpdatePromotionSettingsV1? promotionSettings)
+            global::Baseten.UpdatePromotionSettingsV1? promotionSettings,
+            global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings)
         {
             this.AutoscalingSettings = autoscalingSettings;
             this.PromotionSettings = promotionSettings;
+            this.RequestBackpressureSettings = requestBackpressureSettings;
         }
 
         /// <summary>

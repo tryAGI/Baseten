@@ -36,6 +36,9 @@ namespace Baseten
         ///     "redeploy_on_promotion": true,<br/>
         ///     "rolling_deploy": null,<br/>
         ///     "rolling_deploy_config": null<br/>
+        ///   },<br/>
+        ///   "request_backpressure_settings": {<br/>
+        ///     "policy": "REJECT_ON_FULL"<br/>
         ///   }<br/>
         /// }'
         /// </remarks>
@@ -78,6 +81,9 @@ namespace Baseten
         ///     "redeploy_on_promotion": true,<br/>
         ///     "rolling_deploy": null,<br/>
         ///     "rolling_deploy_config": null<br/>
+        ///   },<br/>
+        ///   "request_backpressure_settings": {<br/>
+        ///     "policy": "REJECT_ON_FULL"<br/>
         ///   }<br/>
         /// }'
         /// </remarks>
@@ -102,6 +108,10 @@ namespace Baseten
         /// Promotion settings for the environment<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="requestBackpressureSettings">
+        /// Request backpressure settings for the environment.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -110,6 +120,7 @@ namespace Baseten
             string envName,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
             global::Baseten.UpdatePromotionSettingsV1? promotionSettings = default,
+            global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

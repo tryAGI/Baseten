@@ -71,6 +71,13 @@ namespace Baseten
         public required global::Baseten.InstanceTypeV1 InstanceType { get; set; }
 
         /// <summary>
+        /// Request backpressure settings for the environment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_backpressure_settings")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.RequestBackpressureSettingsV1 RequestBackpressureSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -97,6 +104,9 @@ namespace Baseten
         /// <param name="instanceType">
         /// Instance type for the environment
         /// </param>
+        /// <param name="requestBackpressureSettings">
+        /// Request backpressure settings for the environment.
+        /// </param>
         /// <param name="currentDeployment">
         /// Current deployment of the environment
         /// </param>
@@ -118,6 +128,7 @@ namespace Baseten
             global::Baseten.AutoscalingSettingsV1 autoscalingSettings,
             global::Baseten.PromotionSettingsV1 promotionSettings,
             global::Baseten.InstanceTypeV1 instanceType,
+            global::Baseten.RequestBackpressureSettingsV1 requestBackpressureSettings,
             global::Baseten.DeploymentV1? currentDeployment,
             global::Baseten.DeploymentV1? candidateDeployment,
             global::Baseten.InProgressPromotionV1? inProgressPromotion)
@@ -131,6 +142,7 @@ namespace Baseten
             this.AutoscalingSettings = autoscalingSettings ?? throw new global::System.ArgumentNullException(nameof(autoscalingSettings));
             this.PromotionSettings = promotionSettings ?? throw new global::System.ArgumentNullException(nameof(promotionSettings));
             this.InstanceType = instanceType ?? throw new global::System.ArgumentNullException(nameof(instanceType));
+            this.RequestBackpressureSettings = requestBackpressureSettings ?? throw new global::System.ArgumentNullException(nameof(requestBackpressureSettings));
         }
 
         /// <summary>

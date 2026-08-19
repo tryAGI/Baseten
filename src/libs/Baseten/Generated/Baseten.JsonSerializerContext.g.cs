@@ -139,6 +139,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentStatusV1), TypeInfoPropertyName = "DeploymentStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressureSettingsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1), TypeInfoPropertyName = "RequestBackpressurePolicyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreatedModelDeploymentV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelTombstoneV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentsV1))]
@@ -153,8 +155,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1), TypeInfoPropertyName = "UpdateAutoscalingSettingsStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1), TypeInfoPropertyName = "RequestBackpressurePolicyV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRequestBackpressureSettingsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRequestBackpressureSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PromoteRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ActivateResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeactivateResponseV1))]
@@ -413,12 +414,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeysV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.APIKeyInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyTombstoneV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelWeightSnapshotV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelWeightSnapshotRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1), TypeInfoPropertyName = "LimitTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelAPIOrgDetailsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelAPIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>), TypeInfoPropertyName = "AnyOfDoubleString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string, object>), TypeInfoPropertyName = "AnyOfDoubleStringObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RateLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitUnitV1), TypeInfoPropertyName = "RateLimitUnitV12")]
@@ -460,6 +459,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind), TypeInfoPropertyName = "ResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ChainMetadataV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyDedicatedUsageV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>), TypeInfoPropertyName = "AnyOfDoubleString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyModelApiUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyTrainingUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DedicatedItemV1))]
@@ -510,10 +510,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GroupV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGroupHierarchyV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGroupRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGroupMetadataV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGroupRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayKeyInfoV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -526,6 +526,7 @@ namespace Baseten
         Converters = new global::System.Type[]
         {
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayKeyInfoV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.KeysForGroupResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GatewayKeyInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateApiKeyForGroupRequestV1))]
@@ -548,9 +549,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Source?), TypeInfoPropertyName = "NullableSource2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelRequestV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableCreateModelRequestV1SourceDiscriminatorKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentStatusV1?), TypeInfoPropertyName = "NullableDeploymentStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1?), TypeInfoPropertyName = "NullableRequestBackpressurePolicyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableCreateModelDeploymentRequestV1SourceDiscriminatorKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1?), TypeInfoPropertyName = "NullableUpdateAutoscalingSettingsStatusV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1?), TypeInfoPropertyName = "NullableRequestBackpressurePolicyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentConfigOutputFormat?), TypeInfoPropertyName = "NullableDeploymentConfigOutputFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LogLevelV1?), TypeInfoPropertyName = "NullableLogLevelV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SortOrderV1?), TypeInfoPropertyName = "NullableSortOrderV12")]
@@ -579,13 +580,14 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Name?), TypeInfoPropertyName = "NullableName2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyCategory?), TypeInfoPropertyName = "NullableAPIKeyCategory2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1?), TypeInfoPropertyName = "NullableLimitTypeV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>?), TypeInfoPropertyName = "NullableAnyOfDoubleString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string, object>?), TypeInfoPropertyName = "NullableAnyOfDoubleStringObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitUnitV1?), TypeInfoPropertyName = "NullableRateLimitUnitV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BucketWidth?), TypeInfoPropertyName = "NullableBucketWidth2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageDimensionV1?), TypeInfoPropertyName = "NullableUsageDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingMetadataV1InputModalitie?), TypeInfoPropertyName = "NullableLibraryListingMetadataV1InputModalitie2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingMetadataV1OutputModalitie?), TypeInfoPropertyName = "NullableLibraryListingMetadataV1OutputModalitie2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>?), TypeInfoPropertyName = "NullableAnyOfDoubleString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider?), TypeInfoPropertyName = "NullableGatewayProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SharedEndpointRegionV1?), TypeInfoPropertyName = "NullableSharedEndpointRegionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitUnitV1?), TypeInfoPropertyName = "NullableUsageLimitUnitV12")]
@@ -716,8 +718,8 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.PatchOpsItemJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.CheckpointsItemJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>());
-            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
-            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
@@ -794,6 +796,10 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.DeploymentStatusV1?)
 
+                    || typeToConvert == typeof(global::Baseten.RequestBackpressurePolicyV1)
+
+                    || typeToConvert == typeof(global::Baseten.RequestBackpressurePolicyV1?)
+
                     || typeToConvert == typeof(global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind)
 
                     || typeToConvert == typeof(global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind?)
@@ -801,10 +807,6 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1)
 
                     || typeToConvert == typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1?)
-
-                    || typeToConvert == typeof(global::Baseten.RequestBackpressurePolicyV1)
-
-                    || typeToConvert == typeof(global::Baseten.RequestBackpressurePolicyV1?)
 
                     || typeToConvert == typeof(global::Baseten.DeploymentConfigOutputFormat)
 
@@ -1061,6 +1063,16 @@ namespace Baseten
                     return new global::Baseten.JsonConverters.DeploymentStatusV1NullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Baseten.RequestBackpressurePolicyV1))
+                {
+                    return new global::Baseten.JsonConverters.RequestBackpressurePolicyV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.RequestBackpressurePolicyV1?))
+                {
+                    return new global::Baseten.JsonConverters.RequestBackpressurePolicyV1NullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind))
                 {
                     return new global::Baseten.JsonConverters.CreateModelDeploymentRequestV1SourceDiscriminatorKindJsonConverter();
@@ -1079,16 +1091,6 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.UpdateAutoscalingSettingsStatusV1?))
                 {
                     return new global::Baseten.JsonConverters.UpdateAutoscalingSettingsStatusV1NullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.RequestBackpressurePolicyV1))
-                {
-                    return new global::Baseten.JsonConverters.RequestBackpressurePolicyV1JsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.RequestBackpressurePolicyV1?))
-                {
-                    return new global::Baseten.JsonConverters.RequestBackpressurePolicyV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.DeploymentConfigOutputFormat))

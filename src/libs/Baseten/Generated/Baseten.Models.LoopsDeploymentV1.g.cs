@@ -68,6 +68,14 @@ namespace Baseten
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
+        /// Capacity the trainer was scheduled on.<br/>
+        /// Default Value: dedicated
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
+        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+
+        /// <summary>
         /// Instance type backing the trainer.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instance_type")]
@@ -126,6 +134,10 @@ namespace Baseten
         /// The ID of the most recent run on this deployment, active or not, so idle deployments still expose a usable run handle. Null only if the deployment has no runs.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="availabilityModel">
+        /// Capacity the trainer was scheduled on.<br/>
+        /// Default Value: dedicated
+        /// </param>
         /// <param name="nodeCount">
         /// Number of nodes backing the trainer.<br/>
         /// Default Value: 1
@@ -147,6 +159,7 @@ namespace Baseten
             global::Baseten.InstanceTypeV1 instanceType,
             string? activeRunId,
             string? latestRunId,
+            global::Baseten.V1AvailabilityModel? availabilityModel,
             int? nodeCount,
             global::Baseten.LoopsSamplerV1? sampler)
         {
@@ -158,6 +171,7 @@ namespace Baseten
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
             this.User = user ?? throw new global::System.ArgumentNullException(nameof(user));
             this.CreatedAt = createdAt;
+            this.AvailabilityModel = availabilityModel;
             this.InstanceType = instanceType ?? throw new global::System.ArgumentNullException(nameof(instanceType));
             this.NodeCount = nodeCount;
             this.Sampler = sampler;

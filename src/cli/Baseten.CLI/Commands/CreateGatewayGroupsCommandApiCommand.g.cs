@@ -21,7 +21,7 @@ internal static partial class CreateGatewayGroupsCommandApiCommand
         Required = true,
     };
 
-    private static Option<global::Baseten.GroupHierarchyV1> Hierarchy { get; } = new(
+    private static Option<global::Baseten.CreateGroupHierarchyV1> Hierarchy { get; } = new(
         name: @"--hierarchy")
     {
         Description = @"Parent linkage and limit enforcement mode. Immutable after creation.",

@@ -22,7 +22,7 @@ internal static partial class EditModelsByModelIdDeploymentsByDeploymentIdReques
     private static Option<global::Baseten.RequestBackpressurePolicyV1?> Policy { get; } = new(
         name: @"--policy")
     {
-        Description = @"Controls how the deployment handles requests when at capacity. queue_on_full (default) queues requests while reject_on_full returns HTTP 429.",
+        Description = @"Backpressure policy. Null clears an existing policy.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -85,7 +85,7 @@ internal static partial class EditModelsByModelIdDeploymentsByDeploymentIdReques
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.UpdateRequestBackpressureSettingsRequestV1>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.UpdateRequestBackpressureSettingsV1>(
                             parseResult,
                             Input,
                             RequestJson,

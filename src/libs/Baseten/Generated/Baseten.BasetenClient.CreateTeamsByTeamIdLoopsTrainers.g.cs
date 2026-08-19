@@ -62,6 +62,7 @@ namespace Baseten
         ///   "name": null,<br/>
         ///   "max_seq_len": null,<br/>
         ///   "seed": null,<br/>
+        ///   "availability_model": "spot",<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
         ///   "reuse_from_session_id": null<br/>
@@ -103,6 +104,7 @@ namespace Baseten
         ///   "name": null,<br/>
         ///   "max_seq_len": null,<br/>
         ///   "seed": null,<br/>
+        ///   "availability_model": "spot",<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
         ///   "reuse_from_session_id": null<br/>
@@ -503,6 +505,10 @@ namespace Baseten
         /// Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.<br/>
         /// Default Value: 3600
         /// </param>
+        /// <param name="availabilityModel">
+        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: dedicated
+        /// </param>
         /// <param name="replicas">
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
         /// Default Value: 1
@@ -531,6 +537,7 @@ namespace Baseten
             int? loraRank = default,
             int? seed = default,
             int? scaleDownDelaySeconds = default,
+            global::Baseten.V1AvailabilityModel? availabilityModel = default,
             int? replicas = default,
             string? path = default,
             string? reuseFromRunId = default,
@@ -547,6 +554,7 @@ namespace Baseten
                 LoraRank = loraRank,
                 Seed = seed,
                 ScaleDownDelaySeconds = scaleDownDelaySeconds,
+                AvailabilityModel = availabilityModel,
                 Replicas = replicas,
                 Path = path,
                 ReuseFromRunId = reuseFromRunId,

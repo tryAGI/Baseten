@@ -12,6 +12,7 @@ internal sealed record CreateLoopsRunRequestV1OptionSet(
                      Option<int?> LoraRank,
                      Option<int?> Seed,
                      Option<int?> ScaleDownDelaySeconds,
+                     Option<global::Baseten.V1AvailabilityModel?> AvailabilityModel,
                      Option<int?> Replicas,
                      Option<string?> Path,
                      Option<string?> ReuseFromRunId,
@@ -52,6 +53,10 @@ internal sealed record CreateLoopsRunRequestV1OptionSet(
                 ScaleDownDelaySeconds: new Option<int?>($"--{normalizedPrefix}scale-down-delay-seconds")
                 {
                     Description = @"Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.",
+                },
+                AvailabilityModel: new Option<global::Baseten.V1AvailabilityModel?>($"--{normalizedPrefix}availability-model")
+                {
+                    Description = @"Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
                 },
                 Replicas: new Option<int?>($"--{normalizedPrefix}replicas")
                 {
