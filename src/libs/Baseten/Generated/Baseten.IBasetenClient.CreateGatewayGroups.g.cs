@@ -21,7 +21,11 @@ namespace Baseten
         ///     "name": "Acme prod",<br/>
         ///     "external_entity_id": "cust_42"<br/>
         ///   },<br/>
-        ///   "models": null,<br/>
+        ///   "models": [<br/>
+        ///     {<br/>
+        ///       "slug": "my-org/claude"<br/>
+        ///     }<br/>
+        ///   ],<br/>
         ///   "hierarchy": {<br/>
         ///     "limit_enforcement": "INDEPENDENT",<br/>
         ///     "parent_group_id": "abc123"<br/>
@@ -50,7 +54,11 @@ namespace Baseten
         ///     "name": "Acme prod",<br/>
         ///     "external_entity_id": "cust_42"<br/>
         ///   },<br/>
-        ///   "models": null,<br/>
+        ///   "models": [<br/>
+        ///     {<br/>
+        ///       "slug": "my-org/claude"<br/>
+        ///     }<br/>
+        ///   ],<br/>
         ///   "hierarchy": {<br/>
         ///     "limit_enforcement": "INDEPENDENT",<br/>
         ///     "parent_group_id": "abc123"<br/>
@@ -81,7 +89,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.GroupV1> CreateGatewayGroupsAsync(
             global::Baseten.GroupMetadataV1 metadata,
             global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1> models,
-            global::Baseten.GroupHierarchyV1 hierarchy,
+            global::Baseten.CreateGroupHierarchyV1 hierarchy,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

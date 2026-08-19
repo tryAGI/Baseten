@@ -44,11 +44,16 @@ namespace Baseten
         public required string DeploymentName { get; set; }
 
         /// <summary>
-        /// 
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("policy")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Policy { get; set; }
+        public string? Policy { get; set; }
+
+        /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("previous_policy")]
+        public string? PreviousPolicy { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -63,7 +68,12 @@ namespace Baseten
         /// <param name="modelName"></param>
         /// <param name="deploymentId"></param>
         /// <param name="deploymentName"></param>
-        /// <param name="policy"></param>
+        /// <param name="policy">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="previousPolicy">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="eventType"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -73,7 +83,8 @@ namespace Baseten
             string modelName,
             string deploymentId,
             string deploymentName,
-            string policy,
+            string? policy,
+            string? previousPolicy,
             string eventType = "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED")
         {
             this.EventType = eventType;
@@ -81,7 +92,8 @@ namespace Baseten
             this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
             this.DeploymentId = deploymentId ?? throw new global::System.ArgumentNullException(nameof(deploymentId));
             this.DeploymentName = deploymentName ?? throw new global::System.ArgumentNullException(nameof(deploymentName));
-            this.Policy = policy ?? throw new global::System.ArgumentNullException(nameof(policy));
+            this.Policy = policy;
+            this.PreviousPolicy = previousPolicy;
         }
 
         /// <summary>

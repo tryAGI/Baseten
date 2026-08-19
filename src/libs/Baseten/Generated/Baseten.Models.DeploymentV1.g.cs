@@ -98,6 +98,13 @@ namespace Baseten
         public global::Baseten.RegionV1? Region { get; set; }
 
         /// <summary>
+        /// Effective request backpressure settings for the deployment.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_backpressure_settings")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.RequestBackpressureSettingsV1 RequestBackpressureSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -130,6 +137,9 @@ namespace Baseten
         /// <param name="activeReplicaCount">
         /// Number of active replicas
         /// </param>
+        /// <param name="requestBackpressureSettings">
+        /// Effective request backpressure settings for the deployment.
+        /// </param>
         /// <param name="autoscalingSettings">
         /// Autoscaling settings for the deployment. If null, the model has not finished deploying
         /// </param>
@@ -159,6 +169,7 @@ namespace Baseten
             bool isDevelopment,
             global::Baseten.DeploymentStatusV1 status,
             int activeReplicaCount,
+            global::Baseten.RequestBackpressureSettingsV1 requestBackpressureSettings,
             global::Baseten.AutoscalingSettingsV1? autoscalingSettings,
             string? instanceTypeName,
             string? environment,
@@ -178,6 +189,7 @@ namespace Baseten
             this.Environment = environment;
             this.Labels = labels;
             this.Region = region;
+            this.RequestBackpressureSettings = requestBackpressureSettings ?? throw new global::System.ArgumentNullException(nameof(requestBackpressureSettings));
         }
 
         /// <summary>

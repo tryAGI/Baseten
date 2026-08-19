@@ -18,14 +18,14 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_settings \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "policy": "reject_on_full"<br/>
+        ///   "policy": "REJECT_ON_FULL"<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
             string modelId,
             string deploymentId,
 
-            global::Baseten.UpdateRequestBackpressureSettingsRequestV1 request,
+            global::Baseten.UpdateRequestBackpressureSettingsV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -42,14 +42,14 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_settings \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "policy": "reject_on_full"<br/>
+        ///   "policy": "REJECT_ON_FULL"<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsResponseAsync(
             string modelId,
             string deploymentId,
 
-            global::Baseten.UpdateRequestBackpressureSettingsRequestV1 request,
+            global::Baseten.UpdateRequestBackpressureSettingsV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -58,7 +58,7 @@ namespace Baseten
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
         /// <param name="policy">
-        /// Controls how the deployment handles requests when at capacity. queue_on_full (default) queues requests while reject_on_full returns HTTP 429.<br/>
+        /// Backpressure policy. Null clears an existing policy.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

@@ -27,7 +27,7 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hierarchy")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.GroupHierarchyV1 Hierarchy { get; set; }
+        public required global::Baseten.CreateGroupHierarchyV1 Hierarchy { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -53,7 +53,7 @@ namespace Baseten
         public CreateGroupRequestV1(
             global::Baseten.GroupMetadataV1 metadata,
             global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1> models,
-            global::Baseten.GroupHierarchyV1 hierarchy)
+            global::Baseten.CreateGroupHierarchyV1 hierarchy)
         {
             this.Metadata = metadata ?? throw new global::System.ArgumentNullException(nameof(metadata));
             this.Models = models ?? throw new global::System.ArgumentNullException(nameof(models));

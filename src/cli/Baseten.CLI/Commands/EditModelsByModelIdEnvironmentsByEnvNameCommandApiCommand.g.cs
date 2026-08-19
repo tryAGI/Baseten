@@ -18,6 +18,12 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
     {
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
+
+    private static Option<global::Baseten.UpdateRequestBackpressureSettingsV1?> RequestBackpressureSettings { get; } = new(
+        name: @"--request-backpressure-settings")
+    {
+        Description = @"Request backpressure settings for the environment.",
+    };
     private static readonly UpdateAutoscalingSettingsV1OptionSet AutoscalingSettingsOptions = UpdateAutoscalingSettingsV1OptionSet.Create(@"autoscaling-settings");
 
     private static readonly UpdatePromotionSettingsV1OptionSet PromotionSettingsOptions = UpdatePromotionSettingsV1OptionSet.Create(@"promotion-settings");
@@ -63,7 +69,8 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
         var command = new Command(@"edit-models-by-model-id-environments-by-env-name", @"Updates an environment's settings
 Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.");
                         command.Arguments.Add(ModelId);
-                        command.Arguments.Add(EnvName);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
+                        command.Arguments.Add(EnvName);
+                        command.Options.Add(RequestBackpressureSettings);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
                         command.Options.Add(AutoscalingSettingsOptions.AutoscalingWindow);
                         command.Options.Add(AutoscalingSettingsOptions.ScaleDownDelay);
@@ -101,6 +108,7 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                             cancellationToken).ConfigureAwait(false);
                         var modelId = parseResult.GetRequiredValue(ModelId);
                         var envName = parseResult.GetRequiredValue(EnvName);
+                        var requestBackpressureSettings = CliRuntime.WasSpecified(parseResult, RequestBackpressureSettings) ? parseResult.GetValue(RequestBackpressureSettings) : (__requestBase is { } __RequestBackpressureSettingsBaseValue ? __RequestBackpressureSettingsBaseValue.RequestBackpressureSettings : default);
 
                         var __AutoscalingSettingsBase = __requestBase is { } __AutoscalingSettingsBaseValue ? __AutoscalingSettingsBaseValue.AutoscalingSettings : default;                        var autoscalingSettingsMinReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MinReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MinReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsminReplicaBaseValue ? __AutoscalingSettingsminReplicaBaseValue.MinReplica : default);
                         var autoscalingSettingsMaxReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MaxReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MaxReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsmaxReplicaBaseValue ? __AutoscalingSettingsmaxReplicaBaseValue.MaxReplica : default);
@@ -149,6 +157,7 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                                 var response = await client.EditModelsByModelIdEnvironmentsByEnvNameAsync(
                                     modelId: modelId,
                                     envName: envName,
+                                    requestBackpressureSettings: requestBackpressureSettings,
                                     autoscalingSettings: autoscalingSettings,
                                     promotionSettings: promotionSettings,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

@@ -1744,18 +1744,18 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"policy\": \"reject_on_full\"\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"policy\": \"REJECT_ON_FULL\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'policy': 'reject_on_full'}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/request_backpressure_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'policy': 'REJECT_ON_FULL'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/UpdateRequestBackpressureSettingsRequestV1"
+                                "$ref": "#/components/schemas/UpdateRequestBackpressureSettingsV1"
                             }
                         }
                     },
@@ -2981,11 +2981,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": null,\n    \"rolling_deploy_config\": null\n  }\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": null,\n    \"rolling_deploy_config\": null\n  },\n  \"request_backpressure_settings\": {\n    \"policy\": \"REJECT_ON_FULL\"\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}, 'request_backpressure_settings': {'policy': 'REJECT_ON_FULL'}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.",
@@ -5808,11 +5808,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a Loops run with an associated sampler in the given session.",
@@ -5912,11 +5912,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.",
@@ -6674,11 +6674,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a Loops run with an associated sampler in the given session; the run's infrastructure belongs to the given team.",
@@ -6712,11 +6712,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.",
@@ -7132,139 +7132,6 @@
                     "$ref": "#/components/parameters/api_key_prefix"
                 }
             ]
-        },
-        "/v1/model_apis/snapshots": {
-            "get": {
-                "summary": "Gets the latest model weight snapshot",
-                "x-codeSamples": [
-                    {
-                        "lang": "bash",
-                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/model_apis/snapshots \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
-                    },
-                    {
-                        "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/snapshots\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
-                    }
-                ],
-                "description": "Gets the most recent model weight snapshot for the specified model.",
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ModelWeightSnapshotV1"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "summary": "Creates a model weight snapshot",
-                "x-codeSamples": [
-                    {
-                        "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/model_apis/snapshots \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"snapshot_uri\": null\n}'"
-                    },
-                    {
-                        "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/snapshots\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'snapshot_uri': None}\n)\n\nprint(response.text)"
-                    }
-                ],
-                "description": "Creates a model weight snapshot for the specified model and returns the snapshot.",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateModelWeightSnapshotRequestV1"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ModelWeightSnapshotV1"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/v1/model_apis/snapshots/{model_id}": {
-            "get": {
-                "summary": "Gets the latest model weight snapshot",
-                "x-codeSamples": [
-                    {
-                        "lang": "bash",
-                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/model_apis/snapshots/{model_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
-                    },
-                    {
-                        "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/snapshots/{model_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
-                    }
-                ],
-                "description": "Gets the most recent model weight snapshot for the specified model.",
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ModelWeightSnapshotV1"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/model_id"
-                }
-            ],
-            "post": {
-                "summary": "Creates a model weight snapshot",
-                "x-codeSamples": [
-                    {
-                        "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/model_apis/snapshots/{model_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"model\": null,\n  \"snapshot_uri\": null\n}'"
-                    },
-                    {
-                        "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/snapshots/{model_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'model': None, 'snapshot_uri': None}\n)\n\nprint(response.text)"
-                    }
-                ],
-                "description": "Creates a model weight snapshot for the specified model and returns the snapshot.",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateModelWeightSnapshotRequestV1"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ModelWeightSnapshotV1"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         },
         "/v1/model_apis": {
             "get": {
@@ -8353,11 +8220,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/gateway/groups \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"metadata\": {\n    \"name\": \"Acme prod\",\n    \"external_entity_id\": \"cust_42\"\n  },\n  \"models\": null,\n  \"hierarchy\": {\n    \"limit_enforcement\": \"INDEPENDENT\",\n    \"parent_group_id\": \"abc123\"\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/gateway/groups \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"metadata\": {\n    \"name\": \"Acme prod\",\n    \"external_entity_id\": \"cust_42\"\n  },\n  \"models\": [\n    {\n      \"slug\": \"my-org/claude\"\n    }\n  ],\n  \"hierarchy\": {\n    \"limit_enforcement\": \"INDEPENDENT\",\n    \"parent_group_id\": \"abc123\"\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/groups\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'metadata': {'name': 'Acme prod', 'external_entity_id': 'cust_42'}, 'models': None, 'hierarchy': {'limit_enforcement': 'INDEPENDENT', 'parent_group_id': 'abc123'}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/groups\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'metadata': {'name': 'Acme prod', 'external_entity_id': 'cust_42'}, 'models': [{'slug': 'my-org/claude'}], 'hierarchy': {'limit_enforcement': 'INDEPENDENT', 'parent_group_id': 'abc123'}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a group and its endpoint configuration.",
@@ -9982,8 +9849,15 @@
                         "type": "integer"
                     },
                     "concurrency_target": {
-                        "title": "Concurrency Target",
-                        "type": "integer"
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Concurrency Target"
                     },
                     "autoscaling_window": {
                         "anyOf": [
@@ -11066,6 +10940,18 @@
                         ],
                         "title": "Ramp Up Step Size"
                     },
+                    "request_backpressure_policy": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Request Backpressure Policy"
+                    },
                     "model_id": {
                         "title": "Model Id",
                         "type": "string"
@@ -11346,6 +11232,18 @@
                             }
                         ],
                         "title": "Ramp Up Step Size"
+                    },
+                    "request_backpressure_policy": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Request Backpressure Policy"
                     }
                 },
                 "required": [
@@ -11577,6 +11475,18 @@
                             }
                         ],
                         "title": "Ramp Up Step Size"
+                    },
+                    "request_backpressure_policy": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Request Backpressure Policy"
                     },
                     "model_id": {
                         "title": "Model Id",
@@ -12211,8 +12121,28 @@
                         "type": "string"
                     },
                     "policy": {
-                        "title": "Policy",
-                        "type": "string"
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Policy"
+                    },
+                    "previous_policy": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Previous Policy"
                     }
                 },
                 "required": [
@@ -12220,8 +12150,7 @@
                     "model_id",
                     "model_name",
                     "deployment_id",
-                    "deployment_name",
-                    "policy"
+                    "deployment_name"
                 ],
                 "title": "AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1",
                 "type": "object"
@@ -13380,6 +13309,10 @@
                         ],
                         "default": null,
                         "description": "The selected region for the deployment, if any"
+                    },
+                    "request_backpressure_settings": {
+                        "$ref": "#/components/schemas/RequestBackpressureSettingsV1",
+                        "description": "Effective request backpressure settings for the deployment."
                     }
                 },
                 "required": [
@@ -13393,9 +13326,37 @@
                     "active_replica_count",
                     "autoscaling_settings",
                     "instance_type_name",
-                    "environment"
+                    "environment",
+                    "request_backpressure_settings"
                 ],
                 "title": "DeploymentV1",
+                "type": "object"
+            },
+            "RequestBackpressurePolicyV1": {
+                "enum": [
+                    "QUEUE_ON_FULL",
+                    "REJECT_ON_FULL"
+                ],
+                "title": "RequestBackpressurePolicyV1",
+                "type": "string"
+            },
+            "RequestBackpressureSettingsV1": {
+                "description": "Request backpressure settings for a deployment or environment.",
+                "properties": {
+                    "policy": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/RequestBackpressurePolicyV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Backpressure policy. Null when no policy is set."
+                    }
+                },
+                "title": "RequestBackpressureSettingsV1",
                 "type": "object"
             },
             "CreatedModelDeploymentV1": {
@@ -13755,17 +13716,9 @@
                 "title": "UpdateAutoscalingSettingsResponseV1",
                 "type": "object"
             },
-            "RequestBackpressurePolicyV1": {
-                "enum": [
-                    "queue_on_full",
-                    "reject_on_full"
-                ],
-                "title": "RequestBackpressurePolicyV1",
-                "type": "string"
-            },
-            "UpdateRequestBackpressureSettingsRequestV1": {
+            "UpdateRequestBackpressureSettingsV1": {
                 "additionalProperties": false,
-                "description": "Request body for ``PATCH /v1/models/.../deployments/.../request_backpressure_settings``.",
+                "description": "A request to update request backpressure settings.",
                 "properties": {
                     "policy": {
                         "anyOf": [
@@ -13777,13 +13730,13 @@
                             }
                         ],
                         "default": null,
-                        "description": "Controls how the deployment handles requests when at capacity. queue_on_full (default) queues requests while reject_on_full returns HTTP 429.",
+                        "description": "Backpressure policy. Null clears an existing policy.",
                         "examples": [
-                            "reject_on_full"
+                            "REJECT_ON_FULL"
                         ]
                     }
                 },
-                "title": "UpdateRequestBackpressureSettingsRequestV1",
+                "title": "UpdateRequestBackpressureSettingsV1",
                 "type": "object"
             },
             "PromoteRequestV1": {
@@ -14980,6 +14933,10 @@
                     "instance_type": {
                         "$ref": "#/components/schemas/InstanceTypeV1",
                         "description": "Instance type for the environment"
+                    },
+                    "request_backpressure_settings": {
+                        "$ref": "#/components/schemas/RequestBackpressureSettingsV1",
+                        "description": "Request backpressure settings for the environment."
                     }
                 },
                 "required": [
@@ -14989,7 +14946,8 @@
                     "current_deployment",
                     "autoscaling_settings",
                     "promotion_settings",
-                    "instance_type"
+                    "instance_type",
+                    "request_backpressure_settings"
                 ],
                 "title": "EnvironmentV1",
                 "type": "object"
@@ -15559,6 +15517,23 @@
                                 "redeploy_on_promotion": true,
                                 "rolling_deploy": null,
                                 "rolling_deploy_config": null
+                            }
+                        ]
+                    },
+                    "request_backpressure_settings": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateRequestBackpressureSettingsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Request backpressure settings for the environment.",
+                        "examples": [
+                            {
+                                "policy": "REJECT_ON_FULL"
                             }
                         ]
                     }
@@ -19644,6 +19619,14 @@
                         "title": "Scale Down Delay Seconds",
                         "type": "integer"
                     },
+                    "availability_model": {
+                        "$ref": "#/components/schemas/V1AvailabilityModel",
+                        "default": "dedicated",
+                        "description": "Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
+                        "examples": [
+                            "spot"
+                        ]
+                    },
                     "replicas": {
                         "default": 1,
                         "description": "Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset \u2192 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.",
@@ -20229,6 +20212,11 @@
                         "title": "Created At",
                         "type": "string"
                     },
+                    "availability_model": {
+                        "$ref": "#/components/schemas/V1AvailabilityModel",
+                        "default": "dedicated",
+                        "description": "Capacity the trainer was scheduled on."
+                    },
                     "instance_type": {
                         "$ref": "#/components/schemas/InstanceTypeV1",
                         "description": "Instance type backing the trainer."
@@ -20271,7 +20259,8 @@
                     "RUNNING",
                     "SCALED_TO_ZERO",
                     "FAILED",
-                    "STOPPED"
+                    "STOPPED",
+                    "PREEMPTED"
                 ],
                 "title": "LoopsDeploymentStatus",
                 "type": "string"
@@ -21560,55 +21549,6 @@
                 "title": "APIKeyTombstoneV1",
                 "type": "object"
             },
-            "ModelWeightSnapshotV1": {
-                "description": "A model weight snapshot.",
-                "properties": {
-                    "model": {
-                        "description": "Unique identifier of the model",
-                        "title": "Model",
-                        "type": "string"
-                    },
-                    "snapshot_uri": {
-                        "description": "Path to the model weight snapshot",
-                        "title": "Snapshot Uri",
-                        "type": "string"
-                    },
-                    "received_at": {
-                        "description": "Time of the snapshot",
-                        "format": "date-time",
-                        "title": "Received At",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "model",
-                    "snapshot_uri",
-                    "received_at"
-                ],
-                "title": "ModelWeightSnapshotV1",
-                "type": "object"
-            },
-            "CreateModelWeightSnapshotRequestV1": {
-                "description": "A request to create a model weight snapshot.",
-                "properties": {
-                    "model": {
-                        "description": "Unique identifier of the model",
-                        "title": "Model",
-                        "type": "string"
-                    },
-                    "snapshot_uri": {
-                        "description": "Path to the model weight snapshot",
-                        "title": "Snapshot Uri",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "model",
-                    "snapshot_uri"
-                ],
-                "title": "CreateModelWeightSnapshotRequestV1",
-                "type": "object"
-            },
             "LimitTypeV1": {
                 "enum": [
                     "REQUEST",
@@ -21719,9 +21659,12 @@
                             {
                                 "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                                 "type": "string"
+                            },
+                            {
+                                "type": "null"
                             }
                         ],
-                        "description": "Cost per million input tokens, in dollars.",
+                        "description": "Effective cost per million input tokens, in dollars. Null when pricing is unavailable.",
                         "examples": [
                             "0.13"
                         ],
@@ -21735,9 +21678,12 @@
                             {
                                 "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
                                 "type": "string"
+                            },
+                            {
+                                "type": "null"
                             }
                         ],
-                        "description": "Cost per million output tokens, in dollars.",
+                        "description": "Effective cost per million output tokens, in dollars. Null when pricing is unavailable.",
                         "examples": [
                             "0.50"
                         ],
@@ -24506,7 +24452,6 @@
                 "properties": {
                     "limit_enforcement": {
                         "$ref": "#/components/schemas/LimitEnforcementV1",
-                        "default": "INDEPENDENT",
                         "examples": [
                             "CASCADING",
                             "INDEPENDENT"
@@ -24528,6 +24473,9 @@
                         "title": "Parent Group Id"
                     }
                 },
+                "required": [
+                    "limit_enforcement"
+                ],
                 "title": "GroupHierarchyV1",
                 "type": "object"
             },
@@ -24712,6 +24660,42 @@
                 "title": "GroupsResponseV1",
                 "type": "object"
             },
+            "CreateGroupHierarchyV1": {
+                "properties": {
+                    "limit_enforcement": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LimitEnforcementV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Limit behavior. Child groups inherit their parent's behavior when omitted; root groups default to Independent for backwards compatibility.",
+                        "examples": [
+                            "INDEPENDENT"
+                        ]
+                    },
+                    "parent_group_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "examples": [
+                            "abc123"
+                        ],
+                        "title": "Parent Group Id"
+                    }
+                },
+                "title": "CreateGroupHierarchyV1",
+                "type": "object"
+            },
             "CreateGroupRequestV1": {
                 "properties": {
                     "metadata": {
@@ -24720,6 +24704,13 @@
                     },
                     "models": {
                         "description": "Per-model rate and usage limit configuration. Defines the group's complete model set. Must be non-empty.",
+                        "examples": [
+                            [
+                                {
+                                    "slug": "my-org/claude"
+                                }
+                            ]
+                        ],
                         "items": {
                             "$ref": "#/components/schemas/ModelConfigV1"
                         },
@@ -24728,7 +24719,7 @@
                         "type": "array"
                     },
                     "hierarchy": {
-                        "$ref": "#/components/schemas/GroupHierarchyV1",
+                        "$ref": "#/components/schemas/CreateGroupHierarchyV1",
                         "description": "Parent linkage and limit enforcement mode. Immutable after creation."
                     }
                 },

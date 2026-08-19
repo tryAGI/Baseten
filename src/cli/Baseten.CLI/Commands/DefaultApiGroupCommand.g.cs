@@ -30,8 +30,6 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateLoopsSamplersCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsSessionsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsTrainersCommandApiCommand.Create());
-                         command.Subcommands.Add(CreateModelApisSnapshotsCommandApiCommand.Create());
-                         command.Subcommands.Add(CreateModelApisSnapshotsByModelIdCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsByModelIdDeploymentsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsByModelIdDeploymentsByDeploymentIdActivateCommandApiCommand.Create());
@@ -147,8 +145,6 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetLoopsUserConfigCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisByModelApiNameCommandApiCommand.Create());
-                         command.Subcommands.Add(GetModelApisSnapshotsCommandApiCommand.Create());
-                         command.Subcommands.Add(GetModelApisSnapshotsByModelIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisUsageCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdCommandApiCommand.Create());

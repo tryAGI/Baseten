@@ -30,8 +30,8 @@ namespace Baseten
         {
             return value switch
             {
-                RequestBackpressurePolicyV1.QueueOnFull => "queue_on_full",
-                RequestBackpressurePolicyV1.RejectOnFull => "reject_on_full",
+                RequestBackpressurePolicyV1.QueueOnFull => "QUEUE_ON_FULL",
+                RequestBackpressurePolicyV1.RejectOnFull => "REJECT_ON_FULL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Baseten
         {
             return value switch
             {
-                "queue_on_full" => RequestBackpressurePolicyV1.QueueOnFull,
-                "reject_on_full" => RequestBackpressurePolicyV1.RejectOnFull,
+                "QUEUE_ON_FULL" => RequestBackpressurePolicyV1.QueueOnFull,
+                "REJECT_ON_FULL" => RequestBackpressurePolicyV1.RejectOnFull,
                 _ => null,
             };
         }

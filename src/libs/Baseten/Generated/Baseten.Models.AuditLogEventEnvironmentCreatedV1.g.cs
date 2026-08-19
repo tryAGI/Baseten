@@ -126,6 +126,12 @@ namespace Baseten
         public int? RampUpStepSize { get; set; }
 
         /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_backpressure_policy")]
+        public string? RequestBackpressurePolicy { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
@@ -190,6 +196,9 @@ namespace Baseten
         /// <param name="rampUpWhilePromoting"></param>
         /// <param name="rampUpDurationSeconds"></param>
         /// <param name="rampUpStepSize"></param>
+        /// <param name="requestBackpressurePolicy">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="deploymentType"></param>
         /// <param name="eventType"></param>
 #if NET7_0_OR_GREATER
@@ -218,6 +227,7 @@ namespace Baseten
             bool? rampUpWhilePromoting,
             int? rampUpDurationSeconds,
             int? rampUpStepSize,
+            string? requestBackpressurePolicy,
             string? deploymentType,
             string eventType = "ENVIRONMENT_CREATED")
         {
@@ -240,6 +250,7 @@ namespace Baseten
             this.RampUpWhilePromoting = rampUpWhilePromoting;
             this.RampUpDurationSeconds = rampUpDurationSeconds;
             this.RampUpStepSize = rampUpStepSize;
+            this.RequestBackpressurePolicy = requestBackpressurePolicy;
             this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
             this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
             this.EnvironmentName = environmentName ?? throw new global::System.ArgumentNullException(nameof(environmentName));

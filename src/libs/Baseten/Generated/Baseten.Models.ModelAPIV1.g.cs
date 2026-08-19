@@ -58,20 +58,20 @@ namespace Baseten
         public required int ContextLength { get; set; }
 
         /// <summary>
-        /// Cost per million input tokens, in dollars.
+        /// Effective cost per million input tokens, in dollars. Null when pricing is unavailable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_per_million_input_tokens")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AnyOf<double?, string> CostPerMillionInputTokens { get; set; }
+        public required global::Baseten.AnyOf<double?, string, object> CostPerMillionInputTokens { get; set; }
 
         /// <summary>
-        /// Cost per million output tokens, in dollars.
+        /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_per_million_output_tokens")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AnyOf<double?, string> CostPerMillionOutputTokens { get; set; }
+        public required global::Baseten.AnyOf<double?, string, object> CostPerMillionOutputTokens { get; set; }
 
         /// <summary>
         /// Rate limits in effect for the workspace. Workspace-specific overrides are returned when the workspace has added this Model API and configured them; otherwise the catalog default rate limits are returned.
@@ -115,10 +115,10 @@ namespace Baseten
         /// The model's context window length, in tokens.
         /// </param>
         /// <param name="costPerMillionInputTokens">
-        /// Cost per million input tokens, in dollars.
+        /// Effective cost per million input tokens, in dollars. Null when pricing is unavailable.
         /// </param>
         /// <param name="costPerMillionOutputTokens">
-        /// Cost per million output tokens, in dollars.
+        /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
         /// </param>
         /// <param name="rateLimits">
         /// Rate limits in effect for the workspace. Workspace-specific overrides are returned when the workspace has added this Model API and configured them; otherwise the catalog default rate limits are returned.
@@ -141,8 +141,8 @@ namespace Baseten
             global::System.DateTime releaseDate,
             string invokeUrl,
             int contextLength,
-            global::Baseten.AnyOf<double?, string> costPerMillionInputTokens,
-            global::Baseten.AnyOf<double?, string> costPerMillionOutputTokens,
+            global::Baseten.AnyOf<double?, string, object> costPerMillionInputTokens,
+            global::Baseten.AnyOf<double?, string, object> costPerMillionOutputTokens,
             global::System.Collections.Generic.IList<global::Baseten.RateLimitV1> rateLimits,
             string? modelFamily,
             global::Baseten.ModelAPIOrgDetailsV1? orgDetails)

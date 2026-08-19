@@ -56,6 +56,7 @@ Creates a trainer-only Loops run in the given session, without a sampler. To sam
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.LoraRank);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Seed);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds);
+                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.AvailabilityModel);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Replicas);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Path);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId);
@@ -91,6 +92,7 @@ Creates a trainer-only Loops run in the given session, without a sampler. To sam
                         var loraRank = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.LoraRank) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.LoraRank) : (__requestBase is { } __LoraRankBaseValue ? __LoraRankBaseValue.LoraRank : default);
                         var seed = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Seed) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Seed) : (__requestBase is { } __SeedBaseValue ? __SeedBaseValue.Seed : default);
                         var scaleDownDelaySeconds = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds) : (__requestBase is { } __ScaleDownDelaySecondsBaseValue ? __ScaleDownDelaySecondsBaseValue.ScaleDownDelaySeconds : default);
+                        var availabilityModel = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.AvailabilityModel) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.AvailabilityModel) : (__requestBase is { } __AvailabilityModelBaseValue ? __AvailabilityModelBaseValue.AvailabilityModel : default);
                         var replicas = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Replicas) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Replicas) : (__requestBase is { } __ReplicasBaseValue ? __ReplicasBaseValue.Replicas : default);
                         var path = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Path) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Path) : (__requestBase is { } __PathBaseValue ? __PathBaseValue.Path : default);
                         var reuseFromRunId = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId) : (__requestBase is { } __ReuseFromRunIdBaseValue ? __ReuseFromRunIdBaseValue.ReuseFromRunId : default);
@@ -106,6 +108,7 @@ Creates a trainer-only Loops run in the given session, without a sampler. To sam
                                     loraRank: loraRank,
                                     seed: seed,
                                     scaleDownDelaySeconds: scaleDownDelaySeconds,
+                                    availabilityModel: availabilityModel,
                                     replicas: replicas,
                                     path: path,
                                     reuseFromRunId: reuseFromRunId,

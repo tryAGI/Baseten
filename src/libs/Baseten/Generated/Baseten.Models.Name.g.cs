@@ -23,6 +23,10 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        Preempted,
+        /// <summary>
+        /// 
+        /// </summary>
         Running,
         /// <summary>
         /// 
@@ -49,6 +53,7 @@ namespace Baseten
                 Name.Created => "CREATED",
                 Name.Deploying => "DEPLOYING",
                 Name.Failed => "FAILED",
+                Name.Preempted => "PREEMPTED",
                 Name.Running => "RUNNING",
                 Name.ScaledToZero => "SCALED_TO_ZERO",
                 Name.Stopped => "STOPPED",
@@ -65,6 +70,7 @@ namespace Baseten
                 "CREATED" => Name.Created,
                 "DEPLOYING" => Name.Deploying,
                 "FAILED" => Name.Failed,
+                "PREEMPTED" => Name.Preempted,
                 "RUNNING" => Name.Running,
                 "SCALED_TO_ZERO" => Name.ScaledToZero,
                 "STOPPED" => Name.Stopped,

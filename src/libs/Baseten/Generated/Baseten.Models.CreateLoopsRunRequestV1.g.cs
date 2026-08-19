@@ -58,6 +58,14 @@ namespace Baseten
         public int? ScaleDownDelaySeconds { get; set; }
 
         /// <summary>
+        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: dedicated
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
+        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+
+        /// <summary>
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
         /// Default Value: 1
         /// </summary>
@@ -120,6 +128,10 @@ namespace Baseten
         /// Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.<br/>
         /// Default Value: 3600
         /// </param>
+        /// <param name="availabilityModel">
+        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: dedicated
+        /// </param>
         /// <param name="replicas">
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
         /// Default Value: 1
@@ -147,6 +159,7 @@ namespace Baseten
             int? loraRank,
             int? seed,
             int? scaleDownDelaySeconds,
+            global::Baseten.V1AvailabilityModel? availabilityModel,
             int? replicas,
             string? path,
             string? reuseFromRunId,
@@ -159,6 +172,7 @@ namespace Baseten
             this.LoraRank = loraRank;
             this.Seed = seed;
             this.ScaleDownDelaySeconds = scaleDownDelaySeconds;
+            this.AvailabilityModel = availabilityModel;
             this.Replicas = replicas;
             this.Path = path;
             this.ReuseFromRunId = reuseFromRunId;

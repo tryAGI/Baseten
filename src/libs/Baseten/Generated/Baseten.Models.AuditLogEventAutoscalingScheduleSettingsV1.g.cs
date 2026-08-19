@@ -27,8 +27,7 @@ namespace Baseten
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("concurrency_target")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ConcurrencyTarget { get; set; }
+        public int? ConcurrencyTarget { get; set; }
 
         /// <summary>
         /// 
@@ -132,7 +131,6 @@ namespace Baseten
         /// </summary>
         /// <param name="minReplica"></param>
         /// <param name="maxReplica"></param>
-        /// <param name="concurrencyTarget"></param>
         /// <param name="scheduleName"></param>
         /// <param name="enabled"></param>
         /// <param name="cadence"></param>
@@ -140,6 +138,7 @@ namespace Baseten
         /// <param name="weekdays"></param>
         /// <param name="startMinute"></param>
         /// <param name="endMinute"></param>
+        /// <param name="concurrencyTarget"></param>
         /// <param name="autoscalingWindow"></param>
         /// <param name="scaleDownDelay"></param>
         /// <param name="targetUtilizationPercentage"></param>
@@ -153,7 +152,6 @@ namespace Baseten
         public AuditLogEventAutoscalingScheduleSettingsV1(
             int minReplica,
             int maxReplica,
-            int concurrencyTarget,
             string scheduleName,
             bool enabled,
             string cadence,
@@ -161,6 +159,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string> weekdays,
             int startMinute,
             int endMinute,
+            int? concurrencyTarget,
             int? autoscalingWindow,
             int? scaleDownDelay,
             int? targetUtilizationPercentage,
