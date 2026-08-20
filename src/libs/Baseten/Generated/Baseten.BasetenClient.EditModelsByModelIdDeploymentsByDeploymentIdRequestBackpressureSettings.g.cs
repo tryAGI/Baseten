@@ -62,7 +62,7 @@ namespace Baseten
         ///   "policy": "REJECT_ON_FULL"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.RequestBackpressureSettingsV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
             string modelId,
             string deploymentId,
 
@@ -98,7 +98,7 @@ namespace Baseten
         ///   "policy": "REJECT_ON_FULL"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RequestBackpressureSettingsV1>> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsResponseAsync(
             string modelId,
             string deploymentId,
 
@@ -391,9 +391,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.UpdateAutoscalingSettingsResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.RequestBackpressureSettingsV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RequestBackpressureSettingsV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -423,9 +423,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.UpdateAutoscalingSettingsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.RequestBackpressureSettingsV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RequestBackpressureSettingsV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -477,7 +477,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.RequestBackpressureSettingsV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
             string modelId,
             string deploymentId,
             global::Baseten.RequestBackpressurePolicyV1? policy = default,

@@ -1767,7 +1767,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/UpdateAutoscalingSettingsResponseV1"
+                                    "$ref": "#/components/schemas/RequestBackpressureSettingsV1"
                                 }
                             }
                         }

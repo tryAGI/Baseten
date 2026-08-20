@@ -41,7 +41,7 @@ internal static partial class EditModelsByModelIdDeploymentsByDeploymentIdReques
           Hidden = true,
       };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.UpdateAutoscalingSettingsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RequestBackpressureSettingsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -57,7 +57,7 @@ internal static partial class EditModelsByModelIdDeploymentsByDeploymentIdReques
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.UpdateAutoscalingSettingsResponseV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RequestBackpressureSettingsV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
