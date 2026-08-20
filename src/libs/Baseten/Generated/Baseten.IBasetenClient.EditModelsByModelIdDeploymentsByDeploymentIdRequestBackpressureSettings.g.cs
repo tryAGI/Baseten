@@ -21,7 +21,7 @@ namespace Baseten
         ///   "policy": "REJECT_ON_FULL"<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.RequestBackpressureSettingsV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
             string modelId,
             string deploymentId,
 
@@ -45,7 +45,7 @@ namespace Baseten
         ///   "policy": "REJECT_ON_FULL"<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RequestBackpressureSettingsV1>> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsResponseAsync(
             string modelId,
             string deploymentId,
 
@@ -64,7 +64,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.RequestBackpressureSettingsV1> EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsAsync(
             string modelId,
             string deploymentId,
             global::Baseten.RequestBackpressurePolicyV1? policy = default,
