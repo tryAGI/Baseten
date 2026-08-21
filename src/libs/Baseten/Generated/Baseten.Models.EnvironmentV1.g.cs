@@ -78,6 +78,13 @@ namespace Baseten
         public required global::Baseten.RequestBackpressureSettingsV1 RequestBackpressureSettings { get; set; }
 
         /// <summary>
+        /// Recurring autoscaling schedules and their evaluated state<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_schedules")]
+        public global::Baseten.EnvironmentAutoscalingSchedulesV1? AutoscalingSchedules { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -118,6 +125,10 @@ namespace Baseten
         /// Details of the in-progress promotion, if any<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="autoscalingSchedules">
+        /// Recurring autoscaling schedules and their evaluated state<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -131,7 +142,8 @@ namespace Baseten
             global::Baseten.RequestBackpressureSettingsV1 requestBackpressureSettings,
             global::Baseten.DeploymentV1? currentDeployment,
             global::Baseten.DeploymentV1? candidateDeployment,
-            global::Baseten.InProgressPromotionV1? inProgressPromotion)
+            global::Baseten.InProgressPromotionV1? inProgressPromotion,
+            global::Baseten.EnvironmentAutoscalingSchedulesV1? autoscalingSchedules)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.CreatedAt = createdAt;
@@ -143,6 +155,7 @@ namespace Baseten
             this.PromotionSettings = promotionSettings ?? throw new global::System.ArgumentNullException(nameof(promotionSettings));
             this.InstanceType = instanceType ?? throw new global::System.ArgumentNullException(nameof(instanceType));
             this.RequestBackpressureSettings = requestBackpressureSettings ?? throw new global::System.ArgumentNullException(nameof(requestBackpressureSettings));
+            this.AutoscalingSchedules = autoscalingSchedules;
         }
 
         /// <summary>

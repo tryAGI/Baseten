@@ -4,8 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// One autoscaling schedule: its recurrence window plus the autoscaling settings it applies while<br/>
-    /// active. Not itself a payload in the discriminated union.
+    /// One autoscaling schedule's timing and autoscaling settings. Not itself a union payload.
     /// </summary>
     public sealed partial class AuditLogEventAutoscalingScheduleSettingsV1
     {
@@ -91,8 +90,7 @@ namespace Baseten
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("weekdays")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> Weekdays { get; set; }
+        public global::System.Collections.Generic.IList<string>? Weekdays { get; set; }
 
         /// <summary>
         /// 
@@ -104,8 +102,7 @@ namespace Baseten
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_minute")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int StartMinute { get; set; }
+        public int? StartMinute { get; set; }
 
         /// <summary>
         /// 
@@ -117,8 +114,19 @@ namespace Baseten
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_minute")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int EndMinute { get; set; }
+        public int? EndMinute { get; set; }
+
+        /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_at")]
+        public string? StartAt { get; set; }
+
+        /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("end_at")]
+        public string? EndAt { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -135,17 +143,23 @@ namespace Baseten
         /// <param name="enabled"></param>
         /// <param name="cadence"></param>
         /// <param name="timezone"></param>
-        /// <param name="weekdays"></param>
-        /// <param name="startMinute"></param>
-        /// <param name="endMinute"></param>
         /// <param name="concurrencyTarget"></param>
         /// <param name="autoscalingWindow"></param>
         /// <param name="scaleDownDelay"></param>
         /// <param name="targetUtilizationPercentage"></param>
         /// <param name="targetInFlightTokens"></param>
         /// <param name="maxScaleDownRate"></param>
+        /// <param name="weekdays"></param>
         /// <param name="startHour"></param>
+        /// <param name="startMinute"></param>
         /// <param name="endHour"></param>
+        /// <param name="endMinute"></param>
+        /// <param name="startAt">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="endAt">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -156,17 +170,19 @@ namespace Baseten
             bool enabled,
             string cadence,
             string timezone,
-            global::System.Collections.Generic.IList<string> weekdays,
-            int startMinute,
-            int endMinute,
             int? concurrencyTarget,
             int? autoscalingWindow,
             int? scaleDownDelay,
             int? targetUtilizationPercentage,
             int? targetInFlightTokens,
             double? maxScaleDownRate,
+            global::System.Collections.Generic.IList<string>? weekdays,
             int? startHour,
-            int? endHour)
+            int? startMinute,
+            int? endHour,
+            int? endMinute,
+            string? startAt,
+            string? endAt)
         {
             this.MinReplica = minReplica;
             this.MaxReplica = maxReplica;
@@ -180,11 +196,13 @@ namespace Baseten
             this.Enabled = enabled;
             this.Cadence = cadence ?? throw new global::System.ArgumentNullException(nameof(cadence));
             this.Timezone = timezone ?? throw new global::System.ArgumentNullException(nameof(timezone));
-            this.Weekdays = weekdays ?? throw new global::System.ArgumentNullException(nameof(weekdays));
+            this.Weekdays = weekdays;
             this.StartHour = startHour;
             this.StartMinute = startMinute;
             this.EndHour = endHour;
             this.EndMinute = endMinute;
+            this.StartAt = startAt;
+            this.EndAt = endAt;
         }
 
         /// <summary>
