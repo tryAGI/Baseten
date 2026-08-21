@@ -83,7 +83,7 @@ namespace Baseten
         ///   }<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdEnvironmentsByEnvNameAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateEnvironmentResponseV1> EditModelsByModelIdEnvironmentsByEnvNameAsync(
             string modelId,
             string envName,
 
@@ -140,7 +140,7 @@ namespace Baseten
         ///   }<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdEnvironmentsByEnvNameAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateEnvironmentResponseV1>> EditModelsByModelIdEnvironmentsByEnvNameAsResponseAsync(
             string modelId,
             string envName,
 
@@ -433,9 +433,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.UpdateAutoscalingSettingsResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.UpdateEnvironmentResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateEnvironmentResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -465,9 +465,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.UpdateAutoscalingSettingsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.UpdateEnvironmentResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateEnvironmentResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -528,7 +528,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdEnvironmentsByEnvNameAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateEnvironmentResponseV1> EditModelsByModelIdEnvironmentsByEnvNameAsync(
             string modelId,
             string envName,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,

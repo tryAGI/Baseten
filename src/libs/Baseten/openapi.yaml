@@ -3005,7 +3005,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/UpdateAutoscalingSettingsResponseV1"
+                                    "$ref": "#/components/schemas/UpdateEnvironmentResponseV1"
                                 }
                             }
                         }
@@ -15539,6 +15539,33 @@
                     }
                 },
                 "title": "UpdateEnvironmentRequestV1",
+                "type": "object"
+            },
+            "UpdateEnvironmentResponseV1": {
+                "description": "The response to a request to update an environment's settings.",
+                "properties": {
+                    "environment": {
+                        "$ref": "#/components/schemas/EnvironmentV1",
+                        "description": "The environment after the update, matching the shape returned by GET."
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/UpdateAutoscalingSettingsStatusV1",
+                        "deprecated": true,
+                        "description": "Deprecated. Kept for legacy autoscaling-only update operation behavior."
+                    },
+                    "message": {
+                        "deprecated": true,
+                        "description": "Deprecated. Kept for legacy autoscaling-only update operation behavior.",
+                        "title": "Message",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "environment",
+                    "status",
+                    "message"
+                ],
+                "title": "UpdateEnvironmentResponseV1",
                 "type": "object"
             },
             "GetEnvironmentLogsRequestV1": {
