@@ -42,7 +42,7 @@ namespace Baseten
         ///   }<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdEnvironmentsByEnvNameAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.UpdateEnvironmentResponseV1> EditModelsByModelIdEnvironmentsByEnvNameAsync(
             string modelId,
             string envName,
 
@@ -87,7 +87,7 @@ namespace Baseten
         ///   }<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateAutoscalingSettingsResponseV1>> EditModelsByModelIdEnvironmentsByEnvNameAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateEnvironmentResponseV1>> EditModelsByModelIdEnvironmentsByEnvNameAsResponseAsync(
             string modelId,
             string envName,
 
@@ -115,7 +115,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.UpdateAutoscalingSettingsResponseV1> EditModelsByModelIdEnvironmentsByEnvNameAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.UpdateEnvironmentResponseV1> EditModelsByModelIdEnvironmentsByEnvNameAsync(
             string modelId,
             string envName,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
