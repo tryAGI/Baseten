@@ -9838,7 +9838,7 @@
             },
             "AuditLogEventAutoscalingScheduleSettingsV1": {
                 "additionalProperties": false,
-                "description": "One autoscaling schedule: its recurrence window plus the autoscaling settings it applies while\nactive. Not itself a payload in the discriminated union.",
+                "description": "One autoscaling schedule's timing and autoscaling settings. Not itself a union payload.",
                 "properties": {
                     "min_replica": {
                         "title": "Min Replica",
@@ -9931,11 +9931,18 @@
                         "type": "string"
                     },
                     "weekdays": {
-                        "items": {
-                            "type": "string"
-                        },
-                        "title": "Weekdays",
-                        "type": "array"
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Weekdays"
                     },
                     "start_hour": {
                         "anyOf": [
@@ -9949,8 +9956,15 @@
                         "title": "Start Hour"
                     },
                     "start_minute": {
-                        "title": "Start Minute",
-                        "type": "integer"
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Start Minute"
                     },
                     "end_hour": {
                         "anyOf": [
@@ -9964,8 +9978,39 @@
                         "title": "End Hour"
                     },
                     "end_minute": {
-                        "title": "End Minute",
-                        "type": "integer"
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "End Minute"
+                    },
+                    "start_at": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Start At"
+                    },
+                    "end_at": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "End At"
                     }
                 },
                 "required": [
@@ -14868,6 +14913,276 @@
                 "title": "SignSSHCertificateResponseV1",
                 "type": "object"
             },
+            "AutoscalingScheduleCadenceV1": {
+                "enum": [
+                    "DAILY",
+                    "HOURLY"
+                ],
+                "title": "AutoscalingScheduleCadenceV1",
+                "type": "string"
+            },
+            "AutoscalingScheduleSettingsV1": {
+                "properties": {
+                    "min_replica": {
+                        "description": "Minimum number of replicas",
+                        "title": "Min Replica",
+                        "type": "integer"
+                    },
+                    "max_replica": {
+                        "description": "Maximum number of replicas",
+                        "title": "Max Replica",
+                        "type": "integer"
+                    },
+                    "autoscaling_window": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Timeframe of traffic considered for autoscaling decisions. Null inherits the environment value.",
+                        "title": "Autoscaling Window"
+                    },
+                    "scale_down_delay": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Waiting period before scaling down any active replica. Null inherits the environment value.",
+                        "title": "Scale Down Delay"
+                    },
+                    "concurrency_target": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Number of requests per replica before scaling up. Null inherits the environment value.",
+                        "title": "Concurrency Target"
+                    },
+                    "target_utilization_percentage": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Target utilization percentage for scaling up/down. Null inherits the environment value.",
+                        "title": "Target Utilization Percentage"
+                    },
+                    "target_in_flight_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Target number of in-flight tokens for autoscaling decisions. Null inherits the environment value. Early access only.",
+                        "title": "Target In Flight Tokens"
+                    },
+                    "max_scale_down_rate": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Maximum percentage of replicas that can be removed per autoscaling window. Null inherits the environment value.",
+                        "title": "Max Scale Down Rate"
+                    }
+                },
+                "required": [
+                    "min_replica",
+                    "max_replica",
+                    "autoscaling_window",
+                    "scale_down_delay",
+                    "concurrency_target",
+                    "target_utilization_percentage",
+                    "target_in_flight_tokens",
+                    "max_scale_down_rate"
+                ],
+                "title": "AutoscalingScheduleSettingsV1",
+                "type": "object"
+            },
+            "AutoscalingScheduleStateV1": {
+                "properties": {
+                    "schedule_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Stable schedule identifier, or null when the baseline settings apply",
+                        "title": "Schedule Id"
+                    },
+                    "autoscaling_settings": {
+                        "$ref": "#/components/schemas/AutoscalingSettingsV1",
+                        "description": "Autoscaling settings on the current serving deployment"
+                    }
+                },
+                "required": [
+                    "schedule_id",
+                    "autoscaling_settings"
+                ],
+                "title": "AutoscalingScheduleStateV1",
+                "type": "object"
+            },
+            "AutoscalingScheduleV1": {
+                "properties": {
+                    "id": {
+                        "description": "Stable unique identifier of the schedule",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the schedule",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "description": "Whether the schedule is enabled",
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "cadence": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleCadenceV1",
+                        "description": "Cadence of the schedule. DAILY runs once per selected weekday; HOURLY repeats the minute window every hour on selected weekdays."
+                    },
+                    "weekdays": {
+                        "description": "Weekdays on which the schedule runs",
+                        "items": {
+                            "$ref": "#/components/schemas/AutoscalingScheduleWeekdayV1"
+                        },
+                        "title": "Weekdays",
+                        "type": "array"
+                    },
+                    "start_hour": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Start hour in the environment schedule timezone. Omitted for unrestricted HOURLY schedules.",
+                        "title": "Start Hour"
+                    },
+                    "start_minute": {
+                        "description": "Start minute of the schedule window",
+                        "title": "Start Minute",
+                        "type": "integer"
+                    },
+                    "end_hour": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "End hour in the environment schedule timezone. Omitted for unrestricted HOURLY schedules.",
+                        "title": "End Hour"
+                    },
+                    "end_minute": {
+                        "description": "End minute of the schedule window",
+                        "title": "End Minute",
+                        "type": "integer"
+                    },
+                    "autoscaling_settings": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsV1",
+                        "description": "Raw autoscaling overrides applied during the schedule window"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "enabled",
+                    "cadence",
+                    "weekdays",
+                    "start_minute",
+                    "end_minute",
+                    "autoscaling_settings"
+                ],
+                "title": "AutoscalingScheduleV1",
+                "type": "object"
+            },
+            "AutoscalingScheduleWeekdayV1": {
+                "enum": [
+                    "SUNDAY",
+                    "MONDAY",
+                    "TUESDAY",
+                    "WEDNESDAY",
+                    "THURSDAY",
+                    "FRIDAY",
+                    "SATURDAY"
+                ],
+                "title": "AutoscalingScheduleWeekdayV1",
+                "type": "string"
+            },
+            "EnvironmentAutoscalingSchedulesV1": {
+                "properties": {
+                    "timezone": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "IANA timezone shared by all schedules. Omitted when no schedules exist.",
+                        "title": "Timezone"
+                    },
+                    "schedules": {
+                        "description": "Autoscaling schedules ordered by creation time and stable identifier",
+                        "items": {
+                            "$ref": "#/components/schemas/AutoscalingScheduleV1"
+                        },
+                        "title": "Schedules",
+                        "type": "array"
+                    },
+                    "applied_state": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AutoscalingScheduleStateV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Autoscaling state on the current serving deployment, or null when no deployment exists"
+                    }
+                },
+                "required": [
+                    "schedules",
+                    "applied_state"
+                ],
+                "title": "EnvironmentAutoscalingSchedulesV1",
+                "type": "object"
+            },
             "EnvironmentV1": {
                 "description": "Environment for oracles.",
                 "properties": {
@@ -14937,6 +15252,18 @@
                     "request_backpressure_settings": {
                         "$ref": "#/components/schemas/RequestBackpressureSettingsV1",
                         "description": "Request backpressure settings for the environment."
+                    },
+                    "autoscaling_schedules": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/EnvironmentAutoscalingSchedulesV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Recurring autoscaling schedules and their evaluated state"
                     }
                 },
                 "required": [
@@ -19360,9 +19687,17 @@
                         "type": "string"
                     },
                     "deployment_id": {
-                        "description": "The ID of the Loops deployment the run executes on.",
-                        "title": "Deployment Id",
-                        "type": "string"
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The ID of the Loops deployment the run executes on, if it has one.",
+                        "title": "Deployment Id"
                     },
                     "name": {
                         "description": "The run's display name.",
@@ -19409,7 +19744,6 @@
                 "required": [
                     "id",
                     "session_id",
-                    "deployment_id",
                     "name",
                     "base_model",
                     "base_url",

@@ -23,11 +23,11 @@ namespace Baseten
         public required string SessionId { get; set; }
 
         /// <summary>
-        /// The ID of the Loops deployment the run executes on.
+        /// The ID of the Loops deployment the run executes on, if it has one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deployment_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string DeploymentId { get; set; }
+        public string? DeploymentId { get; set; }
 
         /// <summary>
         /// The run's display name.
@@ -93,9 +93,6 @@ namespace Baseten
         /// <param name="sessionId">
         /// The session ID this run belongs to.
         /// </param>
-        /// <param name="deploymentId">
-        /// The ID of the Loops deployment the run executes on.
-        /// </param>
         /// <param name="name">
         /// The run's display name.
         /// </param>
@@ -114,6 +111,10 @@ namespace Baseten
         /// <param name="user">
         /// The user who owns the run.
         /// </param>
+        /// <param name="deploymentId">
+        /// The ID of the Loops deployment the run executes on, if it has one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="sampler">
         /// The sampler bound to this run, or null for a trainer-only run that has not yet created a sampler.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -124,18 +125,18 @@ namespace Baseten
         public LoopsRunV1(
             string id,
             string sessionId,
-            string deploymentId,
             string name,
             string baseModel,
             string baseUrl,
             global::System.DateTime createdAt,
             global::Baseten.LoopsRunStatusV1 status,
             global::Baseten.UserV1 user,
+            string? deploymentId,
             global::Baseten.LoopsSamplerV1? sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
-            this.DeploymentId = deploymentId ?? throw new global::System.ArgumentNullException(nameof(deploymentId));
+            this.DeploymentId = deploymentId;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
