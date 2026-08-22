@@ -78,6 +78,37 @@ namespace Baseten
         ///     "rolling_deploy": null,<br/>
         ///     "rolling_deploy_config": null<br/>
         ///   },<br/>
+        ///   "autoscaling_schedule_settings": {<br/>
+        ///     "schedules": [<br/>
+        ///       {<br/>
+        ///         "autoscaling_settings": {<br/>
+        ///           "autoscaling_window": null,<br/>
+        ///           "concurrency_target": null,<br/>
+        ///           "max_replica": 8,<br/>
+        ///           "max_scale_down_rate": null,<br/>
+        ///           "min_replica": 2,<br/>
+        ///           "scale_down_delay": null,<br/>
+        ///           "target_in_flight_tokens": null,<br/>
+        ///           "target_utilization_percentage": null<br/>
+        ///         },<br/>
+        ///         "cadence": "DAILY",<br/>
+        ///         "enabled": true,<br/>
+        ///         "end_hour": 10,<br/>
+        ///         "end_minute": 0,<br/>
+        ///         "name": "weekday-peak",<br/>
+        ///         "start_hour": 8,<br/>
+        ///         "start_minute": 0,<br/>
+        ///         "weekdays": [<br/>
+        ///           "MONDAY",<br/>
+        ///           "TUESDAY",<br/>
+        ///           "WEDNESDAY",<br/>
+        ///           "THURSDAY",<br/>
+        ///           "FRIDAY"<br/>
+        ///         ]<br/>
+        ///       }<br/>
+        ///     ],<br/>
+        ///     "timezone": "America/Los_Angeles"<br/>
+        ///   },<br/>
         ///   "request_backpressure_settings": {<br/>
         ///     "policy": "REJECT_ON_FULL"<br/>
         ///   }<br/>
@@ -134,6 +165,37 @@ namespace Baseten
         ///     "redeploy_on_promotion": true,<br/>
         ///     "rolling_deploy": null,<br/>
         ///     "rolling_deploy_config": null<br/>
+        ///   },<br/>
+        ///   "autoscaling_schedule_settings": {<br/>
+        ///     "schedules": [<br/>
+        ///       {<br/>
+        ///         "autoscaling_settings": {<br/>
+        ///           "autoscaling_window": null,<br/>
+        ///           "concurrency_target": null,<br/>
+        ///           "max_replica": 8,<br/>
+        ///           "max_scale_down_rate": null,<br/>
+        ///           "min_replica": 2,<br/>
+        ///           "scale_down_delay": null,<br/>
+        ///           "target_in_flight_tokens": null,<br/>
+        ///           "target_utilization_percentage": null<br/>
+        ///         },<br/>
+        ///         "cadence": "DAILY",<br/>
+        ///         "enabled": true,<br/>
+        ///         "end_hour": 10,<br/>
+        ///         "end_minute": 0,<br/>
+        ///         "name": "weekday-peak",<br/>
+        ///         "start_hour": 8,<br/>
+        ///         "start_minute": 0,<br/>
+        ///         "weekdays": [<br/>
+        ///           "MONDAY",<br/>
+        ///           "TUESDAY",<br/>
+        ///           "WEDNESDAY",<br/>
+        ///           "THURSDAY",<br/>
+        ///           "FRIDAY"<br/>
+        ///         ]<br/>
+        ///       }<br/>
+        ///     ],<br/>
+        ///     "timezone": "America/Los_Angeles"<br/>
         ///   },<br/>
         ///   "request_backpressure_settings": {<br/>
         ///     "policy": "REJECT_ON_FULL"<br/>
@@ -521,6 +583,10 @@ namespace Baseten
         /// Promotion settings for the environment<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="autoscalingScheduleSettings">
+        /// Partial autoscaling schedule collection update. Omitted nested fields and omitted existing schedules are unchanged.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestBackpressureSettings">
         /// Request backpressure settings for the environment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -533,6 +599,7 @@ namespace Baseten
             string envName,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
             global::Baseten.UpdatePromotionSettingsV1? promotionSettings = default,
+            global::Baseten.UpdateAutoscalingScheduleSettingsV1? autoscalingScheduleSettings = default,
             global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -541,6 +608,7 @@ namespace Baseten
             {
                 AutoscalingSettings = autoscalingSettings,
                 PromotionSettings = promotionSettings,
+                AutoscalingScheduleSettings = autoscalingScheduleSettings,
                 RequestBackpressureSettings = requestBackpressureSettings,
             };
 

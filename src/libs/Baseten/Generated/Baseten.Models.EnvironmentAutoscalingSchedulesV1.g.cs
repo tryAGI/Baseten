@@ -20,7 +20,7 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schedules")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleV1> Schedules { get; set; }
+        public required global::System.Collections.Generic.IList<global::Baseten.AnyOf<global::Baseten.AutoscalingScheduleV1, global::Baseten.OneTimeAutoscalingScheduleV1>> Schedules { get; set; }
 
         /// <summary>
         /// Autoscaling state on the current serving deployment, or null when no deployment exists
@@ -51,7 +51,7 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvironmentAutoscalingSchedulesV1(
-            global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleV1> schedules,
+            global::System.Collections.Generic.IList<global::Baseten.AnyOf<global::Baseten.AutoscalingScheduleV1, global::Baseten.OneTimeAutoscalingScheduleV1>> schedules,
             string? timezone,
             global::Baseten.AutoscalingScheduleStateV1? appliedState)
         {

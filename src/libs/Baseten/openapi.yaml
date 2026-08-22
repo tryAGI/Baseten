@@ -2883,11 +2883,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/environments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"staging\",\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": true,\n    \"rolling_deploy_config\": null\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/environments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"staging\",\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": true,\n    \"rolling_deploy_config\": null\n  },\n  \"request_backpressure_settings\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'staging', 'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': True, 'rolling_deploy_config': None}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'staging', 'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': True, 'rolling_deploy_config': None}, 'request_backpressure_settings': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates an environment for the specified model and returns the environment.",
@@ -2981,11 +2981,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": null,\n    \"rolling_deploy_config\": null\n  },\n  \"request_backpressure_settings\": {\n    \"policy\": \"REJECT_ON_FULL\"\n  }\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": null,\n    \"rolling_deploy_config\": null\n  },\n  \"autoscaling_schedule_settings\": {\n    \"schedules\": [\n      {\n        \"autoscaling_settings\": {\n          \"autoscaling_window\": null,\n          \"concurrency_target\": null,\n          \"max_replica\": 8,\n          \"max_scale_down_rate\": null,\n          \"min_replica\": 2,\n          \"scale_down_delay\": null,\n          \"target_in_flight_tokens\": null,\n          \"target_utilization_percentage\": null\n        },\n        \"cadence\": \"DAILY\",\n        \"enabled\": true,\n        \"end_hour\": 10,\n        \"end_minute\": 0,\n        \"name\": \"weekday-peak\",\n        \"start_hour\": 8,\n        \"start_minute\": 0,\n        \"weekdays\": [\n          \"MONDAY\",\n          \"TUESDAY\",\n          \"WEDNESDAY\",\n          \"THURSDAY\",\n          \"FRIDAY\"\n        ]\n      }\n    ],\n    \"timezone\": \"America/Los_Angeles\"\n  },\n  \"request_backpressure_settings\": {\n    \"policy\": \"REJECT_ON_FULL\"\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}, 'request_backpressure_settings': {'policy': 'REJECT_ON_FULL'}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None, 'rolling_deploy_config': None}, 'autoscaling_schedule_settings': {'schedules': [{'autoscaling_settings': {'autoscaling_window': None, 'concurrency_target': None, 'max_replica': 8, 'max_scale_down_rate': None, 'min_replica': 2, 'scale_down_delay': None, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'cadence': 'DAILY', 'enabled': True, 'end_hour': 10, 'end_minute': 0, 'name': 'weekday-peak', 'start_hour': 8, 'start_minute': 0, 'weekdays': ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY']}], 'timezone': 'America/Los_Angeles'}, 'request_backpressure_settings': {'policy': 'REJECT_ON_FULL'}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.",
@@ -13775,7 +13775,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Backpressure policy. Null clears an existing policy.",
+                        "description": "Backpressure policy to apply. Null indicates no policy (on update, clears an existing one).",
                         "examples": [
                             "REJECT_ON_FULL"
                         ]
@@ -15159,7 +15159,14 @@
                     "schedules": {
                         "description": "Autoscaling schedules ordered by creation time and stable identifier",
                         "items": {
-                            "$ref": "#/components/schemas/AutoscalingScheduleV1"
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/AutoscalingScheduleV1"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/OneTimeAutoscalingScheduleV1"
+                                }
+                            ]
                         },
                         "title": "Schedules",
                         "type": "array"
@@ -15336,6 +15343,58 @@
                     "percent_traffic_to_new_version"
                 ],
                 "title": "InProgressPromotionV1",
+                "type": "object"
+            },
+            "OneTimeAutoscalingScheduleV1": {
+                "properties": {
+                    "id": {
+                        "description": "Stable unique identifier of the schedule",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the schedule",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "description": "Whether the schedule is enabled",
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "cadence": {
+                        "const": "ONE_TIME",
+                        "description": "One-time schedule cadence",
+                        "title": "Cadence",
+                        "type": "string"
+                    },
+                    "start_at": {
+                        "description": "Inclusive start of the schedule window",
+                        "format": "date-time",
+                        "title": "Start At",
+                        "type": "string"
+                    },
+                    "end_at": {
+                        "description": "Exclusive end of the schedule window",
+                        "format": "date-time",
+                        "title": "End At",
+                        "type": "string"
+                    },
+                    "autoscaling_settings": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsV1",
+                        "description": "Raw autoscaling overrides applied during the schedule window"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "enabled",
+                    "cadence",
+                    "start_at",
+                    "end_at",
+                    "autoscaling_settings"
+                ],
+                "title": "OneTimeAutoscalingScheduleV1",
                 "type": "object"
             },
             "PromotionCleanupStrategyV1": {
@@ -15762,6 +15821,18 @@
                                 "rolling_deploy_config": null
                             }
                         ]
+                    },
+                    "request_backpressure_settings": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateRequestBackpressureSettingsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Request backpressure settings for the environment."
                     }
                 },
                 "required": [
@@ -15795,6 +15866,237 @@
                     "deleted"
                 ],
                 "title": "EnvironmentTombstoneV1",
+                "type": "object"
+            },
+            "AutoscalingScheduleSettingsRequestV1": {
+                "additionalProperties": false,
+                "description": "A complete set of raw autoscaling overrides for a schedule.",
+                "properties": {
+                    "min_replica": {
+                        "description": "Minimum number of replicas",
+                        "title": "Min Replica",
+                        "type": "integer"
+                    },
+                    "max_replica": {
+                        "description": "Maximum number of replicas",
+                        "title": "Max Replica",
+                        "type": "integer"
+                    },
+                    "autoscaling_window": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Timeframe of traffic considered for autoscaling decisions. Null stores no schedule override and follows the current environment value.",
+                        "title": "Autoscaling Window"
+                    },
+                    "scale_down_delay": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Waiting period before scaling down any active replica. Null stores no schedule override and follows the current environment value.",
+                        "title": "Scale Down Delay"
+                    },
+                    "concurrency_target": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Number of requests per replica before scaling up. Null stores no schedule override and follows the current environment value.",
+                        "title": "Concurrency Target"
+                    },
+                    "target_utilization_percentage": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Target utilization percentage for scaling up/down. Null stores no schedule override and follows the current environment value.",
+                        "title": "Target Utilization Percentage"
+                    },
+                    "target_in_flight_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Target number of in-flight tokens for autoscaling decisions. Null stores no schedule override and follows the current environment value. Early access only.",
+                        "title": "Target In Flight Tokens"
+                    },
+                    "max_scale_down_rate": {
+                        "anyOf": [
+                            {
+                                "maximum": 50,
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Maximum percentage of replicas that can be removed per autoscaling window. Null stores no schedule override and follows the current environment value.",
+                        "title": "Max Scale Down Rate"
+                    }
+                },
+                "required": [
+                    "min_replica",
+                    "max_replica",
+                    "autoscaling_window",
+                    "scale_down_delay",
+                    "concurrency_target",
+                    "target_utilization_percentage",
+                    "target_in_flight_tokens",
+                    "max_scale_down_rate"
+                ],
+                "title": "AutoscalingScheduleSettingsRequestV1",
+                "type": "object"
+            },
+            "AutoscalingScheduleUpsertV1": {
+                "additionalProperties": false,
+                "description": "A complete autoscaling schedule submitted for create or replacement.",
+                "properties": {
+                    "id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Stable schedule identifier. Omit this field to create a schedule.",
+                        "title": "Id"
+                    },
+                    "name": {
+                        "description": "Name of the schedule",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "description": "Whether the schedule is enabled",
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "cadence": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleCadenceV1",
+                        "description": "Cadence of the schedule"
+                    },
+                    "weekdays": {
+                        "description": "Weekdays on which the schedule runs",
+                        "items": {
+                            "$ref": "#/components/schemas/AutoscalingScheduleWeekdayV1"
+                        },
+                        "title": "Weekdays",
+                        "type": "array"
+                    },
+                    "start_hour": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Start hour in the environment schedule timezone. Omit for unrestricted HOURLY schedules.",
+                        "title": "Start Hour"
+                    },
+                    "start_minute": {
+                        "description": "Start minute of the schedule window",
+                        "title": "Start Minute",
+                        "type": "integer"
+                    },
+                    "end_hour": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "End hour in the environment schedule timezone. Omit for unrestricted HOURLY schedules.",
+                        "title": "End Hour"
+                    },
+                    "end_minute": {
+                        "description": "End minute of the schedule window",
+                        "title": "End Minute",
+                        "type": "integer"
+                    },
+                    "autoscaling_settings": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsRequestV1",
+                        "description": "Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value."
+                    }
+                },
+                "required": [
+                    "name",
+                    "enabled",
+                    "cadence",
+                    "weekdays",
+                    "start_minute",
+                    "end_minute",
+                    "autoscaling_settings"
+                ],
+                "title": "AutoscalingScheduleUpsertV1",
+                "type": "object"
+            },
+            "UpdateAutoscalingScheduleSettingsV1": {
+                "additionalProperties": false,
+                "description": "Partial mutation of an environment's autoscaling schedule collection.",
+                "properties": {
+                    "timezone": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "IANA timezone shared by the resulting collection. Omission preserves the current timezone; null is allowed only when deleting every schedule.",
+                        "title": "Timezone"
+                    },
+                    "schedules": {
+                        "description": "Complete schedules to create or replace. Existing schedules omitted from this list are unchanged.",
+                        "items": {
+                            "$ref": "#/components/schemas/AutoscalingScheduleUpsertV1"
+                        },
+                        "title": "Schedules",
+                        "type": "array"
+                    },
+                    "delete_schedules": {
+                        "description": "Stable identifiers of schedules to delete.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Delete Schedules",
+                        "type": "array"
+                    }
+                },
+                "title": "UpdateAutoscalingScheduleSettingsV1",
                 "type": "object"
             },
             "UpdateEnvironmentRequestV1": {
@@ -15844,6 +16146,56 @@
                                 "redeploy_on_promotion": true,
                                 "rolling_deploy": null,
                                 "rolling_deploy_config": null
+                            }
+                        ]
+                    },
+                    "autoscaling_schedule_settings": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateAutoscalingScheduleSettingsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Partial autoscaling schedule collection update. Omitted nested fields and omitted existing schedules are unchanged.",
+                        "examples": [
+                            {
+                                "schedules": [
+                                    {
+                                        "autoscaling_settings": {
+                                            "autoscaling_window": null,
+                                            "concurrency_target": null,
+                                            "max_replica": 8,
+                                            "max_scale_down_rate": null,
+                                            "min_replica": 2,
+                                            "scale_down_delay": null,
+                                            "target_in_flight_tokens": null,
+                                            "target_utilization_percentage": null
+                                        },
+                                        "cadence": "DAILY",
+                                        "enabled": true,
+                                        "end_hour": 10,
+                                        "end_minute": 0,
+                                        "name": "weekday-peak",
+                                        "start_hour": 8,
+                                        "start_minute": 0,
+                                        "weekdays": [
+                                            "MONDAY",
+                                            "TUESDAY",
+                                            "WEDNESDAY",
+                                            "THURSDAY",
+                                            "FRIDAY"
+                                        ]
+                                    }
+                                ],
+                                "timezone": "America/Los_Angeles"
+                            },
+                            {
+                                "delete_schedules": [
+                                    "schedule-id"
+                                ]
                             }
                         ]
                     },

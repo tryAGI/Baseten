@@ -210,7 +210,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleWeekdayV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleWeekdayV1), TypeInfoPropertyName = "AutoscalingScheduleWeekdayV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EnvironmentAutoscalingSchedulesV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AnyOf<global::Baseten.AutoscalingScheduleV1, global::Baseten.OneTimeAutoscalingScheduleV1>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<global::Baseten.AutoscalingScheduleV1, global::Baseten.OneTimeAutoscalingScheduleV1>), TypeInfoPropertyName = "AnyOfAutoscalingScheduleV1OneTimeAutoscalingScheduleV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.OneTimeAutoscalingScheduleV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EnvironmentV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.InProgressPromotionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PromotionSettingsV1))]
@@ -224,6 +226,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRollingDeployConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateEnvironmentRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EnvironmentTombstoneV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleSettingsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleUpsertV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingScheduleSettingsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleUpsertV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateEnvironmentRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateEnvironmentResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetEnvironmentLogsRequestV1))]
@@ -508,12 +514,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EffectiveUsageLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EffectiveUsageLimitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitUnitV1), TypeInfoPropertyName = "UsageLimitUnitV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupHierarchyV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitEnforcementV1), TypeInfoPropertyName = "LimitEnforcementV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupMetadataV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelConfigV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -526,6 +526,12 @@ namespace Baseten
         Converters = new global::System.Type[]
         {
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupHierarchyV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitEnforcementV1), TypeInfoPropertyName = "LimitEnforcementV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupMetadataV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GroupV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EffectiveModelConfigV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.UsageLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitV1))]
@@ -572,6 +578,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricModeV1?), TypeInfoPropertyName = "NullableModelMetricModeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleCadenceV1?), TypeInfoPropertyName = "NullableAutoscalingScheduleCadenceV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleWeekdayV1?), TypeInfoPropertyName = "NullableAutoscalingScheduleWeekdayV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<global::Baseten.AutoscalingScheduleV1, global::Baseten.OneTimeAutoscalingScheduleV1>?), TypeInfoPropertyName = "NullableAnyOfAutoscalingScheduleV1OneTimeAutoscalingScheduleV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.InProgressPromotionStatusV1?), TypeInfoPropertyName = "NullableInProgressPromotionStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PromotionCleanupStrategyV1?), TypeInfoPropertyName = "NullablePromotionCleanupStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RollingDeployStrategyV1?), TypeInfoPropertyName = "NullableRollingDeployStrategyV12")]
@@ -625,8 +632,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelMetricDescriptorV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelMetricValueSetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AutoscalingScheduleWeekdayV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AutoscalingScheduleV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AnyOf<global::Baseten.AutoscalingScheduleV1, global::Baseten.OneTimeAutoscalingScheduleV1>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EnvironmentV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AutoscalingScheduleUpsertV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainletV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainDeploymentV1>))]
@@ -730,6 +738,7 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.SourceJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.PatchOpsItemJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.CheckpointsItemJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<global::Baseten.AutoscalingScheduleV1, global::Baseten.OneTimeAutoscalingScheduleV1>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>());
