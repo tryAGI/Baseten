@@ -19,6 +19,12 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<global::Baseten.UpdateAutoscalingScheduleSettingsV1?> AutoscalingScheduleSettings { get; } = new(
+        name: @"--autoscaling-schedule-settings")
+    {
+        Description = @"Partial autoscaling schedule collection update. Omitted nested fields and omitted existing schedules are unchanged.",
+    };
+
     private static Option<global::Baseten.UpdateRequestBackpressureSettingsV1?> RequestBackpressureSettings { get; } = new(
         name: @"--request-backpressure-settings")
     {
@@ -70,6 +76,7 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
 Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);
+                        command.Options.Add(AutoscalingScheduleSettings);
                         command.Options.Add(RequestBackpressureSettings);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
                         command.Options.Add(AutoscalingSettingsOptions.AutoscalingWindow);
@@ -108,6 +115,7 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                             cancellationToken).ConfigureAwait(false);
                         var modelId = parseResult.GetRequiredValue(ModelId);
                         var envName = parseResult.GetRequiredValue(EnvName);
+                        var autoscalingScheduleSettings = CliRuntime.WasSpecified(parseResult, AutoscalingScheduleSettings) ? parseResult.GetValue(AutoscalingScheduleSettings) : (__requestBase is { } __AutoscalingScheduleSettingsBaseValue ? __AutoscalingScheduleSettingsBaseValue.AutoscalingScheduleSettings : default);
                         var requestBackpressureSettings = CliRuntime.WasSpecified(parseResult, RequestBackpressureSettings) ? parseResult.GetValue(RequestBackpressureSettings) : (__requestBase is { } __RequestBackpressureSettingsBaseValue ? __RequestBackpressureSettingsBaseValue.RequestBackpressureSettings : default);
 
                         var __AutoscalingSettingsBase = __requestBase is { } __AutoscalingSettingsBaseValue ? __AutoscalingSettingsBaseValue.AutoscalingSettings : default;                        var autoscalingSettingsMinReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MinReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MinReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsminReplicaBaseValue ? __AutoscalingSettingsminReplicaBaseValue.MinReplica : default);
@@ -157,6 +165,7 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                                 var response = await client.EditModelsByModelIdEnvironmentsByEnvNameAsync(
                                     modelId: modelId,
                                     envName: envName,
+                                    autoscalingScheduleSettings: autoscalingScheduleSettings,
                                     requestBackpressureSettings: requestBackpressureSettings,
                                     autoscalingSettings: autoscalingSettings,
                                     promotionSettings: promotionSettings,

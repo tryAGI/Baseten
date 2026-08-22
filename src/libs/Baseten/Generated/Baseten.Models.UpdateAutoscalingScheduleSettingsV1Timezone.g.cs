@@ -4,10 +4,10 @@
 namespace Baseten
 {
     /// <summary>
-    /// Backpressure policy to apply. Null indicates no policy (on update, clears an existing one).<br/>
+    /// IANA timezone shared by the resulting collection. Omission preserves the current timezone; null is allowed only when deleting every schedule.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
-    public sealed partial class UpdateRequestBackpressureSettingsV1Policy
+    public sealed partial class UpdateAutoscalingScheduleSettingsV1Timezone
     {
 
         /// <summary>

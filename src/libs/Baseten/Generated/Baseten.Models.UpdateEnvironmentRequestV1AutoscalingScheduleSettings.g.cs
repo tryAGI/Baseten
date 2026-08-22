@@ -4,10 +4,10 @@
 namespace Baseten
 {
     /// <summary>
-    /// Backpressure policy to apply. Null indicates no policy (on update, clears an existing one).<br/>
+    /// Partial autoscaling schedule collection update. Omitted nested fields and omitted existing schedules are unchanged.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
-    public sealed partial class UpdateRequestBackpressureSettingsV1Policy
+    public sealed partial class UpdateEnvironmentRequestV1AutoscalingScheduleSettings
     {
 
         /// <summary>

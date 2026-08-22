@@ -22,7 +22,7 @@ internal static partial class EditModelsByModelIdDeploymentsByDeploymentIdReques
     private static Option<global::Baseten.RequestBackpressurePolicyV1?> Policy { get; } = new(
         name: @"--policy")
     {
-        Description = @"Backpressure policy. Null clears an existing policy.",
+        Description = @"Backpressure policy to apply. Null indicates no policy (on update, clears an existing one).",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

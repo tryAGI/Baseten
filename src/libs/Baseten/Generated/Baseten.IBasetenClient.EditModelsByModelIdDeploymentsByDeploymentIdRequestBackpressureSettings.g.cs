@@ -58,7 +58,7 @@ namespace Baseten
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
         /// <param name="policy">
-        /// Backpressure policy. Null clears an existing policy.<br/>
+        /// Backpressure policy to apply. Null indicates no policy (on update, clears an existing one).<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

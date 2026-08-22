@@ -19,6 +19,12 @@ internal static partial class CreateModelsByModelIdEnvironmentsCommandApiCommand
         Description = @"Name of the environment",
         Required = true,
     };
+
+    private static Option<global::Baseten.UpdateRequestBackpressureSettingsV1?> RequestBackpressureSettings { get; } = new(
+        name: @"--request-backpressure-settings")
+    {
+        Description = @"Request backpressure settings for the environment.",
+    };
     private static readonly UpdateAutoscalingSettingsV1OptionSet AutoscalingSettingsOptions = UpdateAutoscalingSettingsV1OptionSet.Create(@"autoscaling-settings");
 
     private static readonly UpdatePromotionSettingsV1OptionSet PromotionSettingsOptions = UpdatePromotionSettingsV1OptionSet.Create(@"promotion-settings");
@@ -64,7 +70,8 @@ internal static partial class CreateModelsByModelIdEnvironmentsCommandApiCommand
         var command = new Command(@"create-models-by-model-id-environments", @"Creates an environment
 Creates an environment for the specified model and returns the environment.");
                         command.Arguments.Add(ModelId);
-                        command.Options.Add(NameOption);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
+                        command.Options.Add(NameOption);
+                        command.Options.Add(RequestBackpressureSettings);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
                         command.Options.Add(AutoscalingSettingsOptions.AutoscalingWindow);
                         command.Options.Add(AutoscalingSettingsOptions.ScaleDownDelay);
@@ -102,6 +109,7 @@ Creates an environment for the specified model and returns the environment.");
                             cancellationToken).ConfigureAwait(false);
                         var modelId = parseResult.GetRequiredValue(ModelId);
                         var name = parseResult.GetRequiredValue(NameOption);
+                        var requestBackpressureSettings = CliRuntime.WasSpecified(parseResult, RequestBackpressureSettings) ? parseResult.GetValue(RequestBackpressureSettings) : (__requestBase is { } __RequestBackpressureSettingsBaseValue ? __RequestBackpressureSettingsBaseValue.RequestBackpressureSettings : default);
 
                         var __AutoscalingSettingsBase = __requestBase is { } __AutoscalingSettingsBaseValue ? __AutoscalingSettingsBaseValue.AutoscalingSettings : default;                        var autoscalingSettingsMinReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MinReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MinReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsminReplicaBaseValue ? __AutoscalingSettingsminReplicaBaseValue.MinReplica : default);
                         var autoscalingSettingsMaxReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MaxReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MaxReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsmaxReplicaBaseValue ? __AutoscalingSettingsmaxReplicaBaseValue.MaxReplica : default);
@@ -150,6 +158,7 @@ Creates an environment for the specified model and returns the environment.");
                                 var response = await client.CreateModelsByModelIdEnvironmentsAsync(
                                     modelId: modelId,
                                     name: name,
+                                    requestBackpressureSettings: requestBackpressureSettings,
                                     autoscalingSettings: autoscalingSettings,
                                     promotionSettings: promotionSettings,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

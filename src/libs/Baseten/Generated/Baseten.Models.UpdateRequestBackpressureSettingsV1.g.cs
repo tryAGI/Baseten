@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class UpdateRequestBackpressureSettingsV1
     {
         /// <summary>
-        /// Backpressure policy. Null clears an existing policy.<br/>
+        /// Backpressure policy to apply. Null indicates no policy (on update, clears an existing one).<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("policy")]
@@ -25,7 +25,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="UpdateRequestBackpressureSettingsV1" /> class.
         /// </summary>
         /// <param name="policy">
-        /// Backpressure policy. Null clears an existing policy.<br/>
+        /// Backpressure policy to apply. Null indicates no policy (on update, clears an existing one).<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
