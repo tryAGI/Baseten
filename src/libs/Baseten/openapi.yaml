@@ -427,7 +427,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns a list of all teams the authenticated user has access to.",
@@ -726,7 +726,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/audit_logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/audit_logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'direction': 'DESC', 'search': None, 'start_epoch_millis': None, 'end_epoch_millis': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns audit-log entries across the workspace, newest first, covering models, chains, and workspace-level actions. Use the filters to narrow by event type, actor, resource, environment, source, or time window, and the cursor to page. In workspaces with multiple teams, only organization admins can read the workspace audit log.",
@@ -929,7 +929,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "parameters": [
@@ -1012,7 +1012,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "parameters": [
@@ -1157,7 +1157,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/audit_logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/audit_logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'direction': 'DESC', 'search': None, 'start_epoch_millis': None, 'end_epoch_millis': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns audit-log entries for a single model, newest first. Use the filters to narrow by event type, actor, deployment, environment, source, or time window, and the cursor to page.",
@@ -1365,7 +1365,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "parameters": [
@@ -2224,7 +2224,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/config\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/config\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'output_format': 'raw'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns the deployment's config. `output_format` query param picks the shape: 'raw' (config.yaml text), 'parsed' (dict with defaults), or 'both' (default).",
@@ -2272,7 +2272,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None, 'min_level': None, 'replica': None, 'request_id': None, 'component': None, 'search_pattern': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Gets all the logs for a model deployment in the given time range, which defaults to the last 30 minutes. A failed or older deployment may only have logs from before that window; pass `start_epoch_millis` to widen it back to the build/deploy time.",
@@ -2673,7 +2673,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'mode': 'CURRENT', 'start_epoch_millis': None, 'end_epoch_millis': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Gets the metrics for a model deployment in the given time range.",
@@ -3023,7 +3023,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None, 'min_level': None, 'replica': None, 'request_id': None, 'component': None, 'search_pattern': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Gets logs across all deployments that were active on the environment in the given time range, which defaults to the last 30 minutes. Pass `start_epoch_millis` to widen the window back to an earlier deployment's build/deploy time.",
@@ -3255,7 +3255,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'mode': 'CURRENT', 'start_epoch_millis': None, 'end_epoch_millis': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Gets metrics aggregated across every deployment that was active on the environment in the given time range. In series mode the window is split at each promotion so that every point reflects the deployment(s) serving the environment at that time.",
@@ -3735,7 +3735,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/audit_logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/audit_logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'direction': 'DESC', 'search': None, 'start_epoch_millis': None, 'end_epoch_millis': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns audit-log entries for a single chain, newest first. Use the filters to narrow by event type, actor, chain deployment, environment, source, or time window, and the cursor to page.",
@@ -4071,7 +4071,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/chainlets/{chainlet_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/chains/{chain_id}/deployments/{chain_deployment_id}/chainlets/{chainlet_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None, 'min_level': None, 'replica': None, 'request_id': None, 'component': None, 'search_pattern': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Resolves the chainlet (by ID, scoped to the given chain deployment) to its underlying model deployment and returns its logs in the given time range.",
@@ -4931,7 +4931,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None, 'min_level': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Gets the logs for a training job with the provided filters.",
@@ -5097,7 +5097,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'end_epoch_millis': None, 'start_epoch_millis': None, 'step_seconds': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Gets the metrics for a training job.",
@@ -5309,7 +5309,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoint_files\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoint_files\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Gets presigned URLs for all checkpoint files for a training job.",
@@ -5721,7 +5721,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'run_id': 'k4q95w5', 'base_model': 'Qwen/Qwen3-8B', 'scope': 'org'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model. Defaults to the caller's own runs; pass ?scope=org to list every run in the caller's organization.",
@@ -5954,7 +5954,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'scope': 'org'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.",
@@ -6074,7 +6074,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'run_id': 'k4q95w5', 'base_model': 'Qwen/Qwen3-8B', 'checkpoint_path': 'bt://loops:k4q95w5/sampler_weights/step-100'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists Loops checkpoints filtered by run id, base model, or bt:// URI. Provide exactly one filter.",
@@ -6205,7 +6205,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/files\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/files\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.",
@@ -6264,7 +6264,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'scope': 'org'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists Loops deployments. Defaults to the caller's own; pass ?scope=org to list every deployment in the caller's organization. Returns every deployment regardless of status; clients filter terminal states.",
@@ -6371,6 +6371,72 @@
                 }
             ]
         },
+        "/v1/loops/deployments/{deployment_id}/debug_archive/files": {
+            "get": {
+                "summary": "Gets Loops debug archive files",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/deployments/{deployment_id}/debug_archive/files \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/debug_archive/files\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'page_token': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Gets presigned download URLs for a Loops deployment's debug archive.",
+                "parameters": [
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "required": false,
+                        "description": "Max files per page (default and maximum 1000).",
+                        "schema": {
+                            "default": 1000,
+                            "maximum": 1000,
+                            "minimum": 1,
+                            "title": "Page Size",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page_token",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque token for the next page.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Page Token"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoopsDebugArchiveFilesResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ]
+        },
         "/v1/loops/deployments/{deployment_id}/metrics": {
             "post": {
                 "summary": "Gets metrics for a Loops trainer deployment",
@@ -6424,7 +6490,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None, 'min_level': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Fetches logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.",
@@ -6582,7 +6648,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'run_id': 'k4q95w5', 'base_model': 'Qwen/Qwen3-8B', 'scope': 'org'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id and/or base model.",
@@ -6759,7 +6825,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'scope': 'org'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.",
@@ -7143,7 +7209,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.",
@@ -7215,7 +7281,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/usage\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/usage\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_time': None, 'end_time': None, 'bucket_width': '1m', 'limit': None, 'cursor': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.",
@@ -7272,7 +7338,7 @@
                         "name": "group_by",
                         "in": "query",
                         "required": false,
-                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.",
+                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, user, model. Defaults to model.",
                         "schema": {
                             "items": {
                                 "$ref": "#/components/schemas/UsageDimensionV1"
@@ -7291,6 +7357,19 @@
                                 "type": "string"
                             },
                             "title": "Api Keys",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only usage attributed to these user IDs, repeated once per ID.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "User Ids",
                             "type": "array"
                         }
                     },
@@ -7397,11 +7476,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -7434,11 +7513,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -7476,11 +7555,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ]\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}]}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -7848,7 +7927,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/billing/usage_summary\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/billing/usage_summary\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_date': None, 'end_date': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.",
@@ -7900,7 +7979,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/users\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/users\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'email': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns the workspace's members. Only actual joined members are returned; service accounts, invited users, and pending join requests are excluded.",
@@ -8032,6 +8111,137 @@
                     "$ref": "#/components/parameters/user_id"
                 }
             ]
+        },
+        "/v1/gateway/events": {
+            "get": {
+                "summary": "Lists gateway events",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/gateway/events \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/gateway/events\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_time': None, 'end_time': None, 'limit': None, 'cursor': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "required": false,
+                        "description": "Inclusive start (ISO 8601, UTC). Required without a cursor.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Start Time"
+                        }
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "required": false,
+                        "description": "Exclusive end (ISO 8601, UTC). Defaults to now.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "End Time"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Max events. Default 100, max 1000.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "maximum": 1000,
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Limit"
+                        }
+                    },
+                    {
+                        "name": "api_keys",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only events for these API key prefixes, repeated once per prefix.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Api Keys",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "external_entity_ids",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only events for these external entity IDs, repeated once per ID.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "External Entity Ids",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Next-page cursor. Other parameters are ignored.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GatewayEventsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
         "/v1/gateway/endpoints": {
             "get": {
@@ -21059,6 +21269,63 @@
                 "title": "GetLoopsDeploymentResponseV1",
                 "type": "object"
             },
+            "LoopsDebugArchiveFilesResponseV1": {
+                "description": "Response with presigned URLs for a Loops deployment's debug archive.",
+                "properties": {
+                    "presigned_urls": {
+                        "items": {
+                            "$ref": "#/components/schemas/CheckpointFile"
+                        },
+                        "title": "Presigned Urls",
+                        "type": "array"
+                    },
+                    "next_page_token": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Next Page Token"
+                    }
+                },
+                "required": [
+                    "presigned_urls"
+                ],
+                "title": "LoopsDebugArchiveFilesResponseV1",
+                "type": "object"
+            },
+            "GetLoopsDebugArchiveFilesRequestV1": {
+                "description": "Pagination params for a Loops deployment debug archive.",
+                "properties": {
+                    "page_size": {
+                        "default": 1000,
+                        "description": "Max files per page (default and maximum 1000).",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Page Size",
+                        "type": "integer"
+                    },
+                    "page_token": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque token for the next page.",
+                        "title": "Page Token"
+                    }
+                },
+                "title": "GetLoopsDebugArchiveFilesRequestV1",
+                "type": "object"
+            },
             "GetLoopsDeploymentMetricsRequestV1": {
                 "description": "Time-range request for trainer deployment metrics.",
                 "properties": {
@@ -22586,6 +22853,19 @@
                         "description": "Prefix of the API key the usage is attributed to. Null when not grouping by api_key.",
                         "title": "Api Key Prefix"
                     },
+                    "user_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "User the usage is attributed to. Null when not grouping by user or when the credential is not user-scoped.",
+                        "title": "User Id"
+                    },
                     "model": {
                         "anyOf": [
                             {
@@ -22670,6 +22950,7 @@
             "UsageDimensionV1": {
                 "enum": [
                     "api_key",
+                    "user",
                     "model"
                 ],
                 "title": "UsageDimensionV1",
@@ -22711,7 +22992,7 @@
                         "description": "Width of each time bucket: 1m, 1h, or 1d. Defaults to 1d."
                     },
                     "group_by": {
-                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.",
+                        "description": "Dimensions to break usage down by, repeated once per dimension: api_key, user, model. Defaults to model.",
                         "items": {
                             "$ref": "#/components/schemas/UsageDimensionV1"
                         },
@@ -22724,6 +23005,14 @@
                             "type": "string"
                         },
                         "title": "Api Keys",
+                        "type": "array"
+                    },
+                    "user_ids": {
+                        "description": "Return only usage attributed to these user IDs, repeated once per ID.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "User Ids",
                         "type": "array"
                     },
                     "models": {
@@ -22772,6 +23061,19 @@
                         "description": "Resources allocated to the model",
                         "title": "Resources",
                         "type": "object"
+                    },
+                    "region": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Region in which to deploy the model",
+                        "title": "Region"
                     },
                     "llm_version": {
                         "anyOf": [
@@ -22966,6 +23268,19 @@
                         "description": "Resources allocated to the model",
                         "title": "Resources",
                         "type": "object"
+                    },
+                    "region": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Region in which to deploy the model",
+                        "title": "Region"
                     },
                     "llm_version": {
                         "anyOf": [
@@ -23434,10 +23749,6 @@
                         "title": "Run Id",
                         "type": "string"
                     },
-                    "hardware": {
-                        "title": "Hardware",
-                        "type": "string"
-                    },
                     "measured_at": {
                         "format": "date",
                         "title": "Measured At",
@@ -23530,7 +23841,6 @@
                 },
                 "required": [
                     "run_id",
-                    "hardware",
                     "measured_at"
                 ],
                 "title": "BenchmarkSnapshotV1",
@@ -24588,6 +24898,186 @@
                     }
                 },
                 "title": "UsersRequestV1",
+                "type": "object"
+            },
+            "GatewayEventTokensV1": {
+                "properties": {
+                    "inputTokens": {
+                        "description": "Cached and uncached input tokens.",
+                        "title": "Inputtokens",
+                        "type": "integer"
+                    },
+                    "outputTokens": {
+                        "description": "Output tokens.",
+                        "title": "Outputtokens",
+                        "type": "integer"
+                    },
+                    "cachedInputTokens": {
+                        "description": "Cached input tokens.",
+                        "title": "Cachedinputtokens",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "inputTokens",
+                    "outputTokens",
+                    "cachedInputTokens"
+                ],
+                "title": "GatewayEventTokensV1",
+                "type": "object"
+            },
+            "GatewayEventV1": {
+                "properties": {
+                    "type": {
+                        "default": "API_BILLING_USAGE",
+                        "description": "Event type.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "idempotencyKey": {
+                        "description": "Deduplication key.",
+                        "title": "Idempotencykey",
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "description": "Billing event time (ISO 8601, UTC).",
+                        "title": "Timestamp",
+                        "type": "string"
+                    },
+                    "requestId": {
+                        "description": "Inference request ID.",
+                        "title": "Requestid",
+                        "type": "string"
+                    },
+                    "modelSlug": {
+                        "description": "Served model.",
+                        "title": "Modelslug",
+                        "type": "string"
+                    },
+                    "externalEntityId": {
+                        "description": "Calling group's external ID.",
+                        "title": "Externalentityid",
+                        "type": "string"
+                    },
+                    "apiKeyPrefix": {
+                        "description": "API key prefix.",
+                        "title": "Apikeyprefix",
+                        "type": "string"
+                    },
+                    "tokens": {
+                        "$ref": "#/components/schemas/GatewayEventTokensV1"
+                    }
+                },
+                "required": [
+                    "idempotencyKey",
+                    "timestamp",
+                    "requestId",
+                    "modelSlug",
+                    "externalEntityId",
+                    "apiKeyPrefix",
+                    "tokens"
+                ],
+                "title": "GatewayEventV1",
+                "type": "object"
+            },
+            "GatewayEventsResponseV1": {
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/GatewayEventV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "GatewayEventsResponseV1",
+                "type": "object"
+            },
+            "GatewayEventsRequestV1": {
+                "properties": {
+                    "start_time": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Inclusive start (ISO 8601, UTC). Required without a cursor.",
+                        "title": "Start Time"
+                    },
+                    "end_time": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Exclusive end (ISO 8601, UTC). Defaults to now.",
+                        "title": "End Time"
+                    },
+                    "limit": {
+                        "anyOf": [
+                            {
+                                "maximum": 1000,
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Max events. Default 100, max 1000.",
+                        "title": "Limit"
+                    },
+                    "api_keys": {
+                        "description": "Return only events for these API key prefixes, repeated once per prefix.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Api Keys",
+                        "type": "array"
+                    },
+                    "external_entity_ids": {
+                        "description": "Return only events for these external entity IDs, repeated once per ID.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "External Entity Ids",
+                        "type": "array"
+                    },
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Next-page cursor. Other parameters are ignored.",
+                        "title": "Cursor"
+                    }
+                },
+                "title": "GatewayEventsRequestV1",
                 "type": "object"
             },
             "EndpointTargetV1": {

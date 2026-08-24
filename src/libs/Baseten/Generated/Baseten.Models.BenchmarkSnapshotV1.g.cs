@@ -18,13 +18,6 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("hardware")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Hardware { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("measured_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime MeasuredAt { get; set; }
@@ -81,7 +74,6 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="BenchmarkSnapshotV1" /> class.
         /// </summary>
         /// <param name="runId"></param>
-        /// <param name="hardware"></param>
         /// <param name="measuredAt"></param>
         /// <param name="ttftMsP50">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -109,7 +101,6 @@ namespace Baseten
 #endif
         public BenchmarkSnapshotV1(
             string runId,
-            string hardware,
             global::System.DateTime measuredAt,
             double? ttftMsP50,
             double? outputTokensPerSecPerUserP50,
@@ -120,7 +111,6 @@ namespace Baseten
             string? profile)
         {
             this.RunId = runId ?? throw new global::System.ArgumentNullException(nameof(runId));
-            this.Hardware = hardware ?? throw new global::System.ArgumentNullException(nameof(hardware));
             this.MeasuredAt = measuredAt;
             this.TtftMsP50 = ttftMsP50;
             this.OutputTokensPerSecPerUserP50 = outputTokensPerSecPerUserP50;

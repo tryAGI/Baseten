@@ -19,6 +19,7 @@ namespace Baseten
         /// </param>
         /// <param name="groupBy"></param>
         /// <param name="apiKeys"></param>
+        /// <param name="userIds"></param>
         /// <param name="models"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -40,6 +41,7 @@ namespace Baseten
             global::Baseten.BucketWidth? bucketWidth = default,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy = default,
             global::System.Collections.Generic.IList<string>? apiKeys = default,
+            global::System.Collections.Generic.IList<string>? userIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
             int? limit = default,
             string? cursor = default,
@@ -60,6 +62,7 @@ namespace Baseten
         /// </param>
         /// <param name="groupBy"></param>
         /// <param name="apiKeys"></param>
+        /// <param name="userIds"></param>
         /// <param name="models"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -81,6 +84,7 @@ namespace Baseten
             global::Baseten.BucketWidth? bucketWidth = default,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy = default,
             global::System.Collections.Generic.IList<string>? apiKeys = default,
+            global::System.Collections.Generic.IList<string>? userIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
             int? limit = default,
             string? cursor = default,

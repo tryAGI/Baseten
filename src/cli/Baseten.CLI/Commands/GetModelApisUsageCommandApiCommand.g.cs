@@ -28,13 +28,19 @@ internal static partial class GetModelApisUsageCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: api_key, user, model. Defaults to model.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> ApiKeys { get; } = new(
         name: @"--api-keys")
     {
         Description = @"Return only usage for these API key prefixes, repeated once per prefix.",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<string>?> UserIds { get; } = new(
+        name: @"--user-ids")
+    {
+        Description = @"Return only usage attributed to these user IDs, repeated once per ID.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> Models { get; } = new(
@@ -84,6 +90,7 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                         command.Options.Add(BucketWidth);
                         command.Options.Add(GroupBy);
                         command.Options.Add(ApiKeys);
+                        command.Options.Add(UserIds);
                         command.Options.Add(Models);
                         command.Options.Add(Limit);
                         command.Options.Add(Cursor);
@@ -97,6 +104,7 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                         var bucketWidth = parseResult.GetValue(BucketWidth);
                         var groupBy = parseResult.GetValue(GroupBy);
                         var apiKeys = parseResult.GetValue(ApiKeys);
+                        var userIds = parseResult.GetValue(UserIds);
                         var models = parseResult.GetValue(Models);
                         var limit = parseResult.GetValue(Limit);
                         var cursor = parseResult.GetValue(Cursor);
@@ -109,6 +117,7 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                                     bucketWidth: bucketWidth,
                                     groupBy: groupBy,
                                     apiKeys: apiKeys,
+                                    userIds: userIds,
                                     models: models,
                                     limit: limit,
                                     cursor: cursor,

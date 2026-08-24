@@ -57,6 +57,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "resources": null,<br/>
+        ///   "region": null,<br/>
         ///   "llm_version": null,<br/>
         ///   "model_metadata": null,<br/>
         ///   "autoscaling_settings": {<br/>
@@ -120,6 +121,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "resources": null,<br/>
+        ///   "region": null,<br/>
         ///   "llm_version": null,<br/>
         ///   "model_metadata": null,<br/>
         ///   "autoscaling_settings": {<br/>
@@ -523,6 +525,10 @@ namespace Baseten
         /// <param name="resources">
         /// Resources allocated to the model
         /// </param>
+        /// <param name="region">
+        /// Region in which to deploy the model<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="llmVersion">
         /// Version of the helm chart to use.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -559,6 +565,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateLlmModelsByModelIdDeploymentsAsync(
             string modelId,
             object resources,
+            string? region = default,
             string? llmVersion = default,
             object? llmConfig = default,
             object? environmentVariables = default,
@@ -573,6 +580,7 @@ namespace Baseten
             var __request = new global::Baseten.CreateLLMModelVersionRequestV1
             {
                 Resources = resources,
+                Region = region,
                 LlmVersion = llmVersion,
                 LlmConfig = llmConfig,
                 EnvironmentVariables = environmentVariables,

@@ -105,7 +105,8 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
                         command.Options.Add(ModelMetadata);
                         command.Options.Add(AdditionalAutoscalingConfig);
                         command.Options.Add(Metadata);
-                        command.Options.Add(Weights);                        command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.LlmVersion);
+                        command.Options.Add(Weights);                        command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.Region);
+                        command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.LlmVersion);
                         command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.NameOption);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
                         command.Options.Add(AutoscalingSettingsOptions.AutoscalingWindow);
@@ -146,7 +147,8 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
                         var modelMetadata = CliRuntime.WasSpecified(parseResult, ModelMetadata) ? parseResult.GetValue(ModelMetadata) : (__requestBase is { } __ModelMetadataBaseValue ? __ModelMetadataBaseValue.ModelMetadata : default);
                         var additionalAutoscalingConfig = CliRuntime.WasSpecified(parseResult, AdditionalAutoscalingConfig) ? parseResult.GetValue(AdditionalAutoscalingConfig) : (__requestBase is { } __AdditionalAutoscalingConfigBaseValue ? __AdditionalAutoscalingConfigBaseValue.AdditionalAutoscalingConfig : default);
                         var metadata = CliRuntime.WasSpecified(parseResult, Metadata) ? parseResult.GetValue(Metadata) : (__requestBase is { } __MetadataBaseValue ? __MetadataBaseValue.Metadata : default);
-                        var weights = CliRuntime.WasSpecified(parseResult, Weights) ? parseResult.GetValue(Weights) : (__requestBase is { } __WeightsBaseValue ? __WeightsBaseValue.Weights : default);                        var llmVersion = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.LlmVersion) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.LlmVersion) : (__requestBase is { } __LlmVersionBaseValue ? __LlmVersionBaseValue.LlmVersion : default);
+                        var weights = CliRuntime.WasSpecified(parseResult, Weights) ? parseResult.GetValue(Weights) : (__requestBase is { } __WeightsBaseValue ? __WeightsBaseValue.Weights : default);                        var region = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.Region) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.Region) : (__requestBase is { } __RegionBaseValue ? __RegionBaseValue.Region : default);
+                        var llmVersion = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.LlmVersion) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.LlmVersion) : (__requestBase is { } __LlmVersionBaseValue ? __LlmVersionBaseValue.LlmVersion : default);
                         var name = parseResult.GetRequiredValue(CreateLLMModelRequestV1OptionSetOptions.NameOption);
 
                         var __AutoscalingSettingsBase = __requestBase is { } __AutoscalingSettingsBaseValue ? __AutoscalingSettingsBaseValue.AutoscalingSettings : default;                        var autoscalingSettingsMinReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MinReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MinReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsminReplicaBaseValue ? __AutoscalingSettingsminReplicaBaseValue.MinReplica : default);
@@ -185,6 +187,7 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
                                     additionalAutoscalingConfig: additionalAutoscalingConfig,
                                     metadata: metadata,
                                     weights: weights,
+                                    region: region,
                                     llmVersion: llmVersion,
                                     name: name,
                                     autoscalingSettings: autoscalingSettings,

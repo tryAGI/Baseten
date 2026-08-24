@@ -120,6 +120,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetEnvironmentGroupsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEndpointsCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEndpointsByEndpointIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGatewayEventsCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsByGroupIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsByGroupIdApiKeysCommandApiCommand.Create());
@@ -136,6 +137,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetLoopsCheckpointsByCheckpointIdFilesCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsDeploymentsCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsDeploymentsByDeploymentIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetLoopsDeploymentsByDeploymentIdDebugArchiveFilesCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsDeploymentsByDeploymentIdLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsRunsCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsRunsByRunIdCommandApiCommand.Create());
