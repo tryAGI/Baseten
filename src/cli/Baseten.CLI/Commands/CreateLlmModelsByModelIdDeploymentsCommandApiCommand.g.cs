@@ -20,6 +20,12 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
         Required = true,
     };
 
+    private static Option<string?> Region { get; } = new(
+        name: @"--region")
+    {
+        Description = @"Region in which to deploy the model",
+    };
+
     private static Option<string?> LlmVersion { get; } = new(
         name: @"--llm-version")
     {
@@ -104,6 +110,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
         var command = new Command(@"create-llm-models-by-model-id-deployments", @"Creates a new BIS-LLM deployment version");
                         command.Arguments.Add(ModelId);
                         command.Options.Add(Resources);
+                        command.Options.Add(Region);
                         command.Options.Add(LlmVersion);
                         command.Options.Add(LlmConfig);
                         command.Options.Add(EnvironmentVariables);
@@ -145,6 +152,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                             cancellationToken).ConfigureAwait(false);
                         var modelId = parseResult.GetRequiredValue(ModelId);
                         var resources = parseResult.GetRequiredValue(Resources);
+                        var region = CliRuntime.WasSpecified(parseResult, Region) ? parseResult.GetValue(Region) : (__requestBase is { } __RegionBaseValue ? __RegionBaseValue.Region : default);
                         var llmVersion = CliRuntime.WasSpecified(parseResult, LlmVersion) ? parseResult.GetValue(LlmVersion) : (__requestBase is { } __LlmVersionBaseValue ? __LlmVersionBaseValue.LlmVersion : default);
                         var llmConfig = CliRuntime.WasSpecified(parseResult, LlmConfig) ? parseResult.GetValue(LlmConfig) : (__requestBase is { } __LlmConfigBaseValue ? __LlmConfigBaseValue.LlmConfig : default);
                         var environmentVariables = CliRuntime.WasSpecified(parseResult, EnvironmentVariables) ? parseResult.GetValue(EnvironmentVariables) : (__requestBase is { } __EnvironmentVariablesBaseValue ? __EnvironmentVariablesBaseValue.EnvironmentVariables : default);
@@ -183,6 +191,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                                 var response = await client.CreateLlmModelsByModelIdDeploymentsAsync(
                                     modelId: modelId,
                                     resources: resources,
+                                    region: region,
                                     llmVersion: llmVersion,
                                     llmConfig: llmConfig,
                                     environmentVariables: environmentVariables,

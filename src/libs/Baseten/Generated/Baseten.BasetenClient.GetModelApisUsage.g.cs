@@ -32,6 +32,7 @@ namespace Baseten
             ref global::Baseten.BucketWidth? bucketWidth,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy,
             global::System.Collections.Generic.IList<string>? apiKeys,
+            global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
             int? limit,
             ref string? cursor);
@@ -43,6 +44,7 @@ namespace Baseten
             global::Baseten.BucketWidth? bucketWidth,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy,
             global::System.Collections.Generic.IList<string>? apiKeys,
+            global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
             int? limit,
             string? cursor);
@@ -70,6 +72,7 @@ namespace Baseten
         /// </param>
         /// <param name="groupBy"></param>
         /// <param name="apiKeys"></param>
+        /// <param name="userIds"></param>
         /// <param name="models"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -91,6 +94,7 @@ namespace Baseten
             global::Baseten.BucketWidth? bucketWidth = default,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy = default,
             global::System.Collections.Generic.IList<string>? apiKeys = default,
+            global::System.Collections.Generic.IList<string>? userIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
             int? limit = default,
             string? cursor = default,
@@ -103,6 +107,7 @@ namespace Baseten
                 bucketWidth: bucketWidth,
                 groupBy: groupBy,
                 apiKeys: apiKeys,
+                userIds: userIds,
                 models: models,
                 limit: limit,
                 cursor: cursor,
@@ -127,6 +132,7 @@ namespace Baseten
         /// </param>
         /// <param name="groupBy"></param>
         /// <param name="apiKeys"></param>
+        /// <param name="userIds"></param>
         /// <param name="models"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -148,6 +154,7 @@ namespace Baseten
             global::Baseten.BucketWidth? bucketWidth = default,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy = default,
             global::System.Collections.Generic.IList<string>? apiKeys = default,
+            global::System.Collections.Generic.IList<string>? userIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
             int? limit = default,
             string? cursor = default,
@@ -163,6 +170,7 @@ namespace Baseten
                 bucketWidth: ref bucketWidth,
                 groupBy: groupBy,
                 apiKeys: apiKeys,
+                userIds: userIds,
                 models: models,
                 limit: limit,
                 cursor: ref cursor);
@@ -199,6 +207,7 @@ namespace Baseten
                                 .AddOptionalParameter("bucket_width", bucketWidth?.ToValueString())
                                 .AddOptionalParameter("group_by", groupBy, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                                 .AddOptionalParameter("api_keys", apiKeys, delimiter: ",", explode: true)
+                                .AddOptionalParameter("user_ids", userIds, delimiter: ",", explode: true)
                                 .AddOptionalParameter("models", models, delimiter: ",", explode: true)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("cursor", cursor)
@@ -248,6 +257,7 @@ namespace Baseten
                     bucketWidth: bucketWidth,
                     groupBy: groupBy,
                     apiKeys: apiKeys,
+                    userIds: userIds,
                     models: models,
                     limit: limit,
                     cursor: cursor);

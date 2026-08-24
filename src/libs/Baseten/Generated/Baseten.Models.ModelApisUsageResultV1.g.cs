@@ -16,6 +16,13 @@ namespace Baseten
         public string? ApiKeyPrefix { get; set; }
 
         /// <summary>
+        /// User the usage is attributed to. Null when not grouping by user or when the credential is not user-scoped.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
+        public string? UserId { get; set; }
+
+        /// <summary>
         /// Model that served the usage. Null when not grouping by model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -85,6 +92,10 @@ namespace Baseten
         /// Prefix of the API key the usage is attributed to. Null when not grouping by api_key.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="userId">
+        /// User the usage is attributed to. Null when not grouping by user or when the credential is not user-scoped.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="model">
         /// Model that served the usage. Null when not grouping by model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -99,9 +110,11 @@ namespace Baseten
             int outputTokens,
             int requestCount,
             string? apiKeyPrefix,
+            string? userId,
             string? model)
         {
             this.ApiKeyPrefix = apiKeyPrefix;
+            this.UserId = userId;
             this.Model = model;
             this.InputTokens = inputTokens;
             this.CachedInputTokens = cachedInputTokens;

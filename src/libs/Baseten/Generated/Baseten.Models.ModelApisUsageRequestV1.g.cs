@@ -31,7 +31,7 @@ namespace Baseten
         public global::Baseten.BucketWidth? BucketWidth { get; set; }
 
         /// <summary>
-        /// Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.
+        /// Dimensions to break usage down by, repeated once per dimension: api_key, user, model. Defaults to model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
         public global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? GroupBy { get; set; }
@@ -41,6 +41,12 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_keys")]
         public global::System.Collections.Generic.IList<string>? ApiKeys { get; set; }
+
+        /// <summary>
+        /// Return only usage attributed to these user IDs, repeated once per ID.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_ids")]
+        public global::System.Collections.Generic.IList<string>? UserIds { get; set; }
 
         /// <summary>
         /// Return only usage for these models, repeated once per model.
@@ -84,10 +90,13 @@ namespace Baseten
         /// Default Value: 1d
         /// </param>
         /// <param name="groupBy">
-        /// Dimensions to break usage down by, repeated once per dimension: api_key, model. Defaults to model.
+        /// Dimensions to break usage down by, repeated once per dimension: api_key, user, model. Defaults to model.
         /// </param>
         /// <param name="apiKeys">
         /// Return only usage for these API key prefixes, repeated once per prefix.
+        /// </param>
+        /// <param name="userIds">
+        /// Return only usage attributed to these user IDs, repeated once per ID.
         /// </param>
         /// <param name="models">
         /// Return only usage for these models, repeated once per model.
@@ -109,6 +118,7 @@ namespace Baseten
             global::Baseten.BucketWidth? bucketWidth,
             global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? groupBy,
             global::System.Collections.Generic.IList<string>? apiKeys,
+            global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
             int? limit,
             string? cursor)
@@ -118,6 +128,7 @@ namespace Baseten
             this.BucketWidth = bucketWidth;
             this.GroupBy = groupBy;
             this.ApiKeys = apiKeys;
+            this.UserIds = userIds;
             this.Models = models;
             this.Limit = limit;
             this.Cursor = cursor;

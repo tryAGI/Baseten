@@ -16,6 +16,13 @@ namespace Baseten
         public required object Resources { get; set; }
 
         /// <summary>
+        /// Region in which to deploy the model<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
         /// Version of the helm chart to use.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -81,6 +88,10 @@ namespace Baseten
         /// <param name="resources">
         /// Resources allocated to the model
         /// </param>
+        /// <param name="region">
+        /// Region in which to deploy the model<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="llmVersion">
         /// Version of the helm chart to use.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -116,6 +127,7 @@ namespace Baseten
 #endif
         public CreateLLMModelVersionRequestV1(
             object resources,
+            string? region,
             string? llmVersion,
             object? llmConfig,
             object? environmentVariables,
@@ -126,6 +138,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<object>? weights)
         {
             this.Resources = resources ?? throw new global::System.ArgumentNullException(nameof(resources));
+            this.Region = region;
             this.LlmVersion = llmVersion;
             this.LlmConfig = llmConfig;
             this.EnvironmentVariables = environmentVariables;
