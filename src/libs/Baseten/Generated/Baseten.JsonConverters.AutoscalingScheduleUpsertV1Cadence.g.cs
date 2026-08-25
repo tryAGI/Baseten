@@ -3,10 +3,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class AutoscalingScheduleCadenceV1JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.AutoscalingScheduleCadenceV1>
+    public sealed class AutoscalingScheduleUpsertV1CadenceJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.AutoscalingScheduleUpsertV1Cadence>
     {
         /// <inheritdoc />
-        public override global::Baseten.AutoscalingScheduleCadenceV1 Read(
+        public override global::Baseten.AutoscalingScheduleUpsertV1Cadence Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.AutoscalingScheduleCadenceV1Extensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.AutoscalingScheduleUpsertV1CadenceExtensions.ToEnum(stringValue) ?? default;
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Baseten.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Baseten.AutoscalingScheduleCadenceV1)numValue;
+                    return (global::Baseten.AutoscalingScheduleUpsertV1Cadence)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Baseten.AutoscalingScheduleCadenceV1);
+                    return default(global::Baseten.AutoscalingScheduleUpsertV1Cadence);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,12 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.AutoscalingScheduleCadenceV1 value,
+            global::Baseten.AutoscalingScheduleUpsertV1Cadence value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Baseten.AutoscalingScheduleCadenceV1Extensions.ToValueString(value));
+            writer.WriteStringValue(global::Baseten.AutoscalingScheduleUpsertV1CadenceExtensions.ToValueString(value));
         }
     }
 }

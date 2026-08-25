@@ -15,7 +15,7 @@ namespace Baseten
         public string? ScheduleId { get; set; }
 
         /// <summary>
-        /// Autoscaling settings on the current serving deployment
+        /// Autoscaling settings on the current serving deployment. In a PATCH response, this snapshot can precede asynchronous schedule reconciliation; poll the GET endpoint for the applied state.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_settings")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,7 +31,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="AutoscalingScheduleStateV1" /> class.
         /// </summary>
         /// <param name="autoscalingSettings">
-        /// Autoscaling settings on the current serving deployment
+        /// Autoscaling settings on the current serving deployment. In a PATCH response, this snapshot can precede asynchronous schedule reconciliation; poll the GET endpoint for the applied state.
         /// </param>
         /// <param name="scheduleId">
         /// Stable schedule identifier, or null when the baseline settings apply

@@ -78,7 +78,7 @@ namespace Baseten
         public required global::Baseten.RequestBackpressureSettingsV1 RequestBackpressureSettings { get; set; }
 
         /// <summary>
-        /// Recurring autoscaling schedules and their evaluated state<br/>
+        /// Autoscaling schedules and their evaluated state<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_schedules")]
@@ -126,7 +126,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="autoscalingSchedules">
-        /// Recurring autoscaling schedules and their evaluated state<br/>
+        /// Autoscaling schedules and their evaluated state<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER

@@ -15123,14 +15123,6 @@
                 "title": "SignSSHCertificateResponseV1",
                 "type": "object"
             },
-            "AutoscalingScheduleCadenceV1": {
-                "enum": [
-                    "DAILY",
-                    "HOURLY"
-                ],
-                "title": "AutoscalingScheduleCadenceV1",
-                "type": "string"
-            },
             "AutoscalingScheduleSettingsV1": {
                 "properties": {
                     "min_replica": {
@@ -15245,7 +15237,7 @@
                     },
                     "autoscaling_settings": {
                         "$ref": "#/components/schemas/AutoscalingSettingsV1",
-                        "description": "Autoscaling settings on the current serving deployment"
+                        "description": "Autoscaling settings on the current serving deployment. In a PATCH response, this snapshot can precede asynchronous schedule reconciliation; poll the GET endpoint for the applied state."
                     }
                 },
                 "required": [
@@ -15272,9 +15264,18 @@
                         "title": "Enabled",
                         "type": "boolean"
                     },
+                    "autoscaling_settings": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsV1",
+                        "description": "Raw autoscaling overrides applied during the schedule window"
+                    },
                     "cadence": {
-                        "$ref": "#/components/schemas/AutoscalingScheduleCadenceV1",
-                        "description": "Cadence of the schedule. DAILY runs once per selected weekday; HOURLY repeats the minute window every hour on selected weekdays."
+                        "description": "Cadence of the schedule. DAILY runs once per selected weekday; HOURLY repeats the minute window every hour on selected weekdays.",
+                        "enum": [
+                            "DAILY",
+                            "HOURLY"
+                        ],
+                        "title": "Cadence",
+                        "type": "string"
                     },
                     "weekdays": {
                         "description": "Weekdays on which the schedule runs",
@@ -15319,21 +15320,17 @@
                         "description": "End minute of the schedule window",
                         "title": "End Minute",
                         "type": "integer"
-                    },
-                    "autoscaling_settings": {
-                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsV1",
-                        "description": "Raw autoscaling overrides applied during the schedule window"
                     }
                 },
                 "required": [
                     "id",
                     "name",
                     "enabled",
+                    "autoscaling_settings",
                     "cadence",
                     "weekdays",
                     "start_minute",
-                    "end_minute",
-                    "autoscaling_settings"
+                    "end_minute"
                 ],
                 "title": "AutoscalingScheduleV1",
                 "type": "object"
@@ -15369,7 +15366,15 @@
                     "schedules": {
                         "description": "Autoscaling schedules ordered by creation time and stable identifier",
                         "items": {
-                            "anyOf": [
+                            "discriminator": {
+                                "mapping": {
+                                    "DAILY": "#/components/schemas/AutoscalingScheduleV1",
+                                    "HOURLY": "#/components/schemas/AutoscalingScheduleV1",
+                                    "ONE_TIME": "#/components/schemas/OneTimeAutoscalingScheduleV1"
+                                },
+                                "propertyName": "cadence"
+                            },
+                            "oneOf": [
                                 {
                                     "$ref": "#/components/schemas/AutoscalingScheduleV1"
                                 },
@@ -15480,7 +15485,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Recurring autoscaling schedules and their evaluated state"
+                        "description": "Autoscaling schedules and their evaluated state"
                     }
                 },
                 "required": [
@@ -15572,6 +15577,10 @@
                         "title": "Enabled",
                         "type": "boolean"
                     },
+                    "autoscaling_settings": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsV1",
+                        "description": "Raw autoscaling overrides applied during the schedule window"
+                    },
                     "cadence": {
                         "const": "ONE_TIME",
                         "description": "One-time schedule cadence",
@@ -15589,20 +15598,16 @@
                         "format": "date-time",
                         "title": "End At",
                         "type": "string"
-                    },
-                    "autoscaling_settings": {
-                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsV1",
-                        "description": "Raw autoscaling overrides applied during the schedule window"
                     }
                 },
                 "required": [
                     "id",
                     "name",
                     "enabled",
+                    "autoscaling_settings",
                     "cadence",
                     "start_at",
-                    "end_at",
-                    "autoscaling_settings"
+                    "end_at"
                 ],
                 "title": "OneTimeAutoscalingScheduleV1",
                 "type": "object"
@@ -16182,7 +16187,7 @@
             },
             "AutoscalingScheduleUpsertV1": {
                 "additionalProperties": false,
-                "description": "A complete autoscaling schedule submitted for create or replacement.",
+                "description": "A complete recurring schedule submitted for create or replacement.",
                 "properties": {
                     "id": {
                         "anyOf": [
@@ -16207,9 +16212,18 @@
                         "title": "Enabled",
                         "type": "boolean"
                     },
+                    "autoscaling_settings": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsRequestV1",
+                        "description": "Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value."
+                    },
                     "cadence": {
-                        "$ref": "#/components/schemas/AutoscalingScheduleCadenceV1",
-                        "description": "Cadence of the schedule"
+                        "description": "Recurring schedule cadence",
+                        "enum": [
+                            "DAILY",
+                            "HOURLY"
+                        ],
+                        "title": "Cadence",
+                        "type": "string"
                     },
                     "weekdays": {
                         "description": "Weekdays on which the schedule runs",
@@ -16254,22 +16268,79 @@
                         "description": "End minute of the schedule window",
                         "title": "End Minute",
                         "type": "integer"
-                    },
-                    "autoscaling_settings": {
-                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsRequestV1",
-                        "description": "Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value."
                     }
                 },
                 "required": [
                     "name",
                     "enabled",
+                    "autoscaling_settings",
                     "cadence",
                     "weekdays",
                     "start_minute",
-                    "end_minute",
-                    "autoscaling_settings"
+                    "end_minute"
                 ],
                 "title": "AutoscalingScheduleUpsertV1",
+                "type": "object"
+            },
+            "OneTimeAutoscalingScheduleUpsertV1": {
+                "additionalProperties": false,
+                "description": "A complete one-time schedule submitted for create or replacement.",
+                "properties": {
+                    "id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Stable schedule identifier. Omit this field to create a schedule.",
+                        "title": "Id"
+                    },
+                    "name": {
+                        "description": "Name of the schedule",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "description": "Whether the schedule is enabled",
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "autoscaling_settings": {
+                        "$ref": "#/components/schemas/AutoscalingScheduleSettingsRequestV1",
+                        "description": "Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value."
+                    },
+                    "cadence": {
+                        "const": "ONE_TIME",
+                        "description": "One-time schedule cadence",
+                        "title": "Cadence",
+                        "type": "string"
+                    },
+                    "start_at": {
+                        "description": "Inclusive start of the schedule window in ISO 8601 format. New schedules must start in the future.",
+                        "format": "date-time",
+                        "title": "Start At",
+                        "type": "string"
+                    },
+                    "end_at": {
+                        "description": "Exclusive end of the schedule window in ISO 8601 format",
+                        "format": "date-time",
+                        "title": "End At",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name",
+                    "enabled",
+                    "autoscaling_settings",
+                    "cadence",
+                    "start_at",
+                    "end_at"
+                ],
+                "title": "OneTimeAutoscalingScheduleUpsertV1",
                 "type": "object"
             },
             "UpdateAutoscalingScheduleSettingsV1": {
@@ -16292,13 +16363,28 @@
                     "schedules": {
                         "description": "Complete schedules to create or replace. Existing schedules omitted from this list are unchanged.",
                         "items": {
-                            "$ref": "#/components/schemas/AutoscalingScheduleUpsertV1"
+                            "discriminator": {
+                                "mapping": {
+                                    "DAILY": "#/components/schemas/AutoscalingScheduleUpsertV1",
+                                    "HOURLY": "#/components/schemas/AutoscalingScheduleUpsertV1",
+                                    "ONE_TIME": "#/components/schemas/OneTimeAutoscalingScheduleUpsertV1"
+                                },
+                                "propertyName": "cadence"
+                            },
+                            "oneOf": [
+                                {
+                                    "$ref": "#/components/schemas/AutoscalingScheduleUpsertV1"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/OneTimeAutoscalingScheduleUpsertV1"
+                                }
+                            ]
                         },
                         "title": "Schedules",
                         "type": "array"
                     },
                     "delete_schedules": {
-                        "description": "Stable identifiers of schedules to delete.",
+                        "description": "Stable identifiers of schedules to delete. To clear all schedules, include every existing schedule identifier.",
                         "items": {
                             "type": "string"
                         },
@@ -16369,7 +16455,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Partial autoscaling schedule collection update. Omitted nested fields and omitted existing schedules are unchanged.",
+                        "description": "Partial autoscaling schedule collection update. Omitted collection fields and existing schedules are unchanged; each submitted schedule is a complete create or replacement.",
                         "examples": [
                             {
                                 "schedules": [

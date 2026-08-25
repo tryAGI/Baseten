@@ -584,7 +584,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="autoscalingScheduleSettings">
-        /// Partial autoscaling schedule collection update. Omitted nested fields and omitted existing schedules are unchanged.<br/>
+        /// Partial autoscaling schedule collection update. Omitted collection fields and existing schedules are unchanged; each submitted schedule is a complete create or replacement.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestBackpressureSettings">

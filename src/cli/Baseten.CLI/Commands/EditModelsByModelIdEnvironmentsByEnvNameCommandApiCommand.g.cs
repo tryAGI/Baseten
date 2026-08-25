@@ -22,7 +22,7 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
     private static Option<global::Baseten.UpdateAutoscalingScheduleSettingsV1?> AutoscalingScheduleSettings { get; } = new(
         name: @"--autoscaling-schedule-settings")
     {
-        Description = @"Partial autoscaling schedule collection update. Omitted nested fields and omitted existing schedules are unchanged.",
+        Description = @"Partial autoscaling schedule collection update. Omitted collection fields and existing schedules are unchanged; each submitted schedule is a complete create or replacement.",
     };
 
     private static Option<global::Baseten.UpdateRequestBackpressureSettingsV1?> RequestBackpressureSettings { get; } = new(
