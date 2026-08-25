@@ -30,12 +30,19 @@ namespace Baseten
         public required bool Enabled { get; set; }
 
         /// <summary>
+        /// Raw autoscaling overrides applied during the schedule window
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_settings")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.AutoscalingScheduleSettingsV1 AutoscalingSettings { get; set; }
+
+        /// <summary>
         /// Cadence of the schedule. DAILY runs once per selected weekday; HOURLY repeats the minute window every hour on selected weekdays.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cadence")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AutoscalingScheduleCadenceV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AutoscalingScheduleV1CadenceJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AutoscalingScheduleCadenceV1 Cadence { get; set; }
+        public required global::Baseten.AutoscalingScheduleV1Cadence Cadence { get; set; }
 
         /// <summary>
         /// Weekdays on which the schedule runs
@@ -73,13 +80,6 @@ namespace Baseten
         public required int EndMinute { get; set; }
 
         /// <summary>
-        /// Raw autoscaling overrides applied during the schedule window
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_settings")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AutoscalingScheduleSettingsV1 AutoscalingSettings { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -97,6 +97,9 @@ namespace Baseten
         /// <param name="enabled">
         /// Whether the schedule is enabled
         /// </param>
+        /// <param name="autoscalingSettings">
+        /// Raw autoscaling overrides applied during the schedule window
+        /// </param>
         /// <param name="cadence">
         /// Cadence of the schedule. DAILY runs once per selected weekday; HOURLY repeats the minute window every hour on selected weekdays.
         /// </param>
@@ -108,9 +111,6 @@ namespace Baseten
         /// </param>
         /// <param name="endMinute">
         /// End minute of the schedule window
-        /// </param>
-        /// <param name="autoscalingSettings">
-        /// Raw autoscaling overrides applied during the schedule window
         /// </param>
         /// <param name="startHour">
         /// Start hour in the environment schedule timezone. Omitted for unrestricted HOURLY schedules.<br/>
@@ -127,24 +127,24 @@ namespace Baseten
             string id,
             string name,
             bool enabled,
-            global::Baseten.AutoscalingScheduleCadenceV1 cadence,
+            global::Baseten.AutoscalingScheduleSettingsV1 autoscalingSettings,
+            global::Baseten.AutoscalingScheduleV1Cadence cadence,
             global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleWeekdayV1> weekdays,
             int startMinute,
             int endMinute,
-            global::Baseten.AutoscalingScheduleSettingsV1 autoscalingSettings,
             int? startHour,
             int? endHour)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Enabled = enabled;
+            this.AutoscalingSettings = autoscalingSettings ?? throw new global::System.ArgumentNullException(nameof(autoscalingSettings));
             this.Cadence = cadence;
             this.Weekdays = weekdays ?? throw new global::System.ArgumentNullException(nameof(weekdays));
             this.StartHour = startHour;
             this.StartMinute = startMinute;
             this.EndHour = endHour;
             this.EndMinute = endMinute;
-            this.AutoscalingSettings = autoscalingSettings ?? throw new global::System.ArgumentNullException(nameof(autoscalingSettings));
         }
 
         /// <summary>

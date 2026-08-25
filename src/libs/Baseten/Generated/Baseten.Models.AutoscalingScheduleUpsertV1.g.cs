@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// A complete autoscaling schedule submitted for create or replacement.
+    /// A complete recurring schedule submitted for create or replacement.
     /// </summary>
     public sealed partial class AutoscalingScheduleUpsertV1
     {
@@ -30,12 +30,19 @@ namespace Baseten
         public required bool Enabled { get; set; }
 
         /// <summary>
-        /// Cadence of the schedule
+        /// Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_settings")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.AutoscalingScheduleSettingsRequestV1 AutoscalingSettings { get; set; }
+
+        /// <summary>
+        /// Recurring schedule cadence
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cadence")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AutoscalingScheduleCadenceV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AutoscalingScheduleUpsertV1CadenceJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AutoscalingScheduleCadenceV1 Cadence { get; set; }
+        public required global::Baseten.AutoscalingScheduleUpsertV1Cadence Cadence { get; set; }
 
         /// <summary>
         /// Weekdays on which the schedule runs
@@ -73,13 +80,6 @@ namespace Baseten
         public required int EndMinute { get; set; }
 
         /// <summary>
-        /// Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_settings")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AutoscalingScheduleSettingsRequestV1 AutoscalingSettings { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -94,8 +94,11 @@ namespace Baseten
         /// <param name="enabled">
         /// Whether the schedule is enabled
         /// </param>
+        /// <param name="autoscalingSettings">
+        /// Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value.
+        /// </param>
         /// <param name="cadence">
-        /// Cadence of the schedule
+        /// Recurring schedule cadence
         /// </param>
         /// <param name="weekdays">
         /// Weekdays on which the schedule runs
@@ -105,9 +108,6 @@ namespace Baseten
         /// </param>
         /// <param name="endMinute">
         /// End minute of the schedule window
-        /// </param>
-        /// <param name="autoscalingSettings">
-        /// Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value.
         /// </param>
         /// <param name="id">
         /// Stable schedule identifier. Omit this field to create a schedule.<br/>
@@ -127,11 +127,11 @@ namespace Baseten
         public AutoscalingScheduleUpsertV1(
             string name,
             bool enabled,
-            global::Baseten.AutoscalingScheduleCadenceV1 cadence,
+            global::Baseten.AutoscalingScheduleSettingsRequestV1 autoscalingSettings,
+            global::Baseten.AutoscalingScheduleUpsertV1Cadence cadence,
             global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleWeekdayV1> weekdays,
             int startMinute,
             int endMinute,
-            global::Baseten.AutoscalingScheduleSettingsRequestV1 autoscalingSettings,
             string? id,
             int? startHour,
             int? endHour)
@@ -139,13 +139,13 @@ namespace Baseten
             this.Id = id;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Enabled = enabled;
+            this.AutoscalingSettings = autoscalingSettings ?? throw new global::System.ArgumentNullException(nameof(autoscalingSettings));
             this.Cadence = cadence;
             this.Weekdays = weekdays ?? throw new global::System.ArgumentNullException(nameof(weekdays));
             this.StartHour = startHour;
             this.StartMinute = startMinute;
             this.EndHour = endHour;
             this.EndMinute = endMinute;
-            this.AutoscalingSettings = autoscalingSettings ?? throw new global::System.ArgumentNullException(nameof(autoscalingSettings));
         }
 
         /// <summary>

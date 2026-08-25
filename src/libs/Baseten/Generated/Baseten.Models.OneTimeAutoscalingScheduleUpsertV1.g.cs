@@ -4,16 +4,16 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    /// A complete one-time schedule submitted for create or replacement.
     /// </summary>
-    public sealed partial class OneTimeAutoscalingScheduleV1
+    public sealed partial class OneTimeAutoscalingScheduleUpsertV1
     {
         /// <summary>
-        /// Stable unique identifier of the schedule
+        /// Stable schedule identifier. Omit this field to create a schedule.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// Name of the schedule
@@ -30,11 +30,11 @@ namespace Baseten
         public required bool Enabled { get; set; }
 
         /// <summary>
-        /// Raw autoscaling overrides applied during the schedule window
+        /// Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_settings")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AutoscalingScheduleSettingsV1 AutoscalingSettings { get; set; }
+        public required global::Baseten.AutoscalingScheduleSettingsRequestV1 AutoscalingSettings { get; set; }
 
         /// <summary>
         /// One-time schedule cadence
@@ -44,14 +44,14 @@ namespace Baseten
         public string Cadence { get; set; } = "ONE_TIME";
 
         /// <summary>
-        /// Inclusive start of the schedule window
+        /// Inclusive start of the schedule window in ISO 8601 format. New schedules must start in the future.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime StartAt { get; set; }
 
         /// <summary>
-        /// Exclusive end of the schedule window
+        /// Exclusive end of the schedule window in ISO 8601 format
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -64,11 +64,8 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OneTimeAutoscalingScheduleV1" /> class.
+        /// Initializes a new instance of the <see cref="OneTimeAutoscalingScheduleUpsertV1" /> class.
         /// </summary>
-        /// <param name="id">
-        /// Stable unique identifier of the schedule
-        /// </param>
         /// <param name="name">
         /// Name of the schedule
         /// </param>
@@ -76,13 +73,17 @@ namespace Baseten
         /// Whether the schedule is enabled
         /// </param>
         /// <param name="autoscalingSettings">
-        /// Raw autoscaling overrides applied during the schedule window
+        /// Complete raw autoscaling overrides for the schedule. Every field is required; nullable fields store no schedule override and follow the current environment value.
         /// </param>
         /// <param name="startAt">
-        /// Inclusive start of the schedule window
+        /// Inclusive start of the schedule window in ISO 8601 format. New schedules must start in the future.
         /// </param>
         /// <param name="endAt">
-        /// Exclusive end of the schedule window
+        /// Exclusive end of the schedule window in ISO 8601 format
+        /// </param>
+        /// <param name="id">
+        /// Stable schedule identifier. Omit this field to create a schedule.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="cadence">
         /// One-time schedule cadence
@@ -90,16 +91,16 @@ namespace Baseten
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public OneTimeAutoscalingScheduleV1(
-            string id,
+        public OneTimeAutoscalingScheduleUpsertV1(
             string name,
             bool enabled,
-            global::Baseten.AutoscalingScheduleSettingsV1 autoscalingSettings,
+            global::Baseten.AutoscalingScheduleSettingsRequestV1 autoscalingSettings,
             global::System.DateTime startAt,
             global::System.DateTime endAt,
+            string? id,
             string cadence = "ONE_TIME")
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Id = id;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Enabled = enabled;
             this.AutoscalingSettings = autoscalingSettings ?? throw new global::System.ArgumentNullException(nameof(autoscalingSettings));
@@ -109,9 +110,9 @@ namespace Baseten
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OneTimeAutoscalingScheduleV1" /> class.
+        /// Initializes a new instance of the <see cref="OneTimeAutoscalingScheduleUpsertV1" /> class.
         /// </summary>
-        public OneTimeAutoscalingScheduleV1()
+        public OneTimeAutoscalingScheduleUpsertV1()
         {
         }
 

@@ -19,10 +19,10 @@ namespace Baseten
         /// Complete schedules to create or replace. Existing schedules omitted from this list are unchanged.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schedules")]
-        public global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleUpsertV1>? Schedules { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SchedulesItem2>? Schedules { get; set; }
 
         /// <summary>
-        /// Stable identifiers of schedules to delete.
+        /// Stable identifiers of schedules to delete. To clear all schedules, include every existing schedule identifier.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("delete_schedules")]
         public global::System.Collections.Generic.IList<string>? DeleteSchedules { get; set; }
@@ -44,14 +44,14 @@ namespace Baseten
         /// Complete schedules to create or replace. Existing schedules omitted from this list are unchanged.
         /// </param>
         /// <param name="deleteSchedules">
-        /// Stable identifiers of schedules to delete.
+        /// Stable identifiers of schedules to delete. To clear all schedules, include every existing schedule identifier.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateAutoscalingScheduleSettingsV1(
             string? timezone,
-            global::System.Collections.Generic.IList<global::Baseten.AutoscalingScheduleUpsertV1>? schedules,
+            global::System.Collections.Generic.IList<global::Baseten.SchedulesItem2>? schedules,
             global::System.Collections.Generic.IList<string>? deleteSchedules)
         {
             this.Timezone = timezone;

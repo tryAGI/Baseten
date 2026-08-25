@@ -4,10 +4,10 @@
 namespace Baseten
 {
     /// <summary>
-    /// Autoscaling schedules and their evaluated state<br/>
+    /// Stable schedule identifier. Omit this field to create a schedule.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
-    public sealed partial class EnvironmentV1AutoscalingSchedules
+    public sealed partial class OneTimeAutoscalingScheduleUpsertV1Id
     {
 
         /// <summary>
