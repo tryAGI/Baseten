@@ -40,6 +40,13 @@ namespace Baseten
         public string? EnvironmentName { get; set; }
 
         /// <summary>
+        /// Region in which to deploy the model<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
         /// Retain the target environment's current instance type rather than the one in `config`. Only meaningful when `environment_name` is set and that environment already exists.<br/>
         /// Default Value: true
         /// </summary>
@@ -98,6 +105,10 @@ namespace Baseten
         /// Stable environment to push to (e.g. `production`). If unset, the deployment is created without environment selection. Caller must have push permission for the named environment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="region">
+        /// Region in which to deploy the model<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="preserveEnvInstanceType">
         /// Retain the target environment's current instance type rather than the one in `config`. Only meaningful when `environment_name` is set and that environment already exists.<br/>
         /// Default Value: true
@@ -126,6 +137,7 @@ namespace Baseten
             string? rawConfig,
             object? userEnv,
             string? environmentName,
+            string? region,
             bool? preserveEnvInstanceType,
             int? deployTimeoutMinutes,
             string? deploymentName,
@@ -136,6 +148,7 @@ namespace Baseten
             this.RawConfig = rawConfig;
             this.UserEnv = userEnv;
             this.EnvironmentName = environmentName;
+            this.Region = region;
             this.PreserveEnvInstanceType = preserveEnvInstanceType;
             this.DeployTimeoutMinutes = deployTimeoutMinutes;
             this.DeploymentName = deploymentName;

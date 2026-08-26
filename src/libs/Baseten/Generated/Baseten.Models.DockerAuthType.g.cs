@@ -11,6 +11,10 @@ namespace Baseten
         /// <summary>
         /// 
         /// </summary>
+        AwsAssumeRole,
+        /// <summary>
+        /// 
+        /// </summary>
         AwsIam,
         /// <summary>
         /// 
@@ -42,6 +46,7 @@ namespace Baseten
         {
             return value switch
             {
+                DockerAuthType.AwsAssumeRole => "AWS_ASSUME_ROLE",
                 DockerAuthType.AwsIam => "AWS_IAM",
                 DockerAuthType.AwsOidc => "AWS_OIDC",
                 DockerAuthType.GcpOidc => "GCP_OIDC",
@@ -57,6 +62,7 @@ namespace Baseten
         {
             return value switch
             {
+                "AWS_ASSUME_ROLE" => DockerAuthType.AwsAssumeRole,
                 "AWS_IAM" => DockerAuthType.AwsIam,
                 "AWS_OIDC" => DockerAuthType.AwsOidc,
                 "GCP_OIDC" => DockerAuthType.GcpOidc,

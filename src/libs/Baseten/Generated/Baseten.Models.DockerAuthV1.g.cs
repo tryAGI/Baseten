@@ -59,6 +59,13 @@ namespace Baseten
         public global::Baseten.RegistrySecretDockerAuthV1? RegistrySecretDockerAuth { get; set; }
 
         /// <summary>
+        /// Required when auth_method is AWS_ASSUME_ROLE. Baseten assumes the given IAM role with its own AWS principal and your organization's external ID, with no OIDC provider registration in your account.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aws_assume_role_docker_auth")]
+        public global::Baseten.AwsAssumeRoleDockerAuthV1? AwsAssumeRoleDockerAuth { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -93,6 +100,10 @@ namespace Baseten
         /// Required when auth_method is REGISTRY_SECRET. Supports any Docker registry (Docker Hub, GHCR, NGC, etc.) via username:password credentials stored as a Baseten secret.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="awsAssumeRoleDockerAuth">
+        /// Required when auth_method is AWS_ASSUME_ROLE. Baseten assumes the given IAM role with its own AWS principal and your organization's external ID, with no OIDC provider registration in your account.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -103,7 +114,8 @@ namespace Baseten
             global::Baseten.AwsIamDockerAuthV1? awsIamDockerAuth,
             global::Baseten.AwsOidcDockerAuthV1? awsOidcDockerAuth,
             global::Baseten.GcpOidcDockerAuthV1? gcpOidcDockerAuth,
-            global::Baseten.RegistrySecretDockerAuthV1? registrySecretDockerAuth)
+            global::Baseten.RegistrySecretDockerAuthV1? registrySecretDockerAuth,
+            global::Baseten.AwsAssumeRoleDockerAuthV1? awsAssumeRoleDockerAuth)
         {
             this.Registry = registry ?? throw new global::System.ArgumentNullException(nameof(registry));
             this.AuthMethod = authMethod;
@@ -112,6 +124,7 @@ namespace Baseten
             this.AwsOidcDockerAuth = awsOidcDockerAuth;
             this.GcpOidcDockerAuth = gcpOidcDockerAuth;
             this.RegistrySecretDockerAuth = registrySecretDockerAuth;
+            this.AwsAssumeRoleDockerAuth = awsAssumeRoleDockerAuth;
         }
 
         /// <summary>
