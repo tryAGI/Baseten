@@ -21,6 +21,7 @@ namespace Baseten
         ///     "raw_config": null,<br/>
         ///     "user_env": null,<br/>
         ///     "environment_name": null,<br/>
+        ///     "region": null,<br/>
         ///     "deploy_timeout_minutes": null,<br/>
         ///     "deployment_name": null,<br/>
         ///     "labels": null<br/>
@@ -52,6 +53,7 @@ namespace Baseten
         ///     "raw_config": null,<br/>
         ///     "user_env": null,<br/>
         ///     "environment_name": null,<br/>
+        ///     "region": null,<br/>
         ///     "deploy_timeout_minutes": null,<br/>
         ///     "deployment_name": null,<br/>
         ///     "labels": null<br/>
