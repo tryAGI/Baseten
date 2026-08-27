@@ -9,67 +9,67 @@ namespace Baseten
     public enum AuditLogEventTypeGroupV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActivatedDeactivated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApiKeys,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AutoscalingSettings,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Deleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Deployed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DirectoryGroupManagement,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnvironmentSettings,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gateway,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InstanceTypeChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Promoted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReplicaTerminated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequestBackpressureSettings,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Secrets,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ssh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserManagement,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WebhookSigningSecrets,
     }

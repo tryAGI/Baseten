@@ -4,16 +4,16 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum LimitEnforcementV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cascading,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Independent,
     }

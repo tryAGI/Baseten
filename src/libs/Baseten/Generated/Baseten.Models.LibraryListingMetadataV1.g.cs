@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class LibraryListingMetadataV1
     {
@@ -33,7 +33,7 @@ namespace Baseten
         public global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1OutputModalitie>? OutputModalities { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("license")]
         [global::System.Text.Json.Serialization.JsonRequired]

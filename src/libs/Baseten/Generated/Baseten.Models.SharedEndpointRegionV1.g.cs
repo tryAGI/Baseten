@@ -4,16 +4,16 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SharedEndpointRegionV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Eu,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unrestricted,
     }

@@ -5,12 +5,12 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct PatchOpsItem : global::System.IEquatable<PatchOpsItem>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType? Type { get; }
 
@@ -24,7 +24,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelCode))]
@@ -32,7 +32,7 @@ namespace Baseten
         public bool IsModelCode => ModelCode != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelCode(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.DeploymentPatchOpModelCodeV1 PickModelCode() => IsModelCode
             ? ModelCode!
@@ -61,7 +61,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Package))]
@@ -69,7 +69,7 @@ namespace Baseten
         public bool IsPackage => Package != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPackage(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.DeploymentPatchOpPackageV1 PickPackage() => IsPackage
             ? Package!
@@ -101,7 +101,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Config))]
@@ -109,7 +109,7 @@ namespace Baseten
         public bool IsConfig => Config != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickConfig(
 #if NET6_0_OR_GREATER
@@ -122,7 +122,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.DeploymentPatchOpConfigV1 PickConfig() => IsConfig
             ? Config!
@@ -138,7 +138,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PythonRequirement))]
@@ -146,7 +146,7 @@ namespace Baseten
         public bool IsPythonRequirement => PythonRequirement != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPythonRequirement(
 #if NET6_0_OR_GREATER
@@ -159,7 +159,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.DeploymentPatchOpPythonRequirementV1 PickPythonRequirement() => IsPythonRequirement
             ? PythonRequirement!
@@ -175,7 +175,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EnvironmentVariable))]
@@ -183,7 +183,7 @@ namespace Baseten
         public bool IsEnvironmentVariable => EnvironmentVariable != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEnvironmentVariable(
 #if NET6_0_OR_GREATER
@@ -196,7 +196,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.DeploymentPatchOpEnvVarV1 PickEnvironmentVariable() => IsEnvironmentVariable
             ? EnvironmentVariable!
@@ -215,7 +215,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ExternalData))]
@@ -223,7 +223,7 @@ namespace Baseten
         public bool IsExternalData => ExternalData != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickExternalData(
 #if NET6_0_OR_GREATER
@@ -236,23 +236,23 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.DeploymentPatchOpExternalDataV1 PickExternalData() => IsExternalData
             ? ExternalData!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ExternalData' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchOpsItem(global::Baseten.DeploymentPatchOpModelCodeV1 value) => new PatchOpsItem((global::Baseten.DeploymentPatchOpModelCodeV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.DeploymentPatchOpModelCodeV1?(PatchOpsItem @this) => @this.ModelCode;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchOpsItem(global::Baseten.DeploymentPatchOpModelCodeV1? value)
         {
@@ -260,22 +260,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchOpsItem FromModelCode(global::Baseten.DeploymentPatchOpModelCodeV1? value) => new PatchOpsItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchOpsItem(global::Baseten.DeploymentPatchOpPackageV1 value) => new PatchOpsItem((global::Baseten.DeploymentPatchOpPackageV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.DeploymentPatchOpPackageV1?(PatchOpsItem @this) => @this.Package;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchOpsItem(global::Baseten.DeploymentPatchOpPackageV1? value)
         {
@@ -283,22 +283,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchOpsItem FromPackage(global::Baseten.DeploymentPatchOpPackageV1? value) => new PatchOpsItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchOpsItem(global::Baseten.DeploymentPatchOpConfigV1 value) => new PatchOpsItem((global::Baseten.DeploymentPatchOpConfigV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.DeploymentPatchOpConfigV1?(PatchOpsItem @this) => @this.Config;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchOpsItem(global::Baseten.DeploymentPatchOpConfigV1? value)
         {
@@ -306,22 +306,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchOpsItem FromConfig(global::Baseten.DeploymentPatchOpConfigV1? value) => new PatchOpsItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchOpsItem(global::Baseten.DeploymentPatchOpPythonRequirementV1 value) => new PatchOpsItem((global::Baseten.DeploymentPatchOpPythonRequirementV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.DeploymentPatchOpPythonRequirementV1?(PatchOpsItem @this) => @this.PythonRequirement;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchOpsItem(global::Baseten.DeploymentPatchOpPythonRequirementV1? value)
         {
@@ -329,22 +329,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchOpsItem FromPythonRequirement(global::Baseten.DeploymentPatchOpPythonRequirementV1? value) => new PatchOpsItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchOpsItem(global::Baseten.DeploymentPatchOpEnvVarV1 value) => new PatchOpsItem((global::Baseten.DeploymentPatchOpEnvVarV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.DeploymentPatchOpEnvVarV1?(PatchOpsItem @this) => @this.EnvironmentVariable;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchOpsItem(global::Baseten.DeploymentPatchOpEnvVarV1? value)
         {
@@ -352,22 +352,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchOpsItem FromEnvironmentVariable(global::Baseten.DeploymentPatchOpEnvVarV1? value) => new PatchOpsItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PatchOpsItem(global::Baseten.DeploymentPatchOpExternalDataV1 value) => new PatchOpsItem((global::Baseten.DeploymentPatchOpExternalDataV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.DeploymentPatchOpExternalDataV1?(PatchOpsItem @this) => @this.ExternalData;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchOpsItem(global::Baseten.DeploymentPatchOpExternalDataV1? value)
         {
@@ -375,12 +375,12 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PatchOpsItem FromExternalData(global::Baseten.DeploymentPatchOpExternalDataV1? value) => new PatchOpsItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PatchOpsItem(
             global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType? type,
@@ -403,7 +403,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ExternalData as object ??
@@ -411,11 +411,11 @@ namespace Baseten
             PythonRequirement as object ??
             Config as object ??
             Package as object ??
-            ModelCode as object 
+            ModelCode as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             ModelCode?.ToString() ??
@@ -423,11 +423,11 @@ namespace Baseten
             Config?.ToString() ??
             PythonRequirement?.ToString() ??
             EnvironmentVariable?.ToString() ??
-            ExternalData?.ToString() 
+            ExternalData?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -435,7 +435,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Baseten.DeploymentPatchOpModelCodeV1, TResult>? modelCode = null,
@@ -480,7 +480,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Baseten.DeploymentPatchOpModelCodeV1>? modelCode = null,
@@ -528,7 +528,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Baseten.DeploymentPatchOpModelCodeV1>? modelCode = null,
@@ -571,7 +571,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -600,7 +600,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(PatchOpsItem other)
         {
@@ -610,12 +610,12 @@ namespace Baseten
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.DeploymentPatchOpConfigV1?>.Default.Equals(Config, other.Config) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.DeploymentPatchOpPythonRequirementV1?>.Default.Equals(PythonRequirement, other.PythonRequirement) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.DeploymentPatchOpEnvVarV1?>.Default.Equals(EnvironmentVariable, other.EnvironmentVariable) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.DeploymentPatchOpExternalDataV1?>.Default.Equals(ExternalData, other.ExternalData) 
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.DeploymentPatchOpExternalDataV1?>.Default.Equals(ExternalData, other.ExternalData)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(PatchOpsItem obj1, PatchOpsItem obj2)
         {
@@ -623,7 +623,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(PatchOpsItem obj1, PatchOpsItem obj2)
         {
@@ -631,7 +631,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

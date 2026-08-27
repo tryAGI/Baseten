@@ -4,31 +4,31 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GitInfo
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("latest_commit_sha")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string LatestCommitSha { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("latest_tag")]
         public string? LatestTag { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("commits_since_tag")]
         public int? CommitsSinceTag { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_uncommitted_changes")]
         [global::System.Text.Json.Serialization.JsonRequired]

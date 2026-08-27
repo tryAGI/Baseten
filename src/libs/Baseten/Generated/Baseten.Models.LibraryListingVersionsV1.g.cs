@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class LibraryListingVersionsV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("versions")]
         [global::System.Text.Json.Serialization.JsonRequired]

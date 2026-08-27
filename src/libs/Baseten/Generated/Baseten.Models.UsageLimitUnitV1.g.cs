@@ -4,12 +4,12 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum UsageLimitUnitV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Day,
     }

@@ -4,16 +4,16 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateModelRequestV1SourceDiscriminatorKind
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LibraryListing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelArchive,
     }

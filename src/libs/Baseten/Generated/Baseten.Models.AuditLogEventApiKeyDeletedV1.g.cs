@@ -9,14 +9,14 @@ namespace Baseten
     public sealed partial class AuditLogEventApiKeyDeletedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"API_KEY_DELETED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "API_KEY_DELETED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_key_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,7 +31,7 @@ namespace Baseten
         public required global::Baseten.AuditLogApiKeyTypeV1 ApiKeyType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prefix")]
         [global::System.Text.Json.Serialization.JsonRequired]

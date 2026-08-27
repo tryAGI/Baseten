@@ -20,7 +20,7 @@ namespace Baseten.JsonConverters
                     {
                         return global::Baseten.V1InteractiveSessionAuthProviderExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

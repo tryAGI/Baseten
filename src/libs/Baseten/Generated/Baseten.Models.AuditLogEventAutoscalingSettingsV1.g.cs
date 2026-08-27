@@ -9,52 +9,52 @@ namespace Baseten
     public sealed partial class AuditLogEventAutoscalingSettingsV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("min_replica")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MinReplica { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_replica")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MaxReplica { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("concurrency_target")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ConcurrencyTarget { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_window")]
         public int? AutoscalingWindow { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scale_down_delay")]
         public int? ScaleDownDelay { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_utilization_percentage")]
         public int? TargetUtilizationPercentage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_in_flight_tokens")]
         public int? TargetInFlightTokens { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_scale_down_rate")]
         public double? MaxScaleDownRate { get; set; }

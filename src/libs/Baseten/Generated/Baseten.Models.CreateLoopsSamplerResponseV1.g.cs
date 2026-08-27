@@ -4,12 +4,12 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateLoopsSamplerResponseV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sampler")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -11,27 +11,27 @@ namespace Baseten
     public enum GatewayProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Anthropic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Baseten,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasetenModelApi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Openai,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenaiCompatible,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vertex,
     }

@@ -9,7 +9,7 @@ namespace Baseten
     public enum RollingDeployStrategyV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Replica,
     }

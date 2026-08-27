@@ -9,21 +9,21 @@ namespace Baseten
     public sealed partial class AuditLogEventUserInvitedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"USER_INVITED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "USER_INVITED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("invited_user_email")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string InvitedUserEmail { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role_name")]
         [global::System.Text.Json.Serialization.JsonRequired]

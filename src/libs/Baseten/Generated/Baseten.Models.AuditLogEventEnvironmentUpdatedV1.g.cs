@@ -9,124 +9,124 @@ namespace Baseten
     public sealed partial class AuditLogEventEnvironmentUpdatedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schedules")]
         public global::System.Collections.Generic.IList<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>? Schedules { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("min_replica")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MinReplica { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_replica")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MaxReplica { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("concurrency_target")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ConcurrencyTarget { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_window")]
         public int? AutoscalingWindow { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scale_down_delay")]
         public int? ScaleDownDelay { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_utilization_percentage")]
         public int? TargetUtilizationPercentage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_in_flight_tokens")]
         public int? TargetInFlightTokens { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_scale_down_rate")]
         public double? MaxScaleDownRate { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("redeploy_on_promotion")]
         public bool? RedeployOnPromotion { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rolling_deploy")]
         public bool? RollingDeploy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rolling_deploy_strategy")]
         public string? RollingDeployStrategy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_unavailable_percent")]
         public int? MaxUnavailablePercent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_surge_percent")]
         public int? MaxSurgePercent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stabilization_time_seconds")]
         public int? StabilizationTimeSeconds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("replica_overhead_percent")]
         public int? ReplicaOverheadPercent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promotion_cleanup_strategy")]
         public string? PromotionCleanupStrategy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_while_promoting")]
         public bool? RampUpWhilePromoting { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_duration_seconds")]
         public int? RampUpDurationSeconds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ramp_up_step_size")]
         public int? RampUpStepSize { get; set; }
@@ -138,41 +138,41 @@ namespace Baseten
         public string? RequestBackpressurePolicy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ModelId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ModelName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environment_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string EnvironmentName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deployment_type")]
         public string? DeploymentType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"ENVIRONMENT_UPDATED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "ENVIRONMENT_UPDATED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous_settings")]
         public global::Baseten.AuditLogEventEnvironmentSettingsV1? PreviousSettings { get; set; }

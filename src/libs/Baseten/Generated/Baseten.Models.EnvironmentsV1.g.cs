@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class EnvironmentsV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environments")]
         [global::System.Text.Json.Serialization.JsonRequired]

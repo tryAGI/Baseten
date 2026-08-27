@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class LoopsDebugArchiveFilesResponseV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("presigned_urls")]
         [global::System.Text.Json.Serialization.JsonRequired]

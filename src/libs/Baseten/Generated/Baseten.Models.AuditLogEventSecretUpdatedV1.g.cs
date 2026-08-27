@@ -9,21 +9,21 @@ namespace Baseten
     public sealed partial class AuditLogEventSecretUpdatedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"SECRET_UPDATED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "SECRET_UPDATED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("secret_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string SecretId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("secret_name")]
         [global::System.Text.Json.Serialization.JsonRequired]

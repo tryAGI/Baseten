@@ -20,7 +20,7 @@ namespace Baseten.JsonConverters
                     {
                         return global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadenceExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

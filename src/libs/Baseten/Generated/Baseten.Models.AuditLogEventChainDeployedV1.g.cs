@@ -9,48 +9,48 @@ namespace Baseten
     public sealed partial class AuditLogEventChainDeployedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"CHAIN_DEPLOYED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "CHAIN_DEPLOYED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_deployment_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainDeploymentId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_deployment_name")]
         public string? ChainDeploymentName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("is_primary")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool IsPrimary { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("publish")]
         [global::System.Text.Json.Serialization.JsonRequired]

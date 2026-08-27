@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class InstanceTypePricesV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instance_types")]
         [global::System.Text.Json.Serialization.JsonRequired]

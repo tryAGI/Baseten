@@ -4,12 +4,12 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class EnvironmentAutoscalingSchedulesV1ScheduleDiscriminator
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cadence")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadenceJsonConverter))]

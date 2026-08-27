@@ -9,14 +9,14 @@ namespace Baseten
     public sealed partial class AuditLogEventUserRemovedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"USER_REMOVED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "USER_REMOVED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("removed_user_email")]
         [global::System.Text.Json.Serialization.JsonRequired]

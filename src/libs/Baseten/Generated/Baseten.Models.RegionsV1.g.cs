@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class RegionsV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("regions")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -9,15 +9,15 @@ namespace Baseten
     public enum UpdateAutoscalingSettingsStatusV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Accepted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Queued,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unchanged,
     }

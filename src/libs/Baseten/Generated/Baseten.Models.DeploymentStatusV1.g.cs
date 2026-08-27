@@ -9,59 +9,59 @@ namespace Baseten
     public enum DeploymentStatusV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Building,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BuildFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BuildStopped,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Deactivating,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Deploying,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeployFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inactive,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LoadingModel,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ScaledToZero,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unhealthy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Updating,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WakingUp,
     }

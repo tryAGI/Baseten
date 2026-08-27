@@ -4,32 +4,32 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum DockerAuthType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AwsAssumeRole,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AwsIam,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AwsOidc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GcpOidc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GcpServiceAccountJson,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RegistrySecret,
     }

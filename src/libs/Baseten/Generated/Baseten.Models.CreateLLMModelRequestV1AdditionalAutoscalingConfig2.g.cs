@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateLLMModelRequestV1AdditionalAutoscalingConfig2
     {

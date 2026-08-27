@@ -9,47 +9,47 @@ namespace Baseten
     public sealed partial class AuditLogEventChainDeploymentPromotedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"CHAIN_DEPLOYMENT_PROMOTED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "CHAIN_DEPLOYMENT_PROMOTED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_deployment_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainDeploymentId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_deployment_name")]
         public string? ChainDeploymentName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environment_name")]
         public string? EnvironmentName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("environment_id")]
         public string? EnvironmentId { get; set; }

@@ -4,32 +4,32 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateDeploymentPatchRequestV1PatchOpDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Config,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnvironmentVariable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ExternalData,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelCode,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Package,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PythonRequirement,
     }

@@ -9,11 +9,11 @@ namespace Baseten
     public enum AutoscalingScheduleV1Cadence
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Daily,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hourly,
     }

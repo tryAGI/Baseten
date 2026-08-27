@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GroupV1
     {
@@ -23,13 +23,13 @@ namespace Baseten
         public required global::Baseten.GroupMetadataV1 Metadata { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         public global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1>? Models { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("effective_models")]
         public global::System.Collections.Generic.IList<global::Baseten.EffectiveModelConfigV1>? EffectiveModels { get; set; }

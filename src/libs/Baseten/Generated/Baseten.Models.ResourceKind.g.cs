@@ -4,20 +4,20 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ResourceKind
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chainlet,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeployment,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TrainingJob,
     }

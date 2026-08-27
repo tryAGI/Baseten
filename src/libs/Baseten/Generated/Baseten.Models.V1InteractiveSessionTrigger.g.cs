@@ -4,20 +4,20 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum V1InteractiveSessionTrigger
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnDemand,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnFailure,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnStartup,
     }

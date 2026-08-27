@@ -9,42 +9,42 @@ namespace Baseten
     public sealed partial class AuditLogEventModelDeploymentInstanceTypeChangedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ModelId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ModelName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deployment_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string DeploymentId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deployment_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string DeploymentName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instance_type_name")]
         [global::System.Text.Json.Serialization.JsonRequired]

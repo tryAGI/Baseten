@@ -4,16 +4,16 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum LimitTypeV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Request,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Token,
     }

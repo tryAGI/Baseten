@@ -4,16 +4,16 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RequestBackpressurePolicyV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QueueOnFull,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RejectOnFull,
     }

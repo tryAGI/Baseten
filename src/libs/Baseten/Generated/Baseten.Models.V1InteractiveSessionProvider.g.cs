@@ -4,20 +4,20 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum V1InteractiveSessionProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cursor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ssh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VsCode,
     }

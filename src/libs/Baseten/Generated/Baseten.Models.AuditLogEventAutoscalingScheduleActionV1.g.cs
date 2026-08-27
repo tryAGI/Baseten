@@ -9,19 +9,19 @@ namespace Baseten
     public enum AuditLogEventAutoscalingScheduleActionV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Created,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Deleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unchanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Updated,
     }

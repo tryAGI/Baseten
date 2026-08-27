@@ -9,49 +9,49 @@ namespace Baseten
     public sealed partial class AuditLogEventSshCertificateSignedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"SSH_CERTIFICATE_SIGNED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "SSH_CERTIFICATE_SIGNED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("workload_type")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string WorkloadType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("workload_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string WorkloadId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("project_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ProjectId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("replica_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ReplicaId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxy_address")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ProxyAddress { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
         [global::System.Text.Json.Serialization.JsonRequired]
