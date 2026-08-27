@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// Prefix of the API key the usage is attributed to. Null when not grouping by api_key.<br/>
+    /// Prefix of the API key the usage is attributed to. Null when not grouping by api_key or when the request was not authenticated with an API key.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
     public sealed partial class ModelApisUsageResultV1ApiKeyPrefix
