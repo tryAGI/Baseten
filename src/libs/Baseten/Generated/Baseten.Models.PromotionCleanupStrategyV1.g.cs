@@ -9,15 +9,15 @@ namespace Baseten
     public enum PromotionCleanupStrategyV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Deactivate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Keep,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ScaleToZero,
     }

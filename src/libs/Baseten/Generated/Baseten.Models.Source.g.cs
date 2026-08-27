@@ -10,7 +10,7 @@ namespace Baseten
     public readonly partial struct Source : global::System.IEquatable<Source>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.CreateModelRequestV1SourceDiscriminatorKind? Kind { get; }
 
@@ -24,7 +24,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LibraryListing))]
@@ -32,7 +32,7 @@ namespace Baseten
         public bool IsLibraryListing => LibraryListing != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickLibraryListing(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.LibraryListingSourceV1 PickLibraryListing() => IsLibraryListing
             ? LibraryListing!
@@ -62,7 +62,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelArchive))]
@@ -70,7 +70,7 @@ namespace Baseten
         public bool IsModelArchive => ModelArchive != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelArchive(
 #if NET6_0_OR_GREATER
@@ -83,23 +83,23 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.ModelArchiveSourceV1 PickModelArchive() => IsModelArchive
             ? ModelArchive!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelArchive' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Source(global::Baseten.LibraryListingSourceV1 value) => new Source((global::Baseten.LibraryListingSourceV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.LibraryListingSourceV1?(Source @this) => @this.LibraryListing;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Source(global::Baseten.LibraryListingSourceV1? value)
         {
@@ -107,22 +107,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Source FromLibraryListing(global::Baseten.LibraryListingSourceV1? value) => new Source(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Source(global::Baseten.ModelArchiveSourceV1 value) => new Source((global::Baseten.ModelArchiveSourceV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.ModelArchiveSourceV1?(Source @this) => @this.ModelArchive;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Source(global::Baseten.ModelArchiveSourceV1? value)
         {
@@ -130,12 +130,12 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Source FromModelArchive(global::Baseten.ModelArchiveSourceV1? value) => new Source(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Source(
             global::Baseten.CreateModelRequestV1SourceDiscriminatorKind? kind,
@@ -150,23 +150,23 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ModelArchive as object ??
-            LibraryListing as object 
+            LibraryListing as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             LibraryListing?.ToString() ??
-            ModelArchive?.ToString() 
+            ModelArchive?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -174,7 +174,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Baseten.LibraryListingSourceV1, TResult>? libraryListing = null,
@@ -199,7 +199,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Baseten.LibraryListingSourceV1>? libraryListing = null,
@@ -223,7 +223,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Baseten.LibraryListingSourceV1>? libraryListing = null,
@@ -246,7 +246,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -267,18 +267,18 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Source other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.LibraryListingSourceV1?>.Default.Equals(LibraryListing, other.LibraryListing) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.ModelArchiveSourceV1?>.Default.Equals(ModelArchive, other.ModelArchive) 
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.ModelArchiveSourceV1?>.Default.Equals(ModelArchive, other.ModelArchive)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Source obj1, Source obj2)
         {
@@ -286,7 +286,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Source obj1, Source obj2)
         {
@@ -294,7 +294,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

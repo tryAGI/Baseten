@@ -4,12 +4,12 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateModelDeploymentRequestV1SourceDiscriminatorKind
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelArchive,
     }

@@ -9,55 +9,55 @@ namespace Baseten
     public sealed partial class AuditLogEventChainletInstanceTypeChangedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"CHAINLET_INSTANCE_TYPE_CHANGED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "CHAINLET_INSTANCE_TYPE_CHANGED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_deployment_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainDeploymentId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_deployment_name")]
         public string? ChainDeploymentName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chainlet_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainletName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chainlet_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainletId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instance_type_name")]
         [global::System.Text.Json.Serialization.JsonRequired]

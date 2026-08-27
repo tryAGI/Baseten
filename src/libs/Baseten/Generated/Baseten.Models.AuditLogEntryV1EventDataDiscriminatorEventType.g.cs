@@ -4,180 +4,180 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AuditLogEntryV1EventDataDiscriminatorEventType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApiKeyCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApiKeyDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainletAutoscalingSettingsChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainletInstanceTypeChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainDeployed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainDeploymentActivated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainDeploymentDeactivated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainDeploymentDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainDeploymentPromoted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainEnvironmentCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChainEnvironmentUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DirectoryGroupRoleUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnvironmentCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnvironmentDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnvironmentUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GatewayEndpointCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GatewayEndpointDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GatewayEndpointUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeployed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeploymentActivated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeploymentAutoscalingSettingsChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeploymentDeactivated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeploymentDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeploymentInstanceTypeChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeploymentPromoted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeploymentRequestBackpressureSettingsChanged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelDeploymentRetried,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ModelPromotionControlAction,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReplicaTerminated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequireGroupBasedAdminsEnabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SecretDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SecretUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SshCertificateSigned,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserInvited,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserJoinedOrganization,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserRemoved,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserRoleUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserTeamRoleUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WebhookSigningSecretCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WebhookSigningSecretDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WebhookSigningSecretRotated,
     }

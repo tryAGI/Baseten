@@ -4,36 +4,36 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum InProgressPromotionStatusV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Canceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Paused,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RampingDown,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RampingUp,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Releasing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Succeeded,
     }

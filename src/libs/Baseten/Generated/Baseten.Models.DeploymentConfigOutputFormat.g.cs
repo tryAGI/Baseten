@@ -4,20 +4,20 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum DeploymentConfigOutputFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Both,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Parsed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Raw,
     }

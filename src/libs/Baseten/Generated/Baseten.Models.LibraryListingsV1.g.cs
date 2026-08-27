@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class LibraryListingsV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("listings")]
         [global::System.Text.Json.Serialization.JsonRequired]

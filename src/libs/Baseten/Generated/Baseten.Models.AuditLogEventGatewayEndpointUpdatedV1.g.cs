@@ -9,28 +9,28 @@ namespace Baseten
     public sealed partial class AuditLogEventGatewayEndpointUpdatedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"GATEWAY_ENDPOINT_UPDATED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "GATEWAY_ENDPOINT_UPDATED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("gateway_endpoint_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string GatewayEndpointId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("slug")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Slug { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous_slug")]
         public string? PreviousSlug { get; set; }

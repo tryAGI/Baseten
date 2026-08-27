@@ -9,15 +9,15 @@ namespace Baseten
     public enum ModelMetricModeV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Current,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Series,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Summary,
     }

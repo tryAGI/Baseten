@@ -9,106 +9,106 @@ namespace Baseten
     public sealed partial class AuditLogEventChainletAutoscalingSettingsChangedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("min_replica")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MinReplica { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_replica")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MaxReplica { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("concurrency_target")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ConcurrencyTarget { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_window")]
         public int? AutoscalingWindow { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scale_down_delay")]
         public int? ScaleDownDelay { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_utilization_percentage")]
         public int? TargetUtilizationPercentage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_in_flight_tokens")]
         public int? TargetInFlightTokens { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_scale_down_rate")]
         public double? MaxScaleDownRate { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"CHAINLET_AUTOSCALING_SETTINGS_CHANGED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "CHAINLET_AUTOSCALING_SETTINGS_CHANGED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_deployment_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainDeploymentId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chain_deployment_name")]
         public string? ChainDeploymentName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chainlet_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainletName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chainlet_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ChainletId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous_settings")]
         public global::Baseten.AuditLogEventAutoscalingSettingsV1? PreviousSettings { get; set; }

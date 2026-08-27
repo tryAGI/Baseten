@@ -9,23 +9,23 @@ namespace Baseten
     public enum AuditLogPromotionControlActionV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ForceCancel,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ForceRollForward,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GracefulCancel,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pause,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Resume,
     }

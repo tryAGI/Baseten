@@ -9,43 +9,43 @@ namespace Baseten
     public enum AuditLogApiKeyTypeV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CreatorServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ExportMetricsAllowedModelsServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ExportMetricsAllModelsServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvokeAllowedModelsServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvokeAllowedSharedEndpointsServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvokeAllModelsServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvokeAllSharedEndpointsServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvokeScopedEnvsAndModelsServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ManageApiKeysServiceAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Personal,
     }

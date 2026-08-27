@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ModelConfigV1
     {
@@ -16,13 +16,13 @@ namespace Baseten
         public required string Slug { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rate_limits")]
         public global::System.Collections.Generic.IList<global::Baseten.RateLimitV1>? RateLimits { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage_limits")]
         public global::System.Collections.Generic.IList<global::Baseten.UsageLimitV1>? UsageLimits { get; set; }

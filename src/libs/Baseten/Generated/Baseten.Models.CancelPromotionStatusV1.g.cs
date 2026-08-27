@@ -9,11 +9,11 @@ namespace Baseten
     public enum CancelPromotionStatusV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Canceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RampingDown,
     }

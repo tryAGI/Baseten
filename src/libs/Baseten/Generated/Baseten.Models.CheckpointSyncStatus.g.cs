@@ -9,11 +9,11 @@ namespace Baseten
     public enum CheckpointSyncStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Completed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Syncing,
     }

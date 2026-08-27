@@ -10,7 +10,7 @@ namespace Baseten
     public readonly partial struct EventData : global::System.IEquatable<EventData>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType? EventType { get; }
 
@@ -24,7 +24,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeployed))]
@@ -32,7 +32,7 @@ namespace Baseten
         public bool IsModelDeployed => ModelDeployed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeployed(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeployedV1 PickModelDeployed() => IsModelDeployed
             ? ModelDeployed!
@@ -61,7 +61,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeploymentActivated))]
@@ -69,7 +69,7 @@ namespace Baseten
         public bool IsModelDeploymentActivated => ModelDeploymentActivated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeploymentActivated(
 #if NET6_0_OR_GREATER
@@ -82,7 +82,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeploymentActivatedV1 PickModelDeploymentActivated() => IsModelDeploymentActivated
             ? ModelDeploymentActivated!
@@ -98,7 +98,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeploymentDeactivated))]
@@ -106,7 +106,7 @@ namespace Baseten
         public bool IsModelDeploymentDeactivated => ModelDeploymentDeactivated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeploymentDeactivated(
 #if NET6_0_OR_GREATER
@@ -119,7 +119,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeploymentDeactivatedV1 PickModelDeploymentDeactivated() => IsModelDeploymentDeactivated
             ? ModelDeploymentDeactivated!
@@ -135,7 +135,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeploymentRetried))]
@@ -143,7 +143,7 @@ namespace Baseten
         public bool IsModelDeploymentRetried => ModelDeploymentRetried != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeploymentRetried(
 #if NET6_0_OR_GREATER
@@ -156,7 +156,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeploymentRetriedV1 PickModelDeploymentRetried() => IsModelDeploymentRetried
             ? ModelDeploymentRetried!
@@ -172,7 +172,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeploymentPromoted))]
@@ -180,7 +180,7 @@ namespace Baseten
         public bool IsModelDeploymentPromoted => ModelDeploymentPromoted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeploymentPromoted(
 #if NET6_0_OR_GREATER
@@ -193,7 +193,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeploymentPromotedV1 PickModelDeploymentPromoted() => IsModelDeploymentPromoted
             ? ModelDeploymentPromoted!
@@ -209,7 +209,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeploymentAutoscalingSettingsChanged))]
@@ -217,7 +217,7 @@ namespace Baseten
         public bool IsModelDeploymentAutoscalingSettingsChanged => ModelDeploymentAutoscalingSettingsChanged != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeploymentAutoscalingSettingsChanged(
 #if NET6_0_OR_GREATER
@@ -230,7 +230,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1 PickModelDeploymentAutoscalingSettingsChanged() => IsModelDeploymentAutoscalingSettingsChanged
             ? ModelDeploymentAutoscalingSettingsChanged!
@@ -246,7 +246,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeploymentRequestBackpressureSettingsChanged))]
@@ -254,7 +254,7 @@ namespace Baseten
         public bool IsModelDeploymentRequestBackpressureSettingsChanged => ModelDeploymentRequestBackpressureSettingsChanged != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeploymentRequestBackpressureSettingsChanged(
 #if NET6_0_OR_GREATER
@@ -267,7 +267,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1 PickModelDeploymentRequestBackpressureSettingsChanged() => IsModelDeploymentRequestBackpressureSettingsChanged
             ? ModelDeploymentRequestBackpressureSettingsChanged!
@@ -283,7 +283,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeploymentInstanceTypeChanged))]
@@ -291,7 +291,7 @@ namespace Baseten
         public bool IsModelDeploymentInstanceTypeChanged => ModelDeploymentInstanceTypeChanged != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeploymentInstanceTypeChanged(
 #if NET6_0_OR_GREATER
@@ -304,7 +304,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1 PickModelDeploymentInstanceTypeChanged() => IsModelDeploymentInstanceTypeChanged
             ? ModelDeploymentInstanceTypeChanged!
@@ -320,7 +320,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeploymentDeleted))]
@@ -328,7 +328,7 @@ namespace Baseten
         public bool IsModelDeploymentDeleted => ModelDeploymentDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeploymentDeleted(
 #if NET6_0_OR_GREATER
@@ -341,7 +341,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeploymentDeletedV1 PickModelDeploymentDeleted() => IsModelDeploymentDeleted
             ? ModelDeploymentDeleted!
@@ -357,7 +357,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelDeleted))]
@@ -365,7 +365,7 @@ namespace Baseten
         public bool IsModelDeleted => ModelDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelDeleted(
 #if NET6_0_OR_GREATER
@@ -378,7 +378,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelDeletedV1 PickModelDeleted() => IsModelDeleted
             ? ModelDeleted!
@@ -394,7 +394,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainDeployed))]
@@ -402,7 +402,7 @@ namespace Baseten
         public bool IsChainDeployed => ChainDeployed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainDeployed(
 #if NET6_0_OR_GREATER
@@ -415,7 +415,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainDeployedV1 PickChainDeployed() => IsChainDeployed
             ? ChainDeployed!
@@ -431,7 +431,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainDeploymentActivated))]
@@ -439,7 +439,7 @@ namespace Baseten
         public bool IsChainDeploymentActivated => ChainDeploymentActivated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainDeploymentActivated(
 #if NET6_0_OR_GREATER
@@ -452,7 +452,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainDeploymentActivatedV1 PickChainDeploymentActivated() => IsChainDeploymentActivated
             ? ChainDeploymentActivated!
@@ -468,7 +468,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainDeploymentDeactivated))]
@@ -476,7 +476,7 @@ namespace Baseten
         public bool IsChainDeploymentDeactivated => ChainDeploymentDeactivated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainDeploymentDeactivated(
 #if NET6_0_OR_GREATER
@@ -489,7 +489,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainDeploymentDeactivatedV1 PickChainDeploymentDeactivated() => IsChainDeploymentDeactivated
             ? ChainDeploymentDeactivated!
@@ -505,7 +505,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainDeploymentPromoted))]
@@ -513,7 +513,7 @@ namespace Baseten
         public bool IsChainDeploymentPromoted => ChainDeploymentPromoted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainDeploymentPromoted(
 #if NET6_0_OR_GREATER
@@ -526,7 +526,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainDeploymentPromotedV1 PickChainDeploymentPromoted() => IsChainDeploymentPromoted
             ? ChainDeploymentPromoted!
@@ -542,7 +542,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainletAutoscalingSettingsChanged))]
@@ -550,7 +550,7 @@ namespace Baseten
         public bool IsChainletAutoscalingSettingsChanged => ChainletAutoscalingSettingsChanged != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainletAutoscalingSettingsChanged(
 #if NET6_0_OR_GREATER
@@ -563,7 +563,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1 PickChainletAutoscalingSettingsChanged() => IsChainletAutoscalingSettingsChanged
             ? ChainletAutoscalingSettingsChanged!
@@ -579,7 +579,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainletInstanceTypeChanged))]
@@ -587,7 +587,7 @@ namespace Baseten
         public bool IsChainletInstanceTypeChanged => ChainletInstanceTypeChanged != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainletInstanceTypeChanged(
 #if NET6_0_OR_GREATER
@@ -600,7 +600,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainletInstanceTypeChangedV1 PickChainletInstanceTypeChanged() => IsChainletInstanceTypeChanged
             ? ChainletInstanceTypeChanged!
@@ -616,7 +616,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainDeploymentDeleted))]
@@ -624,7 +624,7 @@ namespace Baseten
         public bool IsChainDeploymentDeleted => ChainDeploymentDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainDeploymentDeleted(
 #if NET6_0_OR_GREATER
@@ -637,7 +637,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainDeploymentDeletedV1 PickChainDeploymentDeleted() => IsChainDeploymentDeleted
             ? ChainDeploymentDeleted!
@@ -653,7 +653,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainDeleted))]
@@ -661,7 +661,7 @@ namespace Baseten
         public bool IsChainDeleted => ChainDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainDeleted(
 #if NET6_0_OR_GREATER
@@ -674,7 +674,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainDeletedV1 PickChainDeleted() => IsChainDeleted
             ? ChainDeleted!
@@ -690,7 +690,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainEnvironmentCreated))]
@@ -698,7 +698,7 @@ namespace Baseten
         public bool IsChainEnvironmentCreated => ChainEnvironmentCreated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainEnvironmentCreated(
 #if NET6_0_OR_GREATER
@@ -711,7 +711,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainEnvironmentCreatedV1 PickChainEnvironmentCreated() => IsChainEnvironmentCreated
             ? ChainEnvironmentCreated!
@@ -727,7 +727,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChainEnvironmentUpdated))]
@@ -735,7 +735,7 @@ namespace Baseten
         public bool IsChainEnvironmentUpdated => ChainEnvironmentUpdated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChainEnvironmentUpdated(
 #if NET6_0_OR_GREATER
@@ -748,7 +748,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventChainEnvironmentUpdatedV1 PickChainEnvironmentUpdated() => IsChainEnvironmentUpdated
             ? ChainEnvironmentUpdated!
@@ -764,7 +764,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SecretUpdated))]
@@ -772,7 +772,7 @@ namespace Baseten
         public bool IsSecretUpdated => SecretUpdated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSecretUpdated(
 #if NET6_0_OR_GREATER
@@ -785,7 +785,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventSecretUpdatedV1 PickSecretUpdated() => IsSecretUpdated
             ? SecretUpdated!
@@ -801,7 +801,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SecretDeleted))]
@@ -809,7 +809,7 @@ namespace Baseten
         public bool IsSecretDeleted => SecretDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSecretDeleted(
 #if NET6_0_OR_GREATER
@@ -822,7 +822,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventSecretDeletedV1 PickSecretDeleted() => IsSecretDeleted
             ? SecretDeleted!
@@ -838,7 +838,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ApiKeyCreated))]
@@ -846,7 +846,7 @@ namespace Baseten
         public bool IsApiKeyCreated => ApiKeyCreated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickApiKeyCreated(
 #if NET6_0_OR_GREATER
@@ -859,7 +859,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventApiKeyCreatedV1 PickApiKeyCreated() => IsApiKeyCreated
             ? ApiKeyCreated!
@@ -875,7 +875,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ApiKeyDeleted))]
@@ -883,7 +883,7 @@ namespace Baseten
         public bool IsApiKeyDeleted => ApiKeyDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickApiKeyDeleted(
 #if NET6_0_OR_GREATER
@@ -896,7 +896,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventApiKeyDeletedV1 PickApiKeyDeleted() => IsApiKeyDeleted
             ? ApiKeyDeleted!
@@ -912,7 +912,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GatewayEndpointCreated))]
@@ -920,7 +920,7 @@ namespace Baseten
         public bool IsGatewayEndpointCreated => GatewayEndpointCreated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickGatewayEndpointCreated(
 #if NET6_0_OR_GREATER
@@ -933,7 +933,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventGatewayEndpointCreatedV1 PickGatewayEndpointCreated() => IsGatewayEndpointCreated
             ? GatewayEndpointCreated!
@@ -949,7 +949,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GatewayEndpointUpdated))]
@@ -957,7 +957,7 @@ namespace Baseten
         public bool IsGatewayEndpointUpdated => GatewayEndpointUpdated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickGatewayEndpointUpdated(
 #if NET6_0_OR_GREATER
@@ -970,7 +970,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventGatewayEndpointUpdatedV1 PickGatewayEndpointUpdated() => IsGatewayEndpointUpdated
             ? GatewayEndpointUpdated!
@@ -986,7 +986,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(GatewayEndpointDeleted))]
@@ -994,7 +994,7 @@ namespace Baseten
         public bool IsGatewayEndpointDeleted => GatewayEndpointDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickGatewayEndpointDeleted(
 #if NET6_0_OR_GREATER
@@ -1007,7 +1007,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventGatewayEndpointDeletedV1 PickGatewayEndpointDeleted() => IsGatewayEndpointDeleted
             ? GatewayEndpointDeleted!
@@ -1023,7 +1023,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UserInvited))]
@@ -1031,7 +1031,7 @@ namespace Baseten
         public bool IsUserInvited => UserInvited != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUserInvited(
 #if NET6_0_OR_GREATER
@@ -1044,7 +1044,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventUserInvitedV1 PickUserInvited() => IsUserInvited
             ? UserInvited!
@@ -1060,7 +1060,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UserJoinedOrganization))]
@@ -1068,7 +1068,7 @@ namespace Baseten
         public bool IsUserJoinedOrganization => UserJoinedOrganization != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUserJoinedOrganization(
 #if NET6_0_OR_GREATER
@@ -1081,7 +1081,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventUserJoinedOrganizationV1 PickUserJoinedOrganization() => IsUserJoinedOrganization
             ? UserJoinedOrganization!
@@ -1097,7 +1097,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(WebhookSigningSecretCreated))]
@@ -1105,7 +1105,7 @@ namespace Baseten
         public bool IsWebhookSigningSecretCreated => WebhookSigningSecretCreated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickWebhookSigningSecretCreated(
 #if NET6_0_OR_GREATER
@@ -1118,7 +1118,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1 PickWebhookSigningSecretCreated() => IsWebhookSigningSecretCreated
             ? WebhookSigningSecretCreated!
@@ -1134,7 +1134,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(WebhookSigningSecretRotated))]
@@ -1142,7 +1142,7 @@ namespace Baseten
         public bool IsWebhookSigningSecretRotated => WebhookSigningSecretRotated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickWebhookSigningSecretRotated(
 #if NET6_0_OR_GREATER
@@ -1155,7 +1155,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1 PickWebhookSigningSecretRotated() => IsWebhookSigningSecretRotated
             ? WebhookSigningSecretRotated!
@@ -1171,7 +1171,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(WebhookSigningSecretDeleted))]
@@ -1179,7 +1179,7 @@ namespace Baseten
         public bool IsWebhookSigningSecretDeleted => WebhookSigningSecretDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickWebhookSigningSecretDeleted(
 #if NET6_0_OR_GREATER
@@ -1192,7 +1192,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1 PickWebhookSigningSecretDeleted() => IsWebhookSigningSecretDeleted
             ? WebhookSigningSecretDeleted!
@@ -1208,7 +1208,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UserRoleUpdated))]
@@ -1216,7 +1216,7 @@ namespace Baseten
         public bool IsUserRoleUpdated => UserRoleUpdated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUserRoleUpdated(
 #if NET6_0_OR_GREATER
@@ -1229,7 +1229,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventUserRoleUpdatedV1 PickUserRoleUpdated() => IsUserRoleUpdated
             ? UserRoleUpdated!
@@ -1245,7 +1245,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UserTeamRoleUpdated))]
@@ -1253,7 +1253,7 @@ namespace Baseten
         public bool IsUserTeamRoleUpdated => UserTeamRoleUpdated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUserTeamRoleUpdated(
 #if NET6_0_OR_GREATER
@@ -1266,7 +1266,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventUserTeamRoleUpdatedV1 PickUserTeamRoleUpdated() => IsUserTeamRoleUpdated
             ? UserTeamRoleUpdated!
@@ -1282,7 +1282,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UserRemoved))]
@@ -1290,7 +1290,7 @@ namespace Baseten
         public bool IsUserRemoved => UserRemoved != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUserRemoved(
 #if NET6_0_OR_GREATER
@@ -1303,7 +1303,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventUserRemovedV1 PickUserRemoved() => IsUserRemoved
             ? UserRemoved!
@@ -1319,7 +1319,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DirectoryGroupRoleUpdated))]
@@ -1327,7 +1327,7 @@ namespace Baseten
         public bool IsDirectoryGroupRoleUpdated => DirectoryGroupRoleUpdated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDirectoryGroupRoleUpdated(
 #if NET6_0_OR_GREATER
@@ -1340,7 +1340,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1 PickDirectoryGroupRoleUpdated() => IsDirectoryGroupRoleUpdated
             ? DirectoryGroupRoleUpdated!
@@ -1356,7 +1356,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequireGroupBasedAdminsEnabled))]
@@ -1364,7 +1364,7 @@ namespace Baseten
         public bool IsRequireGroupBasedAdminsEnabled => RequireGroupBasedAdminsEnabled != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRequireGroupBasedAdminsEnabled(
 #if NET6_0_OR_GREATER
@@ -1377,7 +1377,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1 PickRequireGroupBasedAdminsEnabled() => IsRequireGroupBasedAdminsEnabled
             ? RequireGroupBasedAdminsEnabled!
@@ -1393,7 +1393,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EnvironmentCreated))]
@@ -1401,7 +1401,7 @@ namespace Baseten
         public bool IsEnvironmentCreated => EnvironmentCreated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEnvironmentCreated(
 #if NET6_0_OR_GREATER
@@ -1414,7 +1414,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventEnvironmentCreatedV1 PickEnvironmentCreated() => IsEnvironmentCreated
             ? EnvironmentCreated!
@@ -1430,7 +1430,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EnvironmentUpdated))]
@@ -1438,7 +1438,7 @@ namespace Baseten
         public bool IsEnvironmentUpdated => EnvironmentUpdated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEnvironmentUpdated(
 #if NET6_0_OR_GREATER
@@ -1451,7 +1451,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventEnvironmentUpdatedV1 PickEnvironmentUpdated() => IsEnvironmentUpdated
             ? EnvironmentUpdated!
@@ -1467,7 +1467,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EnvironmentDeleted))]
@@ -1475,7 +1475,7 @@ namespace Baseten
         public bool IsEnvironmentDeleted => EnvironmentDeleted != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEnvironmentDeleted(
 #if NET6_0_OR_GREATER
@@ -1488,7 +1488,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventEnvironmentDeletedV1 PickEnvironmentDeleted() => IsEnvironmentDeleted
             ? EnvironmentDeleted!
@@ -1504,7 +1504,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ReplicaTerminated))]
@@ -1512,7 +1512,7 @@ namespace Baseten
         public bool IsReplicaTerminated => ReplicaTerminated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickReplicaTerminated(
 #if NET6_0_OR_GREATER
@@ -1525,7 +1525,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventReplicaTerminatedV1 PickReplicaTerminated() => IsReplicaTerminated
             ? ReplicaTerminated!
@@ -1541,7 +1541,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelPromotionControlAction))]
@@ -1549,7 +1549,7 @@ namespace Baseten
         public bool IsModelPromotionControlAction => ModelPromotionControlAction != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickModelPromotionControlAction(
 #if NET6_0_OR_GREATER
@@ -1562,7 +1562,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventModelPromotionControlActionV1 PickModelPromotionControlAction() => IsModelPromotionControlAction
             ? ModelPromotionControlAction!
@@ -1578,7 +1578,7 @@ namespace Baseten
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SshCertificateSigned))]
@@ -1586,7 +1586,7 @@ namespace Baseten
         public bool IsSshCertificateSigned => SshCertificateSigned != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSshCertificateSigned(
 #if NET6_0_OR_GREATER
@@ -1599,23 +1599,23 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Baseten.AuditLogEventSshCertificateSignedV1 PickSshCertificateSigned() => IsSshCertificateSigned
             ? SshCertificateSigned!
             : throw new global::System.InvalidOperationException($"Expected union variant 'SshCertificateSigned' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeployedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeployedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeployedV1?(EventData @this) => @this.ModelDeployed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeployedV1? value)
         {
@@ -1623,22 +1623,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeployed(global::Baseten.AuditLogEventModelDeployedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeploymentActivatedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeploymentActivatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeploymentActivatedV1?(EventData @this) => @this.ModelDeploymentActivated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeploymentActivatedV1? value)
         {
@@ -1646,22 +1646,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeploymentActivated(global::Baseten.AuditLogEventModelDeploymentActivatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeploymentDeactivatedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeploymentDeactivatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeploymentDeactivatedV1?(EventData @this) => @this.ModelDeploymentDeactivated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeploymentDeactivatedV1? value)
         {
@@ -1669,22 +1669,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeploymentDeactivated(global::Baseten.AuditLogEventModelDeploymentDeactivatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeploymentRetriedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeploymentRetriedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeploymentRetriedV1?(EventData @this) => @this.ModelDeploymentRetried;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeploymentRetriedV1? value)
         {
@@ -1692,22 +1692,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeploymentRetried(global::Baseten.AuditLogEventModelDeploymentRetriedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeploymentPromotedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeploymentPromotedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeploymentPromotedV1?(EventData @this) => @this.ModelDeploymentPromoted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeploymentPromotedV1? value)
         {
@@ -1715,22 +1715,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeploymentPromoted(global::Baseten.AuditLogEventModelDeploymentPromotedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1?(EventData @this) => @this.ModelDeploymentAutoscalingSettingsChanged;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1? value)
         {
@@ -1738,22 +1738,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeploymentAutoscalingSettingsChanged(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1?(EventData @this) => @this.ModelDeploymentRequestBackpressureSettingsChanged;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1? value)
         {
@@ -1761,22 +1761,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeploymentRequestBackpressureSettingsChanged(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1?(EventData @this) => @this.ModelDeploymentInstanceTypeChanged;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1? value)
         {
@@ -1784,22 +1784,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeploymentInstanceTypeChanged(global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeploymentDeletedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeploymentDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeploymentDeletedV1?(EventData @this) => @this.ModelDeploymentDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeploymentDeletedV1? value)
         {
@@ -1807,22 +1807,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeploymentDeleted(global::Baseten.AuditLogEventModelDeploymentDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelDeletedV1 value) => new EventData((global::Baseten.AuditLogEventModelDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelDeletedV1?(EventData @this) => @this.ModelDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelDeletedV1? value)
         {
@@ -1830,22 +1830,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelDeleted(global::Baseten.AuditLogEventModelDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainDeployedV1 value) => new EventData((global::Baseten.AuditLogEventChainDeployedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainDeployedV1?(EventData @this) => @this.ChainDeployed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainDeployedV1? value)
         {
@@ -1853,22 +1853,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainDeployed(global::Baseten.AuditLogEventChainDeployedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainDeploymentActivatedV1 value) => new EventData((global::Baseten.AuditLogEventChainDeploymentActivatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainDeploymentActivatedV1?(EventData @this) => @this.ChainDeploymentActivated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainDeploymentActivatedV1? value)
         {
@@ -1876,22 +1876,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainDeploymentActivated(global::Baseten.AuditLogEventChainDeploymentActivatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainDeploymentDeactivatedV1 value) => new EventData((global::Baseten.AuditLogEventChainDeploymentDeactivatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainDeploymentDeactivatedV1?(EventData @this) => @this.ChainDeploymentDeactivated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainDeploymentDeactivatedV1? value)
         {
@@ -1899,22 +1899,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainDeploymentDeactivated(global::Baseten.AuditLogEventChainDeploymentDeactivatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainDeploymentPromotedV1 value) => new EventData((global::Baseten.AuditLogEventChainDeploymentPromotedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainDeploymentPromotedV1?(EventData @this) => @this.ChainDeploymentPromoted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainDeploymentPromotedV1? value)
         {
@@ -1922,22 +1922,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainDeploymentPromoted(global::Baseten.AuditLogEventChainDeploymentPromotedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1 value) => new EventData((global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1?(EventData @this) => @this.ChainletAutoscalingSettingsChanged;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1? value)
         {
@@ -1945,22 +1945,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainletAutoscalingSettingsChanged(global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainletInstanceTypeChangedV1 value) => new EventData((global::Baseten.AuditLogEventChainletInstanceTypeChangedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainletInstanceTypeChangedV1?(EventData @this) => @this.ChainletInstanceTypeChanged;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainletInstanceTypeChangedV1? value)
         {
@@ -1968,22 +1968,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainletInstanceTypeChanged(global::Baseten.AuditLogEventChainletInstanceTypeChangedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainDeploymentDeletedV1 value) => new EventData((global::Baseten.AuditLogEventChainDeploymentDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainDeploymentDeletedV1?(EventData @this) => @this.ChainDeploymentDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainDeploymentDeletedV1? value)
         {
@@ -1991,22 +1991,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainDeploymentDeleted(global::Baseten.AuditLogEventChainDeploymentDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainDeletedV1 value) => new EventData((global::Baseten.AuditLogEventChainDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainDeletedV1?(EventData @this) => @this.ChainDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainDeletedV1? value)
         {
@@ -2014,22 +2014,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainDeleted(global::Baseten.AuditLogEventChainDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainEnvironmentCreatedV1 value) => new EventData((global::Baseten.AuditLogEventChainEnvironmentCreatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainEnvironmentCreatedV1?(EventData @this) => @this.ChainEnvironmentCreated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainEnvironmentCreatedV1? value)
         {
@@ -2037,22 +2037,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainEnvironmentCreated(global::Baseten.AuditLogEventChainEnvironmentCreatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventChainEnvironmentUpdatedV1 value) => new EventData((global::Baseten.AuditLogEventChainEnvironmentUpdatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventChainEnvironmentUpdatedV1?(EventData @this) => @this.ChainEnvironmentUpdated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventChainEnvironmentUpdatedV1? value)
         {
@@ -2060,22 +2060,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromChainEnvironmentUpdated(global::Baseten.AuditLogEventChainEnvironmentUpdatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventSecretUpdatedV1 value) => new EventData((global::Baseten.AuditLogEventSecretUpdatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventSecretUpdatedV1?(EventData @this) => @this.SecretUpdated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventSecretUpdatedV1? value)
         {
@@ -2083,22 +2083,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromSecretUpdated(global::Baseten.AuditLogEventSecretUpdatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventSecretDeletedV1 value) => new EventData((global::Baseten.AuditLogEventSecretDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventSecretDeletedV1?(EventData @this) => @this.SecretDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventSecretDeletedV1? value)
         {
@@ -2106,22 +2106,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromSecretDeleted(global::Baseten.AuditLogEventSecretDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventApiKeyCreatedV1 value) => new EventData((global::Baseten.AuditLogEventApiKeyCreatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventApiKeyCreatedV1?(EventData @this) => @this.ApiKeyCreated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventApiKeyCreatedV1? value)
         {
@@ -2129,22 +2129,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromApiKeyCreated(global::Baseten.AuditLogEventApiKeyCreatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventApiKeyDeletedV1 value) => new EventData((global::Baseten.AuditLogEventApiKeyDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventApiKeyDeletedV1?(EventData @this) => @this.ApiKeyDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventApiKeyDeletedV1? value)
         {
@@ -2152,22 +2152,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromApiKeyDeleted(global::Baseten.AuditLogEventApiKeyDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventGatewayEndpointCreatedV1 value) => new EventData((global::Baseten.AuditLogEventGatewayEndpointCreatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventGatewayEndpointCreatedV1?(EventData @this) => @this.GatewayEndpointCreated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventGatewayEndpointCreatedV1? value)
         {
@@ -2175,22 +2175,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromGatewayEndpointCreated(global::Baseten.AuditLogEventGatewayEndpointCreatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventGatewayEndpointUpdatedV1 value) => new EventData((global::Baseten.AuditLogEventGatewayEndpointUpdatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventGatewayEndpointUpdatedV1?(EventData @this) => @this.GatewayEndpointUpdated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventGatewayEndpointUpdatedV1? value)
         {
@@ -2198,22 +2198,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromGatewayEndpointUpdated(global::Baseten.AuditLogEventGatewayEndpointUpdatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventGatewayEndpointDeletedV1 value) => new EventData((global::Baseten.AuditLogEventGatewayEndpointDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventGatewayEndpointDeletedV1?(EventData @this) => @this.GatewayEndpointDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventGatewayEndpointDeletedV1? value)
         {
@@ -2221,22 +2221,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromGatewayEndpointDeleted(global::Baseten.AuditLogEventGatewayEndpointDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventUserInvitedV1 value) => new EventData((global::Baseten.AuditLogEventUserInvitedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventUserInvitedV1?(EventData @this) => @this.UserInvited;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventUserInvitedV1? value)
         {
@@ -2244,22 +2244,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromUserInvited(global::Baseten.AuditLogEventUserInvitedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventUserJoinedOrganizationV1 value) => new EventData((global::Baseten.AuditLogEventUserJoinedOrganizationV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventUserJoinedOrganizationV1?(EventData @this) => @this.UserJoinedOrganization;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventUserJoinedOrganizationV1? value)
         {
@@ -2267,22 +2267,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromUserJoinedOrganization(global::Baseten.AuditLogEventUserJoinedOrganizationV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1 value) => new EventData((global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1?(EventData @this) => @this.WebhookSigningSecretCreated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1? value)
         {
@@ -2290,22 +2290,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromWebhookSigningSecretCreated(global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1 value) => new EventData((global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1?(EventData @this) => @this.WebhookSigningSecretRotated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1? value)
         {
@@ -2313,22 +2313,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromWebhookSigningSecretRotated(global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1 value) => new EventData((global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1?(EventData @this) => @this.WebhookSigningSecretDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1? value)
         {
@@ -2336,22 +2336,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromWebhookSigningSecretDeleted(global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventUserRoleUpdatedV1 value) => new EventData((global::Baseten.AuditLogEventUserRoleUpdatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventUserRoleUpdatedV1?(EventData @this) => @this.UserRoleUpdated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventUserRoleUpdatedV1? value)
         {
@@ -2359,22 +2359,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromUserRoleUpdated(global::Baseten.AuditLogEventUserRoleUpdatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventUserTeamRoleUpdatedV1 value) => new EventData((global::Baseten.AuditLogEventUserTeamRoleUpdatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventUserTeamRoleUpdatedV1?(EventData @this) => @this.UserTeamRoleUpdated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventUserTeamRoleUpdatedV1? value)
         {
@@ -2382,22 +2382,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromUserTeamRoleUpdated(global::Baseten.AuditLogEventUserTeamRoleUpdatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventUserRemovedV1 value) => new EventData((global::Baseten.AuditLogEventUserRemovedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventUserRemovedV1?(EventData @this) => @this.UserRemoved;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventUserRemovedV1? value)
         {
@@ -2405,22 +2405,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromUserRemoved(global::Baseten.AuditLogEventUserRemovedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1 value) => new EventData((global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1?(EventData @this) => @this.DirectoryGroupRoleUpdated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1? value)
         {
@@ -2428,22 +2428,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromDirectoryGroupRoleUpdated(global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1 value) => new EventData((global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1?(EventData @this) => @this.RequireGroupBasedAdminsEnabled;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1? value)
         {
@@ -2451,22 +2451,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromRequireGroupBasedAdminsEnabled(global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventEnvironmentCreatedV1 value) => new EventData((global::Baseten.AuditLogEventEnvironmentCreatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventEnvironmentCreatedV1?(EventData @this) => @this.EnvironmentCreated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventEnvironmentCreatedV1? value)
         {
@@ -2474,22 +2474,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromEnvironmentCreated(global::Baseten.AuditLogEventEnvironmentCreatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventEnvironmentUpdatedV1 value) => new EventData((global::Baseten.AuditLogEventEnvironmentUpdatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventEnvironmentUpdatedV1?(EventData @this) => @this.EnvironmentUpdated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventEnvironmentUpdatedV1? value)
         {
@@ -2497,22 +2497,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromEnvironmentUpdated(global::Baseten.AuditLogEventEnvironmentUpdatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventEnvironmentDeletedV1 value) => new EventData((global::Baseten.AuditLogEventEnvironmentDeletedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventEnvironmentDeletedV1?(EventData @this) => @this.EnvironmentDeleted;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventEnvironmentDeletedV1? value)
         {
@@ -2520,22 +2520,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromEnvironmentDeleted(global::Baseten.AuditLogEventEnvironmentDeletedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventReplicaTerminatedV1 value) => new EventData((global::Baseten.AuditLogEventReplicaTerminatedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventReplicaTerminatedV1?(EventData @this) => @this.ReplicaTerminated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventReplicaTerminatedV1? value)
         {
@@ -2543,22 +2543,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromReplicaTerminated(global::Baseten.AuditLogEventReplicaTerminatedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventModelPromotionControlActionV1 value) => new EventData((global::Baseten.AuditLogEventModelPromotionControlActionV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventModelPromotionControlActionV1?(EventData @this) => @this.ModelPromotionControlAction;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventModelPromotionControlActionV1? value)
         {
@@ -2566,22 +2566,22 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromModelPromotionControlAction(global::Baseten.AuditLogEventModelPromotionControlActionV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EventData(global::Baseten.AuditLogEventSshCertificateSignedV1 value) => new EventData((global::Baseten.AuditLogEventSshCertificateSignedV1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Baseten.AuditLogEventSshCertificateSignedV1?(EventData @this) => @this.SshCertificateSigned;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(global::Baseten.AuditLogEventSshCertificateSignedV1? value)
         {
@@ -2589,12 +2589,12 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EventData FromSshCertificateSigned(global::Baseten.AuditLogEventSshCertificateSignedV1? value) => new EventData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EventData(
             global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType? eventType,
@@ -2691,7 +2691,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             SshCertificateSigned as object ??
@@ -2736,11 +2736,11 @@ namespace Baseten
             ModelDeploymentRetried as object ??
             ModelDeploymentDeactivated as object ??
             ModelDeploymentActivated as object ??
-            ModelDeployed as object 
+            ModelDeployed as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             ModelDeployed?.ToString() ??
@@ -2785,11 +2785,11 @@ namespace Baseten
             EnvironmentDeleted?.ToString() ??
             ReplicaTerminated?.ToString() ??
             ModelPromotionControlAction?.ToString() ??
-            SshCertificateSigned?.ToString() 
+            SshCertificateSigned?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -2797,7 +2797,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Baseten.AuditLogEventModelDeployedV1, TResult>? modelDeployed = null,
@@ -3027,7 +3027,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Baseten.AuditLogEventModelDeployedV1>? modelDeployed = null,
@@ -3297,7 +3297,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Baseten.AuditLogEventModelDeployedV1>? modelDeployed = null,
@@ -3525,7 +3525,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -3628,7 +3628,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(EventData other)
         {
@@ -3675,12 +3675,12 @@ namespace Baseten
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.AuditLogEventEnvironmentDeletedV1?>.Default.Equals(EnvironmentDeleted, other.EnvironmentDeleted) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.AuditLogEventReplicaTerminatedV1?>.Default.Equals(ReplicaTerminated, other.ReplicaTerminated) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.AuditLogEventModelPromotionControlActionV1?>.Default.Equals(ModelPromotionControlAction, other.ModelPromotionControlAction) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.AuditLogEventSshCertificateSignedV1?>.Default.Equals(SshCertificateSigned, other.SshCertificateSigned) 
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.AuditLogEventSshCertificateSignedV1?>.Default.Equals(SshCertificateSigned, other.SshCertificateSigned)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(EventData obj1, EventData obj2)
         {
@@ -3688,7 +3688,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(EventData obj1, EventData obj2)
         {
@@ -3696,7 +3696,7 @@ namespace Baseten
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

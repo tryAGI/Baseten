@@ -9,14 +9,14 @@ namespace Baseten
     public sealed partial class AuditLogEventWebhookSigningSecretRotatedV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"WEBHOOK_SIGNING_SECRET_ROTATED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "WEBHOOK_SIGNING_SECRET_ROTATED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_signing_secret_id")]
         [global::System.Text.Json.Serialization.JsonRequired]

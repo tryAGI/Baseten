@@ -9,23 +9,23 @@ namespace Baseten
     public enum APIKeyCategory
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Personal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceExportMetrics,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceInvoke,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceManageAll,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkspaceManageApiKeys,
     }

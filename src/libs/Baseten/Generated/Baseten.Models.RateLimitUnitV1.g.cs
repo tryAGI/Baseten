@@ -4,16 +4,16 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RateLimitUnitV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Minute,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Second,
     }

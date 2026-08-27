@@ -9,23 +9,23 @@ namespace Baseten
     public enum AuditLogActorTypeV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApiKey,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasetenSystem,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasetenUser,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TombstoneUser,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

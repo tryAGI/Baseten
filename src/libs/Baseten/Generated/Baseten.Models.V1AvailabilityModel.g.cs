@@ -14,11 +14,11 @@ namespace Baseten
     public enum V1AvailabilityModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Dedicated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Spot,
     }

@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class ChainsV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chains")]
         [global::System.Text.Json.Serialization.JsonRequired]

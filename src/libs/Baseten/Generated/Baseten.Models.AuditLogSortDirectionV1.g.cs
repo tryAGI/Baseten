@@ -9,11 +9,11 @@ namespace Baseten
     public enum AuditLogSortDirectionV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Asc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Desc,
     }

@@ -9,15 +9,15 @@ namespace Baseten
     public enum DeploymentPatchActionV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Add,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Remove,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Update,
     }

@@ -4,20 +4,20 @@
 namespace Baseten
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum LoadCheckpointConfigCheckpointDiscriminatorTyp
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasetenLatestCheckpoint,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasetenNamedCheckpoint,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LoopsCheckpoint,
     }

@@ -19,20 +19,20 @@ namespace Baseten
         public required global::Baseten.AuditLogEventAutoscalingScheduleActionV1 Action { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("schedule_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ScheduleId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previous")]
         public global::Baseten.AuditLogEventAutoscalingScheduleSettingsV1? Previous { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("current")]
         public global::Baseten.AuditLogEventAutoscalingScheduleSettingsV1? Current { get; set; }

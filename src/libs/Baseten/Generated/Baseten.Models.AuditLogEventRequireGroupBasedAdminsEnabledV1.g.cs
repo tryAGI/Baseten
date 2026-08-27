@@ -9,14 +9,14 @@ namespace Baseten
     public sealed partial class AuditLogEventRequireGroupBasedAdminsEnabledV1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"REQUIRE_GROUP_BASED_ADMINS_ENABLED"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
         public string EventType { get; set; } = "REQUIRE_GROUP_BASED_ADMINS_ENABLED";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("organization_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
