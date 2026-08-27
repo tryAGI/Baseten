@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class ModelApisUsageResultV1
     {
         /// <summary>
-        /// Prefix of the API key the usage is attributed to. Null when not grouping by api_key.<br/>
+        /// Prefix of the API key the usage is attributed to. Null when not grouping by api_key or when the request was not authenticated with an API key.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_key_prefix")]
@@ -89,7 +89,7 @@ namespace Baseten
         /// Total number of requests.
         /// </param>
         /// <param name="apiKeyPrefix">
-        /// Prefix of the API key the usage is attributed to. Null when not grouping by api_key.<br/>
+        /// Prefix of the API key the usage is attributed to. Null when not grouping by api_key or when the request was not authenticated with an API key.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="userId">
