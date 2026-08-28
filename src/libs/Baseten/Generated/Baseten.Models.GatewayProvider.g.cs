@@ -34,6 +34,10 @@ namespace Baseten
         ///
         /// </summary>
         Vertex,
+        /// <summary>
+        ///
+        /// </summary>
+        Xai,
     }
 
     /// <summary>
@@ -54,6 +58,7 @@ namespace Baseten
                 GatewayProvider.Openai => "OPENAI",
                 GatewayProvider.OpenaiCompatible => "OPENAI_COMPATIBLE",
                 GatewayProvider.Vertex => "VERTEX",
+                GatewayProvider.Xai => "XAI",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -70,6 +75,7 @@ namespace Baseten
                 "OPENAI" => GatewayProvider.Openai,
                 "OPENAI_COMPATIBLE" => GatewayProvider.OpenaiCompatible,
                 "VERTEX" => GatewayProvider.Vertex,
+                "XAI" => GatewayProvider.Xai,
                 _ => null,
             };
         }
