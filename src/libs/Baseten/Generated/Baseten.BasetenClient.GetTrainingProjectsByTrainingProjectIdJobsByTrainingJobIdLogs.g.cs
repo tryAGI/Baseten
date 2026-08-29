@@ -29,9 +29,9 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             int? startEpochMillis,
             int? endEpochMillis,
-            global::Baseten.SortOrderV1? direction,
+            ref global::Baseten.SortOrderV1? direction,
             int? limit,
-            global::Baseten.LogLevelV1? minLevel,
+            ref global::Baseten.LogLevelV1? minLevel,
             ref string trainingProjectId,
             ref string trainingJobId);
         partial void PrepareGetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdLogsRequest(
@@ -153,9 +153,9 @@ namespace Baseten
                 httpClient: HttpClient,
                 startEpochMillis: startEpochMillis,
                 endEpochMillis: endEpochMillis,
-                direction: direction,
+                direction: ref direction,
                 limit: limit,
-                minLevel: minLevel,
+                minLevel: ref minLevel,
                 trainingProjectId: ref trainingProjectId,
                 trainingJobId: ref trainingJobId);
 
