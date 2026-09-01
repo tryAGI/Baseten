@@ -51,8 +51,8 @@ namespace Baseten
         public int? Seed { get; set; }
 
         /// <summary>
-        /// Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.<br/>
-        /// Default Value: 3600
+        /// Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 900 (15 minutes).<br/>
+        /// Default Value: 900
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scale_down_delay_seconds")]
         public int? ScaleDownDelaySeconds { get; set; }
@@ -125,8 +125,8 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="scaleDownDelaySeconds">
-        /// Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.<br/>
-        /// Default Value: 3600
+        /// Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 900 (15 minutes).<br/>
+        /// Default Value: 900
         /// </param>
         /// <param name="availabilityModel">
         /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
