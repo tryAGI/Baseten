@@ -52,7 +52,7 @@ internal sealed record CreateLoopsRunRequestV1OptionSet(
                 },
                 ScaleDownDelaySeconds: new Option<int?>($"--{normalizedPrefix}scale-down-delay-seconds")
                 {
-                    Description = @"Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.",
+                    Description = @"Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 900 (15 minutes).",
                 },
                 AvailabilityModel: new Option<global::Baseten.V1AvailabilityModel?>($"--{normalizedPrefix}availability-model")
                 {

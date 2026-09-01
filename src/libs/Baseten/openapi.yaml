@@ -14329,7 +14329,7 @@
                         "type": "string"
                     },
                     "message": {
-                        "description": "The contents of the log message.",
+                        "description": "The contents of the log message. When the logger captured an exception, the traceback is appended after the message.",
                         "title": "Message",
                         "type": "string"
                     },
@@ -20840,8 +20840,8 @@
                         "title": "Seed"
                     },
                     "scale_down_delay_seconds": {
-                        "default": 3600,
-                        "description": "Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 3600.",
+                        "default": 900,
+                        "description": "Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 900 (15 minutes).",
                         "exclusiveMinimum": 0,
                         "maximum": 3600,
                         "title": "Scale Down Delay Seconds",
@@ -24119,6 +24119,39 @@
                         "default": null,
                         "title": "Cost Per 1M Tokens Usd"
                     },
+                    "llm": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LLMBenchmarkMetricsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null
+                    },
+                    "tts": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/TTSBenchmarkMetricsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null
+                    },
+                    "embedding": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/EmbeddingBenchmarkMetricsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null
+                    },
                     "replicas": {
                         "anyOf": [
                             {
@@ -24149,6 +24182,126 @@
                     "measured_at"
                 ],
                 "title": "BenchmarkSnapshotV1",
+                "type": "object"
+            },
+            "EmbeddingBenchmarkMetricsV1": {
+                "properties": {
+                    "e2e_latency_ms_p50": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "E2E Latency Ms P50"
+                    },
+                    "e2e_latency_ms_p99": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "E2E Latency Ms P99"
+                    },
+                    "input_tokens_per_sec": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Input Tokens Per Sec"
+                    },
+                    "requests_per_sec": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Requests Per Sec"
+                    }
+                },
+                "title": "EmbeddingBenchmarkMetricsV1",
+                "type": "object"
+            },
+            "LLMBenchmarkMetricsV1": {
+                "properties": {
+                    "ttft_ms_p50": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Ttft Ms P50"
+                    },
+                    "output_tokens_per_sec_per_user_p50": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Output Tokens Per Sec Per User P50"
+                    },
+                    "max_concurrent_users_at_50ms_tpot": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Max Concurrent Users At 50Ms Tpot"
+                    },
+                    "requests_per_sec_p50": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Requests Per Sec P50"
+                    },
+                    "cost_per_1m_tokens_usd": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Cost Per 1M Tokens Usd"
+                    }
+                },
+                "title": "LLMBenchmarkMetricsV1",
                 "type": "object"
             },
             "LibraryListingVersionV1": {
@@ -24208,6 +24361,60 @@
                     "modified_at"
                 ],
                 "title": "LibraryListingVersionV1",
+                "type": "object"
+            },
+            "TTSBenchmarkMetricsV1": {
+                "properties": {
+                    "ttft_ms_p50": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Ttft Ms P50"
+                    },
+                    "max_concurrent_streams_at_rtf1": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Max Concurrent Streams At Rtf1"
+                    },
+                    "ttft_ms_p50_at_max_concurrency": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Ttft Ms P50 At Max Concurrency"
+                    },
+                    "cost_per_audio_minute_usd": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Cost Per Audio Minute Usd"
+                    }
+                },
+                "title": "TTSBenchmarkMetricsV1",
                 "type": "object"
             },
             "LibraryListingVersionsV1": {

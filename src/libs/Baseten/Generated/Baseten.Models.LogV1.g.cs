@@ -16,7 +16,7 @@ namespace Baseten
         public required string Timestamp { get; set; }
 
         /// <summary>
-        /// The contents of the log message.
+        /// The contents of the log message. When the logger captured an exception, the traceback is appended after the message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -55,7 +55,7 @@ namespace Baseten
         /// Epoch nanosecond timestamp of the log message.
         /// </param>
         /// <param name="message">
-        /// The contents of the log message.
+        /// The contents of the log message. When the logger captured an exception, the traceback is appended after the message.
         /// </param>
         /// <param name="replica">
         /// The replica the log line was emitted from.
