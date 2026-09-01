@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateVolumesTokenSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,60 +21,51 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateVolumesTokenSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSecurityRequirement0,
+            {                s_CreateVolumesTokenSecurityRequirement0,
             };
-        partial void PrepareEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdArguments(
+        partial void PrepareCreateVolumesTokenArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string trainingProjectId,
-            ref string trainingJobId,
-            global::Baseten.UpdateTrainingJobRequestV1 request);
-        partial void PrepareEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdRequest(
+            global::Baseten.CreateVolumeTokenRequestV1 request);
+        partial void PrepareCreateVolumesTokenRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string trainingProjectId,
-            string trainingJobId,
-            global::Baseten.UpdateTrainingJobRequestV1 request);
-        partial void ProcessEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdResponse(
+            global::Baseten.CreateVolumeTokenRequestV1 request);
+        partial void ProcessCreateVolumesTokenResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdResponseContent(
+        partial void ProcessCreateVolumesTokenResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Updates a training job<br/>
-        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
+        /// Creates a volume access token<br/>
+        /// Exchanges your API key for a short-lived token that authenticates against Baseten volume storage. A volume token is needed only to push and pull volume data; other volume operations use your API key directly. Tokens expire after one hour and cannot be renewed; exchange again for a fresh token. Push and tag capabilities require organization-level model management permission. Pass correlation_id to link the issued token to a client operation in server logs.
         /// </summary>
-        /// <param name="trainingProjectId"></param>
-        /// <param name="trainingJobId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id} \<br/>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/volumes/token \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "priority": 0,<br/>
-        ///   "availability_model": "spot"<br/>
+        ///   "scopes": null,<br/>
+        ///   "namespaces": null,<br/>
+        ///   "correlation_id": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateTrainingJobResponseV1> EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync(
-            string trainingProjectId,
-            string trainingJobId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateVolumeTokenResponseV1> CreateVolumesTokenAsync(
 
-            global::Baseten.UpdateTrainingJobRequestV1 request,
+            global::Baseten.CreateVolumeTokenRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsResponseAsync(
-                trainingProjectId: trainingProjectId,
-                trainingJobId: trainingJobId,
+            var __response = await CreateVolumesTokenAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -84,29 +75,26 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Updates a training job<br/>
-        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
+        /// Creates a volume access token<br/>
+        /// Exchanges your API key for a short-lived token that authenticates against Baseten volume storage. A volume token is needed only to push and pull volume data; other volume operations use your API key directly. Tokens expire after one hour and cannot be renewed; exchange again for a fresh token. Push and tag capabilities require organization-level model management permission. Pass correlation_id to link the issued token to a client operation in server logs.
         /// </summary>
-        /// <param name="trainingProjectId"></param>
-        /// <param name="trainingJobId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id} \<br/>
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/volumes/token \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "priority": 0,<br/>
-        ///   "availability_model": "spot"<br/>
+        ///   "scopes": null,<br/>
+        ///   "namespaces": null,<br/>
+        ///   "correlation_id": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateTrainingJobResponseV1>> EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsResponseAsync(
-            string trainingProjectId,
-            string trainingJobId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateVolumeTokenResponseV1>> CreateVolumesTokenAsResponseAsync(
 
-            global::Baseten.UpdateTrainingJobRequestV1 request,
+            global::Baseten.CreateVolumeTokenRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -114,17 +102,15 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdArguments(
+            PrepareCreateVolumesTokenArguments(
                 httpClient: HttpClient,
-                trainingProjectId: ref trainingProjectId,
-                trainingJobId: ref trainingJobId,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSecurityRequirements,
-                operationName: "EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync");
+                securityRequirements: s_CreateVolumesTokenSecurityRequirements,
+                operationName: "CreateVolumesTokenAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -144,7 +130,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}",
+                                path: "/v1/volumes/token",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -152,7 +138,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: new global::System.Net.Http.HttpMethod("PATCH"),
+                    method: global::System.Net.Http.HttpMethod.Post,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -189,11 +175,9 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdRequest(
+                PrepareCreateVolumesTokenRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    trainingProjectId: trainingProjectId!,
-                    trainingJobId: trainingJobId!,
                     request: request);
 
                 return __httpRequest;
@@ -211,10 +195,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editTrainingProjectsByTrainingProjectIdJobsByTrainingJobId",
-                                methodName: "EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "createVolumesToken",
+                                methodName: "CreateVolumesTokenAsync",
+                                pathTemplate: "\"/v1/volumes/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -245,10 +229,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editTrainingProjectsByTrainingProjectIdJobsByTrainingJobId",
-                                methodName: "EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "createVolumesToken",
+                                methodName: "CreateVolumesTokenAsync",
+                                pathTemplate: "\"/v1/volumes/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -286,10 +270,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editTrainingProjectsByTrainingProjectIdJobsByTrainingJobId",
-                                methodName: "EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "createVolumesToken",
+                                methodName: "CreateVolumesTokenAsync",
+                                pathTemplate: "\"/v1/volumes/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -326,7 +310,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdResponse(
+                ProcessCreateVolumesTokenResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -334,10 +318,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editTrainingProjectsByTrainingProjectIdJobsByTrainingJobId",
-                                methodName: "EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "createVolumesToken",
+                                methodName: "CreateVolumesTokenAsync",
+                                pathTemplate: "\"/v1/volumes/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -356,10 +340,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editTrainingProjectsByTrainingProjectIdJobsByTrainingJobId",
-                                methodName: "EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync",
-                                pathTemplate: "$\"/v1/training_projects/{trainingProjectId}/jobs/{trainingJobId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "createVolumesToken",
+                                methodName: "CreateVolumesTokenAsync",
+                                pathTemplate: "\"/v1/volumes/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -386,7 +370,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessEditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdResponseContent(
+                                ProcessCreateVolumesTokenResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -395,9 +379,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.UpdateTrainingJobResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.CreateVolumeTokenResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateTrainingJobResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateVolumeTokenResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -427,9 +411,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.UpdateTrainingJobResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.CreateVolumeTokenResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.UpdateTrainingJobResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateVolumeTokenResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -470,39 +454,37 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Updates a training job<br/>
-        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
+        /// Creates a volume access token<br/>
+        /// Exchanges your API key for a short-lived token that authenticates against Baseten volume storage. A volume token is needed only to push and pull volume data; other volume operations use your API key directly. Tokens expire after one hour and cannot be renewed; exchange again for a fresh token. Push and tag capabilities require organization-level model management permission. Pass correlation_id to link the issued token to a client operation in server logs.
         /// </summary>
-        /// <param name="trainingProjectId"></param>
-        /// <param name="trainingJobId"></param>
-        /// <param name="priority">
-        /// New queue priority for a PENDING training job. Higher values are dequeued first. Only jobs in the PENDING state can have their priority changed.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// <param name="scopes">
+        /// Capabilities the token grants, at least one. Requesting PUSH or TAG requires organization-level model management permission.
         /// </param>
-        /// <param name="availabilityModel">
-        /// New capacity guarantee for a PENDING training job. 'dedicated' runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress. Only jobs in the PENDING state can have their availability model changed.<br/>
+        /// <param name="namespaces">
+        /// Volume namespaces the token is limited to, lowercase ASCII, at least one. Pass only the namespaces the operation needs.
+        /// </param>
+        /// <param name="correlationId">
+        /// Optional client-chosen identifier, at most 128 printable ASCII characters. Echoed into server logs to link the issued token to a client operation.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.UpdateTrainingJobResponseV1> EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync(
-            string trainingProjectId,
-            string trainingJobId,
-            int? priority = default,
-            global::Baseten.V1AvailabilityModel? availabilityModel = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.CreateVolumeTokenResponseV1> CreateVolumesTokenAsync(
+            global::System.Collections.Generic.IList<global::Baseten.VolumeTokenScopeV1> scopes,
+            global::System.Collections.Generic.IList<string> namespaces,
+            string? correlationId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.UpdateTrainingJobRequestV1
+            var __request = new global::Baseten.CreateVolumeTokenRequestV1
             {
-                Priority = priority,
-                AvailabilityModel = availabilityModel,
+                Scopes = scopes,
+                Namespaces = namespaces,
+                CorrelationId = correlationId,
             };
 
-            return await EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdAsync(
-                trainingProjectId: trainingProjectId,
-                trainingJobId: trainingJobId,
+            return await CreateVolumesTokenAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
