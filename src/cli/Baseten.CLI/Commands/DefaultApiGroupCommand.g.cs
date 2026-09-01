@@ -72,6 +72,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdRecreateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdStopCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateVolumesTokenCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdDeploymentsByChainDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteGatewayEndpointsByEndpointIdCommandApiCommand.Create());
