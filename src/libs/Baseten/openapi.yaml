@@ -21,11 +21,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/volumes/token \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"scopes\": null,\n  \"namespaces\": null,\n  \"correlation_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/volumes/token \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"scopes\": null,\n  \"namespaces\": null,\n  \"volumes\": null,\n  \"correlation_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/token\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'scopes': None, 'namespaces': None, 'correlation_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/token\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'scopes': None, 'namespaces': None, 'volumes': None, 'correlation_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Exchanges your API key for a short-lived token that authenticates against Baseten volume storage. A volume token is needed only to push and pull volume data; other volume operations use your API key directly. Tokens expire after one hour and cannot be renewed; exchange again for a fresh token. Push and tag capabilities require organization-level model management permission. Pass correlation_id to link the issued token to a client operation in server logs.",
@@ -8751,6 +8751,15 @@
                         "title": "Namespaces",
                         "type": "array"
                     },
+                    "volumes": {
+                        "description": "Volume names the token is limited to, lowercase ASCII, exact names only, at least one. The limit applies to every requested scope in every requested namespace.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "title": "Volumes",
+                        "type": "array"
+                    },
                     "correlation_id": {
                         "anyOf": [
                             {
@@ -8769,7 +8778,8 @@
                 },
                 "required": [
                     "scopes",
-                    "namespaces"
+                    "namespaces",
+                    "volumes"
                 ],
                 "title": "CreateVolumeTokenRequestV1",
                 "type": "object"
@@ -8803,6 +8813,14 @@
                         "title": "Namespaces",
                         "type": "array"
                     },
+                    "volumes": {
+                        "description": "Effective volume names granted, in canonical lowercase form.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Volumes",
+                        "type": "array"
+                    },
                     "bdn_endpoint": {
                         "anyOf": [
                             {
@@ -8821,6 +8839,7 @@
                     "expires_at",
                     "scopes",
                     "namespaces",
+                    "volumes",
                     "bdn_endpoint"
                 ],
                 "title": "CreateVolumeTokenResponseV1",

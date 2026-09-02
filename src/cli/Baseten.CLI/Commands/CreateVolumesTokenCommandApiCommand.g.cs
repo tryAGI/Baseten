@@ -21,6 +21,13 @@ internal static partial class CreateVolumesTokenCommandApiCommand
         Required = true,
     };
 
+    private static Option<global::System.Collections.Generic.IList<string>> Volumes { get; } = new(
+        name: @"--volumes")
+    {
+        Description = @"Volume names the token is limited to, lowercase ASCII, exact names only, at least one. The limit applies to every requested scope in every requested namespace.",
+        Required = true,
+    };
+
     private static Option<string?> CorrelationId { get; } = new(
         name: @"--correlation-id")
     {
@@ -69,6 +76,7 @@ internal static partial class CreateVolumesTokenCommandApiCommand
 Exchanges your API key for a short-lived token that authenticates against Baseten volume storage. A volume token is needed only to push and pull volume data; other volume operations use your API key directly. Tokens expire after one hour and cannot be renewed; exchange again for a fresh token. Push and tag capabilities require organization-level model management permission. Pass correlation_id to link the issued token to a client operation in server logs.");
                         command.Options.Add(Scopes);
                         command.Options.Add(Namespaces);
+                        command.Options.Add(Volumes);
                         command.Options.Add(CorrelationId);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -97,6 +105,7 @@ Exchanges your API key for a short-lived token that authenticates against Basete
                             cancellationToken).ConfigureAwait(false);
                         var scopes = parseResult.GetRequiredValue(Scopes);
                         var namespaces = parseResult.GetRequiredValue(Namespaces);
+                        var volumes = parseResult.GetRequiredValue(Volumes);
                         var correlationId = CliRuntime.WasSpecified(parseResult, CorrelationId) ? parseResult.GetValue(CorrelationId) : (__requestBase is { } __CorrelationIdBaseValue ? __CorrelationIdBaseValue.CorrelationId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -104,6 +113,7 @@ Exchanges your API key for a short-lived token that authenticates against Basete
                                 var response = await client.CreateVolumesTokenAsync(
                                     scopes: scopes,
                                     namespaces: namespaces,
+                                    volumes: volumes,
                                     correlationId: correlationId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

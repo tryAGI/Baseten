@@ -23,6 +23,13 @@ namespace Baseten
         public required global::System.Collections.Generic.IList<string> Namespaces { get; set; }
 
         /// <summary>
+        /// Volume names the token is limited to, lowercase ASCII, exact names only, at least one. The limit applies to every requested scope in every requested namespace.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("volumes")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<string> Volumes { get; set; }
+
+        /// <summary>
         /// Optional client-chosen identifier, at most 128 printable ASCII characters. Echoed into server logs to link the issued token to a client operation.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -44,6 +51,9 @@ namespace Baseten
         /// <param name="namespaces">
         /// Volume namespaces the token is limited to, lowercase ASCII, at least one. Pass only the namespaces the operation needs.
         /// </param>
+        /// <param name="volumes">
+        /// Volume names the token is limited to, lowercase ASCII, exact names only, at least one. The limit applies to every requested scope in every requested namespace.
+        /// </param>
         /// <param name="correlationId">
         /// Optional client-chosen identifier, at most 128 printable ASCII characters. Echoed into server logs to link the issued token to a client operation.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -54,10 +64,12 @@ namespace Baseten
         public CreateVolumeTokenRequestV1(
             global::System.Collections.Generic.IList<global::Baseten.VolumeTokenScopeV1> scopes,
             global::System.Collections.Generic.IList<string> namespaces,
+            global::System.Collections.Generic.IList<string> volumes,
             string? correlationId)
         {
             this.Scopes = scopes ?? throw new global::System.ArgumentNullException(nameof(scopes));
             this.Namespaces = namespaces ?? throw new global::System.ArgumentNullException(nameof(namespaces));
+            this.Volumes = volumes ?? throw new global::System.ArgumentNullException(nameof(volumes));
             this.CorrelationId = correlationId;
         }
 
