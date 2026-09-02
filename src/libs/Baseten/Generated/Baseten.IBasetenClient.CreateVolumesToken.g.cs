@@ -19,6 +19,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "scopes": null,<br/>
         ///   "namespaces": null,<br/>
+        ///   "volumes": null,<br/>
         ///   "correlation_id": null<br/>
         /// }'
         /// </remarks>
@@ -42,6 +43,7 @@ namespace Baseten
         /// --data '{<br/>
         ///   "scopes": null,<br/>
         ///   "namespaces": null,<br/>
+        ///   "volumes": null,<br/>
         ///   "correlation_id": null<br/>
         /// }'
         /// </remarks>
@@ -60,6 +62,9 @@ namespace Baseten
         /// <param name="namespaces">
         /// Volume namespaces the token is limited to, lowercase ASCII, at least one. Pass only the namespaces the operation needs.
         /// </param>
+        /// <param name="volumes">
+        /// Volume names the token is limited to, lowercase ASCII, exact names only, at least one. The limit applies to every requested scope in every requested namespace.
+        /// </param>
         /// <param name="correlationId">
         /// Optional client-chosen identifier, at most 128 printable ASCII characters. Echoed into server logs to link the issued token to a client operation.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -70,6 +75,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.CreateVolumeTokenResponseV1> CreateVolumesTokenAsync(
             global::System.Collections.Generic.IList<global::Baseten.VolumeTokenScopeV1> scopes,
             global::System.Collections.Generic.IList<string> namespaces,
+            global::System.Collections.Generic.IList<string> volumes,
             string? correlationId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
