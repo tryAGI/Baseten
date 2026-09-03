@@ -42,7 +42,7 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameActivate
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-environments-by-env-name-activate", @"Activates a deployment associated with an environment
-Activates an inactive deployment associated with an environment and returns the activation status.");
+Activates a deployment associated with an environment if not already activated.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);
 

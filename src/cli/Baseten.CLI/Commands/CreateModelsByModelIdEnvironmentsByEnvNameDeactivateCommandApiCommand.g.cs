@@ -42,7 +42,7 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameDeactiva
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-environments-by-env-name-deactivate", @"Deactivates a deployment associated with an environment
-Deactivates a deployment associated with an environment and returns the deactivation status.");
+Deactivates a deployment associated with an environment if not already deactivated.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);
 

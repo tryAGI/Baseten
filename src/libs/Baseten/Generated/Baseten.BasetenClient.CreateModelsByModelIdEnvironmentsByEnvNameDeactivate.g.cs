@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Deactivates a deployment associated with an environment<br/>
-        /// Deactivates a deployment associated with an environment and returns the deactivation status.
+        /// Deactivates a deployment associated with an environment if not already deactivated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="envName"></param>
@@ -74,7 +74,7 @@ namespace Baseten
         }
         /// <summary>
         /// Deactivates a deployment associated with an environment<br/>
-        /// Deactivates a deployment associated with an environment and returns the deactivation status.
+        /// Deactivates a deployment associated with an environment if not already deactivated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="envName"></param>

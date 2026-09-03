@@ -36,7 +36,7 @@ internal static partial class CreateModelsByModelIdDeploymentsProductionActivate
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-deployments-production-activate", @"Activates a production deployment
-Activates an inactive production deployment and returns the activation status.");
+Activates a production deployment if not already activated.");
                         command.Arguments.Add(ModelId);
 
 
