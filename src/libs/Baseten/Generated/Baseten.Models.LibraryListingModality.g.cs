@@ -6,7 +6,7 @@ namespace Baseten
     /// <summary>
     ///
     /// </summary>
-    public enum LibraryListingMetadataV1InputModalitie
+    public enum LibraryListingModality
     {
         /// <summary>
         ///
@@ -23,6 +23,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Rerank,
+        /// <summary>
+        ///
+        /// </summary>
         Text,
         /// <summary>
         ///
@@ -33,35 +37,37 @@ namespace Baseten
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class LibraryListingMetadataV1InputModalitieExtensions
+    public static class LibraryListingModalityExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this LibraryListingMetadataV1InputModalitie value)
+        public static string ToValueString(this LibraryListingModality value)
         {
             return value switch
             {
-                LibraryListingMetadataV1InputModalitie.Audio => "audio",
-                LibraryListingMetadataV1InputModalitie.Embedding => "embedding",
-                LibraryListingMetadataV1InputModalitie.Image => "image",
-                LibraryListingMetadataV1InputModalitie.Text => "text",
-                LibraryListingMetadataV1InputModalitie.Video => "video",
+                LibraryListingModality.Audio => "audio",
+                LibraryListingModality.Embedding => "embedding",
+                LibraryListingModality.Image => "image",
+                LibraryListingModality.Rerank => "rerank",
+                LibraryListingModality.Text => "text",
+                LibraryListingModality.Video => "video",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static LibraryListingMetadataV1InputModalitie? ToEnum(string value)
+        public static LibraryListingModality? ToEnum(string value)
         {
             return value switch
             {
-                "audio" => LibraryListingMetadataV1InputModalitie.Audio,
-                "embedding" => LibraryListingMetadataV1InputModalitie.Embedding,
-                "image" => LibraryListingMetadataV1InputModalitie.Image,
-                "text" => LibraryListingMetadataV1InputModalitie.Text,
-                "video" => LibraryListingMetadataV1InputModalitie.Video,
+                "audio" => LibraryListingModality.Audio,
+                "embedding" => LibraryListingModality.Embedding,
+                "image" => LibraryListingModality.Image,
+                "rerank" => LibraryListingModality.Rerank,
+                "text" => LibraryListingModality.Text,
+                "video" => LibraryListingModality.Video,
                 _ => null,
             };
         }

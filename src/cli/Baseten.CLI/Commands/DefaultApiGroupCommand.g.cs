@@ -165,6 +165,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameMetricsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetOrganizationsMeCommandApiCommand.Create());
                          command.Subcommands.Add(GetRegionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsCommandApiCommand.Create());
