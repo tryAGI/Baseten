@@ -3,10 +3,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class LibraryListingMetadataV1InputModalitieJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.LibraryListingMetadataV1InputModalitie>
+    public sealed class LibraryListingModalityJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.LibraryListingModality>
     {
         /// <inheritdoc />
-        public override global::Baseten.LibraryListingMetadataV1InputModalitie Read(
+        public override global::Baseten.LibraryListingModality Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.LibraryListingMetadataV1InputModalitieExtensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.LibraryListingModalityExtensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Baseten.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Baseten.LibraryListingMetadataV1InputModalitie)numValue;
+                    return (global::Baseten.LibraryListingModality)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Baseten.LibraryListingMetadataV1InputModalitie);
+                    return default(global::Baseten.LibraryListingModality);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,12 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.LibraryListingMetadataV1InputModalitie value,
+            global::Baseten.LibraryListingModality value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Baseten.LibraryListingMetadataV1InputModalitieExtensions.ToValueString(value));
+            writer.WriteStringValue(global::Baseten.LibraryListingModalityExtensions.ToValueString(value));
         }
     }
 }

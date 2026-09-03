@@ -24,13 +24,13 @@ namespace Baseten
         /// Default Value: [text]
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_modalities")]
-        public global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1InputModalitie>? InputModalities { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LibraryListingModality>? InputModalities { get; set; }
 
         /// <summary>
         /// Default Value: [text]
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_modalities")]
-        public global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1OutputModalitie>? OutputModalities { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.LibraryListingModality>? OutputModalities { get; set; }
 
         /// <summary>
         ///
@@ -104,8 +104,8 @@ namespace Baseten
             string license,
             int? parameterCount,
             int? contextLength,
-            global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1InputModalitie>? inputModalities,
-            global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1OutputModalitie>? outputModalities,
+            global::System.Collections.Generic.IList<global::Baseten.LibraryListingModality>? inputModalities,
+            global::System.Collections.Generic.IList<global::Baseten.LibraryListingModality>? outputModalities,
             string? variant,
             string? publisher,
             string? modelApiSlug,

@@ -480,10 +480,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LLMModelHandleV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLLMModelVersionRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingMetadataV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1InputModalitie>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingMetadataV1InputModalitie), TypeInfoPropertyName = "LibraryListingMetadataV1InputModalitie2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LibraryListingMetadataV1OutputModalitie>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingMetadataV1OutputModalitie), TypeInfoPropertyName = "LibraryListingMetadataV1OutputModalitie2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LibraryListingModality>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingModality), TypeInfoPropertyName = "LibraryListingModality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LibraryListingV1>))]
@@ -514,6 +512,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApiItemV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.DailyModelApiUsageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApisUsageV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelApiItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingItemV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -526,8 +526,6 @@ namespace Baseten
         Converters = new global::System.Type[]
         {
         })]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelApiItemV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingItemV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.DailyTrainingUsageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingItemV1>))]
@@ -537,6 +535,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsersResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.UserInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsersRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AwsAssumeRoleV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.OrganizationInfoV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventTokensV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventsResponseV1))]
@@ -643,8 +643,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitUnitV1?), TypeInfoPropertyName = "NullableRateLimitUnitV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BucketWidth?), TypeInfoPropertyName = "NullableBucketWidth2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageDimensionV1?), TypeInfoPropertyName = "NullableUsageDimensionV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingMetadataV1InputModalitie?), TypeInfoPropertyName = "NullableLibraryListingMetadataV1InputModalitie2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingMetadataV1OutputModalitie?), TypeInfoPropertyName = "NullableLibraryListingMetadataV1OutputModalitie2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingModality?), TypeInfoPropertyName = "NullableLibraryListingModality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>?), TypeInfoPropertyName = "NullableAnyOfDoubleString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider?), TypeInfoPropertyName = "NullableGatewayProvider2")]
@@ -719,8 +718,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisUsageResultV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisUsageBucketV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.UsageDimensionV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingMetadataV1InputModalitie>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingMetadataV1OutputModalitie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingModality>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingVersionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyDedicatedUsageV1>))]
@@ -1012,13 +1010,9 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.UsageDimensionV1?)
 
-                    || typeToConvert == typeof(global::Baseten.LibraryListingMetadataV1InputModalitie)
+                    || typeToConvert == typeof(global::Baseten.LibraryListingModality)
 
-                    || typeToConvert == typeof(global::Baseten.LibraryListingMetadataV1InputModalitie?)
-
-                    || typeToConvert == typeof(global::Baseten.LibraryListingMetadataV1OutputModalitie)
-
-                    || typeToConvert == typeof(global::Baseten.LibraryListingMetadataV1OutputModalitie?)
+                    || typeToConvert == typeof(global::Baseten.LibraryListingModality?)
 
                     || typeToConvert == typeof(global::Baseten.ResourceKind)
 
@@ -1525,24 +1519,14 @@ namespace Baseten
                     return new global::Baseten.JsonConverters.UsageDimensionV1NullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.LibraryListingMetadataV1InputModalitie))
+                if (typeToConvert == typeof(global::Baseten.LibraryListingModality))
                 {
-                    return new global::Baseten.JsonConverters.LibraryListingMetadataV1InputModalitieJsonConverter();
+                    return new global::Baseten.JsonConverters.LibraryListingModalityJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.LibraryListingMetadataV1InputModalitie?))
+                if (typeToConvert == typeof(global::Baseten.LibraryListingModality?))
                 {
-                    return new global::Baseten.JsonConverters.LibraryListingMetadataV1InputModalitieNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.LibraryListingMetadataV1OutputModalitie))
-                {
-                    return new global::Baseten.JsonConverters.LibraryListingMetadataV1OutputModalitieJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.LibraryListingMetadataV1OutputModalitie?))
-                {
-                    return new global::Baseten.JsonConverters.LibraryListingMetadataV1OutputModalitieNullableJsonConverter();
+                    return new global::Baseten.JsonConverters.LibraryListingModalityNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.ResourceKind))
