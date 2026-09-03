@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Deactivates a deployment<br/>
-        /// Deactivates a deployment and returns the deactivation status.
+        /// Deactivates a deployment if not already deactivated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
@@ -25,7 +25,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Deactivates a deployment<br/>
-        /// Deactivates a deployment and returns the deactivation status.
+        /// Deactivates a deployment if not already deactivated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>

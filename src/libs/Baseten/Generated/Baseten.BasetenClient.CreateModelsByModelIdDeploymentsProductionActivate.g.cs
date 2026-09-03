@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Activates a production deployment<br/>
-        /// Activates an inactive production deployment and returns the activation status.
+        /// Activates a production deployment if not already activated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -69,7 +69,7 @@ namespace Baseten
         }
         /// <summary>
         /// Activates a production deployment<br/>
-        /// Activates an inactive production deployment and returns the activation status.
+        /// Activates a production deployment if not already activated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

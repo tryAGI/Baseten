@@ -16,6 +16,13 @@ namespace Baseten
         public bool? Success { get; set; }
 
         /// <summary>
+        /// Whether the request did nothing because the deployment was already inactive<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("no_op")]
+        public bool? NoOp { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -28,13 +35,19 @@ namespace Baseten
         /// Whether the deployment was successfully deactivated<br/>
         /// Default Value: true
         /// </param>
+        /// <param name="noOp">
+        /// Whether the request did nothing because the deployment was already inactive<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DeactivateResponseV1(
-            bool? success)
+            bool? success,
+            bool? noOp)
         {
             this.Success = success;
+            this.NoOp = noOp;
         }
 
         /// <summary>

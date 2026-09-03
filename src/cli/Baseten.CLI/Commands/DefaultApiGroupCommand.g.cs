@@ -192,6 +192,11 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetUsersCommandApiCommand.Create());
                          command.Subcommands.Add(GetUsersByUserIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetUsersMeCommandApiCommand.Create());
+                         command.Subcommands.Add(GetVolumesCommandApiCommand.Create());
+                         command.Subcommands.Add(GetVolumesByVolumeNamespaceByVolumeNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetVolumesByVolumeNamespaceByVolumeNameVersionsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionCommandApiCommand.Create());
+                         command.Subcommands.Add(GetVolumesNamespacesCommandApiCommand.Create());
         return command;
     }
 }

@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Activates a deployment<br/>
-        /// Activates an inactive deployment and returns the activation status.
+        /// Activates a deployment if not already activated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
@@ -74,7 +74,7 @@ namespace Baseten
         }
         /// <summary>
         /// Activates a deployment<br/>
-        /// Activates an inactive deployment and returns the activation status.
+        /// Activates a deployment if not already activated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>

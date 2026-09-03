@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Activates a deployment associated with an environment<br/>
-        /// Activates an inactive deployment associated with an environment and returns the activation status.
+        /// Activates a deployment associated with an environment if not already activated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="envName"></param>
@@ -25,7 +25,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Activates a deployment associated with an environment<br/>
-        /// Activates an inactive deployment associated with an environment and returns the activation status.
+        /// Activates a deployment associated with an environment if not already activated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="envName"></param>

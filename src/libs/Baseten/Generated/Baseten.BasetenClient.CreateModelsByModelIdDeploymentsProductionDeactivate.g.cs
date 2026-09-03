@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Deactivates a production deployment<br/>
-        /// Deactivates a production deployment and returns the deactivation status.
+        /// Deactivates a production deployment if not already deactivated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -69,7 +69,7 @@ namespace Baseten
         }
         /// <summary>
         /// Deactivates a production deployment<br/>
-        /// Deactivates a production deployment and returns the deactivation status.
+        /// Deactivates a production deployment if not already deactivated.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
