@@ -171,6 +171,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        VolumeDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        VolumeVersionDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        VolumeVersionRestored,
+        /// <summary>
+        ///
+        /// </summary>
         WebhookSigningSecretCreated,
         /// <summary>
         ///
@@ -234,6 +246,9 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserRemoved => "USER_REMOVED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserRoleUpdated => "USER_ROLE_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserTeamRoleUpdated => "USER_TEAM_ROLE_UPDATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.VolumeDeleted => "VOLUME_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionDeleted => "VOLUME_VERSION_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionRestored => "VOLUME_VERSION_RESTORED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.WebhookSigningSecretCreated => "WEBHOOK_SIGNING_SECRET_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.WebhookSigningSecretDeleted => "WEBHOOK_SIGNING_SECRET_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.WebhookSigningSecretRotated => "WEBHOOK_SIGNING_SECRET_ROTATED",
@@ -287,6 +302,9 @@ namespace Baseten
                 "USER_REMOVED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserRemoved,
                 "USER_ROLE_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserRoleUpdated,
                 "USER_TEAM_ROLE_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserTeamRoleUpdated,
+                "VOLUME_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeDeleted,
+                "VOLUME_VERSION_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionDeleted,
+                "VOLUME_VERSION_RESTORED" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionRestored,
                 "WEBHOOK_SIGNING_SECRET_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.WebhookSigningSecretCreated,
                 "WEBHOOK_SIGNING_SECRET_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.WebhookSigningSecretDeleted,
                 "WEBHOOK_SIGNING_SECRET_ROTATED" => AuditLogEntryV1EventDataDiscriminatorEventType.WebhookSigningSecretRotated,

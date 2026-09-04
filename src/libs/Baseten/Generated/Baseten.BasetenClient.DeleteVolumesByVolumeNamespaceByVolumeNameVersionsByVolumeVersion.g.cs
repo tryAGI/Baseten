@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,56 +21,66 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionSecurityRequirement0,
+            {                s_DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionSecurityRequirement0,
             };
-        partial void PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionArguments(
+        partial void PrepareDeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string volumeNamespace,
             ref string volumeName,
-            ref string volumeVersion);
-        partial void PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRequest(
+            ref string volumeVersion,
+            global::Baseten.DeleteVolumeVersionRequestV1 request);
+        partial void PrepareDeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string volumeNamespace,
             string volumeName,
-            string volumeVersion);
-        partial void ProcessGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionResponse(
+            string volumeVersion,
+            global::Baseten.DeleteVolumeVersionRequestV1 request);
+        partial void ProcessDeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionResponseContent(
+        partial void ProcessDeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Gets one version of a volume<br/>
-        /// Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a full content digest or a prefix of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest prefix that matches more than one version is rejected: supply more characters.
+        /// Deletes one version of a volume<br/>
+        /// Deletes the version the address names, along with every tag pointing at it. Addressing the version by tag deletes the version the tag points at, not the tag. The data is not erased: the version stays restorable until the recovery deadline in the response passes. Deleting a version that is already deleted is a conflict, not a repeat success.
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="volumeVersion"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
+        /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version} \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "expected_sequence": null<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.VolumeVersionDetailV1> GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.DeleteVolumeVersionResponseV1> DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync(
             string volumeNamespace,
             string volumeName,
             string volumeVersion,
+
+            global::Baseten.DeleteVolumeVersionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsResponseAsync(
+            var __response = await DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsResponseAsync(
                 volumeNamespace: volumeNamespace,
                 volumeName: volumeName,
                 volumeVersion: volumeVersion,
+
+                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -78,40 +88,49 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets one version of a volume<br/>
-        /// Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a full content digest or a prefix of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest prefix that matches more than one version is rejected: supply more characters.
+        /// Deletes one version of a volume<br/>
+        /// Deletes the version the address names, along with every tag pointing at it. Addressing the version by tag deletes the version the tag points at, not the tag. The data is not erased: the version stays restorable until the recovery deadline in the response passes. Deleting a version that is already deleted is a conflict, not a repeat success.
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="volumeVersion"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
+        /// curl --request DELETE \<br/>
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version} \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "expected_sequence": null<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeVersionDetailV1>> GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeleteVolumeVersionResponseV1>> DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsResponseAsync(
             string volumeNamespace,
             string volumeName,
             string volumeVersion,
+
+            global::Baseten.DeleteVolumeVersionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionArguments(
+            PrepareDeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionArguments(
                 httpClient: HttpClient,
                 volumeNamespace: ref volumeNamespace,
                 volumeName: ref volumeName,
-                volumeVersion: ref volumeVersion);
+                volumeVersion: ref volumeVersion,
+                request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionSecurityRequirements,
-                operationName: "GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync");
+                securityRequirements: s_DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionSecurityRequirements,
+                operationName: "DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -139,7 +158,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Get,
+                    method: global::System.Net.Http.HttpMethod.Delete,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -162,6 +181,12 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -170,12 +195,13 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRequest(
+                PrepareDeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     volumeNamespace: volumeNamespace!,
                     volumeName: volumeName!,
-                    volumeVersion: volumeVersion!);
+                    volumeVersion: volumeVersion!,
+                    request: request);
 
                 return __httpRequest;
             }
@@ -192,10 +218,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
-                                methodName: "GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
+                                operationId: "deleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
+                                methodName: "DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
                                 pathTemplate: "$\"/v1/volumes/{volumeNamespace}/{volumeName}/versions/{volumeVersion}\"",
-                                httpMethod: "GET",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -226,10 +252,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
-                                methodName: "GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
+                                operationId: "deleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
+                                methodName: "DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
                                 pathTemplate: "$\"/v1/volumes/{volumeNamespace}/{volumeName}/versions/{volumeVersion}\"",
-                                httpMethod: "GET",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -267,10 +293,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
-                                methodName: "GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
+                                operationId: "deleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
+                                methodName: "DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
                                 pathTemplate: "$\"/v1/volumes/{volumeNamespace}/{volumeName}/versions/{volumeVersion}\"",
-                                httpMethod: "GET",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -307,7 +333,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionResponse(
+                ProcessDeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -315,10 +341,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
-                                methodName: "GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
+                                operationId: "deleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
+                                methodName: "DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
                                 pathTemplate: "$\"/v1/volumes/{volumeNamespace}/{volumeName}/versions/{volumeVersion}\"",
-                                httpMethod: "GET",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -337,10 +363,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
-                                methodName: "GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
+                                operationId: "deleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersion",
+                                methodName: "DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync",
                                 pathTemplate: "$\"/v1/volumes/{volumeNamespace}/{volumeName}/versions/{volumeVersion}\"",
-                                httpMethod: "GET",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -367,7 +393,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionResponseContent(
+                                ProcessDeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -376,9 +402,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.VolumeVersionDetailV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.DeleteVolumeVersionResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeVersionDetailV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeleteVolumeVersionResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -408,9 +434,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.VolumeVersionDetailV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.DeleteVolumeVersionResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeVersionDetailV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeleteVolumeVersionResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -449,6 +475,41 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Deletes one version of a volume<br/>
+        /// Deletes the version the address names, along with every tag pointing at it. Addressing the version by tag deletes the version the tag points at, not the tag. The data is not erased: the version stays restorable until the recovery deadline in the response passes. Deleting a version that is already deleted is a conflict, not a repeat success.
+        /// </summary>
+        /// <param name="volumeNamespace"></param>
+        /// <param name="volumeName"></param>
+        /// <param name="volumeVersion"></param>
+        /// <param name="expectedSequence">
+        /// Revision the volume is expected to be at. When set, the delete fails with a conflict if the volume has changed since, so a read followed by a delete cannot act on a version a tag has since been moved off. Take the value from volume_sequence.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Baseten.DeleteVolumeVersionResponseV1> DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync(
+            string volumeNamespace,
+            string volumeName,
+            string volumeVersion,
+            int? expectedSequence = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Baseten.DeleteVolumeVersionRequestV1
+            {
+                ExpectedSequence = expectedSequence,
+            };
+
+            return await DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync(
+                volumeNamespace: volumeNamespace,
+                volumeName: volumeName,
+                volumeVersion: volumeVersion,
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

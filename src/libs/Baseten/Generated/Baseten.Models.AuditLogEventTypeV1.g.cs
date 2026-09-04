@@ -171,6 +171,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        VolumeDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        VolumeVersionDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        VolumeVersionRestored,
+        /// <summary>
+        ///
+        /// </summary>
         WebhookSigningSecretCreated,
         /// <summary>
         ///
@@ -234,6 +246,9 @@ namespace Baseten
                 AuditLogEventTypeV1.UserRemoved => "USER_REMOVED",
                 AuditLogEventTypeV1.UserRoleUpdated => "USER_ROLE_UPDATED",
                 AuditLogEventTypeV1.UserTeamRoleUpdated => "USER_TEAM_ROLE_UPDATED",
+                AuditLogEventTypeV1.VolumeDeleted => "VOLUME_DELETED",
+                AuditLogEventTypeV1.VolumeVersionDeleted => "VOLUME_VERSION_DELETED",
+                AuditLogEventTypeV1.VolumeVersionRestored => "VOLUME_VERSION_RESTORED",
                 AuditLogEventTypeV1.WebhookSigningSecretCreated => "WEBHOOK_SIGNING_SECRET_CREATED",
                 AuditLogEventTypeV1.WebhookSigningSecretDeleted => "WEBHOOK_SIGNING_SECRET_DELETED",
                 AuditLogEventTypeV1.WebhookSigningSecretRotated => "WEBHOOK_SIGNING_SECRET_ROTATED",
@@ -287,6 +302,9 @@ namespace Baseten
                 "USER_REMOVED" => AuditLogEventTypeV1.UserRemoved,
                 "USER_ROLE_UPDATED" => AuditLogEventTypeV1.UserRoleUpdated,
                 "USER_TEAM_ROLE_UPDATED" => AuditLogEventTypeV1.UserTeamRoleUpdated,
+                "VOLUME_DELETED" => AuditLogEventTypeV1.VolumeDeleted,
+                "VOLUME_VERSION_DELETED" => AuditLogEventTypeV1.VolumeVersionDeleted,
+                "VOLUME_VERSION_RESTORED" => AuditLogEventTypeV1.VolumeVersionRestored,
                 "WEBHOOK_SIGNING_SECRET_CREATED" => AuditLogEventTypeV1.WebhookSigningSecretCreated,
                 "WEBHOOK_SIGNING_SECRET_DELETED" => AuditLogEventTypeV1.WebhookSigningSecretDeleted,
                 "WEBHOOK_SIGNING_SECRET_ROTATED" => AuditLogEventTypeV1.WebhookSigningSecretRotated,

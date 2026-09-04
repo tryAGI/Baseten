@@ -6,8 +6,11 @@ namespace Baseten
     {
         /// <summary>
         /// Gets the versions of a volume<br/>
-        /// Returns every version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Deleted versions are included and carry a tombstoned lifecycle, so filter on lifecycle to list only live versions.
+        /// Returns every live version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Pass include_tombstoned to list deleted versions alongside them.
         /// </summary>
+        /// <param name="includeTombstoned">
+        /// Default Value: false
+        /// </param>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -21,12 +24,16 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.ListVolumeVersionsResponseV1> GetVolumesByVolumeNamespaceByVolumeNameVersionsAsync(
             string volumeNamespace,
             string volumeName,
+            bool? includeTombstoned = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the versions of a volume<br/>
-        /// Returns every version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Deleted versions are included and carry a tombstoned lifecycle, so filter on lifecycle to list only live versions.
+        /// Returns every live version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Pass include_tombstoned to list deleted versions alongside them.
         /// </summary>
+        /// <param name="includeTombstoned">
+        /// Default Value: false
+        /// </param>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -40,6 +47,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListVolumeVersionsResponseV1>> GetVolumesByVolumeNamespaceByVolumeNameVersionsAsResponseAsync(
             string volumeNamespace,
             string volumeName,
+            bool? includeTombstoned = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
