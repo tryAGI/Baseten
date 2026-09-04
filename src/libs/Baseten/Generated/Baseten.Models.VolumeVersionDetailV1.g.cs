@@ -4,9 +4,9 @@
 namespace Baseten
 {
     /// <summary>
-    ///
+    /// One version, with the fields only a single-version read reports.
     /// </summary>
-    public sealed partial class VolumeVersionV1
+    public sealed partial class VolumeVersionDetailV1
     {
         /// <summary>
         /// Namespace the volume belongs to, in lowercase.
@@ -89,13 +89,26 @@ namespace Baseten
         public global::System.DateTime? DeleteAfter { get; set; }
 
         /// <summary>
+        /// Number of files in the version. Null when not recorded.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("entry_count")]
+        public int? EntryCount { get; set; }
+
+        /// <summary>
+        /// Revision of the volume as a whole when this version was read. Pass it as expected_sequence on a later delete to make that delete conditional on the volume not having changed since.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("volume_sequence")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int VolumeSequence { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VolumeVersionV1" /> class.
+        /// Initializes a new instance of the <see cref="VolumeVersionDetailV1" /> class.
         /// </summary>
         /// <param name="namespace">
         /// Namespace the volume belongs to, in lowercase.
@@ -121,6 +134,9 @@ namespace Baseten
         /// <param name="createdAt">
         /// When the version was committed, in ISO 8601 format.
         /// </param>
+        /// <param name="volumeSequence">
+        /// Revision of the volume as a whole when this version was read. Pass it as expected_sequence on a later delete to make that delete conditional on the volume not having changed since.
+        /// </param>
         /// <param name="sequence">
         /// Revision the version was committed at. Null for versions committed before the volume service recorded it.
         /// </param>
@@ -133,10 +149,13 @@ namespace Baseten
         /// <param name="deleteAfter">
         /// When the version stops being restorable, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.
         /// </param>
+        /// <param name="entryCount">
+        /// Number of files in the version. Null when not recorded.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public VolumeVersionV1(
+        public VolumeVersionDetailV1(
             string @namespace,
             string volume,
             string versionRef,
@@ -145,10 +164,12 @@ namespace Baseten
             bool isHead,
             global::System.Collections.Generic.IList<string> tags,
             global::System.DateTime createdAt,
+            int volumeSequence,
             int? sequence,
             long? totalSizeBytes,
             global::System.DateTime? tombstonedAt,
-            global::System.DateTime? deleteAfter)
+            global::System.DateTime? deleteAfter,
+            int? entryCount)
         {
             this.Namespace = @namespace ?? throw new global::System.ArgumentNullException(nameof(@namespace));
             this.Volume = volume ?? throw new global::System.ArgumentNullException(nameof(volume));
@@ -162,12 +183,14 @@ namespace Baseten
             this.CreatedAt = createdAt;
             this.TombstonedAt = tombstonedAt;
             this.DeleteAfter = deleteAfter;
+            this.EntryCount = entryCount;
+            this.VolumeSequence = volumeSequence;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VolumeVersionV1" /> class.
+        /// Initializes a new instance of the <see cref="VolumeVersionDetailV1" /> class.
         /// </summary>
-        public VolumeVersionV1()
+        public VolumeVersionDetailV1()
         {
         }
 

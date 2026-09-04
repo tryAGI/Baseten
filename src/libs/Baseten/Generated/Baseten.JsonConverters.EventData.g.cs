@@ -322,6 +322,27 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventSshCertificateSignedV1)}");
                 sshCertificateSigned = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.AuditLogEventVolumeDeletedV1? volumeDeleted = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.VolumeDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeDeletedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventVolumeDeletedV1)}");
+                volumeDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventVolumeVersionDeletedV1? volumeVersionDeleted = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeVersionDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeVersionDeletedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventVolumeVersionDeletedV1)}");
+                volumeVersionDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventVolumeVersionRestoredV1? volumeVersionRestored = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionRestored)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeVersionRestoredV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeVersionRestoredV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventVolumeVersionRestoredV1)}");
+                volumeVersionRestored = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Baseten.EventData(
                 discriminator?.EventType,
@@ -409,7 +430,13 @@ namespace Baseten.JsonConverters
 
                 modelPromotionControlAction,
 
-                sshCertificateSigned
+                sshCertificateSigned,
+
+                volumeDeleted,
+
+                volumeVersionDeleted,
+
+                volumeVersionRestored
                 );
 
             return __value;
@@ -681,6 +708,24 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventSshCertificateSignedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventSshCertificateSignedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventSshCertificateSignedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.SshCertificateSigned!, typeInfo);
+            }
+            else if (value.IsVolumeDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeDeletedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventVolumeDeletedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VolumeDeleted!, typeInfo);
+            }
+            else if (value.IsVolumeVersionDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeVersionDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeVersionDeletedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventVolumeVersionDeletedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VolumeVersionDeleted!, typeInfo);
+            }
+            else if (value.IsVolumeVersionRestored)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeVersionRestoredV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeVersionRestoredV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventVolumeVersionRestoredV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VolumeVersionRestored!, typeInfo);
             }
         }
     }

@@ -72,6 +72,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdRecreateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdStopCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRestoreCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesTokenCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdDeploymentsByChainDeploymentIdCommandApiCommand.Create());
@@ -87,6 +88,8 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteTeamsByTeamIdSecretsBySecretNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameChainletSettingsAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditEnvironmentGroupsByEnvNameCommandApiCommand.Create());

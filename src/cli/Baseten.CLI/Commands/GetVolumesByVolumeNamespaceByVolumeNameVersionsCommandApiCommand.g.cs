@@ -19,6 +19,10 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsCom
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<bool?> IncludeTombstoned { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--include-tombstoned",
+        description: @"Whether to include deleted versions. A deleted version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.");
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ListVolumeVersionsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -42,9 +46,10 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsCom
     public static Command Create()
     {
         var command = new Command(@"get-volumes-by-volume-namespace-by-volume-name-versions", @"Gets the versions of a volume
-Returns every version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Deleted versions are included and carry a tombstoned lifecycle, so filter on lifecycle to list only live versions.");
+Returns every live version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Pass include_tombstoned to list deleted versions alongside them.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
+                        command.Options.Add(IncludeTombstoned);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -52,12 +57,14 @@ Returns every version of the volume, newest first, each with its digest, size, l
             {
                         var volumeNamespace = parseResult.GetRequiredValue(VolumeNamespace);
                         var volumeName = parseResult.GetRequiredValue(VolumeName);
+                        var includeTombstoned = parseResult.GetValue(IncludeTombstoned);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetVolumesByVolumeNamespaceByVolumeNameVersionsAsync(
                                     volumeNamespace: volumeNamespace,
                                     volumeName: volumeName,
+                                    includeTombstoned: includeTombstoned,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

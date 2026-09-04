@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Gets one version of a volume<br/>
-        /// Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a content digest of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest that matches more than one version is rejected: supply more characters.
+        /// Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a full content digest or a prefix of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest prefix that matches more than one version is rejected: supply more characters.
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
@@ -19,7 +19,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.VolumeVersionV1> GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.VolumeVersionDetailV1> GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsync(
             string volumeNamespace,
             string volumeName,
             string volumeVersion,
@@ -27,7 +27,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets one version of a volume<br/>
-        /// Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a content digest of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest that matches more than one version is rejected: supply more characters.
+        /// Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a full content digest or a prefix of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest prefix that matches more than one version is rejected: supply more characters.
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
@@ -40,7 +40,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeVersionV1>> GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeVersionDetailV1>> GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionAsResponseAsync(
             string volumeNamespace,
             string volumeName,
             string volumeVersion,
