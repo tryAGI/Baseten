@@ -21,7 +21,7 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("values")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>> Values { get; set; }
+        public required global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double?>> Values { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -43,7 +43,7 @@ namespace Baseten
 #endif
         public ModelMetricValueSetV1(
             int startEpochMillis,
-            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>> values)
+            global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double?>> values)
         {
             this.StartEpochMillis = startEpochMillis;
             this.Values = values ?? throw new global::System.ArgumentNullException(nameof(values));

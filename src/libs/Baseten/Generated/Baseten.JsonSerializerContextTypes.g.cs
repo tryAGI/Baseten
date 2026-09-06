@@ -853,11 +853,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>>? Type205 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double?>>? Type205 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<double>? Type206 { get; set; }
+        public global::System.Collections.Generic.IList<double?>? Type206 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -2378,11 +2378,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::System.Collections.Generic.List<double>>? ListType21 { get; set; }
+        public global::System.Collections.Generic.List<global::System.Collections.Generic.List<double?>>? ListType21 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<double>? ListType22 { get; set; }
+        public global::System.Collections.Generic.List<double?>? ListType22 { get; set; }
         /// <summary>
         ///
         /// </summary>
