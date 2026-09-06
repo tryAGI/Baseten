@@ -4,8 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// User-provided key-value labels for the deployment.<br/>
-    /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+    ///
     /// </summary>
     public sealed partial class DeploymentArchivePayloadV1Labels
     {

@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// The adapter config of the checkpoint.
+    ///
     /// </summary>
     public sealed partial class TrainingJobCheckpointV1LoraAdapterConfig
     {
