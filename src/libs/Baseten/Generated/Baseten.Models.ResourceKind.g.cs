@@ -15,6 +15,14 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        LoopsSampler,
+        /// <summary>
+        ///
+        /// </summary>
+        LoopsTrainer,
+        /// <summary>
+        ///
+        /// </summary>
         ModelDeployment,
         /// <summary>
         ///
@@ -35,6 +43,8 @@ namespace Baseten
             return value switch
             {
                 ResourceKind.Chainlet => "CHAINLET",
+                ResourceKind.LoopsSampler => "LOOPS_SAMPLER",
+                ResourceKind.LoopsTrainer => "LOOPS_TRAINER",
                 ResourceKind.ModelDeployment => "MODEL_DEPLOYMENT",
                 ResourceKind.TrainingJob => "TRAINING_JOB",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -48,6 +58,8 @@ namespace Baseten
             return value switch
             {
                 "CHAINLET" => ResourceKind.Chainlet,
+                "LOOPS_SAMPLER" => ResourceKind.LoopsSampler,
+                "LOOPS_TRAINER" => ResourceKind.LoopsTrainer,
                 "MODEL_DEPLOYMENT" => ResourceKind.ModelDeployment,
                 "TRAINING_JOB" => ResourceKind.TrainingJob,
                 _ => null,

@@ -16,7 +16,7 @@ namespace Baseten
         public required string Id { get; set; }
 
         /// <summary>
-        /// Resource kind (MODEL_DEPLOYMENT, TRAINING_JOB, or CHAINLET)
+        /// Resource kind (MODEL_DEPLOYMENT, CHAINLET, TRAINING_JOB, LOOPS_TRAINER, or LOOPS_SAMPLER)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.ResourceKindJsonConverter))]
@@ -59,6 +59,13 @@ namespace Baseten
         public string? InstanceType { get; set; }
 
         /// <summary>
+        /// Base model used by this Loops trainer or sampler<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_model")]
+        public string? BaseModel { get; set; }
+
+        /// <summary>
         /// Environment name (e.g., 'production', 'staging')<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -99,7 +106,7 @@ namespace Baseten
         /// Unique identifier of the resource
         /// </param>
         /// <param name="kind">
-        /// Resource kind (MODEL_DEPLOYMENT, TRAINING_JOB, or CHAINLET)
+        /// Resource kind (MODEL_DEPLOYMENT, CHAINLET, TRAINING_JOB, LOOPS_TRAINER, or LOOPS_SAMPLER)
         /// </param>
         /// <param name="isDeleted">
         /// Indicates if the resource has been deleted
@@ -118,6 +125,10 @@ namespace Baseten
         /// </param>
         /// <param name="instanceType">
         /// Instance type used<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="baseModel">
+        /// Base model used by this Loops trainer or sampler<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="environmentName">
@@ -147,6 +158,7 @@ namespace Baseten
             string? modelId,
             string? modelName,
             string? instanceType,
+            string? baseModel,
             string? environmentName,
             global::Baseten.ChainMetadataV1? chainMetadata,
             string? teamId,
@@ -159,6 +171,7 @@ namespace Baseten
             this.ModelName = modelName;
             this.IsDeleted = isDeleted;
             this.InstanceType = instanceType;
+            this.BaseModel = baseModel;
             this.EnvironmentName = environmentName;
             this.ChainMetadata = chainMetadata;
             this.TeamId = teamId;

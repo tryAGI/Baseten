@@ -25110,6 +25110,18 @@
                         ],
                         "default": null,
                         "title": "Release Date"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Description"
                     }
                 },
                 "required": [
@@ -25784,7 +25796,7 @@
                     },
                     "kind": {
                         "$ref": "#/components/schemas/ResourceKind",
-                        "description": "Resource kind (MODEL_DEPLOYMENT, TRAINING_JOB, or CHAINLET)"
+                        "description": "Resource kind (MODEL_DEPLOYMENT, CHAINLET, TRAINING_JOB, LOOPS_TRAINER, or LOOPS_SAMPLER)"
                     },
                     "name": {
                         "anyOf": [
@@ -25842,6 +25854,19 @@
                         "default": null,
                         "description": "Instance type used",
                         "title": "Instance Type"
+                    },
+                    "base_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Base model used by this Loops trainer or sampler",
+                        "title": "Base Model"
                     },
                     "environment_name": {
                         "anyOf": [
@@ -26353,6 +26378,8 @@
             },
             "ResourceKind": {
                 "enum": [
+                    "LOOPS_SAMPLER",
+                    "LOOPS_TRAINER",
                     "MODEL_DEPLOYMENT",
                     "TRAINING_JOB",
                     "CHAINLET"
