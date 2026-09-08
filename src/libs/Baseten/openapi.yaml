@@ -25122,6 +25122,11 @@
                         ],
                         "default": null,
                         "title": "Description"
+                    },
+                    "trending": {
+                        "default": false,
+                        "title": "Trending",
+                        "type": "boolean"
                     }
                 },
                 "required": [
