@@ -9193,7 +9193,7 @@
                         "type": "string"
                     },
                     "version_ref": {
-                        "description": "Full address of the volume, as `bdn://<namespace>/<volume>`. Paste this into the `bdn.mounts` section of a config.yaml.",
+                        "description": "Full address of the volume, as `bdn:<namespace>/<volume>`. Paste this into the `bdn.mounts` section of a config.yaml.",
                         "title": "Version Ref",
                         "type": "string"
                     },
@@ -9589,7 +9589,7 @@
                         "type": "string"
                     },
                     "version_ref": {
-                        "description": "Full address of this version, as `bdn://<namespace>/<volume>@<digest>`. Paste this into the `bdn.mounts` section of a config.yaml to pin to it.",
+                        "description": "Full address of this version, as `bdn:<namespace>/<volume>@<digest>`. Paste this into the `bdn.mounts` section of a config.yaml to pin to it.",
                         "title": "Version Ref",
                         "type": "string"
                     },
@@ -9758,7 +9758,7 @@
                         "type": "string"
                     },
                     "version_ref": {
-                        "description": "Full address of the deleted version, as `bdn://<namespace>/<volume>@<digest>`.",
+                        "description": "Full address of the deleted version, as `bdn:<namespace>/<volume>@<digest>`.",
                         "title": "Version Ref",
                         "type": "string"
                     },
@@ -9810,7 +9810,7 @@
                         "type": "string"
                     },
                     "version_ref": {
-                        "description": "Full address of this version, as `bdn://<namespace>/<volume>@<digest>`. Paste this into the `bdn.mounts` section of a config.yaml to pin to it.",
+                        "description": "Full address of this version, as `bdn:<namespace>/<volume>@<digest>`. Paste this into the `bdn.mounts` section of a config.yaml to pin to it.",
                         "title": "Version Ref",
                         "type": "string"
                     },
@@ -9962,7 +9962,7 @@
                         "type": "string"
                     },
                     "version_ref": {
-                        "description": "Full address of the restored version, as `bdn://<namespace>/<volume>@<digest>`.",
+                        "description": "Full address of the restored version, as `bdn:<namespace>/<volume>@<digest>`.",
                         "title": "Version Ref",
                         "type": "string"
                     },

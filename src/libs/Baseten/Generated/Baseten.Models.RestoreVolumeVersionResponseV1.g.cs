@@ -23,7 +23,7 @@ namespace Baseten
         public required string Volume { get; set; }
 
         /// <summary>
-        /// Full address of the restored version, as `bdn://&lt;namespace&gt;/&lt;volume&gt;@&lt;digest&gt;`.
+        /// Full address of the restored version, as `bdn:&lt;namespace&gt;/&lt;volume&gt;@&lt;digest&gt;`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("version_ref")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -66,7 +66,7 @@ namespace Baseten
         /// Name of the volume, in lowercase.
         /// </param>
         /// <param name="versionRef">
-        /// Full address of the restored version, as `bdn://&lt;namespace&gt;/&lt;volume&gt;@&lt;digest&gt;`.
+        /// Full address of the restored version, as `bdn:&lt;namespace&gt;/&lt;volume&gt;@&lt;digest&gt;`.
         /// </param>
         /// <param name="digest">
         /// Content digest of the restored version, as `b3:&lt;hex&gt;`.

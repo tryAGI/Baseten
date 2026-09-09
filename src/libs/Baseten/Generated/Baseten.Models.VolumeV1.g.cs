@@ -23,7 +23,7 @@ namespace Baseten
         public required string Name { get; set; }
 
         /// <summary>
-        /// Full address of the volume, as `bdn://&lt;namespace&gt;/&lt;volume&gt;`. Paste this into the `bdn.mounts` section of a config.yaml.
+        /// Full address of the volume, as `bdn:&lt;namespace&gt;/&lt;volume&gt;`. Paste this into the `bdn.mounts` section of a config.yaml.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("version_ref")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -100,7 +100,7 @@ namespace Baseten
         /// Name of the volume, in lowercase.
         /// </param>
         /// <param name="versionRef">
-        /// Full address of the volume, as `bdn://&lt;namespace&gt;/&lt;volume&gt;`. Paste this into the `bdn.mounts` section of a config.yaml.
+        /// Full address of the volume, as `bdn:&lt;namespace&gt;/&lt;volume&gt;`. Paste this into the `bdn.mounts` section of a config.yaml.
         /// </param>
         /// <param name="sequence">
         /// Revision counter for the volume, incremented on every commit and tag change. Use it to detect that a volume changed.
