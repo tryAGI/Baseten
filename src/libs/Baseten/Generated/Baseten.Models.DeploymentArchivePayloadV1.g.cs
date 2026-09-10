@@ -40,6 +40,13 @@ namespace Baseten
         public string? EnvironmentName { get; set; }
 
         /// <summary>
+        /// Create the environment named by `environment_name` if it does not exist yet. If false, a push to an environment that does not exist is rejected. Only meaningful when `environment_name` is set to something other than `production`, which always exists. This field currently defaults to true, but that default will change to false in a future release. Set it explicitly to avoid a behavior change.<br/>
+        /// Default Value: true
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("create_environment_if_missing")]
+        public bool? CreateEnvironmentIfMissing { get; set; }
+
+        /// <summary>
         /// Region in which to deploy the model<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -105,6 +112,10 @@ namespace Baseten
         /// Stable environment to push to (e.g. `production`). If unset, the deployment is created without environment selection. Caller must have push permission for the named environment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="createEnvironmentIfMissing">
+        /// Create the environment named by `environment_name` if it does not exist yet. If false, a push to an environment that does not exist is rejected. Only meaningful when `environment_name` is set to something other than `production`, which always exists. This field currently defaults to true, but that default will change to false in a future release. Set it explicitly to avoid a behavior change.<br/>
+        /// Default Value: true
+        /// </param>
         /// <param name="region">
         /// Region in which to deploy the model<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -137,6 +148,7 @@ namespace Baseten
             string? rawConfig,
             object? userEnv,
             string? environmentName,
+            bool? createEnvironmentIfMissing,
             string? region,
             bool? preserveEnvInstanceType,
             int? deployTimeoutMinutes,
@@ -148,6 +160,7 @@ namespace Baseten
             this.RawConfig = rawConfig;
             this.UserEnv = userEnv;
             this.EnvironmentName = environmentName;
+            this.CreateEnvironmentIfMissing = createEnvironmentIfMissing;
             this.Region = region;
             this.PreserveEnvInstanceType = preserveEnvInstanceType;
             this.DeployTimeoutMinutes = deployTimeoutMinutes;
