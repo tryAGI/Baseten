@@ -19488,6 +19488,16 @@
                 "title": "ListTrainingJobsResponseV1",
                 "type": "object"
             },
+            "AuthMethod": {
+                "enum": [
+                    "CUSTOM_SECRET",
+                    "AWS_OIDC",
+                    "GCP_OIDC",
+                    "AWS_ASSUME_ROLE"
+                ],
+                "title": "AuthMethod",
+                "type": "string"
+            },
             "AwsAssumeRoleDockerAuthV1": {
                 "description": "AWS assume-role details for the registry.",
                 "properties": {
@@ -19722,8 +19732,7 @@
                     "auth": {
                         "anyOf": [
                             {
-                                "additionalProperties": true,
-                                "type": "object"
+                                "$ref": "#/components/schemas/TrainingWeightAuthV1"
                             },
                             {
                                 "type": "null"
@@ -19735,9 +19744,23 @@
                             {
                                 "auth_method": "CUSTOM_SECRET",
                                 "auth_secret_name": "hf_token"
+                            },
+                            {
+                                "auth_method": "AWS_OIDC",
+                                "aws_oidc_region": "us-east-1",
+                                "aws_oidc_role_arn": "arn:aws:iam::123456789012:role/weights-access"
+                            },
+                            {
+                                "auth_method": "GCP_OIDC",
+                                "gcp_oidc_service_account": "weights-reader@example.iam.gserviceaccount.com",
+                                "gcp_oidc_workload_id_provider": "projects/123456789/locations/global/workloadIdentityPools/baseten/providers/baseten"
+                            },
+                            {
+                                "auth_method": "AWS_ASSUME_ROLE",
+                                "aws_assume_role_arn": "arn:aws:iam::123456789012:role/baseten-customer-access",
+                                "aws_assume_role_region": "us-east-1"
                             }
-                        ],
-                        "title": "Auth"
+                        ]
                     }
                 },
                 "required": [
@@ -20565,6 +20588,111 @@
                     "name"
                 ],
                 "title": "SecretReferenceV1",
+                "type": "object"
+            },
+            "TrainingWeightAuthV1": {
+                "description": "Authentication configuration for a training weight source.",
+                "properties": {
+                    "auth_method": {
+                        "$ref": "#/components/schemas/AuthMethod",
+                        "description": "Method used to authenticate the weight source."
+                    },
+                    "auth_secret_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name of the workspace secret used for custom-secret authentication.",
+                        "title": "Auth Secret Name"
+                    },
+                    "aws_oidc_role_arn": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "AWS IAM role ARN used for OIDC authentication.",
+                        "title": "Aws Oidc Role Arn"
+                    },
+                    "aws_oidc_region": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "AWS region used for OIDC authentication.",
+                        "title": "Aws Oidc Region"
+                    },
+                    "gcp_oidc_service_account": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "GCP service account used for OIDC authentication.",
+                        "title": "Gcp Oidc Service Account"
+                    },
+                    "gcp_oidc_workload_id_provider": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "GCP workload identity provider used for OIDC authentication.",
+                        "title": "Gcp Oidc Workload Id Provider"
+                    },
+                    "aws_assume_role_arn": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "AWS IAM role ARN that Baseten assumes to access the weight source.",
+                        "title": "Aws Assume Role Arn"
+                    },
+                    "aws_assume_role_region": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "AWS region used for assume-role authentication.",
+                        "title": "Aws Assume Role Region"
+                    }
+                },
+                "required": [
+                    "auth_method"
+                ],
+                "title": "TrainingWeightAuthV1",
                 "type": "object"
             },
             "TrussUserEnv": {
