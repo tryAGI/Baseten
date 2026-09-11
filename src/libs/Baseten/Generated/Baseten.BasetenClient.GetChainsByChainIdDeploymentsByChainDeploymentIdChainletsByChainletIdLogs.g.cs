@@ -260,9 +260,9 @@ namespace Baseten
                             __pathBuilder
                                 .AddOptionalParameter("start_epoch_millis", startEpochMillis?.ToString())
                                 .AddOptionalParameter("end_epoch_millis", endEpochMillis?.ToString())
-                                .AddOptionalParameter("direction", direction?.ToString())
+                                .AddOptionalParameter("direction", direction?.ToValueString())
                                 .AddOptionalParameter("limit", limit?.ToString())
-                                .AddOptionalParameter("min_level", minLevel?.ToString())
+                                .AddOptionalParameter("min_level", minLevel?.ToValueString())
                                 .AddOptionalParameter("replica", replica)
                                 .AddOptionalParameter("request_id", requestId)
                                 .AddOptionalParameter("component", component)
