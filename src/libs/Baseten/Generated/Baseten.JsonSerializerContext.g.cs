@@ -312,6 +312,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingProjectV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListTrainingJobsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingJobV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuthMethod), TypeInfoPropertyName = "AuthMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AwsAssumeRoleDockerAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AwsIamDockerAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SecretReferenceV1))]
@@ -319,6 +320,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BasetenLatestCheckpointConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BasetenNamedCheckpointConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateJobWeightConfigV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingWeightAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobAcceleratorV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobCacheConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobCheckpointingConfig))]
@@ -512,8 +514,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApisCostBucketV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelApisCostResultV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApisCostResultV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApisCostsResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelApisCostBucketV1>))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -526,6 +526,8 @@ namespace Baseten
         Converters = new global::System.Type[]
         {
         })]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApisCostsResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelApisCostBucketV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApiCostDimensionV1), TypeInfoPropertyName = "ModelApiCostDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApisCostsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelApiCostDimensionV1>))]
@@ -645,6 +647,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CancelPromotionStatusV1?), TypeInfoPropertyName = "NullableCancelPromotionStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckpointSyncStatus?), TypeInfoPropertyName = "NullableCheckpointSyncStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.V1AvailabilityModel?), TypeInfoPropertyName = "NullableV1AvailabilityModel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuthMethod?), TypeInfoPropertyName = "NullableAuthMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<string, global::Baseten.SecretReferenceV1>?), TypeInfoPropertyName = "NullableAnyOfStringSecretReferenceV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DockerAuthType?), TypeInfoPropertyName = "NullableDockerAuthType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.V1InteractiveSessionTrigger?), TypeInfoPropertyName = "NullableV1InteractiveSessionTrigger2")]
@@ -981,6 +984,10 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.V1AvailabilityModel)
 
                     || typeToConvert == typeof(global::Baseten.V1AvailabilityModel?)
+
+                    || typeToConvert == typeof(global::Baseten.AuthMethod)
+
+                    || typeToConvert == typeof(global::Baseten.AuthMethod?)
 
                     || typeToConvert == typeof(global::Baseten.DockerAuthType)
 
@@ -1409,6 +1416,16 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.V1AvailabilityModel?))
                 {
                     return new global::Baseten.JsonConverters.V1AvailabilityModelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AuthMethod))
+                {
+                    return new global::Baseten.JsonConverters.AuthMethodJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AuthMethod?))
+                {
+                    return new global::Baseten.JsonConverters.AuthMethodNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.DockerAuthType))

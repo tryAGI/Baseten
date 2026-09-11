@@ -51,7 +51,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auth")]
-        public object? Auth { get; set; }
+        public global::Baseten.TrainingWeightAuthV1? Auth { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -93,7 +93,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? allowPatterns,
             global::System.Collections.Generic.IList<string>? ignorePatterns,
             string? authSecretName,
-            object? auth)
+            global::Baseten.TrainingWeightAuthV1? auth)
         {
             this.Source = source ?? throw new global::System.ArgumentNullException(nameof(source));
             this.MountLocation = mountLocation ?? throw new global::System.ArgumentNullException(nameof(mountLocation));
