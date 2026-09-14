@@ -35,6 +35,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        InvokeAllRoutes,
+        /// <summary>
+        ///
+        /// </summary>
         InvokeAllSharedEndpointsServiceAccount,
         /// <summary>
         ///
@@ -68,6 +72,7 @@ namespace Baseten
                 AuditLogApiKeyTypeV1.InvokeAllowedModelsServiceAccount => "INVOKE_ALLOWED_MODELS_SERVICE_ACCOUNT",
                 AuditLogApiKeyTypeV1.InvokeAllowedSharedEndpointsServiceAccount => "INVOKE_ALLOWED_SHARED_ENDPOINTS_SERVICE_ACCOUNT",
                 AuditLogApiKeyTypeV1.InvokeAllModelsServiceAccount => "INVOKE_ALL_MODELS_SERVICE_ACCOUNT",
+                AuditLogApiKeyTypeV1.InvokeAllRoutes => "INVOKE_ALL_ROUTES",
                 AuditLogApiKeyTypeV1.InvokeAllSharedEndpointsServiceAccount => "INVOKE_ALL_SHARED_ENDPOINTS_SERVICE_ACCOUNT",
                 AuditLogApiKeyTypeV1.InvokeScopedEnvsAndModelsServiceAccount => "INVOKE_SCOPED_ENVS_AND_MODELS_SERVICE_ACCOUNT",
                 AuditLogApiKeyTypeV1.ManageApiKeysServiceAccount => "MANAGE_API_KEYS_SERVICE_ACCOUNT",
@@ -88,6 +93,7 @@ namespace Baseten
                 "INVOKE_ALLOWED_MODELS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.InvokeAllowedModelsServiceAccount,
                 "INVOKE_ALLOWED_SHARED_ENDPOINTS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.InvokeAllowedSharedEndpointsServiceAccount,
                 "INVOKE_ALL_MODELS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.InvokeAllModelsServiceAccount,
+                "INVOKE_ALL_ROUTES" => AuditLogApiKeyTypeV1.InvokeAllRoutes,
                 "INVOKE_ALL_SHARED_ENDPOINTS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.InvokeAllSharedEndpointsServiceAccount,
                 "INVOKE_SCOPED_ENVS_AND_MODELS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.InvokeScopedEnvsAndModelsServiceAccount,
                 "MANAGE_API_KEYS_SERVICE_ACCOUNT" => AuditLogApiKeyTypeV1.ManageApiKeysServiceAccount,
