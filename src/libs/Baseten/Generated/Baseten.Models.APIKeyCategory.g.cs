@@ -15,6 +15,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Routes,
+        /// <summary>
+        ///
+        /// </summary>
         WorkspaceExportMetrics,
         /// <summary>
         ///
@@ -43,6 +47,7 @@ namespace Baseten
             return value switch
             {
                 APIKeyCategory.Personal => "PERSONAL",
+                APIKeyCategory.Routes => "ROUTES",
                 APIKeyCategory.WorkspaceExportMetrics => "WORKSPACE_EXPORT_METRICS",
                 APIKeyCategory.WorkspaceInvoke => "WORKSPACE_INVOKE",
                 APIKeyCategory.WorkspaceManageAll => "WORKSPACE_MANAGE_ALL",
@@ -58,6 +63,7 @@ namespace Baseten
             return value switch
             {
                 "PERSONAL" => APIKeyCategory.Personal,
+                "ROUTES" => APIKeyCategory.Routes,
                 "WORKSPACE_EXPORT_METRICS" => APIKeyCategory.WorkspaceExportMetrics,
                 "WORKSPACE_INVOKE" => APIKeyCategory.WorkspaceInvoke,
                 "WORKSPACE_MANAGE_ALL" => APIKeyCategory.WorkspaceManageAll,
