@@ -11,23 +11,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        ConcurrentRequest,
-        /// <summary>
-        ///
-        /// </summary>
-        OutputToken,
-        /// <summary>
-        ///
-        /// </summary>
         Request,
         /// <summary>
         ///
         /// </summary>
         Token,
-        /// <summary>
-        ///
-        /// </summary>
-        UncachedInputToken,
     }
 
     /// <summary>
@@ -42,11 +30,8 @@ namespace Baseten
         {
             return value switch
             {
-                LimitTypeV1.ConcurrentRequest => "CONCURRENT_REQUEST",
-                LimitTypeV1.OutputToken => "OUTPUT_TOKEN",
                 LimitTypeV1.Request => "REQUEST",
                 LimitTypeV1.Token => "TOKEN",
-                LimitTypeV1.UncachedInputToken => "UNCACHED_INPUT_TOKEN",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +42,8 @@ namespace Baseten
         {
             return value switch
             {
-                "CONCURRENT_REQUEST" => LimitTypeV1.ConcurrentRequest,
-                "OUTPUT_TOKEN" => LimitTypeV1.OutputToken,
                 "REQUEST" => LimitTypeV1.Request,
                 "TOKEN" => LimitTypeV1.Token,
-                "UNCACHED_INPUT_TOKEN" => LimitTypeV1.UncachedInputToken,
                 _ => null,
             };
         }
