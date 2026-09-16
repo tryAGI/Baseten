@@ -24437,7 +24437,10 @@
             "LimitTypeV1": {
                 "enum": [
                     "REQUEST",
-                    "TOKEN"
+                    "TOKEN",
+                    "CONCURRENT_REQUEST",
+                    "UNCACHED_INPUT_TOKEN",
+                    "OUTPUT_TOKEN"
                 ],
                 "title": "LimitTypeV1",
                 "type": "string"
