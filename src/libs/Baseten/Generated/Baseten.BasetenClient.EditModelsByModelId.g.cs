@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateRoutesSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_EditModelsByModelIdSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,56 +21,54 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateRoutesSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_EditModelsByModelIdSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateRoutesSecurityRequirement0,
+            {                s_EditModelsByModelIdSecurityRequirement0,
             };
-        partial void PrepareCreateRoutesArguments(
+        partial void PrepareEditModelsByModelIdArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateRouteRequestV1 request);
-        partial void PrepareCreateRoutesRequest(
+            ref string modelId,
+            global::Baseten.UpdateModelRequestV1 request);
+        partial void PrepareEditModelsByModelIdRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateRouteRequestV1 request);
-        partial void ProcessCreateRoutesResponse(
+            string modelId,
+            global::Baseten.UpdateModelRequestV1 request);
+        partial void ProcessEditModelsByModelIdResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateRoutesResponseContent(
+        partial void ProcessEditModelsByModelIdResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Creates a route<br/>
-        /// Dedicated deployment targets are not supported.
+        /// Updates a model by ID<br/>
+        /// Updates the mutable fields of a model and returns the updated model. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.
         /// </summary>
+        /// <param name="modelId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/routes \<br/>
+        /// curl --request PATCH \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "name": "my-org/assistant",<br/>
-        ///   "team_id": "abc1234",<br/>
-        ///   "display_name": "Assistant",<br/>
-        ///   "target": {<br/>
-        ///     "model": "zai-org/GLM-5.3",<br/>
-        ///     "type": "BASETEN_MODEL_API"<br/>
-        ///   },<br/>
-        ///   "description": "Assistant for code review and debugging."<br/>
+        ///   "name": "my-model"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.RouteV1> CreateRoutesAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.ModelV1> EditModelsByModelIdAsync(
+            string modelId,
 
-            global::Baseten.CreateRouteRequestV1 request,
+            global::Baseten.UpdateModelRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateRoutesAsResponseAsync(
+            var __response = await EditModelsByModelIdAsResponseAsync(
+                modelId: modelId,
 
                 request: request,
                 requestOptions: requestOptions,
@@ -80,31 +78,26 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Creates a route<br/>
-        /// Dedicated deployment targets are not supported.
+        /// Updates a model by ID<br/>
+        /// Updates the mutable fields of a model and returns the updated model. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.
         /// </summary>
+        /// <param name="modelId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/routes \<br/>
+        /// curl --request PATCH \<br/>
+        /// --url https://api.baseten.co/v1/models/{model_id} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "name": "my-org/assistant",<br/>
-        ///   "team_id": "abc1234",<br/>
-        ///   "display_name": "Assistant",<br/>
-        ///   "target": {<br/>
-        ///     "model": "zai-org/GLM-5.3",<br/>
-        ///     "type": "BASETEN_MODEL_API"<br/>
-        ///   },<br/>
-        ///   "description": "Assistant for code review and debugging."<br/>
+        ///   "name": "my-model"<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteV1>> CreateRoutesAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ModelV1>> EditModelsByModelIdAsResponseAsync(
+            string modelId,
 
-            global::Baseten.CreateRouteRequestV1 request,
+            global::Baseten.UpdateModelRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -112,15 +105,16 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateRoutesArguments(
+            PrepareEditModelsByModelIdArguments(
                 httpClient: HttpClient,
+                modelId: ref modelId,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateRoutesSecurityRequirements,
-                operationName: "CreateRoutesAsync");
+                securityRequirements: s_EditModelsByModelIdSecurityRequirements,
+                operationName: "EditModelsByModelIdAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -140,7 +134,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/routes",
+                                path: $"/v1/models/{modelId}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -148,7 +142,7 @@ namespace Baseten
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: new global::System.Net.Http.HttpMethod("PATCH"),
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -185,9 +179,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateRoutesRequest(
+                PrepareEditModelsByModelIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    modelId: modelId!,
                     request: request);
 
                 return __httpRequest;
@@ -205,10 +200,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createRoutes",
-                                methodName: "CreateRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "POST",
+                                operationId: "editModelsByModelId",
+                                methodName: "EditModelsByModelIdAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -239,10 +234,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createRoutes",
-                                methodName: "CreateRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "POST",
+                                operationId: "editModelsByModelId",
+                                methodName: "EditModelsByModelIdAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -280,10 +275,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createRoutes",
-                                methodName: "CreateRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "POST",
+                                operationId: "editModelsByModelId",
+                                methodName: "EditModelsByModelIdAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -320,7 +315,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateRoutesResponse(
+                ProcessEditModelsByModelIdResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -328,10 +323,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createRoutes",
-                                methodName: "CreateRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "POST",
+                                operationId: "editModelsByModelId",
+                                methodName: "EditModelsByModelIdAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -350,10 +345,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createRoutes",
-                                methodName: "CreateRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "POST",
+                                operationId: "editModelsByModelId",
+                                methodName: "EditModelsByModelIdAsync",
+                                pathTemplate: "$\"/v1/models/{modelId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -380,7 +375,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateRoutesResponseContent(
+                                ProcessEditModelsByModelIdResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -389,9 +384,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.RouteV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.ModelV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ModelV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -421,9 +416,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.RouteV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.ModelV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ModelV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -464,49 +459,30 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Creates a route<br/>
-        /// Dedicated deployment targets are not supported.
+        /// Updates a model by ID<br/>
+        /// Updates the mutable fields of a model and returns the updated model. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.
         /// </summary>
+        /// <param name="modelId"></param>
         /// <param name="name">
-        /// Immutable, globally unique route name using an organization-owned prefix.
-        /// </param>
-        /// <param name="teamId">
-        /// Identifier of the team that owns the route. When omitted, uses your organization's default team.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="displayName">
-        /// Display label. Omit to use the route name; null is not accepted.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="target">
-        /// Upstream target for the route.
-        /// </param>
-        /// <param name="description">
-        /// Short description of the route. Omit for no description; null is not accepted.<br/>
+        /// New name for the model, unique within its team. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.RouteV1> CreateRoutesAsync(
-            string name,
-            global::Baseten.Target2 target,
-            string? teamId = default,
-            string? displayName = default,
-            string? description = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.ModelV1> EditModelsByModelIdAsync(
+            string modelId,
+            string? name = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateRouteRequestV1
+            var __request = new global::Baseten.UpdateModelRequestV1
             {
                 Name = name,
-                TeamId = teamId,
-                DisplayName = displayName,
-                Target = target,
-                Description = description,
             };
 
-            return await CreateRoutesAsync(
+            return await EditModelsByModelIdAsync(
+                modelId: modelId,
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

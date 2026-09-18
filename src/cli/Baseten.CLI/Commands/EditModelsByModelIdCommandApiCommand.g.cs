@@ -5,37 +5,18 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class CreateRoutesCommandApiCommand
+internal static partial class EditModelsByModelIdCommandApiCommand
 {
-    private static Argument<string> NameOption { get; } = new(
-        name: @"name")
+    private static Argument<string> ModelId { get; } = new(
+        name: @"model-id")
     {
-        Description = @"Immutable, globally unique route name using an organization-owned prefix.",
+        Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
-    private static Option<string?> TeamId { get; } = new(
-        name: @"--team-id")
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
     {
-        Description = @"Identifier of the team that owns the route. When omitted, uses your organization's default team.",
-    };
-
-    private static Option<string?> DisplayName { get; } = new(
-        name: @"--display-name")
-    {
-        Description = @"Display label. Omit to use the route name; null is not accepted.",
-    };
-
-    private static Option<global::Baseten.Target2> Target { get; } = new(
-        name: @"--target")
-    {
-        Description = @"Upstream target for the route.",
-        Required = true,
-    };
-
-    private static Option<string?> DescriptionOption { get; } = new(
-        name: @"--description")
-    {
-        Description = @"Short description of the route. Omit for no description; null is not accepted.",
+        Description = @"New name for the model, unique within its team. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -54,7 +35,7 @@ internal static partial class CreateRoutesCommandApiCommand
           Hidden = true,
       };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.ModelV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -70,19 +51,16 @@ internal static partial class CreateRoutesCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RouteV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.ModelV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
     public static Command Create()
     {
-        var command = new Command(@"create-routes", @"Creates a route
-Dedicated deployment targets are not supported.");
-                        command.Arguments.Add(NameOption);
-                        command.Options.Add(TeamId);
-                        command.Options.Add(DisplayName);
-                        command.Options.Add(Target);
-                        command.Options.Add(DescriptionOption);
+        var command = new Command(@"edit-models-by-model-id", @"Updates a model by ID
+Updates the mutable fields of a model and returns the updated model. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.");
+                        command.Arguments.Add(ModelId);
+                        command.Options.Add(NameOption);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -101,27 +79,21 @@ Dedicated deployment targets are not supported.");
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.CreateRouteRequestV1>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.UpdateModelRequestV1>(
                             parseResult,
                             Input,
                             RequestJson,
                             RequestFile,
                             global::Baseten.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
-                        var name = parseResult.GetRequiredValue(NameOption);
-                        var teamId = CliRuntime.WasSpecified(parseResult, TeamId) ? parseResult.GetValue(TeamId) : (__requestBase is { } __TeamIdBaseValue ? __TeamIdBaseValue.TeamId : default);
-                        var displayName = CliRuntime.WasSpecified(parseResult, DisplayName) ? parseResult.GetValue(DisplayName) : (__requestBase is { } __DisplayNameBaseValue ? __DisplayNameBaseValue.DisplayName : default);
-                        var target = parseResult.GetRequiredValue(Target);
-                        var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
+                        var modelId = parseResult.GetRequiredValue(ModelId);
+                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.CreateRoutesAsync(
+                                var response = await client.EditModelsByModelIdAsync(
+                                    modelId: modelId,
                                     name: name,
-                                    teamId: teamId,
-                                    displayName: displayName,
-                                    target: target,
-                                    description: description,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

@@ -21,7 +21,7 @@ namespace Baseten
         ///   "team_id": "abc1234",<br/>
         ///   "display_name": "Assistant",<br/>
         ///   "target": {<br/>
-        ///     "model_api": "zai-org/GLM-5.3",<br/>
+        ///     "model": "zai-org/GLM-5.3",<br/>
         ///     "type": "BASETEN_MODEL_API"<br/>
         ///   },<br/>
         ///   "description": "Assistant for code review and debugging."<br/>
@@ -49,7 +49,7 @@ namespace Baseten
         ///   "team_id": "abc1234",<br/>
         ///   "display_name": "Assistant",<br/>
         ///   "target": {<br/>
-        ///     "model_api": "zai-org/GLM-5.3",<br/>
+        ///     "model": "zai-org/GLM-5.3",<br/>
         ///     "type": "BASETEN_MODEL_API"<br/>
         ///   },<br/>
         ///   "description": "Assistant for code review and debugging."<br/>
@@ -68,7 +68,8 @@ namespace Baseten
         /// Immutable, globally unique route name using an organization-owned prefix.
         /// </param>
         /// <param name="teamId">
-        /// Identifier of the team that owns the route.
+        /// Identifier of the team that owns the route. When omitted, uses your organization's default team.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="displayName">
         /// Display label. Omit to use the route name; null is not accepted.<br/>
@@ -86,8 +87,8 @@ namespace Baseten
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.RouteV1> CreateRoutesAsync(
             string name,
-            string teamId,
             global::Baseten.Target2 target,
+            string? teamId = default,
             string? displayName = default,
             string? description = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

@@ -131,6 +131,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ModelRenamed,
+        /// <summary>
+        ///
+        /// </summary>
         ReplicaTerminated,
         /// <summary>
         ///
@@ -236,6 +240,7 @@ namespace Baseten
                 AuditLogEventTypeV1.ModelDeploymentRequestBackpressureSettingsChanged => "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED",
                 AuditLogEventTypeV1.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEventTypeV1.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
+                AuditLogEventTypeV1.ModelRenamed => "MODEL_RENAMED",
                 AuditLogEventTypeV1.ReplicaTerminated => "REPLICA_TERMINATED",
                 AuditLogEventTypeV1.RequireGroupBasedAdminsEnabled => "REQUIRE_GROUP_BASED_ADMINS_ENABLED",
                 AuditLogEventTypeV1.SecretDeleted => "SECRET_DELETED",
@@ -292,6 +297,7 @@ namespace Baseten
                 "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED" => AuditLogEventTypeV1.ModelDeploymentRequestBackpressureSettingsChanged,
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEventTypeV1.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEventTypeV1.ModelPromotionControlAction,
+                "MODEL_RENAMED" => AuditLogEventTypeV1.ModelRenamed,
                 "REPLICA_TERMINATED" => AuditLogEventTypeV1.ReplicaTerminated,
                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED" => AuditLogEventTypeV1.RequireGroupBasedAdminsEnabled,
                 "SECRET_DELETED" => AuditLogEventTypeV1.SecretDeleted,

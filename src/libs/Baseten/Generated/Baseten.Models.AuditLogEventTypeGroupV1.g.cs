@@ -47,6 +47,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Metadata,
+        /// <summary>
+        ///
+        /// </summary>
         Promoted,
         /// <summary>
         ///
@@ -95,6 +99,7 @@ namespace Baseten
                 AuditLogEventTypeGroupV1.EnvironmentSettings => "ENVIRONMENT_SETTINGS",
                 AuditLogEventTypeGroupV1.Gateway => "GATEWAY",
                 AuditLogEventTypeGroupV1.InstanceTypeChanged => "INSTANCE_TYPE_CHANGED",
+                AuditLogEventTypeGroupV1.Metadata => "METADATA",
                 AuditLogEventTypeGroupV1.Promoted => "PROMOTED",
                 AuditLogEventTypeGroupV1.ReplicaTerminated => "REPLICA_TERMINATED",
                 AuditLogEventTypeGroupV1.RequestBackpressureSettings => "REQUEST_BACKPRESSURE_SETTINGS",
@@ -121,6 +126,7 @@ namespace Baseten
                 "ENVIRONMENT_SETTINGS" => AuditLogEventTypeGroupV1.EnvironmentSettings,
                 "GATEWAY" => AuditLogEventTypeGroupV1.Gateway,
                 "INSTANCE_TYPE_CHANGED" => AuditLogEventTypeGroupV1.InstanceTypeChanged,
+                "METADATA" => AuditLogEventTypeGroupV1.Metadata,
                 "PROMOTED" => AuditLogEventTypeGroupV1.Promoted,
                 "REPLICA_TERMINATED" => AuditLogEventTypeGroupV1.ReplicaTerminated,
                 "REQUEST_BACKPRESSURE_SETTINGS" => AuditLogEventTypeGroupV1.RequestBackpressureSettings,

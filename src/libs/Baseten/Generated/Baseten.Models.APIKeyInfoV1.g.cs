@@ -45,6 +45,20 @@ namespace Baseten
         public string? TeamName { get; set; }
 
         /// <summary>
+        /// Creation time in ISO 8601 format
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Last recorded use in ISO 8601 format, or null if unavailable. Updates may be delayed.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("last_used_at")]
+        public global::System.DateTime? LastUsedAt { get; set; }
+
+        /// <summary>
         /// The user who owns the API key. Only present for personal API keys.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -66,6 +80,9 @@ namespace Baseten
         /// <param name="type">
         /// Type of the API key.
         /// </param>
+        /// <param name="createdAt">
+        /// Creation time in ISO 8601 format
+        /// </param>
         /// <param name="name">
         /// Optional name for the API key<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -78,6 +95,10 @@ namespace Baseten
         /// The name of the team associated with the API key<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="lastUsedAt">
+        /// Last recorded use in ISO 8601 format, or null if unavailable. Updates may be delayed.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="owner">
         /// The user who owns the API key. Only present for personal API keys.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -88,9 +109,11 @@ namespace Baseten
         public APIKeyInfoV1(
             string prefix,
             global::Baseten.APIKeyCategory type,
+            global::System.DateTime createdAt,
             string? name,
             global::System.Collections.Generic.IList<string>? modelIds,
             string? teamName,
+            global::System.DateTime? lastUsedAt,
             global::Baseten.APIKeyOwnerV1? owner)
         {
             this.Prefix = prefix ?? throw new global::System.ArgumentNullException(nameof(prefix));
@@ -98,6 +121,8 @@ namespace Baseten
             this.Type = type;
             this.ModelIds = modelIds;
             this.TeamName = teamName;
+            this.CreatedAt = createdAt;
+            this.LastUsedAt = lastUsedAt;
             this.Owner = owner;
         }
 

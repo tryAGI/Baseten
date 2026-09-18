@@ -18,9 +18,9 @@ namespace Baseten
         /// <summary>
         /// Name of the target Model API.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_api")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelApi { get; set; }
+        public required string Model { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,7 +31,7 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="RouteTargetBasetenModelAPIV1" /> class.
         /// </summary>
-        /// <param name="modelApi">
+        /// <param name="model">
         /// Name of the target Model API.
         /// </param>
         /// <param name="type">
@@ -41,11 +41,11 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RouteTargetBasetenModelAPIV1(
-            string modelApi,
+            string model,
             string type = "BASETEN_MODEL_API")
         {
             this.Type = type;
-            this.ModelApi = modelApi ?? throw new global::System.ArgumentNullException(nameof(modelApi));
+            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
         }
 
         /// <summary>
@@ -59,11 +59,11 @@ namespace Baseten
         /// Creates a new <see cref="RouteTargetBasetenModelAPIV1"/> from its single non-const required field,
         /// hardcoding any const discriminator fields.
         /// </summary>
-        public static RouteTargetBasetenModelAPIV1 FromModelApi(string modelApi)
+        public static RouteTargetBasetenModelAPIV1 FromModel(string model)
         {
             return new RouteTargetBasetenModelAPIV1
             {
-                ModelApi = modelApi,
+                Model = model,
             };
         }
 

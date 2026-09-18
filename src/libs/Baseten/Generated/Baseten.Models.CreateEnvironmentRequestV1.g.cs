@@ -23,7 +23,7 @@ namespace Baseten
         public global::Baseten.UpdateAutoscalingSettingsV1? AutoscalingSettings { get; set; }
 
         /// <summary>
-        /// Promotion settings for the environment<br/>
+        /// Promotion settings for the environment. New Model environments use rolling promotions by default. Set `rolling_deploy` to `false` to opt out.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promotion_settings")]
@@ -53,7 +53,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="promotionSettings">
-        /// Promotion settings for the environment<br/>
+        /// Promotion settings for the environment. New Model environments use rolling promotions by default. Set `rolling_deploy` to `false` to opt out.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestBackpressureSettings">

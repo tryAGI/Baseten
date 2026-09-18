@@ -16,11 +16,11 @@ namespace Baseten
         public required string Name { get; set; }
 
         /// <summary>
-        /// Identifier of the team that owns the route.
+        /// Identifier of the team that owns the route. When omitted, uses your organization's default team.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string TeamId { get; set; }
+        public string? TeamId { get; set; }
 
         /// <summary>
         /// Display label. Omit to use the route name; null is not accepted.<br/>
@@ -56,11 +56,12 @@ namespace Baseten
         /// <param name="name">
         /// Immutable, globally unique route name using an organization-owned prefix.
         /// </param>
-        /// <param name="teamId">
-        /// Identifier of the team that owns the route.
-        /// </param>
         /// <param name="target">
         /// Upstream target for the route.
+        /// </param>
+        /// <param name="teamId">
+        /// Identifier of the team that owns the route. When omitted, uses your organization's default team.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="displayName">
         /// Display label. Omit to use the route name; null is not accepted.<br/>
@@ -75,13 +76,13 @@ namespace Baseten
 #endif
         public CreateRouteRequestV1(
             string name,
-            string teamId,
             global::Baseten.Target2 target,
+            string? teamId,
             string? displayName,
             string? description)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.TeamId = teamId ?? throw new global::System.ArgumentNullException(nameof(teamId));
+            this.TeamId = teamId;
             this.DisplayName = displayName;
             this.Target = target;
             this.Description = description;

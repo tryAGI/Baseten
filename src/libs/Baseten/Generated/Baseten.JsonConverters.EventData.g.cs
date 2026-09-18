@@ -91,6 +91,13 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventModelDeletedV1)}");
                 modelDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.AuditLogEventModelRenamedV1? modelRenamed = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ModelRenamed)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelRenamedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelRenamedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventModelRenamedV1)}");
+                modelRenamed = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Baseten.AuditLogEventChainDeployedV1? chainDeployed = default;
             if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ChainDeployed)
             {
@@ -366,6 +373,8 @@ namespace Baseten.JsonConverters
 
                 modelDeleted,
 
+                modelRenamed,
+
                 chainDeployed,
 
                 chainDeploymentActivated,
@@ -510,6 +519,12 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeletedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeleted!, typeInfo);
+            }
+            else if (value.IsModelRenamed)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelRenamedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelRenamedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelRenamedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelRenamed!, typeInfo);
             }
             else if (value.IsChainDeployed)
             {

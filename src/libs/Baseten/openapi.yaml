@@ -1569,6 +1569,42 @@
                         }
                     }
                 }
+            },
+            "patch": {
+                "summary": "Updates a model by ID",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/models/{model_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"my-model\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'name': 'my-model'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates the mutable fields of a model and returns the updated model. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateModelRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ModelV1"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/v1/models/{model_id}/audit_logs": {
@@ -3307,11 +3343,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/environments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"staging\",\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": true,\n    \"rolling_deploy_config\": null\n  },\n  \"request_backpressure_settings\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/environments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"staging\",\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 800,\n    \"concurrency_target\": 3,\n    \"max_replica\": 2,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 60,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"promotion_settings\": {\n    \"promotion_cleanup_strategy\": null,\n    \"ramp_up_duration_seconds\": 600,\n    \"ramp_up_while_promoting\": true,\n    \"redeploy_on_promotion\": true,\n    \"rolling_deploy\": false,\n    \"rolling_deploy_config\": null\n  },\n  \"request_backpressure_settings\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'staging', 'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': True, 'rolling_deploy_config': None}, 'request_backpressure_settings': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/environments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'staging', 'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 60, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'promotion_settings': {'promotion_cleanup_strategy': None, 'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': False, 'rolling_deploy_config': None}, 'request_backpressure_settings': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates an environment for the specified model and returns the environment.",
@@ -6678,6 +6714,39 @@
                 }
             ]
         },
+        "/v1/loops/checkpoints/{checkpoint_id}/source": {
+            "get": {
+                "summary": "Gets where a Loops checkpoint's files come from",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/source \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/source\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Reports how to fetch a checkpoint's files: `s3` when the files endpoint serves presigned URLs for it, or `volume` with the ref to pull. Clients that download checkpoints should ask here first.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoopsCheckpointSourceResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/checkpoint_id"
+                }
+            ]
+        },
         "/v1/loops/deployments": {
             "get": {
                 "summary": "Lists Loops deployments",
@@ -7536,10 +7605,40 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/api_keys\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/api_keys\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'type': 'WORKSPACE_INVOKE'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Returns metadata for your personal API keys and the workspace and team API keys you can manage. Organization admins also receive every member's personal API keys, each with an owner identifying the member it belongs to.",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter by API key type",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/APIKeyCategory"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null
+                        }
+                    },
+                    {
+                        "name": "created_by_me",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only keys created by the authenticated user",
+                        "schema": {
+                            "default": false,
+                            "title": "Created By Me",
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -8962,11 +9061,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/routes \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"my-org/assistant\",\n  \"team_id\": \"abc1234\",\n  \"display_name\": \"Assistant\",\n  \"target\": {\n    \"model_api\": \"zai-org/GLM-5.3\",\n    \"type\": \"BASETEN_MODEL_API\"\n  },\n  \"description\": \"Assistant for code review and debugging.\"\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/routes \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"my-org/assistant\",\n  \"team_id\": \"abc1234\",\n  \"display_name\": \"Assistant\",\n  \"target\": {\n    \"model\": \"zai-org/GLM-5.3\",\n    \"type\": \"BASETEN_MODEL_API\"\n  },\n  \"description\": \"Assistant for code review and debugging.\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'my-org/assistant', 'team_id': 'abc1234', 'display_name': 'Assistant', 'target': {'model_api': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}, 'description': 'Assistant for code review and debugging.'}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'my-org/assistant', 'team_id': 'abc1234', 'display_name': 'Assistant', 'target': {'model': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}, 'description': 'Assistant for code review and debugging.'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Dedicated deployment targets are not supported.",
@@ -9058,11 +9157,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/{route_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"description\": \"Assistant for code review and debugging.\",\n  \"display_name\": \"Assistant\",\n  \"target\": {\n    \"model_api\": \"zai-org/GLM-5.3\",\n    \"type\": \"BASETEN_MODEL_API\"\n  }\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/{route_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"description\": \"Assistant for code review and debugging.\",\n  \"display_name\": \"Assistant\",\n  \"target\": {\n    \"model\": \"zai-org/GLM-5.3\",\n    \"type\": \"BASETEN_MODEL_API\"\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/{route_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'description': 'Assistant for code review and debugging.', 'display_name': 'Assistant', 'target': {'model_api': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/{route_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'description': 'Assistant for code review and debugging.', 'display_name': 'Assistant', 'target': {'model': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Replaces the entire target when provided. The route name and owning team are immutable.",
@@ -11422,6 +11521,7 @@
                                 "MODEL_DEPLOYMENT_REQUEST_BACKPRESSURE_SETTINGS_CHANGED": "#/components/schemas/AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1",
                                 "MODEL_DEPLOYMENT_RETRIED": "#/components/schemas/AuditLogEventModelDeploymentRetriedV1",
                                 "MODEL_PROMOTION_CONTROL_ACTION": "#/components/schemas/AuditLogEventModelPromotionControlActionV1",
+                                "MODEL_RENAMED": "#/components/schemas/AuditLogEventModelRenamedV1",
                                 "REPLICA_TERMINATED": "#/components/schemas/AuditLogEventReplicaTerminatedV1",
                                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED": "#/components/schemas/AuditLogEventRequireGroupBasedAdminsEnabledV1",
                                 "SECRET_DELETED": "#/components/schemas/AuditLogEventSecretDeletedV1",
@@ -11471,6 +11571,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventModelDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventModelRenamedV1"
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventChainDeployedV1"
@@ -14223,6 +14326,44 @@
                 "title": "AuditLogEventModelPromotionControlActionV1",
                 "type": "object"
             },
+            "AuditLogEventModelRenamedV1": {
+                "additionalProperties": false,
+                "description": "A model was renamed. `model_name` is the new name.",
+                "properties": {
+                    "event_type": {
+                        "const": "MODEL_RENAMED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "model_id": {
+                        "title": "Model Id",
+                        "type": "string"
+                    },
+                    "model_name": {
+                        "title": "Model Name",
+                        "type": "string"
+                    },
+                    "previous_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Previous Name"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "model_id",
+                    "model_name",
+                    "previous_name"
+                ],
+                "title": "AuditLogEventModelRenamedV1",
+                "type": "object"
+            },
             "AuditLogEventReplicaTerminatedV1": {
                 "additionalProperties": false,
                 "description": "A replica of a model deployment was terminated.",
@@ -14396,6 +14537,7 @@
                     "MODEL_DEPLOYMENT_INSTANCE_TYPE_CHANGED",
                     "MODEL_DEPLOYMENT_DELETED",
                     "MODEL_DELETED",
+                    "MODEL_RENAMED",
                     "CHAIN_DEPLOYED",
                     "CHAIN_DEPLOYMENT_ACTIVATED",
                     "CHAIN_DEPLOYMENT_DEACTIVATED",
@@ -14821,6 +14963,7 @@
                     "ENVIRONMENT_SETTINGS",
                     "REPLICA_TERMINATED",
                     "DELETED",
+                    "METADATA",
                     "SECRETS",
                     "API_KEYS",
                     "GATEWAY",
@@ -15488,6 +15631,32 @@
                     "deleted"
                 ],
                 "title": "ModelTombstoneV1",
+                "type": "object"
+            },
+            "UpdateModelRequestV1": {
+                "additionalProperties": false,
+                "description": "A request to update a model.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "maxLength": 255,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "New name for the model, unique within its team. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.",
+                        "examples": [
+                            "my-model"
+                        ],
+                        "title": "Name"
+                    }
+                },
+                "title": "UpdateModelRequestV1",
                 "type": "object"
             },
             "DeploymentsV1": {
@@ -17874,14 +18043,14 @@
                             }
                         ],
                         "default": null,
-                        "description": "Promotion settings for the environment",
+                        "description": "Promotion settings for the environment. New Model environments use rolling promotions by default. Set `rolling_deploy` to `false` to opt out.",
                         "examples": [
                             {
                                 "promotion_cleanup_strategy": null,
                                 "ramp_up_duration_seconds": 600,
                                 "ramp_up_while_promoting": true,
                                 "redeploy_on_promotion": true,
-                                "rolling_deploy": true,
+                                "rolling_deploy": false,
                                 "rolling_deploy_config": null
                             }
                         ]
@@ -23183,6 +23352,75 @@
                 "title": "GetLoopsCheckpointFilesRequestV1",
                 "type": "object"
             },
+            "LoopsCheckpointS3SourceV1": {
+                "description": "The checkpoint's files are fetched as presigned URLs, page by page.",
+                "properties": {
+                    "kind": {
+                        "const": "s3",
+                        "default": "s3",
+                        "title": "Kind",
+                        "type": "string"
+                    }
+                },
+                "title": "LoopsCheckpointS3SourceV1",
+                "type": "object"
+            },
+            "LoopsCheckpointVolumeSourceV1": {
+                "description": "The checkpoint's files are pulled from a Baseten volume.",
+                "properties": {
+                    "kind": {
+                        "const": "volume",
+                        "default": "volume",
+                        "title": "Kind",
+                        "type": "string"
+                    },
+                    "volume_ref": {
+                        "description": "Ref of the volume version holding the checkpoint, as `bdn:<namespace>/<volume>:<tag>`.",
+                        "title": "Volume Ref",
+                        "type": "string"
+                    },
+                    "path": {
+                        "description": "Directory inside that version holding the checkpoint's files.",
+                        "title": "Path",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "volume_ref",
+                    "path"
+                ],
+                "title": "LoopsCheckpointVolumeSourceV1",
+                "type": "object"
+            },
+            "LoopsCheckpointSourceResponseV1": {
+                "description": "Where a checkpoint's files are fetched from, and how.",
+                "properties": {
+                    "source": {
+                        "description": "`s3` means the files endpoint serves presigned URLs for this checkpoint; `volume` carries the ref to pull instead.",
+                        "discriminator": {
+                            "mapping": {
+                                "s3": "#/components/schemas/LoopsCheckpointS3SourceV1",
+                                "volume": "#/components/schemas/LoopsCheckpointVolumeSourceV1"
+                            },
+                            "propertyName": "kind"
+                        },
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/LoopsCheckpointS3SourceV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/LoopsCheckpointVolumeSourceV1"
+                            }
+                        ],
+                        "title": "Source"
+                    }
+                },
+                "required": [
+                    "source"
+                ],
+                "title": "LoopsCheckpointSourceResponseV1",
+                "type": "object"
+            },
             "LoopsDeploymentStatusV1": {
                 "description": "Latest deployment status for a Loops deployment.",
                 "properties": {
@@ -24531,6 +24769,7 @@
                         "description": "Type of the API key.",
                         "examples": [
                             "PERSONAL",
+                            "ROUTES",
                             "WORKSPACE_MANAGE_API_KEYS",
                             "WORKSPACE_EXPORT_METRICS",
                             "WORKSPACE_INVOKE",
@@ -24571,6 +24810,26 @@
                         "description": "The name of the team associated with the API key",
                         "title": "Team Name"
                     },
+                    "created_at": {
+                        "description": "Creation time in ISO 8601 format",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "last_used_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Last recorded use in ISO 8601 format, or null if unavailable. Updates may be delayed.",
+                        "title": "Last Used At"
+                    },
                     "owner": {
                         "anyOf": [
                             {
@@ -24586,7 +24845,8 @@
                 },
                 "required": [
                     "prefix",
-                    "type"
+                    "type",
+                    "created_at"
                 ],
                 "title": "APIKeyInfoV1",
                 "type": "object"
@@ -24648,6 +24908,30 @@
                     "keys"
                 ],
                 "title": "APIKeysV1",
+                "type": "object"
+            },
+            "APIKeysRequestV1": {
+                "properties": {
+                    "type": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/APIKeyCategory"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Filter by API key type"
+                    },
+                    "created_by_me": {
+                        "default": false,
+                        "description": "Return only keys created by the authenticated user",
+                        "title": "Created By Me",
+                        "type": "boolean"
+                    }
+                },
+                "title": "APIKeysRequestV1",
                 "type": "object"
             },
             "APIKeyTombstoneV1": {
@@ -27740,16 +28024,16 @@
                         "title": "Type",
                         "type": "string"
                     },
-                    "model_api": {
+                    "model": {
                         "description": "Name of the target Model API.",
                         "minLength": 1,
-                        "title": "Model Api",
+                        "title": "Model",
                         "type": "string"
                     }
                 },
                 "required": [
                     "type",
-                    "model_api"
+                    "model"
                 ],
                 "title": "RouteTargetBasetenModelAPIV1",
                 "type": "object"
@@ -27903,6 +28187,11 @@
                         "title": "Team Id",
                         "type": "string"
                     },
+                    "team_name": {
+                        "description": "Name of the owning team.",
+                        "title": "Team Name",
+                        "type": "string"
+                    },
                     "display_name": {
                         "description": "Display label, defaulting to the route name.",
                         "title": "Display Name",
@@ -27964,6 +28253,7 @@
                     "id",
                     "name",
                     "team_id",
+                    "team_name",
                     "display_name",
                     "description",
                     "target",
@@ -28088,13 +28378,21 @@
                         "type": "string"
                     },
                     "team_id": {
-                        "description": "Identifier of the team that owns the route.",
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Identifier of the team that owns the route. When omitted, uses your organization's default team.",
                         "examples": [
                             "abc1234"
                         ],
-                        "minLength": 1,
-                        "title": "Team Id",
-                        "type": "string"
+                        "title": "Team Id"
                     },
                     "display_name": {
                         "anyOf": [
@@ -28129,7 +28427,7 @@
                         },
                         "examples": [
                             {
-                                "model_api": "zai-org/GLM-5.3",
+                                "model": "zai-org/GLM-5.3",
                                 "type": "BASETEN_MODEL_API"
                             }
                         ],
@@ -28175,7 +28473,6 @@
                 },
                 "required": [
                     "name",
-                    "team_id",
                     "target"
                 ],
                 "title": "CreateRouteRequestV1",
@@ -28282,7 +28579,7 @@
                         "description": "Replaces the entire target. Omit to keep the current target; null is not accepted.",
                         "examples": [
                             {
-                                "model_api": "zai-org/GLM-5.3",
+                                "model": "zai-org/GLM-5.3",
                                 "type": "BASETEN_MODEL_API"
                             }
                         ],

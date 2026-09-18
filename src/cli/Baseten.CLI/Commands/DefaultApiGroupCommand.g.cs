@@ -100,6 +100,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(EditLibraryListingsByUserDefinedListingIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditLibraryListingsByUserDefinedListingIdVersionsByVersionTagCommandApiCommand.Create());
                          command.Subcommands.Add(EditLoopsUserConfigCommandApiCommand.Create());
+                         command.Subcommands.Add(EditModelsByModelIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsByDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsByDeploymentIdAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsByDeploymentIdRequestBackpressureSettingsCommandApiCommand.Create());
@@ -143,6 +144,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetLoopsCapabilitiesCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsCheckpointsCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsCheckpointsByCheckpointIdFilesCommandApiCommand.Create());
+                         command.Subcommands.Add(GetLoopsCheckpointsByCheckpointIdSourceCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsDeploymentsCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsDeploymentsByDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetLoopsDeploymentsByDeploymentIdDebugArchiveFilesCommandApiCommand.Create());
