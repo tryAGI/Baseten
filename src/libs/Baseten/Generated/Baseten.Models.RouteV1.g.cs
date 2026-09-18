@@ -30,6 +30,13 @@ namespace Baseten
         public required string TeamId { get; set; }
 
         /// <summary>
+        /// Name of the owning team.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string TeamName { get; set; }
+
+        /// <summary>
         /// Display label, defaulting to the route name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("display_name")]
@@ -83,6 +90,9 @@ namespace Baseten
         /// <param name="teamId">
         /// Identifier of the owning team.
         /// </param>
+        /// <param name="teamName">
+        /// Name of the owning team.
+        /// </param>
         /// <param name="displayName">
         /// Display label, defaulting to the route name.
         /// </param>
@@ -105,6 +115,7 @@ namespace Baseten
             string id,
             string name,
             string teamId,
+            string teamName,
             string displayName,
             string description,
             global::Baseten.Target target,
@@ -114,6 +125,7 @@ namespace Baseten
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.TeamId = teamId ?? throw new global::System.ArgumentNullException(nameof(teamId));
+            this.TeamName = teamName ?? throw new global::System.ArgumentNullException(nameof(teamName));
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Target = target;

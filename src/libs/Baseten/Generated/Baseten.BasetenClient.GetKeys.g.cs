@@ -26,10 +26,14 @@ namespace Baseten
             {                s_GetKeysSecurityRequirement0,
             };
         partial void PrepareGetKeysArguments(
-            global::System.Net.Http.HttpClient httpClient);
+            global::System.Net.Http.HttpClient httpClient,
+            ref global::Baseten.APIKeyCategory? type,
+            ref bool? createdByMe);
         partial void PrepareGetKeysRequest(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Baseten.APIKeyCategory? type,
+            bool? createdByMe);
         partial void ProcessGetKeysResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -43,6 +47,12 @@ namespace Baseten
         /// Lists API keys (metadata only, no plain text keys)<br/>
         /// Returns metadata for your personal API keys and the workspace and team API keys you can manage. Organization admins also receive every member's personal API keys, each with an owner identifying the member it belongs to.
         /// </summary>
+        /// <param name="type">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="createdByMe">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -52,10 +62,14 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.APIKeysV1> GetKeysAsync(
+            global::Baseten.APIKeyCategory? type = default,
+            bool? createdByMe = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetKeysAsResponseAsync(
+                type: type,
+                createdByMe: createdByMe,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -66,6 +80,12 @@ namespace Baseten
         /// Lists API keys (metadata only, no plain text keys)<br/>
         /// Returns metadata for your personal API keys and the workspace and team API keys you can manage. Organization admins also receive every member's personal API keys, each with an owner identifying the member it belongs to.
         /// </summary>
+        /// <param name="type">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="createdByMe">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -75,13 +95,17 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.APIKeysV1>> GetKeysAsResponseAsync(
+            global::Baseten.APIKeyCategory? type = default,
+            bool? createdByMe = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareGetKeysArguments(
-                httpClient: HttpClient);
+                httpClient: HttpClient,
+                type: ref type,
+                createdByMe: ref createdByMe);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
@@ -109,6 +133,10 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: "/v1/api_keys",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("type", type?.ToValueString())
+                                .AddOptionalParameter("created_by_me", createdByMe?.ToString().ToLowerInvariant())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -148,7 +176,9 @@ namespace Baseten
                     request: __httpRequest);
                 PrepareGetKeysRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest);
+                    httpRequestMessage: __httpRequest,
+                    type: type,
+                    createdByMe: createdByMe);
 
                 return __httpRequest;
             }

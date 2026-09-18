@@ -7,7 +7,15 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetKeysCommandApiCommand
 {
+    private static Option<global::Baseten.APIKeyCategory?> Type { get; } = new(
+        name: @"--type")
+    {
+        Description = @"Filter by API key type",
+    };
 
+    private static Option<bool?> CreatedByMe { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--created-by-me",
+        description: @"Return only keys created by the authenticated user");
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.APIKeysV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -33,18 +41,21 @@ internal static partial class GetKeysCommandApiCommand
     {
         var command = new Command(@"get-keys", @"Lists API keys (metadata only, no plain text keys)
 Returns metadata for your personal API keys and the workspace and team API keys you can manage. Organization admins also receive every member's personal API keys, each with an owner identifying the member it belongs to.");
-
+                        command.Options.Add(Type);
+                        command.Options.Add(CreatedByMe);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-
+                        var type = parseResult.GetValue(Type);
+                        var createdByMe = parseResult.GetValue(CreatedByMe);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetKeysAsync(
-
+                                    type: type,
+                                    createdByMe: createdByMe,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

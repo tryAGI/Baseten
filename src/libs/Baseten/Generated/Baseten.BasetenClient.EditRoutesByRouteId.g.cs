@@ -60,7 +60,7 @@ namespace Baseten
         ///   "description": "Assistant for code review and debugging.",<br/>
         ///   "display_name": "Assistant",<br/>
         ///   "target": {<br/>
-        ///     "model_api": "zai-org/GLM-5.3",<br/>
+        ///     "model": "zai-org/GLM-5.3",<br/>
         ///     "type": "BASETEN_MODEL_API"<br/>
         ///   }<br/>
         /// }'
@@ -99,7 +99,7 @@ namespace Baseten
         ///   "description": "Assistant for code review and debugging.",<br/>
         ///   "display_name": "Assistant",<br/>
         ///   "target": {<br/>
-        ///     "model_api": "zai-org/GLM-5.3",<br/>
+        ///     "model": "zai-org/GLM-5.3",<br/>
         ///     "type": "BASETEN_MODEL_API"<br/>
         ///   }<br/>
         /// }'
