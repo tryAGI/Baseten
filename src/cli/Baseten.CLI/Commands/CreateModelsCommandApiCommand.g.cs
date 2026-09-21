@@ -7,7 +7,7 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class CreateModelsCommandApiCommand
 {
-    private static Option<global::Baseten.Source> Source { get; } = new(
+    private static Option<global::Baseten.Source3> Source { get; } = new(
         name: @"--source")
     {
         Description = @"Where the new model is created from.",

@@ -5,22 +5,15 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class CreateTeamsByTeamIdModelsCommandApiCommand
+internal static partial class GetVolumesSyncsByVolumeSyncIdCommandApiCommand
 {
-    private static Argument<string> TeamId { get; } = new(
-        name: @"team-id")
+    private static Argument<string> VolumeSyncId { get; } = new(
+        name: @"volume-sync-id")
     {
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
-    private static Option<global::Baseten.Source3> Source { get; } = new(
-        name: @"--source")
-    {
-        Description = @"Where the new model is created from.",
-        Required = true,
-    };
-
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.CreatedModelDeploymentV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.VolumeSyncV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -36,29 +29,25 @@ internal static partial class CreateTeamsByTeamIdModelsCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.CreatedModelDeploymentV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.VolumeSyncV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
     public static Command Create()
     {
-        var command = new Command(@"create-teams-by-team-id-models", @"Creates a new model from a source
-Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.");
-                        command.Arguments.Add(TeamId);
-                        command.Options.Add(Source);
+        var command = new Command(@"get-volumes-syncs-by-volume-sync-id", @"Gets a volume sync");
+                        command.Arguments.Add(VolumeSyncId);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var teamId = parseResult.GetRequiredValue(TeamId);
-                        var source = parseResult.GetRequiredValue(Source);
+                        var volumeSyncId = parseResult.GetRequiredValue(VolumeSyncId);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.CreateTeamsByTeamIdModelsAsync(
-                                    teamId: teamId,
-                                    source: source,
+                                var response = await client.GetVolumesSyncsByVolumeSyncIdAsync(
+                                    volumeSyncId: volumeSyncId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateTeamsByTeamIdModelsSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateVolumesSyncsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,54 +21,52 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateTeamsByTeamIdModelsSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateVolumesSyncsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateTeamsByTeamIdModelsSecurityRequirement0,
+            {                s_CreateVolumesSyncsSecurityRequirement0,
             };
-        partial void PrepareCreateTeamsByTeamIdModelsArguments(
+        partial void PrepareCreateVolumesSyncsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string teamId,
-            global::Baseten.CreateModelRequestV1 request);
-        partial void PrepareCreateTeamsByTeamIdModelsRequest(
+            global::Baseten.CreateVolumeSyncRequestV1 request);
+        partial void PrepareCreateVolumesSyncsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string teamId,
-            global::Baseten.CreateModelRequestV1 request);
-        partial void ProcessCreateTeamsByTeamIdModelsResponse(
+            global::Baseten.CreateVolumeSyncRequestV1 request);
+        partial void ProcessCreateVolumesSyncsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateTeamsByTeamIdModelsResponseContent(
+        partial void ProcessCreateVolumesSyncsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Creates a new model from a source<br/>
-        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.
+        /// Starts a volume sync<br/>
+        /// Starts one durable asynchronous transfer from a remote source into a BDN volume.
         /// </summary>
-        /// <param name="teamId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/teams/{team_id}/models \<br/>
+        /// --url https://api.baseten.co/v1/volumes/syncs \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "source": null<br/>
+        ///   "source": null,<br/>
+        ///   "destination": {<br/>
+        ///     "ref": null<br/>
+        ///   }<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreatedModelDeploymentV1> CreateTeamsByTeamIdModelsAsync(
-            string teamId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.VolumeSyncV1> CreateVolumesSyncsAsync(
 
-            global::Baseten.CreateModelRequestV1 request,
+            global::Baseten.CreateVolumeSyncRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateTeamsByTeamIdModelsAsResponseAsync(
-                teamId: teamId,
+            var __response = await CreateVolumesSyncsAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -78,26 +76,27 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Creates a new model from a source<br/>
-        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.
+        /// Starts a volume sync<br/>
+        /// Starts one durable asynchronous transfer from a remote source into a BDN volume.
         /// </summary>
-        /// <param name="teamId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/teams/{team_id}/models \<br/>
+        /// --url https://api.baseten.co/v1/volumes/syncs \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
-        ///   "source": null<br/>
+        ///   "source": null,<br/>
+        ///   "destination": {<br/>
+        ///     "ref": null<br/>
+        ///   }<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreatedModelDeploymentV1>> CreateTeamsByTeamIdModelsAsResponseAsync(
-            string teamId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeSyncV1>> CreateVolumesSyncsAsResponseAsync(
 
-            global::Baseten.CreateModelRequestV1 request,
+            global::Baseten.CreateVolumeSyncRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -105,16 +104,15 @@ namespace Baseten
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateTeamsByTeamIdModelsArguments(
+            PrepareCreateVolumesSyncsArguments(
                 httpClient: HttpClient,
-                teamId: ref teamId,
                 request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateTeamsByTeamIdModelsSecurityRequirements,
-                operationName: "CreateTeamsByTeamIdModelsAsync");
+                securityRequirements: s_CreateVolumesSyncsSecurityRequirements,
+                operationName: "CreateVolumesSyncsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -134,7 +132,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/teams/{teamId}/models",
+                                path: "/v1/volumes/syncs",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -179,10 +177,9 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateTeamsByTeamIdModelsRequest(
+                PrepareCreateVolumesSyncsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    teamId: teamId!,
                     request: request);
 
                 return __httpRequest;
@@ -200,9 +197,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdModels",
-                                methodName: "CreateTeamsByTeamIdModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/models\"",
+                                operationId: "createVolumesSyncs",
+                                methodName: "CreateVolumesSyncsAsync",
+                                pathTemplate: "\"/v1/volumes/syncs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -234,9 +231,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdModels",
-                                methodName: "CreateTeamsByTeamIdModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/models\"",
+                                operationId: "createVolumesSyncs",
+                                methodName: "CreateVolumesSyncsAsync",
+                                pathTemplate: "\"/v1/volumes/syncs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -275,9 +272,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdModels",
-                                methodName: "CreateTeamsByTeamIdModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/models\"",
+                                operationId: "createVolumesSyncs",
+                                methodName: "CreateVolumesSyncsAsync",
+                                pathTemplate: "\"/v1/volumes/syncs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -315,7 +312,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateTeamsByTeamIdModelsResponse(
+                ProcessCreateVolumesSyncsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -323,9 +320,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdModels",
-                                methodName: "CreateTeamsByTeamIdModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/models\"",
+                                operationId: "createVolumesSyncs",
+                                methodName: "CreateVolumesSyncsAsync",
+                                pathTemplate: "\"/v1/volumes/syncs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -345,9 +342,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createTeamsByTeamIdModels",
-                                methodName: "CreateTeamsByTeamIdModelsAsync",
-                                pathTemplate: "$\"/v1/teams/{teamId}/models\"",
+                                operationId: "createVolumesSyncs",
+                                methodName: "CreateVolumesSyncsAsync",
+                                pathTemplate: "\"/v1/volumes/syncs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -375,7 +372,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateTeamsByTeamIdModelsResponseContent(
+                                ProcessCreateVolumesSyncsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -384,9 +381,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.CreatedModelDeploymentV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.VolumeSyncV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreatedModelDeploymentV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeSyncV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -416,9 +413,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.CreatedModelDeploymentV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.VolumeSyncV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.CreatedModelDeploymentV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeSyncV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -459,29 +456,31 @@ namespace Baseten
             }
         }
         /// <summary>
-        /// Creates a new model from a source<br/>
-        /// Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.
+        /// Starts a volume sync<br/>
+        /// Starts one durable asynchronous transfer from a remote source into a BDN volume.
         /// </summary>
-        /// <param name="teamId"></param>
         /// <param name="source">
-        /// Where the new model is created from.
+        /// Remote source to sync from.
+        /// </param>
+        /// <param name="destination">
+        /// BDN volume to sync into.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.CreatedModelDeploymentV1> CreateTeamsByTeamIdModelsAsync(
-            string teamId,
-            global::Baseten.Source3 source,
+        public async global::System.Threading.Tasks.Task<global::Baseten.VolumeSyncV1> CreateVolumesSyncsAsync(
+            global::Baseten.Source2 source,
+            global::Baseten.VolumeSyncDestinationV1 destination,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateModelRequestV1
+            var __request = new global::Baseten.CreateVolumeSyncRequestV1
             {
                 Source = source,
+                Destination = destination,
             };
 
-            return await CreateTeamsByTeamIdModelsAsync(
-                teamId: teamId,
+            return await CreateVolumesSyncsAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

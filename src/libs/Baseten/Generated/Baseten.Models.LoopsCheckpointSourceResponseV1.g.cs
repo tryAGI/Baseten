@@ -12,9 +12,9 @@ namespace Baseten
         /// `s3` means the files endpoint serves presigned URLs for this checkpoint; `volume` carries the ref to pull instead.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Source2JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Source4JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.Source2 Source { get; set; }
+        public required global::Baseten.Source4 Source { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,7 +32,7 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public LoopsCheckpointSourceResponseV1(
-            global::Baseten.Source2 source)
+            global::Baseten.Source4 source)
         {
             this.Source = source;
         }

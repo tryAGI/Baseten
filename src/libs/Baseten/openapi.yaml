@@ -188,6 +188,190 @@
                 "x-stability": "unstable"
             }
         },
+        "/v1/volumes/syncs": {
+            "get": {
+                "summary": "Lists volume syncs",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/volumes/syncs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/syncs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'ref': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists volume syncs in the active workspace, newest first. Results may be narrowed by an exact destination ref.",
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of items to return.",
+                        "schema": {
+                            "default": 100,
+                            "maximum": 1000,
+                            "minimum": 1,
+                            "title": "Limit",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "ref",
+                        "in": "query",
+                        "required": false,
+                        "description": "Exact destination reference to match.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Ref"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VolumeSyncsV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "post": {
+                "summary": "Starts a volume sync",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/volumes/syncs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"source\": null,\n  \"destination\": {\n    \"ref\": null\n  }\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/syncs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'source': None, 'destination': {'ref': None}}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Starts one durable asynchronous transfer from a remote source into a BDN volume.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateVolumeSyncRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VolumeSyncV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/volumes/syncs/{volume_sync_id}": {
+            "get": {
+                "summary": "Gets a volume sync",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/volumes/syncs/{volume_sync_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/syncs/{volume_sync_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VolumeSyncV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/volume_sync_id"
+                }
+            ]
+        },
+        "/v1/volumes/syncs/{volume_sync_id}/cancel": {
+            "post": {
+                "summary": "Cancels a volume sync",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/volumes/syncs/{volume_sync_id}/cancel \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/syncs/{volume_sync_id}/cancel\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Requests cancellation of a pending or running sync. Repeated cancellation and cancellation of terminal syncs return the existing state. Once cancellation is accepted, a later completion callback cannot replace the CANCELED state.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VolumeSyncV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/volume_sync_id"
+                }
+            ]
+        },
         "/v1/volumes/{volume_namespace}/{volume_name}": {
             "delete": {
                 "summary": "Deletes a volume",
@@ -10017,6 +10201,716 @@
                     }
                 },
                 "title": "ListVolumeNamespacesRequestV1",
+                "type": "object"
+            },
+            "VolumeSyncAuthenticationAWSAssumeRoleV1": {
+                "additionalProperties": false,
+                "description": "Authentication using an AWS IAM role assumed by Baseten.",
+                "properties": {
+                    "role_arn": {
+                        "description": "AWS IAM role ARN to assume.",
+                        "minLength": 1,
+                        "title": "Role Arn",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "AWS region for the assumed role session.",
+                        "minLength": 1,
+                        "title": "Region",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "role_arn",
+                    "region"
+                ],
+                "title": "VolumeSyncAuthenticationAWSAssumeRoleV1",
+                "type": "object"
+            },
+            "VolumeSyncDestinationV1": {
+                "additionalProperties": false,
+                "description": "BDN destination for a volume sync.",
+                "properties": {
+                    "ref": {
+                        "description": "Destination as bdn:<namespace>/<volume> with an optional tag.",
+                        "title": "Ref",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "ref"
+                ],
+                "title": "VolumeSyncDestinationV1",
+                "type": "object"
+            },
+            "VolumeSyncErrorV1": {
+                "description": "Public failure details for a volume sync.",
+                "properties": {
+                    "code": {
+                        "description": "Stable machine-readable failure classification.",
+                        "title": "Code",
+                        "type": "string"
+                    },
+                    "message": {
+                        "description": "Redacted user-facing failure message.",
+                        "title": "Message",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "title": "VolumeSyncErrorV1",
+                "type": "object"
+            },
+            "VolumeSyncSourceAzureV1": {
+                "additionalProperties": false,
+                "description": "Azure Blob Storage source.",
+                "properties": {
+                    "uri": {
+                        "description": "Remote source URI to materialize into the destination volume.",
+                        "title": "Uri",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Glob patterns selecting files to include.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Glob patterns selecting files to exclude.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    },
+                    "auth_secret_name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional workspace secret containing credentials for this source.",
+                        "title": "Auth Secret Name"
+                    },
+                    "type": {
+                        "const": "AZURE",
+                        "description": "Azure Blob Storage source type.",
+                        "title": "Type",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "uri",
+                    "type"
+                ],
+                "title": "VolumeSyncSourceAzureV1",
+                "type": "object"
+            },
+            "VolumeSyncSourceBasetenTrainingV1": {
+                "additionalProperties": false,
+                "description": "Baseten training artifact source.",
+                "properties": {
+                    "uri": {
+                        "description": "Remote source URI to materialize into the destination volume.",
+                        "title": "Uri",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Glob patterns selecting files to include.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Glob patterns selecting files to exclude.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    },
+                    "type": {
+                        "const": "BASETEN_TRAINING",
+                        "description": "Baseten training artifact source type.",
+                        "title": "Type",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "uri",
+                    "type"
+                ],
+                "title": "VolumeSyncSourceBasetenTrainingV1",
+                "type": "object"
+            },
+            "VolumeSyncSourceCoreWeaveV1": {
+                "additionalProperties": false,
+                "description": "CoreWeave object storage source.",
+                "properties": {
+                    "uri": {
+                        "description": "Remote source URI to materialize into the destination volume.",
+                        "title": "Uri",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Glob patterns selecting files to include.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Glob patterns selecting files to exclude.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    },
+                    "auth_secret_name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional workspace secret containing credentials for this source.",
+                        "title": "Auth Secret Name"
+                    },
+                    "type": {
+                        "const": "COREWEAVE",
+                        "description": "CoreWeave object storage source type.",
+                        "title": "Type",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "uri",
+                    "type"
+                ],
+                "title": "VolumeSyncSourceCoreWeaveV1",
+                "type": "object"
+            },
+            "VolumeSyncSourceGCSV1": {
+                "additionalProperties": false,
+                "description": "Google Cloud Storage source.",
+                "properties": {
+                    "uri": {
+                        "description": "Remote source URI to materialize into the destination volume.",
+                        "title": "Uri",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Glob patterns selecting files to include.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Glob patterns selecting files to exclude.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    },
+                    "auth_secret_name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional workspace secret containing credentials for this source.",
+                        "title": "Auth Secret Name"
+                    },
+                    "type": {
+                        "const": "GCS",
+                        "description": "Google Cloud Storage source type.",
+                        "title": "Type",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "uri",
+                    "type"
+                ],
+                "title": "VolumeSyncSourceGCSV1",
+                "type": "object"
+            },
+            "VolumeSyncSourceHuggingFaceV1": {
+                "additionalProperties": false,
+                "description": "Hugging Face source.",
+                "properties": {
+                    "uri": {
+                        "description": "Remote source URI to materialize into the destination volume.",
+                        "title": "Uri",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Glob patterns selecting files to include.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Glob patterns selecting files to exclude.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    },
+                    "auth_secret_name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional workspace secret containing credentials for this source.",
+                        "title": "Auth Secret Name"
+                    },
+                    "type": {
+                        "const": "HUGGING_FACE",
+                        "description": "Hugging Face source type.",
+                        "title": "Type",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "uri",
+                    "type"
+                ],
+                "title": "VolumeSyncSourceHuggingFaceV1",
+                "type": "object"
+            },
+            "VolumeSyncSourceR2V1": {
+                "additionalProperties": false,
+                "description": "Cloudflare R2 source.",
+                "properties": {
+                    "uri": {
+                        "description": "Remote source URI to materialize into the destination volume.",
+                        "title": "Uri",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Glob patterns selecting files to include.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Glob patterns selecting files to exclude.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    },
+                    "auth_secret_name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional workspace secret containing credentials for this source.",
+                        "title": "Auth Secret Name"
+                    },
+                    "type": {
+                        "const": "R2",
+                        "description": "Cloudflare R2 source type.",
+                        "title": "Type",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "uri",
+                    "type"
+                ],
+                "title": "VolumeSyncSourceR2V1",
+                "type": "object"
+            },
+            "VolumeSyncSourceS3V1": {
+                "additionalProperties": false,
+                "description": "Amazon S3 source.",
+                "properties": {
+                    "uri": {
+                        "description": "Remote source URI to materialize into the destination volume.",
+                        "title": "Uri",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Glob patterns selecting files to include.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Glob patterns selecting files to exclude.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    },
+                    "auth_secret_name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional workspace secret containing credentials for this source.",
+                        "title": "Auth Secret Name"
+                    },
+                    "type": {
+                        "const": "S3",
+                        "description": "Amazon S3 source type.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "aws_assume_role": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncAuthenticationAWSAssumeRoleV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "AWS AssumeRole authentication for this source. Cannot be combined with auth_secret_name."
+                    }
+                },
+                "required": [
+                    "uri",
+                    "type"
+                ],
+                "title": "VolumeSyncSourceS3V1",
+                "type": "object"
+            },
+            "VolumeSyncStatusV1": {
+                "enum": [
+                    "PENDING",
+                    "SYNCING",
+                    "READY",
+                    "FAILED",
+                    "CANCELED"
+                ],
+                "title": "VolumeSyncStatusV1",
+                "type": "string"
+            },
+            "VolumeSyncV1": {
+                "description": "Current state and result of a volume sync.",
+                "properties": {
+                    "sync_id": {
+                        "description": "Identifier of this sync operation.",
+                        "title": "Sync Id",
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/VolumeSyncStatusV1",
+                        "description": "Current lifecycle state of the sync."
+                    },
+                    "source": {
+                        "description": "Remote source being synced.",
+                        "discriminator": {
+                            "mapping": {
+                                "AZURE": "#/components/schemas/VolumeSyncSourceAzureV1",
+                                "BASETEN_TRAINING": "#/components/schemas/VolumeSyncSourceBasetenTrainingV1",
+                                "COREWEAVE": "#/components/schemas/VolumeSyncSourceCoreWeaveV1",
+                                "GCS": "#/components/schemas/VolumeSyncSourceGCSV1",
+                                "HUGGING_FACE": "#/components/schemas/VolumeSyncSourceHuggingFaceV1",
+                                "R2": "#/components/schemas/VolumeSyncSourceR2V1",
+                                "S3": "#/components/schemas/VolumeSyncSourceS3V1"
+                            },
+                            "propertyName": "type"
+                        },
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceHuggingFaceV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceS3V1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceGCSV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceAzureV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceR2V1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceCoreWeaveV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceBasetenTrainingV1"
+                            }
+                        ],
+                        "title": "Source"
+                    },
+                    "destination": {
+                        "$ref": "#/components/schemas/VolumeSyncDestinationV1",
+                        "description": "BDN volume being populated."
+                    },
+                    "volume_version_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Produced artifact identifier; null until the sync is ready.",
+                        "title": "Volume Version Id"
+                    },
+                    "version_ref": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Immutable BDN reference; null until the sync is ready.",
+                        "title": "Version Ref"
+                    },
+                    "content_digest": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "BLAKE3 digest of the synced content; null until available.",
+                        "title": "Content Digest"
+                    },
+                    "total_size_bytes": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Total size of the synced content in bytes; null until available.",
+                        "title": "Total Size Bytes"
+                    },
+                    "created_at": {
+                        "description": "Time at which the sync was created.",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "completed_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Time at which the sync reached a terminal state.",
+                        "title": "Completed At"
+                    },
+                    "error": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncErrorV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Redacted failure details; null unless the sync failed."
+                    }
+                },
+                "required": [
+                    "sync_id",
+                    "status",
+                    "source",
+                    "destination",
+                    "created_at"
+                ],
+                "title": "VolumeSyncV1",
+                "type": "object"
+            },
+            "VolumeSyncsV1": {
+                "description": "A page of volume syncs in the active workspace.",
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/VolumeSyncV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "VolumeSyncsV1",
+                "type": "object"
+            },
+            "VolumeSyncsRequestV1": {
+                "description": "Filters and pagination for listing volume syncs in the active workspace.",
+                "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "default": 100,
+                        "description": "Maximum number of items to return.",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "ref": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Exact destination reference to match.",
+                        "title": "Ref"
+                    }
+                },
+                "title": "VolumeSyncsRequestV1",
+                "type": "object"
+            },
+            "CreateVolumeSyncRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to start an asynchronous volume sync.",
+                "properties": {
+                    "source": {
+                        "description": "Remote source to sync from.",
+                        "discriminator": {
+                            "mapping": {
+                                "AZURE": "#/components/schemas/VolumeSyncSourceAzureV1",
+                                "BASETEN_TRAINING": "#/components/schemas/VolumeSyncSourceBasetenTrainingV1",
+                                "COREWEAVE": "#/components/schemas/VolumeSyncSourceCoreWeaveV1",
+                                "GCS": "#/components/schemas/VolumeSyncSourceGCSV1",
+                                "HUGGING_FACE": "#/components/schemas/VolumeSyncSourceHuggingFaceV1",
+                                "R2": "#/components/schemas/VolumeSyncSourceR2V1",
+                                "S3": "#/components/schemas/VolumeSyncSourceS3V1"
+                            },
+                            "propertyName": "type"
+                        },
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceHuggingFaceV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceS3V1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceGCSV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceAzureV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceR2V1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceCoreWeaveV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncSourceBasetenTrainingV1"
+                            }
+                        ],
+                        "title": "Source"
+                    },
+                    "destination": {
+                        "$ref": "#/components/schemas/VolumeSyncDestinationV1",
+                        "description": "BDN volume to sync into."
+                    }
+                },
+                "required": [
+                    "source",
+                    "destination"
+                ],
+                "title": "CreateVolumeSyncRequestV1",
                 "type": "object"
             },
             "DeleteVolumeRequestV1": {
@@ -29633,6 +30527,14 @@
             }
         },
         "parameters": {
+            "volume_sync_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "volume_sync_id",
+                "in": "path",
+                "required": true
+            },
             "volume_namespace": {
                 "schema": {
                     "type": "string"

@@ -5,22 +5,23 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class CreateTeamsByTeamIdModelsCommandApiCommand
+internal static partial class CreateVolumesSyncsCommandApiCommand
 {
-    private static Argument<string> TeamId { get; } = new(
-        name: @"team-id")
-    {
-        Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
-    };
-
-    private static Option<global::Baseten.Source3> Source { get; } = new(
+    private static Option<global::Baseten.Source2> Source { get; } = new(
         name: @"--source")
     {
-        Description = @"Where the new model is created from.",
+        Description = @"Remote source to sync from.",
         Required = true,
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.CreatedModelDeploymentV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+    private static Option<global::Baseten.VolumeSyncDestinationV1> Destination { get; } = new(
+        name: @"--destination")
+    {
+        Description = @"BDN volume to sync into.",
+        Required = true,
+    };
+
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.VolumeSyncV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -36,29 +37,29 @@ internal static partial class CreateTeamsByTeamIdModelsCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.CreatedModelDeploymentV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.VolumeSyncV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
     public static Command Create()
     {
-        var command = new Command(@"create-teams-by-team-id-models", @"Creates a new model from a source
-Creates a new model in the caller's organization. The `source` field selects how the model is constructed (currently `library_listing`, which forks an accessible listing from `GET /v1/library_models`). The deployment isn't instantly ready; poll the GET endpoint until status is ACTIVE.");
-                        command.Arguments.Add(TeamId);
+        var command = new Command(@"create-volumes-syncs", @"Starts a volume sync
+Starts one durable asynchronous transfer from a remote source into a BDN volume.");
                         command.Options.Add(Source);
+                        command.Options.Add(Destination);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var teamId = parseResult.GetRequiredValue(TeamId);
                         var source = parseResult.GetRequiredValue(Source);
+                        var destination = parseResult.GetRequiredValue(Destination);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.CreateTeamsByTeamIdModelsAsync(
-                                    teamId: teamId,
+                                var response = await client.CreateVolumesSyncsAsync(
                                     source: source,
+                                    destination: destination,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
