@@ -74,6 +74,8 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdStopCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRestoreCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateVolumesSyncsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateVolumesSyncsByVolumeSyncIdCancelCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesTokenCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdDeploymentsByChainDeploymentIdCommandApiCommand.Create());
@@ -209,6 +211,8 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetVolumesByVolumeNamespaceByVolumeNameVersionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionCommandApiCommand.Create());
                          command.Subcommands.Add(GetVolumesNamespacesCommandApiCommand.Create());
+                         command.Subcommands.Add(GetVolumesSyncsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetVolumesSyncsByVolumeSyncIdCommandApiCommand.Create());
         return command;
     }
 }

@@ -63,7 +63,7 @@ namespace Baseten
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.CreatedModelDeploymentV1> CreateTeamsByTeamIdModelsAsync(
             string teamId,
-            global::Baseten.Source source,
+            global::Baseten.Source3 source,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

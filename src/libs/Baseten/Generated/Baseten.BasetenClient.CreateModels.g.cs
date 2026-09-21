@@ -460,7 +460,7 @@ namespace Baseten
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Baseten.CreatedModelDeploymentV1> CreateModelsAsync(
-            global::Baseten.Source source,
+            global::Baseten.Source3 source,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
