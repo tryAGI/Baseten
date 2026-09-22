@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Gets a volume<br/>
-        /// Returns a volume with its tags, head version, and version counts. Versions live on the versions sub-resource so they can be paged separately.
+        /// Returns a volume with its tags, head version, version counts, and any scheduled expiry. Versions live on the versions sub-resource so they can be paged separately. A volume whose versions have all been deleted or have expired is still returned, with zero live versions.
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
@@ -25,7 +25,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets a volume<br/>
-        /// Returns a volume with its tags, head version, and version counts. Versions live on the versions sub-resource so they can be paged separately.
+        /// Returns a volume with its tags, head version, version counts, and any scheduled expiry. Versions live on the versions sub-resource so they can be paged separately. A volume whose versions have all been deleted or have expired is still returned, with zero live versions.
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>

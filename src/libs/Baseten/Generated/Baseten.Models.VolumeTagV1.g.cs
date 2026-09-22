@@ -23,6 +23,12 @@ namespace Baseten
         public required string Digest { get; set; }
 
         /// <summary>
+        /// When the tag stops resolving and leaves the volume, in ISO 8601 format. Null for a tag that never expires. The version it points at is not affected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public global::System.DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +43,20 @@ namespace Baseten
         /// <param name="digest">
         /// Digest of the version the tag points at, as `b3:&lt;hex&gt;`.
         /// </param>
+        /// <param name="expiresAt">
+        /// When the tag stops resolving and leaves the volume, in ISO 8601 format. Null for a tag that never expires. The version it points at is not affected.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public VolumeTagV1(
             string name,
-            string digest)
+            string digest,
+            global::System.DateTime? expiresAt)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Digest = digest ?? throw new global::System.ArgumentNullException(nameof(digest));
+            this.ExpiresAt = expiresAt;
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class ListVolumeVersionsRequestV1
     {
         /// <summary>
-        /// Whether to include deleted versions. A deleted version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.<br/>
+        /// Whether to include deleted and expired versions. Such a version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("include_tombstoned")]
@@ -25,7 +25,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="ListVolumeVersionsRequestV1" /> class.
         /// </summary>
         /// <param name="includeTombstoned">
-        /// Whether to include deleted versions. A deleted version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.<br/>
+        /// Whether to include deleted and expired versions. Such a version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.<br/>
         /// Default Value: false
         /// </param>
 #if NET7_0_OR_GREATER

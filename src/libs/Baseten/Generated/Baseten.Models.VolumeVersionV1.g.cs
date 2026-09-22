@@ -43,7 +43,7 @@ namespace Baseten
         public int? Sequence { get; set; }
 
         /// <summary>
-        /// Lifecycle state of the version, for example ALIVE or TOMBSTONED.
+        /// Lifecycle state of the version: ALIVE, or TOMBSTONED once it has been deleted or has expired.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("lifecycle")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -77,7 +77,13 @@ namespace Baseten
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// When the version was deleted, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.
+        /// When the version expires, in ISO 8601 format. At that instant it becomes TOMBSTONED with `tombstoned_at` set to this value, and every tag pointing at it drops. Null for a version that never expires, and null once the lifecycle is TOMBSTONED.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public global::System.DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
+        /// When the version was deleted or expired, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tombstoned_at")]
         public global::System.DateTime? TombstonedAt { get; set; }
@@ -110,7 +116,7 @@ namespace Baseten
         /// Content digest of the version, as `b3:&lt;hex&gt;`.
         /// </param>
         /// <param name="lifecycle">
-        /// Lifecycle state of the version, for example ALIVE or TOMBSTONED.
+        /// Lifecycle state of the version: ALIVE, or TOMBSTONED once it has been deleted or has expired.
         /// </param>
         /// <param name="isHead">
         /// Whether the reserved `head` tag points at this version.
@@ -127,8 +133,11 @@ namespace Baseten
         /// <param name="totalSizeBytes">
         /// Total size of the version's files in bytes. Null when not recorded.
         /// </param>
+        /// <param name="expiresAt">
+        /// When the version expires, in ISO 8601 format. At that instant it becomes TOMBSTONED with `tombstoned_at` set to this value, and every tag pointing at it drops. Null for a version that never expires, and null once the lifecycle is TOMBSTONED.
+        /// </param>
         /// <param name="tombstonedAt">
-        /// When the version was deleted, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.
+        /// When the version was deleted or expired, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.
         /// </param>
         /// <param name="deleteAfter">
         /// When the version stops being restorable, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.
@@ -147,6 +156,7 @@ namespace Baseten
             global::System.DateTime createdAt,
             int? sequence,
             long? totalSizeBytes,
+            global::System.DateTime? expiresAt,
             global::System.DateTime? tombstonedAt,
             global::System.DateTime? deleteAfter)
         {
@@ -160,6 +170,7 @@ namespace Baseten
             this.Tags = tags ?? throw new global::System.ArgumentNullException(nameof(tags));
             this.TotalSizeBytes = totalSizeBytes;
             this.CreatedAt = createdAt;
+            this.ExpiresAt = expiresAt;
             this.TombstonedAt = tombstonedAt;
             this.DeleteAfter = deleteAfter;
         }

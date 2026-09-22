@@ -21,7 +21,7 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsCom
 
     private static Option<bool?> IncludeTombstoned { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--include-tombstoned",
-        description: @"Whether to include deleted versions. A deleted version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.");
+        description: @"Whether to include deleted and expired versions. Such a version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.");
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ListVolumeVersionsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -46,7 +46,7 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsCom
     public static Command Create()
     {
         var command = new Command(@"get-volumes-by-volume-namespace-by-volume-name-versions", @"Gets the versions of a volume
-Returns every live version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Pass include_tombstoned to list deleted versions alongside them.");
+Returns every live version of the volume, newest first, each with its digest, size, lifecycle, the tags pointing at it, and any scheduled expiry. Pass include_tombstoned to list deleted and expired versions alongside them.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
                         command.Options.Add(IncludeTombstoned);
