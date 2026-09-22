@@ -47,7 +47,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets the versions of a volume<br/>
-        /// Returns every live version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Pass include_tombstoned to list deleted versions alongside them.
+        /// Returns every live version of the volume, newest first, each with its digest, size, lifecycle, the tags pointing at it, and any scheduled expiry. Pass include_tombstoned to list deleted and expired versions alongside them.
         /// </summary>
         /// <param name="includeTombstoned">
         /// Default Value: false
@@ -81,7 +81,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets the versions of a volume<br/>
-        /// Returns every live version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Pass include_tombstoned to list deleted versions alongside them.
+        /// Returns every live version of the volume, newest first, each with its digest, size, lifecycle, the tags pointing at it, and any scheduled expiry. Pass include_tombstoned to list deleted and expired versions alongside them.
         /// </summary>
         /// <param name="includeTombstoned">
         /// Default Value: false

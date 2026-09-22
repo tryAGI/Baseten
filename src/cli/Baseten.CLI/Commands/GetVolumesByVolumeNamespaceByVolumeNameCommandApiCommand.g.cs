@@ -42,7 +42,7 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameCommandApiC
     public static Command Create()
     {
         var command = new Command(@"get-volumes-by-volume-namespace-by-volume-name", @"Gets a volume
-Returns a volume with its tags, head version, and version counts. Versions live on the versions sub-resource so they can be paged separately.");
+Returns a volume with its tags, head version, version counts, and any scheduled expiry. Versions live on the versions sub-resource so they can be paged separately. A volume whose versions have all been deleted or have expired is still returned, with zero live versions.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
 

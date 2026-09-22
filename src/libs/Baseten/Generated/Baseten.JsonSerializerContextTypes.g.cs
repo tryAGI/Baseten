@@ -53,15 +53,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeV1? Type5 { get; set; }
+        public global::System.DateTime? Type5 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public int? Type6 { get; set; }
+        public global::Baseten.VolumeV1? Type6 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.DateTime? Type7 { get; set; }
+        public int? Type7 { get; set; }
         /// <summary>
         ///
         /// </summary>

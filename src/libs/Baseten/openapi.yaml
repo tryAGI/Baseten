@@ -28,7 +28,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'namespace': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns one row per volume in the namespace, each with its tags, head version, and version counts. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is.",
+                "description": "Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed.",
                 "parameters": [
                     {
                         "name": "cursor",
@@ -430,7 +430,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns a volume with its tags, head version, and version counts. Versions live on the versions sub-resource so they can be paged separately.",
+                "description": "Returns a volume with its tags, head version, version counts, and any scheduled expiry. Versions live on the versions sub-resource so they can be paged separately. A volume whose versions have all been deleted or have expired is still returned, with zero live versions.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -459,13 +459,13 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/versions\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns every live version of the volume, newest first, each with its digest, size, lifecycle, and the tags pointing at it. Pass include_tombstoned to list deleted versions alongside them.",
+                "description": "Returns every live version of the volume, newest first, each with its digest, size, lifecycle, the tags pointing at it, and any scheduled expiry. Pass include_tombstoned to list deleted and expired versions alongside them.",
                 "parameters": [
                     {
                         "name": "include_tombstoned",
                         "in": "query",
                         "required": false,
-                        "description": "Whether to include deleted versions. A deleted version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.",
+                        "description": "Whether to include deleted and expired versions. Such a version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.",
                         "schema": {
                             "default": false,
                             "title": "Include Tombstoned",
@@ -575,7 +575,7 @@
         },
         "/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version}/restore": {
             "post": {
-                "summary": "Restores a deleted version of a volume",
+                "summary": "Restores a deleted or expired version of a volume",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
@@ -586,7 +586,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version}/restore\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'expected_sequence': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns a deleted version to service, provided its recovery deadline has not passed. The tags the version carried when it was deleted are not restored with it, so re-tag it if anything depended on those. Address the version by digest: a deleted version has no tags left to name it by.",
+                "description": "Returns a deleted or expired version to service, provided its recovery deadline has not passed. The tags the version carried are not restored with it, so re-tag it if anything depended on those, and a restored version never expires until something sets a new expiry. Address the version by digest: a tombstoned version has no tags left to name it by.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -9849,11 +9849,25 @@
                         "description": "Digest of the version the tag points at, as `b3:<hex>`.",
                         "title": "Digest",
                         "type": "string"
+                    },
+                    "expires_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "When the tag stops resolving and leaves the volume, in ISO 8601 format. Null for a tag that never expires. The version it points at is not affected.",
+                        "title": "Expires At"
                     }
                 },
                 "required": [
                     "name",
-                    "digest"
+                    "digest",
+                    "expires_at"
                 ],
                 "title": "VolumeTagV1",
                 "type": "object"
@@ -9876,15 +9890,28 @@
                         "type": "string"
                     },
                     "sequence": {
-                        "description": "Revision counter for the volume, incremented on every commit and tag change. Use it to detect that a volume changed.",
+                        "description": "Revision counter for the volume, incremented on every commit, tag change, delete, and restore. A tag or version that expires leaves without changing it; the next write then increments it once. Use it to detect that a volume was written to.",
                         "title": "Sequence",
                         "type": "integer"
                     },
                     "updated_at": {
-                        "description": "When the volume last changed, in ISO 8601 format.",
+                        "description": "When the volume was last written to, in ISO 8601 format. An expiry does not update it.",
                         "format": "date-time",
                         "title": "Updated At",
                         "type": "string"
+                    },
+                    "expires_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "When the whole volume expires, in ISO 8601 format. At that instant every live version is deleted, every tag drops, and the volume leaves the volume listing; each version then stays restorable until its recovery deadline passes. Null for a volume that never expires.",
+                        "title": "Expires At"
                     },
                     "head": {
                         "anyOf": [
@@ -9895,10 +9922,10 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Version that the reserved `head` tag points at, which a reference with no tag or digest resolves to. Null when the volume has no head, or when your API key cannot read it."
+                        "description": "Version that the reserved `head` tag points at, which a reference with no tag or digest resolves to. Never an expiring version. Null when the volume has no head, or when your API key cannot read it."
                     },
                     "tags": {
-                        "description": "Tags on the volume that your API key can read.",
+                        "description": "Tags on the volume that your API key can read. A tag with `expires_at` leaves this list at that instant.",
                         "items": {
                             "$ref": "#/components/schemas/VolumeTagV1"
                         },
@@ -9906,24 +9933,42 @@
                         "type": "array"
                     },
                     "tag_count": {
-                        "description": "Total number of tags on the volume, which can exceed the length of `tags` when your API key cannot read all of them.",
+                        "description": "Total number of tags on the volume, which can exceed the length of `tags` when your API key cannot read all of them. Counts only tags that have not expired.",
                         "title": "Tag Count",
                         "type": "integer"
                     },
                     "versions_alive": {
-                        "description": "Number of versions that have not been deleted.",
+                        "description": "Number of versions that have not been deleted or expired.",
                         "title": "Versions Alive",
                         "type": "integer"
                     },
                     "versions_tombstoned": {
-                        "description": "Number of versions that have been deleted.",
+                        "description": "Number of versions that have been deleted or expired and are still within their recovery window.",
                         "title": "Versions Tombstoned",
                         "type": "integer"
                     },
                     "versions_untagged": {
-                        "description": "Number of versions that no tag points at.",
+                        "description": "Number of live versions that no tag points at.",
                         "title": "Versions Untagged",
                         "type": "integer"
+                    },
+                    "versions_expiring": {
+                        "description": "Number of live versions with an expiry still ahead of them. A version that has already expired counts in `versions_tombstoned` instead.",
+                        "title": "Versions Expiring",
+                        "type": "integer"
+                    },
+                    "versions_earliest_expires_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Earliest expiry among the live versions, in ISO 8601 format. Null when no live version is scheduled to expire.",
+                        "title": "Versions Earliest Expires At"
                     }
                 },
                 "required": [
@@ -9932,12 +9977,15 @@
                     "version_ref",
                     "sequence",
                     "updated_at",
+                    "expires_at",
                     "head",
                     "tags",
                     "tag_count",
                     "versions_alive",
                     "versions_tombstoned",
-                    "versions_untagged"
+                    "versions_untagged",
+                    "versions_expiring",
+                    "versions_earliest_expires_at"
                 ],
                 "title": "VolumeV1",
                 "type": "object"
@@ -10999,7 +11047,7 @@
                         "title": "Sequence"
                     },
                     "lifecycle": {
-                        "description": "Lifecycle state of the version, for example ALIVE or TOMBSTONED.",
+                        "description": "Lifecycle state of the version: ALIVE, or TOMBSTONED once it has been deleted or has expired.",
                         "title": "Lifecycle",
                         "type": "string"
                     },
@@ -11034,6 +11082,19 @@
                         "title": "Created At",
                         "type": "string"
                     },
+                    "expires_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "When the version expires, in ISO 8601 format. At that instant it becomes TOMBSTONED with `tombstoned_at` set to this value, and every tag pointing at it drops. Null for a version that never expires, and null once the lifecycle is TOMBSTONED.",
+                        "title": "Expires At"
+                    },
                     "tombstoned_at": {
                         "anyOf": [
                             {
@@ -11044,7 +11105,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "When the version was deleted, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.",
+                        "description": "When the version was deleted or expired, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.",
                         "title": "Tombstoned At"
                     },
                     "delete_after": {
@@ -11072,6 +11133,7 @@
                     "tags",
                     "total_size_bytes",
                     "created_at",
+                    "expires_at",
                     "tombstoned_at",
                     "delete_after"
                 ],
@@ -11106,7 +11168,7 @@
                 "properties": {
                     "include_tombstoned": {
                         "default": false,
-                        "description": "Whether to include deleted versions. A deleted version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.",
+                        "description": "Whether to include deleted and expired versions. Such a version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.",
                         "title": "Include Tombstoned",
                         "type": "boolean"
                     }
@@ -11220,7 +11282,7 @@
                         "title": "Sequence"
                     },
                     "lifecycle": {
-                        "description": "Lifecycle state of the version, for example ALIVE or TOMBSTONED.",
+                        "description": "Lifecycle state of the version: ALIVE, or TOMBSTONED once it has been deleted or has expired.",
                         "title": "Lifecycle",
                         "type": "string"
                     },
@@ -11255,6 +11317,19 @@
                         "title": "Created At",
                         "type": "string"
                     },
+                    "expires_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "When the version expires, in ISO 8601 format. At that instant it becomes TOMBSTONED with `tombstoned_at` set to this value, and every tag pointing at it drops. Null for a version that never expires, and null once the lifecycle is TOMBSTONED.",
+                        "title": "Expires At"
+                    },
                     "tombstoned_at": {
                         "anyOf": [
                             {
@@ -11265,7 +11340,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "When the version was deleted, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.",
+                        "description": "When the version was deleted or expired, in ISO 8601 format. Null unless the lifecycle is TOMBSTONED.",
                         "title": "Tombstoned At"
                     },
                     "delete_after": {
@@ -11310,6 +11385,7 @@
                     "tags",
                     "total_size_bytes",
                     "created_at",
+                    "expires_at",
                     "tombstoned_at",
                     "delete_after",
                     "entry_count",
