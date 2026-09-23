@@ -4,12 +4,14 @@
 namespace Baseten
 {
     /// <summary>
-    /// Response for ``GET /v1/loops/capabilities``.
+    /// Response for ``GET /v1/loops/capabilities``.<br/>
+    /// A model Baseten does not support has no entry at all, so an empty list for<br/>
+    /// a single-model request means exactly that.
     /// </summary>
     public sealed partial class GetLoopsCapabilitiesResponseV1
     {
         /// <summary>
-        /// List of models available on the server.
+        /// Models Baseten supports for this use case, each carrying an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' when it cannot. Filter on 'enabled' to get the models you can use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supported_models")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -25,7 +27,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="GetLoopsCapabilitiesResponseV1" /> class.
         /// </summary>
         /// <param name="supportedModels">
-        /// List of models available on the server.
+        /// Models Baseten supports for this use case, each carrying an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' when it cannot. Filter on 'enabled' to get the models you can use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

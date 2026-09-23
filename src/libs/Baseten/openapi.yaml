@@ -623,6 +623,45 @@
                 }
             ]
         },
+        "/v1/token": {
+            "post": {
+                "summary": "Creates a sandbox access token",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/token \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"scopes\": [\n    \"sandboxes\"\n  ]\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/token\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'scopes': ['sandboxes']}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours and cannot be renewed; request a new one when needed. This endpoint is experimental and may change or be removed without notice.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateTokenRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
         "/v1/secrets": {
             "get": {
                 "summary": "Gets all secrets (metadata only, no plain text keys)",
@@ -6276,10 +6315,68 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/capabilities\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/capabilities\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'model': 'Qwen/Qwen3-8B', 'use_case': 'rl', 'max_seq_len': 32768}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs.",
+                "description": "Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot; filter on 'enabled' for the usable set. Capacity is resolved when the run is created, not here. Pass ?model= to ask about one model \u2014 an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.",
+                "parameters": [
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "required": false,
+                        "description": "Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. An empty list means Baseten does not support that model. Omit to list every supported model.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                "Qwen/Qwen3-8B"
+                            ],
+                            "title": "Model"
+                        }
+                    },
+                    {
+                        "name": "use_case",
+                        "in": "query",
+                        "required": false,
+                        "description": "What the caller intends to run. Defaults to 'rl', the stricter of the two: an RL run needs both a trainer and a sampler, so anything enabled for 'rl' is also enabled for 'sft'.",
+                        "schema": {
+                            "$ref": "#/components/schemas/LoopsUseCaseV1",
+                            "default": "rl",
+                            "examples": [
+                                "rl"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "max_seq_len",
+                        "in": "query",
+                        "required": false,
+                        "description": "The sequence length the caller intends to train at \u2014 the same value they would pass as 'max_seq_len' when creating the run. Models that cannot serve it are reported as not enabled rather than returned with a ceiling the caller cannot use. Omit for the model's highest enabled sequence length.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                32768
+                            ],
+                            "title": "Max Seq Len"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -10335,6 +10432,54 @@
                 "title": "VolumeSyncAuthenticationAWSAssumeRoleV1",
                 "type": "object"
             },
+            "VolumeSyncAuthenticationAWSOIDCV1": {
+                "additionalProperties": false,
+                "description": "Authentication using an AWS IAM role and Baseten workload identity.",
+                "properties": {
+                    "role_arn": {
+                        "description": "AWS IAM role ARN to assume through OIDC.",
+                        "minLength": 1,
+                        "title": "Role Arn",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "AWS region for the OIDC role session.",
+                        "minLength": 1,
+                        "title": "Region",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "role_arn",
+                    "region"
+                ],
+                "title": "VolumeSyncAuthenticationAWSOIDCV1",
+                "type": "object"
+            },
+            "VolumeSyncAuthenticationGCPOIDCV1": {
+                "additionalProperties": false,
+                "description": "Authentication using GCP Workload Identity Federation.",
+                "properties": {
+                    "service_account": {
+                        "description": "GCP service account to impersonate through OIDC.",
+                        "minLength": 1,
+                        "title": "Service Account",
+                        "type": "string"
+                    },
+                    "workload_identity_provider": {
+                        "description": "Full resource name of the GCP workload identity provider.",
+                        "minLength": 1,
+                        "title": "Workload Identity Provider",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "service_account",
+                    "workload_identity_provider"
+                ],
+                "title": "VolumeSyncAuthenticationGCPOIDCV1",
+                "type": "object"
+            },
             "VolumeSyncDestinationV1": {
                 "additionalProperties": false,
                 "description": "BDN destination for a volume sync.",
@@ -10561,6 +10706,18 @@
                         "description": "Google Cloud Storage source type.",
                         "title": "Type",
                         "type": "string"
+                    },
+                    "gcp_oidc": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncAuthenticationGCPOIDCV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "GCP OIDC authentication for this source. Cannot be combined with auth_secret_name."
                     }
                 },
                 "required": [
@@ -10732,6 +10889,18 @@
                         ],
                         "default": null,
                         "description": "AWS AssumeRole authentication for this source. Cannot be combined with auth_secret_name."
+                    },
+                    "aws_oidc": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncAuthenticationAWSOIDCV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "AWS OIDC authentication for this source. Cannot be combined with other authentication fields."
                     }
                 },
                 "required": [
@@ -11515,6 +11684,58 @@
                     "volume_sequence"
                 ],
                 "title": "RestoreVolumeVersionResponseV1",
+                "type": "object"
+            },
+            "TokenScopeV1": {
+                "description": "What a token minted by POST /v1/token grants access to.",
+                "enum": [
+                    "sandboxes"
+                ],
+                "title": "TokenScopeV1",
+                "type": "string"
+            },
+            "CreateTokenRequestV1": {
+                "properties": {
+                    "scopes": {
+                        "description": "What the token should grant access to. Only `sandboxes` is supported today; the token then authenticates against the sandbox API.",
+                        "examples": [
+                            [
+                                "sandboxes"
+                            ]
+                        ],
+                        "items": {
+                            "$ref": "#/components/schemas/TokenScopeV1"
+                        },
+                        "minItems": 1,
+                        "title": "Scopes",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "scopes"
+                ],
+                "title": "CreateTokenRequestV1",
+                "type": "object"
+            },
+            "TokenV1": {
+                "properties": {
+                    "token": {
+                        "description": "Short-lived bearer token for the sandbox API. Send it as Authorization: Bearer <token>.",
+                        "title": "Token",
+                        "type": "string"
+                    },
+                    "expires_at": {
+                        "description": "Token expiry in ISO 8601 format. Tokens cannot be renewed; request a new one.",
+                        "format": "date-time",
+                        "title": "Expires At",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "token",
+                    "expires_at"
+                ],
+                "title": "TokenV1",
                 "type": "object"
             },
             "SecretV1": {
@@ -23448,6 +23669,36 @@
                 "title": "SearchTrainingJobsResponseV1",
                 "type": "object"
             },
+            "EnablementDetailsV1": {
+                "description": "Why a supported model is not enabled for this workspace.",
+                "properties": {
+                    "reason": {
+                        "description": "Machine-readable reason the model is not enabled. Currently one of 'needs_approval', 'sequence_length_unsupported' or 'loops_not_enabled'. Deliberately not a closed enum: values are added as the check learns to distinguish cases that call for a different action, so treat an unrecognized value as 'not enabled, reason unknown' rather than an error.",
+                        "examples": [
+                            "needs_approval"
+                        ],
+                        "title": "Reason",
+                        "type": "string"
+                    },
+                    "reason_detail": {
+                        "description": "Human-readable explanation of the reason.",
+                        "title": "Reason Detail",
+                        "type": "string"
+                    },
+                    "remediation": {
+                        "description": "Human-readable next step to enable the model.",
+                        "title": "Remediation",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "reason",
+                    "reason_detail",
+                    "remediation"
+                ],
+                "title": "EnablementDetailsV1",
+                "type": "object"
+            },
             "SupportedModelV1": {
                 "description": "A model supported by the Loops server.",
                 "properties": {
@@ -23456,8 +23707,20 @@
                         "title": "Model Name",
                         "type": "string"
                     },
+                    "max_seq_len": {
+                        "description": "The longest sequence length Baseten supports for this model. Independent of the caller: see 'max_enabled_seq_len' for what this workspace can actually train at. Named to match the 'max_seq_len' query parameter and the field of the same name on run creation, so one name follows the value through the API.",
+                        "title": "Max Seq Len",
+                        "type": "integer"
+                    },
+                    "max_enabled_seq_len": {
+                        "default": 0,
+                        "description": "The longest sequence length this workspace can train at. Lower than 'max_seq_len' when the longer configurations need hardware the workspace is not approved for \u2014 a model's longer sequence lengths often need a bigger SKU of the same GPU. Zero when the workspace cannot run the model at all, so a client can compare against a required length without a null case.",
+                        "title": "Max Enabled Seq Len",
+                        "type": "integer"
+                    },
                     "max_context_length": {
-                        "description": "The maximum context length (in tokens) supported by this model.",
+                        "deprecated": true,
+                        "description": "Deprecated. Use 'max_seq_len', which carries the same value. Kept so existing clients keep working.",
                         "title": "Max Context Length",
                         "type": "integer"
                     },
@@ -23465,10 +23728,29 @@
                         "description": "Whether the model accepts image inputs alongside text.",
                         "title": "Supports Vision Language",
                         "type": "boolean"
+                    },
+                    "enabled": {
+                        "default": true,
+                        "description": "Whether this workspace can start a run with this model now. False means Baseten supports it but the workspace cannot use it yet; 'not_enabled' says why. Capacity is resolved when the run is created, so true is not a guarantee that GPUs are free.",
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "enablement_details": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/EnablementDetailsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Why the model is not enabled, and what would change it. Present only when 'enabled' is false \u2014 an enabled model has nothing to explain. Read 'enabled' for the state; this is the detail behind it."
                     }
                 },
                 "required": [
                     "model_name",
+                    "max_seq_len",
                     "max_context_length",
                     "supports_vision_language"
                 ],
@@ -23476,10 +23758,10 @@
                 "type": "object"
             },
             "GetLoopsCapabilitiesResponseV1": {
-                "description": "Response for ``GET /v1/loops/capabilities``.",
+                "description": "Response for ``GET /v1/loops/capabilities``.\n\nA model Baseten does not support has no entry at all, so an empty list for\na single-model request means exactly that.",
                 "properties": {
                     "supported_models": {
-                        "description": "List of models available on the server.",
+                        "description": "Models Baseten supports for this use case, each carrying an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' when it cannot. Filter on 'enabled' to get the models you can use.",
                         "items": {
                             "$ref": "#/components/schemas/SupportedModelV1"
                         },
@@ -23491,6 +23773,63 @@
                     "supported_models"
                 ],
                 "title": "GetLoopsCapabilitiesResponseV1",
+                "type": "object"
+            },
+            "LoopsUseCaseV1": {
+                "description": "What the caller intends to run.\n\nReinforcement learning runs a trainer and a sampler; supervised\nfine-tuning runs a trainer alone. A model can therefore be enabled for one\nand not the other, and the same model can support a longer sequence length\nfor SFT than for RL.",
+                "enum": [
+                    "rl",
+                    "sft"
+                ],
+                "title": "LoopsUseCaseV1",
+                "type": "string"
+            },
+            "GetLoopsCapabilitiesQueryParamsV1": {
+                "description": "Query-string filters for ``GET /v1/loops/capabilities``.",
+                "properties": {
+                    "model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. An empty list means Baseten does not support that model. Omit to list every supported model.",
+                        "examples": [
+                            "Qwen/Qwen3-8B"
+                        ],
+                        "title": "Model"
+                    },
+                    "use_case": {
+                        "$ref": "#/components/schemas/LoopsUseCaseV1",
+                        "default": "rl",
+                        "description": "What the caller intends to run. Defaults to 'rl', the stricter of the two: an RL run needs both a trainer and a sampler, so anything enabled for 'rl' is also enabled for 'sft'.",
+                        "examples": [
+                            "rl"
+                        ]
+                    },
+                    "max_seq_len": {
+                        "anyOf": [
+                            {
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The sequence length the caller intends to train at \u2014 the same value they would pass as 'max_seq_len' when creating the run. Models that cannot serve it are reported as not enabled rather than returned with a ceiling the caller cannot use. Omit for the model's highest enabled sequence length.",
+                        "examples": [
+                            32768
+                        ],
+                        "title": "Max Seq Len"
+                    }
+                },
+                "title": "GetLoopsCapabilitiesQueryParamsV1",
                 "type": "object"
             },
             "LoopsSessionV1": {

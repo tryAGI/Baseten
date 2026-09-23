@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetLoopsCapabilitiesSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateTokenSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,67 +21,53 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetLoopsCapabilitiesSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateTokenSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetLoopsCapabilitiesSecurityRequirement0,
+            {                s_CreateTokenSecurityRequirement0,
             };
-        partial void PrepareGetLoopsCapabilitiesArguments(
+        partial void PrepareCreateTokenArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? model,
-            ref global::Baseten.LoopsUseCaseV1? useCase,
-            int? maxSeqLen);
-        partial void PrepareGetLoopsCapabilitiesRequest(
+            global::Baseten.CreateTokenRequestV1 request);
+        partial void PrepareCreateTokenRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? model,
-            global::Baseten.LoopsUseCaseV1? useCase,
-            int? maxSeqLen);
-        partial void ProcessGetLoopsCapabilitiesResponse(
+            global::Baseten.CreateTokenRequestV1 request);
+        partial void ProcessCreateTokenResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetLoopsCapabilitiesResponseContent(
+        partial void ProcessCreateTokenResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Gets Loops server capabilities<br/>
-        /// Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot; filter on 'enabled' for the usable set. Capacity is resolved when the run is created, not here. Pass ?model= to ask about one model — an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.
+        /// Creates a sandbox access token<br/>
+        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours and cannot be renewed; request a new one when needed. This endpoint is experimental and may change or be removed without notice.
         /// </summary>
-        /// <param name="model">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="useCase">
-        /// What the caller intends to run.<br/>
-        /// Reinforcement learning runs a trainer and a sampler; supervised<br/>
-        /// fine-tuning runs a trainer alone. A model can therefore be enabled for one<br/>
-        /// and not the other, and the same model can support a longer sequence length<br/>
-        /// for SFT than for RL.<br/>
-        /// Default Value: rl
-        /// </param>
-        /// <param name="maxSeqLen">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/loops/capabilities \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/token \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "scopes": [<br/>
+        ///     "sandboxes"<br/>
+        ///   ]<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.GetLoopsCapabilitiesResponseV1> GetLoopsCapabilitiesAsync(
-            string? model = default,
-            global::Baseten.LoopsUseCaseV1? useCase = default,
-            int? maxSeqLen = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.TokenV1> CreateTokenAsync(
+
+            global::Baseten.CreateTokenRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetLoopsCapabilitiesAsResponseAsync(
-                model: model,
-                useCase: useCase,
-                maxSeqLen: maxSeqLen,
+            var __response = await CreateTokenAsResponseAsync(
+
+                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -89,51 +75,42 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets Loops server capabilities<br/>
-        /// Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot; filter on 'enabled' for the usable set. Capacity is resolved when the run is created, not here. Pass ?model= to ask about one model — an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.
+        /// Creates a sandbox access token<br/>
+        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours and cannot be renewed; request a new one when needed. This endpoint is experimental and may change or be removed without notice.
         /// </summary>
-        /// <param name="model">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="useCase">
-        /// What the caller intends to run.<br/>
-        /// Reinforcement learning runs a trainer and a sampler; supervised<br/>
-        /// fine-tuning runs a trainer alone. A model can therefore be enabled for one<br/>
-        /// and not the other, and the same model can support a longer sequence length<br/>
-        /// for SFT than for RL.<br/>
-        /// Default Value: rl
-        /// </param>
-        /// <param name="maxSeqLen">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/loops/capabilities \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/token \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "scopes": [<br/>
+        ///     "sandboxes"<br/>
+        ///   ]<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopsCapabilitiesResponseV1>> GetLoopsCapabilitiesAsResponseAsync(
-            string? model = default,
-            global::Baseten.LoopsUseCaseV1? useCase = default,
-            int? maxSeqLen = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.TokenV1>> CreateTokenAsResponseAsync(
+
+            global::Baseten.CreateTokenRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetLoopsCapabilitiesArguments(
+            PrepareCreateTokenArguments(
                 httpClient: HttpClient,
-                model: ref model,
-                useCase: ref useCase,
-                maxSeqLen: maxSeqLen);
+                request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetLoopsCapabilitiesSecurityRequirements,
-                operationName: "GetLoopsCapabilitiesAsync");
+                securityRequirements: s_CreateTokenSecurityRequirements,
+                operationName: "CreateTokenAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -153,20 +130,15 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/loops/capabilities",
+                                path: "/v1/token",
                                 baseUri: HttpClient.BaseAddress);
-                            __pathBuilder
-                                .AddOptionalParameter("model", model)
-                                .AddOptionalParameter("use_case", useCase?.ToValueString())
-                                .AddOptionalParameter("max_seq_len", maxSeqLen?.ToString())
-                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Get,
+                    method: global::System.Net.Http.HttpMethod.Post,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -189,6 +161,12 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -197,12 +175,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetLoopsCapabilitiesRequest(
+                PrepareCreateTokenRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    model: model,
-                    useCase: useCase,
-                    maxSeqLen: maxSeqLen);
+                    request: request);
 
                 return __httpRequest;
             }
@@ -219,10 +195,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsCapabilities",
-                                methodName: "GetLoopsCapabilitiesAsync",
-                                pathTemplate: "\"/v1/loops/capabilities\"",
-                                httpMethod: "GET",
+                                operationId: "createToken",
+                                methodName: "CreateTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -253,10 +229,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsCapabilities",
-                                methodName: "GetLoopsCapabilitiesAsync",
-                                pathTemplate: "\"/v1/loops/capabilities\"",
-                                httpMethod: "GET",
+                                operationId: "createToken",
+                                methodName: "CreateTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -294,10 +270,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsCapabilities",
-                                methodName: "GetLoopsCapabilitiesAsync",
-                                pathTemplate: "\"/v1/loops/capabilities\"",
-                                httpMethod: "GET",
+                                operationId: "createToken",
+                                methodName: "CreateTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -334,7 +310,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetLoopsCapabilitiesResponse(
+                ProcessCreateTokenResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -342,10 +318,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsCapabilities",
-                                methodName: "GetLoopsCapabilitiesAsync",
-                                pathTemplate: "\"/v1/loops/capabilities\"",
-                                httpMethod: "GET",
+                                operationId: "createToken",
+                                methodName: "CreateTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -364,10 +340,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getLoopsCapabilities",
-                                methodName: "GetLoopsCapabilitiesAsync",
-                                pathTemplate: "\"/v1/loops/capabilities\"",
-                                httpMethod: "GET",
+                                operationId: "createToken",
+                                methodName: "CreateTokenAsync",
+                                pathTemplate: "\"/v1/token\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -394,7 +370,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetLoopsCapabilitiesResponseContent(
+                                ProcessCreateTokenResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -403,9 +379,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.GetLoopsCapabilitiesResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.TokenV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopsCapabilitiesResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.TokenV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -435,9 +411,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.GetLoopsCapabilitiesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.TokenV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetLoopsCapabilitiesResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.TokenV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -476,6 +452,31 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Creates a sandbox access token<br/>
+        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours and cannot be renewed; request a new one when needed. This endpoint is experimental and may change or be removed without notice.
+        /// </summary>
+        /// <param name="scopes">
+        /// What the token should grant access to. Only `sandboxes` is supported today; the token then authenticates against the sandbox API.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Baseten.TokenV1> CreateTokenAsync(
+            global::System.Collections.Generic.IList<global::Baseten.TokenScopeV1> scopes,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Baseten.CreateTokenRequestV1
+            {
+                Scopes = scopes,
+            };
+
+            return await CreateTokenAsync(
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
