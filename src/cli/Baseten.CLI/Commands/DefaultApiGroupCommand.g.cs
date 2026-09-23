@@ -67,6 +67,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateTeamsByTeamIdModelsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdTrainingProjectsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateTokenCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingJobsSearchCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsCommandApiCommand.Create());

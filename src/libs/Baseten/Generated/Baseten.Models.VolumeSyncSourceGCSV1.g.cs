@@ -42,6 +42,13 @@ namespace Baseten
         public string Type { get; set; } = "GCS";
 
         /// <summary>
+        /// GCP OIDC authentication for this source. Cannot be combined with auth_secret_name.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("gcp_oidc")]
+        public global::Baseten.VolumeSyncAuthenticationGCPOIDCV1? GcpOidc { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -63,6 +70,10 @@ namespace Baseten
         /// Optional workspace secret containing credentials for this source.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="gcpOidc">
+        /// GCP OIDC authentication for this source. Cannot be combined with auth_secret_name.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="type">
         /// Google Cloud Storage source type.
         /// </param>
@@ -74,6 +85,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? include,
             global::System.Collections.Generic.IList<string>? exclude,
             string? authSecretName,
+            global::Baseten.VolumeSyncAuthenticationGCPOIDCV1? gcpOidc,
             string type = "GCS")
         {
             this.Uri = uri ?? throw new global::System.ArgumentNullException(nameof(uri));
@@ -81,6 +93,7 @@ namespace Baseten
             this.Exclude = exclude;
             this.AuthSecretName = authSecretName;
             this.Type = type;
+            this.GcpOidc = gcpOidc;
         }
 
         /// <summary>
