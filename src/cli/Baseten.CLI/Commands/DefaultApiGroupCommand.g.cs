@@ -116,6 +116,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingModelApisCommandApiCommand.Create());
+                         command.Subcommands.Add(GetBillingToolCallUsageCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingUsageSummaryCommandApiCommand.Create());
                          command.Subcommands.Add(GetBlobsCredentialsModelCommandApiCommand.Create());
                          command.Subcommands.Add(GetBlobsCredentialsTrainCommandApiCommand.Create());
