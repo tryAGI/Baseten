@@ -8840,6 +8840,66 @@
                 }
             }
         },
+        "/v1/billing/tool_call_usage": {
+            "get": {
+                "summary": "Gets server-side tool call usage",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/billing/tool_call_usage \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/billing/tool_call_usage\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_date': None, 'end_date': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model.",
+                "parameters": [
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": true,
+                        "description": "Inclusive UTC calendar day at the start of the query range.",
+                        "schema": {
+                            "format": "date",
+                            "title": "Start Date",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "description": "Exclusive UTC calendar day at the end of the query range. Defaults to the day after the current UTC date so current-day usage is included. The date range cannot exceed 90 days.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "format": "date",
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "End Date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ToolCallUsageResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/users": {
             "get": {
                 "summary": "Lists users in the workspace",
@@ -28587,6 +28647,95 @@
                     "end_date"
                 ],
                 "title": "UsageSummaryRequestV1",
+                "type": "object"
+            },
+            "ToolCallUsageBucketV1": {
+                "description": "Server-side tool call usage for one day, provider, charge unit, and model.",
+                "properties": {
+                    "date": {
+                        "description": "UTC day the usage was recorded on.",
+                        "format": "date",
+                        "title": "Date",
+                        "type": "string"
+                    },
+                    "provider": {
+                        "description": "Tool provider, such as exa or parallel.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "sku": {
+                        "description": "Charge unit, as `<provider>/<unit>`. The unit is what the provider reported, or the tool name when it reported none. Its meaning varies by provider.",
+                        "title": "Sku",
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "Model that made the tool calls.",
+                        "title": "Model",
+                        "type": "string"
+                    },
+                    "calls": {
+                        "description": "Number of tool calls.",
+                        "title": "Calls",
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "description": "Billable quantity in the provider's sku unit, summed over the calls.",
+                        "title": "Quantity",
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "date",
+                    "provider",
+                    "sku",
+                    "model",
+                    "calls",
+                    "quantity"
+                ],
+                "title": "ToolCallUsageBucketV1",
+                "type": "object"
+            },
+            "ToolCallUsageResponseV1": {
+                "description": "Daily server-side tool call usage, ordered by day, provider, sku, and model.",
+                "properties": {
+                    "items": {
+                        "items": {
+                            "$ref": "#/components/schemas/ToolCallUsageBucketV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    }
+                },
+                "title": "ToolCallUsageResponseV1",
+                "type": "object"
+            },
+            "ToolCallUsageRequestV1": {
+                "properties": {
+                    "start_date": {
+                        "description": "Inclusive UTC calendar day at the start of the query range.",
+                        "format": "date",
+                        "title": "Start Date",
+                        "type": "string"
+                    },
+                    "end_date": {
+                        "anyOf": [
+                            {
+                                "format": "date",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Exclusive UTC calendar day at the end of the query range. Defaults to the day after the current UTC date so current-day usage is included. The date range cannot exceed 90 days.",
+                        "title": "End Date"
+                    }
+                },
+                "required": [
+                    "start_date"
+                ],
+                "title": "ToolCallUsageRequestV1",
                 "type": "object"
             },
             "UserInfoV1": {
