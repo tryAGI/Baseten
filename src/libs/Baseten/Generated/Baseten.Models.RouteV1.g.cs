@@ -59,6 +59,12 @@ namespace Baseten
         public required global::Baseten.Target Target { get; set; }
 
         /// <summary>
+        /// Resolved model metadata; null when the route has no linked metadata row.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::Baseten.ExploreMetadataV1? Metadata { get; set; }
+
+        /// <summary>
         /// Base URL for inference requests using this route.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("invoke_url")]
@@ -108,6 +114,9 @@ namespace Baseten
         /// <param name="createdAt">
         /// Creation time, ISO 8601.
         /// </param>
+        /// <param name="metadata">
+        /// Resolved model metadata; null when the route has no linked metadata row.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -120,7 +129,8 @@ namespace Baseten
             string description,
             global::Baseten.Target target,
             string invokeUrl,
-            global::System.DateTime createdAt)
+            global::System.DateTime createdAt,
+            global::Baseten.ExploreMetadataV1? metadata)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
@@ -129,6 +139,7 @@ namespace Baseten
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Target = target;
+            this.Metadata = metadata;
             this.InvokeUrl = invokeUrl ?? throw new global::System.ArgumentNullException(nameof(invokeUrl));
             this.CreatedAt = createdAt;
         }

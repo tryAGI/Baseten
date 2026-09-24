@@ -45,6 +45,13 @@ namespace Baseten
         public string? Description { get; set; }
 
         /// <summary>
+        /// Slug of a metadata row to link. Omit to auto-resolve from the target; required for OPENAI_COMPATIBLE and VERTEX targets.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata_slug")]
+        public string? MetadataSlug { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -71,6 +78,10 @@ namespace Baseten
         /// Short description of the route. Omit for no description; null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="metadataSlug">
+        /// Slug of a metadata row to link. Omit to auto-resolve from the target; required for OPENAI_COMPATIBLE and VERTEX targets.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -79,13 +90,15 @@ namespace Baseten
             global::Baseten.Target2 target,
             string? teamId,
             string? displayName,
-            string? description)
+            string? description,
+            string? metadataSlug)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.TeamId = teamId;
             this.DisplayName = displayName;
             this.Target = target;
             this.Description = description;
+            this.MetadataSlug = metadataSlug;
         }
 
         /// <summary>

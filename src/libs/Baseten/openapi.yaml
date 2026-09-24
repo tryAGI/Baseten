@@ -9300,6 +9300,104 @@
                 }
             }
         },
+        "/v1/explore/metadata": {
+            "get": {
+                "summary": "Lists model metadata",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/explore/metadata \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/explore/metadata\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'provider': None, 'q': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists all live model metadata rows, e.g. for model pickers.",
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of items to return.",
+                        "schema": {
+                            "default": 100,
+                            "maximum": 1000,
+                            "minimum": 1,
+                            "title": "Limit",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "provider",
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter to a provider by slug prefix, e.g. 'anthropic'. Preserved by the cursor; if repeated, must match the original filter.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Provider"
+                        }
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "required": false,
+                        "description": "Case-insensitive substring search over metadata slugs. Preserved by the cursor; if repeated, must match the original filter.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Q"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExploreMetadataResponseV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
         "/v1/routes": {
             "get": {
                 "summary": "Lists routes",
@@ -9402,11 +9500,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/routes \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"my-org/assistant\",\n  \"team_id\": \"abc1234\",\n  \"display_name\": \"Assistant\",\n  \"target\": {\n    \"model\": \"zai-org/GLM-5.3\",\n    \"type\": \"BASETEN_MODEL_API\"\n  },\n  \"description\": \"Assistant for code review and debugging.\"\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/routes \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"my-org/assistant\",\n  \"team_id\": \"abc1234\",\n  \"display_name\": \"Assistant\",\n  \"target\": {\n    \"model\": \"zai-org/GLM-5.3\",\n    \"type\": \"BASETEN_MODEL_API\"\n  },\n  \"description\": \"Assistant for code review and debugging.\",\n  \"metadata_slug\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'my-org/assistant', 'team_id': 'abc1234', 'display_name': 'Assistant', 'target': {'model': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}, 'description': 'Assistant for code review and debugging.'}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'my-org/assistant', 'team_id': 'abc1234', 'display_name': 'Assistant', 'target': {'model': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}, 'description': 'Assistant for code review and debugging.', 'metadata_slug': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Dedicated deployment targets are not supported.",
@@ -9498,11 +9596,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/{route_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"description\": \"Assistant for code review and debugging.\",\n  \"display_name\": \"Assistant\",\n  \"target\": {\n    \"model\": \"zai-org/GLM-5.3\",\n    \"type\": \"BASETEN_MODEL_API\"\n  }\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/{route_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"description\": \"Assistant for code review and debugging.\",\n  \"display_name\": \"Assistant\",\n  \"target\": {\n    \"model\": \"zai-org/GLM-5.3\",\n    \"type\": \"BASETEN_MODEL_API\"\n  },\n  \"metadata_slug\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/{route_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'description': 'Assistant for code review and debugging.', 'display_name': 'Assistant', 'target': {'model': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/{route_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'description': 'Assistant for code review and debugging.', 'display_name': 'Assistant', 'target': {'model': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}, 'metadata_slug': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Replaces the entire target when provided. The route name and owning team are immutable.",
@@ -29443,6 +29541,228 @@
                 "title": "GatewayEventsRequestV1",
                 "type": "object"
             },
+            "ExploreMetadataAPIFormatsV1": {
+                "properties": {
+                    "messages": {
+                        "default": false,
+                        "description": "Anthropic Messages API support.",
+                        "title": "Messages",
+                        "type": "boolean"
+                    },
+                    "responses": {
+                        "default": false,
+                        "description": "OpenAI Responses API support.",
+                        "title": "Responses",
+                        "type": "boolean"
+                    },
+                    "chat_completions": {
+                        "default": false,
+                        "description": "OpenAI Chat Completions API support.",
+                        "title": "Chat Completions",
+                        "type": "boolean"
+                    }
+                },
+                "title": "ExploreMetadataAPIFormatsV1",
+                "type": "object"
+            },
+            "ExploreMetadataV1": {
+                "properties": {
+                    "slug": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Metadata slug, e.g. 'anthropic/claude-opus-4'; null for rows without one.",
+                        "title": "Slug"
+                    },
+                    "provider": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Provider key derived from the slug prefix, e.g. 'anthropic'; null for unprefixed slugs.",
+                        "title": "Provider"
+                    },
+                    "context_window": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Total context window in tokens.",
+                        "title": "Context Window"
+                    },
+                    "max_output_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Maximum output tokens per response.",
+                        "title": "Max Output Tokens"
+                    },
+                    "input_modalities": {
+                        "description": "Accepted input modalities.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Input Modalities",
+                        "type": "array"
+                    },
+                    "tools": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Whether the model supports tool calling.",
+                        "title": "Tools"
+                    },
+                    "reasoning_effort_levels": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Reasoning effort levels the model supports.",
+                        "title": "Reasoning Effort Levels"
+                    },
+                    "parallel_tool_calls": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Whether the model supports parallel tool calls.",
+                        "title": "Parallel Tool Calls"
+                    },
+                    "supported_api_formats": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/ExploreMetadataAPIFormatsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "API formats the model supports."
+                    }
+                },
+                "required": [
+                    "slug",
+                    "provider",
+                    "context_window",
+                    "max_output_tokens",
+                    "input_modalities",
+                    "tools",
+                    "reasoning_effort_levels",
+                    "parallel_tool_calls",
+                    "supported_api_formats"
+                ],
+                "title": "ExploreMetadataV1",
+                "type": "object"
+            },
+            "ExploreMetadataResponseV1": {
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/ExploreMetadataV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "ExploreMetadataResponseV1",
+                "type": "object"
+            },
+            "ExploreMetadataRequestV1": {
+                "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "default": 100,
+                        "description": "Maximum number of items to return.",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "provider": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Filter to a provider by slug prefix, e.g. 'anthropic'. Preserved by the cursor; if repeated, must match the original filter.",
+                        "title": "Provider"
+                    },
+                    "q": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Case-insensitive substring search over metadata slugs. Preserved by the cursor; if repeated, must match the original filter.",
+                        "title": "Q"
+                    }
+                },
+                "title": "ExploreMetadataRequestV1",
+                "type": "object"
+            },
             "RouteTargetAnthropicV1": {
                 "additionalProperties": false,
                 "properties": {
@@ -29695,6 +30015,17 @@
                         ],
                         "title": "Target"
                     },
+                    "metadata": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/ExploreMetadataV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Resolved model metadata; null when the route has no linked metadata row."
+                    },
                     "invoke_url": {
                         "description": "Base URL for inference requests using this route.",
                         "title": "Invoke Url",
@@ -29715,6 +30046,7 @@
                     "display_name",
                     "description",
                     "target",
+                    "metadata",
                     "invoke_url",
                     "created_at"
                 ],
@@ -29927,6 +30259,21 @@
                             "Assistant for code review and debugging."
                         ],
                         "title": "Description"
+                    },
+                    "metadata_slug": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Slug of a metadata row to link. Omit to auto-resolve from the target; required for OPENAI_COMPATIBLE and VERTEX targets.",
+                        "title": "Metadata Slug",
+                        "x-null-distinct": true
                     }
                 },
                 "required": [
@@ -30042,6 +30389,21 @@
                             }
                         ],
                         "title": "Target"
+                    },
+                    "metadata_slug": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Slug of a metadata row to link. Omit to keep the current link, or to re-resolve from the new target when target is provided (OPENAI_COMPATIBLE and VERTEX targets always require an explicit slug). Null is not accepted.",
+                        "title": "Metadata Slug",
+                        "x-null-distinct": true
                     }
                 },
                 "title": "UpdateRouteRequestV1",

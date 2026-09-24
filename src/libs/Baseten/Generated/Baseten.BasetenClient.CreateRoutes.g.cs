@@ -61,7 +61,8 @@ namespace Baseten
         ///     "model": "zai-org/GLM-5.3",<br/>
         ///     "type": "BASETEN_MODEL_API"<br/>
         ///   },<br/>
-        ///   "description": "Assistant for code review and debugging."<br/>
+        ///   "description": "Assistant for code review and debugging.",<br/>
+        ///   "metadata_slug": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.RouteV1> CreateRoutesAsync(
@@ -99,7 +100,8 @@ namespace Baseten
         ///     "model": "zai-org/GLM-5.3",<br/>
         ///     "type": "BASETEN_MODEL_API"<br/>
         ///   },<br/>
-        ///   "description": "Assistant for code review and debugging."<br/>
+        ///   "description": "Assistant for code review and debugging.",<br/>
+        ///   "metadata_slug": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteV1>> CreateRoutesAsResponseAsync(
@@ -485,6 +487,10 @@ namespace Baseten
         /// Short description of the route. Omit for no description; null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="metadataSlug">
+        /// Slug of a metadata row to link. Omit to auto-resolve from the target; required for OPENAI_COMPATIBLE and VERTEX targets.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -494,6 +500,7 @@ namespace Baseten
             string? teamId = default,
             string? displayName = default,
             string? description = default,
+            string? metadataSlug = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -504,6 +511,7 @@ namespace Baseten
                 DisplayName = displayName,
                 Target = target,
                 Description = description,
+                MetadataSlug = metadataSlug,
             };
 
             return await CreateRoutesAsync(

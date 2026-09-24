@@ -131,6 +131,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetEnvironmentGroupsCommandApiCommand.Create());
                          command.Subcommands.Add(GetEnvironmentGroupsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetExploreMetadataCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEndpointsCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEventsCommandApiCommand.Create());

@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_EditRoutesByRouteIdSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_GetExploreMetadataSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,62 +21,69 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_EditRoutesByRouteIdSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetExploreMetadataSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_EditRoutesByRouteIdSecurityRequirement0,
+            {                s_GetExploreMetadataSecurityRequirement0,
             };
-        partial void PrepareEditRoutesByRouteIdArguments(
+        partial void PrepareGetExploreMetadataArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string routeId,
-            global::Baseten.UpdateRouteRequestV1 request);
-        partial void PrepareEditRoutesByRouteIdRequest(
+            ref string? cursor,
+            ref int? limit,
+            ref string? provider,
+            ref string? q);
+        partial void PrepareGetExploreMetadataRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string routeId,
-            global::Baseten.UpdateRouteRequestV1 request);
-        partial void ProcessEditRoutesByRouteIdResponse(
+            string? cursor,
+            int? limit,
+            string? provider,
+            string? q);
+        partial void ProcessGetExploreMetadataResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessEditRoutesByRouteIdResponseContent(
+        partial void ProcessGetExploreMetadataResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Updates a route<br/>
-        /// Replaces the entire target when provided. The route name and owning team are immutable.
+        /// Lists model metadata<br/>
+        /// Lists all live model metadata rows, e.g. for model pickers.
         /// </summary>
-        /// <param name="routeId"></param>
-        /// <param name="request"></param>
+        /// <param name="cursor">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Default Value: 100
+        /// </param>
+        /// <param name="provider">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="q">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/routes/{route_id} \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "description": "Assistant for code review and debugging.",<br/>
-        ///   "display_name": "Assistant",<br/>
-        ///   "target": {<br/>
-        ///     "model": "zai-org/GLM-5.3",<br/>
-        ///     "type": "BASETEN_MODEL_API"<br/>
-        ///   },<br/>
-        ///   "metadata_slug": null<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/explore/metadata \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.RouteV1> EditRoutesByRouteIdAsync(
-            string routeId,
-
-            global::Baseten.UpdateRouteRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.ExploreMetadataResponseV1> GetExploreMetadataAsync(
+            string? cursor = default,
+            int? limit = default,
+            string? provider = default,
+            string? q = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await EditRoutesByRouteIdAsResponseAsync(
-                routeId: routeId,
-
-                request: request,
+            var __response = await GetExploreMetadataAsResponseAsync(
+                cursor: cursor,
+                limit: limit,
+                provider: provider,
+                q: q,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -84,49 +91,51 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Updates a route<br/>
-        /// Replaces the entire target when provided. The route name and owning team are immutable.
+        /// Lists model metadata<br/>
+        /// Lists all live model metadata rows, e.g. for model pickers.
         /// </summary>
-        /// <param name="routeId"></param>
-        /// <param name="request"></param>
+        /// <param name="cursor">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Default Value: 100
+        /// </param>
+        /// <param name="provider">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="q">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/routes/{route_id} \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
-        /// --data '{<br/>
-        ///   "description": "Assistant for code review and debugging.",<br/>
-        ///   "display_name": "Assistant",<br/>
-        ///   "target": {<br/>
-        ///     "model": "zai-org/GLM-5.3",<br/>
-        ///     "type": "BASETEN_MODEL_API"<br/>
-        ///   },<br/>
-        ///   "metadata_slug": null<br/>
-        /// }'
+        /// curl --request GET \<br/>
+        /// --url https://api.baseten.co/v1/explore/metadata \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteV1>> EditRoutesByRouteIdAsResponseAsync(
-            string routeId,
-
-            global::Baseten.UpdateRouteRequestV1 request,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ExploreMetadataResponseV1>> GetExploreMetadataAsResponseAsync(
+            string? cursor = default,
+            int? limit = default,
+            string? provider = default,
+            string? q = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareEditRoutesByRouteIdArguments(
+            PrepareGetExploreMetadataArguments(
                 httpClient: HttpClient,
-                routeId: ref routeId,
-                request: request);
+                cursor: ref cursor,
+                limit: ref limit,
+                provider: ref provider,
+                q: ref q);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_EditRoutesByRouteIdSecurityRequirements,
-                operationName: "EditRoutesByRouteIdAsync");
+                securityRequirements: s_GetExploreMetadataSecurityRequirements,
+                operationName: "GetExploreMetadataAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -146,15 +155,21 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/routes/{routeId}",
+                                path: "/v1/explore/metadata",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("cursor", cursor)
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("provider", provider)
+                                .AddOptionalParameter("q", q)
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: new global::System.Net.Http.HttpMethod("PATCH"),
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -177,12 +192,6 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -191,11 +200,13 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareEditRoutesByRouteIdRequest(
+                PrepareGetExploreMetadataRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    routeId: routeId!,
-                    request: request);
+                    cursor: cursor,
+                    limit: limit,
+                    provider: provider,
+                    q: q);
 
                 return __httpRequest;
             }
@@ -212,10 +223,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editRoutesByRouteId",
-                                methodName: "EditRoutesByRouteIdAsync",
-                                pathTemplate: "$\"/v1/routes/{routeId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "getExploreMetadata",
+                                methodName: "GetExploreMetadataAsync",
+                                pathTemplate: "\"/v1/explore/metadata\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -246,10 +257,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editRoutesByRouteId",
-                                methodName: "EditRoutesByRouteIdAsync",
-                                pathTemplate: "$\"/v1/routes/{routeId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "getExploreMetadata",
+                                methodName: "GetExploreMetadataAsync",
+                                pathTemplate: "\"/v1/explore/metadata\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -287,10 +298,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editRoutesByRouteId",
-                                methodName: "EditRoutesByRouteIdAsync",
-                                pathTemplate: "$\"/v1/routes/{routeId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "getExploreMetadata",
+                                methodName: "GetExploreMetadataAsync",
+                                pathTemplate: "\"/v1/explore/metadata\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -327,7 +338,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessEditRoutesByRouteIdResponse(
+                ProcessGetExploreMetadataResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -335,10 +346,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editRoutesByRouteId",
-                                methodName: "EditRoutesByRouteIdAsync",
-                                pathTemplate: "$\"/v1/routes/{routeId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "getExploreMetadata",
+                                methodName: "GetExploreMetadataAsync",
+                                pathTemplate: "\"/v1/explore/metadata\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -357,10 +368,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "editRoutesByRouteId",
-                                methodName: "EditRoutesByRouteIdAsync",
-                                pathTemplate: "$\"/v1/routes/{routeId}\"",
-                                httpMethod: "PATCH",
+                                operationId: "getExploreMetadata",
+                                methodName: "GetExploreMetadataAsync",
+                                pathTemplate: "\"/v1/explore/metadata\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -387,7 +398,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessEditRoutesByRouteIdResponseContent(
+                                ProcessGetExploreMetadataResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -396,9 +407,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.RouteV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.ExploreMetadataResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ExploreMetadataResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -428,9 +439,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.RouteV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.ExploreMetadataResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ExploreMetadataResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -469,52 +480,6 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Updates a route<br/>
-        /// Replaces the entire target when provided. The route name and owning team are immutable.
-        /// </summary>
-        /// <param name="routeId"></param>
-        /// <param name="description">
-        /// New description. Omit to keep the current description; use an empty string to clear it. Null is not accepted.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="displayName">
-        /// New display label. Omit to keep the current label; null is not accepted.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="target">
-        /// Replaces the entire target. Omit to keep the current target; null is not accepted.
-        /// </param>
-        /// <param name="metadataSlug">
-        /// Slug of a metadata row to link. Omit to keep the current link, or to re-resolve from the new target when target is provided (OPENAI_COMPATIBLE and VERTEX targets always require an explicit slug). Null is not accepted.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.RouteV1> EditRoutesByRouteIdAsync(
-            string routeId,
-            string? description = default,
-            string? displayName = default,
-            global::Baseten.TargetVariant1? target = default,
-            string? metadataSlug = default,
-            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Baseten.UpdateRouteRequestV1
-            {
-                Description = description,
-                DisplayName = displayName,
-                Target = target,
-                MetadataSlug = metadataSlug,
-            };
-
-            return await EditRoutesByRouteIdAsync(
-                routeId: routeId,
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
