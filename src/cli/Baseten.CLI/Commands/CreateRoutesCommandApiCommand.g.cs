@@ -37,6 +37,12 @@ internal static partial class CreateRoutesCommandApiCommand
     {
         Description = @"Short description of the route. Omit for no description; null is not accepted.",
     };
+
+    private static Option<string?> MetadataSlug { get; } = new(
+        name: @"--metadata-slug")
+    {
+        Description = @"Slug of a metadata row to link. Omit to auto-resolve from the target; required for OPENAI_COMPATIBLE and VERTEX targets.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -83,6 +89,7 @@ Dedicated deployment targets are not supported.");
                         command.Options.Add(DisplayName);
                         command.Options.Add(Target);
                         command.Options.Add(DescriptionOption);
+                        command.Options.Add(MetadataSlug);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -113,6 +120,7 @@ Dedicated deployment targets are not supported.");
                         var displayName = CliRuntime.WasSpecified(parseResult, DisplayName) ? parseResult.GetValue(DisplayName) : (__requestBase is { } __DisplayNameBaseValue ? __DisplayNameBaseValue.DisplayName : default);
                         var target = parseResult.GetRequiredValue(Target);
                         var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
+                        var metadataSlug = CliRuntime.WasSpecified(parseResult, MetadataSlug) ? parseResult.GetValue(MetadataSlug) : (__requestBase is { } __MetadataSlugBaseValue ? __MetadataSlugBaseValue.MetadataSlug : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -122,6 +130,7 @@ Dedicated deployment targets are not supported.");
                                     displayName: displayName,
                                     target: target,
                                     description: description,
+                                    metadataSlug: metadataSlug,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

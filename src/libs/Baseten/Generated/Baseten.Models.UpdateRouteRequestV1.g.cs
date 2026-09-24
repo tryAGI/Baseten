@@ -29,6 +29,13 @@ namespace Baseten
         public global::Baseten.TargetVariant1? Target { get; set; }
 
         /// <summary>
+        /// Slug of a metadata row to link. Omit to keep the current link, or to re-resolve from the new target when target is provided (OPENAI_COMPATIBLE and VERTEX targets always require an explicit slug). Null is not accepted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata_slug")]
+        public string? MetadataSlug { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -48,17 +55,23 @@ namespace Baseten
         /// <param name="target">
         /// Replaces the entire target. Omit to keep the current target; null is not accepted.
         /// </param>
+        /// <param name="metadataSlug">
+        /// Slug of a metadata row to link. Omit to keep the current link, or to re-resolve from the new target when target is provided (OPENAI_COMPATIBLE and VERTEX targets always require an explicit slug). Null is not accepted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateRouteRequestV1(
             string? description,
             string? displayName,
-            global::Baseten.TargetVariant1? target)
+            global::Baseten.TargetVariant1? target,
+            string? metadataSlug)
         {
             this.Description = description;
             this.DisplayName = displayName;
             this.Target = target;
+            this.MetadataSlug = metadataSlug;
         }
 
         /// <summary>
