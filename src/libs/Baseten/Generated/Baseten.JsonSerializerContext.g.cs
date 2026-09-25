@@ -630,6 +630,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2), TypeInfoPropertyName = "Target22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminatorType), TypeInfoPropertyName = "CreateRouteRequestV1TargetDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteProviderV1), TypeInfoPropertyName = "RouteProviderV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RoutesUsageBucketV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RoutesUsageResultV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RoutesUsageResultV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RoutesUsageResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RoutesUsageBucketV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteUsageDimensionV1), TypeInfoPropertyName = "RouteUsageDimensionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RoutesUsageRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteProviderV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTombstoneV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TargetVariant1))]
@@ -752,6 +762,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableRouteV1TargetDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2?), TypeInfoPropertyName = "NullableTarget22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRouteRequestV1TargetDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteProviderV1?), TypeInfoPropertyName = "NullableRouteProviderV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteUsageDimensionV1?), TypeInfoPropertyName = "NullableRouteUsageDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType?), TypeInfoPropertyName = "NullableUpdateRouteRequestV1TargetVariant1DiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider?), TypeInfoPropertyName = "NullableGatewayProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SharedEndpointRegionV1?), TypeInfoPropertyName = "NullableSharedEndpointRegionV12")]
@@ -844,6 +856,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GatewayEventV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ExploreMetadataV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RouteV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RoutesUsageResultV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RoutesUsageBucketV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RouteUsageDimensionV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RouteProviderV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointTargetRequestV1>))]
@@ -1183,6 +1199,14 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminatorType)
 
                     || typeToConvert == typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminatorType?)
+
+                    || typeToConvert == typeof(global::Baseten.RouteProviderV1)
+
+                    || typeToConvert == typeof(global::Baseten.RouteProviderV1?)
+
+                    || typeToConvert == typeof(global::Baseten.RouteUsageDimensionV1)
+
+                    || typeToConvert == typeof(global::Baseten.RouteUsageDimensionV1?)
 
                     || typeToConvert == typeof(global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType)
 
@@ -1807,6 +1831,26 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminatorType?))
                 {
                     return new global::Baseten.JsonConverters.CreateRouteRequestV1TargetDiscriminatorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.RouteProviderV1))
+                {
+                    return new global::Baseten.JsonConverters.RouteProviderV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.RouteProviderV1?))
+                {
+                    return new global::Baseten.JsonConverters.RouteProviderV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.RouteUsageDimensionV1))
+                {
+                    return new global::Baseten.JsonConverters.RouteUsageDimensionV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.RouteUsageDimensionV1?))
+                {
+                    return new global::Baseten.JsonConverters.RouteUsageDimensionV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType))

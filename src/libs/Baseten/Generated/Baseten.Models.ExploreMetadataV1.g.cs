@@ -15,6 +15,18 @@ namespace Baseten
         public string? Slug { get; set; }
 
         /// <summary>
+        /// Model display name, when available.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("display_name")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Model release date. Month-only source dates use the first day of that month.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("release_date")]
+        public global::System.DateTime? ReleaseDate { get; set; }
+
+        /// <summary>
         /// Provider key derived from the slug prefix, e.g. 'anthropic'; null for unprefixed slugs.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
@@ -78,6 +90,12 @@ namespace Baseten
         /// <param name="slug">
         /// Metadata slug, e.g. 'anthropic/claude-opus-4'; null for rows without one.
         /// </param>
+        /// <param name="displayName">
+        /// Model display name, when available.
+        /// </param>
+        /// <param name="releaseDate">
+        /// Model release date. Month-only source dates use the first day of that month.
+        /// </param>
         /// <param name="provider">
         /// Provider key derived from the slug prefix, e.g. 'anthropic'; null for unprefixed slugs.
         /// </param>
@@ -105,6 +123,8 @@ namespace Baseten
         public ExploreMetadataV1(
             global::System.Collections.Generic.IList<string> inputModalities,
             string? slug,
+            string? displayName,
+            global::System.DateTime? releaseDate,
             string? provider,
             int? contextWindow,
             int? maxOutputTokens,
@@ -114,6 +134,8 @@ namespace Baseten
             global::Baseten.ExploreMetadataAPIFormatsV1? supportedApiFormats)
         {
             this.Slug = slug;
+            this.DisplayName = displayName;
+            this.ReleaseDate = releaseDate;
             this.Provider = provider;
             this.ContextWindow = contextWindow;
             this.MaxOutputTokens = maxOutputTokens;
