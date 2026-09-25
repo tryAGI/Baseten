@@ -183,6 +183,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetRegionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesByRouteIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetRoutesUsageCommandApiCommand.Create());
                          command.Subcommands.Add(GetSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdCommandApiCommand.Create());

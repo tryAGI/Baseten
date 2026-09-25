@@ -57,6 +57,13 @@ namespace Baseten
         public global::Baseten.ChainDeploymentV1? CandidateDeployment { get; set; }
 
         /// <summary>
+        /// Details of the in-progress promotion, if any<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("in_progress_promotion")]
+        public global::Baseten.InProgressPromotionV1? InProgressPromotion { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -87,6 +94,10 @@ namespace Baseten
         /// Candidate chain deployment being promoted to the environment, if a promotion is in progress<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="inProgressPromotion">
+        /// Details of the in-progress promotion, if any<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -97,7 +108,8 @@ namespace Baseten
             global::Baseten.PromotionSettingsV1 promotionSettings,
             global::System.Collections.Generic.IList<global::Baseten.ChainletEnvironmentSettingsV1> chainletSettings,
             global::Baseten.ChainDeploymentV1? currentDeployment,
-            global::Baseten.ChainDeploymentV1? candidateDeployment)
+            global::Baseten.ChainDeploymentV1? candidateDeployment,
+            global::Baseten.InProgressPromotionV1? inProgressPromotion)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.CreatedAt = createdAt;
@@ -106,6 +118,7 @@ namespace Baseten
             this.ChainletSettings = chainletSettings ?? throw new global::System.ArgumentNullException(nameof(chainletSettings));
             this.CurrentDeployment = currentDeployment;
             this.CandidateDeployment = candidateDeployment;
+            this.InProgressPromotion = inProgressPromotion;
         }
 
         /// <summary>
