@@ -49,6 +49,13 @@ namespace Baseten
         public global::Baseten.VolumeSyncAuthenticationAWSAssumeRoleV1? AwsAssumeRole { get; set; }
 
         /// <summary>
+        /// AWS OIDC authentication for this source. Cannot be combined with other authentication fields.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aws_oidc")]
+        public global::Baseten.VolumeSyncAuthenticationAWSOIDCV1? AwsOidc { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -74,6 +81,10 @@ namespace Baseten
         /// AWS AssumeRole authentication for this source. Cannot be combined with auth_secret_name.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="awsOidc">
+        /// AWS OIDC authentication for this source. Cannot be combined with other authentication fields.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="type">
         /// Amazon S3 source type.
         /// </param>
@@ -86,6 +97,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? exclude,
             string? authSecretName,
             global::Baseten.VolumeSyncAuthenticationAWSAssumeRoleV1? awsAssumeRole,
+            global::Baseten.VolumeSyncAuthenticationAWSOIDCV1? awsOidc,
             string type = "S3")
         {
             this.Uri = uri ?? throw new global::System.ArgumentNullException(nameof(uri));
@@ -94,6 +106,7 @@ namespace Baseten
             this.AuthSecretName = authSecretName;
             this.Type = type;
             this.AwsAssumeRole = awsAssumeRole;
+            this.AwsOidc = awsOidc;
         }
 
         /// <summary>

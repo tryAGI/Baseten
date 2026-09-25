@@ -23,7 +23,8 @@ namespace Baseten
         ///   "target": {<br/>
         ///     "model": "zai-org/GLM-5.3",<br/>
         ///     "type": "BASETEN_MODEL_API"<br/>
-        ///   }<br/>
+        ///   },<br/>
+        ///   "metadata_slug": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.RouteV1> EditRoutesByRouteIdAsync(
@@ -51,7 +52,8 @@ namespace Baseten
         ///   "target": {<br/>
         ///     "model": "zai-org/GLM-5.3",<br/>
         ///     "type": "BASETEN_MODEL_API"<br/>
-        ///   }<br/>
+        ///   },<br/>
+        ///   "metadata_slug": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteV1>> EditRoutesByRouteIdAsResponseAsync(
@@ -76,6 +78,10 @@ namespace Baseten
         /// <param name="target">
         /// Replaces the entire target. Omit to keep the current target; null is not accepted.
         /// </param>
+        /// <param name="metadataSlug">
+        /// Slug of a metadata row to link. Omit to keep the current link, or to re-resolve from the new target when target is provided (OPENAI_COMPATIBLE and VERTEX targets always require an explicit slug). Null is not accepted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -84,6 +90,7 @@ namespace Baseten
             string? description = default,
             string? displayName = default,
             global::Baseten.TargetVariant1? target = default,
+            string? metadataSlug = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -67,6 +67,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateTeamsByTeamIdModelsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdTrainingProjectsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateTokenCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingJobsSearchCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsCommandApiCommand.Create());
@@ -116,6 +117,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingModelApisCommandApiCommand.Create());
+                         command.Subcommands.Add(GetBillingToolCallUsageCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingUsageSummaryCommandApiCommand.Create());
                          command.Subcommands.Add(GetBlobsCredentialsModelCommandApiCommand.Create());
                          command.Subcommands.Add(GetBlobsCredentialsTrainCommandApiCommand.Create());
@@ -129,6 +131,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetEnvironmentGroupsCommandApiCommand.Create());
                          command.Subcommands.Add(GetEnvironmentGroupsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetExploreMetadataCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEndpointsCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayEventsCommandApiCommand.Create());
@@ -180,6 +183,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetRegionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesByRouteIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetRoutesUsageCommandApiCommand.Create());
                          command.Subcommands.Add(GetSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdCommandApiCommand.Create());
