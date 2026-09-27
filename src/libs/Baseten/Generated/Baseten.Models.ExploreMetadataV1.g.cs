@@ -76,6 +76,12 @@ namespace Baseten
         public global::Baseten.ExploreMetadataAPIFormatsV1? SupportedApiFormats { get; set; }
 
         /// <summary>
+        /// Provider list prices in USD per 1M tokens, when available.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cost")]
+        public global::Baseten.ExploreCostV1? Cost { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -117,6 +123,9 @@ namespace Baseten
         /// <param name="supportedApiFormats">
         /// API formats the model supports.
         /// </param>
+        /// <param name="cost">
+        /// Provider list prices in USD per 1M tokens, when available.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -131,7 +140,8 @@ namespace Baseten
             bool? tools,
             global::System.Collections.Generic.IList<string>? reasoningEffortLevels,
             bool? parallelToolCalls,
-            global::Baseten.ExploreMetadataAPIFormatsV1? supportedApiFormats)
+            global::Baseten.ExploreMetadataAPIFormatsV1? supportedApiFormats,
+            global::Baseten.ExploreCostV1? cost)
         {
             this.Slug = slug;
             this.DisplayName = displayName;
@@ -144,6 +154,7 @@ namespace Baseten
             this.ReasoningEffortLevels = reasoningEffortLevels;
             this.ParallelToolCalls = parallelToolCalls;
             this.SupportedApiFormats = supportedApiFormats;
+            this.Cost = cost;
         }
 
         /// <summary>
