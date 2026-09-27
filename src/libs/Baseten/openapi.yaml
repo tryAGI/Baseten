@@ -29731,6 +29731,134 @@
                 "title": "GatewayEventsRequestV1",
                 "type": "object"
             },
+            "ExploreCostV1": {
+                "properties": {
+                    "input": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "USD per 1M input tokens, when available.",
+                        "title": "Input"
+                    },
+                    "output": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "USD per 1M output tokens, when available.",
+                        "title": "Output"
+                    },
+                    "cache_read": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "USD per 1M input tokens read from cache, when available.",
+                        "title": "Cache Read"
+                    },
+                    "cache_write": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "USD per 1M input tokens written to cache, when available.",
+                        "title": "Cache Write"
+                    },
+                    "long_context": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/ExploreCostValuesV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Prices for long-context requests, when the provider tiers by context length."
+                    }
+                },
+                "title": "ExploreCostV1",
+                "type": "object"
+            },
+            "ExploreCostValuesV1": {
+                "properties": {
+                    "input": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "USD per 1M input tokens, when available.",
+                        "title": "Input"
+                    },
+                    "output": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "USD per 1M output tokens, when available.",
+                        "title": "Output"
+                    },
+                    "cache_read": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "USD per 1M input tokens read from cache, when available.",
+                        "title": "Cache Read"
+                    },
+                    "cache_write": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "USD per 1M input tokens written to cache, when available.",
+                        "title": "Cache Write"
+                    }
+                },
+                "title": "ExploreCostValuesV1",
+                "type": "object"
+            },
             "ExploreMetadataAPIFormatsV1": {
                 "properties": {
                     "messages": {
@@ -29887,6 +30015,17 @@
                             }
                         ],
                         "description": "API formats the model supports."
+                    },
+                    "cost": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/ExploreCostV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Provider list prices in USD per 1M tokens, when available."
                     }
                 },
                 "required": [
@@ -29900,7 +30039,8 @@
                     "tools",
                     "reasoning_effort_levels",
                     "parallel_tool_calls",
-                    "supported_api_formats"
+                    "supported_api_formats",
+                    "cost"
                 ],
                 "title": "ExploreMetadataV1",
                 "type": "object"
