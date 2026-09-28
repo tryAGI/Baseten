@@ -229,7 +229,7 @@ namespace Baseten
                     direction: direction,
                     limit: limit,
                     minLevel: minLevel,
-                    deploymentId: deploymentId!);
+                    deploymentId: deploymentId);
 
                 return __httpRequest;
             }
@@ -251,7 +251,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -285,7 +285,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -326,7 +326,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -374,7 +374,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -396,7 +396,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/deployments/{deploymentId}/logs\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

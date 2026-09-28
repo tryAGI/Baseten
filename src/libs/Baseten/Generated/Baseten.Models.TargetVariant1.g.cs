@@ -47,8 +47,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetBasetenModelAPIV1 PickBasetenModelApi() => IsBasetenModelApi
-            ? BasetenModelApi!
+        public global::Baseten.RouteTargetBasetenModelAPIV1 PickBasetenModelApi() => BasetenModelApi is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenModelApi' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetAnthropicV1 PickAnthropic() => IsAnthropic
-            ? Anthropic!
+        public global::Baseten.RouteTargetAnthropicV1 PickAnthropic() => Anthropic is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Anthropic' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetOpenAIV1 PickOpenai() => IsOpenai
-            ? Openai!
+        public global::Baseten.RouteTargetOpenAIV1 PickOpenai() => Openai is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Openai' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetXAIV1 PickXai() => IsXai
-            ? Xai!
+        public global::Baseten.RouteTargetXAIV1 PickXai() => Xai is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Xai' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetVertexV1 PickVertex() => IsVertex
-            ? Vertex!
+        public global::Baseten.RouteTargetVertexV1 PickVertex() => Vertex is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Vertex' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetOpenAICompatibleV1 PickOpenaiCompatible() => IsOpenaiCompatible
-            ? OpenaiCompatible!
+        public global::Baseten.RouteTargetOpenAICompatibleV1 PickOpenaiCompatible() => OpenaiCompatible is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'OpenaiCompatible' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -445,29 +445,29 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsBasetenModelApi && basetenModelApi != null)
+            if (BasetenModelApi is { } __value0 && basetenModelApi != null)
             {
-                return basetenModelApi(BasetenModelApi!);
+                return basetenModelApi(__value0);
             }
-            else if (IsAnthropic && anthropic != null)
+            else if (Anthropic is { } __value1 && anthropic != null)
             {
-                return anthropic(Anthropic!);
+                return anthropic(__value1);
             }
-            else if (IsOpenai && openai != null)
+            else if (Openai is { } __value2 && openai != null)
             {
-                return openai(Openai!);
+                return openai(__value2);
             }
-            else if (IsXai && xai != null)
+            else if (Xai is { } __value3 && xai != null)
             {
-                return xai(Xai!);
+                return xai(__value3);
             }
-            else if (IsVertex && vertex != null)
+            else if (Vertex is { } __value4 && vertex != null)
             {
-                return vertex(Vertex!);
+                return vertex(__value4);
             }
-            else if (IsOpenaiCompatible && openaiCompatible != null)
+            else if (OpenaiCompatible is { } __value5 && openaiCompatible != null)
             {
-                return openaiCompatible(OpenaiCompatible!);
+                return openaiCompatible(__value5);
             }
 
             return default(TResult);
@@ -495,29 +495,29 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsBasetenModelApi)
+            if (BasetenModelApi is { } __value0)
             {
-                basetenModelApi?.Invoke(BasetenModelApi!);
+                basetenModelApi?.Invoke(__value0);
             }
-            else if (IsAnthropic)
+            else if (Anthropic is { } __value1)
             {
-                anthropic?.Invoke(Anthropic!);
+                anthropic?.Invoke(__value1);
             }
-            else if (IsOpenai)
+            else if (Openai is { } __value2)
             {
-                openai?.Invoke(Openai!);
+                openai?.Invoke(__value2);
             }
-            else if (IsXai)
+            else if (Xai is { } __value3)
             {
-                xai?.Invoke(Xai!);
+                xai?.Invoke(__value3);
             }
-            else if (IsVertex)
+            else if (Vertex is { } __value4)
             {
-                vertex?.Invoke(Vertex!);
+                vertex?.Invoke(__value4);
             }
-            else if (IsOpenaiCompatible)
+            else if (OpenaiCompatible is { } __value5)
             {
-                openaiCompatible?.Invoke(OpenaiCompatible!);
+                openaiCompatible?.Invoke(__value5);
             }
         }
 
@@ -538,29 +538,29 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsBasetenModelApi)
+            if (BasetenModelApi is { } __value0)
             {
-                basetenModelApi?.Invoke(BasetenModelApi!);
+                basetenModelApi?.Invoke(__value0);
             }
-            else if (IsAnthropic)
+            else if (Anthropic is { } __value1)
             {
-                anthropic?.Invoke(Anthropic!);
+                anthropic?.Invoke(__value1);
             }
-            else if (IsOpenai)
+            else if (Openai is { } __value2)
             {
-                openai?.Invoke(Openai!);
+                openai?.Invoke(__value2);
             }
-            else if (IsXai)
+            else if (Xai is { } __value3)
             {
-                xai?.Invoke(Xai!);
+                xai?.Invoke(__value3);
             }
-            else if (IsVertex)
+            else if (Vertex is { } __value4)
             {
-                vertex?.Invoke(Vertex!);
+                vertex?.Invoke(__value4);
             }
-            else if (IsOpenaiCompatible)
+            else if (OpenaiCompatible is { } __value5)
             {
-                openaiCompatible?.Invoke(OpenaiCompatible!);
+                openaiCompatible?.Invoke(__value5);
             }
         }
 

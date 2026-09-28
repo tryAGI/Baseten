@@ -47,8 +47,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.LoopsCheckpointS3SourceV1 PickS3() => IsS3
-            ? S3!
+        public global::Baseten.LoopsCheckpointS3SourceV1 PickS3() => S3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'S3' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.LoopsCheckpointVolumeSourceV1 PickVolume() => IsVolume
-            ? Volume!
+        public global::Baseten.LoopsCheckpointVolumeSourceV1 PickVolume() => Volume is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Volume' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsS3 && s3 != null)
+            if (S3 is { } __value0 && s3 != null)
             {
-                return s3(S3!);
+                return s3(__value0);
             }
-            else if (IsVolume && volume != null)
+            else if (Volume is { } __value1 && volume != null)
             {
-                return volume(Volume!);
+                return volume(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsS3)
+            if (S3 is { } __value0)
             {
-                s3?.Invoke(S3!);
+                s3?.Invoke(__value0);
             }
-            else if (IsVolume)
+            else if (Volume is { } __value1)
             {
-                volume?.Invoke(Volume!);
+                volume?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsS3)
+            if (S3 is { } __value0)
             {
-                s3?.Invoke(S3!);
+                s3?.Invoke(__value0);
             }
-            else if (IsVolume)
+            else if (Volume is { } __value1)
             {
-                volume?.Invoke(Volume!);
+                volume?.Invoke(__value1);
             }
         }
 

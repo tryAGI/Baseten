@@ -59,13 +59,13 @@ namespace Baseten.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AutoscalingScheduleV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AutoscalingScheduleV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AutoscalingScheduleV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Daily!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDaily(), typeInfo);
             }
             else if (value.IsOneTime)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.OneTimeAutoscalingScheduleV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.OneTimeAutoscalingScheduleV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.OneTimeAutoscalingScheduleV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.OneTime!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickOneTime(), typeInfo);
             }
         }
     }

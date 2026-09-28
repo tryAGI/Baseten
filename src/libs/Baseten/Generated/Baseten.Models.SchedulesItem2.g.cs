@@ -47,8 +47,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AutoscalingScheduleUpsertV1 PickDaily() => IsDaily
-            ? Daily!
+        public global::Baseten.AutoscalingScheduleUpsertV1 PickDaily() => Daily is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Daily' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.OneTimeAutoscalingScheduleUpsertV1 PickOneTime() => IsOneTime
-            ? OneTime!
+        public global::Baseten.OneTimeAutoscalingScheduleUpsertV1 PickOneTime() => OneTime is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'OneTime' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsDaily && daily != null)
+            if (Daily is { } __value0 && daily != null)
             {
-                return daily(Daily!);
+                return daily(__value0);
             }
-            else if (IsOneTime && oneTime != null)
+            else if (OneTime is { } __value1 && oneTime != null)
             {
-                return oneTime(OneTime!);
+                return oneTime(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsDaily)
+            if (Daily is { } __value0)
             {
-                daily?.Invoke(Daily!);
+                daily?.Invoke(__value0);
             }
-            else if (IsOneTime)
+            else if (OneTime is { } __value1)
             {
-                oneTime?.Invoke(OneTime!);
+                oneTime?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsDaily)
+            if (Daily is { } __value0)
             {
-                daily?.Invoke(Daily!);
+                daily?.Invoke(__value0);
             }
-            else if (IsOneTime)
+            else if (OneTime is { } __value1)
             {
-                oneTime?.Invoke(OneTime!);
+                oneTime?.Invoke(__value1);
             }
         }
 

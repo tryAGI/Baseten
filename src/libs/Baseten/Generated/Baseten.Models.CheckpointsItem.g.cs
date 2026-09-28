@@ -47,8 +47,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.BasetenLatestCheckpointConfig PickBasetenLatestCheckpoint() => IsBasetenLatestCheckpoint
-            ? BasetenLatestCheckpoint!
+        public global::Baseten.BasetenLatestCheckpointConfig PickBasetenLatestCheckpoint() => BasetenLatestCheckpoint is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenLatestCheckpoint' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.BasetenNamedCheckpointConfig PickBasetenNamedCheckpoint() => IsBasetenNamedCheckpoint
-            ? BasetenNamedCheckpoint!
+        public global::Baseten.BasetenNamedCheckpointConfig PickBasetenNamedCheckpoint() => BasetenNamedCheckpoint is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenNamedCheckpoint' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.LoopsCheckpointConfig PickLoopsCheckpoint() => IsLoopsCheckpoint
-            ? LoopsCheckpoint!
+        public global::Baseten.LoopsCheckpointConfig PickLoopsCheckpoint() => LoopsCheckpoint is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'LoopsCheckpoint' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -250,17 +250,17 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsBasetenLatestCheckpoint && basetenLatestCheckpoint != null)
+            if (BasetenLatestCheckpoint is { } __value0 && basetenLatestCheckpoint != null)
             {
-                return basetenLatestCheckpoint(BasetenLatestCheckpoint!);
+                return basetenLatestCheckpoint(__value0);
             }
-            else if (IsBasetenNamedCheckpoint && basetenNamedCheckpoint != null)
+            else if (BasetenNamedCheckpoint is { } __value1 && basetenNamedCheckpoint != null)
             {
-                return basetenNamedCheckpoint(BasetenNamedCheckpoint!);
+                return basetenNamedCheckpoint(__value1);
             }
-            else if (IsLoopsCheckpoint && loopsCheckpoint != null)
+            else if (LoopsCheckpoint is { } __value2 && loopsCheckpoint != null)
             {
-                return loopsCheckpoint(LoopsCheckpoint!);
+                return loopsCheckpoint(__value2);
             }
 
             return default(TResult);
@@ -282,17 +282,17 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsBasetenLatestCheckpoint)
+            if (BasetenLatestCheckpoint is { } __value0)
             {
-                basetenLatestCheckpoint?.Invoke(BasetenLatestCheckpoint!);
+                basetenLatestCheckpoint?.Invoke(__value0);
             }
-            else if (IsBasetenNamedCheckpoint)
+            else if (BasetenNamedCheckpoint is { } __value1)
             {
-                basetenNamedCheckpoint?.Invoke(BasetenNamedCheckpoint!);
+                basetenNamedCheckpoint?.Invoke(__value1);
             }
-            else if (IsLoopsCheckpoint)
+            else if (LoopsCheckpoint is { } __value2)
             {
-                loopsCheckpoint?.Invoke(LoopsCheckpoint!);
+                loopsCheckpoint?.Invoke(__value2);
             }
         }
 
@@ -310,17 +310,17 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsBasetenLatestCheckpoint)
+            if (BasetenLatestCheckpoint is { } __value0)
             {
-                basetenLatestCheckpoint?.Invoke(BasetenLatestCheckpoint!);
+                basetenLatestCheckpoint?.Invoke(__value0);
             }
-            else if (IsBasetenNamedCheckpoint)
+            else if (BasetenNamedCheckpoint is { } __value1)
             {
-                basetenNamedCheckpoint?.Invoke(BasetenNamedCheckpoint!);
+                basetenNamedCheckpoint?.Invoke(__value1);
             }
-            else if (IsLoopsCheckpoint)
+            else if (LoopsCheckpoint is { } __value2)
             {
-                loopsCheckpoint?.Invoke(LoopsCheckpoint!);
+                loopsCheckpoint?.Invoke(__value2);
             }
         }
 

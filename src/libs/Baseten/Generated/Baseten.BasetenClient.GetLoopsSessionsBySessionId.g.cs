@@ -157,7 +157,7 @@ namespace Baseten
                 PrepareGetLoopsSessionsBySessionIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    sessionId: sessionId!);
+                    sessionId: sessionId);
 
                 return __httpRequest;
             }
@@ -179,7 +179,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/sessions/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -213,7 +213,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/sessions/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -254,7 +254,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/sessions/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -302,7 +302,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/sessions/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -324,7 +324,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/loops/sessions/{sessionId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

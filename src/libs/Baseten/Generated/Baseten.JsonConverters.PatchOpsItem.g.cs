@@ -95,37 +95,37 @@ namespace Baseten.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.DeploymentPatchOpModelCodeV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.DeploymentPatchOpModelCodeV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.DeploymentPatchOpModelCodeV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelCode!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelCode(), typeInfo);
             }
             else if (value.IsPackage)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.DeploymentPatchOpPackageV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.DeploymentPatchOpPackageV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.DeploymentPatchOpPackageV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Package!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPackage(), typeInfo);
             }
             else if (value.IsConfig)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.DeploymentPatchOpConfigV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.DeploymentPatchOpConfigV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.DeploymentPatchOpConfigV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Config!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConfig(), typeInfo);
             }
             else if (value.IsPythonRequirement)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.DeploymentPatchOpPythonRequirementV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.DeploymentPatchOpPythonRequirementV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.DeploymentPatchOpPythonRequirementV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PythonRequirement!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPythonRequirement(), typeInfo);
             }
             else if (value.IsEnvironmentVariable)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.DeploymentPatchOpEnvVarV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.DeploymentPatchOpEnvVarV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.DeploymentPatchOpEnvVarV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.EnvironmentVariable!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEnvironmentVariable(), typeInfo);
             }
             else if (value.IsExternalData)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.DeploymentPatchOpExternalDataV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.DeploymentPatchOpExternalDataV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.DeploymentPatchOpExternalDataV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ExternalData!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickExternalData(), typeInfo);
             }
         }
     }
