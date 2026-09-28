@@ -33,6 +33,8 @@ internal static partial class GetLoopsRunsByRunIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-runs-by-run-id", @"Gets a Loops run
@@ -59,6 +61,7 @@ Fetches a Loops run by ID.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

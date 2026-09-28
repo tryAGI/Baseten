@@ -39,6 +39,8 @@ internal static partial class GetVolumesNamespacesCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-volumes-namespaces", @"Gets the volume namespaces in your workspace
@@ -76,6 +78,7 @@ Returns the namespaces that hold volumes your API key can read, in lowercase. Na
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

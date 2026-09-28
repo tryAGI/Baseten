@@ -39,6 +39,8 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdDownloa
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-download", @"Gets a presigned download URL for a deployment's truss
@@ -68,6 +70,7 @@ Gets a presigned URL to download the truss tar file for a deployment.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

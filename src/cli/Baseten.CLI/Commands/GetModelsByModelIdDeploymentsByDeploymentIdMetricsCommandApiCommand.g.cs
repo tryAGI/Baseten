@@ -63,6 +63,8 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdMetrics
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-metrics", @"Gets the metrics for a model deployment
@@ -104,6 +106,7 @@ Gets the metrics for a model deployment in the given time range.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

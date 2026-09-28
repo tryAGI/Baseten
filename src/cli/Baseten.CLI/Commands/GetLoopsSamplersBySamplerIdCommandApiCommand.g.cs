@@ -33,6 +33,8 @@ internal static partial class GetLoopsSamplersBySamplerIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-samplers-by-sampler-id", @"Gets a Loops sampler
@@ -59,6 +61,7 @@ Fetches a Loops sampler by ID.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

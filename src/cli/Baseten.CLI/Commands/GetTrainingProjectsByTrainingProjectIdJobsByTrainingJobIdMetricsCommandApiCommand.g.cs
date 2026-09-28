@@ -57,6 +57,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-metrics", @"Gets the metrics for a training job
@@ -95,6 +97,7 @@ Gets the metrics for a training job.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

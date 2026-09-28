@@ -81,6 +81,8 @@ internal static partial class GetModelApisUsageCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-model-apis-usage", @"Gets Model APIs token usage in time buckets
@@ -139,6 +141,7 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

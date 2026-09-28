@@ -45,6 +45,8 @@ internal static partial class GetLoopsCapabilitiesCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-capabilities", @"Gets Loops server capabilities
@@ -85,6 +87,7 @@ Returns the list of models supported by the Loops server, including each model's
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

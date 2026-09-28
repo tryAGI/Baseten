@@ -39,6 +39,8 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameCommandApiC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-volumes-by-volume-namespace-by-volume-name", @"Gets a volume
@@ -76,6 +78,7 @@ Returns a volume with its tags, head version, version counts, and any scheduled 
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

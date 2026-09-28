@@ -33,6 +33,8 @@ internal static partial class GetTeamsByTeamIdSecretsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-teams-by-team-id-secrets", @"Gets all secrets for a team (metadata only, no plain text keys)");
@@ -66,6 +68,7 @@ internal static partial class GetTeamsByTeamIdSecretsCommandApiCommand
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

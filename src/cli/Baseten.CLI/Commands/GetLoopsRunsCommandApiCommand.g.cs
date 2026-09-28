@@ -45,6 +45,8 @@ internal static partial class GetLoopsRunsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-runs", @"Lists Loops runs
@@ -85,6 +87,7 @@ Lists Loops runs visible to the requesting user, optionally filtered by run id a
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -63,6 +63,8 @@ internal static partial class GetLoopsDeploymentsByDeploymentIdLogsCommandApiCom
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-deployments-by-deployment-id-logs", @"Gets logs for a Loops trainer deployment
@@ -112,6 +114,7 @@ Fetches logs from the trainer pods of a Loops deployment. Visible to any member 
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

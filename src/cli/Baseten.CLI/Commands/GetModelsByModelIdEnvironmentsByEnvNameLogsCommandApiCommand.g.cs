@@ -105,6 +105,8 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameLogsCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-environments-by-env-name-logs", @"Gets the logs for a model environment
@@ -175,6 +177,7 @@ Gets logs across all deployments that were active on the environment in the give
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -51,6 +51,8 @@ internal static partial class GetExploreMetadataCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-explore-metadata", @"Lists model metadata
@@ -94,6 +96,7 @@ Lists all live model metadata rows, e.g. for model pickers.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

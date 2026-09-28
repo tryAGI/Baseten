@@ -63,6 +63,8 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameMetricsComm
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-environments-by-env-name-metrics", @"Gets the metrics for a model environment.
@@ -104,6 +106,7 @@ Gets metrics aggregated across every deployment that was active on the environme
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

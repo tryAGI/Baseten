@@ -105,6 +105,8 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdLogsCom
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-logs", @"Gets the logs for a model deployment
@@ -175,6 +177,7 @@ Gets all the logs for a model deployment in the given time range, which defaults
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

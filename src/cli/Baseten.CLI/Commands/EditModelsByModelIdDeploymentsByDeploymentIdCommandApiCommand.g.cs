@@ -61,6 +61,8 @@ internal static partial class EditModelsByModelIdDeploymentsByDeploymentIdComman
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-models-by-model-id-deployments-by-deployment-id", @"Updates a model's deployment by ID
@@ -113,6 +115,7 @@ Updates the mutable fields of a deployment and returns the updated deployment.")
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

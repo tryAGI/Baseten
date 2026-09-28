@@ -33,6 +33,8 @@ internal static partial class GetEnvironmentGroupsByEnvNameCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-environment-groups-by-env-name", @"Gets an environment group by name
@@ -59,6 +61,7 @@ Gets a single environment group by name. The team-scoped path targets the team i
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

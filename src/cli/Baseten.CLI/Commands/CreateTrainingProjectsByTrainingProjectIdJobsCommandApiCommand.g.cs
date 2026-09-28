@@ -40,6 +40,8 @@ internal static partial class CreateTrainingProjectsByTrainingProjectIdJobsComma
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-training-projects-by-training-project-id-jobs", @"Creates a training job
@@ -69,6 +71,7 @@ Creates a training job with the specified configuration.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

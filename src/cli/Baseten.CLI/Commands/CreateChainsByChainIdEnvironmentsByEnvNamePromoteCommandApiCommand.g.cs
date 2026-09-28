@@ -66,6 +66,8 @@ internal static partial class CreateChainsByChainIdEnvironmentsByEnvNamePromoteC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-chains-by-chain-id-environments-by-env-name-promote", @"Promotes a chain deployment to an environment
@@ -129,6 +131,7 @@ Promotes an existing chain deployment to an environment and returns the promoted
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

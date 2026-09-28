@@ -69,6 +69,8 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdVersionsB
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-library-listings-by-user-defined-listing-id-versions-by-version-tag", @"Updates a library listing version
@@ -127,6 +129,7 @@ Updates a library listing version. Setting is_live to true will demote the curre
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

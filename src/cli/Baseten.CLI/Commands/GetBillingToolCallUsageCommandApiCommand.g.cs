@@ -40,6 +40,8 @@ internal static partial class GetBillingToolCallUsageCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-billing-tool-call-usage", @"Gets server-side tool call usage
@@ -77,6 +79,7 @@ Returns your organization's server-side tool call usage (web search and fetch to
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

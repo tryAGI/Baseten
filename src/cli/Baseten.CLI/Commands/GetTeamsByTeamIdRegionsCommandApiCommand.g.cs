@@ -33,6 +33,8 @@ internal static partial class GetTeamsByTeamIdRegionsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-teams-by-team-id-regions", @"Lists regions available to a team
@@ -67,6 +69,7 @@ Lists the regions the team specified in the path can place deployments in.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

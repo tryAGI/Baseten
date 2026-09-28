@@ -33,6 +33,8 @@ internal static partial class DeleteLibraryListingsByUserDefinedListingIdCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-library-listings-by-user-defined-listing-id", @"Deletes a library listing
@@ -59,6 +61,7 @@ Deletes a library listing and all of its associated versions. Any versions that 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

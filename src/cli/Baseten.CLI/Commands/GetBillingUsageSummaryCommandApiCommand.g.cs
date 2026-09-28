@@ -41,6 +41,8 @@ internal static partial class GetBillingUsageSummaryCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-billing-usage-summary", @"Gets billing usage summary for a date range
@@ -70,6 +72,7 @@ Returns billing usage data within the specified date range. Includes dedicated m
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

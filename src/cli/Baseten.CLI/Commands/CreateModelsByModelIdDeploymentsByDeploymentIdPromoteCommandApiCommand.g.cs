@@ -56,6 +56,8 @@ internal static partial class CreateModelsByModelIdDeploymentsByDeploymentIdProm
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-promote", @"Promotes a deployment to production
@@ -109,6 +111,7 @@ Promotes an existing deployment to production and returns the same deployment.")
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

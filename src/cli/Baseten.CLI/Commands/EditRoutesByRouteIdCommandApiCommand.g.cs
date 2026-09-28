@@ -73,6 +73,8 @@ internal static partial class EditRoutesByRouteIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-routes-by-route-id", @"Updates a route
@@ -131,6 +133,7 @@ Replaces the entire target when provided. The route name and owning team are imm
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

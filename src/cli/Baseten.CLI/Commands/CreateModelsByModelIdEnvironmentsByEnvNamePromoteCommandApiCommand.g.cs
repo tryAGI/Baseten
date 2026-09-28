@@ -70,6 +70,8 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNamePromoteC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-environments-by-env-name-promote", @"Promotes a deployment to an environment
@@ -128,6 +130,7 @@ Promotes an existing deployment to an environment and returns the promoted deplo
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

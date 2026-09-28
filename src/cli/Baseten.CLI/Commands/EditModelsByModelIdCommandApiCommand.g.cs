@@ -55,6 +55,8 @@ internal static partial class EditModelsByModelIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-models-by-model-id", @"Updates a model by ID
@@ -104,6 +106,7 @@ Updates the mutable fields of a model and returns the updated model. Renaming do
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -33,6 +33,8 @@ internal static partial class CreateLoopsRunsByRunIdDeactivateCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-loops-runs-by-run-id-deactivate", @"Deactivates a Loops run
@@ -59,6 +61,7 @@ Shuts down a Loops run by ID, tearing down both the run and its paired sampler. 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

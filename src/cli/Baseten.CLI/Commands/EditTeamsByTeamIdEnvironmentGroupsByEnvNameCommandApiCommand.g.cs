@@ -56,6 +56,8 @@ internal static partial class EditTeamsByTeamIdEnvironmentGroupsByEnvNameCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-teams-by-team-id-environment-groups-by-env-name", @"Updates an environment group's restriction settings
@@ -120,6 +122,7 @@ Sets whether the environment is restricted and replaces the list of users grante
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

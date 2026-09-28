@@ -39,6 +39,8 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameCancelPr
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-environments-by-env-name-cancel-promotion", @"Cancels a promotion to an environment
@@ -68,6 +70,7 @@ Cancels an ongoing promotion to an environment and returns the cancellation stat
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

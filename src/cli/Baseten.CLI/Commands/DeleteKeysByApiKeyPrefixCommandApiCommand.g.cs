@@ -33,6 +33,8 @@ internal static partial class DeleteKeysByApiKeyPrefixCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-keys-by-api-key-prefix", @"Deletes an API key by prefix
@@ -59,6 +61,7 @@ Deletes an API key by prefix and returns info about the API key.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

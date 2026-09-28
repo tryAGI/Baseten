@@ -39,6 +39,8 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameForceRol
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-environments-by-env-name-force-roll-forward-promotion", @"Force rolls forward a rolling promotion
@@ -68,6 +70,7 @@ Immediately completes the rolling promotion, shifting all traffic to the new ver
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

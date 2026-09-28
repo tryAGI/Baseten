@@ -39,6 +39,8 @@ internal static partial class DeleteTrainingProjectsByTrainingProjectIdJobsByTra
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-training-projects-by-training-project-id-jobs-by-training-job-id", @"Deletes a training job
@@ -68,6 +70,7 @@ Deletes a training job. Stops it first if still running.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -33,6 +33,8 @@ internal static partial class GetLoopsDeploymentsByDeploymentIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-deployments-by-deployment-id", @"Gets a Loops deployment
@@ -59,6 +61,7 @@ Fetches a Loops deployment by ID, including its latest status.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

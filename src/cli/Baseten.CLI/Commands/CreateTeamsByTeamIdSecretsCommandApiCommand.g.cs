@@ -34,6 +34,8 @@ internal static partial class CreateTeamsByTeamIdSecretsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-teams-by-team-id-secrets", @"Upserts a secret in a team
@@ -64,6 +66,7 @@ Creates a new secret or updates an existing secret if one with the provided name
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

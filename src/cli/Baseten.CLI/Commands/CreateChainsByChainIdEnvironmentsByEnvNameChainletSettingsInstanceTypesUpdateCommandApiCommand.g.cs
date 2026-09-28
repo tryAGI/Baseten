@@ -46,6 +46,8 @@ internal static partial class CreateChainsByChainIdEnvironmentsByEnvNameChainlet
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-chains-by-chain-id-environments-by-env-name-chainlet-settings-instance-types-update", @"Updates a chainlet environment's instance type settings
@@ -86,6 +88,7 @@ Updates a chainlet environment's instance type settings. The chainlet environmen
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

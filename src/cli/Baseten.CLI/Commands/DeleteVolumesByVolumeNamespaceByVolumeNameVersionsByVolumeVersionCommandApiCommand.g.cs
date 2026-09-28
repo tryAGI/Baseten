@@ -67,6 +67,8 @@ internal static partial class DeleteVolumesByVolumeNamespaceByVolumeNameVersions
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version", @"Deletes one version of a volume
@@ -122,6 +124,7 @@ Deletes the version the address names, along with every tag pointing at it. Addr
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

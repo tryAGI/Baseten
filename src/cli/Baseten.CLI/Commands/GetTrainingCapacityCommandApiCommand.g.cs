@@ -29,6 +29,8 @@ internal static partial class GetTrainingCapacityCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-training-capacity", @"Gets training GPU capacity
@@ -55,6 +57,7 @@ Returns GPU capacity limits (baseline and peak) and current usage for the organi
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

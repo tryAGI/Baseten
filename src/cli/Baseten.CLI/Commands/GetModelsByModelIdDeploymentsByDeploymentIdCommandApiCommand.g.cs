@@ -39,6 +39,8 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id", @"Gets a model's deployment by ID
@@ -68,6 +70,7 @@ Gets a model's deployment by ID and returns the deployment.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

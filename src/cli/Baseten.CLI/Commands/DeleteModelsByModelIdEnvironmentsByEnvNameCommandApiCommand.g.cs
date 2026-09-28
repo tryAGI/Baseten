@@ -39,6 +39,8 @@ internal static partial class DeleteModelsByModelIdEnvironmentsByEnvNameCommandA
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-models-by-model-id-environments-by-env-name", @"Deletes an environment
@@ -68,6 +70,7 @@ Deletes an environment and returns its tombstone. Any in-progress promotion to t
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

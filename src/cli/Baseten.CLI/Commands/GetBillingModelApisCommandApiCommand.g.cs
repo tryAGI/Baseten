@@ -81,6 +81,8 @@ internal static partial class GetBillingModelApisCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-billing-model-apis", @"Gets daily Model APIs costs
@@ -139,6 +141,7 @@ Returns daily Model API costs in USD for your organization, with optional filter
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

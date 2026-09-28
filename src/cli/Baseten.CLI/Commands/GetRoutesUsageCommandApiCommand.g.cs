@@ -87,6 +87,8 @@ internal static partial class GetRoutesUsageCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-routes-usage", @"Gets daily route usage and estimated costs
@@ -148,6 +150,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

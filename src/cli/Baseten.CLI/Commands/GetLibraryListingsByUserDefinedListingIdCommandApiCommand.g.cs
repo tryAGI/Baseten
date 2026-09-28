@@ -33,6 +33,8 @@ internal static partial class GetLibraryListingsByUserDefinedListingIdCommandApi
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-library-listings-by-user-defined-listing-id", @"Gets a library listing
@@ -59,6 +61,7 @@ Returns a specific library listing by its user-defined identifier.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

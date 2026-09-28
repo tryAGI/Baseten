@@ -46,6 +46,8 @@ internal static partial class GetVolumesCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-volumes", @"Gets the volumes in a namespace
@@ -86,6 +88,7 @@ Returns one row per volume in the namespace, each with its tags, head version, v
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

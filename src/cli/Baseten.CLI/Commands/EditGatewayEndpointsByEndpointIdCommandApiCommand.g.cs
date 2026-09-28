@@ -55,6 +55,8 @@ internal static partial class EditGatewayEndpointsByEndpointIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-gateway-endpoints-by-endpoint-id", @"Updates a Gateway endpoint
@@ -112,6 +114,7 @@ Updates the endpoint's provided mutable fields. If targets are provided, the ful
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

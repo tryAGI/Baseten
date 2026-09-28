@@ -33,6 +33,8 @@ internal static partial class CreateLoopsDeploymentsByDeploymentIdDeactivateComm
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-loops-deployments-by-deployment-id-deactivate", @"Deactivates a Loops deployment
@@ -59,6 +61,7 @@ Shuts down a Loops deployment by ID. Saved checkpoints remain accessible. Resolv
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

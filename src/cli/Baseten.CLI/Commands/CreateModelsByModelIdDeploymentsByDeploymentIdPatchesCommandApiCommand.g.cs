@@ -60,6 +60,8 @@ internal static partial class CreateModelsByModelIdDeploymentsByDeploymentIdPatc
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-patches", @"Stages a patch against a development deployment
@@ -98,6 +100,7 @@ Persists a patch durably without applying it; call the sync endpoint to apply st
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

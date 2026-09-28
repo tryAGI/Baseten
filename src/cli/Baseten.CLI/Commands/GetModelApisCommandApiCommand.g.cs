@@ -43,6 +43,8 @@ internal static partial class GetModelApisCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-model-apis", @"Lists Model APIs
@@ -83,6 +85,7 @@ Lists Model APIs visible to the caller. By default returns the full catalog; pas
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
