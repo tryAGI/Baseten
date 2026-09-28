@@ -33,6 +33,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdCacheSummary
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-training-projects-by-training-project-id-cache-summary", @"Gets training project cache summary
@@ -67,6 +69,7 @@ Gets the cache summary for the most recent training job in the project.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -51,6 +51,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-checkpoint-files", @"Gets training job checkpoint files
@@ -94,6 +96,7 @@ Gets presigned URLs for all checkpoint files for a training job.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

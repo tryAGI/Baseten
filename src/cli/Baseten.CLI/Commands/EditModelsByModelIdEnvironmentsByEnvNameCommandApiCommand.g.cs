@@ -70,6 +70,8 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-models-by-model-id-environments-by-env-name", @"Updates an environment's settings
@@ -179,6 +181,7 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

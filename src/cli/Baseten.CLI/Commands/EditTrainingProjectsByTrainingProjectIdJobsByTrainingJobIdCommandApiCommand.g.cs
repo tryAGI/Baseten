@@ -67,6 +67,8 @@ internal static partial class EditTrainingProjectsByTrainingProjectIdJobsByTrain
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-training-projects-by-training-project-id-jobs-by-training-job-id", @"Updates a training job
@@ -122,6 +124,7 @@ Updates mutable fields on a PENDING training job: the queue priority (higher pri
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

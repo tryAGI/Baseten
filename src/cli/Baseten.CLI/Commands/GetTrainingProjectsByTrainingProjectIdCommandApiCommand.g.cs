@@ -33,6 +33,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdCommandApiCo
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-training-projects-by-training-project-id", @"Gets a training project
@@ -59,6 +61,7 @@ Gets the details of an existing training project.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

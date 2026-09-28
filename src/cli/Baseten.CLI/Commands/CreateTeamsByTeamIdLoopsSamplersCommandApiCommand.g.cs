@@ -50,6 +50,8 @@ internal static partial class CreateTeamsByTeamIdLoopsSamplersCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-teams-by-team-id-loops-samplers", @"Creates a Loops sampler in a team
@@ -112,6 +114,7 @@ Creates a standalone Loops sampler not linked to a run; the sampler belongs to t
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

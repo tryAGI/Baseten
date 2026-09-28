@@ -48,6 +48,8 @@ internal static partial class EditTrainingCapacityCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-training-capacity", @"Sets a team's training GPU capacity
@@ -80,6 +82,7 @@ Sets the max concurrent GPUs of a given type a team may use. Creates the limit i
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

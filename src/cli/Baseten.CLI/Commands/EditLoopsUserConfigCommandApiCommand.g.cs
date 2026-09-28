@@ -55,6 +55,8 @@ internal static partial class EditLoopsUserConfigCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-loops-user-config", @"Patches the caller's Loops user config
@@ -104,6 +106,7 @@ Updates the caller's Loops user config using JSON Merge Patch (RFC 7396) semanti
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

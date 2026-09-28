@@ -39,6 +39,8 @@ internal static partial class GetChainsByChainIdEnvironmentsByEnvNameCommandApiC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-chains-by-chain-id-environments-by-env-name", @"Gets a chain environment's details
@@ -76,6 +78,7 @@ Gets a chain environment's details and returns the chain environment.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

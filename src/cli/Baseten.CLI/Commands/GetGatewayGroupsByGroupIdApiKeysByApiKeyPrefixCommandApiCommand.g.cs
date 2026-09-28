@@ -39,6 +39,8 @@ internal static partial class GetGatewayGroupsByGroupIdApiKeysByApiKeyPrefixComm
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-gateway-groups-by-group-id-api-keys-by-api-key-prefix", @"Gets an API key for a group");
@@ -67,6 +69,7 @@ internal static partial class GetGatewayGroupsByGroupIdApiKeysByApiKeyPrefixComm
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

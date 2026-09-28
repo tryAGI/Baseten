@@ -81,6 +81,8 @@ internal static partial class CreateLibraryListingsByUserDefinedListingIdVersion
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-library-listings-by-user-defined-listing-id-versions", @"Creates a new library listing version
@@ -145,6 +147,7 @@ Creates a new library listing version from an existing model version. The model 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

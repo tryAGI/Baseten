@@ -33,6 +33,8 @@ internal static partial class GetModelsByModelIdDeploymentsProductionCommandApiC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-deployments-production", @"Gets a model's production deployment
@@ -59,6 +61,7 @@ Gets a model's production deployment and returns the deployment.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

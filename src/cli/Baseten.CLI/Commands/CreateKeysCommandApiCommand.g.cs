@@ -50,6 +50,8 @@ internal static partial class CreateKeysCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-keys", @"Creates an API key
@@ -103,6 +105,7 @@ Creates an API key with the provided name and type. The API key is returned in t
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

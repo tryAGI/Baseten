@@ -70,6 +70,8 @@ internal static partial class CreateVolumesTokenCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-volumes-token", @"Creates a volume access token
@@ -125,6 +127,7 @@ Exchanges your API key for a short-lived token that authenticates against Basete
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

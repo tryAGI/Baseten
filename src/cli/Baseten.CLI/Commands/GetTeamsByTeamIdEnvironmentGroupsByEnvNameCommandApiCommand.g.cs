@@ -39,6 +39,8 @@ internal static partial class GetTeamsByTeamIdEnvironmentGroupsByEnvNameCommandA
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-teams-by-team-id-environment-groups-by-env-name", @"Gets an environment group by name
@@ -68,6 +70,7 @@ Gets a single environment group by name. The team-scoped path targets the team i
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

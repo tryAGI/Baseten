@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static class DefaultApiGroupCommand
+internal static partial class DefaultApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"default", @"default endpoint commands.");
@@ -217,6 +219,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(GetVolumesNamespacesCommandApiCommand.Create());
                          command.Subcommands.Add(GetVolumesSyncsCommandApiCommand.Create());
                          command.Subcommands.Add(GetVolumesSyncsByVolumeSyncIdCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

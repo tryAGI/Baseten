@@ -33,6 +33,8 @@ internal static partial class DeleteSecretsBySecretNameCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-secrets-by-secret-name", @"Deletes a secret by name
@@ -59,6 +61,7 @@ Deletes a secret by name in the specified team, or in the caller's organization 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

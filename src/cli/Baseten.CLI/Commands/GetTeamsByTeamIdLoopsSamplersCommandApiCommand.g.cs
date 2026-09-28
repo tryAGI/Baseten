@@ -39,6 +39,8 @@ internal static partial class GetTeamsByTeamIdLoopsSamplersCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-teams-by-team-id-loops-samplers", @"Lists a team's Loops samplers
@@ -76,6 +78,7 @@ Lists Loops samplers (paired and standalone) in the given team, visible to the r
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

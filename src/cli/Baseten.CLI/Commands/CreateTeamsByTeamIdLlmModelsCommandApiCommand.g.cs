@@ -95,6 +95,8 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-teams-by-team-id-llm-models", @"Creates a new BIS-LLM deployment");
@@ -201,6 +203,7 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

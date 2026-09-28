@@ -29,6 +29,8 @@ internal static partial class GetLoopsUserConfigCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-user-config", @"Gets the caller's Loops user config
@@ -55,6 +57,7 @@ Returns the caller's Loops user config (per-user accelerator priorities). Null f
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

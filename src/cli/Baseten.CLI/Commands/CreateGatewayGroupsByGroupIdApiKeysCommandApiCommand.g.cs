@@ -55,6 +55,8 @@ internal static partial class CreateGatewayGroupsByGroupIdApiKeysCommandApiComma
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-gateway-groups-by-group-id-api-keys", @"Creates an API key for a group
@@ -104,6 +106,7 @@ Creates a new API key for the given group.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

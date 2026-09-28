@@ -33,6 +33,8 @@ internal static partial class GetTeamsByTeamIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-teams-by-team-id", @"Gets a team by ID
@@ -59,6 +61,7 @@ Returns a team the authenticated user has access to.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

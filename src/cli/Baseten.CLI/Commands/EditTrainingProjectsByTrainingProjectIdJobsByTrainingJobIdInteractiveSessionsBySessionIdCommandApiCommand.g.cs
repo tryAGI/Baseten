@@ -73,6 +73,8 @@ internal static partial class EditTrainingProjectsByTrainingProjectIdJobsByTrain
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-training-projects-by-training-project-id-jobs-by-training-job-id-interactive-sessions-by-session-id", @"Patches an interactive session
@@ -131,6 +133,7 @@ Updates specific fields on a training job's interactive session. Only provided (
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -61,6 +61,8 @@ internal static partial class DeleteVolumesByVolumeNamespaceByVolumeNameCommandA
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-volumes-by-volume-namespace-by-volume-name", @"Deletes a volume
@@ -113,6 +115,7 @@ Deletes every live version of the volume, after which the volume stops appearing
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -65,6 +65,8 @@ internal static partial class CreateModelsByModelIdEnvironmentsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-environments", @"Creates an environment
@@ -171,6 +173,7 @@ Creates an environment for the specified model and returns the environment.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

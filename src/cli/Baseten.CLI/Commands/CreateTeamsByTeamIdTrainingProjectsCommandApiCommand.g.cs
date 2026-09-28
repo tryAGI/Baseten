@@ -34,6 +34,8 @@ internal static partial class CreateTeamsByTeamIdTrainingProjectsCommandApiComma
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-teams-by-team-id-training-projects", @"Upserts a training project in a specific team
@@ -71,6 +73,7 @@ Upserts a training project with the specified metadata for a team.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

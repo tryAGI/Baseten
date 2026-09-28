@@ -69,6 +69,8 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdCommandAp
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-library-listings-by-user-defined-listing-id", @"Updates a library listing
@@ -127,6 +129,7 @@ Updates a library listing. Supported fields are the display name, public visibil
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

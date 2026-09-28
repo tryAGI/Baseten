@@ -56,6 +56,8 @@ internal static partial class EditChainsByChainIdEnvironmentsByEnvNameCommandApi
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-chains-by-chain-id-environments-by-env-name", @"Updates a chain environment's settings
@@ -126,6 +128,7 @@ Updates a chain environment's settings and returns the chain environment.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

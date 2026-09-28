@@ -33,6 +33,8 @@ internal static partial class GetTrainingJobsByTrainingJobIdQueueContextCommandA
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-training-jobs-by-training-job-id-queue-context", @"Reconstructs queue context for a training job
@@ -59,6 +61,7 @@ Returns the (org, gpu_type) capacity pool the job was gated by, jobs that were h
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

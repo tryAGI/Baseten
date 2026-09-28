@@ -45,6 +45,8 @@ internal static partial class CreateLoopsTrainersCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-loops-trainers", @"Creates a Loops trainer
@@ -123,6 +125,7 @@ Creates a trainer-only Loops run in the given session, without a sampler. To sam
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

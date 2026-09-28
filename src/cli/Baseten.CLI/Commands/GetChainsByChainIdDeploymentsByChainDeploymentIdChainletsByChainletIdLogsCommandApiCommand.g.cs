@@ -111,6 +111,8 @@ internal static partial class GetChainsByChainIdDeploymentsByChainDeploymentIdCh
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-chains-by-chain-id-deployments-by-chain-deployment-id-chainlets-by-chainlet-id-logs", @"Gets the logs for a chainlet within a chain deployment
@@ -184,6 +186,7 @@ Resolves the chainlet (by ID, scoped to the given chain deployment) to its under
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

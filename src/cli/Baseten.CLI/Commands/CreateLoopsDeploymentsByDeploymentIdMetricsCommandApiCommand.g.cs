@@ -73,6 +73,8 @@ internal static partial class CreateLoopsDeploymentsByDeploymentIdMetricsCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-loops-deployments-by-deployment-id-metrics", @"Gets metrics for a Loops trainer deployment
@@ -131,6 +133,7 @@ Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

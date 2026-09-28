@@ -39,6 +39,8 @@ internal static partial class DeleteChainsByChainIdDeploymentsByChainDeploymentI
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-chains-by-chain-id-deployments-by-chain-deployment-id", @"Deletes a chain deployment by ID");
@@ -67,6 +69,7 @@ internal static partial class DeleteChainsByChainIdDeploymentsByChainDeploymentI
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

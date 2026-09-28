@@ -39,6 +39,8 @@ internal static partial class DeleteLibraryListingsByUserDefinedListingIdVersion
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-library-listings-by-user-defined-listing-id-versions-by-version-tag", @"Deletes a library listing version
@@ -68,6 +70,7 @@ Deletes a specific version of a library listing. Deleting a live version will fa
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

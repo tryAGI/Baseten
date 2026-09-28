@@ -29,6 +29,8 @@ internal static partial class GetSecretsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-secrets", @"Gets all secrets (metadata only, no plain text keys)");
@@ -62,6 +64,7 @@ internal static partial class GetSecretsCommandApiCommand
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

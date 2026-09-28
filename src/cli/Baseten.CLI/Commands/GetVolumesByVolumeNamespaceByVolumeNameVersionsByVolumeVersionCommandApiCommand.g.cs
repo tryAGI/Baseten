@@ -45,6 +45,8 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsByV
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version", @"Gets one version of a volume
@@ -85,6 +87,7 @@ Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

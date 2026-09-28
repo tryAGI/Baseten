@@ -33,6 +33,8 @@ internal static partial class DeleteModelsByModelIdCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete-models-by-model-id", @"Deletes a model by ID");
@@ -58,6 +60,7 @@ internal static partial class DeleteModelsByModelIdCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

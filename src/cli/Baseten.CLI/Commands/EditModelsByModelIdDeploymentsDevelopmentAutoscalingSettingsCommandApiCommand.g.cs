@@ -50,6 +50,8 @@ internal static partial class EditModelsByModelIdDeploymentsDevelopmentAutoscali
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"edit-models-by-model-id-deployments-development-autoscaling-settings", @"Updates a development deployment's autoscaling settings
@@ -118,6 +120,7 @@ Updates a development deployment's autoscaling settings and returns the update s
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

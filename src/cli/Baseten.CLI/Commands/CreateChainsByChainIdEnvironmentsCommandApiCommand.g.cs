@@ -63,6 +63,8 @@ internal static partial class CreateChainsByChainIdEnvironmentsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-chains-by-chain-id-environments", @"Creates a chain environment
@@ -144,6 +146,7 @@ Creates a chain environment. Returns the resulting environment.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

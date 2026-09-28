@@ -39,6 +39,8 @@ internal static partial class GetModelsByModelIdDeploymentsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-deployments", @"Gets all deployments of a model");
@@ -75,6 +77,7 @@ internal static partial class GetModelsByModelIdDeploymentsCommandApiCommand
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

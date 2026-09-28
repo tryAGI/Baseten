@@ -41,6 +41,8 @@ internal static partial class CreateVolumesSyncsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-volumes-syncs", @"Starts a volume sync
@@ -70,6 +72,7 @@ Starts one durable asynchronous transfer from a remote source into a BDN volume.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

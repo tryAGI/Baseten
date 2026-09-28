@@ -45,6 +45,8 @@ internal static partial class CreateLoopsRunsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-loops-runs", @"Creates a Loops run
@@ -123,6 +125,7 @@ Creates a Loops run with an associated sampler in the given session.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

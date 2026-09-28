@@ -33,6 +33,8 @@ internal static partial class GetModelApisByModelApiNameCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-model-apis-by-model-api-name", @"Gets a Model API
@@ -67,6 +69,7 @@ Fetches a Model API by name, with workspace overlay when added.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

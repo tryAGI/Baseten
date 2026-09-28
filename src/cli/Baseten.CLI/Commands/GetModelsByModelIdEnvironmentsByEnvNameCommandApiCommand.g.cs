@@ -39,6 +39,8 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameCommandApiC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-models-by-model-id-environments-by-env-name", @"Gets an environment's details
@@ -68,6 +70,7 @@ Gets an environment's details and returns the environment.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

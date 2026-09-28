@@ -39,6 +39,8 @@ internal static partial class GetLibraryListingsByUserDefinedListingIdVersionsBy
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-library-listings-by-user-defined-listing-id-versions-by-version-tag", @"Gets a library listing version
@@ -68,6 +70,7 @@ Returns a specific version of a library listing.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

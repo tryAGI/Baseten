@@ -29,6 +29,8 @@ internal static partial class GetBlobsCredentialsModelCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-blobs-credentials-model", @"Gets blob credentials for models");
@@ -54,6 +56,7 @@ internal static partial class GetBlobsCredentialsModelCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

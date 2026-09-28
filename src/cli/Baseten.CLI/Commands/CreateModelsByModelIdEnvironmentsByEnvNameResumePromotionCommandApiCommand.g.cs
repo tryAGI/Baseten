@@ -39,6 +39,8 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameResumePr
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-environments-by-env-name-resume-promotion", @"Resumes a paused rolling promotion
@@ -68,6 +70,7 @@ Resumes a paused rolling promotion, continuing from where it was paused.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -39,6 +39,8 @@ internal static partial class GetChainsByChainIdDeploymentsByChainDeploymentIdCo
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-chains-by-chain-id-deployments-by-chain-deployment-id", @"Gets a chain deployment by ID");
@@ -75,6 +77,7 @@ internal static partial class GetChainsByChainIdDeploymentsByChainDeploymentIdCo
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

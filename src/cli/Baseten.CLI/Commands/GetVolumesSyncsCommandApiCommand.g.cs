@@ -45,6 +45,8 @@ internal static partial class GetVolumesSyncsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-volumes-syncs", @"Lists volume syncs
@@ -85,6 +87,7 @@ Lists volume syncs in the active workspace, newest first. Results may be narrowe
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -45,6 +45,8 @@ internal static partial class GetLoopsCheckpointsByCheckpointIdFilesCommandApiCo
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-checkpoints-by-checkpoint-id-files", @"Gets Loops checkpoint files
@@ -85,6 +87,7 @@ Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated 
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -67,6 +67,8 @@ internal static partial class CreateVolumesByVolumeNamespaceByVolumeNameVersions
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version-restore", @"Restores a deleted or expired version of a volume
@@ -122,6 +124,7 @@ Returns a deleted or expired version to service, provided its recovery deadline 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

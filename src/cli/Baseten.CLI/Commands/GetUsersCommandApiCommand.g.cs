@@ -45,6 +45,8 @@ internal static partial class GetUsersCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-users", @"Lists users in the workspace
@@ -85,6 +87,7 @@ Returns the workspace's members. Only actual joined members are returned; servic
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

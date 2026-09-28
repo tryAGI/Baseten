@@ -39,6 +39,8 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-download", @"Gets presigned URLs for a training job's artifacts
@@ -76,6 +78,7 @@ Returns presigned S3 URLs for the artifacts uploaded by a training job.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

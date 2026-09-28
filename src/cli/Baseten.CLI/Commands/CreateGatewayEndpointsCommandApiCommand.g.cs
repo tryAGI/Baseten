@@ -62,6 +62,8 @@ internal static partial class CreateGatewayEndpointsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-gateway-endpoints", @"Creates a Gateway endpoint
@@ -122,6 +124,7 @@ Provisions an endpoint for the given slug and its upstream target. Exactly one t
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -33,6 +33,8 @@ internal static partial class CreateModelsByModelIdDeploymentsProductionActivate
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-models-by-model-id-deployments-production-activate", @"Activates a production deployment
@@ -59,6 +61,7 @@ Activates a production deployment if not already activated.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

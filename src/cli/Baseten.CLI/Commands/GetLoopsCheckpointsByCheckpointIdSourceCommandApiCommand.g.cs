@@ -33,6 +33,8 @@ internal static partial class GetLoopsCheckpointsByCheckpointIdSourceCommandApiC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-checkpoints-by-checkpoint-id-source", @"Gets where a Loops checkpoint's files come from
@@ -59,6 +61,7 @@ Reports how to fetch a checkpoint's files: `s3` when the files endpoint serves p
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -45,6 +45,8 @@ internal static partial class GetLoopsDeploymentsByDeploymentIdDebugArchiveFiles
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get-loops-deployments-by-deployment-id-debug-archive-files", @"Gets Loops debug archive files
@@ -85,6 +87,7 @@ Gets presigned download URLs for a Loops deployment's debug archive.");
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
