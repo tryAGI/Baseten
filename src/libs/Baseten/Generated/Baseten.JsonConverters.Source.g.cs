@@ -104,43 +104,43 @@ namespace Baseten.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.VolumeSyncSourceHuggingFaceV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.VolumeSyncSourceHuggingFaceV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.VolumeSyncSourceHuggingFaceV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.HuggingFace!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickHuggingFace(), typeInfo);
             }
             else if (value.IsS3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.VolumeSyncSourceS3V1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.VolumeSyncSourceS3V1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.VolumeSyncSourceS3V1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.S3!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickS3(), typeInfo);
             }
             else if (value.IsGcs)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.VolumeSyncSourceGCSV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.VolumeSyncSourceGCSV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.VolumeSyncSourceGCSV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Gcs!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGcs(), typeInfo);
             }
             else if (value.IsAzure)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.VolumeSyncSourceAzureV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.VolumeSyncSourceAzureV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.VolumeSyncSourceAzureV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Azure!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAzure(), typeInfo);
             }
             else if (value.IsR2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.VolumeSyncSourceR2V1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.VolumeSyncSourceR2V1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.VolumeSyncSourceR2V1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.R2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickR2(), typeInfo);
             }
             else if (value.IsCoreweave)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.VolumeSyncSourceCoreWeaveV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.VolumeSyncSourceCoreWeaveV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.VolumeSyncSourceCoreWeaveV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Coreweave!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCoreweave(), typeInfo);
             }
             else if (value.IsBasetenTraining)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.VolumeSyncSourceBasetenTrainingV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.VolumeSyncSourceBasetenTrainingV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.VolumeSyncSourceBasetenTrainingV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BasetenTraining!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBasetenTraining(), typeInfo);
             }
         }
     }

@@ -47,8 +47,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeployedV1 PickModelDeployed() => IsModelDeployed
-            ? ModelDeployed!
+        public global::Baseten.AuditLogEventModelDeployedV1 PickModelDeployed() => ModelDeployed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeployed' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentActivatedV1 PickModelDeploymentActivated() => IsModelDeploymentActivated
-            ? ModelDeploymentActivated!
+        public global::Baseten.AuditLogEventModelDeploymentActivatedV1 PickModelDeploymentActivated() => ModelDeploymentActivated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeploymentActivated' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentDeactivatedV1 PickModelDeploymentDeactivated() => IsModelDeploymentDeactivated
-            ? ModelDeploymentDeactivated!
+        public global::Baseten.AuditLogEventModelDeploymentDeactivatedV1 PickModelDeploymentDeactivated() => ModelDeploymentDeactivated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeploymentDeactivated' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentRetriedV1 PickModelDeploymentRetried() => IsModelDeploymentRetried
-            ? ModelDeploymentRetried!
+        public global::Baseten.AuditLogEventModelDeploymentRetriedV1 PickModelDeploymentRetried() => ModelDeploymentRetried is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeploymentRetried' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentPromotedV1 PickModelDeploymentPromoted() => IsModelDeploymentPromoted
-            ? ModelDeploymentPromoted!
+        public global::Baseten.AuditLogEventModelDeploymentPromotedV1 PickModelDeploymentPromoted() => ModelDeploymentPromoted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeploymentPromoted' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1 PickModelDeploymentAutoscalingSettingsChanged() => IsModelDeploymentAutoscalingSettingsChanged
-            ? ModelDeploymentAutoscalingSettingsChanged!
+        public global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1 PickModelDeploymentAutoscalingSettingsChanged() => ModelDeploymentAutoscalingSettingsChanged is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeploymentAutoscalingSettingsChanged' but the value was {ToString()}.");
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1 PickModelDeploymentRequestBackpressureSettingsChanged() => IsModelDeploymentRequestBackpressureSettingsChanged
-            ? ModelDeploymentRequestBackpressureSettingsChanged!
+        public global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1 PickModelDeploymentRequestBackpressureSettingsChanged() => ModelDeploymentRequestBackpressureSettingsChanged is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeploymentRequestBackpressureSettingsChanged' but the value was {ToString()}.");
 
         /// <summary>
@@ -306,8 +306,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1 PickModelDeploymentInstanceTypeChanged() => IsModelDeploymentInstanceTypeChanged
-            ? ModelDeploymentInstanceTypeChanged!
+        public global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1 PickModelDeploymentInstanceTypeChanged() => ModelDeploymentInstanceTypeChanged is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeploymentInstanceTypeChanged' but the value was {ToString()}.");
 
         /// <summary>
@@ -343,8 +343,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeploymentDeletedV1 PickModelDeploymentDeleted() => IsModelDeploymentDeleted
-            ? ModelDeploymentDeleted!
+        public global::Baseten.AuditLogEventModelDeploymentDeletedV1 PickModelDeploymentDeleted() => ModelDeploymentDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeploymentDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -380,8 +380,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelDeletedV1 PickModelDeleted() => IsModelDeleted
-            ? ModelDeleted!
+        public global::Baseten.AuditLogEventModelDeletedV1 PickModelDeleted() => ModelDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -417,8 +417,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelRenamedV1 PickModelRenamed() => IsModelRenamed
-            ? ModelRenamed!
+        public global::Baseten.AuditLogEventModelRenamedV1 PickModelRenamed() => ModelRenamed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelRenamed' but the value was {ToString()}.");
 
         /// <summary>
@@ -454,8 +454,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainDeployedV1 PickChainDeployed() => IsChainDeployed
-            ? ChainDeployed!
+        public global::Baseten.AuditLogEventChainDeployedV1 PickChainDeployed() => ChainDeployed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainDeployed' but the value was {ToString()}.");
 
         /// <summary>
@@ -491,8 +491,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainDeploymentActivatedV1 PickChainDeploymentActivated() => IsChainDeploymentActivated
-            ? ChainDeploymentActivated!
+        public global::Baseten.AuditLogEventChainDeploymentActivatedV1 PickChainDeploymentActivated() => ChainDeploymentActivated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainDeploymentActivated' but the value was {ToString()}.");
 
         /// <summary>
@@ -528,8 +528,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainDeploymentDeactivatedV1 PickChainDeploymentDeactivated() => IsChainDeploymentDeactivated
-            ? ChainDeploymentDeactivated!
+        public global::Baseten.AuditLogEventChainDeploymentDeactivatedV1 PickChainDeploymentDeactivated() => ChainDeploymentDeactivated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainDeploymentDeactivated' but the value was {ToString()}.");
 
         /// <summary>
@@ -565,8 +565,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainDeploymentPromotedV1 PickChainDeploymentPromoted() => IsChainDeploymentPromoted
-            ? ChainDeploymentPromoted!
+        public global::Baseten.AuditLogEventChainDeploymentPromotedV1 PickChainDeploymentPromoted() => ChainDeploymentPromoted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainDeploymentPromoted' but the value was {ToString()}.");
 
         /// <summary>
@@ -602,8 +602,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1 PickChainletAutoscalingSettingsChanged() => IsChainletAutoscalingSettingsChanged
-            ? ChainletAutoscalingSettingsChanged!
+        public global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1 PickChainletAutoscalingSettingsChanged() => ChainletAutoscalingSettingsChanged is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainletAutoscalingSettingsChanged' but the value was {ToString()}.");
 
         /// <summary>
@@ -639,8 +639,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainletInstanceTypeChangedV1 PickChainletInstanceTypeChanged() => IsChainletInstanceTypeChanged
-            ? ChainletInstanceTypeChanged!
+        public global::Baseten.AuditLogEventChainletInstanceTypeChangedV1 PickChainletInstanceTypeChanged() => ChainletInstanceTypeChanged is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainletInstanceTypeChanged' but the value was {ToString()}.");
 
         /// <summary>
@@ -676,8 +676,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainDeploymentDeletedV1 PickChainDeploymentDeleted() => IsChainDeploymentDeleted
-            ? ChainDeploymentDeleted!
+        public global::Baseten.AuditLogEventChainDeploymentDeletedV1 PickChainDeploymentDeleted() => ChainDeploymentDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainDeploymentDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -713,8 +713,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainDeletedV1 PickChainDeleted() => IsChainDeleted
-            ? ChainDeleted!
+        public global::Baseten.AuditLogEventChainDeletedV1 PickChainDeleted() => ChainDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -750,8 +750,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainEnvironmentCreatedV1 PickChainEnvironmentCreated() => IsChainEnvironmentCreated
-            ? ChainEnvironmentCreated!
+        public global::Baseten.AuditLogEventChainEnvironmentCreatedV1 PickChainEnvironmentCreated() => ChainEnvironmentCreated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainEnvironmentCreated' but the value was {ToString()}.");
 
         /// <summary>
@@ -787,8 +787,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventChainEnvironmentUpdatedV1 PickChainEnvironmentUpdated() => IsChainEnvironmentUpdated
-            ? ChainEnvironmentUpdated!
+        public global::Baseten.AuditLogEventChainEnvironmentUpdatedV1 PickChainEnvironmentUpdated() => ChainEnvironmentUpdated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChainEnvironmentUpdated' but the value was {ToString()}.");
 
         /// <summary>
@@ -824,8 +824,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventSecretUpdatedV1 PickSecretUpdated() => IsSecretUpdated
-            ? SecretUpdated!
+        public global::Baseten.AuditLogEventSecretUpdatedV1 PickSecretUpdated() => SecretUpdated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SecretUpdated' but the value was {ToString()}.");
 
         /// <summary>
@@ -861,8 +861,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventSecretDeletedV1 PickSecretDeleted() => IsSecretDeleted
-            ? SecretDeleted!
+        public global::Baseten.AuditLogEventSecretDeletedV1 PickSecretDeleted() => SecretDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SecretDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -898,8 +898,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventApiKeyCreatedV1 PickApiKeyCreated() => IsApiKeyCreated
-            ? ApiKeyCreated!
+        public global::Baseten.AuditLogEventApiKeyCreatedV1 PickApiKeyCreated() => ApiKeyCreated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ApiKeyCreated' but the value was {ToString()}.");
 
         /// <summary>
@@ -935,8 +935,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventApiKeyDeletedV1 PickApiKeyDeleted() => IsApiKeyDeleted
-            ? ApiKeyDeleted!
+        public global::Baseten.AuditLogEventApiKeyDeletedV1 PickApiKeyDeleted() => ApiKeyDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ApiKeyDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -972,8 +972,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventGatewayEndpointCreatedV1 PickGatewayEndpointCreated() => IsGatewayEndpointCreated
-            ? GatewayEndpointCreated!
+        public global::Baseten.AuditLogEventGatewayEndpointCreatedV1 PickGatewayEndpointCreated() => GatewayEndpointCreated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GatewayEndpointCreated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1009,8 +1009,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventGatewayEndpointUpdatedV1 PickGatewayEndpointUpdated() => IsGatewayEndpointUpdated
-            ? GatewayEndpointUpdated!
+        public global::Baseten.AuditLogEventGatewayEndpointUpdatedV1 PickGatewayEndpointUpdated() => GatewayEndpointUpdated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GatewayEndpointUpdated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1046,8 +1046,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventGatewayEndpointDeletedV1 PickGatewayEndpointDeleted() => IsGatewayEndpointDeleted
-            ? GatewayEndpointDeleted!
+        public global::Baseten.AuditLogEventGatewayEndpointDeletedV1 PickGatewayEndpointDeleted() => GatewayEndpointDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'GatewayEndpointDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -1083,8 +1083,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventUserInvitedV1 PickUserInvited() => IsUserInvited
-            ? UserInvited!
+        public global::Baseten.AuditLogEventUserInvitedV1 PickUserInvited() => UserInvited is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UserInvited' but the value was {ToString()}.");
 
         /// <summary>
@@ -1120,8 +1120,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventUserJoinedOrganizationV1 PickUserJoinedOrganization() => IsUserJoinedOrganization
-            ? UserJoinedOrganization!
+        public global::Baseten.AuditLogEventUserJoinedOrganizationV1 PickUserJoinedOrganization() => UserJoinedOrganization is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UserJoinedOrganization' but the value was {ToString()}.");
 
         /// <summary>
@@ -1157,8 +1157,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1 PickWebhookSigningSecretCreated() => IsWebhookSigningSecretCreated
-            ? WebhookSigningSecretCreated!
+        public global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1 PickWebhookSigningSecretCreated() => WebhookSigningSecretCreated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WebhookSigningSecretCreated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1194,8 +1194,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1 PickWebhookSigningSecretRotated() => IsWebhookSigningSecretRotated
-            ? WebhookSigningSecretRotated!
+        public global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1 PickWebhookSigningSecretRotated() => WebhookSigningSecretRotated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WebhookSigningSecretRotated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1231,8 +1231,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1 PickWebhookSigningSecretDeleted() => IsWebhookSigningSecretDeleted
-            ? WebhookSigningSecretDeleted!
+        public global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1 PickWebhookSigningSecretDeleted() => WebhookSigningSecretDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WebhookSigningSecretDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -1268,8 +1268,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventUserRoleUpdatedV1 PickUserRoleUpdated() => IsUserRoleUpdated
-            ? UserRoleUpdated!
+        public global::Baseten.AuditLogEventUserRoleUpdatedV1 PickUserRoleUpdated() => UserRoleUpdated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UserRoleUpdated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1305,8 +1305,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventUserTeamRoleUpdatedV1 PickUserTeamRoleUpdated() => IsUserTeamRoleUpdated
-            ? UserTeamRoleUpdated!
+        public global::Baseten.AuditLogEventUserTeamRoleUpdatedV1 PickUserTeamRoleUpdated() => UserTeamRoleUpdated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UserTeamRoleUpdated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1342,8 +1342,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventUserRemovedV1 PickUserRemoved() => IsUserRemoved
-            ? UserRemoved!
+        public global::Baseten.AuditLogEventUserRemovedV1 PickUserRemoved() => UserRemoved is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UserRemoved' but the value was {ToString()}.");
 
         /// <summary>
@@ -1379,8 +1379,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1 PickDirectoryGroupRoleUpdated() => IsDirectoryGroupRoleUpdated
-            ? DirectoryGroupRoleUpdated!
+        public global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1 PickDirectoryGroupRoleUpdated() => DirectoryGroupRoleUpdated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'DirectoryGroupRoleUpdated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1416,8 +1416,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1 PickRequireGroupBasedAdminsEnabled() => IsRequireGroupBasedAdminsEnabled
-            ? RequireGroupBasedAdminsEnabled!
+        public global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1 PickRequireGroupBasedAdminsEnabled() => RequireGroupBasedAdminsEnabled is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequireGroupBasedAdminsEnabled' but the value was {ToString()}.");
 
         /// <summary>
@@ -1453,8 +1453,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventEnvironmentCreatedV1 PickEnvironmentCreated() => IsEnvironmentCreated
-            ? EnvironmentCreated!
+        public global::Baseten.AuditLogEventEnvironmentCreatedV1 PickEnvironmentCreated() => EnvironmentCreated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EnvironmentCreated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1490,8 +1490,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventEnvironmentUpdatedV1 PickEnvironmentUpdated() => IsEnvironmentUpdated
-            ? EnvironmentUpdated!
+        public global::Baseten.AuditLogEventEnvironmentUpdatedV1 PickEnvironmentUpdated() => EnvironmentUpdated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EnvironmentUpdated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1527,8 +1527,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventEnvironmentDeletedV1 PickEnvironmentDeleted() => IsEnvironmentDeleted
-            ? EnvironmentDeleted!
+        public global::Baseten.AuditLogEventEnvironmentDeletedV1 PickEnvironmentDeleted() => EnvironmentDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EnvironmentDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -1564,8 +1564,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventReplicaTerminatedV1 PickReplicaTerminated() => IsReplicaTerminated
-            ? ReplicaTerminated!
+        public global::Baseten.AuditLogEventReplicaTerminatedV1 PickReplicaTerminated() => ReplicaTerminated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ReplicaTerminated' but the value was {ToString()}.");
 
         /// <summary>
@@ -1601,8 +1601,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventModelPromotionControlActionV1 PickModelPromotionControlAction() => IsModelPromotionControlAction
-            ? ModelPromotionControlAction!
+        public global::Baseten.AuditLogEventModelPromotionControlActionV1 PickModelPromotionControlAction() => ModelPromotionControlAction is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelPromotionControlAction' but the value was {ToString()}.");
 
         /// <summary>
@@ -1638,8 +1638,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventSshCertificateSignedV1 PickSshCertificateSigned() => IsSshCertificateSigned
-            ? SshCertificateSigned!
+        public global::Baseten.AuditLogEventSshCertificateSignedV1 PickSshCertificateSigned() => SshCertificateSigned is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SshCertificateSigned' but the value was {ToString()}.");
 
         /// <summary>
@@ -1675,8 +1675,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventVolumeDeletedV1 PickVolumeDeleted() => IsVolumeDeleted
-            ? VolumeDeleted!
+        public global::Baseten.AuditLogEventVolumeDeletedV1 PickVolumeDeleted() => VolumeDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VolumeDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -1712,8 +1712,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventVolumeVersionDeletedV1 PickVolumeVersionDeleted() => IsVolumeVersionDeleted
-            ? VolumeVersionDeleted!
+        public global::Baseten.AuditLogEventVolumeVersionDeletedV1 PickVolumeVersionDeleted() => VolumeVersionDeleted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VolumeVersionDeleted' but the value was {ToString()}.");
 
         /// <summary>
@@ -1749,8 +1749,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AuditLogEventVolumeVersionRestoredV1 PickVolumeVersionRestored() => IsVolumeVersionRestored
-            ? VolumeVersionRestored!
+        public global::Baseten.AuditLogEventVolumeVersionRestoredV1 PickVolumeVersionRestored() => VolumeVersionRestored is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'VolumeVersionRestored' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -3110,193 +3110,193 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsModelDeployed && modelDeployed != null)
+            if (ModelDeployed is { } __value0 && modelDeployed != null)
             {
-                return modelDeployed(ModelDeployed!);
+                return modelDeployed(__value0);
             }
-            else if (IsModelDeploymentActivated && modelDeploymentActivated != null)
+            else if (ModelDeploymentActivated is { } __value1 && modelDeploymentActivated != null)
             {
-                return modelDeploymentActivated(ModelDeploymentActivated!);
+                return modelDeploymentActivated(__value1);
             }
-            else if (IsModelDeploymentDeactivated && modelDeploymentDeactivated != null)
+            else if (ModelDeploymentDeactivated is { } __value2 && modelDeploymentDeactivated != null)
             {
-                return modelDeploymentDeactivated(ModelDeploymentDeactivated!);
+                return modelDeploymentDeactivated(__value2);
             }
-            else if (IsModelDeploymentRetried && modelDeploymentRetried != null)
+            else if (ModelDeploymentRetried is { } __value3 && modelDeploymentRetried != null)
             {
-                return modelDeploymentRetried(ModelDeploymentRetried!);
+                return modelDeploymentRetried(__value3);
             }
-            else if (IsModelDeploymentPromoted && modelDeploymentPromoted != null)
+            else if (ModelDeploymentPromoted is { } __value4 && modelDeploymentPromoted != null)
             {
-                return modelDeploymentPromoted(ModelDeploymentPromoted!);
+                return modelDeploymentPromoted(__value4);
             }
-            else if (IsModelDeploymentAutoscalingSettingsChanged && modelDeploymentAutoscalingSettingsChanged != null)
+            else if (ModelDeploymentAutoscalingSettingsChanged is { } __value5 && modelDeploymentAutoscalingSettingsChanged != null)
             {
-                return modelDeploymentAutoscalingSettingsChanged(ModelDeploymentAutoscalingSettingsChanged!);
+                return modelDeploymentAutoscalingSettingsChanged(__value5);
             }
-            else if (IsModelDeploymentRequestBackpressureSettingsChanged && modelDeploymentRequestBackpressureSettingsChanged != null)
+            else if (ModelDeploymentRequestBackpressureSettingsChanged is { } __value6 && modelDeploymentRequestBackpressureSettingsChanged != null)
             {
-                return modelDeploymentRequestBackpressureSettingsChanged(ModelDeploymentRequestBackpressureSettingsChanged!);
+                return modelDeploymentRequestBackpressureSettingsChanged(__value6);
             }
-            else if (IsModelDeploymentInstanceTypeChanged && modelDeploymentInstanceTypeChanged != null)
+            else if (ModelDeploymentInstanceTypeChanged is { } __value7 && modelDeploymentInstanceTypeChanged != null)
             {
-                return modelDeploymentInstanceTypeChanged(ModelDeploymentInstanceTypeChanged!);
+                return modelDeploymentInstanceTypeChanged(__value7);
             }
-            else if (IsModelDeploymentDeleted && modelDeploymentDeleted != null)
+            else if (ModelDeploymentDeleted is { } __value8 && modelDeploymentDeleted != null)
             {
-                return modelDeploymentDeleted(ModelDeploymentDeleted!);
+                return modelDeploymentDeleted(__value8);
             }
-            else if (IsModelDeleted && modelDeleted != null)
+            else if (ModelDeleted is { } __value9 && modelDeleted != null)
             {
-                return modelDeleted(ModelDeleted!);
+                return modelDeleted(__value9);
             }
-            else if (IsModelRenamed && modelRenamed != null)
+            else if (ModelRenamed is { } __value10 && modelRenamed != null)
             {
-                return modelRenamed(ModelRenamed!);
+                return modelRenamed(__value10);
             }
-            else if (IsChainDeployed && chainDeployed != null)
+            else if (ChainDeployed is { } __value11 && chainDeployed != null)
             {
-                return chainDeployed(ChainDeployed!);
+                return chainDeployed(__value11);
             }
-            else if (IsChainDeploymentActivated && chainDeploymentActivated != null)
+            else if (ChainDeploymentActivated is { } __value12 && chainDeploymentActivated != null)
             {
-                return chainDeploymentActivated(ChainDeploymentActivated!);
+                return chainDeploymentActivated(__value12);
             }
-            else if (IsChainDeploymentDeactivated && chainDeploymentDeactivated != null)
+            else if (ChainDeploymentDeactivated is { } __value13 && chainDeploymentDeactivated != null)
             {
-                return chainDeploymentDeactivated(ChainDeploymentDeactivated!);
+                return chainDeploymentDeactivated(__value13);
             }
-            else if (IsChainDeploymentPromoted && chainDeploymentPromoted != null)
+            else if (ChainDeploymentPromoted is { } __value14 && chainDeploymentPromoted != null)
             {
-                return chainDeploymentPromoted(ChainDeploymentPromoted!);
+                return chainDeploymentPromoted(__value14);
             }
-            else if (IsChainletAutoscalingSettingsChanged && chainletAutoscalingSettingsChanged != null)
+            else if (ChainletAutoscalingSettingsChanged is { } __value15 && chainletAutoscalingSettingsChanged != null)
             {
-                return chainletAutoscalingSettingsChanged(ChainletAutoscalingSettingsChanged!);
+                return chainletAutoscalingSettingsChanged(__value15);
             }
-            else if (IsChainletInstanceTypeChanged && chainletInstanceTypeChanged != null)
+            else if (ChainletInstanceTypeChanged is { } __value16 && chainletInstanceTypeChanged != null)
             {
-                return chainletInstanceTypeChanged(ChainletInstanceTypeChanged!);
+                return chainletInstanceTypeChanged(__value16);
             }
-            else if (IsChainDeploymentDeleted && chainDeploymentDeleted != null)
+            else if (ChainDeploymentDeleted is { } __value17 && chainDeploymentDeleted != null)
             {
-                return chainDeploymentDeleted(ChainDeploymentDeleted!);
+                return chainDeploymentDeleted(__value17);
             }
-            else if (IsChainDeleted && chainDeleted != null)
+            else if (ChainDeleted is { } __value18 && chainDeleted != null)
             {
-                return chainDeleted(ChainDeleted!);
+                return chainDeleted(__value18);
             }
-            else if (IsChainEnvironmentCreated && chainEnvironmentCreated != null)
+            else if (ChainEnvironmentCreated is { } __value19 && chainEnvironmentCreated != null)
             {
-                return chainEnvironmentCreated(ChainEnvironmentCreated!);
+                return chainEnvironmentCreated(__value19);
             }
-            else if (IsChainEnvironmentUpdated && chainEnvironmentUpdated != null)
+            else if (ChainEnvironmentUpdated is { } __value20 && chainEnvironmentUpdated != null)
             {
-                return chainEnvironmentUpdated(ChainEnvironmentUpdated!);
+                return chainEnvironmentUpdated(__value20);
             }
-            else if (IsSecretUpdated && secretUpdated != null)
+            else if (SecretUpdated is { } __value21 && secretUpdated != null)
             {
-                return secretUpdated(SecretUpdated!);
+                return secretUpdated(__value21);
             }
-            else if (IsSecretDeleted && secretDeleted != null)
+            else if (SecretDeleted is { } __value22 && secretDeleted != null)
             {
-                return secretDeleted(SecretDeleted!);
+                return secretDeleted(__value22);
             }
-            else if (IsApiKeyCreated && apiKeyCreated != null)
+            else if (ApiKeyCreated is { } __value23 && apiKeyCreated != null)
             {
-                return apiKeyCreated(ApiKeyCreated!);
+                return apiKeyCreated(__value23);
             }
-            else if (IsApiKeyDeleted && apiKeyDeleted != null)
+            else if (ApiKeyDeleted is { } __value24 && apiKeyDeleted != null)
             {
-                return apiKeyDeleted(ApiKeyDeleted!);
+                return apiKeyDeleted(__value24);
             }
-            else if (IsGatewayEndpointCreated && gatewayEndpointCreated != null)
+            else if (GatewayEndpointCreated is { } __value25 && gatewayEndpointCreated != null)
             {
-                return gatewayEndpointCreated(GatewayEndpointCreated!);
+                return gatewayEndpointCreated(__value25);
             }
-            else if (IsGatewayEndpointUpdated && gatewayEndpointUpdated != null)
+            else if (GatewayEndpointUpdated is { } __value26 && gatewayEndpointUpdated != null)
             {
-                return gatewayEndpointUpdated(GatewayEndpointUpdated!);
+                return gatewayEndpointUpdated(__value26);
             }
-            else if (IsGatewayEndpointDeleted && gatewayEndpointDeleted != null)
+            else if (GatewayEndpointDeleted is { } __value27 && gatewayEndpointDeleted != null)
             {
-                return gatewayEndpointDeleted(GatewayEndpointDeleted!);
+                return gatewayEndpointDeleted(__value27);
             }
-            else if (IsUserInvited && userInvited != null)
+            else if (UserInvited is { } __value28 && userInvited != null)
             {
-                return userInvited(UserInvited!);
+                return userInvited(__value28);
             }
-            else if (IsUserJoinedOrganization && userJoinedOrganization != null)
+            else if (UserJoinedOrganization is { } __value29 && userJoinedOrganization != null)
             {
-                return userJoinedOrganization(UserJoinedOrganization!);
+                return userJoinedOrganization(__value29);
             }
-            else if (IsWebhookSigningSecretCreated && webhookSigningSecretCreated != null)
+            else if (WebhookSigningSecretCreated is { } __value30 && webhookSigningSecretCreated != null)
             {
-                return webhookSigningSecretCreated(WebhookSigningSecretCreated!);
+                return webhookSigningSecretCreated(__value30);
             }
-            else if (IsWebhookSigningSecretRotated && webhookSigningSecretRotated != null)
+            else if (WebhookSigningSecretRotated is { } __value31 && webhookSigningSecretRotated != null)
             {
-                return webhookSigningSecretRotated(WebhookSigningSecretRotated!);
+                return webhookSigningSecretRotated(__value31);
             }
-            else if (IsWebhookSigningSecretDeleted && webhookSigningSecretDeleted != null)
+            else if (WebhookSigningSecretDeleted is { } __value32 && webhookSigningSecretDeleted != null)
             {
-                return webhookSigningSecretDeleted(WebhookSigningSecretDeleted!);
+                return webhookSigningSecretDeleted(__value32);
             }
-            else if (IsUserRoleUpdated && userRoleUpdated != null)
+            else if (UserRoleUpdated is { } __value33 && userRoleUpdated != null)
             {
-                return userRoleUpdated(UserRoleUpdated!);
+                return userRoleUpdated(__value33);
             }
-            else if (IsUserTeamRoleUpdated && userTeamRoleUpdated != null)
+            else if (UserTeamRoleUpdated is { } __value34 && userTeamRoleUpdated != null)
             {
-                return userTeamRoleUpdated(UserTeamRoleUpdated!);
+                return userTeamRoleUpdated(__value34);
             }
-            else if (IsUserRemoved && userRemoved != null)
+            else if (UserRemoved is { } __value35 && userRemoved != null)
             {
-                return userRemoved(UserRemoved!);
+                return userRemoved(__value35);
             }
-            else if (IsDirectoryGroupRoleUpdated && directoryGroupRoleUpdated != null)
+            else if (DirectoryGroupRoleUpdated is { } __value36 && directoryGroupRoleUpdated != null)
             {
-                return directoryGroupRoleUpdated(DirectoryGroupRoleUpdated!);
+                return directoryGroupRoleUpdated(__value36);
             }
-            else if (IsRequireGroupBasedAdminsEnabled && requireGroupBasedAdminsEnabled != null)
+            else if (RequireGroupBasedAdminsEnabled is { } __value37 && requireGroupBasedAdminsEnabled != null)
             {
-                return requireGroupBasedAdminsEnabled(RequireGroupBasedAdminsEnabled!);
+                return requireGroupBasedAdminsEnabled(__value37);
             }
-            else if (IsEnvironmentCreated && environmentCreated != null)
+            else if (EnvironmentCreated is { } __value38 && environmentCreated != null)
             {
-                return environmentCreated(EnvironmentCreated!);
+                return environmentCreated(__value38);
             }
-            else if (IsEnvironmentUpdated && environmentUpdated != null)
+            else if (EnvironmentUpdated is { } __value39 && environmentUpdated != null)
             {
-                return environmentUpdated(EnvironmentUpdated!);
+                return environmentUpdated(__value39);
             }
-            else if (IsEnvironmentDeleted && environmentDeleted != null)
+            else if (EnvironmentDeleted is { } __value40 && environmentDeleted != null)
             {
-                return environmentDeleted(EnvironmentDeleted!);
+                return environmentDeleted(__value40);
             }
-            else if (IsReplicaTerminated && replicaTerminated != null)
+            else if (ReplicaTerminated is { } __value41 && replicaTerminated != null)
             {
-                return replicaTerminated(ReplicaTerminated!);
+                return replicaTerminated(__value41);
             }
-            else if (IsModelPromotionControlAction && modelPromotionControlAction != null)
+            else if (ModelPromotionControlAction is { } __value42 && modelPromotionControlAction != null)
             {
-                return modelPromotionControlAction(ModelPromotionControlAction!);
+                return modelPromotionControlAction(__value42);
             }
-            else if (IsSshCertificateSigned && sshCertificateSigned != null)
+            else if (SshCertificateSigned is { } __value43 && sshCertificateSigned != null)
             {
-                return sshCertificateSigned(SshCertificateSigned!);
+                return sshCertificateSigned(__value43);
             }
-            else if (IsVolumeDeleted && volumeDeleted != null)
+            else if (VolumeDeleted is { } __value44 && volumeDeleted != null)
             {
-                return volumeDeleted(VolumeDeleted!);
+                return volumeDeleted(__value44);
             }
-            else if (IsVolumeVersionDeleted && volumeVersionDeleted != null)
+            else if (VolumeVersionDeleted is { } __value45 && volumeVersionDeleted != null)
             {
-                return volumeVersionDeleted(VolumeVersionDeleted!);
+                return volumeVersionDeleted(__value45);
             }
-            else if (IsVolumeVersionRestored && volumeVersionRestored != null)
+            else if (VolumeVersionRestored is { } __value46 && volumeVersionRestored != null)
             {
-                return volumeVersionRestored(VolumeVersionRestored!);
+                return volumeVersionRestored(__value46);
             }
 
             return default(TResult);
@@ -3406,193 +3406,193 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsModelDeployed)
+            if (ModelDeployed is { } __value0)
             {
-                modelDeployed?.Invoke(ModelDeployed!);
+                modelDeployed?.Invoke(__value0);
             }
-            else if (IsModelDeploymentActivated)
+            else if (ModelDeploymentActivated is { } __value1)
             {
-                modelDeploymentActivated?.Invoke(ModelDeploymentActivated!);
+                modelDeploymentActivated?.Invoke(__value1);
             }
-            else if (IsModelDeploymentDeactivated)
+            else if (ModelDeploymentDeactivated is { } __value2)
             {
-                modelDeploymentDeactivated?.Invoke(ModelDeploymentDeactivated!);
+                modelDeploymentDeactivated?.Invoke(__value2);
             }
-            else if (IsModelDeploymentRetried)
+            else if (ModelDeploymentRetried is { } __value3)
             {
-                modelDeploymentRetried?.Invoke(ModelDeploymentRetried!);
+                modelDeploymentRetried?.Invoke(__value3);
             }
-            else if (IsModelDeploymentPromoted)
+            else if (ModelDeploymentPromoted is { } __value4)
             {
-                modelDeploymentPromoted?.Invoke(ModelDeploymentPromoted!);
+                modelDeploymentPromoted?.Invoke(__value4);
             }
-            else if (IsModelDeploymentAutoscalingSettingsChanged)
+            else if (ModelDeploymentAutoscalingSettingsChanged is { } __value5)
             {
-                modelDeploymentAutoscalingSettingsChanged?.Invoke(ModelDeploymentAutoscalingSettingsChanged!);
+                modelDeploymentAutoscalingSettingsChanged?.Invoke(__value5);
             }
-            else if (IsModelDeploymentRequestBackpressureSettingsChanged)
+            else if (ModelDeploymentRequestBackpressureSettingsChanged is { } __value6)
             {
-                modelDeploymentRequestBackpressureSettingsChanged?.Invoke(ModelDeploymentRequestBackpressureSettingsChanged!);
+                modelDeploymentRequestBackpressureSettingsChanged?.Invoke(__value6);
             }
-            else if (IsModelDeploymentInstanceTypeChanged)
+            else if (ModelDeploymentInstanceTypeChanged is { } __value7)
             {
-                modelDeploymentInstanceTypeChanged?.Invoke(ModelDeploymentInstanceTypeChanged!);
+                modelDeploymentInstanceTypeChanged?.Invoke(__value7);
             }
-            else if (IsModelDeploymentDeleted)
+            else if (ModelDeploymentDeleted is { } __value8)
             {
-                modelDeploymentDeleted?.Invoke(ModelDeploymentDeleted!);
+                modelDeploymentDeleted?.Invoke(__value8);
             }
-            else if (IsModelDeleted)
+            else if (ModelDeleted is { } __value9)
             {
-                modelDeleted?.Invoke(ModelDeleted!);
+                modelDeleted?.Invoke(__value9);
             }
-            else if (IsModelRenamed)
+            else if (ModelRenamed is { } __value10)
             {
-                modelRenamed?.Invoke(ModelRenamed!);
+                modelRenamed?.Invoke(__value10);
             }
-            else if (IsChainDeployed)
+            else if (ChainDeployed is { } __value11)
             {
-                chainDeployed?.Invoke(ChainDeployed!);
+                chainDeployed?.Invoke(__value11);
             }
-            else if (IsChainDeploymentActivated)
+            else if (ChainDeploymentActivated is { } __value12)
             {
-                chainDeploymentActivated?.Invoke(ChainDeploymentActivated!);
+                chainDeploymentActivated?.Invoke(__value12);
             }
-            else if (IsChainDeploymentDeactivated)
+            else if (ChainDeploymentDeactivated is { } __value13)
             {
-                chainDeploymentDeactivated?.Invoke(ChainDeploymentDeactivated!);
+                chainDeploymentDeactivated?.Invoke(__value13);
             }
-            else if (IsChainDeploymentPromoted)
+            else if (ChainDeploymentPromoted is { } __value14)
             {
-                chainDeploymentPromoted?.Invoke(ChainDeploymentPromoted!);
+                chainDeploymentPromoted?.Invoke(__value14);
             }
-            else if (IsChainletAutoscalingSettingsChanged)
+            else if (ChainletAutoscalingSettingsChanged is { } __value15)
             {
-                chainletAutoscalingSettingsChanged?.Invoke(ChainletAutoscalingSettingsChanged!);
+                chainletAutoscalingSettingsChanged?.Invoke(__value15);
             }
-            else if (IsChainletInstanceTypeChanged)
+            else if (ChainletInstanceTypeChanged is { } __value16)
             {
-                chainletInstanceTypeChanged?.Invoke(ChainletInstanceTypeChanged!);
+                chainletInstanceTypeChanged?.Invoke(__value16);
             }
-            else if (IsChainDeploymentDeleted)
+            else if (ChainDeploymentDeleted is { } __value17)
             {
-                chainDeploymentDeleted?.Invoke(ChainDeploymentDeleted!);
+                chainDeploymentDeleted?.Invoke(__value17);
             }
-            else if (IsChainDeleted)
+            else if (ChainDeleted is { } __value18)
             {
-                chainDeleted?.Invoke(ChainDeleted!);
+                chainDeleted?.Invoke(__value18);
             }
-            else if (IsChainEnvironmentCreated)
+            else if (ChainEnvironmentCreated is { } __value19)
             {
-                chainEnvironmentCreated?.Invoke(ChainEnvironmentCreated!);
+                chainEnvironmentCreated?.Invoke(__value19);
             }
-            else if (IsChainEnvironmentUpdated)
+            else if (ChainEnvironmentUpdated is { } __value20)
             {
-                chainEnvironmentUpdated?.Invoke(ChainEnvironmentUpdated!);
+                chainEnvironmentUpdated?.Invoke(__value20);
             }
-            else if (IsSecretUpdated)
+            else if (SecretUpdated is { } __value21)
             {
-                secretUpdated?.Invoke(SecretUpdated!);
+                secretUpdated?.Invoke(__value21);
             }
-            else if (IsSecretDeleted)
+            else if (SecretDeleted is { } __value22)
             {
-                secretDeleted?.Invoke(SecretDeleted!);
+                secretDeleted?.Invoke(__value22);
             }
-            else if (IsApiKeyCreated)
+            else if (ApiKeyCreated is { } __value23)
             {
-                apiKeyCreated?.Invoke(ApiKeyCreated!);
+                apiKeyCreated?.Invoke(__value23);
             }
-            else if (IsApiKeyDeleted)
+            else if (ApiKeyDeleted is { } __value24)
             {
-                apiKeyDeleted?.Invoke(ApiKeyDeleted!);
+                apiKeyDeleted?.Invoke(__value24);
             }
-            else if (IsGatewayEndpointCreated)
+            else if (GatewayEndpointCreated is { } __value25)
             {
-                gatewayEndpointCreated?.Invoke(GatewayEndpointCreated!);
+                gatewayEndpointCreated?.Invoke(__value25);
             }
-            else if (IsGatewayEndpointUpdated)
+            else if (GatewayEndpointUpdated is { } __value26)
             {
-                gatewayEndpointUpdated?.Invoke(GatewayEndpointUpdated!);
+                gatewayEndpointUpdated?.Invoke(__value26);
             }
-            else if (IsGatewayEndpointDeleted)
+            else if (GatewayEndpointDeleted is { } __value27)
             {
-                gatewayEndpointDeleted?.Invoke(GatewayEndpointDeleted!);
+                gatewayEndpointDeleted?.Invoke(__value27);
             }
-            else if (IsUserInvited)
+            else if (UserInvited is { } __value28)
             {
-                userInvited?.Invoke(UserInvited!);
+                userInvited?.Invoke(__value28);
             }
-            else if (IsUserJoinedOrganization)
+            else if (UserJoinedOrganization is { } __value29)
             {
-                userJoinedOrganization?.Invoke(UserJoinedOrganization!);
+                userJoinedOrganization?.Invoke(__value29);
             }
-            else if (IsWebhookSigningSecretCreated)
+            else if (WebhookSigningSecretCreated is { } __value30)
             {
-                webhookSigningSecretCreated?.Invoke(WebhookSigningSecretCreated!);
+                webhookSigningSecretCreated?.Invoke(__value30);
             }
-            else if (IsWebhookSigningSecretRotated)
+            else if (WebhookSigningSecretRotated is { } __value31)
             {
-                webhookSigningSecretRotated?.Invoke(WebhookSigningSecretRotated!);
+                webhookSigningSecretRotated?.Invoke(__value31);
             }
-            else if (IsWebhookSigningSecretDeleted)
+            else if (WebhookSigningSecretDeleted is { } __value32)
             {
-                webhookSigningSecretDeleted?.Invoke(WebhookSigningSecretDeleted!);
+                webhookSigningSecretDeleted?.Invoke(__value32);
             }
-            else if (IsUserRoleUpdated)
+            else if (UserRoleUpdated is { } __value33)
             {
-                userRoleUpdated?.Invoke(UserRoleUpdated!);
+                userRoleUpdated?.Invoke(__value33);
             }
-            else if (IsUserTeamRoleUpdated)
+            else if (UserTeamRoleUpdated is { } __value34)
             {
-                userTeamRoleUpdated?.Invoke(UserTeamRoleUpdated!);
+                userTeamRoleUpdated?.Invoke(__value34);
             }
-            else if (IsUserRemoved)
+            else if (UserRemoved is { } __value35)
             {
-                userRemoved?.Invoke(UserRemoved!);
+                userRemoved?.Invoke(__value35);
             }
-            else if (IsDirectoryGroupRoleUpdated)
+            else if (DirectoryGroupRoleUpdated is { } __value36)
             {
-                directoryGroupRoleUpdated?.Invoke(DirectoryGroupRoleUpdated!);
+                directoryGroupRoleUpdated?.Invoke(__value36);
             }
-            else if (IsRequireGroupBasedAdminsEnabled)
+            else if (RequireGroupBasedAdminsEnabled is { } __value37)
             {
-                requireGroupBasedAdminsEnabled?.Invoke(RequireGroupBasedAdminsEnabled!);
+                requireGroupBasedAdminsEnabled?.Invoke(__value37);
             }
-            else if (IsEnvironmentCreated)
+            else if (EnvironmentCreated is { } __value38)
             {
-                environmentCreated?.Invoke(EnvironmentCreated!);
+                environmentCreated?.Invoke(__value38);
             }
-            else if (IsEnvironmentUpdated)
+            else if (EnvironmentUpdated is { } __value39)
             {
-                environmentUpdated?.Invoke(EnvironmentUpdated!);
+                environmentUpdated?.Invoke(__value39);
             }
-            else if (IsEnvironmentDeleted)
+            else if (EnvironmentDeleted is { } __value40)
             {
-                environmentDeleted?.Invoke(EnvironmentDeleted!);
+                environmentDeleted?.Invoke(__value40);
             }
-            else if (IsReplicaTerminated)
+            else if (ReplicaTerminated is { } __value41)
             {
-                replicaTerminated?.Invoke(ReplicaTerminated!);
+                replicaTerminated?.Invoke(__value41);
             }
-            else if (IsModelPromotionControlAction)
+            else if (ModelPromotionControlAction is { } __value42)
             {
-                modelPromotionControlAction?.Invoke(ModelPromotionControlAction!);
+                modelPromotionControlAction?.Invoke(__value42);
             }
-            else if (IsSshCertificateSigned)
+            else if (SshCertificateSigned is { } __value43)
             {
-                sshCertificateSigned?.Invoke(SshCertificateSigned!);
+                sshCertificateSigned?.Invoke(__value43);
             }
-            else if (IsVolumeDeleted)
+            else if (VolumeDeleted is { } __value44)
             {
-                volumeDeleted?.Invoke(VolumeDeleted!);
+                volumeDeleted?.Invoke(__value44);
             }
-            else if (IsVolumeVersionDeleted)
+            else if (VolumeVersionDeleted is { } __value45)
             {
-                volumeVersionDeleted?.Invoke(VolumeVersionDeleted!);
+                volumeVersionDeleted?.Invoke(__value45);
             }
-            else if (IsVolumeVersionRestored)
+            else if (VolumeVersionRestored is { } __value46)
             {
-                volumeVersionRestored?.Invoke(VolumeVersionRestored!);
+                volumeVersionRestored?.Invoke(__value46);
             }
         }
 
@@ -3654,193 +3654,193 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsModelDeployed)
+            if (ModelDeployed is { } __value0)
             {
-                modelDeployed?.Invoke(ModelDeployed!);
+                modelDeployed?.Invoke(__value0);
             }
-            else if (IsModelDeploymentActivated)
+            else if (ModelDeploymentActivated is { } __value1)
             {
-                modelDeploymentActivated?.Invoke(ModelDeploymentActivated!);
+                modelDeploymentActivated?.Invoke(__value1);
             }
-            else if (IsModelDeploymentDeactivated)
+            else if (ModelDeploymentDeactivated is { } __value2)
             {
-                modelDeploymentDeactivated?.Invoke(ModelDeploymentDeactivated!);
+                modelDeploymentDeactivated?.Invoke(__value2);
             }
-            else if (IsModelDeploymentRetried)
+            else if (ModelDeploymentRetried is { } __value3)
             {
-                modelDeploymentRetried?.Invoke(ModelDeploymentRetried!);
+                modelDeploymentRetried?.Invoke(__value3);
             }
-            else if (IsModelDeploymentPromoted)
+            else if (ModelDeploymentPromoted is { } __value4)
             {
-                modelDeploymentPromoted?.Invoke(ModelDeploymentPromoted!);
+                modelDeploymentPromoted?.Invoke(__value4);
             }
-            else if (IsModelDeploymentAutoscalingSettingsChanged)
+            else if (ModelDeploymentAutoscalingSettingsChanged is { } __value5)
             {
-                modelDeploymentAutoscalingSettingsChanged?.Invoke(ModelDeploymentAutoscalingSettingsChanged!);
+                modelDeploymentAutoscalingSettingsChanged?.Invoke(__value5);
             }
-            else if (IsModelDeploymentRequestBackpressureSettingsChanged)
+            else if (ModelDeploymentRequestBackpressureSettingsChanged is { } __value6)
             {
-                modelDeploymentRequestBackpressureSettingsChanged?.Invoke(ModelDeploymentRequestBackpressureSettingsChanged!);
+                modelDeploymentRequestBackpressureSettingsChanged?.Invoke(__value6);
             }
-            else if (IsModelDeploymentInstanceTypeChanged)
+            else if (ModelDeploymentInstanceTypeChanged is { } __value7)
             {
-                modelDeploymentInstanceTypeChanged?.Invoke(ModelDeploymentInstanceTypeChanged!);
+                modelDeploymentInstanceTypeChanged?.Invoke(__value7);
             }
-            else if (IsModelDeploymentDeleted)
+            else if (ModelDeploymentDeleted is { } __value8)
             {
-                modelDeploymentDeleted?.Invoke(ModelDeploymentDeleted!);
+                modelDeploymentDeleted?.Invoke(__value8);
             }
-            else if (IsModelDeleted)
+            else if (ModelDeleted is { } __value9)
             {
-                modelDeleted?.Invoke(ModelDeleted!);
+                modelDeleted?.Invoke(__value9);
             }
-            else if (IsModelRenamed)
+            else if (ModelRenamed is { } __value10)
             {
-                modelRenamed?.Invoke(ModelRenamed!);
+                modelRenamed?.Invoke(__value10);
             }
-            else if (IsChainDeployed)
+            else if (ChainDeployed is { } __value11)
             {
-                chainDeployed?.Invoke(ChainDeployed!);
+                chainDeployed?.Invoke(__value11);
             }
-            else if (IsChainDeploymentActivated)
+            else if (ChainDeploymentActivated is { } __value12)
             {
-                chainDeploymentActivated?.Invoke(ChainDeploymentActivated!);
+                chainDeploymentActivated?.Invoke(__value12);
             }
-            else if (IsChainDeploymentDeactivated)
+            else if (ChainDeploymentDeactivated is { } __value13)
             {
-                chainDeploymentDeactivated?.Invoke(ChainDeploymentDeactivated!);
+                chainDeploymentDeactivated?.Invoke(__value13);
             }
-            else if (IsChainDeploymentPromoted)
+            else if (ChainDeploymentPromoted is { } __value14)
             {
-                chainDeploymentPromoted?.Invoke(ChainDeploymentPromoted!);
+                chainDeploymentPromoted?.Invoke(__value14);
             }
-            else if (IsChainletAutoscalingSettingsChanged)
+            else if (ChainletAutoscalingSettingsChanged is { } __value15)
             {
-                chainletAutoscalingSettingsChanged?.Invoke(ChainletAutoscalingSettingsChanged!);
+                chainletAutoscalingSettingsChanged?.Invoke(__value15);
             }
-            else if (IsChainletInstanceTypeChanged)
+            else if (ChainletInstanceTypeChanged is { } __value16)
             {
-                chainletInstanceTypeChanged?.Invoke(ChainletInstanceTypeChanged!);
+                chainletInstanceTypeChanged?.Invoke(__value16);
             }
-            else if (IsChainDeploymentDeleted)
+            else if (ChainDeploymentDeleted is { } __value17)
             {
-                chainDeploymentDeleted?.Invoke(ChainDeploymentDeleted!);
+                chainDeploymentDeleted?.Invoke(__value17);
             }
-            else if (IsChainDeleted)
+            else if (ChainDeleted is { } __value18)
             {
-                chainDeleted?.Invoke(ChainDeleted!);
+                chainDeleted?.Invoke(__value18);
             }
-            else if (IsChainEnvironmentCreated)
+            else if (ChainEnvironmentCreated is { } __value19)
             {
-                chainEnvironmentCreated?.Invoke(ChainEnvironmentCreated!);
+                chainEnvironmentCreated?.Invoke(__value19);
             }
-            else if (IsChainEnvironmentUpdated)
+            else if (ChainEnvironmentUpdated is { } __value20)
             {
-                chainEnvironmentUpdated?.Invoke(ChainEnvironmentUpdated!);
+                chainEnvironmentUpdated?.Invoke(__value20);
             }
-            else if (IsSecretUpdated)
+            else if (SecretUpdated is { } __value21)
             {
-                secretUpdated?.Invoke(SecretUpdated!);
+                secretUpdated?.Invoke(__value21);
             }
-            else if (IsSecretDeleted)
+            else if (SecretDeleted is { } __value22)
             {
-                secretDeleted?.Invoke(SecretDeleted!);
+                secretDeleted?.Invoke(__value22);
             }
-            else if (IsApiKeyCreated)
+            else if (ApiKeyCreated is { } __value23)
             {
-                apiKeyCreated?.Invoke(ApiKeyCreated!);
+                apiKeyCreated?.Invoke(__value23);
             }
-            else if (IsApiKeyDeleted)
+            else if (ApiKeyDeleted is { } __value24)
             {
-                apiKeyDeleted?.Invoke(ApiKeyDeleted!);
+                apiKeyDeleted?.Invoke(__value24);
             }
-            else if (IsGatewayEndpointCreated)
+            else if (GatewayEndpointCreated is { } __value25)
             {
-                gatewayEndpointCreated?.Invoke(GatewayEndpointCreated!);
+                gatewayEndpointCreated?.Invoke(__value25);
             }
-            else if (IsGatewayEndpointUpdated)
+            else if (GatewayEndpointUpdated is { } __value26)
             {
-                gatewayEndpointUpdated?.Invoke(GatewayEndpointUpdated!);
+                gatewayEndpointUpdated?.Invoke(__value26);
             }
-            else if (IsGatewayEndpointDeleted)
+            else if (GatewayEndpointDeleted is { } __value27)
             {
-                gatewayEndpointDeleted?.Invoke(GatewayEndpointDeleted!);
+                gatewayEndpointDeleted?.Invoke(__value27);
             }
-            else if (IsUserInvited)
+            else if (UserInvited is { } __value28)
             {
-                userInvited?.Invoke(UserInvited!);
+                userInvited?.Invoke(__value28);
             }
-            else if (IsUserJoinedOrganization)
+            else if (UserJoinedOrganization is { } __value29)
             {
-                userJoinedOrganization?.Invoke(UserJoinedOrganization!);
+                userJoinedOrganization?.Invoke(__value29);
             }
-            else if (IsWebhookSigningSecretCreated)
+            else if (WebhookSigningSecretCreated is { } __value30)
             {
-                webhookSigningSecretCreated?.Invoke(WebhookSigningSecretCreated!);
+                webhookSigningSecretCreated?.Invoke(__value30);
             }
-            else if (IsWebhookSigningSecretRotated)
+            else if (WebhookSigningSecretRotated is { } __value31)
             {
-                webhookSigningSecretRotated?.Invoke(WebhookSigningSecretRotated!);
+                webhookSigningSecretRotated?.Invoke(__value31);
             }
-            else if (IsWebhookSigningSecretDeleted)
+            else if (WebhookSigningSecretDeleted is { } __value32)
             {
-                webhookSigningSecretDeleted?.Invoke(WebhookSigningSecretDeleted!);
+                webhookSigningSecretDeleted?.Invoke(__value32);
             }
-            else if (IsUserRoleUpdated)
+            else if (UserRoleUpdated is { } __value33)
             {
-                userRoleUpdated?.Invoke(UserRoleUpdated!);
+                userRoleUpdated?.Invoke(__value33);
             }
-            else if (IsUserTeamRoleUpdated)
+            else if (UserTeamRoleUpdated is { } __value34)
             {
-                userTeamRoleUpdated?.Invoke(UserTeamRoleUpdated!);
+                userTeamRoleUpdated?.Invoke(__value34);
             }
-            else if (IsUserRemoved)
+            else if (UserRemoved is { } __value35)
             {
-                userRemoved?.Invoke(UserRemoved!);
+                userRemoved?.Invoke(__value35);
             }
-            else if (IsDirectoryGroupRoleUpdated)
+            else if (DirectoryGroupRoleUpdated is { } __value36)
             {
-                directoryGroupRoleUpdated?.Invoke(DirectoryGroupRoleUpdated!);
+                directoryGroupRoleUpdated?.Invoke(__value36);
             }
-            else if (IsRequireGroupBasedAdminsEnabled)
+            else if (RequireGroupBasedAdminsEnabled is { } __value37)
             {
-                requireGroupBasedAdminsEnabled?.Invoke(RequireGroupBasedAdminsEnabled!);
+                requireGroupBasedAdminsEnabled?.Invoke(__value37);
             }
-            else if (IsEnvironmentCreated)
+            else if (EnvironmentCreated is { } __value38)
             {
-                environmentCreated?.Invoke(EnvironmentCreated!);
+                environmentCreated?.Invoke(__value38);
             }
-            else if (IsEnvironmentUpdated)
+            else if (EnvironmentUpdated is { } __value39)
             {
-                environmentUpdated?.Invoke(EnvironmentUpdated!);
+                environmentUpdated?.Invoke(__value39);
             }
-            else if (IsEnvironmentDeleted)
+            else if (EnvironmentDeleted is { } __value40)
             {
-                environmentDeleted?.Invoke(EnvironmentDeleted!);
+                environmentDeleted?.Invoke(__value40);
             }
-            else if (IsReplicaTerminated)
+            else if (ReplicaTerminated is { } __value41)
             {
-                replicaTerminated?.Invoke(ReplicaTerminated!);
+                replicaTerminated?.Invoke(__value41);
             }
-            else if (IsModelPromotionControlAction)
+            else if (ModelPromotionControlAction is { } __value42)
             {
-                modelPromotionControlAction?.Invoke(ModelPromotionControlAction!);
+                modelPromotionControlAction?.Invoke(__value42);
             }
-            else if (IsSshCertificateSigned)
+            else if (SshCertificateSigned is { } __value43)
             {
-                sshCertificateSigned?.Invoke(SshCertificateSigned!);
+                sshCertificateSigned?.Invoke(__value43);
             }
-            else if (IsVolumeDeleted)
+            else if (VolumeDeleted is { } __value44)
             {
-                volumeDeleted?.Invoke(VolumeDeleted!);
+                volumeDeleted?.Invoke(__value44);
             }
-            else if (IsVolumeVersionDeleted)
+            else if (VolumeVersionDeleted is { } __value45)
             {
-                volumeVersionDeleted?.Invoke(VolumeVersionDeleted!);
+                volumeVersionDeleted?.Invoke(__value45);
             }
-            else if (IsVolumeVersionRestored)
+            else if (VolumeVersionRestored is { } __value46)
             {
-                volumeVersionRestored?.Invoke(VolumeVersionRestored!);
+                volumeVersionRestored?.Invoke(__value46);
             }
         }
 

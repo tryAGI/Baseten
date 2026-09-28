@@ -47,8 +47,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceHuggingFaceV1 PickHuggingFace() => IsHuggingFace
-            ? HuggingFace!
+        public global::Baseten.VolumeSyncSourceHuggingFaceV1 PickHuggingFace() => HuggingFace is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'HuggingFace' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceS3V1 PickS3() => IsS3
-            ? S3!
+        public global::Baseten.VolumeSyncSourceS3V1 PickS3() => S3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'S3' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceGCSV1 PickGcs() => IsGcs
-            ? Gcs!
+        public global::Baseten.VolumeSyncSourceGCSV1 PickGcs() => Gcs is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Gcs' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceAzureV1 PickAzure() => IsAzure
-            ? Azure!
+        public global::Baseten.VolumeSyncSourceAzureV1 PickAzure() => Azure is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Azure' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceR2V1 PickR2() => IsR2
-            ? R2!
+        public global::Baseten.VolumeSyncSourceR2V1 PickR2() => R2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'R2' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceCoreWeaveV1 PickCoreweave() => IsCoreweave
-            ? Coreweave!
+        public global::Baseten.VolumeSyncSourceCoreWeaveV1 PickCoreweave() => Coreweave is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Coreweave' but the value was {ToString()}.");
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceBasetenTrainingV1 PickBasetenTraining() => IsBasetenTraining
-            ? BasetenTraining!
+        public global::Baseten.VolumeSyncSourceBasetenTrainingV1 PickBasetenTraining() => BasetenTraining is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenTraining' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -510,33 +510,33 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsHuggingFace && huggingFace != null)
+            if (HuggingFace is { } __value0 && huggingFace != null)
             {
-                return huggingFace(HuggingFace!);
+                return huggingFace(__value0);
             }
-            else if (IsS3 && s3 != null)
+            else if (S3 is { } __value1 && s3 != null)
             {
-                return s3(S3!);
+                return s3(__value1);
             }
-            else if (IsGcs && gcs != null)
+            else if (Gcs is { } __value2 && gcs != null)
             {
-                return gcs(Gcs!);
+                return gcs(__value2);
             }
-            else if (IsAzure && azure != null)
+            else if (Azure is { } __value3 && azure != null)
             {
-                return azure(Azure!);
+                return azure(__value3);
             }
-            else if (IsR2 && r2 != null)
+            else if (R2 is { } __value4 && r2 != null)
             {
-                return r2(R2!);
+                return r2(__value4);
             }
-            else if (IsCoreweave && coreweave != null)
+            else if (Coreweave is { } __value5 && coreweave != null)
             {
-                return coreweave(Coreweave!);
+                return coreweave(__value5);
             }
-            else if (IsBasetenTraining && basetenTraining != null)
+            else if (BasetenTraining is { } __value6 && basetenTraining != null)
             {
-                return basetenTraining(BasetenTraining!);
+                return basetenTraining(__value6);
             }
 
             return default(TResult);
@@ -566,33 +566,33 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsHuggingFace)
+            if (HuggingFace is { } __value0)
             {
-                huggingFace?.Invoke(HuggingFace!);
+                huggingFace?.Invoke(__value0);
             }
-            else if (IsS3)
+            else if (S3 is { } __value1)
             {
-                s3?.Invoke(S3!);
+                s3?.Invoke(__value1);
             }
-            else if (IsGcs)
+            else if (Gcs is { } __value2)
             {
-                gcs?.Invoke(Gcs!);
+                gcs?.Invoke(__value2);
             }
-            else if (IsAzure)
+            else if (Azure is { } __value3)
             {
-                azure?.Invoke(Azure!);
+                azure?.Invoke(__value3);
             }
-            else if (IsR2)
+            else if (R2 is { } __value4)
             {
-                r2?.Invoke(R2!);
+                r2?.Invoke(__value4);
             }
-            else if (IsCoreweave)
+            else if (Coreweave is { } __value5)
             {
-                coreweave?.Invoke(Coreweave!);
+                coreweave?.Invoke(__value5);
             }
-            else if (IsBasetenTraining)
+            else if (BasetenTraining is { } __value6)
             {
-                basetenTraining?.Invoke(BasetenTraining!);
+                basetenTraining?.Invoke(__value6);
             }
         }
 
@@ -614,33 +614,33 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsHuggingFace)
+            if (HuggingFace is { } __value0)
             {
-                huggingFace?.Invoke(HuggingFace!);
+                huggingFace?.Invoke(__value0);
             }
-            else if (IsS3)
+            else if (S3 is { } __value1)
             {
-                s3?.Invoke(S3!);
+                s3?.Invoke(__value1);
             }
-            else if (IsGcs)
+            else if (Gcs is { } __value2)
             {
-                gcs?.Invoke(Gcs!);
+                gcs?.Invoke(__value2);
             }
-            else if (IsAzure)
+            else if (Azure is { } __value3)
             {
-                azure?.Invoke(Azure!);
+                azure?.Invoke(__value3);
             }
-            else if (IsR2)
+            else if (R2 is { } __value4)
             {
-                r2?.Invoke(R2!);
+                r2?.Invoke(__value4);
             }
-            else if (IsCoreweave)
+            else if (Coreweave is { } __value5)
             {
-                coreweave?.Invoke(Coreweave!);
+                coreweave?.Invoke(__value5);
             }
-            else if (IsBasetenTraining)
+            else if (BasetenTraining is { } __value6)
             {
-                basetenTraining?.Invoke(BasetenTraining!);
+                basetenTraining?.Invoke(__value6);
             }
         }
 

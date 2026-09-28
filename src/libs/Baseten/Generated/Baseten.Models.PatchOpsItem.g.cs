@@ -47,8 +47,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.DeploymentPatchOpModelCodeV1 PickModelCode() => IsModelCode
-            ? ModelCode!
+        public global::Baseten.DeploymentPatchOpModelCodeV1 PickModelCode() => ModelCode is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelCode' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.DeploymentPatchOpPackageV1 PickPackage() => IsPackage
-            ? Package!
+        public global::Baseten.DeploymentPatchOpPackageV1 PickPackage() => Package is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Package' but the value was {ToString()}.");
 
         /// <summary>
@@ -124,8 +124,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.DeploymentPatchOpConfigV1 PickConfig() => IsConfig
-            ? Config!
+        public global::Baseten.DeploymentPatchOpConfigV1 PickConfig() => Config is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Config' but the value was {ToString()}.");
 
         /// <summary>
@@ -161,8 +161,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.DeploymentPatchOpPythonRequirementV1 PickPythonRequirement() => IsPythonRequirement
-            ? PythonRequirement!
+        public global::Baseten.DeploymentPatchOpPythonRequirementV1 PickPythonRequirement() => PythonRequirement is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PythonRequirement' but the value was {ToString()}.");
 
         /// <summary>
@@ -198,8 +198,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.DeploymentPatchOpEnvVarV1 PickEnvironmentVariable() => IsEnvironmentVariable
-            ? EnvironmentVariable!
+        public global::Baseten.DeploymentPatchOpEnvVarV1 PickEnvironmentVariable() => EnvironmentVariable is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EnvironmentVariable' but the value was {ToString()}.");
 
         /// <summary>
@@ -238,8 +238,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.DeploymentPatchOpExternalDataV1 PickExternalData() => IsExternalData
-            ? ExternalData!
+        public global::Baseten.DeploymentPatchOpExternalDataV1 PickExternalData() => ExternalData is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ExternalData' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -451,29 +451,29 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsModelCode && modelCode != null)
+            if (ModelCode is { } __value0 && modelCode != null)
             {
-                return modelCode(ModelCode!);
+                return modelCode(__value0);
             }
-            else if (IsPackage && package != null)
+            else if (Package is { } __value1 && package != null)
             {
-                return package(Package!);
+                return package(__value1);
             }
-            else if (IsConfig && config != null)
+            else if (Config is { } __value2 && config != null)
             {
-                return config(Config!);
+                return config(__value2);
             }
-            else if (IsPythonRequirement && pythonRequirement != null)
+            else if (PythonRequirement is { } __value3 && pythonRequirement != null)
             {
-                return pythonRequirement(PythonRequirement!);
+                return pythonRequirement(__value3);
             }
-            else if (IsEnvironmentVariable && environmentVariable != null)
+            else if (EnvironmentVariable is { } __value4 && environmentVariable != null)
             {
-                return environmentVariable(EnvironmentVariable!);
+                return environmentVariable(__value4);
             }
-            else if (IsExternalData && externalData != null)
+            else if (ExternalData is { } __value5 && externalData != null)
             {
-                return externalData(ExternalData!);
+                return externalData(__value5);
             }
 
             return default(TResult);
@@ -501,29 +501,29 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsModelCode)
+            if (ModelCode is { } __value0)
             {
-                modelCode?.Invoke(ModelCode!);
+                modelCode?.Invoke(__value0);
             }
-            else if (IsPackage)
+            else if (Package is { } __value1)
             {
-                package?.Invoke(Package!);
+                package?.Invoke(__value1);
             }
-            else if (IsConfig)
+            else if (Config is { } __value2)
             {
-                config?.Invoke(Config!);
+                config?.Invoke(__value2);
             }
-            else if (IsPythonRequirement)
+            else if (PythonRequirement is { } __value3)
             {
-                pythonRequirement?.Invoke(PythonRequirement!);
+                pythonRequirement?.Invoke(__value3);
             }
-            else if (IsEnvironmentVariable)
+            else if (EnvironmentVariable is { } __value4)
             {
-                environmentVariable?.Invoke(EnvironmentVariable!);
+                environmentVariable?.Invoke(__value4);
             }
-            else if (IsExternalData)
+            else if (ExternalData is { } __value5)
             {
-                externalData?.Invoke(ExternalData!);
+                externalData?.Invoke(__value5);
             }
         }
 
@@ -544,29 +544,29 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsModelCode)
+            if (ModelCode is { } __value0)
             {
-                modelCode?.Invoke(ModelCode!);
+                modelCode?.Invoke(__value0);
             }
-            else if (IsPackage)
+            else if (Package is { } __value1)
             {
-                package?.Invoke(Package!);
+                package?.Invoke(__value1);
             }
-            else if (IsConfig)
+            else if (Config is { } __value2)
             {
-                config?.Invoke(Config!);
+                config?.Invoke(__value2);
             }
-            else if (IsPythonRequirement)
+            else if (PythonRequirement is { } __value3)
             {
-                pythonRequirement?.Invoke(PythonRequirement!);
+                pythonRequirement?.Invoke(__value3);
             }
-            else if (IsEnvironmentVariable)
+            else if (EnvironmentVariable is { } __value4)
             {
-                environmentVariable?.Invoke(EnvironmentVariable!);
+                environmentVariable?.Invoke(__value4);
             }
-            else if (IsExternalData)
+            else if (ExternalData is { } __value5)
             {
-                externalData?.Invoke(ExternalData!);
+                externalData?.Invoke(__value5);
             }
         }
 

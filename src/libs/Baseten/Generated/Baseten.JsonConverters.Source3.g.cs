@@ -59,13 +59,13 @@ namespace Baseten.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.LibraryListingSourceV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.LibraryListingSourceV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.LibraryListingSourceV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.LibraryListing!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickLibraryListing(), typeInfo);
             }
             else if (value.IsModelArchive)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.ModelArchiveSourceV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.ModelArchiveSourceV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.ModelArchiveSourceV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelArchive!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelArchive(), typeInfo);
             }
         }
     }

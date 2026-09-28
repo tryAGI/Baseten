@@ -59,13 +59,13 @@ namespace Baseten.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.LoopsCheckpointS3SourceV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.LoopsCheckpointS3SourceV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.LoopsCheckpointS3SourceV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.S3!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickS3(), typeInfo);
             }
             else if (value.IsVolume)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.LoopsCheckpointVolumeSourceV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.LoopsCheckpointVolumeSourceV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.LoopsCheckpointVolumeSourceV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Volume!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVolume(), typeInfo);
             }
         }
     }

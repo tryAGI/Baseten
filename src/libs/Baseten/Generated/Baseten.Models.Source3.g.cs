@@ -47,8 +47,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.LibraryListingSourceV1 PickLibraryListing() => IsLibraryListing
-            ? LibraryListing!
+        public global::Baseten.LibraryListingSourceV1 PickLibraryListing() => LibraryListing is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'LibraryListing' but the value was {ToString()}.");
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ModelArchiveSourceV1 PickModelArchive() => IsModelArchive
-            ? ModelArchive!
+        public global::Baseten.ModelArchiveSourceV1 PickModelArchive() => ModelArchive is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ModelArchive' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -186,13 +186,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsLibraryListing && libraryListing != null)
+            if (LibraryListing is { } __value0 && libraryListing != null)
             {
-                return libraryListing(LibraryListing!);
+                return libraryListing(__value0);
             }
-            else if (IsModelArchive && modelArchive != null)
+            else if (ModelArchive is { } __value1 && modelArchive != null)
             {
-                return modelArchive(ModelArchive!);
+                return modelArchive(__value1);
             }
 
             return default(TResult);
@@ -212,13 +212,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsLibraryListing)
+            if (LibraryListing is { } __value0)
             {
-                libraryListing?.Invoke(LibraryListing!);
+                libraryListing?.Invoke(__value0);
             }
-            else if (IsModelArchive)
+            else if (ModelArchive is { } __value1)
             {
-                modelArchive?.Invoke(ModelArchive!);
+                modelArchive?.Invoke(__value1);
             }
         }
 
@@ -235,13 +235,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (IsLibraryListing)
+            if (LibraryListing is { } __value0)
             {
-                libraryListing?.Invoke(LibraryListing!);
+                libraryListing?.Invoke(__value0);
             }
-            else if (IsModelArchive)
+            else if (ModelArchive is { } __value1)
             {
-                modelArchive?.Invoke(ModelArchive!);
+                modelArchive?.Invoke(__value1);
             }
         }
 

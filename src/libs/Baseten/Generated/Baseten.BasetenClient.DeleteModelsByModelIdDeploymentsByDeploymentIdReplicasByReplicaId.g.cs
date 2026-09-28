@@ -173,9 +173,9 @@ namespace Baseten
                 PrepareDeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    modelId: modelId!,
-                    deploymentId: deploymentId!,
-                    replicaId: replicaId!);
+                    modelId: modelId,
+                    deploymentId: deploymentId,
+                    replicaId: replicaId);
 
                 return __httpRequest;
             }
@@ -197,7 +197,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/replicas/{replicaId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -231,7 +231,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/replicas/{replicaId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -272,7 +272,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/replicas/{replicaId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -320,7 +320,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/replicas/{replicaId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -342,7 +342,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/models/{modelId}/deployments/{deploymentId}/replicas/{replicaId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

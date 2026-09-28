@@ -68,19 +68,19 @@ namespace Baseten.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.BasetenLatestCheckpointConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.BasetenLatestCheckpointConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.BasetenLatestCheckpointConfig).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BasetenLatestCheckpoint!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBasetenLatestCheckpoint(), typeInfo);
             }
             else if (value.IsBasetenNamedCheckpoint)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.BasetenNamedCheckpointConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.BasetenNamedCheckpointConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.BasetenNamedCheckpointConfig).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BasetenNamedCheckpoint!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBasetenNamedCheckpoint(), typeInfo);
             }
             else if (value.IsLoopsCheckpoint)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.LoopsCheckpointConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.LoopsCheckpointConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.LoopsCheckpointConfig).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.LoopsCheckpoint!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickLoopsCheckpoint(), typeInfo);
             }
         }
     }

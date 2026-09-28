@@ -464,283 +464,283 @@ namespace Baseten.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeployedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeployedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeployedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeployed!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeployed(), typeInfo);
             }
             else if (value.IsModelDeploymentActivated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentActivatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentActivatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentActivatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentActivated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeploymentActivated(), typeInfo);
             }
             else if (value.IsModelDeploymentDeactivated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentDeactivatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentDeactivatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentDeactivatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentDeactivated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeploymentDeactivated(), typeInfo);
             }
             else if (value.IsModelDeploymentRetried)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentRetriedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentRetriedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentRetriedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentRetried!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeploymentRetried(), typeInfo);
             }
             else if (value.IsModelDeploymentPromoted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentPromotedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentPromotedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentPromotedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentPromoted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeploymentPromoted(), typeInfo);
             }
             else if (value.IsModelDeploymentAutoscalingSettingsChanged)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentAutoscalingSettingsChangedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentAutoscalingSettingsChanged!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeploymentAutoscalingSettingsChanged(), typeInfo);
             }
             else if (value.IsModelDeploymentRequestBackpressureSettingsChanged)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentRequestBackpressureSettingsChanged!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeploymentRequestBackpressureSettingsChanged(), typeInfo);
             }
             else if (value.IsModelDeploymentInstanceTypeChanged)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentInstanceTypeChangedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentInstanceTypeChanged!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeploymentInstanceTypeChanged(), typeInfo);
             }
             else if (value.IsModelDeploymentDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeploymentDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeploymentDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeploymentDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeploymentDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeploymentDeleted(), typeInfo);
             }
             else if (value.IsModelDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelDeleted(), typeInfo);
             }
             else if (value.IsModelRenamed)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelRenamedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelRenamedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelRenamedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelRenamed!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelRenamed(), typeInfo);
             }
             else if (value.IsChainDeployed)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainDeployedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainDeployedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainDeployedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainDeployed!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainDeployed(), typeInfo);
             }
             else if (value.IsChainDeploymentActivated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainDeploymentActivatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainDeploymentActivatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainDeploymentActivatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainDeploymentActivated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainDeploymentActivated(), typeInfo);
             }
             else if (value.IsChainDeploymentDeactivated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainDeploymentDeactivatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainDeploymentDeactivatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainDeploymentDeactivatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainDeploymentDeactivated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainDeploymentDeactivated(), typeInfo);
             }
             else if (value.IsChainDeploymentPromoted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainDeploymentPromotedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainDeploymentPromotedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainDeploymentPromotedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainDeploymentPromoted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainDeploymentPromoted(), typeInfo);
             }
             else if (value.IsChainletAutoscalingSettingsChanged)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainletAutoscalingSettingsChangedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainletAutoscalingSettingsChanged!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainletAutoscalingSettingsChanged(), typeInfo);
             }
             else if (value.IsChainletInstanceTypeChanged)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainletInstanceTypeChangedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainletInstanceTypeChangedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainletInstanceTypeChangedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainletInstanceTypeChanged!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainletInstanceTypeChanged(), typeInfo);
             }
             else if (value.IsChainDeploymentDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainDeploymentDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainDeploymentDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainDeploymentDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainDeploymentDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainDeploymentDeleted(), typeInfo);
             }
             else if (value.IsChainDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainDeleted(), typeInfo);
             }
             else if (value.IsChainEnvironmentCreated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainEnvironmentCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainEnvironmentCreatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainEnvironmentCreatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainEnvironmentCreated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainEnvironmentCreated(), typeInfo);
             }
             else if (value.IsChainEnvironmentUpdated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventChainEnvironmentUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventChainEnvironmentUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventChainEnvironmentUpdatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChainEnvironmentUpdated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChainEnvironmentUpdated(), typeInfo);
             }
             else if (value.IsSecretUpdated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventSecretUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventSecretUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventSecretUpdatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SecretUpdated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSecretUpdated(), typeInfo);
             }
             else if (value.IsSecretDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventSecretDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventSecretDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventSecretDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SecretDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSecretDeleted(), typeInfo);
             }
             else if (value.IsApiKeyCreated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventApiKeyCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventApiKeyCreatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventApiKeyCreatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ApiKeyCreated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickApiKeyCreated(), typeInfo);
             }
             else if (value.IsApiKeyDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventApiKeyDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventApiKeyDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventApiKeyDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ApiKeyDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickApiKeyDeleted(), typeInfo);
             }
             else if (value.IsGatewayEndpointCreated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGatewayEndpointCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGatewayEndpointCreatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventGatewayEndpointCreatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GatewayEndpointCreated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGatewayEndpointCreated(), typeInfo);
             }
             else if (value.IsGatewayEndpointUpdated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGatewayEndpointUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGatewayEndpointUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventGatewayEndpointUpdatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GatewayEndpointUpdated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGatewayEndpointUpdated(), typeInfo);
             }
             else if (value.IsGatewayEndpointDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGatewayEndpointDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGatewayEndpointDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventGatewayEndpointDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.GatewayEndpointDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGatewayEndpointDeleted(), typeInfo);
             }
             else if (value.IsUserInvited)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventUserInvitedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventUserInvitedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventUserInvitedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UserInvited!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUserInvited(), typeInfo);
             }
             else if (value.IsUserJoinedOrganization)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventUserJoinedOrganizationV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventUserJoinedOrganizationV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventUserJoinedOrganizationV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UserJoinedOrganization!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUserJoinedOrganization(), typeInfo);
             }
             else if (value.IsWebhookSigningSecretCreated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WebhookSigningSecretCreated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhookSigningSecretCreated(), typeInfo);
             }
             else if (value.IsWebhookSigningSecretRotated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventWebhookSigningSecretRotatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WebhookSigningSecretRotated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhookSigningSecretRotated(), typeInfo);
             }
             else if (value.IsWebhookSigningSecretDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventWebhookSigningSecretDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WebhookSigningSecretDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickWebhookSigningSecretDeleted(), typeInfo);
             }
             else if (value.IsUserRoleUpdated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventUserRoleUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventUserRoleUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventUserRoleUpdatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UserRoleUpdated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUserRoleUpdated(), typeInfo);
             }
             else if (value.IsUserTeamRoleUpdated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventUserTeamRoleUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventUserTeamRoleUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventUserTeamRoleUpdatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UserTeamRoleUpdated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUserTeamRoleUpdated(), typeInfo);
             }
             else if (value.IsUserRemoved)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventUserRemovedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventUserRemovedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventUserRemovedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UserRemoved!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUserRemoved(), typeInfo);
             }
             else if (value.IsDirectoryGroupRoleUpdated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventDirectoryGroupRoleUpdatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.DirectoryGroupRoleUpdated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDirectoryGroupRoleUpdated(), typeInfo);
             }
             else if (value.IsRequireGroupBasedAdminsEnabled)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventRequireGroupBasedAdminsEnabledV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RequireGroupBasedAdminsEnabled!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRequireGroupBasedAdminsEnabled(), typeInfo);
             }
             else if (value.IsEnvironmentCreated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventEnvironmentCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventEnvironmentCreatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventEnvironmentCreatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.EnvironmentCreated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEnvironmentCreated(), typeInfo);
             }
             else if (value.IsEnvironmentUpdated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventEnvironmentUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventEnvironmentUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventEnvironmentUpdatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.EnvironmentUpdated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEnvironmentUpdated(), typeInfo);
             }
             else if (value.IsEnvironmentDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventEnvironmentDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventEnvironmentDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventEnvironmentDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.EnvironmentDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEnvironmentDeleted(), typeInfo);
             }
             else if (value.IsReplicaTerminated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventReplicaTerminatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventReplicaTerminatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventReplicaTerminatedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ReplicaTerminated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickReplicaTerminated(), typeInfo);
             }
             else if (value.IsModelPromotionControlAction)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventModelPromotionControlActionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventModelPromotionControlActionV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventModelPromotionControlActionV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ModelPromotionControlAction!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickModelPromotionControlAction(), typeInfo);
             }
             else if (value.IsSshCertificateSigned)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventSshCertificateSignedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventSshCertificateSignedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventSshCertificateSignedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SshCertificateSigned!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSshCertificateSigned(), typeInfo);
             }
             else if (value.IsVolumeDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventVolumeDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VolumeDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVolumeDeleted(), typeInfo);
             }
             else if (value.IsVolumeVersionDeleted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeVersionDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeVersionDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventVolumeVersionDeletedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VolumeVersionDeleted!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVolumeVersionDeleted(), typeInfo);
             }
             else if (value.IsVolumeVersionRestored)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeVersionRestoredV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeVersionRestoredV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventVolumeVersionRestoredV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.VolumeVersionRestored!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVolumeVersionRestored(), typeInfo);
             }
         }
     }

@@ -163,8 +163,8 @@ namespace Baseten
                 PrepareGetChainsByChainIdDeploymentsByChainDeploymentIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    chainId: chainId!,
-                    chainDeploymentId: chainDeploymentId!);
+                    chainId: chainId,
+                    chainDeploymentId: chainDeploymentId);
 
                 return __httpRequest;
             }
@@ -186,7 +186,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -220,7 +220,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -261,7 +261,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -309,7 +309,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -331,7 +331,7 @@ namespace Baseten
                                 pathTemplate: "$\"/v1/chains/{chainId}/deployments/{chainDeploymentId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
