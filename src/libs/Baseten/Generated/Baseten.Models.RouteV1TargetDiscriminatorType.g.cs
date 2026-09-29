@@ -23,14 +23,6 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        OpenaiCompatible,
-        /// <summary>
-        ///
-        /// </summary>
-        Vertex,
-        /// <summary>
-        ///
-        /// </summary>
         Xai,
     }
 
@@ -49,8 +41,6 @@ namespace Baseten
                 RouteV1TargetDiscriminatorType.Anthropic => "ANTHROPIC",
                 RouteV1TargetDiscriminatorType.BasetenModelApi => "BASETEN_MODEL_API",
                 RouteV1TargetDiscriminatorType.Openai => "OPENAI",
-                RouteV1TargetDiscriminatorType.OpenaiCompatible => "OPENAI_COMPATIBLE",
-                RouteV1TargetDiscriminatorType.Vertex => "VERTEX",
                 RouteV1TargetDiscriminatorType.Xai => "XAI",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -65,8 +55,6 @@ namespace Baseten
                 "ANTHROPIC" => RouteV1TargetDiscriminatorType.Anthropic,
                 "BASETEN_MODEL_API" => RouteV1TargetDiscriminatorType.BasetenModelApi,
                 "OPENAI" => RouteV1TargetDiscriminatorType.Openai,
-                "OPENAI_COMPATIBLE" => RouteV1TargetDiscriminatorType.OpenaiCompatible,
-                "VERTEX" => RouteV1TargetDiscriminatorType.Vertex,
                 "XAI" => RouteV1TargetDiscriminatorType.Xai,
                 _ => null,
             };

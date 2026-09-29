@@ -9,6 +9,13 @@ namespace Baseten
     public sealed partial class CreateLoopsSamplerRequestV1
     {
         /// <summary>
+        /// Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'dedicated' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
+        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+
+        /// <summary>
         /// ID of the Loops session this sampler belongs to.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("session_id")]
@@ -62,6 +69,10 @@ namespace Baseten
         /// <param name="sessionId">
         /// ID of the Loops session this sampler belongs to.
         /// </param>
+        /// <param name="availabilityModel">
+        /// Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'dedicated' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="baseModel">
         /// Base model ID for a standalone sampler (for example, a baseline).<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -87,12 +98,14 @@ namespace Baseten
 #endif
         public CreateLoopsSamplerRequestV1(
             string sessionId,
+            global::Baseten.V1AvailabilityModel? availabilityModel,
             string? baseModel,
             string? runId,
             int? maxSeqLength,
             string? modelPath,
             string? reuseFromSessionId)
         {
+            this.AvailabilityModel = availabilityModel;
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
             this.BaseModel = baseModel;
             this.RunId = runId;

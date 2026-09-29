@@ -23,6 +23,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Code,
+        /// <summary>
+        ///
+        /// </summary>
         Deleted,
         /// <summary>
         ///
@@ -93,6 +97,7 @@ namespace Baseten
                 AuditLogEventTypeGroupV1.ActivatedDeactivated => "ACTIVATED_DEACTIVATED",
                 AuditLogEventTypeGroupV1.ApiKeys => "API_KEYS",
                 AuditLogEventTypeGroupV1.AutoscalingSettings => "AUTOSCALING_SETTINGS",
+                AuditLogEventTypeGroupV1.Code => "CODE",
                 AuditLogEventTypeGroupV1.Deleted => "DELETED",
                 AuditLogEventTypeGroupV1.Deployed => "DEPLOYED",
                 AuditLogEventTypeGroupV1.DirectoryGroupManagement => "DIRECTORY_GROUP_MANAGEMENT",
@@ -120,6 +125,7 @@ namespace Baseten
                 "ACTIVATED_DEACTIVATED" => AuditLogEventTypeGroupV1.ActivatedDeactivated,
                 "API_KEYS" => AuditLogEventTypeGroupV1.ApiKeys,
                 "AUTOSCALING_SETTINGS" => AuditLogEventTypeGroupV1.AutoscalingSettings,
+                "CODE" => AuditLogEventTypeGroupV1.Code,
                 "DELETED" => AuditLogEventTypeGroupV1.Deleted,
                 "DEPLOYED" => AuditLogEventTypeGroupV1.Deployed,
                 "DIRECTORY_GROUP_MANAGEMENT" => AuditLogEventTypeGroupV1.DirectoryGroupManagement,

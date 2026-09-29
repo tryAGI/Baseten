@@ -32,9 +32,7 @@ namespace Baseten
             global::System.DateTime? startDate,
             global::System.DateTime? endDate,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy,
-            global::System.Collections.Generic.IList<string>? apiKeyPrefixes,
             global::System.Collections.Generic.IList<string>? userIds,
-            global::System.Collections.Generic.IList<string>? routeIds,
             global::System.Collections.Generic.IList<string>? models,
             global::System.Collections.Generic.IList<global::Baseten.RouteProviderV1>? providers);
         partial void PrepareGetRoutesUsageRequest(
@@ -45,9 +43,7 @@ namespace Baseten
             global::System.DateTime? startDate,
             global::System.DateTime? endDate,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy,
-            global::System.Collections.Generic.IList<string>? apiKeyPrefixes,
             global::System.Collections.Generic.IList<string>? userIds,
-            global::System.Collections.Generic.IList<string>? routeIds,
             global::System.Collections.Generic.IList<string>? models,
             global::System.Collections.Generic.IList<global::Baseten.RouteProviderV1>? providers);
         partial void ProcessGetRoutesUsageResponse(
@@ -61,7 +57,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets daily route usage and estimated costs<br/>
-        /// Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Model API costs use your prices at the time of each request. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage has no cost estimate. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. A null cost means some usage in that result could not be priced. Usage is retained for 92 days.
+        /// Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -76,9 +72,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="groupBy"></param>
-        /// <param name="apiKeyPrefixes"></param>
         /// <param name="userIds"></param>
-        /// <param name="routeIds"></param>
         /// <param name="models"></param>
         /// <param name="providers"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -95,9 +89,7 @@ namespace Baseten
             global::System.DateTime? startDate = default,
             global::System.DateTime? endDate = default,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy = default,
-            global::System.Collections.Generic.IList<string>? apiKeyPrefixes = default,
             global::System.Collections.Generic.IList<string>? userIds = default,
-            global::System.Collections.Generic.IList<string>? routeIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
             global::System.Collections.Generic.IList<global::Baseten.RouteProviderV1>? providers = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -109,9 +101,7 @@ namespace Baseten
                 startDate: startDate,
                 endDate: endDate,
                 groupBy: groupBy,
-                apiKeyPrefixes: apiKeyPrefixes,
                 userIds: userIds,
-                routeIds: routeIds,
                 models: models,
                 providers: providers,
                 requestOptions: requestOptions,
@@ -122,7 +112,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets daily route usage and estimated costs<br/>
-        /// Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Model API costs use your prices at the time of each request. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage has no cost estimate. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. A null cost means some usage in that result could not be priced. Usage is retained for 92 days.
+        /// Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -137,9 +127,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="groupBy"></param>
-        /// <param name="apiKeyPrefixes"></param>
         /// <param name="userIds"></param>
-        /// <param name="routeIds"></param>
         /// <param name="models"></param>
         /// <param name="providers"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -156,9 +144,7 @@ namespace Baseten
             global::System.DateTime? startDate = default,
             global::System.DateTime? endDate = default,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy = default,
-            global::System.Collections.Generic.IList<string>? apiKeyPrefixes = default,
             global::System.Collections.Generic.IList<string>? userIds = default,
-            global::System.Collections.Generic.IList<string>? routeIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
             global::System.Collections.Generic.IList<global::Baseten.RouteProviderV1>? providers = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -173,9 +159,7 @@ namespace Baseten
                 startDate: startDate,
                 endDate: endDate,
                 groupBy: groupBy,
-                apiKeyPrefixes: apiKeyPrefixes,
                 userIds: userIds,
-                routeIds: routeIds,
                 models: models,
                 providers: providers);
 
@@ -211,9 +195,7 @@ namespace Baseten
                                 .AddOptionalParameter("start_date", startDate?.ToString())
                                 .AddOptionalParameter("end_date", endDate?.ToString())
                                 .AddOptionalParameter("group_by", groupBy, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
-                                .AddOptionalParameter("api_key_prefixes", apiKeyPrefixes, delimiter: ",", explode: true)
                                 .AddOptionalParameter("user_ids", userIds, delimiter: ",", explode: true)
-                                .AddOptionalParameter("route_ids", routeIds, delimiter: ",", explode: true)
                                 .AddOptionalParameter("models", models, delimiter: ",", explode: true)
                                 .AddOptionalParameter("providers", providers, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                                 ;
@@ -262,9 +244,7 @@ namespace Baseten
                     startDate: startDate,
                     endDate: endDate,
                     groupBy: groupBy,
-                    apiKeyPrefixes: apiKeyPrefixes,
                     userIds: userIds,
-                    routeIds: routeIds,
                     models: models,
                     providers: providers);
 

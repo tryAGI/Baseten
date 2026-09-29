@@ -11,19 +11,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        ApiKeyPrefix,
-        /// <summary>
-        ///
-        /// </summary>
         Model,
         /// <summary>
         ///
         /// </summary>
         Provider,
-        /// <summary>
-        ///
-        /// </summary>
-        Route,
         /// <summary>
         ///
         /// </summary>
@@ -42,10 +34,8 @@ namespace Baseten
         {
             return value switch
             {
-                RouteUsageDimensionV1.ApiKeyPrefix => "API_KEY_PREFIX",
                 RouteUsageDimensionV1.Model => "MODEL",
                 RouteUsageDimensionV1.Provider => "PROVIDER",
-                RouteUsageDimensionV1.Route => "ROUTE",
                 RouteUsageDimensionV1.User => "USER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -57,10 +47,8 @@ namespace Baseten
         {
             return value switch
             {
-                "API_KEY_PREFIX" => RouteUsageDimensionV1.ApiKeyPrefix,
                 "MODEL" => RouteUsageDimensionV1.Model,
                 "PROVIDER" => RouteUsageDimensionV1.Provider,
-                "ROUTE" => RouteUsageDimensionV1.Route,
                 "USER" => RouteUsageDimensionV1.User,
                 _ => null,
             };

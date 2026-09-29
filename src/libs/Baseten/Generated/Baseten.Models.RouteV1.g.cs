@@ -16,7 +16,7 @@ namespace Baseten
         public required string Id { get; set; }
 
         /// <summary>
-        /// Immutable name to send in the inference request's model field.
+        /// Name to send in the inference request's model field.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -91,7 +91,7 @@ namespace Baseten
         /// Stable route identifier.
         /// </param>
         /// <param name="name">
-        /// Immutable name to send in the inference request's model field.
+        /// Name to send in the inference request's model field.
         /// </param>
         /// <param name="teamId">
         /// Identifier of the owning team.

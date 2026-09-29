@@ -34,25 +34,13 @@ internal static partial class GetRoutesUsageCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: API_KEY_PREFIX, USER, ROUTE, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.",
-    };
-
-    private static Option<global::System.Collections.Generic.IList<string>?> ApiKeyPrefixes { get; } = new(
-        name: @"--api-key-prefixes")
-    {
-        Description = @"Return only usage for these exact Routes key prefixes, repeated once per prefix.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> UserIds { get; } = new(
         name: @"--user-ids")
     {
         Description = @"Return only usage from Routes keys created by these user IDs, repeated once per ID.",
-    };
-
-    private static Option<global::System.Collections.Generic.IList<string>?> RouteIds { get; } = new(
-        name: @"--route-ids")
-    {
-        Description = @"Return only usage for these route IDs, repeated once per ID.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> Models { get; } = new(
@@ -92,15 +80,13 @@ internal static partial class GetRoutesUsageCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-routes-usage", @"Gets daily route usage and estimated costs
-Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Model API costs use your prices at the time of each request. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage has no cost estimate. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. A null cost means some usage in that result could not be priced. Usage is retained for 92 days.");
+Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
                         command.Options.Add(StartDate);
                         command.Options.Add(EndDate);
                         command.Options.Add(GroupBy);
-                        command.Options.Add(ApiKeyPrefixes);
                         command.Options.Add(UserIds);
-                        command.Options.Add(RouteIds);
                         command.Options.Add(Models);
                         command.Options.Add(Providers);
 
@@ -113,9 +99,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                         var startDate = parseResult.GetValue(StartDate);
                         var endDate = parseResult.GetValue(EndDate);
                         var groupBy = parseResult.GetValue(GroupBy);
-                        var apiKeyPrefixes = parseResult.GetValue(ApiKeyPrefixes);
                         var userIds = parseResult.GetValue(UserIds);
-                        var routeIds = parseResult.GetValue(RouteIds);
                         var models = parseResult.GetValue(Models);
                         var providers = parseResult.GetValue(Providers);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -127,9 +111,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                                     startDate: startDate,
                                     endDate: endDate,
                                     groupBy: groupBy,
-                                    apiKeyPrefixes: apiKeyPrefixes,
                                     userIds: userIds,
-                                    routeIds: routeIds,
                                     models: models,
                                     providers: providers,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
