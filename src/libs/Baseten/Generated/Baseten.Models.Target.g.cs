@@ -161,80 +161,6 @@ namespace Baseten
         public global::Baseten.RouteTargetXAIV1 PickXai() => Xai is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Xai' but the value was {ToString()}.");
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetVertexV1? Vertex { get; init; }
-#else
-        public global::Baseten.RouteTargetVertexV1? Vertex { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Vertex))]
-#endif
-        public bool IsVertex => Vertex != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickVertex(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Baseten.RouteTargetVertexV1? value)
-        {
-            value = Vertex;
-            return IsVertex;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Baseten.RouteTargetVertexV1 PickVertex() => Vertex is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'Vertex' but the value was {ToString()}.");
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetOpenAICompatibleV1? OpenaiCompatible { get; init; }
-#else
-        public global::Baseten.RouteTargetOpenAICompatibleV1? OpenaiCompatible { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(OpenaiCompatible))]
-#endif
-        public bool IsOpenaiCompatible => OpenaiCompatible != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickOpenaiCompatible(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Baseten.RouteTargetOpenAICompatibleV1? value)
-        {
-            value = OpenaiCompatible;
-            return IsOpenaiCompatible;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Baseten.RouteTargetOpenAICompatibleV1 PickOpenaiCompatible() => OpenaiCompatible is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'OpenaiCompatible' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -330,60 +256,12 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetVertexV1 value) => new Target((global::Baseten.RouteTargetVertexV1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.RouteTargetVertexV1?(Target @this) => @this.Vertex;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Target(global::Baseten.RouteTargetVertexV1? value)
-        {
-            Vertex = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Target FromVertex(global::Baseten.RouteTargetVertexV1? value) => new Target(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetOpenAICompatibleV1 value) => new Target((global::Baseten.RouteTargetOpenAICompatibleV1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.RouteTargetOpenAICompatibleV1?(Target @this) => @this.OpenaiCompatible;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Target(global::Baseten.RouteTargetOpenAICompatibleV1? value)
-        {
-            OpenaiCompatible = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Target FromOpenaiCompatible(global::Baseten.RouteTargetOpenAICompatibleV1? value) => new Target(value);
-
-        /// <summary>
-        ///
-        /// </summary>
         public Target(
             global::Baseten.RouteV1TargetDiscriminatorType? type,
             global::Baseten.RouteTargetBasetenModelAPIV1? basetenModelApi,
             global::Baseten.RouteTargetAnthropicV1? anthropic,
             global::Baseten.RouteTargetOpenAIV1? openai,
-            global::Baseten.RouteTargetXAIV1? xai,
-            global::Baseten.RouteTargetVertexV1? vertex,
-            global::Baseten.RouteTargetOpenAICompatibleV1? openaiCompatible
+            global::Baseten.RouteTargetXAIV1? xai
             )
         {
             Type = type;
@@ -392,16 +270,12 @@ namespace Baseten
             Anthropic = anthropic;
             Openai = openai;
             Xai = xai;
-            Vertex = vertex;
-            OpenaiCompatible = openaiCompatible;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
-            OpenaiCompatible as object ??
-            Vertex as object ??
             Xai as object ??
             Openai as object ??
             Anthropic as object ??
@@ -415,9 +289,7 @@ namespace Baseten
             BasetenModelApi?.ToString() ??
             Anthropic?.ToString() ??
             Openai?.ToString() ??
-            Xai?.ToString() ??
-            Vertex?.ToString() ??
-            OpenaiCompatible?.ToString()
+            Xai?.ToString()
             ;
 
         /// <summary>
@@ -425,7 +297,7 @@ namespace Baseten
         /// </summary>
         public bool Validate()
         {
-            return IsBasetenModelApi && !IsAnthropic && !IsOpenai && !IsXai && !IsVertex && !IsOpenaiCompatible || !IsBasetenModelApi && IsAnthropic && !IsOpenai && !IsXai && !IsVertex && !IsOpenaiCompatible || !IsBasetenModelApi && !IsAnthropic && IsOpenai && !IsXai && !IsVertex && !IsOpenaiCompatible || !IsBasetenModelApi && !IsAnthropic && !IsOpenai && IsXai && !IsVertex && !IsOpenaiCompatible || !IsBasetenModelApi && !IsAnthropic && !IsOpenai && !IsXai && IsVertex && !IsOpenaiCompatible || !IsBasetenModelApi && !IsAnthropic && !IsOpenai && !IsXai && !IsVertex && IsOpenaiCompatible;
+            return IsBasetenModelApi && !IsAnthropic && !IsOpenai && !IsXai || !IsBasetenModelApi && IsAnthropic && !IsOpenai && !IsXai || !IsBasetenModelApi && !IsAnthropic && IsOpenai && !IsXai || !IsBasetenModelApi && !IsAnthropic && !IsOpenai && IsXai;
         }
 
         /// <summary>
@@ -436,8 +308,6 @@ namespace Baseten
             global::System.Func<global::Baseten.RouteTargetAnthropicV1, TResult>? anthropic = null,
             global::System.Func<global::Baseten.RouteTargetOpenAIV1, TResult>? openai = null,
             global::System.Func<global::Baseten.RouteTargetXAIV1, TResult>? xai = null,
-            global::System.Func<global::Baseten.RouteTargetVertexV1, TResult>? vertex = null,
-            global::System.Func<global::Baseten.RouteTargetOpenAICompatibleV1, TResult>? openaiCompatible = null,
             bool validate = true)
         {
             if (validate)
@@ -461,14 +331,6 @@ namespace Baseten
             {
                 return xai(__value3);
             }
-            else if (Vertex is { } __value4 && vertex != null)
-            {
-                return vertex(__value4);
-            }
-            else if (OpenaiCompatible is { } __value5 && openaiCompatible != null)
-            {
-                return openaiCompatible(__value5);
-            }
 
             return default(TResult);
         }
@@ -484,10 +346,6 @@ namespace Baseten
             global::System.Action<global::Baseten.RouteTargetOpenAIV1>? openai = null,
 
             global::System.Action<global::Baseten.RouteTargetXAIV1>? xai = null,
-
-            global::System.Action<global::Baseten.RouteTargetVertexV1>? vertex = null,
-
-            global::System.Action<global::Baseten.RouteTargetOpenAICompatibleV1>? openaiCompatible = null,
             bool validate = true)
         {
             if (validate)
@@ -510,14 +368,6 @@ namespace Baseten
             else if (Xai is { } __value3)
             {
                 xai?.Invoke(__value3);
-            }
-            else if (Vertex is { } __value4)
-            {
-                vertex?.Invoke(__value4);
-            }
-            else if (OpenaiCompatible is { } __value5)
-            {
-                openaiCompatible?.Invoke(__value5);
             }
         }
 
@@ -529,8 +379,6 @@ namespace Baseten
             global::System.Action<global::Baseten.RouteTargetAnthropicV1>? anthropic = null,
             global::System.Action<global::Baseten.RouteTargetOpenAIV1>? openai = null,
             global::System.Action<global::Baseten.RouteTargetXAIV1>? xai = null,
-            global::System.Action<global::Baseten.RouteTargetVertexV1>? vertex = null,
-            global::System.Action<global::Baseten.RouteTargetOpenAICompatibleV1>? openaiCompatible = null,
             bool validate = true)
         {
             if (validate)
@@ -553,14 +401,6 @@ namespace Baseten
             else if (Xai is { } __value3)
             {
                 xai?.Invoke(__value3);
-            }
-            else if (Vertex is { } __value4)
-            {
-                vertex?.Invoke(__value4);
-            }
-            else if (OpenaiCompatible is { } __value5)
-            {
-                openaiCompatible?.Invoke(__value5);
             }
         }
 
@@ -579,10 +419,6 @@ namespace Baseten
                 typeof(global::Baseten.RouteTargetOpenAIV1),
                 Xai,
                 typeof(global::Baseten.RouteTargetXAIV1),
-                Vertex,
-                typeof(global::Baseten.RouteTargetVertexV1),
-                OpenaiCompatible,
-                typeof(global::Baseten.RouteTargetOpenAICompatibleV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -602,9 +438,7 @@ namespace Baseten
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetBasetenModelAPIV1?>.Default.Equals(BasetenModelApi, other.BasetenModelApi) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetAnthropicV1?>.Default.Equals(Anthropic, other.Anthropic) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetOpenAIV1?>.Default.Equals(Openai, other.Openai) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetXAIV1?>.Default.Equals(Xai, other.Xai) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetVertexV1?>.Default.Equals(Vertex, other.Vertex) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetOpenAICompatibleV1?>.Default.Equals(OpenaiCompatible, other.OpenaiCompatible)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetXAIV1?>.Default.Equals(Xai, other.Xai)
                 ;
         }
 

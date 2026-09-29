@@ -24,18 +24,6 @@ internal static partial class EditRoutesByRouteIdCommandApiCommand
     {
         Description = @"New display label. Omit to keep the current label; null is not accepted.",
     };
-
-    private static Option<global::Baseten.TargetVariant1?> Target { get; } = new(
-        name: @"--target")
-    {
-        Description = @"Replaces the entire target. Omit to keep the current target; null is not accepted.",
-    };
-
-    private static Option<string?> MetadataSlug { get; } = new(
-        name: @"--metadata-slug")
-    {
-        Description = @"Slug of a metadata row to link. Omit to keep the current link, or to re-resolve from the new target when target is provided (OPENAI_COMPATIBLE and VERTEX targets always require an explicit slug). Null is not accepted.",
-    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -77,13 +65,11 @@ internal static partial class EditRoutesByRouteIdCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"edit-routes-by-route-id", @"Updates a route
-Replaces the entire target when provided. The route name and owning team are immutable.");
+        var command = new Command(commandName ?? @"edit-routes-by-route-id", @"Updates a route's display name or description
+The route name, target, and owning team are immutable.");
                         command.Arguments.Add(RouteId);
                         command.Options.Add(DescriptionOption);
                         command.Options.Add(DisplayName);
-                        command.Options.Add(Target);
-                        command.Options.Add(MetadataSlug);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -112,8 +98,6 @@ Replaces the entire target when provided. The route name and owning team are imm
                         var routeId = parseResult.GetRequiredValue(RouteId);
                         var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
                         var displayName = CliRuntime.WasSpecified(parseResult, DisplayName) ? parseResult.GetValue(DisplayName) : (__requestBase is { } __DisplayNameBaseValue ? __DisplayNameBaseValue.DisplayName : default);
-                        var target = CliRuntime.WasSpecified(parseResult, Target) ? parseResult.GetValue(Target) : (__requestBase is { } __TargetBaseValue ? __TargetBaseValue.Target : default);
-                        var metadataSlug = CliRuntime.WasSpecified(parseResult, MetadataSlug) ? parseResult.GetValue(MetadataSlug) : (__requestBase is { } __MetadataSlugBaseValue ? __MetadataSlugBaseValue.MetadataSlug : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -121,8 +105,6 @@ Replaces the entire target when provided. The route name and owning team are imm
                                     routeId: routeId,
                                     description: description,
                                     displayName: displayName,
-                                    target: target,
-                                    metadataSlug: metadataSlug,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

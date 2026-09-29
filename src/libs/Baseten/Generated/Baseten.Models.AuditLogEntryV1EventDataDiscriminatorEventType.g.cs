@@ -135,6 +135,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ProviderConnectionCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        ProviderConnectionDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        ProviderConnectionUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         ReplicaTerminated,
         /// <summary>
         ///
@@ -241,6 +253,9 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelRenamed => "MODEL_RENAMED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionCreated => "PROVIDER_CONNECTION_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionDeleted => "PROVIDER_CONNECTION_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionUpdated => "PROVIDER_CONNECTION_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ReplicaTerminated => "REPLICA_TERMINATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.RequireGroupBasedAdminsEnabled => "REQUIRE_GROUP_BASED_ADMINS_ENABLED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.SecretDeleted => "SECRET_DELETED",
@@ -298,6 +313,9 @@ namespace Baseten
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelPromotionControlAction,
                 "MODEL_RENAMED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelRenamed,
+                "PROVIDER_CONNECTION_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionCreated,
+                "PROVIDER_CONNECTION_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionDeleted,
+                "PROVIDER_CONNECTION_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionUpdated,
                 "REPLICA_TERMINATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ReplicaTerminated,
                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED" => AuditLogEntryV1EventDataDiscriminatorEventType.RequireGroupBasedAdminsEnabled,
                 "SECRET_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.SecretDeleted,

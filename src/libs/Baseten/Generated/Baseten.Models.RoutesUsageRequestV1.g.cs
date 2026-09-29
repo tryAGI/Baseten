@@ -37,28 +37,16 @@ namespace Baseten
         public global::System.DateTime? EndDate { get; set; }
 
         /// <summary>
-        /// Dimensions to break usage down by, repeated once per dimension: API_KEY_PREFIX, USER, ROUTE, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.
+        /// Dimensions to break usage down by, repeated once per dimension: USER, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
         public global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? GroupBy { get; set; }
-
-        /// <summary>
-        /// Return only usage for these exact Routes key prefixes, repeated once per prefix.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("api_key_prefixes")]
-        public global::System.Collections.Generic.IList<string>? ApiKeyPrefixes { get; set; }
 
         /// <summary>
         /// Return only usage from Routes keys created by these user IDs, repeated once per ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user_ids")]
         public global::System.Collections.Generic.IList<string>? UserIds { get; set; }
-
-        /// <summary>
-        /// Return only usage for these route IDs, repeated once per ID.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("route_ids")]
-        public global::System.Collections.Generic.IList<string>? RouteIds { get; set; }
 
         /// <summary>
         /// Return only usage for these exact model names, repeated once per model.
@@ -98,16 +86,10 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="groupBy">
-        /// Dimensions to break usage down by, repeated once per dimension: API_KEY_PREFIX, USER, ROUTE, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.
-        /// </param>
-        /// <param name="apiKeyPrefixes">
-        /// Return only usage for these exact Routes key prefixes, repeated once per prefix.
+        /// Dimensions to break usage down by, repeated once per dimension: USER, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.
         /// </param>
         /// <param name="userIds">
         /// Return only usage from Routes keys created by these user IDs, repeated once per ID.
-        /// </param>
-        /// <param name="routeIds">
-        /// Return only usage for these route IDs, repeated once per ID.
         /// </param>
         /// <param name="models">
         /// Return only usage for these exact model names, repeated once per model.
@@ -124,9 +106,7 @@ namespace Baseten
             global::System.DateTime? startDate,
             global::System.DateTime? endDate,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy,
-            global::System.Collections.Generic.IList<string>? apiKeyPrefixes,
             global::System.Collections.Generic.IList<string>? userIds,
-            global::System.Collections.Generic.IList<string>? routeIds,
             global::System.Collections.Generic.IList<string>? models,
             global::System.Collections.Generic.IList<global::Baseten.RouteProviderV1>? providers)
         {
@@ -135,9 +115,7 @@ namespace Baseten
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.GroupBy = groupBy;
-            this.ApiKeyPrefixes = apiKeyPrefixes;
             this.UserIds = userIds;
-            this.RouteIds = routeIds;
             this.Models = models;
             this.Providers = providers;
         }

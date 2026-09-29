@@ -135,6 +135,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ProviderConnectionCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        ProviderConnectionDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        ProviderConnectionUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         ReplicaTerminated,
         /// <summary>
         ///
@@ -241,6 +253,9 @@ namespace Baseten
                 AuditLogEventTypeV1.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEventTypeV1.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
                 AuditLogEventTypeV1.ModelRenamed => "MODEL_RENAMED",
+                AuditLogEventTypeV1.ProviderConnectionCreated => "PROVIDER_CONNECTION_CREATED",
+                AuditLogEventTypeV1.ProviderConnectionDeleted => "PROVIDER_CONNECTION_DELETED",
+                AuditLogEventTypeV1.ProviderConnectionUpdated => "PROVIDER_CONNECTION_UPDATED",
                 AuditLogEventTypeV1.ReplicaTerminated => "REPLICA_TERMINATED",
                 AuditLogEventTypeV1.RequireGroupBasedAdminsEnabled => "REQUIRE_GROUP_BASED_ADMINS_ENABLED",
                 AuditLogEventTypeV1.SecretDeleted => "SECRET_DELETED",
@@ -298,6 +313,9 @@ namespace Baseten
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEventTypeV1.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEventTypeV1.ModelPromotionControlAction,
                 "MODEL_RENAMED" => AuditLogEventTypeV1.ModelRenamed,
+                "PROVIDER_CONNECTION_CREATED" => AuditLogEventTypeV1.ProviderConnectionCreated,
+                "PROVIDER_CONNECTION_DELETED" => AuditLogEventTypeV1.ProviderConnectionDeleted,
+                "PROVIDER_CONNECTION_UPDATED" => AuditLogEventTypeV1.ProviderConnectionUpdated,
                 "REPLICA_TERMINATED" => AuditLogEventTypeV1.ReplicaTerminated,
                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED" => AuditLogEventTypeV1.RequireGroupBasedAdminsEnabled,
                 "SECRET_DELETED" => AuditLogEventTypeV1.SecretDeleted,

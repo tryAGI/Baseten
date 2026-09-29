@@ -49,20 +49,6 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetXAIV1)}");
                 xai = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.RouteTargetVertexV1? vertex = default;
-            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.Vertex)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetVertexV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetVertexV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetVertexV1)}");
-                vertex = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
-            global::Baseten.RouteTargetOpenAICompatibleV1? openaiCompatible = default;
-            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.OpenaiCompatible)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetOpenAICompatibleV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetOpenAICompatibleV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetOpenAICompatibleV1)}");
-                openaiCompatible = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
 
             var __value = new global::Baseten.Target2(
                 discriminator?.Type,
@@ -72,11 +58,7 @@ namespace Baseten.JsonConverters
 
                 openai,
 
-                xai,
-
-                vertex,
-
-                openaiCompatible
+                xai
                 );
 
             return __value;
@@ -114,18 +96,6 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetXAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetXAIV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.RouteTargetXAIV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickXai(), typeInfo);
-            }
-            else if (value.IsVertex)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetVertexV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetVertexV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.RouteTargetVertexV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVertex(), typeInfo);
-            }
-            else if (value.IsOpenaiCompatible)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetOpenAICompatibleV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetOpenAICompatibleV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.RouteTargetOpenAICompatibleV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickOpenaiCompatible(), typeInfo);
             }
         }
     }

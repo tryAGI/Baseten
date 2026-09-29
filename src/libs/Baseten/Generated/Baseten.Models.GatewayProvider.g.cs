@@ -4,9 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// Customer-facing provider for an endpoint target.<br/>
-    /// External providers resolve to a fixed upstream host + protocol adapter via<br/>
-    /// ``external_provider_configs()``; ``BASETEN`` derives its host from the referenced oracle.
+    ///
     /// </summary>
     public enum GatewayProvider
     {

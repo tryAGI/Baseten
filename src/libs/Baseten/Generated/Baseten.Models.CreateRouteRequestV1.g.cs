@@ -9,13 +9,6 @@ namespace Baseten
     public sealed partial class CreateRouteRequestV1
     {
         /// <summary>
-        /// Immutable, globally unique route name using an organization-owned prefix.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
-
-        /// <summary>
         /// Identifier of the team that owns the route. When omitted, uses your organization's default team.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -45,13 +38,6 @@ namespace Baseten
         public string? Description { get; set; }
 
         /// <summary>
-        /// Slug of a metadata row to link. Omit to auto-resolve from the target; required for OPENAI_COMPATIBLE and VERTEX targets.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("metadata_slug")]
-        public string? MetadataSlug { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,9 +46,6 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateRouteRequestV1" /> class.
         /// </summary>
-        /// <param name="name">
-        /// Immutable, globally unique route name using an organization-owned prefix.
-        /// </param>
         /// <param name="target">
         /// Upstream target for the route.
         /// </param>
@@ -78,27 +61,19 @@ namespace Baseten
         /// Short description of the route. Omit for no description; null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="metadataSlug">
-        /// Slug of a metadata row to link. Omit to auto-resolve from the target; required for OPENAI_COMPATIBLE and VERTEX targets.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateRouteRequestV1(
-            string name,
             global::Baseten.Target2 target,
             string? teamId,
             string? displayName,
-            string? description,
-            string? metadataSlug)
+            string? description)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.TeamId = teamId;
             this.DisplayName = displayName;
             this.Target = target;
             this.Description = description;
-            this.MetadataSlug = metadataSlug;
         }
 
         /// <summary>

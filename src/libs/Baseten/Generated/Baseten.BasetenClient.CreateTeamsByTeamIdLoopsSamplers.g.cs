@@ -57,6 +57,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/teams/{team_id}/loops/samplers \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "availability_model": null,<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
         ///   "run_id": null,<br/>
@@ -96,6 +97,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/teams/{team_id}/loops/samplers \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "availability_model": null,<br/>
         ///   "session_id": null,<br/>
         ///   "base_model": null,<br/>
         ///   "run_id": null,<br/>
@@ -473,6 +475,10 @@ namespace Baseten
         /// Creates a standalone Loops sampler not linked to a run; the sampler belongs to the given team.
         /// </summary>
         /// <param name="teamId"></param>
+        /// <param name="availabilityModel">
+        /// Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'dedicated' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="sessionId">
         /// ID of the Loops session this sampler belongs to.
         /// </param>
@@ -502,6 +508,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateTeamsByTeamIdLoopsSamplersAsync(
             string teamId,
             string sessionId,
+            global::Baseten.V1AvailabilityModel? availabilityModel = default,
             string? baseModel = default,
             string? runId = default,
             int? maxSeqLength = default,
@@ -512,6 +519,7 @@ namespace Baseten
         {
             var __request = new global::Baseten.CreateLoopsSamplerRequestV1
             {
+                AvailabilityModel = availabilityModel,
                 SessionId = sessionId,
                 BaseModel = baseModel,
                 RunId = runId,

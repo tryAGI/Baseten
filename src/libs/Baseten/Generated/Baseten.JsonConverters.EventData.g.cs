@@ -217,6 +217,27 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventGatewayEndpointDeletedV1)}");
                 gatewayEndpointDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.AuditLogEventProviderConnectionCreatedV1? providerConnectionCreated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventProviderConnectionCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventProviderConnectionCreatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventProviderConnectionCreatedV1)}");
+                providerConnectionCreated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventProviderConnectionUpdatedV1? providerConnectionUpdated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventProviderConnectionUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventProviderConnectionUpdatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventProviderConnectionUpdatedV1)}");
+                providerConnectionUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventProviderConnectionDeletedV1? providerConnectionDeleted = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventProviderConnectionDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventProviderConnectionDeletedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventProviderConnectionDeletedV1)}");
+                providerConnectionDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Baseten.AuditLogEventUserInvitedV1? userInvited = default;
             if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.UserInvited)
             {
@@ -408,6 +429,12 @@ namespace Baseten.JsonConverters
                 gatewayEndpointUpdated,
 
                 gatewayEndpointDeleted,
+
+                providerConnectionCreated,
+
+                providerConnectionUpdated,
+
+                providerConnectionDeleted,
 
                 userInvited,
 
@@ -627,6 +654,24 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGatewayEndpointDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGatewayEndpointDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventGatewayEndpointDeletedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGatewayEndpointDeleted(), typeInfo);
+            }
+            else if (value.IsProviderConnectionCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventProviderConnectionCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventProviderConnectionCreatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventProviderConnectionCreatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickProviderConnectionCreated(), typeInfo);
+            }
+            else if (value.IsProviderConnectionUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventProviderConnectionUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventProviderConnectionUpdatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventProviderConnectionUpdatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickProviderConnectionUpdated(), typeInfo);
+            }
+            else if (value.IsProviderConnectionDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventProviderConnectionDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventProviderConnectionDeletedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventProviderConnectionDeletedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickProviderConnectionDeleted(), typeInfo);
             }
             else if (value.IsUserInvited)
             {
