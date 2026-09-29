@@ -82,9 +82,9 @@ internal static partial class CreateRoutesCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-routes", @"Creates a route
+        var command = new Command(commandName ?? @"create-routes", @"Creates a route
 Dedicated deployment targets are not supported.");
                         command.Arguments.Add(NameOption);
                         command.Options.Add(TeamId);

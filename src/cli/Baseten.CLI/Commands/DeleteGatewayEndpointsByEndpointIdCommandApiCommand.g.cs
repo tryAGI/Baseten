@@ -35,9 +35,9 @@ internal static partial class DeleteGatewayEndpointsByEndpointIdCommandApiComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-gateway-endpoints-by-endpoint-id", @"Deletes a Gateway endpoint");
+        var command = new Command(commandName ?? @"delete-gateway-endpoints-by-endpoint-id", @"Deletes a Gateway endpoint");
                         command.Arguments.Add(EndpointId);
 
 

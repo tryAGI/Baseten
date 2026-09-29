@@ -101,9 +101,9 @@ internal static partial class GetAuditLogsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-audit-logs", @"Gets the audit log for the workspace
+        var command = new Command(commandName ?? @"get-audit-logs", @"Gets the audit log for the workspace
 Returns audit-log entries across the workspace, newest first, covering models, chains, and workspace-level actions. Use the filters to narrow by event type, actor, resource, environment, source, or time window, and the cursor to page. In workspaces with multiple teams, only organization admins can read the workspace audit log.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

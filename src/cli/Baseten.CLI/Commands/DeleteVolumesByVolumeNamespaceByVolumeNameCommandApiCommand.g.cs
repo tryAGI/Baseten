@@ -63,9 +63,9 @@ internal static partial class DeleteVolumesByVolumeNamespaceByVolumeNameCommandA
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-volumes-by-volume-namespace-by-volume-name", @"Deletes a volume
+        var command = new Command(commandName ?? @"delete-volumes-by-volume-namespace-by-volume-name", @"Deletes a volume
 Deletes every live version of the volume, after which the volume stops appearing in listings. The data is not erased: each version stays restorable until its recovery deadline passes, and the versions sub-resource still reports them when you pass include_tombstoned. Deleting a volume that has no live versions left succeeds and reports zero versions deleted.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);

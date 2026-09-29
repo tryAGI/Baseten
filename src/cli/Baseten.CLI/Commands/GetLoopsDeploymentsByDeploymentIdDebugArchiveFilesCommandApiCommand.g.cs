@@ -47,9 +47,9 @@ internal static partial class GetLoopsDeploymentsByDeploymentIdDebugArchiveFiles
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-deployments-by-deployment-id-debug-archive-files", @"Gets Loops debug archive files
+        var command = new Command(commandName ?? @"get-loops-deployments-by-deployment-id-debug-archive-files", @"Gets Loops debug archive files
 Gets presigned download URLs for a Loops deployment's debug archive.");
                         command.Arguments.Add(DeploymentId);
                         command.Options.Add(PageSize);

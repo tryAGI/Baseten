@@ -41,9 +41,9 @@ internal static partial class GetTeamsByTeamIdModelsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-teams-by-team-id-models", @"Gets all models");
+        var command = new Command(commandName ?? @"get-teams-by-team-id-models", @"Gets all models");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(NameOption);
 

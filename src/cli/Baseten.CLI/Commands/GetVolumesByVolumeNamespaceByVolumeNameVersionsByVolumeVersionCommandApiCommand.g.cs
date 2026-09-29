@@ -47,9 +47,9 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsByV
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version", @"Gets one version of a volume
+        var command = new Command(commandName ?? @"get-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version", @"Gets one version of a volume
 Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a full content digest or a prefix of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest prefix that matches more than one version is rejected: supply more characters.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);

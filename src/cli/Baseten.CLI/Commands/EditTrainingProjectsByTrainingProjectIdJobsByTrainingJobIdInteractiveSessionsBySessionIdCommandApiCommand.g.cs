@@ -75,9 +75,9 @@ internal static partial class EditTrainingProjectsByTrainingProjectIdJobsByTrain
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-training-projects-by-training-project-id-jobs-by-training-job-id-interactive-sessions-by-session-id", @"Patches an interactive session
+        var command = new Command(commandName ?? @"edit-training-projects-by-training-project-id-jobs-by-training-job-id-interactive-sessions-by-session-id", @"Patches an interactive session
 Updates specific fields on a training job's interactive session. Only provided (non-null) fields are updated.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);

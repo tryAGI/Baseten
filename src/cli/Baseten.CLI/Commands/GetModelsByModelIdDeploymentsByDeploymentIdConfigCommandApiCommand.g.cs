@@ -47,9 +47,9 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdConfigC
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-config", @"Gets a deployment's config
+        var command = new Command(commandName ?? @"get-models-by-model-id-deployments-by-deployment-id-config", @"Gets a deployment's config
 Returns the deployment's config. `output_format` query param picks the shape: 'raw' (config.yaml text), 'parsed' (dict with defaults), or 'both' (default).");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

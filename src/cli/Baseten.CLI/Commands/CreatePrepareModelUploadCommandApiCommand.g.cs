@@ -74,9 +74,9 @@ internal static partial class CreatePrepareModelUploadCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-prepare-model-upload", @"Validates a model push payload and issues upload credentials");
+        var command = new Command(commandName ?? @"create-prepare-model-upload", @"Validates a model push payload and issues upload credentials");
                         command.Options.Add(Deployment);
                         command.Options.Add(NameOption);
                         command.Options.Add(TeamId);

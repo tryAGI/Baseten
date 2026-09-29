@@ -31,9 +31,9 @@ internal static partial class GetOrganizationsMeCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-organizations-me", @"Gets the authenticated organization
+        var command = new Command(commandName ?? @"get-organizations-me", @"Gets the authenticated organization
 Returns info about the organization of the user making the request.");
 
 

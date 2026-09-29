@@ -35,9 +35,9 @@ internal static partial class DeleteLibraryListingsByUserDefinedListingIdCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-library-listings-by-user-defined-listing-id", @"Deletes a library listing
+        var command = new Command(commandName ?? @"delete-library-listings-by-user-defined-listing-id", @"Deletes a library listing
 Deletes a library listing and all of its associated versions. Any versions that are currently live will also be removed.");
                         command.Arguments.Add(UserDefinedListingId);
 

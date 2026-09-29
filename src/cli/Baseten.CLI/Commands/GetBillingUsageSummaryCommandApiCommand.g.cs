@@ -43,9 +43,9 @@ internal static partial class GetBillingUsageSummaryCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-billing-usage-summary", @"Gets billing usage summary for a date range
+        var command = new Command(commandName ?? @"get-billing-usage-summary", @"Gets billing usage summary for a date range
 Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.");
                         command.Options.Add(StartDate);
                         command.Options.Add(EndDate);

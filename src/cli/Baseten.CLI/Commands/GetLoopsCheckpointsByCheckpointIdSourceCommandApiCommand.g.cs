@@ -35,9 +35,9 @@ internal static partial class GetLoopsCheckpointsByCheckpointIdSourceCommandApiC
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-checkpoints-by-checkpoint-id-source", @"Gets where a Loops checkpoint's files come from
+        var command = new Command(commandName ?? @"get-loops-checkpoints-by-checkpoint-id-source", @"Gets where a Loops checkpoint's files come from
 Reports how to fetch a checkpoint's files: `s3` when the files endpoint serves presigned URLs for it, or `volume` with the ref to pull. Clients that download checkpoints should ask here first.");
                         command.Arguments.Add(CheckpointId);
 

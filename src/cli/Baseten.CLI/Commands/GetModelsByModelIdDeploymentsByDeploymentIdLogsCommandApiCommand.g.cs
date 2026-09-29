@@ -107,9 +107,9 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdLogsCom
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-logs", @"Gets the logs for a model deployment
+        var command = new Command(commandName ?? @"get-models-by-model-id-deployments-by-deployment-id-logs", @"Gets the logs for a model deployment
 Gets all the logs for a model deployment in the given time range, which defaults to the last 30 minutes. A failed or older deployment may only have logs from before that window; pass `start_epoch_millis` to widen it back to the build/deploy time.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

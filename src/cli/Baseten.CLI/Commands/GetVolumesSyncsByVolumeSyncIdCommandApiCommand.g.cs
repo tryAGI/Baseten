@@ -35,9 +35,9 @@ internal static partial class GetVolumesSyncsByVolumeSyncIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-volumes-syncs-by-volume-sync-id", @"Gets a volume sync");
+        var command = new Command(commandName ?? @"get-volumes-syncs-by-volume-sync-id", @"Gets a volume sync");
                         command.Arguments.Add(VolumeSyncId);
 
 

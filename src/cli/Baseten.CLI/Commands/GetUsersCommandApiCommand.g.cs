@@ -47,9 +47,9 @@ internal static partial class GetUsersCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-users", @"Lists users in the workspace
+        var command = new Command(commandName ?? @"get-users", @"Lists users in the workspace
 Returns the workspace's members. Only actual joined members are returned; service accounts, invited users, and pending join requests are excluded.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

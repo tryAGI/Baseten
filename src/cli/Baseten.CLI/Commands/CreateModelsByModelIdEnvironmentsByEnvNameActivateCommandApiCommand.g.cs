@@ -41,9 +41,9 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameActivate
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-environments-by-env-name-activate", @"Activates a deployment associated with an environment
+        var command = new Command(commandName ?? @"create-models-by-model-id-environments-by-env-name-activate", @"Activates a deployment associated with an environment
 Activates a deployment associated with an environment if not already activated.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

@@ -35,9 +35,9 @@ internal static partial class GetGatewayEndpointsByEndpointIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-gateway-endpoints-by-endpoint-id", @"Gets a Gateway endpoint");
+        var command = new Command(commandName ?? @"get-gateway-endpoints-by-endpoint-id", @"Gets a Gateway endpoint");
                         command.Arguments.Add(EndpointId);
 
 

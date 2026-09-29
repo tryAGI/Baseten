@@ -45,9 +45,9 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsCom
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-volumes-by-volume-namespace-by-volume-name-versions", @"Gets the versions of a volume
+        var command = new Command(commandName ?? @"get-volumes-by-volume-namespace-by-volume-name-versions", @"Gets the versions of a volume
 Returns every live version of the volume, newest first, each with its digest, size, lifecycle, the tags pointing at it, and any scheduled expiry. Pass include_tombstoned to list deleted and expired versions alongside them.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);

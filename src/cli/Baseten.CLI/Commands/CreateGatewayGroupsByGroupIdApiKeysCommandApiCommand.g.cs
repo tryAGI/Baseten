@@ -57,9 +57,9 @@ internal static partial class CreateGatewayGroupsByGroupIdApiKeysCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-gateway-groups-by-group-id-api-keys", @"Creates an API key for a group
+        var command = new Command(commandName ?? @"create-gateway-groups-by-group-id-api-keys", @"Creates an API key for a group
 Creates a new API key for the given group.");
                         command.Arguments.Add(GroupId);
                         command.Options.Add(NameOption);

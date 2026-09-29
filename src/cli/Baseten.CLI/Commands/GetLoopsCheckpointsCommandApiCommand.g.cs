@@ -47,9 +47,9 @@ internal static partial class GetLoopsCheckpointsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-checkpoints", @"Lists Loops checkpoints
+        var command = new Command(commandName ?? @"get-loops-checkpoints", @"Lists Loops checkpoints
 Lists Loops checkpoints filtered by run id, base model, or bt:// URI. Provide exactly one filter.");
                         command.Options.Add(RunId);
                         command.Options.Add(BaseModel);

@@ -58,9 +58,9 @@ internal static partial class EditChainsByChainIdEnvironmentsByEnvNameCommandApi
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-chains-by-chain-id-environments-by-env-name", @"Updates a chain environment's settings
+        var command = new Command(commandName ?? @"edit-chains-by-chain-id-environments-by-env-name", @"Updates a chain environment's settings
 Updates a chain environment's settings and returns the chain environment.");
                         command.Arguments.Add(ChainId);
                         command.Arguments.Add(EnvName);                        command.Options.Add(PromotionSettingsOptions.RedeployOnPromotion);

@@ -35,9 +35,9 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdCommandApiCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-training-projects-by-training-project-id", @"Gets a training project
+        var command = new Command(commandName ?? @"get-training-projects-by-training-project-id", @"Gets a training project
 Gets the details of an existing training project.");
                         command.Arguments.Add(TrainingProjectId);
 

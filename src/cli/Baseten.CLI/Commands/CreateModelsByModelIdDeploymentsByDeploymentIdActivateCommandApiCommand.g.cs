@@ -41,9 +41,9 @@ internal static partial class CreateModelsByModelIdDeploymentsByDeploymentIdActi
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-deployments-by-deployment-id-activate", @"Activates a deployment
+        var command = new Command(commandName ?? @"create-models-by-model-id-deployments-by-deployment-id-activate", @"Activates a deployment
 Activates a deployment if not already activated.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

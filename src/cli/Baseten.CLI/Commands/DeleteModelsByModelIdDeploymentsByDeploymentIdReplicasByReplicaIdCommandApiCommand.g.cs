@@ -47,9 +47,9 @@ internal static partial class DeleteModelsByModelIdDeploymentsByDeploymentIdRepl
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-models-by-model-id-deployments-by-deployment-id-replicas-by-replica-id", @"Terminates a replica in a deployment
+        var command = new Command(commandName ?? @"delete-models-by-model-id-deployments-by-deployment-id-replicas-by-replica-id", @"Terminates a replica in a deployment
 Terminates a deployment replica and returns the termination status.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

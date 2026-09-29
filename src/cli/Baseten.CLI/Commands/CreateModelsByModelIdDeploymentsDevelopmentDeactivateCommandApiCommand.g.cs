@@ -35,9 +35,9 @@ internal static partial class CreateModelsByModelIdDeploymentsDevelopmentDeactiv
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-deployments-development-deactivate", @"Deactivates a development deployment
+        var command = new Command(commandName ?? @"create-models-by-model-id-deployments-development-deactivate", @"Deactivates a development deployment
 Deactivates a development deployment if not already deactivated.");
                         command.Arguments.Add(ModelId);
 

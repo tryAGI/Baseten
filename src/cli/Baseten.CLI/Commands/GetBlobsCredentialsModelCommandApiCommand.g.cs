@@ -31,9 +31,9 @@ internal static partial class GetBlobsCredentialsModelCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-blobs-credentials-model", @"Gets blob credentials for models");
+        var command = new Command(commandName ?? @"get-blobs-credentials-model", @"Gets blob credentials for models");
 
 
 

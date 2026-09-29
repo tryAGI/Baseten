@@ -57,9 +57,9 @@ internal static partial class CreateTrainingProjectsByTrainingProjectIdJobsByTra
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-training-projects-by-training-project-id-jobs-by-training-job-id-stop", @"Stops a training job
+        var command = new Command(commandName ?? @"create-training-projects-by-training-project-id-jobs-by-training-job-id-stop", @"Stops a training job
 Stops a training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);

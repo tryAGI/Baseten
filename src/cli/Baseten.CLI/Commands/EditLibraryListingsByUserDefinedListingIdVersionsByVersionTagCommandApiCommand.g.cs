@@ -71,9 +71,9 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdVersionsB
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-library-listings-by-user-defined-listing-id-versions-by-version-tag", @"Updates a library listing version
+        var command = new Command(commandName ?? @"edit-library-listings-by-user-defined-listing-id-versions-by-version-tag", @"Updates a library listing version
 Updates a library listing version. Setting is_live to true will demote the current live version. When a benchmark is provided, it replaces the stored benchmark.");
                         command.Arguments.Add(UserDefinedListingId);
                         command.Arguments.Add(VersionTag);

@@ -41,9 +41,9 @@ internal static partial class DeleteModelsByModelIdEnvironmentsByEnvNameCommandA
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-models-by-model-id-environments-by-env-name", @"Deletes an environment
+        var command = new Command(commandName ?? @"delete-models-by-model-id-environments-by-env-name", @"Deletes an environment
 Deletes an environment and returns its tombstone. Any in-progress promotion to the environment is canceled, and the deployment currently serving the environment is scaled down to zero replicas rather than deleted. The production environment cannot be deleted.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

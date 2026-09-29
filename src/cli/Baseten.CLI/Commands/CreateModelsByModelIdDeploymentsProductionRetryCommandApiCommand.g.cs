@@ -35,9 +35,9 @@ internal static partial class CreateModelsByModelIdDeploymentsProductionRetryCom
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-deployments-production-retry", @"Retries a failed production deployment
+        var command = new Command(commandName ?? @"create-models-by-model-id-deployments-production-retry", @"Retries a failed production deployment
 Retries a failed production deployment and returns the retry status and updated deployment.");
                         command.Arguments.Add(ModelId);
 

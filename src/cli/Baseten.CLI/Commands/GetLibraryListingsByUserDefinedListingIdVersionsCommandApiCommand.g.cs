@@ -35,9 +35,9 @@ internal static partial class GetLibraryListingsByUserDefinedListingIdVersionsCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-library-listings-by-user-defined-listing-id-versions", @"Gets all versions for a library listing
+        var command = new Command(commandName ?? @"get-library-listings-by-user-defined-listing-id-versions", @"Gets all versions for a library listing
 Returns all versions for a specific library listing.");
                         command.Arguments.Add(UserDefinedListingId);
 

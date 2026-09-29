@@ -47,9 +47,9 @@ internal static partial class GetLoopsCheckpointsByCheckpointIdFilesCommandApiCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-checkpoints-by-checkpoint-id-files", @"Gets Loops checkpoint files
+        var command = new Command(commandName ?? @"get-loops-checkpoints-by-checkpoint-id-files", @"Gets Loops checkpoint files
 Gets presigned URLs for the files under a Loops checkpoint. Returns a paginated list.");
                         command.Arguments.Add(CheckpointId);
                         command.Options.Add(PageSize);

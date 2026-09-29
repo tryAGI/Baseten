@@ -52,9 +52,9 @@ internal static partial class CreateKeysCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-keys", @"Creates an API key
+        var command = new Command(commandName ?? @"create-keys", @"Creates an API key
 Creates an API key with the provided name and type. The API key is returned in the response.");
                         command.Options.Add(ModelIds);                        command.Options.Add(CreateAPIKeyRequestV1OptionSetOptions.NameOption);
                         command.Options.Add(CreateAPIKeyRequestV1OptionSetOptions.Type);

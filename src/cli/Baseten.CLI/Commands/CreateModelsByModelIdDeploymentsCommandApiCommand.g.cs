@@ -42,9 +42,9 @@ internal static partial class CreateModelsByModelIdDeploymentsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-deployments", @"Adds a new deployment to a model");
+        var command = new Command(commandName ?? @"create-models-by-model-id-deployments", @"Adds a new deployment to a model");
                         command.Arguments.Add(ModelId);
                         command.Options.Add(Source);
 

@@ -35,9 +35,9 @@ internal static partial class GetLoopsDeploymentsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-deployments", @"Lists Loops deployments
+        var command = new Command(commandName ?? @"get-loops-deployments", @"Lists Loops deployments
 Lists Loops deployments. Defaults to the caller's own; pass ?scope=org to list every deployment in the caller's organization. Returns every deployment regardless of status; clients filter terminal states.");
                         command.Options.Add(Scope);
 

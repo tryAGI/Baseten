@@ -53,9 +53,9 @@ internal static partial class GetTeamsByTeamIdLoopsRunsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-teams-by-team-id-loops-runs", @"Lists a team's Loops runs
+        var command = new Command(commandName ?? @"get-teams-by-team-id-loops-runs", @"Lists a team's Loops runs
 Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id and/or base model.");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(RunId);

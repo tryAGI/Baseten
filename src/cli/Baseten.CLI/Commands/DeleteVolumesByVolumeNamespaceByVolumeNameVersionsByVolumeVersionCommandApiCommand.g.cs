@@ -69,9 +69,9 @@ internal static partial class DeleteVolumesByVolumeNamespaceByVolumeNameVersions
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version", @"Deletes one version of a volume
+        var command = new Command(commandName ?? @"delete-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version", @"Deletes one version of a volume
 Deletes the version the address names, along with every tag pointing at it. Addressing the version by tag deletes the version the tag points at, not the tag. The data is not erased: the version stays restorable until the recovery deadline in the response passes. Deleting a version that is already deleted is a conflict, not a repeat success.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);

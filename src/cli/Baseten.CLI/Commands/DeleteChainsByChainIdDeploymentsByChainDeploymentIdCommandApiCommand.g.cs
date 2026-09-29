@@ -41,9 +41,9 @@ internal static partial class DeleteChainsByChainIdDeploymentsByChainDeploymentI
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-chains-by-chain-id-deployments-by-chain-deployment-id", @"Deletes a chain deployment by ID");
+        var command = new Command(commandName ?? @"delete-chains-by-chain-id-deployments-by-chain-deployment-id", @"Deletes a chain deployment by ID");
                         command.Arguments.Add(ChainId);
                         command.Arguments.Add(ChainDeploymentId);
 

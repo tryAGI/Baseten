@@ -72,9 +72,9 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-models-by-model-id-environments-by-env-name", @"Updates an environment's settings
+        var command = new Command(commandName ?? @"edit-models-by-model-id-environments-by-env-name", @"Updates an environment's settings
 Asynchronously updates an environment's settings. Poll the GET endpoint for the applied state.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

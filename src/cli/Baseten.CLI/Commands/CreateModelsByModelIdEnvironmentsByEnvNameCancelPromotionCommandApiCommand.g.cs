@@ -41,9 +41,9 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameCancelPr
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-environments-by-env-name-cancel-promotion", @"Cancels a promotion to an environment
+        var command = new Command(commandName ?? @"create-models-by-model-id-environments-by-env-name-cancel-promotion", @"Cancels a promotion to an environment
 Cancels an ongoing promotion to an environment and returns the cancellation status.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

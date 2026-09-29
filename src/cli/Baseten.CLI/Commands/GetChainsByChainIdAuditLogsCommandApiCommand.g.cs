@@ -107,9 +107,9 @@ internal static partial class GetChainsByChainIdAuditLogsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-chains-by-chain-id-audit-logs", @"Gets the audit log for a chain
+        var command = new Command(commandName ?? @"get-chains-by-chain-id-audit-logs", @"Gets the audit log for a chain
 Returns audit-log entries for a single chain, newest first. Use the filters to narrow by event type, actor, chain deployment, environment, source, or time window, and the cursor to page.");
                         command.Arguments.Add(ChainId);
                         command.Options.Add(Cursor);

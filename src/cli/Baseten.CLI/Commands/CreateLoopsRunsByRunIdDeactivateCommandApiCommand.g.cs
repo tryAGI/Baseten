@@ -35,9 +35,9 @@ internal static partial class CreateLoopsRunsByRunIdDeactivateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-loops-runs-by-run-id-deactivate", @"Deactivates a Loops run
+        var command = new Command(commandName ?? @"create-loops-runs-by-run-id-deactivate", @"Deactivates a Loops run
 Shuts down a Loops run by ID, tearing down both the run and its paired sampler. Saved checkpoints remain accessible.");
                         command.Arguments.Add(RunId);
 

@@ -69,9 +69,9 @@ internal static partial class CreateTrainingJobsSearchCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-training-jobs-search", @"Searches training jobs
+        var command = new Command(commandName ?? @"create-training-jobs-search", @"Searches training jobs
 Searches training jobs for the organization.");
                         command.Options.Add(ProjectId);
                         command.Options.Add(JobId);

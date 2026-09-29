@@ -35,9 +35,9 @@ internal static partial class GetLibraryListingsByUserDefinedListingIdCommandApi
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-library-listings-by-user-defined-listing-id", @"Gets a library listing
+        var command = new Command(commandName ?? @"get-library-listings-by-user-defined-listing-id", @"Gets a library listing
 Returns a specific library listing by its user-defined identifier.");
                         command.Arguments.Add(UserDefinedListingId);
 

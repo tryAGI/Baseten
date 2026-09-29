@@ -72,9 +72,9 @@ internal static partial class CreateVolumesTokenCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-volumes-token", @"Creates a volume access token
+        var command = new Command(commandName ?? @"create-volumes-token", @"Creates a volume access token
 Exchanges your API key for a short-lived token that authenticates against Baseten volume storage. A volume token is needed only to push and pull volume data; other volume operations use your API key directly. Tokens expire after one hour and cannot be renewed; exchange again for a fresh token. Push and tag capabilities require organization-level model management permission. Pass correlation_id to link the issued token to a client operation in server logs.");
                         command.Options.Add(Scopes);
                         command.Options.Add(Namespaces);

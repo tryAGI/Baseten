@@ -35,9 +35,9 @@ internal static partial class GetTeamsByTeamIdSecretsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-teams-by-team-id-secrets", @"Gets all secrets for a team (metadata only, no plain text keys)");
+        var command = new Command(commandName ?? @"get-teams-by-team-id-secrets", @"Gets all secrets for a team (metadata only, no plain text keys)");
                         command.Arguments.Add(TeamId);
 
 

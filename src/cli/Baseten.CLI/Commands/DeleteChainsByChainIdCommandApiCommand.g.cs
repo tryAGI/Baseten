@@ -35,9 +35,9 @@ internal static partial class DeleteChainsByChainIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-chains-by-chain-id", @"Deletes a chain by ID");
+        var command = new Command(commandName ?? @"delete-chains-by-chain-id", @"Deletes a chain by ID");
                         command.Arguments.Add(ChainId);
 
 

@@ -41,9 +41,9 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameForceCan
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-environments-by-env-name-force-cancel-promotion", @"Force cancels a rolling promotion
+        var command = new Command(commandName ?? @"create-models-by-model-id-environments-by-env-name-force-cancel-promotion", @"Force cancels a rolling promotion
 Immediately cancels an in-progress rolling promotion and triggers rollback to the previous version.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

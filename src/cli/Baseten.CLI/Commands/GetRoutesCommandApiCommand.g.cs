@@ -53,9 +53,9 @@ internal static partial class GetRoutesCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-routes", @"Lists routes
+        var command = new Command(commandName ?? @"get-routes", @"Lists routes
 Lists routes you can invoke, newest first, optionally filtered by team and exact name.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

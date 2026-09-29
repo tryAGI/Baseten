@@ -53,9 +53,9 @@ internal static partial class GetExploreMetadataCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-explore-metadata", @"Lists model metadata
+        var command = new Command(commandName ?? @"get-explore-metadata", @"Lists model metadata
 Lists all live model metadata rows, e.g. for model pickers.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

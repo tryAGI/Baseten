@@ -35,9 +35,9 @@ internal static partial class GetTeamsByTeamIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-teams-by-team-id", @"Gets a team by ID
+        var command = new Command(commandName ?? @"get-teams-by-team-id", @"Gets a team by ID
 Returns a team the authenticated user has access to.");
                         command.Arguments.Add(TeamId);
 

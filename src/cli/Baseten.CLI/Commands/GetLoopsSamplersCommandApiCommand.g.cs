@@ -35,9 +35,9 @@ internal static partial class GetLoopsSamplersCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-samplers", @"Lists Loops samplers
+        var command = new Command(commandName ?? @"get-loops-samplers", @"Lists Loops samplers
 Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.");
                         command.Options.Add(Scope);
 

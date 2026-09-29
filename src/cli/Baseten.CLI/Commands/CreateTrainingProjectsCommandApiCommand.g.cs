@@ -31,9 +31,9 @@ internal static partial class CreateTrainingProjectsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-training-projects", @"Upserts a training project
+        var command = new Command(commandName ?? @"create-training-projects", @"Upserts a training project
 Upserts a training project with the specified metadata.");
                         command.Options.Add(TrainingProjectOptions.NameOption);
 

@@ -53,9 +53,9 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-checkpoint-files", @"Gets training job checkpoint files
+        var command = new Command(commandName ?? @"get-training-projects-by-training-project-id-jobs-by-training-job-id-checkpoint-files", @"Gets training job checkpoint files
 Gets presigned URLs for all checkpoint files for a training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);

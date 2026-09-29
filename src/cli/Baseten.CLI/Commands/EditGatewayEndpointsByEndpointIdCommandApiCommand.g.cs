@@ -57,9 +57,9 @@ internal static partial class EditGatewayEndpointsByEndpointIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-gateway-endpoints-by-endpoint-id", @"Updates a Gateway endpoint
+        var command = new Command(commandName ?? @"edit-gateway-endpoints-by-endpoint-id", @"Updates a Gateway endpoint
 Updates the endpoint's provided mutable fields. If targets are provided, the full target list is replaced. Exactly one target is supported at this time.");
                         command.Arguments.Add(EndpointId);
                         command.Options.Add(Targets);

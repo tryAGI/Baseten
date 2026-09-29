@@ -31,9 +31,9 @@ internal static partial class GetLibraryListingsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-library-listings", @"Gets all library listings
+        var command = new Command(commandName ?? @"get-library-listings", @"Gets all library listings
 Returns all library listings for the authenticated user's organization.");
 
 

@@ -75,9 +75,9 @@ internal static partial class EditRoutesByRouteIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-routes-by-route-id", @"Updates a route
+        var command = new Command(commandName ?? @"edit-routes-by-route-id", @"Updates a route
 Replaces the entire target when provided. The route name and owning team are immutable.");
                         command.Arguments.Add(RouteId);
                         command.Options.Add(DescriptionOption);

@@ -31,9 +31,9 @@ internal static partial class GetInstanceTypesCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-instance-types", @"Gets all available instance types");
+        var command = new Command(commandName ?? @"get-instance-types", @"Gets all available instance types");
 
 
 

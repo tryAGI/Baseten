@@ -35,9 +35,9 @@ internal static partial class CreateLoopsDeploymentsByDeploymentIdDeactivateComm
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-loops-deployments-by-deployment-id-deactivate", @"Deactivates a Loops deployment
+        var command = new Command(commandName ?? @"create-loops-deployments-by-deployment-id-deactivate", @"Deactivates a Loops deployment
 Shuts down a Loops deployment by ID. Saved checkpoints remain accessible. Resolving the base model to a deployment ID is the caller's responsibility: list deployments and pick the active one.");
                         command.Arguments.Add(DeploymentId);
 

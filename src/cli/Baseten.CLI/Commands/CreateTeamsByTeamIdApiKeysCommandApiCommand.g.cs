@@ -58,9 +58,9 @@ internal static partial class CreateTeamsByTeamIdApiKeysCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-teams-by-team-id-api-keys", @"Creates a team API key
+        var command = new Command(commandName ?? @"create-teams-by-team-id-api-keys", @"Creates a team API key
 Creates a team API key with the provided name and type. The API key is returned in the response.");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(ModelIds);                        command.Options.Add(CreateAPIKeyRequestV1OptionSetOptions.NameOption);

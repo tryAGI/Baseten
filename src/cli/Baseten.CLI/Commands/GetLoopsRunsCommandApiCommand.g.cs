@@ -47,9 +47,9 @@ internal static partial class GetLoopsRunsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-runs", @"Lists Loops runs
+        var command = new Command(commandName ?? @"get-loops-runs", @"Lists Loops runs
 Lists Loops runs visible to the requesting user, optionally filtered by run id and/or base model. Defaults to the caller's own runs; pass ?scope=org to list every run in the caller's organization.");
                         command.Options.Add(RunId);
                         command.Options.Add(BaseModel);

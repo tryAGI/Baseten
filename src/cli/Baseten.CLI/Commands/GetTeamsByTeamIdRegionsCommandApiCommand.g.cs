@@ -35,9 +35,9 @@ internal static partial class GetTeamsByTeamIdRegionsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-teams-by-team-id-regions", @"Lists regions available to a team
+        var command = new Command(commandName ?? @"get-teams-by-team-id-regions", @"Lists regions available to a team
 Lists the regions the team specified in the path can place deployments in.");
                         command.Arguments.Add(TeamId);
 

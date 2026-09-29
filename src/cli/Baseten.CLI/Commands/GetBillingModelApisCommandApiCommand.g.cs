@@ -83,9 +83,9 @@ internal static partial class GetBillingModelApisCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-billing-model-apis", @"Gets daily Model APIs costs
+        var command = new Command(commandName ?? @"get-billing-model-apis", @"Gets daily Model APIs costs
 Returns daily Model API costs in USD for your organization, with optional filtering and grouping by API key, user, model, and service tier. Results may differ from finalized invoice amounts. Cost history is available from August 5, 2026 at 20:45 UTC. August 5 is a partial day; earlier dates are unavailable.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

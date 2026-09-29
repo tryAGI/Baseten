@@ -35,9 +35,9 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsCommandA
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs", @"Lists training jobs
+        var command = new Command(commandName ?? @"get-training-projects-by-training-project-id-jobs", @"Lists training jobs
 Lists all training jobs for the training project.");
                         command.Arguments.Add(TrainingProjectId);
 
