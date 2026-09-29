@@ -57,9 +57,9 @@ internal static partial class EditModelsByModelIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-models-by-model-id", @"Updates a model by ID
+        var command = new Command(commandName ?? @"edit-models-by-model-id", @"Updates a model by ID
 Updates the mutable fields of a model and returns the updated model. Renaming does not change the model ID, endpoints, or deployments. Pushes that still use the old model_name create another model or target a model that now uses that name, so update config.yaml after renaming.");
                         command.Arguments.Add(ModelId);
                         command.Options.Add(NameOption);

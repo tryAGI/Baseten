@@ -41,9 +41,9 @@ internal static partial class DeleteTeamsByTeamIdSecretsBySecretNameCommandApiCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-teams-by-team-id-secrets-by-secret-name", @"Deletes a secret by name
+        var command = new Command(commandName ?? @"delete-teams-by-team-id-secrets-by-secret-name", @"Deletes a secret by name
 Deletes a secret by name in the specified team, or in the caller's organization default team when no team is specified.");
                         command.Arguments.Add(TeamId);
                         command.Arguments.Add(SecretName);

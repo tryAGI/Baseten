@@ -36,9 +36,9 @@ internal static partial class CreateTeamsByTeamIdSecretsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-teams-by-team-id-secrets", @"Upserts a secret in a team
+        var command = new Command(commandName ?? @"create-teams-by-team-id-secrets", @"Upserts a secret in a team
 Creates a new secret or updates an existing secret if one with the provided name already exists. The name and creation date of the created or updated secret is returned. This secret belongs to the specified team");
                         command.Arguments.Add(TeamId);                        command.Options.Add(UpsertSecretRequestV1OptionSetOptions.NameOption);
                         command.Options.Add(UpsertSecretRequestV1OptionSetOptions.Value);

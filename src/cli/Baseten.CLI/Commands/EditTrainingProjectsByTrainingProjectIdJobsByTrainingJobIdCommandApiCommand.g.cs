@@ -69,9 +69,9 @@ internal static partial class EditTrainingProjectsByTrainingProjectIdJobsByTrain
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-training-projects-by-training-project-id-jobs-by-training-job-id", @"Updates a training job
+        var command = new Command(commandName ?? @"edit-training-projects-by-training-project-id-jobs-by-training-job-id", @"Updates a training job
 Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);

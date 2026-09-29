@@ -52,9 +52,9 @@ internal static partial class CreateModelsByModelIdDeploymentsDevelopmentPromote
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-deployments-development-promote", @"Promotes a development deployment to production
+        var command = new Command(commandName ?? @"create-models-by-model-id-deployments-development-promote", @"Promotes a development deployment to production
 Creates a new production deployment from the development deployment and returns the deployment that is building.");
                         command.Arguments.Add(ModelId);                        command.Options.Add(PromoteRequestV1OptionSetOptions.ScaleDownPreviousProduction);
                         command.Options.Add(PromoteRequestV1OptionSetOptions.PreserveEnvInstanceType);

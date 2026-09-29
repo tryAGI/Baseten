@@ -36,9 +36,9 @@ internal static partial class CreateSecretsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-secrets", @"Upserts a secret
+        var command = new Command(commandName ?? @"create-secrets", @"Upserts a secret
 Creates or updates a secret by name. Scoped to the caller's primary team; use the team-scoped variant to target a specific team.");
                         command.Arguments.Add(NameOption);                        command.Options.Add(UpsertSecretRequestV1OptionSetOptions.Value);
 

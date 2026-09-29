@@ -71,9 +71,9 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdCommandAp
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-library-listings-by-user-defined-listing-id", @"Updates a library listing
+        var command = new Command(commandName ?? @"edit-library-listings-by-user-defined-listing-id", @"Updates a library listing
 Updates a library listing. Supported fields are the display name, public visibility, trending status, and the model-level metadata. When metadata is provided, it replaces the stored metadata.");
                         command.Arguments.Add(UserDefinedListingId);
                         command.Options.Add(DisplayName);

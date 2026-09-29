@@ -97,9 +97,9 @@ internal static partial class CreateLlmModelsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-llm-models", @"Creates a new BIS-LLM deployment");
+        var command = new Command(commandName ?? @"create-llm-models", @"Creates a new BIS-LLM deployment");
                         command.Arguments.Add(NameOption);
                         command.Options.Add(Resources);
                         command.Options.Add(LlmConfig);

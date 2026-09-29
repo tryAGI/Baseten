@@ -47,9 +47,9 @@ internal static partial class GetVolumesSyncsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-volumes-syncs", @"Lists volume syncs
+        var command = new Command(commandName ?? @"get-volumes-syncs", @"Lists volume syncs
 Lists volume syncs in the active workspace, newest first. Results may be narrowed by an exact destination ref.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

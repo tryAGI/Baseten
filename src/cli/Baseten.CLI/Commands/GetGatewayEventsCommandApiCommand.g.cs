@@ -65,9 +65,9 @@ internal static partial class GetGatewayEventsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-gateway-events", @"Lists gateway events");
+        var command = new Command(commandName ?? @"get-gateway-events", @"Lists gateway events");
                         command.Options.Add(StartTime);
                         command.Options.Add(EndTime);
                         command.Options.Add(Limit);

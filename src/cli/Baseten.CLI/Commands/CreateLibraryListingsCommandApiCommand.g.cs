@@ -67,9 +67,9 @@ internal static partial class CreateLibraryListingsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-library-listings", @"Creates a new library listing
+        var command = new Command(commandName ?? @"create-library-listings", @"Creates a new library listing
 Creates a new library listing for the authenticated user's organization.");
                         command.Options.Add(DisplayName);
                         command.Options.Add(UserDefinedId);

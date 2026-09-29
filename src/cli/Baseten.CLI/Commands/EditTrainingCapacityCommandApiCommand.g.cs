@@ -50,9 +50,9 @@ internal static partial class EditTrainingCapacityCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-training-capacity", @"Sets a team's training GPU capacity
+        var command = new Command(commandName ?? @"edit-training-capacity", @"Sets a team's training GPU capacity
 Sets the max concurrent GPUs of a given type a team may use. Creates the limit if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a ceiling the org imposes on the team, not something the team manages for itself.");
                         command.Options.Add(TeamId);
                         command.Options.Add(GpuType);

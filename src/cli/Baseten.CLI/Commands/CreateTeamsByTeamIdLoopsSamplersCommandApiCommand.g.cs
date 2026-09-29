@@ -52,9 +52,9 @@ internal static partial class CreateTeamsByTeamIdLoopsSamplersCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-teams-by-team-id-loops-samplers", @"Creates a Loops sampler in a team
+        var command = new Command(commandName ?? @"create-teams-by-team-id-loops-samplers", @"Creates a Loops sampler in a team
 Creates a standalone Loops sampler not linked to a run; the sampler belongs to the given team.");
                         command.Arguments.Add(TeamId);                        command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.SessionId);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.BaseModel);

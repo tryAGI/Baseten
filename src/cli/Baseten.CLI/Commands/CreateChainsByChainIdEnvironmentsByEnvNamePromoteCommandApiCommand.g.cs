@@ -68,9 +68,9 @@ internal static partial class CreateChainsByChainIdEnvironmentsByEnvNamePromoteC
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-chains-by-chain-id-environments-by-env-name-promote", @"Promotes a chain deployment to an environment
+        var command = new Command(commandName ?? @"create-chains-by-chain-id-environments-by-env-name-promote", @"Promotes a chain deployment to an environment
 Promotes an existing chain deployment to an environment and returns the promoted chain deployment.");
                         command.Arguments.Add(ChainId);
                         command.Arguments.Add(EnvName);

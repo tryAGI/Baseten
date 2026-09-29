@@ -41,9 +41,9 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdDownloa
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-download", @"Gets a presigned download URL for a deployment's truss
+        var command = new Command(commandName ?? @"get-models-by-model-id-deployments-by-deployment-id-download", @"Gets a presigned download URL for a deployment's truss
 Gets a presigned URL to download the truss tar file for a deployment.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

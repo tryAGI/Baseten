@@ -47,9 +47,9 @@ internal static partial class GetLoopsCapabilitiesCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-capabilities", @"Gets Loops server capabilities
+        var command = new Command(commandName ?? @"get-loops-capabilities", @"Gets Loops server capabilities
 Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot; filter on 'enabled' for the usable set. Capacity is resolved when the run is created, not here. Pass ?model= to ask about one model — an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.");
                         command.Options.Add(Model);
                         command.Options.Add(UseCase);

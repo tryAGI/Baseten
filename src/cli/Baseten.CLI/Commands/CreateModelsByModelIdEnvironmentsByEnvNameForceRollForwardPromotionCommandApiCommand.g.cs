@@ -41,9 +41,9 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNameForceRol
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-environments-by-env-name-force-roll-forward-promotion", @"Force rolls forward a rolling promotion
+        var command = new Command(commandName ?? @"create-models-by-model-id-environments-by-env-name-force-roll-forward-promotion", @"Force rolls forward a rolling promotion
 Immediately completes the rolling promotion, shifting all traffic to the new version. This works even if the promotion is in the process of rolling back.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

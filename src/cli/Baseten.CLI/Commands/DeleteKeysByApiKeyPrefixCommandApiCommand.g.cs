@@ -35,9 +35,9 @@ internal static partial class DeleteKeysByApiKeyPrefixCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-keys-by-api-key-prefix", @"Deletes an API key by prefix
+        var command = new Command(commandName ?? @"delete-keys-by-api-key-prefix", @"Deletes an API key by prefix
 Deletes an API key by prefix and returns info about the API key.");
                         command.Arguments.Add(ApiKeyPrefix);
 

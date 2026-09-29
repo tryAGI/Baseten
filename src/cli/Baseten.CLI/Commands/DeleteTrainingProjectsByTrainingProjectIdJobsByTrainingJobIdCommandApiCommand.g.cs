@@ -41,9 +41,9 @@ internal static partial class DeleteTrainingProjectsByTrainingProjectIdJobsByTra
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-training-projects-by-training-project-id-jobs-by-training-job-id", @"Deletes a training job
+        var command = new Command(commandName ?? @"delete-training-projects-by-training-project-id-jobs-by-training-job-id", @"Deletes a training job
 Deletes a training job. Stops it first if still running.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);

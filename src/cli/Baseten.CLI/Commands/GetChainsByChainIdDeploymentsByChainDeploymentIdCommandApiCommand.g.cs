@@ -41,9 +41,9 @@ internal static partial class GetChainsByChainIdDeploymentsByChainDeploymentIdCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-chains-by-chain-id-deployments-by-chain-deployment-id", @"Gets a chain deployment by ID");
+        var command = new Command(commandName ?? @"get-chains-by-chain-id-deployments-by-chain-deployment-id", @"Gets a chain deployment by ID");
                         command.Arguments.Add(ChainId);
                         command.Arguments.Add(ChainDeploymentId);
 

@@ -31,9 +31,9 @@ internal static partial class GetInstanceTypePricesCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-instance-type-prices", @"Gets prices for available instance types");
+        var command = new Command(commandName ?? @"get-instance-type-prices", @"Gets prices for available instance types");
 
 
 

@@ -47,9 +47,9 @@ internal static partial class CreateLoopsSamplersCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-loops-samplers", @"Creates a Loops sampler
+        var command = new Command(commandName ?? @"create-loops-samplers", @"Creates a Loops sampler
 Creates a standalone Loops sampler not linked to a run.");
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.SessionId);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.BaseModel);

@@ -43,9 +43,9 @@ internal static partial class CreateVolumesSyncsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-volumes-syncs", @"Starts a volume sync
+        var command = new Command(commandName ?? @"create-volumes-syncs", @"Starts a volume sync
 Starts one durable asynchronous transfer from a remote source into a BDN volume.");
                         command.Options.Add(Source);
                         command.Options.Add(Destination);

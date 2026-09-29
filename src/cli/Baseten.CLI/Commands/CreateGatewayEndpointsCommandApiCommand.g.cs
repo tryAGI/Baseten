@@ -64,9 +64,9 @@ internal static partial class CreateGatewayEndpointsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-gateway-endpoints", @"Creates a Gateway endpoint
+        var command = new Command(commandName ?? @"create-gateway-endpoints", @"Creates a Gateway endpoint
 Provisions an endpoint for the given slug and its upstream target. Exactly one target is supported at this time. The slug's prefix must be one your organization owns.");
                         command.Arguments.Add(Slug);
                         command.Options.Add(Region);

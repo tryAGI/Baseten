@@ -35,9 +35,9 @@ internal static partial class GetModelsByModelIdDeploymentsProductionCommandApiC
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-deployments-production", @"Gets a model's production deployment
+        var command = new Command(commandName ?? @"get-models-by-model-id-deployments-production", @"Gets a model's production deployment
 Gets a model's production deployment and returns the deployment.");
                         command.Arguments.Add(ModelId);
 

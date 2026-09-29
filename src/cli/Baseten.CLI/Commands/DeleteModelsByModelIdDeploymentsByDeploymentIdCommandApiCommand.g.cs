@@ -41,9 +41,9 @@ internal static partial class DeleteModelsByModelIdDeploymentsByDeploymentIdComm
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete-models-by-model-id-deployments-by-deployment-id", @"Deletes a model's deployment by ID
+        var command = new Command(commandName ?? @"delete-models-by-model-id-deployments-by-deployment-id", @"Deletes a model's deployment by ID
 Deletes a model's deployment by ID and returns the tombstone of the deployment.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

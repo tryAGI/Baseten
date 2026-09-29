@@ -45,9 +45,9 @@ internal static partial class GetModelApisCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-model-apis", @"Lists Model APIs
+        var command = new Command(commandName ?? @"get-model-apis", @"Lists Model APIs
 Lists Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

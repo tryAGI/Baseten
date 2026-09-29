@@ -31,9 +31,9 @@ internal static partial class GetTrainingProjectsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-training-projects", @"Lists training projects
+        var command = new Command(commandName ?? @"get-training-projects", @"Lists training projects
 Lists all training projects for the organization.");
 
 

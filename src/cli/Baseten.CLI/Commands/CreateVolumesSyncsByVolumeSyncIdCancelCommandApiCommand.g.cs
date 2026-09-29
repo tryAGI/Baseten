@@ -35,9 +35,9 @@ internal static partial class CreateVolumesSyncsByVolumeSyncIdCancelCommandApiCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-volumes-syncs-by-volume-sync-id-cancel", @"Cancels a volume sync
+        var command = new Command(commandName ?? @"create-volumes-syncs-by-volume-sync-id-cancel", @"Cancels a volume sync
 Requests cancellation of a pending or running sync. Repeated cancellation and cancellation of terminal syncs return the existing state. Once cancellation is accepted, a later completion callback cannot replace the CANCELED state.");
                         command.Arguments.Add(VolumeSyncId);
 

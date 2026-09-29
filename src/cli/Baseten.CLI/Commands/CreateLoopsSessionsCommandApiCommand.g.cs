@@ -31,9 +31,9 @@ internal static partial class CreateLoopsSessionsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-loops-sessions", @"Creates a Loops session
+        var command = new Command(commandName ?? @"create-loops-sessions", @"Creates a Loops session
 Creates a Loops session scoped to the calling org.");
 
 

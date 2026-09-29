@@ -83,9 +83,9 @@ internal static partial class CreateLibraryListingsByUserDefinedListingIdVersion
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-library-listings-by-user-defined-listing-id-versions", @"Creates a new library listing version
+        var command = new Command(commandName ?? @"create-library-listings-by-user-defined-listing-id-versions", @"Creates a new library listing version
 Creates a new library listing version from an existing model version. The model version must be fully built (have an image_uri). If a listing with the given id already exists for the org, a new version is added. Otherwise, a new listing is created.");
                         command.Arguments.Add(UserDefinedListingId);
                         command.Options.Add(DisplayName);

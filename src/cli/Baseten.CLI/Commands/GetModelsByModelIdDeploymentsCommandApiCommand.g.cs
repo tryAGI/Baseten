@@ -41,9 +41,9 @@ internal static partial class GetModelsByModelIdDeploymentsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-deployments", @"Gets all deployments of a model");
+        var command = new Command(commandName ?? @"get-models-by-model-id-deployments", @"Gets all deployments of a model");
                         command.Arguments.Add(ModelId);
                         command.Options.Add(NameOption);
 

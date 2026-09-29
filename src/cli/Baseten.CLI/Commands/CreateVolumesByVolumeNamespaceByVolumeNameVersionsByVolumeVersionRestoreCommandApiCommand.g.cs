@@ -69,9 +69,9 @@ internal static partial class CreateVolumesByVolumeNamespaceByVolumeNameVersions
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version-restore", @"Restores a deleted or expired version of a volume
+        var command = new Command(commandName ?? @"create-volumes-by-volume-namespace-by-volume-name-versions-by-volume-version-restore", @"Restores a deleted or expired version of a volume
 Returns a deleted or expired version to service, provided its recovery deadline has not passed. The tags the version carried are not restored with it, so re-tag it if anything depended on those, and a restored version never expires until something sets a new expiry. Address the version by digest: a tombstoned version has no tags left to name it by.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);

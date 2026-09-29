@@ -65,9 +65,9 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameMetricsComm
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-environments-by-env-name-metrics", @"Gets the metrics for a model environment.
+        var command = new Command(commandName ?? @"get-models-by-model-id-environments-by-env-name-metrics", @"Gets the metrics for a model environment.
 Gets metrics aggregated across every deployment that was active on the environment in the given time range. In series mode the window is split at each promotion so that every point reflects the deployment(s) serving the environment at that time.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

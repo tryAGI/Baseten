@@ -41,9 +41,9 @@ internal static partial class GetTeamsByTeamIdEnvironmentGroupsByEnvNameCommandA
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-teams-by-team-id-environment-groups-by-env-name", @"Gets an environment group by name
+        var command = new Command(commandName ?? @"get-teams-by-team-id-environment-groups-by-env-name", @"Gets an environment group by name
 Gets a single environment group by name. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.");
                         command.Arguments.Add(TeamId);
                         command.Arguments.Add(EnvName);

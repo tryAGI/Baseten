@@ -41,9 +41,9 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNamePausePro
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-models-by-model-id-environments-by-env-name-pause-promotion", @"Pauses a rolling promotion
+        var command = new Command(commandName ?? @"create-models-by-model-id-environments-by-env-name-pause-promotion", @"Pauses a rolling promotion
 Pauses an in-progress rolling promotion after the current step completes. No further scaling changes are made until resumed.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

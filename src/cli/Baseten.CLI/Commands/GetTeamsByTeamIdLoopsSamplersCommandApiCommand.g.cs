@@ -41,9 +41,9 @@ internal static partial class GetTeamsByTeamIdLoopsSamplersCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-teams-by-team-id-loops-samplers", @"Lists a team's Loops samplers
+        var command = new Command(commandName ?? @"get-teams-by-team-id-loops-samplers", @"Lists a team's Loops samplers
 Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(Scope);

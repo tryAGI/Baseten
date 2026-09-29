@@ -59,9 +59,9 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-metrics", @"Gets the metrics for a training job
+        var command = new Command(commandName ?? @"get-training-projects-by-training-project-id-jobs-by-training-job-id-metrics", @"Gets the metrics for a training job
 Gets the metrics for a training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);

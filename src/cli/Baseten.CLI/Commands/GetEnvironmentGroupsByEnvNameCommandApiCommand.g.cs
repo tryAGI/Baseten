@@ -35,9 +35,9 @@ internal static partial class GetEnvironmentGroupsByEnvNameCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-environment-groups-by-env-name", @"Gets an environment group by name
+        var command = new Command(commandName ?? @"get-environment-groups-by-env-name", @"Gets an environment group by name
 Gets a single environment group by name. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.");
                         command.Arguments.Add(EnvName);
 

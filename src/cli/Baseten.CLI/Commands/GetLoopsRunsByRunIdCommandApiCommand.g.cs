@@ -35,9 +35,9 @@ internal static partial class GetLoopsRunsByRunIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-runs-by-run-id", @"Gets a Loops run
+        var command = new Command(commandName ?? @"get-loops-runs-by-run-id", @"Gets a Loops run
 Fetches a Loops run by ID.");
                         command.Arguments.Add(RunId);
 

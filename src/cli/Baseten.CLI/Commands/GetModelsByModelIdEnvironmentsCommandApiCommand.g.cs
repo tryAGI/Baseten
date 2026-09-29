@@ -35,9 +35,9 @@ internal static partial class GetModelsByModelIdEnvironmentsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-environments", @"Gets all environments
+        var command = new Command(commandName ?? @"get-models-by-model-id-environments", @"Gets all environments
 Gets all environments for a given model.");
                         command.Arguments.Add(ModelId);
 

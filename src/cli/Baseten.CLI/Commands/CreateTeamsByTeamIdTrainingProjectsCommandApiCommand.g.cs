@@ -36,9 +36,9 @@ internal static partial class CreateTeamsByTeamIdTrainingProjectsCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-teams-by-team-id-training-projects", @"Upserts a training project in a specific team
+        var command = new Command(commandName ?? @"create-teams-by-team-id-training-projects", @"Upserts a training project in a specific team
 Upserts a training project with the specified metadata for a team.");
                         command.Arguments.Add(TeamId);                        command.Options.Add(TrainingProjectOptions.NameOption);
 

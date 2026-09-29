@@ -31,9 +31,9 @@ internal static partial class GetSecretsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-secrets", @"Gets all secrets (metadata only, no plain text keys)");
+        var command = new Command(commandName ?? @"get-secrets", @"Gets all secrets (metadata only, no plain text keys)");
 
 
 

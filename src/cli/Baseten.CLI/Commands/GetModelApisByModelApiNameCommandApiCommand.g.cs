@@ -35,9 +35,9 @@ internal static partial class GetModelApisByModelApiNameCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-model-apis-by-model-api-name", @"Gets a Model API
+        var command = new Command(commandName ?? @"get-model-apis-by-model-api-name", @"Gets a Model API
 Fetches a Model API by name, with workspace overlay when added.");
                         command.Arguments.Add(ModelApiName);
 

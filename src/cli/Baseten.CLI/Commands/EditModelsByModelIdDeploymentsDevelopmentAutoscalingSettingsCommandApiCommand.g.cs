@@ -52,9 +52,9 @@ internal static partial class EditModelsByModelIdDeploymentsDevelopmentAutoscali
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-models-by-model-id-deployments-development-autoscaling-settings", @"Updates a development deployment's autoscaling settings
+        var command = new Command(commandName ?? @"edit-models-by-model-id-deployments-development-autoscaling-settings", @"Updates a development deployment's autoscaling settings
 Updates a development deployment's autoscaling settings and returns the update status.");
                         command.Arguments.Add(ModelId);                        command.Options.Add(UpdateAutoscalingSettingsV1OptionSetOptions.MinReplica);
                         command.Options.Add(UpdateAutoscalingSettingsV1OptionSetOptions.MaxReplica);

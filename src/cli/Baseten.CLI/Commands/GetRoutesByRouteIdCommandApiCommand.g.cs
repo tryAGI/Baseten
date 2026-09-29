@@ -35,9 +35,9 @@ internal static partial class GetRoutesByRouteIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-routes-by-route-id", @"Gets a route");
+        var command = new Command(commandName ?? @"get-routes-by-route-id", @"Gets a route");
                         command.Arguments.Add(RouteId);
 
 

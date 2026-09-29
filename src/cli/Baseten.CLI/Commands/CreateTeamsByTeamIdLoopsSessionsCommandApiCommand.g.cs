@@ -35,9 +35,9 @@ internal static partial class CreateTeamsByTeamIdLoopsSessionsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-teams-by-team-id-loops-sessions", @"Creates a Loops session
+        var command = new Command(commandName ?? @"create-teams-by-team-id-loops-sessions", @"Creates a Loops session
 Creates a Loops session scoped to the calling org.");
                         command.Arguments.Add(TeamId);
 

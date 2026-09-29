@@ -31,9 +31,9 @@ internal static partial class GetEnvironmentGroupsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-environment-groups", @"Lists environment groups
+        var command = new Command(commandName ?? @"get-environment-groups", @"Lists environment groups
 Lists environment groups. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.");
 
 

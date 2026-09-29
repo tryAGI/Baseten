@@ -83,9 +83,9 @@ internal static partial class GetModelApisUsageCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-model-apis-usage", @"Gets Model APIs token usage in time buckets
+        var command = new Command(commandName ?? @"get-model-apis-usage", @"Gets Model APIs token usage in time buckets
 Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.");
                         command.Options.Add(StartTime);
                         command.Options.Add(EndTime);

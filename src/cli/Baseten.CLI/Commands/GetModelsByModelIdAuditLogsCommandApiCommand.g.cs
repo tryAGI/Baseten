@@ -107,9 +107,9 @@ internal static partial class GetModelsByModelIdAuditLogsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-audit-logs", @"Gets the audit log for a model
+        var command = new Command(commandName ?? @"get-models-by-model-id-audit-logs", @"Gets the audit log for a model
 Returns audit-log entries for a single model, newest first. Use the filters to narrow by event type, actor, deployment, environment, source, or time window, and the cursor to page.");
                         command.Arguments.Add(ModelId);
                         command.Options.Add(Cursor);

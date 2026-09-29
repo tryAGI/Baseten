@@ -63,9 +63,9 @@ internal static partial class EditModelsByModelIdDeploymentsByDeploymentIdReques
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-models-by-model-id-deployments-by-deployment-id-request-backpressure-settings", @"Updates a deployment's request backpressure settings");
+        var command = new Command(commandName ?? @"edit-models-by-model-id-deployments-by-deployment-id-request-backpressure-settings", @"Updates a deployment's request backpressure settings");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);
                         command.Options.Add(Policy);

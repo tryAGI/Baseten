@@ -63,9 +63,9 @@ internal static partial class EditModelsByModelIdDeploymentsByDeploymentIdComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-models-by-model-id-deployments-by-deployment-id", @"Updates a model's deployment by ID
+        var command = new Command(commandName ?? @"edit-models-by-model-id-deployments-by-deployment-id", @"Updates a model's deployment by ID
 Updates the mutable fields of a deployment and returns the updated deployment.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

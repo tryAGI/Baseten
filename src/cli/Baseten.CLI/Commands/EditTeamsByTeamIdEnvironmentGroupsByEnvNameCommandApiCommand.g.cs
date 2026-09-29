@@ -58,9 +58,9 @@ internal static partial class EditTeamsByTeamIdEnvironmentGroupsByEnvNameCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-teams-by-team-id-environment-groups-by-env-name", @"Updates an environment group's restriction settings
+        var command = new Command(commandName ?? @"edit-teams-by-team-id-environment-groups-by-env-name", @"Updates an environment group's restriction settings
 Sets whether the environment is restricted and replaces the list of users granted manage access. The team-scoped path targets the team in the path; the top-level path targets the caller's organization default team.");
                         command.Arguments.Add(TeamId);
                         command.Arguments.Add(EnvName);                        command.Options.Add(ManageAccessOptions.IsRestricted);

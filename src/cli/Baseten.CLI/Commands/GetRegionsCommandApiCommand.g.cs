@@ -31,9 +31,9 @@ internal static partial class GetRegionsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-regions", @"Lists regions available to the organization
+        var command = new Command(commandName ?? @"get-regions", @"Lists regions available to the organization
 Lists the regions available for new deployments in the caller's organization.");
 
 

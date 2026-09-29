@@ -48,9 +48,9 @@ internal static partial class EditChainsByChainIdEnvironmentsByEnvNameChainletSe
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"edit-chains-by-chain-id-environments-by-env-name-chainlet-settings-autoscaling-settings", @"Updates a chainlet environment's autoscaling settings
+        var command = new Command(commandName ?? @"edit-chains-by-chain-id-environments-by-env-name-chainlet-settings-autoscaling-settings", @"Updates a chainlet environment's autoscaling settings
 Updates a chainlet environment's autoscaling settings and returns the updated chainlet environment settings.");
                         command.Arguments.Add(ChainId);
                         command.Arguments.Add(EnvName);

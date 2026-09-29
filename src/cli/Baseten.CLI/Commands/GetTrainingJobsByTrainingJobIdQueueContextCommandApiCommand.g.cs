@@ -35,9 +35,9 @@ internal static partial class GetTrainingJobsByTrainingJobIdQueueContextCommandA
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-training-jobs-by-training-job-id-queue-context", @"Reconstructs queue context for a training job
+        var command = new Command(commandName ?? @"get-training-jobs-by-training-job-id-queue-context", @"Reconstructs queue context for a training job
 Returns the (org, gpu_type) capacity pool the job was gated by, jobs that were holding GPU capacity in that pool when this job was submitted, and every TrainingJobStatus event in [submitted_at, released_at] for those jobs, useful for understanding why a job sat in PENDING. Caller must be an org admin and the job must belong to the caller's org.");
                         command.Arguments.Add(TrainingJobId);
 

@@ -42,9 +42,9 @@ internal static partial class GetBillingToolCallUsageCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-billing-tool-call-usage", @"Gets server-side tool call usage
+        var command = new Command(commandName ?? @"get-billing-tool-call-usage", @"Gets server-side tool call usage
 Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model.");
                         command.Options.Add(StartDate);
                         command.Options.Add(EndDate);

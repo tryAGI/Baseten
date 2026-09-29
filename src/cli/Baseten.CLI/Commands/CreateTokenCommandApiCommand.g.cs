@@ -36,9 +36,9 @@ internal static partial class CreateTokenCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-token", @"Creates a sandbox access token
+        var command = new Command(commandName ?? @"create-token", @"Creates a sandbox access token
 Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours and cannot be renewed; request a new one when needed. This endpoint is experimental and may change or be removed without notice.");
                         command.Options.Add(Scopes);
 

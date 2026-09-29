@@ -75,9 +75,9 @@ internal static partial class CreateLoopsDeploymentsByDeploymentIdMetricsCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-loops-deployments-by-deployment-id-metrics", @"Gets metrics for a Loops trainer deployment
+        var command = new Command(commandName ?? @"create-loops-deployments-by-deployment-id-metrics", @"Gets metrics for a Loops trainer deployment
 Returns per-node GPU/CPU/memory utilization and Knative queue-proxy request rate / concurrency / latency for the trainer pods. The sampler half of a Loops deployment is an OracleVersion and uses the existing model-metrics endpoint.");
                         command.Arguments.Add(DeploymentId);
                         command.Options.Add(EndEpochMillis);

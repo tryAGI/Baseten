@@ -35,9 +35,9 @@ internal static partial class GetModelsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models", @"Gets all models");
+        var command = new Command(commandName ?? @"get-models", @"Gets all models");
                         command.Options.Add(NameOption);
 
 

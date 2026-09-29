@@ -31,9 +31,9 @@ internal static partial class GetUsersMeCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-users-me", @"Gets the authenticated user
+        var command = new Command(commandName ?? @"get-users-me", @"Gets the authenticated user
 Returns info about the user making the request.");
 
 

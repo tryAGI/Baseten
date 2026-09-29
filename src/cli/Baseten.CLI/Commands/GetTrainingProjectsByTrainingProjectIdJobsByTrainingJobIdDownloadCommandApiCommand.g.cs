@@ -41,9 +41,9 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsByTraini
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-training-projects-by-training-project-id-jobs-by-training-job-id-download", @"Gets presigned URLs for a training job's artifacts
+        var command = new Command(commandName ?? @"get-training-projects-by-training-project-id-jobs-by-training-job-id-download", @"Gets presigned URLs for a training job's artifacts
 Returns presigned S3 URLs for the artifacts uploaded by a training job.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);

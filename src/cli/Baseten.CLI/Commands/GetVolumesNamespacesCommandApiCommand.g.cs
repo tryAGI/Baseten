@@ -41,9 +41,9 @@ internal static partial class GetVolumesNamespacesCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-volumes-namespaces", @"Gets the volume namespaces in your workspace
+        var command = new Command(commandName ?? @"get-volumes-namespaces", @"Gets the volume namespaces in your workspace
 Returns the namespaces that hold volumes your API key can read, in lowercase. Namespaces are not created directly: a namespace comes into existence when the first volume is pushed into it.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);

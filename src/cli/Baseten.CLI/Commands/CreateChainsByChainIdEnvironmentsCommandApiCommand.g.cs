@@ -65,9 +65,9 @@ internal static partial class CreateChainsByChainIdEnvironmentsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-chains-by-chain-id-environments", @"Creates a chain environment
+        var command = new Command(commandName ?? @"create-chains-by-chain-id-environments", @"Creates a chain environment
 Creates a chain environment. Returns the resulting environment.");
                         command.Arguments.Add(ChainId);
                         command.Options.Add(NameOption);

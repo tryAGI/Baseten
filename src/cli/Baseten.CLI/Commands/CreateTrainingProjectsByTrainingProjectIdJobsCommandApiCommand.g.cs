@@ -42,9 +42,9 @@ internal static partial class CreateTrainingProjectsByTrainingProjectIdJobsComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-training-projects-by-training-project-id-jobs", @"Creates a training job
+        var command = new Command(commandName ?? @"create-training-projects-by-training-project-id-jobs", @"Creates a training job
 Creates a training job with the specified configuration.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Options.Add(TrainingJob);

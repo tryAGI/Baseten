@@ -41,9 +41,9 @@ internal static partial class CreateChainsByChainIdDeploymentsByChainDeploymentI
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-chains-by-chain-id-deployments-by-chain-deployment-id-deactivate", @"Deactivates a chain deployment
+        var command = new Command(commandName ?? @"create-chains-by-chain-id-deployments-by-chain-deployment-id-deactivate", @"Deactivates a chain deployment
 Deactivates a chain deployment and returns the deactivation status.");
                         command.Arguments.Add(ChainId);
                         command.Arguments.Add(ChainDeploymentId);

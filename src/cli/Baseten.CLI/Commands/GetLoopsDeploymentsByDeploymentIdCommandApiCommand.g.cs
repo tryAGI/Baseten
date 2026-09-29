@@ -35,9 +35,9 @@ internal static partial class GetLoopsDeploymentsByDeploymentIdCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-loops-deployments-by-deployment-id", @"Gets a Loops deployment
+        var command = new Command(commandName ?? @"get-loops-deployments-by-deployment-id", @"Gets a Loops deployment
 Fetches a Loops deployment by ID, including its latest status.");
                         command.Arguments.Add(DeploymentId);
 

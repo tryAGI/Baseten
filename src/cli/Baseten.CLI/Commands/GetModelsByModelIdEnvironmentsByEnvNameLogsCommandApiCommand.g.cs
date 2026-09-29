@@ -107,9 +107,9 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameLogsCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-environments-by-env-name-logs", @"Gets the logs for a model environment
+        var command = new Command(commandName ?? @"get-models-by-model-id-environments-by-env-name-logs", @"Gets the logs for a model environment
 Gets logs across all deployments that were active on the environment in the given time range, which defaults to the last 30 minutes. Pass `start_epoch_millis` to widen the window back to an earlier deployment's build/deploy time.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);

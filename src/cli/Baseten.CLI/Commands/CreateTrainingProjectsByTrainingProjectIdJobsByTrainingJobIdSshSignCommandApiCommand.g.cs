@@ -58,9 +58,9 @@ internal static partial class CreateTrainingProjectsByTrainingProjectIdJobsByTra
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-training-projects-by-training-project-id-jobs-by-training-job-id-ssh-sign", @"Signs an SSH certificate for a training job
+        var command = new Command(commandName ?? @"create-training-projects-by-training-project-id-jobs-by-training-job-id-ssh-sign", @"Signs an SSH certificate for a training job
 Signs a short-lived SSH certificate granting access to a specific training job pod. Returns the signed SSH certificate, a JWT token for SSH proxy authentication, the proxy address to connect through, and the certificate expiry time.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);                        command.Options.Add(SignSSHCertificateRequestV1OptionSetOptions.PublicKey);

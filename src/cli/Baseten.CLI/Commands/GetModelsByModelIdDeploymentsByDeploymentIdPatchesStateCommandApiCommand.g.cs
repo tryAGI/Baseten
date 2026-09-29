@@ -41,9 +41,9 @@ internal static partial class GetModelsByModelIdDeploymentsByDeploymentIdPatches
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-models-by-model-id-deployments-by-deployment-id-patches-state", @"Gets a development deployment's patch state
+        var command = new Command(commandName ?? @"get-models-by-model-id-deployments-by-deployment-id-patches-state", @"Gets a development deployment's patch state
 Returns the patch point the deployment is recorded as running and the latest staged-but-unsynced point, if any. The watch client computes its next patch off the pending point when present, else the running point.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);

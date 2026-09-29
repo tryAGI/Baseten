@@ -31,9 +31,9 @@ internal static partial class GetChainsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-chains", @"Gets all chains");
+        var command = new Command(commandName ?? @"get-chains", @"Gets all chains");
 
 
 
