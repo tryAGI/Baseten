@@ -16,7 +16,7 @@ namespace Baseten
         public required string ModelName { get; set; }
 
         /// <summary>
-        /// Model family (e.g., llama, mistral)<br/>
+        /// Model family (e.g., Meta, DeepSeek)<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_family")]
@@ -82,7 +82,7 @@ namespace Baseten
         /// Total cached input tokens for this model
         /// </param>
         /// <param name="modelFamily">
-        /// Model family (e.g., llama, mistral)<br/>
+        /// Model family (e.g., Meta, DeepSeek)<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="daily">
