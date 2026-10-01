@@ -24,12 +24,14 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateLibraryListingsByUserDefinedListingIdVersionsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLlmModelsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLlmModelsByModelIdDeploymentsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateLoopsCheckpointsDeployCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsCheckpointsValidateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsDeploymentsByDeploymentIdDeactivateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsDeploymentsByDeploymentIdMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsRunsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsRunsByRunIdDeactivateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsSamplersCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateLoopsSamplersBySamplerIdDeactivateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsSessionsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLoopsTrainersCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsCommandApiCommand.Create());

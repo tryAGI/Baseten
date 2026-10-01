@@ -6594,7 +6594,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs/{run_id}/deactivate\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Shuts down a Loops run by ID, tearing down both the run and its paired sampler. Saved checkpoints remain accessible.",
+                "description": "Shuts down a Loops run by ID, tearing down both the run and its paired sampler. Succeeds if the run is already inactive. Saved checkpoints remain accessible.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -6772,6 +6772,39 @@
                 }
             }
         },
+        "/v1/loops/samplers/{sampler_id}/deactivate": {
+            "post": {
+                "summary": "Deactivates a standalone Loops sampler",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/samplers/{sampler_id}/deactivate \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers/{sampler_id}/deactivate\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Shuts down a standalone Loops sampler by ID. Succeeds if it is already inactive. A sampler paired to a run always returns 409 with the run's ID, even if it is inactive.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeactivateLoopsSamplerResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/sampler_id"
+                }
+            ]
+        },
         "/v1/loops/samplers/{sampler_id}": {
             "get": {
                 "summary": "Gets a Loops sampler",
@@ -6929,6 +6962,44 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/ValidateLoopsCheckpointResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/loops/checkpoints/deploy": {
+            "post": {
+                "summary": "Deploys Loops checkpoints",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/checkpoints/deploy \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"checkpoint_ids\": null,\n  \"model_name\": null,\n  \"instance_type_id\": null,\n  \"hf_secret_name\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints/deploy\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'checkpoint_ids': None, 'model_name': None, 'instance_type_id': None, 'hf_secret_name': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates an inference deployment from one or more Loops sampler checkpoints. Confirm the user intends to create billable resources before calling it. This operation is not idempotent; repeating the request can create another deployment.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeployLoopsCheckpointRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeployLoopsCheckpointResponseV1"
                                 }
                             }
                         }
@@ -25066,6 +25137,32 @@
                 "title": "CreateLoopsSamplerResponseV1",
                 "type": "object"
             },
+            "DeactivateLoopsSamplerResponseV1": {
+                "description": "Response for ``POST /v1/loops/samplers/<sampler_id>/deactivate``.",
+                "properties": {
+                    "id": {
+                        "description": "The deactivated Loops sampler ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "The base model the deactivated sampler was serving.",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserV1",
+                        "description": "The user who owns the Loops sampler."
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_model",
+                    "user"
+                ],
+                "title": "DeactivateLoopsSamplerResponseV1",
+                "type": "object"
+            },
             "GetLoopsSamplerResponseV1": {
                 "description": "Response for ``GET /v1/loops/samplers/<sampler_id>``.",
                 "properties": {
@@ -25275,6 +25372,64 @@
                 "description": "Response for ``POST /v1/loops/checkpoints/validate``. Empty on success;\ninaccessible or malformed paths raise 400.",
                 "properties": {},
                 "title": "ValidateLoopsCheckpointResponseV1",
+                "type": "object"
+            },
+            "DeployLoopsCheckpointRequestV1": {
+                "properties": {
+                    "checkpoint_ids": {
+                        "description": "Sampler checkpoint IDs to deploy together.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "title": "Checkpoint Ids",
+                        "type": "array"
+                    },
+                    "model_name": {
+                        "description": "Name for the created model.",
+                        "minLength": 1,
+                        "title": "Model Name",
+                        "type": "string"
+                    },
+                    "instance_type_id": {
+                        "description": "Instance type ID for the deployment.",
+                        "title": "Instance Type Id",
+                        "type": "string"
+                    },
+                    "hf_secret_name": {
+                        "description": "Name of the team-scoped secret that supplies HF_TOKEN.",
+                        "minLength": 1,
+                        "title": "Hf Secret Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "checkpoint_ids",
+                    "model_name",
+                    "instance_type_id",
+                    "hf_secret_name"
+                ],
+                "title": "DeployLoopsCheckpointRequestV1",
+                "type": "object"
+            },
+            "DeployLoopsCheckpointResponseV1": {
+                "properties": {
+                    "model_id": {
+                        "description": "ID of the created or updated model.",
+                        "title": "Model Id",
+                        "type": "string"
+                    },
+                    "deployment_id": {
+                        "description": "ID of the created model version deployment.",
+                        "title": "Deployment Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "model_id",
+                    "deployment_id"
+                ],
+                "title": "DeployLoopsCheckpointResponseV1",
                 "type": "object"
             },
             "LoopsCheckpointFilesResponseV1": {
