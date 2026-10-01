@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsRunsByRunIdDeactivateSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateLoopsCheckpointsDeploySecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,46 +21,54 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsRunsByRunIdDeactivateSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateLoopsCheckpointsDeploySecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_CreateLoopsRunsByRunIdDeactivateSecurityRequirement0,
+            {                s_CreateLoopsCheckpointsDeploySecurityRequirement0,
             };
-        partial void PrepareCreateLoopsRunsByRunIdDeactivateArguments(
+        partial void PrepareCreateLoopsCheckpointsDeployArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string runId);
-        partial void PrepareCreateLoopsRunsByRunIdDeactivateRequest(
+            global::Baseten.DeployLoopsCheckpointRequestV1 request);
+        partial void PrepareCreateLoopsCheckpointsDeployRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string runId);
-        partial void ProcessCreateLoopsRunsByRunIdDeactivateResponse(
+            global::Baseten.DeployLoopsCheckpointRequestV1 request);
+        partial void ProcessCreateLoopsCheckpointsDeployResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateLoopsRunsByRunIdDeactivateResponseContent(
+        partial void ProcessCreateLoopsCheckpointsDeployResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Deactivates a Loops run<br/>
-        /// Shuts down a Loops run by ID, tearing down both the run and its paired sampler. Succeeds if the run is already inactive. Saved checkpoints remain accessible.
+        /// Deploys Loops checkpoints<br/>
+        /// Creates an inference deployment from one or more Loops sampler checkpoints. Confirm the user intends to create billable resources before calling it. This operation is not idempotent; repeating the request can create another deployment.
         /// </summary>
-        /// <param name="runId"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/runs/{run_id}/deactivate \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// --url https://api.baseten.co/v1/loops/checkpoints/deploy \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "checkpoint_ids": null,<br/>
+        ///   "model_name": null,<br/>
+        ///   "instance_type_id": null,<br/>
+        ///   "hf_secret_name": null<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.DeactivateLoopsRunResponseV1> CreateLoopsRunsByRunIdDeactivateAsync(
-            string runId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.DeployLoopsCheckpointResponseV1> CreateLoopsCheckpointsDeployAsync(
+
+            global::Baseten.DeployLoopsCheckpointRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateLoopsRunsByRunIdDeactivateAsResponseAsync(
-                runId: runId,
+            var __response = await CreateLoopsCheckpointsDeployAsResponseAsync(
+
+                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -68,34 +76,43 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Deactivates a Loops run<br/>
-        /// Shuts down a Loops run by ID, tearing down both the run and its paired sampler. Succeeds if the run is already inactive. Saved checkpoints remain accessible.
+        /// Deploys Loops checkpoints<br/>
+        /// Creates an inference deployment from one or more Loops sampler checkpoints. Confirm the user intends to create billable resources before calling it. This operation is not idempotent; repeating the request can create another deployment.
         /// </summary>
-        /// <param name="runId"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request POST \<br/>
-        /// --url https://api.baseten.co/v1/loops/runs/{run_id}/deactivate \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// --url https://api.baseten.co/v1/loops/checkpoints/deploy \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "checkpoint_ids": null,<br/>
+        ///   "model_name": null,<br/>
+        ///   "instance_type_id": null,<br/>
+        ///   "hf_secret_name": null<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopsRunResponseV1>> CreateLoopsRunsByRunIdDeactivateAsResponseAsync(
-            string runId,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.DeployLoopsCheckpointResponseV1>> CreateLoopsCheckpointsDeployAsResponseAsync(
+
+            global::Baseten.DeployLoopsCheckpointRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateLoopsRunsByRunIdDeactivateArguments(
+            PrepareCreateLoopsCheckpointsDeployArguments(
                 httpClient: HttpClient,
-                runId: ref runId);
+                request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateLoopsRunsByRunIdDeactivateSecurityRequirements,
-                operationName: "CreateLoopsRunsByRunIdDeactivateAsync");
+                securityRequirements: s_CreateLoopsCheckpointsDeploySecurityRequirements,
+                operationName: "CreateLoopsCheckpointsDeployAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -115,7 +132,7 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/loops/runs/{runId}/deactivate",
+                                path: "/v1/loops/checkpoints/deploy",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -146,6 +163,12 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -154,10 +177,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateLoopsRunsByRunIdDeactivateRequest(
+                PrepareCreateLoopsCheckpointsDeployRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId);
+                    request: request);
 
                 return __httpRequest;
             }
@@ -174,9 +197,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRunsByRunIdDeactivate",
-                                methodName: "CreateLoopsRunsByRunIdDeactivateAsync",
-                                pathTemplate: "$\"/v1/loops/runs/{runId}/deactivate\"",
+                                operationId: "createLoopsCheckpointsDeploy",
+                                methodName: "CreateLoopsCheckpointsDeployAsync",
+                                pathTemplate: "\"/v1/loops/checkpoints/deploy\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -208,9 +231,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRunsByRunIdDeactivate",
-                                methodName: "CreateLoopsRunsByRunIdDeactivateAsync",
-                                pathTemplate: "$\"/v1/loops/runs/{runId}/deactivate\"",
+                                operationId: "createLoopsCheckpointsDeploy",
+                                methodName: "CreateLoopsCheckpointsDeployAsync",
+                                pathTemplate: "\"/v1/loops/checkpoints/deploy\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -249,9 +272,9 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRunsByRunIdDeactivate",
-                                methodName: "CreateLoopsRunsByRunIdDeactivateAsync",
-                                pathTemplate: "$\"/v1/loops/runs/{runId}/deactivate\"",
+                                operationId: "createLoopsCheckpointsDeploy",
+                                methodName: "CreateLoopsCheckpointsDeployAsync",
+                                pathTemplate: "\"/v1/loops/checkpoints/deploy\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -289,7 +312,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateLoopsRunsByRunIdDeactivateResponse(
+                ProcessCreateLoopsCheckpointsDeployResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -297,9 +320,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRunsByRunIdDeactivate",
-                                methodName: "CreateLoopsRunsByRunIdDeactivateAsync",
-                                pathTemplate: "$\"/v1/loops/runs/{runId}/deactivate\"",
+                                operationId: "createLoopsCheckpointsDeploy",
+                                methodName: "CreateLoopsCheckpointsDeployAsync",
+                                pathTemplate: "\"/v1/loops/checkpoints/deploy\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -319,9 +342,9 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createLoopsRunsByRunIdDeactivate",
-                                methodName: "CreateLoopsRunsByRunIdDeactivateAsync",
-                                pathTemplate: "$\"/v1/loops/runs/{runId}/deactivate\"",
+                                operationId: "createLoopsCheckpointsDeploy",
+                                methodName: "CreateLoopsCheckpointsDeployAsync",
+                                pathTemplate: "\"/v1/loops/checkpoints/deploy\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
@@ -349,7 +372,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateLoopsRunsByRunIdDeactivateResponseContent(
+                                ProcessCreateLoopsCheckpointsDeployResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -358,9 +381,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.DeactivateLoopsRunResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.DeployLoopsCheckpointResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopsRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeployLoopsCheckpointResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -390,9 +413,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.DeactivateLoopsRunResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.DeployLoopsCheckpointResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeactivateLoopsRunResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.DeployLoopsCheckpointResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -431,6 +454,46 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Deploys Loops checkpoints<br/>
+        /// Creates an inference deployment from one or more Loops sampler checkpoints. Confirm the user intends to create billable resources before calling it. This operation is not idempotent; repeating the request can create another deployment.
+        /// </summary>
+        /// <param name="checkpointIds">
+        /// Sampler checkpoint IDs to deploy together.
+        /// </param>
+        /// <param name="modelName">
+        /// Name for the created model.
+        /// </param>
+        /// <param name="instanceTypeId">
+        /// Instance type ID for the deployment.
+        /// </param>
+        /// <param name="hfSecretName">
+        /// Name of the team-scoped secret that supplies HF_TOKEN.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Baseten.DeployLoopsCheckpointResponseV1> CreateLoopsCheckpointsDeployAsync(
+            global::System.Collections.Generic.IList<string> checkpointIds,
+            string modelName,
+            string instanceTypeId,
+            string hfSecretName,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Baseten.DeployLoopsCheckpointRequestV1
+            {
+                CheckpointIds = checkpointIds,
+                ModelName = modelName,
+                InstanceTypeId = instanceTypeId,
+                HfSecretName = hfSecretName,
+            };
+
+            return await CreateLoopsCheckpointsDeployAsync(
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

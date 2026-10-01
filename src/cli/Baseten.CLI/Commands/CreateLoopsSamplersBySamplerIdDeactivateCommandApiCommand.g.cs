@@ -5,15 +5,15 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class CreateLoopsRunsByRunIdDeactivateCommandApiCommand
+internal static partial class CreateLoopsSamplersBySamplerIdDeactivateCommandApiCommand
 {
-    private static Argument<string> RunId { get; } = new(
-        name: @"run-id")
+    private static Argument<string> SamplerId { get; } = new(
+        name: @"sampler-id")
     {
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.DeactivateLoopsRunResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.DeactivateLoopsSamplerResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -29,7 +29,7 @@ internal static partial class CreateLoopsRunsByRunIdDeactivateCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.DeactivateLoopsRunResponseV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.DeactivateLoopsSamplerResponseV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -37,20 +37,20 @@ internal static partial class CreateLoopsRunsByRunIdDeactivateCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"create-loops-runs-by-run-id-deactivate", @"Deactivates a Loops run
-Shuts down a Loops run by ID, tearing down both the run and its paired sampler. Succeeds if the run is already inactive. Saved checkpoints remain accessible.");
-                        command.Arguments.Add(RunId);
+        var command = new Command(commandName ?? @"create-loops-samplers-by-sampler-id-deactivate", @"Deactivates a standalone Loops sampler
+Shuts down a standalone Loops sampler by ID. Succeeds if it is already inactive. A sampler paired to a run always returns 409 with the run's ID, even if it is inactive.");
+                        command.Arguments.Add(SamplerId);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var runId = parseResult.GetRequiredValue(RunId);
+                        var samplerId = parseResult.GetRequiredValue(SamplerId);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.CreateLoopsRunsByRunIdDeactivateAsync(
-                                    runId: runId,
+                                var response = await client.CreateLoopsSamplersBySamplerIdDeactivateAsync(
+                                    samplerId: samplerId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
