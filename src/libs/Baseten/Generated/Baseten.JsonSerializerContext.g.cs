@@ -638,35 +638,20 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RoutesUsageRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteProviderV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSpendLimitV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteSpendLimitRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarness), TypeInfoPropertyName = "RouteHarness2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Baseten.RouteHarnessModelV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSettingSourceV1), TypeInfoPropertyName = "RouteSettingSourceV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSpendLimitSettingV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteUserSettingsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteSpendLimitSettingV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteUserSettingsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BackgroundHarnessDefaultsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessModelV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessModelSource), TypeInfoPropertyName = "RouteHarnessModelSource2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessRole), TypeInfoPropertyName = "RouteHarnessRole2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessConfigsResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Baseten.RouteHarnessConfigV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessConfigsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PrimaryHarnessDefaultsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessDefaultsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTeamSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateBackgroundHarnessModelsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateClaudeCodeHarnessConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateCodexHarnessConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdatePrimaryHarnessModelsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateOpenCodeHarnessConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1), TypeInfoPropertyName = "UpdateRouteHarnessConfigRequestV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1Discriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1DiscriminatorHarness), TypeInfoPropertyName = "UpdateRouteHarnessConfigRequestV1DiscriminatorHarness2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BackgroundHarnessModelsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PrimaryHarnessModelsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SetClaudeCodeHarnessConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SetCodexHarnessConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SetOpenCodeHarnessConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SetRouteHarnessConfigRequestV1), TypeInfoPropertyName = "SetRouteHarnessConfigRequestV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SetRouteHarnessConfigRequestV1Discriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SetRouteHarnessConfigRequestV1DiscriminatorHarness), TypeInfoPropertyName = "SetRouteHarnessConfigRequestV1DiscriminatorHarness2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessConfigTombstoneV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ClearRouteHarnessConfigRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteHarnessDefaultsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteTeamSettingsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTombstoneV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointTargetV1))]
@@ -789,13 +774,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableCreateRouteRequestV1TargetDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteProviderV1?), TypeInfoPropertyName = "NullableRouteProviderV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteUsageDimensionV1?), TypeInfoPropertyName = "NullableRouteUsageDimensionV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarness?), TypeInfoPropertyName = "NullableRouteHarness2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessModelSource?), TypeInfoPropertyName = "NullableRouteHarnessModelSource2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteHarnessRole?), TypeInfoPropertyName = "NullableRouteHarnessRole2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1?), TypeInfoPropertyName = "NullableUpdateRouteHarnessConfigRequestV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1DiscriminatorHarness?), TypeInfoPropertyName = "NullableUpdateRouteHarnessConfigRequestV1DiscriminatorHarness2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SetRouteHarnessConfigRequestV1?), TypeInfoPropertyName = "NullableSetRouteHarnessConfigRequestV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SetRouteHarnessConfigRequestV1DiscriminatorHarness?), TypeInfoPropertyName = "NullableSetRouteHarnessConfigRequestV1DiscriminatorHarness2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSettingSourceV1?), TypeInfoPropertyName = "NullableRouteSettingSourceV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider?), TypeInfoPropertyName = "NullableGatewayProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SharedEndpointRegionV1?), TypeInfoPropertyName = "NullableSharedEndpointRegionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitUnitV1?), TypeInfoPropertyName = "NullableUsageLimitUnitV12")]
@@ -949,8 +928,6 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.Source4JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.TargetJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.Target2JsonConverter());
-            options.Converters.Add(new global::Baseten.JsonConverters.UpdateRouteHarnessConfigRequestV1JsonConverter());
-            options.Converters.Add(new global::Baseten.JsonConverters.SetRouteHarnessConfigRequestV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>());
@@ -1243,25 +1220,9 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.RouteUsageDimensionV1?)
 
-                    || typeToConvert == typeof(global::Baseten.RouteHarness)
+                    || typeToConvert == typeof(global::Baseten.RouteSettingSourceV1)
 
-                    || typeToConvert == typeof(global::Baseten.RouteHarness?)
-
-                    || typeToConvert == typeof(global::Baseten.RouteHarnessModelSource)
-
-                    || typeToConvert == typeof(global::Baseten.RouteHarnessModelSource?)
-
-                    || typeToConvert == typeof(global::Baseten.RouteHarnessRole)
-
-                    || typeToConvert == typeof(global::Baseten.RouteHarnessRole?)
-
-                    || typeToConvert == typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1DiscriminatorHarness)
-
-                    || typeToConvert == typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1DiscriminatorHarness?)
-
-                    || typeToConvert == typeof(global::Baseten.SetRouteHarnessConfigRequestV1DiscriminatorHarness)
-
-                    || typeToConvert == typeof(global::Baseten.SetRouteHarnessConfigRequestV1DiscriminatorHarness?)
+                    || typeToConvert == typeof(global::Baseten.RouteSettingSourceV1?)
 
                     || typeToConvert == typeof(global::Baseten.GatewayProvider)
 
@@ -1904,54 +1865,14 @@ namespace Baseten
                     return new global::Baseten.JsonConverters.RouteUsageDimensionV1NullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.RouteHarness))
+                if (typeToConvert == typeof(global::Baseten.RouteSettingSourceV1))
                 {
-                    return new global::Baseten.JsonConverters.RouteHarnessJsonConverter();
+                    return new global::Baseten.JsonConverters.RouteSettingSourceV1JsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.RouteHarness?))
+                if (typeToConvert == typeof(global::Baseten.RouteSettingSourceV1?))
                 {
-                    return new global::Baseten.JsonConverters.RouteHarnessNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.RouteHarnessModelSource))
-                {
-                    return new global::Baseten.JsonConverters.RouteHarnessModelSourceJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.RouteHarnessModelSource?))
-                {
-                    return new global::Baseten.JsonConverters.RouteHarnessModelSourceNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.RouteHarnessRole))
-                {
-                    return new global::Baseten.JsonConverters.RouteHarnessRoleJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.RouteHarnessRole?))
-                {
-                    return new global::Baseten.JsonConverters.RouteHarnessRoleNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1DiscriminatorHarness))
-                {
-                    return new global::Baseten.JsonConverters.UpdateRouteHarnessConfigRequestV1DiscriminatorHarnessJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.UpdateRouteHarnessConfigRequestV1DiscriminatorHarness?))
-                {
-                    return new global::Baseten.JsonConverters.UpdateRouteHarnessConfigRequestV1DiscriminatorHarnessNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.SetRouteHarnessConfigRequestV1DiscriminatorHarness))
-                {
-                    return new global::Baseten.JsonConverters.SetRouteHarnessConfigRequestV1DiscriminatorHarnessJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.SetRouteHarnessConfigRequestV1DiscriminatorHarness?))
-                {
-                    return new global::Baseten.JsonConverters.SetRouteHarnessConfigRequestV1DiscriminatorHarnessNullableJsonConverter();
+                    return new global::Baseten.JsonConverters.RouteSettingSourceV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.GatewayProvider))
