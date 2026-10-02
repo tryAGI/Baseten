@@ -6,14 +6,13 @@ namespace Baseten
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class UpdatePrimaryHarnessModelsV1
+    public sealed partial class PrimaryHarnessDefaultsV1
     {
         /// <summary>
-        /// Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use the team's default.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// Route for the primary model, which new sessions use. Null when the team has no route to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("primary")]
-        public string? Primary { get; set; }
+        public global::Baseten.RouteHarnessModelV1? Primary { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -22,25 +21,24 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdatePrimaryHarnessModelsV1" /> class.
+        /// Initializes a new instance of the <see cref="PrimaryHarnessDefaultsV1" /> class.
         /// </summary>
         /// <param name="primary">
-        /// Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use the team's default.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// Route for the primary model, which new sessions use. Null when the team has no route to use.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public UpdatePrimaryHarnessModelsV1(
-            string? primary)
+        public PrimaryHarnessDefaultsV1(
+            global::Baseten.RouteHarnessModelV1? primary)
         {
             this.Primary = primary;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdatePrimaryHarnessModelsV1" /> class.
+        /// Initializes a new instance of the <see cref="PrimaryHarnessDefaultsV1" /> class.
         /// </summary>
-        public UpdatePrimaryHarnessModelsV1()
+        public PrimaryHarnessDefaultsV1()
         {
         }
 

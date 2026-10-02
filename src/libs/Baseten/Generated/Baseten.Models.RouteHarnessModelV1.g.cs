@@ -9,12 +9,12 @@ namespace Baseten
     public sealed partial class RouteHarnessModelV1
     {
         /// <summary>
-        /// Who chose this role's route: `team` if a team admin set it, or `baseten` if it is Baseten's default, chosen from the team's Model API routes.
+        /// Where this role's route comes from. `team` covers both a route a team admin set and the default chosen from the team's Model API routes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.RouteHarnessModelSourceJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.RouteSettingSourceV1JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.RouteHarnessModelSource Source { get; set; }
+        public required global::Baseten.RouteSettingSourceV1 Source { get; set; }
 
         /// <summary>
         /// Route to use for this role.
@@ -33,7 +33,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="RouteHarnessModelV1" /> class.
         /// </summary>
         /// <param name="source">
-        /// Who chose this role's route: `team` if a team admin set it, or `baseten` if it is Baseten's default, chosen from the team's Model API routes.
+        /// Where this role's route comes from. `team` covers both a route a team admin set and the default chosen from the team's Model API routes.
         /// </param>
         /// <param name="route">
         /// Route to use for this role.
@@ -42,7 +42,7 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RouteHarnessModelV1(
-            global::Baseten.RouteHarnessModelSource source,
+            global::Baseten.RouteSettingSourceV1 source,
             global::Baseten.RouteV1 route)
         {
             this.Source = source;

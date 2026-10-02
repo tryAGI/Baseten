@@ -9,14 +9,14 @@ namespace Baseten
     public sealed partial class UpdateBackgroundHarnessModelsV1
     {
         /// <summary>
-        /// Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use Baseten's default.<br/>
+        /// Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use the team's default.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("primary")]
         public string? Primary { get; set; }
 
         /// <summary>
-        /// Route ID for background tasks, such as session titles. Omit to keep the current route, or pass null to use Baseten's default.<br/>
+        /// Route ID for background tasks, such as session titles. Omit to keep the current route, or pass null to use the team's default.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("background")]
@@ -32,11 +32,11 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="UpdateBackgroundHarnessModelsV1" /> class.
         /// </summary>
         /// <param name="primary">
-        /// Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use Baseten's default.<br/>
+        /// Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use the team's default.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="background">
-        /// Route ID for background tasks, such as session titles. Omit to keep the current route, or pass null to use Baseten's default.<br/>
+        /// Route ID for background tasks, such as session titles. Omit to keep the current route, or pass null to use the team's default.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
