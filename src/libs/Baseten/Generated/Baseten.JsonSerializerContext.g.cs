@@ -523,7 +523,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1), TypeInfoPropertyName = "LimitTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelAPIOrgDetailsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelAPIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string, object>), TypeInfoPropertyName = "AnyOfDoubleStringObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>), TypeInfoPropertyName = "AnyOfDoubleString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RateLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitUnitV1), TypeInfoPropertyName = "RateLimitUnitV12")]
@@ -574,7 +574,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind), TypeInfoPropertyName = "ResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ChainMetadataV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyDedicatedUsageV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>), TypeInfoPropertyName = "AnyOfDoubleString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyModelApiUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyTrainingUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DedicatedItemV1))]
@@ -760,14 +759,13 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Name?), TypeInfoPropertyName = "NullableName2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyCategory?), TypeInfoPropertyName = "NullableAPIKeyCategory2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1?), TypeInfoPropertyName = "NullableLimitTypeV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string, object>?), TypeInfoPropertyName = "NullableAnyOfDoubleStringObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>?), TypeInfoPropertyName = "NullableAnyOfDoubleString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RateLimitUnitV1?), TypeInfoPropertyName = "NullableRateLimitUnitV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BucketWidth?), TypeInfoPropertyName = "NullableBucketWidth2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageDimensionV1?), TypeInfoPropertyName = "NullableUsageDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingModality?), TypeInfoPropertyName = "NullableLibraryListingModality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApiCostDimensionV1?), TypeInfoPropertyName = "NullableModelApiCostDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>?), TypeInfoPropertyName = "NullableAnyOfDoubleString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target?), TypeInfoPropertyName = "NullableTarget2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableRouteV1TargetDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2?), TypeInfoPropertyName = "NullableTarget22")]
@@ -929,8 +927,8 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.TargetJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.Target2JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>());
-            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>());
-            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
