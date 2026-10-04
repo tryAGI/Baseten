@@ -61,17 +61,15 @@ namespace Baseten
         /// Effective cost per million input tokens, in dollars. Null when pricing is unavailable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_per_million_input_tokens")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AnyOf<double?, string, object> CostPerMillionInputTokens { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        public global::Baseten.AnyOf<double?, string>? CostPerMillionInputTokens { get; set; }
 
         /// <summary>
         /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_per_million_output_tokens")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string, object>))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AnyOf<double?, string, object> CostPerMillionOutputTokens { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        public global::Baseten.AnyOf<double?, string>? CostPerMillionOutputTokens { get; set; }
 
         /// <summary>
         /// Rate limits in effect for the workspace. Workspace-specific overrides are returned when the workspace has added this Model API and configured them; otherwise the catalog default rate limits are returned.
@@ -114,18 +112,18 @@ namespace Baseten
         /// <param name="contextLength">
         /// The model's context window length, in tokens.
         /// </param>
-        /// <param name="costPerMillionInputTokens">
-        /// Effective cost per million input tokens, in dollars. Null when pricing is unavailable.
-        /// </param>
-        /// <param name="costPerMillionOutputTokens">
-        /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
-        /// </param>
         /// <param name="rateLimits">
         /// Rate limits in effect for the workspace. Workspace-specific overrides are returned when the workspace has added this Model API and configured them; otherwise the catalog default rate limits are returned.
         /// </param>
         /// <param name="modelFamily">
         /// Family the underlying model belongs to.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="costPerMillionInputTokens">
+        /// Effective cost per million input tokens, in dollars. Null when pricing is unavailable.
+        /// </param>
+        /// <param name="costPerMillionOutputTokens">
+        /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
         /// </param>
         /// <param name="orgDetails">
         /// Workspace-specific state. Null when the workspace has not added this Model API.<br/>
@@ -141,10 +139,10 @@ namespace Baseten
             global::System.DateTime releaseDate,
             string invokeUrl,
             int contextLength,
-            global::Baseten.AnyOf<double?, string, object> costPerMillionInputTokens,
-            global::Baseten.AnyOf<double?, string, object> costPerMillionOutputTokens,
             global::System.Collections.Generic.IList<global::Baseten.RateLimitV1> rateLimits,
             string? modelFamily,
+            global::Baseten.AnyOf<double?, string>? costPerMillionInputTokens,
+            global::Baseten.AnyOf<double?, string>? costPerMillionOutputTokens,
             global::Baseten.ModelAPIOrgDetailsV1? orgDetails)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
