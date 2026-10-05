@@ -9957,18 +9957,18 @@
                 "x-stability": "unstable"
             },
             "patch": {
-                "summary": "Updates a route's display name or description",
+                "summary": "Updates a route",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/{route_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"description\": \"Assistant for code review and debugging.\",\n  \"display_name\": \"Assistant\"\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/{route_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"description\": \"Assistant for code review and debugging.\",\n  \"display_name\": \"Assistant\",\n  \"target\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/{route_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'description': 'Assistant for code review and debugging.', 'display_name': 'Assistant'}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/{route_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'description': 'Assistant for code review and debugging.', 'display_name': 'Assistant', 'target': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "The route name, target, and owning team are immutable.",
+                "description": "The route name, target type, and owning team are immutable.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -30509,6 +30509,26 @@
                 "title": "ExploreMetadataRequestV1",
                 "type": "object"
             },
+            "RouteRefV1": {
+                "properties": {
+                    "id": {
+                        "description": "Stable route identifier.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "Name of the route to send in the inference request's model field.",
+                        "title": "Slug",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "slug"
+                ],
+                "title": "RouteRefV1",
+                "type": "object"
+            },
             "RouteTargetAnthropicV1": {
                 "additionalProperties": false,
                 "properties": {
@@ -30560,6 +30580,61 @@
                     "model"
                 ],
                 "title": "RouteTargetBasetenModelAPIV1",
+                "type": "object"
+            },
+            "RouteTargetClassifierModelBasedV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "const": "CLASSIFIER_MODEL_BASED",
+                        "description": "Target kind for a classifier-model-based route.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "classifier_model_id": {
+                        "description": "ID of the Baseten model that picks a route for each request.",
+                        "examples": [
+                            "abcd123"
+                        ],
+                        "title": "Classifier Model Id",
+                        "type": "string"
+                    },
+                    "classifier_environment_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Environment of the classifier model. Null for production.",
+                        "examples": [
+                            "production"
+                        ],
+                        "title": "Classifier Environment Name"
+                    },
+                    "default_route": {
+                        "$ref": "#/components/schemas/RouteRefV1",
+                        "description": "Route used when the classifier picks none."
+                    },
+                    "allowed_routes": {
+                        "description": "Routes the classifier may pick, in creation order.",
+                        "items": {
+                            "$ref": "#/components/schemas/RouteRefV1"
+                        },
+                        "title": "Allowed Routes",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "type",
+                    "classifier_model_id",
+                    "classifier_environment_name",
+                    "default_route",
+                    "allowed_routes"
+                ],
+                "title": "RouteTargetClassifierModelBasedV1",
                 "type": "object"
             },
             "RouteTargetOpenAIV1": {
@@ -30660,6 +30735,7 @@
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/RouteTargetAnthropicV1",
                                 "BASETEN_MODEL_API": "#/components/schemas/RouteTargetBasetenModelAPIV1",
+                                "CLASSIFIER_MODEL_BASED": "#/components/schemas/RouteTargetClassifierModelBasedV1",
                                 "OPENAI": "#/components/schemas/RouteTargetOpenAIV1",
                                 "XAI": "#/components/schemas/RouteTargetXAIV1"
                             },
@@ -30677,6 +30753,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/RouteTargetXAIV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/RouteTargetClassifierModelBasedV1"
                             }
                         ],
                         "title": "Target"
@@ -30690,7 +30769,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Resolved model metadata; null when the route has no linked metadata row."
+                        "description": "Resolved model metadata; for a router, the envelope of its allowed routes' metadata. Null when nothing is linked."
                     },
                     "invoke_url": {
                         "description": "Base URL for inference requests using this route.",
@@ -30794,6 +30873,186 @@
                 "title": "RoutesRequestV1",
                 "type": "object"
             },
+            "RouteTargetConfigAnthropicV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "const": "ANTHROPIC",
+                        "description": "Target kind for Anthropic.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "Model name sent to the provider.",
+                        "minLength": 1,
+                        "title": "Model",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of a credential secret owned by the route's team.",
+                        "minLength": 1,
+                        "title": "Secret Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "type",
+                    "model",
+                    "secret_name"
+                ],
+                "title": "RouteTargetConfigAnthropicV1",
+                "type": "object"
+            },
+            "RouteTargetConfigBasetenModelAPIV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "const": "BASETEN_MODEL_API",
+                        "description": "Target kind for a Baseten Model API.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "Name of the target Model API.",
+                        "minLength": 1,
+                        "title": "Model",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "type",
+                    "model"
+                ],
+                "title": "RouteTargetConfigBasetenModelAPIV1",
+                "type": "object"
+            },
+            "RouteTargetConfigClassifierModelBasedV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "const": "CLASSIFIER_MODEL_BASED",
+                        "description": "Target kind for a classifier-model-based route. Not intended for general use: classifiers are deployed by Baseten's post-training team.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "classifier_model_id": {
+                        "description": "ID of the Baseten model that picks a route for each request. Only classifiers deployed by Baseten's post-training team are supported.",
+                        "examples": [
+                            "abcd123"
+                        ],
+                        "minLength": 1,
+                        "title": "Classifier Model Id",
+                        "type": "string"
+                    },
+                    "classifier_environment_name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Environment of the classifier model. Omit for production, which is returned as null.",
+                        "examples": [
+                            "production"
+                        ],
+                        "title": "Classifier Environment Name"
+                    },
+                    "allowed_route_ids": {
+                        "description": "IDs of the routes the classifier may pick. All must belong to the route's team and must not be routers themselves.",
+                        "examples": [
+                            [
+                                "abc1234",
+                                "def5678"
+                            ]
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Allowed Route Ids",
+                        "type": "array"
+                    },
+                    "default_route_id": {
+                        "description": "ID of the allowed route used when the classifier picks none.",
+                        "examples": [
+                            "abc1234"
+                        ],
+                        "title": "Default Route Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "type",
+                    "classifier_model_id",
+                    "allowed_route_ids",
+                    "default_route_id"
+                ],
+                "title": "RouteTargetConfigClassifierModelBasedV1",
+                "type": "object"
+            },
+            "RouteTargetConfigOpenAIV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "const": "OPENAI",
+                        "description": "Target kind for OpenAI.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "Model name sent to the provider.",
+                        "minLength": 1,
+                        "title": "Model",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of a credential secret owned by the route's team.",
+                        "minLength": 1,
+                        "title": "Secret Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "type",
+                    "model",
+                    "secret_name"
+                ],
+                "title": "RouteTargetConfigOpenAIV1",
+                "type": "object"
+            },
+            "RouteTargetConfigXAIV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "const": "XAI",
+                        "description": "Target kind for xAI.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "Model name sent to the provider.",
+                        "minLength": 1,
+                        "title": "Model",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of a credential secret owned by the route's team.",
+                        "minLength": 1,
+                        "title": "Secret Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "type",
+                    "model",
+                    "secret_name"
+                ],
+                "title": "RouteTargetConfigXAIV1",
+                "type": "object"
+            },
             "CreateRouteRequestV1": {
                 "additionalProperties": false,
                 "properties": {
@@ -30836,10 +31095,11 @@
                         "description": "Upstream target for the route.",
                         "discriminator": {
                             "mapping": {
-                                "ANTHROPIC": "#/components/schemas/RouteTargetAnthropicV1",
-                                "BASETEN_MODEL_API": "#/components/schemas/RouteTargetBasetenModelAPIV1",
-                                "OPENAI": "#/components/schemas/RouteTargetOpenAIV1",
-                                "XAI": "#/components/schemas/RouteTargetXAIV1"
+                                "ANTHROPIC": "#/components/schemas/RouteTargetConfigAnthropicV1",
+                                "BASETEN_MODEL_API": "#/components/schemas/RouteTargetConfigBasetenModelAPIV1",
+                                "CLASSIFIER_MODEL_BASED": "#/components/schemas/RouteTargetConfigClassifierModelBasedV1",
+                                "OPENAI": "#/components/schemas/RouteTargetConfigOpenAIV1",
+                                "XAI": "#/components/schemas/RouteTargetConfigXAIV1"
                             },
                             "propertyName": "type"
                         },
@@ -30851,16 +31111,19 @@
                         ],
                         "oneOf": [
                             {
-                                "$ref": "#/components/schemas/RouteTargetBasetenModelAPIV1"
+                                "$ref": "#/components/schemas/RouteTargetConfigBasetenModelAPIV1"
                             },
                             {
-                                "$ref": "#/components/schemas/RouteTargetAnthropicV1"
+                                "$ref": "#/components/schemas/RouteTargetConfigAnthropicV1"
                             },
                             {
-                                "$ref": "#/components/schemas/RouteTargetOpenAIV1"
+                                "$ref": "#/components/schemas/RouteTargetConfigOpenAIV1"
                             },
                             {
-                                "$ref": "#/components/schemas/RouteTargetXAIV1"
+                                "$ref": "#/components/schemas/RouteTargetConfigXAIV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/RouteTargetConfigClassifierModelBasedV1"
                             }
                         ],
                         "title": "Target"
@@ -31562,6 +31825,45 @@
                             "Assistant"
                         ],
                         "title": "Display Name"
+                    },
+                    "target": {
+                        "anyOf": [
+                            {
+                                "discriminator": {
+                                    "mapping": {
+                                        "ANTHROPIC": "#/components/schemas/RouteTargetConfigAnthropicV1",
+                                        "BASETEN_MODEL_API": "#/components/schemas/RouteTargetConfigBasetenModelAPIV1",
+                                        "CLASSIFIER_MODEL_BASED": "#/components/schemas/RouteTargetConfigClassifierModelBasedV1",
+                                        "OPENAI": "#/components/schemas/RouteTargetConfigOpenAIV1",
+                                        "XAI": "#/components/schemas/RouteTargetConfigXAIV1"
+                                    },
+                                    "propertyName": "type"
+                                },
+                                "oneOf": [
+                                    {
+                                        "$ref": "#/components/schemas/RouteTargetConfigBasetenModelAPIV1"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/RouteTargetConfigAnthropicV1"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/RouteTargetConfigOpenAIV1"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/RouteTargetConfigXAIV1"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/RouteTargetConfigClassifierModelBasedV1"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER_MODEL_BASED configuration of a router route is mutable.",
+                        "title": "Target",
+                        "x-null-distinct": true
                     }
                 },
                 "title": "UpdateRouteRequestV1",

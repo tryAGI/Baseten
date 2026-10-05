@@ -59,7 +59,7 @@ namespace Baseten
         public required global::Baseten.Target Target { get; set; }
 
         /// <summary>
-        /// Resolved model metadata; null when the route has no linked metadata row.
+        /// Resolved model metadata; for a router, the envelope of its allowed routes' metadata. Null when nothing is linked.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         public global::Baseten.ExploreMetadataV1? Metadata { get; set; }
@@ -115,7 +115,7 @@ namespace Baseten
         /// Creation time, ISO 8601.
         /// </param>
         /// <param name="metadata">
-        /// Resolved model metadata; null when the route has no linked metadata row.
+        /// Resolved model metadata; for a router, the envelope of its allowed routes' metadata. Null when nothing is linked.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

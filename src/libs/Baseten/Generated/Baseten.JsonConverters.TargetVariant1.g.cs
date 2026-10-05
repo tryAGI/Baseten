@@ -4,10 +4,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public class Target2JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.Target2>
+    public class TargetVariant1JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.TargetVariant1>
     {
         /// <inheritdoc />
-        public override global::Baseten.Target2 Read(
+        public override global::Baseten.TargetVariant1 Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -17,47 +17,47 @@ namespace Baseten.JsonConverters
 
 
             var readerCopy = reader;
-            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.CreateRouteRequestV1TargetDiscriminator> ??
-                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.CreateRouteRequestV1TargetDiscriminator)}");
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpdateRouteRequestV1TargetVariant1Discriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpdateRouteRequestV1TargetVariant1Discriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpdateRouteRequestV1TargetVariant1Discriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
             global::Baseten.RouteTargetConfigBasetenModelAPIV1? basetenModelApi = default;
-            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.BasetenModelApi)
+            if (discriminator?.Type == global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType.BasetenModelApi)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetConfigBasetenModelAPIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetConfigBasetenModelAPIV1> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetConfigBasetenModelAPIV1)}");
                 basetenModelApi = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Baseten.RouteTargetConfigAnthropicV1? anthropic = default;
-            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.Anthropic)
+            if (discriminator?.Type == global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType.Anthropic)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetConfigAnthropicV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetConfigAnthropicV1> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetConfigAnthropicV1)}");
                 anthropic = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Baseten.RouteTargetConfigOpenAIV1? openai = default;
-            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.Openai)
+            if (discriminator?.Type == global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType.Openai)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetConfigOpenAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetConfigOpenAIV1> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetConfigOpenAIV1)}");
                 openai = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Baseten.RouteTargetConfigXAIV1? xai = default;
-            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.Xai)
+            if (discriminator?.Type == global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType.Xai)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetConfigXAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetConfigXAIV1> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetConfigXAIV1)}");
                 xai = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Baseten.RouteTargetConfigClassifierModelBasedV1? classifierModelBased = default;
-            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.ClassifierModelBased)
+            if (discriminator?.Type == global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType.ClassifierModelBased)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetConfigClassifierModelBasedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetConfigClassifierModelBasedV1> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetConfigClassifierModelBasedV1)}");
                 classifierModelBased = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            var __value = new global::Baseten.Target2(
+            var __value = new global::Baseten.TargetVariant1(
                 discriminator?.Type,
                 basetenModelApi,
 
@@ -76,7 +76,7 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.Target2 value,
+            global::Baseten.TargetVariant1 value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));

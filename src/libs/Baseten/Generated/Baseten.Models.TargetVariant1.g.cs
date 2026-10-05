@@ -5,22 +5,22 @@
 namespace Baseten
 {
     /// <summary>
-    /// Configured upstream target.
+    ///
     /// </summary>
-    public readonly partial struct Target : global::System.IEquatable<Target>
+    public readonly partial struct TargetVariant1 : global::System.IEquatable<TargetVariant1>
     {
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteV1TargetDiscriminatorType? Type { get; }
+        public global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType? Type { get; }
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetBasetenModelAPIV1? BasetenModelApi { get; init; }
+        public global::Baseten.RouteTargetConfigBasetenModelAPIV1? BasetenModelApi { get; init; }
 #else
-        public global::Baseten.RouteTargetBasetenModelAPIV1? BasetenModelApi { get; }
+        public global::Baseten.RouteTargetConfigBasetenModelAPIV1? BasetenModelApi { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteTargetBasetenModelAPIV1? value)
+            out global::Baseten.RouteTargetConfigBasetenModelAPIV1? value)
         {
             value = BasetenModelApi;
             return IsBasetenModelApi;
@@ -47,7 +47,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetBasetenModelAPIV1 PickBasetenModelApi() => BasetenModelApi is { } value
+        public global::Baseten.RouteTargetConfigBasetenModelAPIV1 PickBasetenModelApi() => BasetenModelApi is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenModelApi' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetAnthropicV1? Anthropic { get; init; }
+        public global::Baseten.RouteTargetConfigAnthropicV1? Anthropic { get; init; }
 #else
-        public global::Baseten.RouteTargetAnthropicV1? Anthropic { get; }
+        public global::Baseten.RouteTargetConfigAnthropicV1? Anthropic { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteTargetAnthropicV1? value)
+            out global::Baseten.RouteTargetConfigAnthropicV1? value)
         {
             value = Anthropic;
             return IsAnthropic;
@@ -84,7 +84,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetAnthropicV1 PickAnthropic() => Anthropic is { } value
+        public global::Baseten.RouteTargetConfigAnthropicV1 PickAnthropic() => Anthropic is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Anthropic' but the value was {ToString()}.");
 
@@ -92,9 +92,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetOpenAIV1? Openai { get; init; }
+        public global::Baseten.RouteTargetConfigOpenAIV1? Openai { get; init; }
 #else
-        public global::Baseten.RouteTargetOpenAIV1? Openai { get; }
+        public global::Baseten.RouteTargetConfigOpenAIV1? Openai { get; }
 #endif
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteTargetOpenAIV1? value)
+            out global::Baseten.RouteTargetConfigOpenAIV1? value)
         {
             value = Openai;
             return IsOpenai;
@@ -121,7 +121,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetOpenAIV1 PickOpenai() => Openai is { } value
+        public global::Baseten.RouteTargetConfigOpenAIV1 PickOpenai() => Openai is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Openai' but the value was {ToString()}.");
 
@@ -129,9 +129,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetXAIV1? Xai { get; init; }
+        public global::Baseten.RouteTargetConfigXAIV1? Xai { get; init; }
 #else
-        public global::Baseten.RouteTargetXAIV1? Xai { get; }
+        public global::Baseten.RouteTargetConfigXAIV1? Xai { get; }
 #endif
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteTargetXAIV1? value)
+            out global::Baseten.RouteTargetConfigXAIV1? value)
         {
             value = Xai;
             return IsXai;
@@ -158,7 +158,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetXAIV1 PickXai() => Xai is { } value
+        public global::Baseten.RouteTargetConfigXAIV1 PickXai() => Xai is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Xai' but the value was {ToString()}.");
 
@@ -166,9 +166,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetClassifierModelBasedV1? ClassifierModelBased { get; init; }
+        public global::Baseten.RouteTargetConfigClassifierModelBasedV1? ClassifierModelBased { get; init; }
 #else
-        public global::Baseten.RouteTargetClassifierModelBasedV1? ClassifierModelBased { get; }
+        public global::Baseten.RouteTargetConfigClassifierModelBasedV1? ClassifierModelBased { get; }
 #endif
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteTargetClassifierModelBasedV1? value)
+            out global::Baseten.RouteTargetConfigClassifierModelBasedV1? value)
         {
             value = ClassifierModelBased;
             return IsClassifierModelBased;
@@ -195,23 +195,23 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetClassifierModelBasedV1 PickClassifierModelBased() => ClassifierModelBased is { } value
+        public global::Baseten.RouteTargetConfigClassifierModelBasedV1 PickClassifierModelBased() => ClassifierModelBased is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ClassifierModelBased' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetBasetenModelAPIV1 value) => new Target((global::Baseten.RouteTargetBasetenModelAPIV1?)value);
+        public static implicit operator TargetVariant1(global::Baseten.RouteTargetConfigBasetenModelAPIV1 value) => new TargetVariant1((global::Baseten.RouteTargetConfigBasetenModelAPIV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteTargetBasetenModelAPIV1?(Target @this) => @this.BasetenModelApi;
+        public static implicit operator global::Baseten.RouteTargetConfigBasetenModelAPIV1?(TargetVariant1 @this) => @this.BasetenModelApi;
 
         /// <summary>
         ///
         /// </summary>
-        public Target(global::Baseten.RouteTargetBasetenModelAPIV1? value)
+        public TargetVariant1(global::Baseten.RouteTargetConfigBasetenModelAPIV1? value)
         {
             BasetenModelApi = value;
         }
@@ -219,22 +219,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Target FromBasetenModelApi(global::Baseten.RouteTargetBasetenModelAPIV1? value) => new Target(value);
+        public static TargetVariant1 FromBasetenModelApi(global::Baseten.RouteTargetConfigBasetenModelAPIV1? value) => new TargetVariant1(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetAnthropicV1 value) => new Target((global::Baseten.RouteTargetAnthropicV1?)value);
+        public static implicit operator TargetVariant1(global::Baseten.RouteTargetConfigAnthropicV1 value) => new TargetVariant1((global::Baseten.RouteTargetConfigAnthropicV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteTargetAnthropicV1?(Target @this) => @this.Anthropic;
+        public static implicit operator global::Baseten.RouteTargetConfigAnthropicV1?(TargetVariant1 @this) => @this.Anthropic;
 
         /// <summary>
         ///
         /// </summary>
-        public Target(global::Baseten.RouteTargetAnthropicV1? value)
+        public TargetVariant1(global::Baseten.RouteTargetConfigAnthropicV1? value)
         {
             Anthropic = value;
         }
@@ -242,22 +242,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Target FromAnthropic(global::Baseten.RouteTargetAnthropicV1? value) => new Target(value);
+        public static TargetVariant1 FromAnthropic(global::Baseten.RouteTargetConfigAnthropicV1? value) => new TargetVariant1(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetOpenAIV1 value) => new Target((global::Baseten.RouteTargetOpenAIV1?)value);
+        public static implicit operator TargetVariant1(global::Baseten.RouteTargetConfigOpenAIV1 value) => new TargetVariant1((global::Baseten.RouteTargetConfigOpenAIV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteTargetOpenAIV1?(Target @this) => @this.Openai;
+        public static implicit operator global::Baseten.RouteTargetConfigOpenAIV1?(TargetVariant1 @this) => @this.Openai;
 
         /// <summary>
         ///
         /// </summary>
-        public Target(global::Baseten.RouteTargetOpenAIV1? value)
+        public TargetVariant1(global::Baseten.RouteTargetConfigOpenAIV1? value)
         {
             Openai = value;
         }
@@ -265,22 +265,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Target FromOpenai(global::Baseten.RouteTargetOpenAIV1? value) => new Target(value);
+        public static TargetVariant1 FromOpenai(global::Baseten.RouteTargetConfigOpenAIV1? value) => new TargetVariant1(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetXAIV1 value) => new Target((global::Baseten.RouteTargetXAIV1?)value);
+        public static implicit operator TargetVariant1(global::Baseten.RouteTargetConfigXAIV1 value) => new TargetVariant1((global::Baseten.RouteTargetConfigXAIV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteTargetXAIV1?(Target @this) => @this.Xai;
+        public static implicit operator global::Baseten.RouteTargetConfigXAIV1?(TargetVariant1 @this) => @this.Xai;
 
         /// <summary>
         ///
         /// </summary>
-        public Target(global::Baseten.RouteTargetXAIV1? value)
+        public TargetVariant1(global::Baseten.RouteTargetConfigXAIV1? value)
         {
             Xai = value;
         }
@@ -288,22 +288,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Target FromXai(global::Baseten.RouteTargetXAIV1? value) => new Target(value);
+        public static TargetVariant1 FromXai(global::Baseten.RouteTargetConfigXAIV1? value) => new TargetVariant1(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetClassifierModelBasedV1 value) => new Target((global::Baseten.RouteTargetClassifierModelBasedV1?)value);
+        public static implicit operator TargetVariant1(global::Baseten.RouteTargetConfigClassifierModelBasedV1 value) => new TargetVariant1((global::Baseten.RouteTargetConfigClassifierModelBasedV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteTargetClassifierModelBasedV1?(Target @this) => @this.ClassifierModelBased;
+        public static implicit operator global::Baseten.RouteTargetConfigClassifierModelBasedV1?(TargetVariant1 @this) => @this.ClassifierModelBased;
 
         /// <summary>
         ///
         /// </summary>
-        public Target(global::Baseten.RouteTargetClassifierModelBasedV1? value)
+        public TargetVariant1(global::Baseten.RouteTargetConfigClassifierModelBasedV1? value)
         {
             ClassifierModelBased = value;
         }
@@ -311,18 +311,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Target FromClassifierModelBased(global::Baseten.RouteTargetClassifierModelBasedV1? value) => new Target(value);
+        public static TargetVariant1 FromClassifierModelBased(global::Baseten.RouteTargetConfigClassifierModelBasedV1? value) => new TargetVariant1(value);
 
         /// <summary>
         ///
         /// </summary>
-        public Target(
-            global::Baseten.RouteV1TargetDiscriminatorType? type,
-            global::Baseten.RouteTargetBasetenModelAPIV1? basetenModelApi,
-            global::Baseten.RouteTargetAnthropicV1? anthropic,
-            global::Baseten.RouteTargetOpenAIV1? openai,
-            global::Baseten.RouteTargetXAIV1? xai,
-            global::Baseten.RouteTargetClassifierModelBasedV1? classifierModelBased
+        public TargetVariant1(
+            global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType? type,
+            global::Baseten.RouteTargetConfigBasetenModelAPIV1? basetenModelApi,
+            global::Baseten.RouteTargetConfigAnthropicV1? anthropic,
+            global::Baseten.RouteTargetConfigOpenAIV1? openai,
+            global::Baseten.RouteTargetConfigXAIV1? xai,
+            global::Baseten.RouteTargetConfigClassifierModelBasedV1? classifierModelBased
             )
         {
             Type = type;
@@ -368,11 +368,11 @@ namespace Baseten
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Baseten.RouteTargetBasetenModelAPIV1, TResult>? basetenModelApi = null,
-            global::System.Func<global::Baseten.RouteTargetAnthropicV1, TResult>? anthropic = null,
-            global::System.Func<global::Baseten.RouteTargetOpenAIV1, TResult>? openai = null,
-            global::System.Func<global::Baseten.RouteTargetXAIV1, TResult>? xai = null,
-            global::System.Func<global::Baseten.RouteTargetClassifierModelBasedV1, TResult>? classifierModelBased = null,
+            global::System.Func<global::Baseten.RouteTargetConfigBasetenModelAPIV1, TResult>? basetenModelApi = null,
+            global::System.Func<global::Baseten.RouteTargetConfigAnthropicV1, TResult>? anthropic = null,
+            global::System.Func<global::Baseten.RouteTargetConfigOpenAIV1, TResult>? openai = null,
+            global::System.Func<global::Baseten.RouteTargetConfigXAIV1, TResult>? xai = null,
+            global::System.Func<global::Baseten.RouteTargetConfigClassifierModelBasedV1, TResult>? classifierModelBased = null,
             bool validate = true)
         {
             if (validate)
@@ -408,15 +408,15 @@ namespace Baseten
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Baseten.RouteTargetBasetenModelAPIV1>? basetenModelApi = null,
+            global::System.Action<global::Baseten.RouteTargetConfigBasetenModelAPIV1>? basetenModelApi = null,
 
-            global::System.Action<global::Baseten.RouteTargetAnthropicV1>? anthropic = null,
+            global::System.Action<global::Baseten.RouteTargetConfigAnthropicV1>? anthropic = null,
 
-            global::System.Action<global::Baseten.RouteTargetOpenAIV1>? openai = null,
+            global::System.Action<global::Baseten.RouteTargetConfigOpenAIV1>? openai = null,
 
-            global::System.Action<global::Baseten.RouteTargetXAIV1>? xai = null,
+            global::System.Action<global::Baseten.RouteTargetConfigXAIV1>? xai = null,
 
-            global::System.Action<global::Baseten.RouteTargetClassifierModelBasedV1>? classifierModelBased = null,
+            global::System.Action<global::Baseten.RouteTargetConfigClassifierModelBasedV1>? classifierModelBased = null,
             bool validate = true)
         {
             if (validate)
@@ -450,11 +450,11 @@ namespace Baseten
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Baseten.RouteTargetBasetenModelAPIV1>? basetenModelApi = null,
-            global::System.Action<global::Baseten.RouteTargetAnthropicV1>? anthropic = null,
-            global::System.Action<global::Baseten.RouteTargetOpenAIV1>? openai = null,
-            global::System.Action<global::Baseten.RouteTargetXAIV1>? xai = null,
-            global::System.Action<global::Baseten.RouteTargetClassifierModelBasedV1>? classifierModelBased = null,
+            global::System.Action<global::Baseten.RouteTargetConfigBasetenModelAPIV1>? basetenModelApi = null,
+            global::System.Action<global::Baseten.RouteTargetConfigAnthropicV1>? anthropic = null,
+            global::System.Action<global::Baseten.RouteTargetConfigOpenAIV1>? openai = null,
+            global::System.Action<global::Baseten.RouteTargetConfigXAIV1>? xai = null,
+            global::System.Action<global::Baseten.RouteTargetConfigClassifierModelBasedV1>? classifierModelBased = null,
             bool validate = true)
         {
             if (validate)
@@ -492,15 +492,15 @@ namespace Baseten
             var fields = new object?[]
             {
                 BasetenModelApi,
-                typeof(global::Baseten.RouteTargetBasetenModelAPIV1),
+                typeof(global::Baseten.RouteTargetConfigBasetenModelAPIV1),
                 Anthropic,
-                typeof(global::Baseten.RouteTargetAnthropicV1),
+                typeof(global::Baseten.RouteTargetConfigAnthropicV1),
                 Openai,
-                typeof(global::Baseten.RouteTargetOpenAIV1),
+                typeof(global::Baseten.RouteTargetConfigOpenAIV1),
                 Xai,
-                typeof(global::Baseten.RouteTargetXAIV1),
+                typeof(global::Baseten.RouteTargetConfigXAIV1),
                 ClassifierModelBased,
-                typeof(global::Baseten.RouteTargetClassifierModelBasedV1),
+                typeof(global::Baseten.RouteTargetConfigClassifierModelBasedV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -514,29 +514,29 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public bool Equals(Target other)
+        public bool Equals(TargetVariant1 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetBasetenModelAPIV1?>.Default.Equals(BasetenModelApi, other.BasetenModelApi) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetAnthropicV1?>.Default.Equals(Anthropic, other.Anthropic) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetOpenAIV1?>.Default.Equals(Openai, other.Openai) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetXAIV1?>.Default.Equals(Xai, other.Xai) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetClassifierModelBasedV1?>.Default.Equals(ClassifierModelBased, other.ClassifierModelBased)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetConfigBasetenModelAPIV1?>.Default.Equals(BasetenModelApi, other.BasetenModelApi) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetConfigAnthropicV1?>.Default.Equals(Anthropic, other.Anthropic) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetConfigOpenAIV1?>.Default.Equals(Openai, other.Openai) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetConfigXAIV1?>.Default.Equals(Xai, other.Xai) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetConfigClassifierModelBasedV1?>.Default.Equals(ClassifierModelBased, other.ClassifierModelBased)
                 ;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static bool operator ==(Target obj1, Target obj2)
+        public static bool operator ==(TargetVariant1 obj1, TargetVariant1 obj2)
         {
-            return global::System.Collections.Generic.EqualityComparer<Target>.Default.Equals(obj1, obj2);
+            return global::System.Collections.Generic.EqualityComparer<TargetVariant1>.Default.Equals(obj1, obj2);
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static bool operator !=(Target obj1, Target obj2)
+        public static bool operator !=(TargetVariant1 obj1, TargetVariant1 obj2)
         {
             return !(obj1 == obj2);
         }
@@ -546,7 +546,7 @@ namespace Baseten
         /// </summary>
         public override bool Equals(object? obj)
         {
-            return obj is Target o && Equals(o);
+            return obj is TargetVariant1 o && Equals(o);
         }
     }
 }

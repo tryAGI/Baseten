@@ -24,6 +24,12 @@ internal static partial class EditRoutesByRouteIdCommandApiCommand
     {
         Description = @"New display label. Omit to keep the current label; null is not accepted.",
     };
+
+    private static Option<global::Baseten.TargetVariant1?> Target { get; } = new(
+        name: @"--target")
+    {
+        Description = @"Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER_MODEL_BASED configuration of a router route is mutable.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -65,11 +71,12 @@ internal static partial class EditRoutesByRouteIdCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"edit-routes-by-route-id", @"Updates a route's display name or description
-The route name, target, and owning team are immutable.");
+        var command = new Command(commandName ?? @"edit-routes-by-route-id", @"Updates a route
+The route name, target type, and owning team are immutable.");
                         command.Arguments.Add(RouteId);
                         command.Options.Add(DescriptionOption);
                         command.Options.Add(DisplayName);
+                        command.Options.Add(Target);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -98,6 +105,7 @@ The route name, target, and owning team are immutable.");
                         var routeId = parseResult.GetRequiredValue(RouteId);
                         var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
                         var displayName = CliRuntime.WasSpecified(parseResult, DisplayName) ? parseResult.GetValue(DisplayName) : (__requestBase is { } __DisplayNameBaseValue ? __DisplayNameBaseValue.DisplayName : default);
+                        var target = CliRuntime.WasSpecified(parseResult, Target) ? parseResult.GetValue(Target) : (__requestBase is { } __TargetBaseValue ? __TargetBaseValue.Target : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -105,6 +113,7 @@ The route name, target, and owning team are immutable.");
                                     routeId: routeId,
                                     description: description,
                                     displayName: displayName,
+                                    target: target,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
