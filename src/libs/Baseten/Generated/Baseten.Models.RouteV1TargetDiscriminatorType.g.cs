@@ -19,6 +19,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ClassifierModelBased,
+        /// <summary>
+        ///
+        /// </summary>
         Openai,
         /// <summary>
         ///
@@ -40,6 +44,7 @@ namespace Baseten
             {
                 RouteV1TargetDiscriminatorType.Anthropic => "ANTHROPIC",
                 RouteV1TargetDiscriminatorType.BasetenModelApi => "BASETEN_MODEL_API",
+                RouteV1TargetDiscriminatorType.ClassifierModelBased => "CLASSIFIER_MODEL_BASED",
                 RouteV1TargetDiscriminatorType.Openai => "OPENAI",
                 RouteV1TargetDiscriminatorType.Xai => "XAI",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -54,6 +59,7 @@ namespace Baseten
             {
                 "ANTHROPIC" => RouteV1TargetDiscriminatorType.Anthropic,
                 "BASETEN_MODEL_API" => RouteV1TargetDiscriminatorType.BasetenModelApi,
+                "CLASSIFIER_MODEL_BASED" => RouteV1TargetDiscriminatorType.ClassifierModelBased,
                 "OPENAI" => RouteV1TargetDiscriminatorType.Openai,
                 "XAI" => RouteV1TargetDiscriminatorType.Xai,
                 _ => null,
