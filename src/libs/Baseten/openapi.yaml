@@ -10872,7 +10872,6 @@
                 "type": "object"
             },
             "VolumeSyncAuthenticationAWSAssumeRoleV1": {
-                "additionalProperties": false,
                 "description": "Authentication using an AWS IAM role assumed by Baseten.",
                 "properties": {
                     "role_arn": {
@@ -10896,7 +10895,6 @@
                 "type": "object"
             },
             "VolumeSyncAuthenticationAWSOIDCV1": {
-                "additionalProperties": false,
                 "description": "Authentication using an AWS IAM role and Baseten workload identity.",
                 "properties": {
                     "role_arn": {
@@ -10920,7 +10918,6 @@
                 "type": "object"
             },
             "VolumeSyncAuthenticationGCPOIDCV1": {
-                "additionalProperties": false,
                 "description": "Authentication using GCP Workload Identity Federation.",
                 "properties": {
                     "service_account": {
@@ -10944,7 +10941,6 @@
                 "type": "object"
             },
             "VolumeSyncDestinationV1": {
-                "additionalProperties": false,
                 "description": "BDN destination for a volume sync.",
                 "properties": {
                     "ref": {
@@ -10981,7 +10977,6 @@
                 "type": "object"
             },
             "VolumeSyncSourceAzureV1": {
-                "additionalProperties": false,
                 "description": "Azure Blob Storage source.",
                 "properties": {
                     "uri": {
@@ -11034,7 +11029,6 @@
                 "type": "object"
             },
             "VolumeSyncSourceBasetenTrainingV1": {
-                "additionalProperties": false,
                 "description": "Baseten training artifact source.",
                 "properties": {
                     "uri": {
@@ -11073,7 +11067,6 @@
                 "type": "object"
             },
             "VolumeSyncSourceCoreWeaveV1": {
-                "additionalProperties": false,
                 "description": "CoreWeave object storage source.",
                 "properties": {
                     "uri": {
@@ -11126,7 +11119,6 @@
                 "type": "object"
             },
             "VolumeSyncSourceGCSV1": {
-                "additionalProperties": false,
                 "description": "Google Cloud Storage source.",
                 "properties": {
                     "uri": {
@@ -11191,7 +11183,6 @@
                 "type": "object"
             },
             "VolumeSyncSourceHuggingFaceV1": {
-                "additionalProperties": false,
                 "description": "Hugging Face source.",
                 "properties": {
                     "uri": {
@@ -11244,7 +11235,6 @@
                 "type": "object"
             },
             "VolumeSyncSourceR2V1": {
-                "additionalProperties": false,
                 "description": "Cloudflare R2 source.",
                 "properties": {
                     "uri": {
@@ -11297,7 +11287,6 @@
                 "type": "object"
             },
             "VolumeSyncSourceS3V1": {
-                "additionalProperties": false,
                 "description": "Amazon S3 source.",
                 "properties": {
                     "uri": {
@@ -13479,7 +13468,6 @@
                 "type": "object"
             },
             "AuditLogEventApiKeyCreatedV1": {
-                "additionalProperties": false,
                 "description": "An API key was created.",
                 "properties": {
                     "event_type": {
@@ -13509,7 +13497,6 @@
                 "type": "object"
             },
             "AuditLogEventApiKeyDeletedV1": {
-                "additionalProperties": false,
                 "description": "An API key was revoked.",
                 "properties": {
                     "event_type": {
@@ -13550,7 +13537,6 @@
                 "type": "string"
             },
             "AuditLogEventAutoscalingScheduleChangeV1": {
-                "additionalProperties": false,
                 "description": "What an autoscaling change did to one schedule, and the schedule on either side of it.\n`previous` is null on a create, `current` on a delete, and an unchanged schedule carries only\n`current`. Not itself a payload in the discriminated union.",
                 "properties": {
                     "action": {
@@ -13591,7 +13577,6 @@
                 "type": "object"
             },
             "AuditLogEventAutoscalingScheduleSettingsV1": {
-                "additionalProperties": false,
                 "description": "One autoscaling schedule's timing and autoscaling settings. Not itself a union payload.",
                 "properties": {
                     "min_replica": {
@@ -13790,7 +13775,6 @@
                 "type": "object"
             },
             "AuditLogEventAutoscalingSettingsV1": {
-                "additionalProperties": false,
                 "description": "Autoscaling settings for a deployment or environment.",
                 "properties": {
                     "min_replica": {
@@ -13875,7 +13859,6 @@
                 "type": "object"
             },
             "AuditLogEventChainDeletedV1": {
-                "additionalProperties": false,
                 "description": "A chain was deleted.",
                 "properties": {
                     "event_type": {
@@ -13913,7 +13896,6 @@
                 "type": "object"
             },
             "AuditLogEventChainDeployedV1": {
-                "additionalProperties": false,
                 "description": "A chain deployment was created.",
                 "properties": {
                     "event_type": {
@@ -13966,7 +13948,6 @@
                 "type": "object"
             },
             "AuditLogEventChainDeploymentActivatedV1": {
-                "additionalProperties": false,
                 "description": "A chain deployment was activated.",
                 "properties": {
                     "event_type": {
@@ -14009,7 +13990,6 @@
                 "type": "object"
             },
             "AuditLogEventChainDeploymentDeactivatedV1": {
-                "additionalProperties": false,
                 "description": "A chain deployment was deactivated.",
                 "properties": {
                     "event_type": {
@@ -14052,7 +14032,6 @@
                 "type": "object"
             },
             "AuditLogEventChainDeploymentDeletedV1": {
-                "additionalProperties": false,
                 "description": "A chain deployment was deleted.",
                 "properties": {
                     "event_type": {
@@ -14095,7 +14074,6 @@
                 "type": "object"
             },
             "AuditLogEventChainDeploymentPromotedV1": {
-                "additionalProperties": false,
                 "description": "A chain deployment was promoted to an environment.",
                 "properties": {
                     "event_type": {
@@ -14162,7 +14140,6 @@
                 "type": "object"
             },
             "AuditLogEventChainEnvironmentCreatedV1": {
-                "additionalProperties": false,
                 "description": "A chain environment was created.",
                 "properties": {
                     "event_type": {
@@ -14229,7 +14206,6 @@
                 "type": "object"
             },
             "AuditLogEventChainEnvironmentUpdatedV1": {
-                "additionalProperties": false,
                 "description": "A chain environment was updated.",
                 "properties": {
                     "event_type": {
@@ -14296,7 +14272,6 @@
                 "type": "object"
             },
             "AuditLogEventChainletAutoscalingSettingsChangedV1": {
-                "additionalProperties": false,
                 "description": "A chainlet's autoscaling settings were changed.",
                 "properties": {
                     "min_replica": {
@@ -14435,7 +14410,6 @@
                 "type": "object"
             },
             "AuditLogEventChainletInstanceTypeChangedV1": {
-                "additionalProperties": false,
                 "description": "A chainlet's instance type was changed.",
                 "properties": {
                     "event_type": {
@@ -14493,7 +14467,6 @@
                 "type": "object"
             },
             "AuditLogEventDirectoryGroupRoleUpdatedV1": {
-                "additionalProperties": false,
                 "description": "A directory group's role was updated.",
                 "properties": {
                     "event_type": {
@@ -14548,7 +14521,6 @@
                 "type": "object"
             },
             "AuditLogEventEnvironmentCreatedV1": {
-                "additionalProperties": false,
                 "description": "A model environment was created.",
                 "properties": {
                     "min_replica": {
@@ -14810,7 +14782,6 @@
                 "type": "object"
             },
             "AuditLogEventEnvironmentDeletedV1": {
-                "additionalProperties": false,
                 "description": "A model environment was deleted.",
                 "properties": {
                     "event_type": {
@@ -14841,7 +14812,6 @@
                 "type": "object"
             },
             "AuditLogEventEnvironmentSettingsV1": {
-                "additionalProperties": false,
                 "description": "Full environment settings (autoscaling + rolling promotion + deprecated canary);\nshared base for the environment events and the type of their previous_settings\nsnapshots. Not itself a payload in the discriminated union.",
                 "properties": {
                     "min_replica": {
@@ -15070,7 +15040,6 @@
                 "type": "object"
             },
             "AuditLogEventEnvironmentUpdatedV1": {
-                "additionalProperties": false,
                 "description": "A model environment's settings were updated.",
                 "properties": {
                     "schedules": {
@@ -15358,7 +15327,6 @@
                 "type": "object"
             },
             "AuditLogEventGatewayEndpointCreatedV1": {
-                "additionalProperties": false,
                 "description": "A Frontier Gateway endpoint was created.",
                 "properties": {
                     "event_type": {
@@ -15384,7 +15352,6 @@
                 "type": "object"
             },
             "AuditLogEventGatewayEndpointDeletedV1": {
-                "additionalProperties": false,
                 "description": "A Frontier Gateway endpoint was deleted.",
                 "properties": {
                     "event_type": {
@@ -15410,7 +15377,6 @@
                 "type": "object"
             },
             "AuditLogEventGatewayEndpointUpdatedV1": {
-                "additionalProperties": false,
                 "description": "A Frontier Gateway endpoint was updated.",
                 "properties": {
                     "event_type": {
@@ -15448,7 +15414,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeletedV1": {
-                "additionalProperties": false,
                 "description": "A model was deleted.",
                 "properties": {
                     "event_type": {
@@ -15474,7 +15439,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeployedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment was created.",
                 "properties": {
                     "event_type": {
@@ -15537,7 +15501,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeploymentActivatedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment was activated.",
                 "properties": {
                     "event_type": {
@@ -15573,7 +15536,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeploymentAutoscalingSettingsChangedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment's autoscaling settings were changed.",
                 "properties": {
                     "schedules": {
@@ -15722,7 +15684,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeploymentDeactivatedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment was deactivated.",
                 "properties": {
                     "event_type": {
@@ -15758,7 +15719,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeploymentDeletedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment was deleted.",
                 "properties": {
                     "event_type": {
@@ -15794,7 +15754,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeploymentInstanceTypeChangedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment's instance type was changed.",
                 "properties": {
                     "event_type": {
@@ -15835,7 +15794,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeploymentPromotedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment was promoted to an environment.",
                 "properties": {
                     "event_type": {
@@ -15895,7 +15853,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeploymentRequestBackpressureSettingsChangedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment's request backpressure settings were changed.",
                 "properties": {
                     "event_type": {
@@ -15955,7 +15912,6 @@
                 "type": "object"
             },
             "AuditLogEventModelDeploymentRetriedV1": {
-                "additionalProperties": false,
                 "description": "A model deployment build was retried.",
                 "properties": {
                     "event_type": {
@@ -15996,7 +15952,6 @@
                 "type": "object"
             },
             "AuditLogEventModelPromotionControlActionV1": {
-                "additionalProperties": false,
                 "description": "A user-initiated promotion control signal was sent to a rolling promotion.",
                 "properties": {
                     "event_type": {
@@ -16053,7 +16008,6 @@
                 "type": "object"
             },
             "AuditLogEventModelRenamedV1": {
-                "additionalProperties": false,
                 "description": "A model was renamed. `model_name` is the new name.",
                 "properties": {
                     "event_type": {
@@ -16091,7 +16045,6 @@
                 "type": "object"
             },
             "AuditLogEventProviderConnectionCreatedV1": {
-                "additionalProperties": false,
                 "properties": {
                     "event_type": {
                         "const": "PROVIDER_CONNECTION_CREATED",
@@ -16121,7 +16074,6 @@
                 "type": "object"
             },
             "AuditLogEventProviderConnectionDeletedV1": {
-                "additionalProperties": false,
                 "properties": {
                     "event_type": {
                         "const": "PROVIDER_CONNECTION_DELETED",
@@ -16151,7 +16103,6 @@
                 "type": "object"
             },
             "AuditLogEventProviderConnectionUpdatedV1": {
-                "additionalProperties": false,
                 "properties": {
                     "event_type": {
                         "const": "PROVIDER_CONNECTION_UPDATED",
@@ -16181,7 +16132,6 @@
                 "type": "object"
             },
             "AuditLogEventReplicaTerminatedV1": {
-                "additionalProperties": false,
                 "description": "A replica of a model deployment was terminated.",
                 "properties": {
                     "event_type": {
@@ -16222,7 +16172,6 @@
                 "type": "object"
             },
             "AuditLogEventRequireGroupBasedAdminsEnabledV1": {
-                "additionalProperties": false,
                 "description": "Group-based admin enforcement was enabled for the organization.",
                 "properties": {
                     "event_type": {
@@ -16243,7 +16192,6 @@
                 "type": "object"
             },
             "AuditLogEventSecretDeletedV1": {
-                "additionalProperties": false,
                 "description": "A secret was deleted.",
                 "properties": {
                     "event_type": {
@@ -16269,7 +16217,6 @@
                 "type": "object"
             },
             "AuditLogEventSecretUpdatedV1": {
-                "additionalProperties": false,
                 "description": "A secret was created or updated.",
                 "properties": {
                     "event_type": {
@@ -16295,7 +16242,6 @@
                 "type": "object"
             },
             "AuditLogEventSshCertificateSignedV1": {
-                "additionalProperties": false,
                 "description": "An SSH certificate was signed for a workload.",
                 "properties": {
                     "event_type": {
@@ -16398,7 +16344,6 @@
                 "type": "string"
             },
             "AuditLogEventUserInvitedV1": {
-                "additionalProperties": false,
                 "description": "A user was invited to the organization.",
                 "properties": {
                     "event_type": {
@@ -16424,7 +16369,6 @@
                 "type": "object"
             },
             "AuditLogEventUserJoinedOrganizationV1": {
-                "additionalProperties": false,
                 "description": "A user joined the organization.",
                 "properties": {
                     "event_type": {
@@ -16450,7 +16394,6 @@
                 "type": "object"
             },
             "AuditLogEventUserRemovedV1": {
-                "additionalProperties": false,
                 "description": "A user was removed from the organization.",
                 "properties": {
                     "event_type": {
@@ -16471,7 +16414,6 @@
                 "type": "object"
             },
             "AuditLogEventUserRoleUpdatedV1": {
-                "additionalProperties": false,
                 "description": "A user's organization role was updated.",
                 "properties": {
                     "event_type": {
@@ -16502,7 +16444,6 @@
                 "type": "object"
             },
             "AuditLogEventUserTeamRoleUpdatedV1": {
-                "additionalProperties": false,
                 "description": "A user's team role was updated.",
                 "properties": {
                     "event_type": {
@@ -16543,7 +16484,6 @@
                 "type": "object"
             },
             "AuditLogEventVolumeDeletedV1": {
-                "additionalProperties": false,
                 "description": "A volume was deleted, tombstoning every version it still held.",
                 "properties": {
                     "event_type": {
@@ -16579,7 +16519,6 @@
                 "type": "object"
             },
             "AuditLogEventVolumeVersionDeletedV1": {
-                "additionalProperties": false,
                 "description": "One version of a volume was deleted.",
                 "properties": {
                     "event_type": {
@@ -16620,7 +16559,6 @@
                 "type": "object"
             },
             "AuditLogEventVolumeVersionRestoredV1": {
-                "additionalProperties": false,
                 "description": "A deleted version of a volume was restored.",
                 "properties": {
                     "event_type": {
@@ -16661,7 +16599,6 @@
                 "type": "object"
             },
             "AuditLogEventWebhookSigningSecretCreatedV1": {
-                "additionalProperties": false,
                 "description": "A webhook signing secret was created.",
                 "properties": {
                     "event_type": {
@@ -16682,7 +16619,6 @@
                 "type": "object"
             },
             "AuditLogEventWebhookSigningSecretDeletedV1": {
-                "additionalProperties": false,
                 "description": "A webhook signing secret was deleted.",
                 "properties": {
                     "event_type": {
@@ -16703,7 +16639,6 @@
                 "type": "object"
             },
             "AuditLogEventWebhookSigningSecretRotatedV1": {
-                "additionalProperties": false,
                 "description": "A webhook signing secret was rotated.",
                 "properties": {
                     "event_type": {
@@ -27891,7 +27826,6 @@
                 "type": "object"
             },
             "LibraryListingMetadataV1": {
-                "additionalProperties": false,
                 "properties": {
                     "parameter_count": {
                         "anyOf": [
@@ -28221,7 +28155,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected."
+                        "description": "Model-level metadata for the listing. When provided, replaces the stored metadata."
                     }
                 },
                 "title": "UpdateLibraryListingRequestV1",
@@ -30530,7 +30464,6 @@
                 "type": "object"
             },
             "RouteTargetAnthropicV1": {
-                "additionalProperties": false,
                 "properties": {
                     "type": {
                         "const": "ANTHROPIC",
@@ -30560,7 +30493,6 @@
                 "type": "object"
             },
             "RouteTargetBasetenModelAPIV1": {
-                "additionalProperties": false,
                 "properties": {
                     "type": {
                         "const": "BASETEN_MODEL_API",
@@ -30583,7 +30515,6 @@
                 "type": "object"
             },
             "RouteTargetClassifierModelBasedV1": {
-                "additionalProperties": false,
                 "properties": {
                     "type": {
                         "const": "CLASSIFIER_MODEL_BASED",
@@ -30638,7 +30569,6 @@
                 "type": "object"
             },
             "RouteTargetOpenAIV1": {
-                "additionalProperties": false,
                 "properties": {
                     "type": {
                         "const": "OPENAI",
@@ -30668,7 +30598,6 @@
                 "type": "object"
             },
             "RouteTargetXAIV1": {
-                "additionalProperties": false,
                 "properties": {
                     "type": {
                         "const": "XAI",
