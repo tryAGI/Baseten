@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Gets a team's route settings<br/>
-        /// Returns the settings that apply to the team, including the default models for each coding harness. Any member who can invoke the team's routes can read them.
+        /// Returns the settings that apply to the team, including the default models for each coding harness and the team's spend limits. Any member who can invoke the team's routes can read them.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -23,7 +23,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets a team's route settings<br/>
-        /// Returns the settings that apply to the team, including the default models for each coding harness. Any member who can invoke the team's routes can read them.
+        /// Returns the settings that apply to the team, including the default models for each coding harness and the team's spend limits. Any member who can invoke the team's routes can read them.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

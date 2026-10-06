@@ -18,6 +18,12 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdCommandApiCommand
     {
         Description = @"Harnesses to change; harnesses left out are unchanged. Pass null to clear every harness, so each role uses the team's default.",
     };
+
+    private static Option<global::Baseten.UpdateRouteTeamSpendLimitSettingV1?> SpendLimit { get; } = new(
+        name: @"--spend-limit")
+    {
+        Description = @"Spend limit fields to change. Pass null to remove the team's per-member limit; omit to leave it unchanged.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -63,6 +69,7 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdCommandApiCommand
 Changes only the fields in the request, all or nothing. Requires team admin.");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(HarnessDefaults);
+                        command.Options.Add(SpendLimit);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -90,12 +97,14 @@ Changes only the fields in the request, all or nothing. Requires team admin.");
                             cancellationToken).ConfigureAwait(false);
                         var teamId = parseResult.GetRequiredValue(TeamId);
                         var harnessDefaults = CliRuntime.WasSpecified(parseResult, HarnessDefaults) ? parseResult.GetValue(HarnessDefaults) : (__requestBase is { } __HarnessDefaultsBaseValue ? __HarnessDefaultsBaseValue.HarnessDefaults : default);
+                        var spendLimit = CliRuntime.WasSpecified(parseResult, SpendLimit) ? parseResult.GetValue(SpendLimit) : (__requestBase is { } __SpendLimitBaseValue ? __SpendLimitBaseValue.SpendLimit : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.EditRoutesSettingsTeamsByTeamIdAsync(
                                     teamId: teamId,
                                     harnessDefaults: harnessDefaults,
+                                    spendLimit: spendLimit,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

@@ -38,7 +38,7 @@ internal static partial class GetRoutesSettingsTeamsByTeamIdCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-routes-settings-teams-by-team-id", @"Gets a team's route settings
-Returns the settings that apply to the team, including the default models for each coding harness. Any member who can invoke the team's routes can read them.");
+Returns the settings that apply to the team, including the default models for each coding harness and the team's spend limits. Any member who can invoke the team's routes can read them.");
                         command.Arguments.Add(TeamId);
 
 

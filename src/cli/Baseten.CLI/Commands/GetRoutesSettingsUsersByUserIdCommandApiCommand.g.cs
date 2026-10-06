@@ -38,7 +38,7 @@ internal static partial class GetRoutesSettingsUsersByUserIdCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-routes-settings-users-by-user-id", @"Gets a user's route settings
-Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month. Use `me` as the user ID for your own settings. Users can read their own settings; only organization admins can read other users' settings or change them.");
+Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month: the limit set on the user, their team's per-member limit, and the effective limit for this user. The user limit always overrides the team's per-member limit.");
                         command.Arguments.Add(UserId);
 
 

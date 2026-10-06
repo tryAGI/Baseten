@@ -30,6 +30,13 @@ namespace Baseten
         public required global::Baseten.PrimaryHarnessDefaultsV1 Codex { get; set; }
 
         /// <summary>
+        /// Default models for Pi.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pi")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.PrimaryHarnessDefaultsV1 Pi { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,17 +54,22 @@ namespace Baseten
         /// <param name="codex">
         /// Default models for Codex.
         /// </param>
+        /// <param name="pi">
+        /// Default models for Pi.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RouteHarnessDefaultsV1(
             global::Baseten.BackgroundHarnessDefaultsV1 claudeCode,
             global::Baseten.BackgroundHarnessDefaultsV1 opencode,
-            global::Baseten.PrimaryHarnessDefaultsV1 codex)
+            global::Baseten.PrimaryHarnessDefaultsV1 codex,
+            global::Baseten.PrimaryHarnessDefaultsV1 pi)
         {
             this.ClaudeCode = claudeCode ?? throw new global::System.ArgumentNullException(nameof(claudeCode));
             this.Opencode = opencode ?? throw new global::System.ArgumentNullException(nameof(opencode));
             this.Codex = codex ?? throw new global::System.ArgumentNullException(nameof(codex));
+            this.Pi = pi ?? throw new global::System.ArgumentNullException(nameof(pi));
         }
 
         /// <summary>

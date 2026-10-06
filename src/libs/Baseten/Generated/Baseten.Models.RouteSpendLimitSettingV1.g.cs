@@ -9,16 +9,23 @@ namespace Baseten
     public sealed partial class RouteSpendLimitSettingV1
     {
         /// <summary>
-        /// Standing spend limit in USD for each UTC calendar month, returned as an exact decimal string. Null when no limit applies.
+        /// Standing spend limit in USD for each UTC calendar month set on the user. Null when the user has no limit of their own.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("monthly_limit_usd")]
-        public string? MonthlyLimitUsd { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_monthly_limit_usd")]
+        public string? UserMonthlyLimitUsd { get; set; }
 
         /// <summary>
-        /// Where the limit comes from: `user` when it is set on the user. Null when no limit applies.
+        /// Per-member limit of the team the user's active Code key belongs to. This limit applies when the user has no limit of their own. Null when there is none.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("source")]
-        public global::Baseten.RouteSettingSourceV1? Source { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_default")]
+        public global::Baseten.RouteSpendLimitTeamDefaultV1? TeamDefault { get; set; }
+
+        /// <summary>
+        /// The effective limit enforced for the current month.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("effective")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.RouteEffectiveSpendLimitV1 Effective { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,21 +36,26 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="RouteSpendLimitSettingV1" /> class.
         /// </summary>
-        /// <param name="monthlyLimitUsd">
-        /// Standing spend limit in USD for each UTC calendar month, returned as an exact decimal string. Null when no limit applies.
+        /// <param name="effective">
+        /// The effective limit enforced for the current month.
         /// </param>
-        /// <param name="source">
-        /// Where the limit comes from: `user` when it is set on the user. Null when no limit applies.
+        /// <param name="userMonthlyLimitUsd">
+        /// Standing spend limit in USD for each UTC calendar month set on the user. Null when the user has no limit of their own.
+        /// </param>
+        /// <param name="teamDefault">
+        /// Per-member limit of the team the user's active Code key belongs to. This limit applies when the user has no limit of their own. Null when there is none.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RouteSpendLimitSettingV1(
-            string? monthlyLimitUsd,
-            global::Baseten.RouteSettingSourceV1? source)
+            global::Baseten.RouteEffectiveSpendLimitV1 effective,
+            string? userMonthlyLimitUsd,
+            global::Baseten.RouteSpendLimitTeamDefaultV1? teamDefault)
         {
-            this.MonthlyLimitUsd = monthlyLimitUsd;
-            this.Source = source;
+            this.UserMonthlyLimitUsd = userMonthlyLimitUsd;
+            this.TeamDefault = teamDefault;
+            this.Effective = effective ?? throw new global::System.ArgumentNullException(nameof(effective));
         }
 
         /// <summary>

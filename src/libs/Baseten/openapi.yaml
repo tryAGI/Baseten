@@ -9769,7 +9769,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/settings/users/{user_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month. Use `me` as the user ID for your own settings. Users can read their own settings; only organization admins can read other users' settings or change them.",
+                "description": "Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month: the limit set on the user, their team's per-member limit, and the effective limit for this user. The user limit always overrides the team's per-member limit.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -9801,7 +9801,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/settings/users/{user_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'spend_limit': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Changes only the fields in the request. Once the user's metered spend in a month reaches the spend limit, requests with Routes keys they created are rejected until the limit is raised or the next month starts. A limit of 0 blocks the user after their first metered request. Spend is metered every 15 minutes and can lag, so a user can go over the limit. If the user has spend this month, changes take effect within seconds; otherwise at the next metering run.",
+                "description": "Changes only the fields in the request. Once the user's metered spend in a month reaches the spend limit, requests with Routes keys they created are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -9840,7 +9840,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/settings/teams/{team_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns the settings that apply to the team, including the default models for each coding harness. Any member who can invoke the team's routes can read them.",
+                "description": "Returns the settings that apply to the team, including the default models for each coding harness and the team's spend limits. Any member who can invoke the team's routes can read them.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -9865,11 +9865,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/settings/teams/{team_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"harness_defaults\": null\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/settings/teams/{team_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"harness_defaults\": null,\n  \"spend_limit\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/settings/teams/{team_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'harness_defaults': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/settings/teams/{team_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'harness_defaults': None, 'spend_limit': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Changes only the fields in the request, all or nothing. Requires team admin.",
@@ -31386,15 +31386,7 @@
                 "title": "RoutesUsageRequestV1",
                 "type": "object"
             },
-            "RouteSettingSourceV1": {
-                "enum": [
-                    "user",
-                    "team"
-                ],
-                "title": "RouteSettingSourceV1",
-                "type": "string"
-            },
-            "RouteSpendLimitSettingV1": {
+            "RouteEffectiveSpendLimitV1": {
                 "properties": {
                     "monthly_limit_usd": {
                         "anyOf": [
@@ -31405,7 +31397,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Standing spend limit in USD for each UTC calendar month, returned as an exact decimal string. Null when no limit applies.",
+                        "description": "Spend limit in USD enforced for the current UTC calendar month: the user's own limit, else the team default. Null when no limit applies.",
                         "examples": [
                             "200"
                         ],
@@ -31420,14 +31412,89 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Where the limit comes from: `user` when it is set on the user. Null when no limit applies."
+                        "description": "Where the limit comes from: `user` when it is set on the user, `team` when it is the team default. Null when no limit applies."
                     }
                 },
                 "required": [
                     "monthly_limit_usd",
                     "source"
                 ],
+                "title": "RouteEffectiveSpendLimitV1",
+                "type": "object"
+            },
+            "RouteSettingSourceV1": {
+                "enum": [
+                    "user",
+                    "team"
+                ],
+                "title": "RouteSettingSourceV1",
+                "type": "string"
+            },
+            "RouteSpendLimitSettingV1": {
+                "properties": {
+                    "user_monthly_limit_usd": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Standing spend limit in USD for each UTC calendar month set on the user. Null when the user has no limit of their own.",
+                        "examples": [
+                            "200"
+                        ],
+                        "title": "User Monthly Limit Usd"
+                    },
+                    "team_default": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/RouteSpendLimitTeamDefaultV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Per-member limit of the team the user's active Code key belongs to. This limit applies when the user has no limit of their own. Null when there is none."
+                    },
+                    "effective": {
+                        "$ref": "#/components/schemas/RouteEffectiveSpendLimitV1",
+                        "description": "The effective limit enforced for the current month."
+                    }
+                },
+                "required": [
+                    "user_monthly_limit_usd",
+                    "team_default",
+                    "effective"
+                ],
                 "title": "RouteSpendLimitSettingV1",
+                "type": "object"
+            },
+            "RouteSpendLimitTeamDefaultV1": {
+                "properties": {
+                    "team_id": {
+                        "description": "ID of the team the user's active Code key belongs to.",
+                        "examples": [
+                            "abc1234"
+                        ],
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "per_member_monthly_limit_usd": {
+                        "description": "The team's per-member spend limit in USD for each UTC calendar month.",
+                        "examples": [
+                            "100"
+                        ],
+                        "title": "Per Member Monthly Limit Usd",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "team_id",
+                    "per_member_monthly_limit_usd"
+                ],
+                "title": "RouteSpendLimitTeamDefaultV1",
                 "type": "object"
             },
             "RouteUserSettingsV1": {
@@ -31472,7 +31539,7 @@
                 "additionalProperties": false,
                 "minProperties": 1,
                 "properties": {
-                    "monthly_limit_usd": {
+                    "user_monthly_limit_usd": {
                         "anyOf": [
                             {
                                 "type": "string"
@@ -31482,11 +31549,11 @@
                             }
                         ],
                         "default": null,
-                        "description": "Standing spend limit in USD for each UTC calendar month, as a non-negative decimal string with at most 9 decimal places. Send null to remove the limit; omit to leave it unchanged.",
+                        "description": "Standing spend limit in USD for each UTC calendar month. Send null to remove the limit; omit to leave it unchanged.",
                         "examples": [
                             "200"
                         ],
-                        "title": "Monthly Limit Usd",
+                        "title": "User Monthly Limit Usd",
                         "x-null-distinct": true
                     }
                 },
@@ -31579,12 +31646,17 @@
                     "codex": {
                         "$ref": "#/components/schemas/PrimaryHarnessDefaultsV1",
                         "description": "Default models for Codex."
+                    },
+                    "pi": {
+                        "$ref": "#/components/schemas/PrimaryHarnessDefaultsV1",
+                        "description": "Default models for Pi."
                     }
                 },
                 "required": [
                     "claude_code",
                     "opencode",
-                    "codex"
+                    "codex",
+                    "pi"
                 ],
                 "title": "RouteHarnessDefaultsV1",
                 "type": "object"
@@ -31607,6 +31679,30 @@
                 "title": "RouteHarnessModelV1",
                 "type": "object"
             },
+            "RouteTeamSpendLimitSettingV1": {
+                "properties": {
+                    "per_member_monthly_limit_usd": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Spend limit in USD for each UTC calendar month that applies to each member whose active Code key belongs to this team, unless the member has a limit of their own. Returned as an exact decimal string. Null when the team has no per-member limit.",
+                        "examples": [
+                            "200"
+                        ],
+                        "title": "Per Member Monthly Limit Usd"
+                    }
+                },
+                "required": [
+                    "per_member_monthly_limit_usd"
+                ],
+                "title": "RouteTeamSpendLimitSettingV1",
+                "type": "object"
+            },
             "RouteTeamSettingsV1": {
                 "properties": {
                     "team_id": {
@@ -31620,11 +31716,16 @@
                     "harness_defaults": {
                         "$ref": "#/components/schemas/RouteHarnessDefaultsV1",
                         "description": "Route for each model role of each coding harness. A role with no route set by a team admin uses the default chosen from the team's Model API routes: the recommended model for `primary` and the lowest-priced model for `background`. These defaults never use external-provider routes."
+                    },
+                    "spend_limit": {
+                        "$ref": "#/components/schemas/RouteTeamSpendLimitSettingV1",
+                        "description": "Spend limits for Baseten Code for members whose active Code key belongs to this team."
                     }
                 },
                 "required": [
                     "team_id",
-                    "harness_defaults"
+                    "harness_defaults",
+                    "spend_limit"
                 ],
                 "title": "RouteTeamSettingsV1",
                 "type": "object"
@@ -31741,9 +31842,47 @@
                         "default": null,
                         "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
                         "x-null-distinct": true
+                    },
+                    "pi": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdatePrimaryHarnessModelsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
+                        "x-null-distinct": true
                     }
                 },
                 "title": "UpdateRouteHarnessDefaultsV1",
+                "type": "object"
+            },
+            "UpdateRouteTeamSpendLimitSettingV1": {
+                "additionalProperties": false,
+                "minProperties": 1,
+                "properties": {
+                    "per_member_monthly_limit_usd": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Spend limit in USD for each UTC calendar month that applies to each member whose active Code key belongs to this team, unless the member has a limit of their own. Send null to remove it; omit to leave it unchanged.",
+                        "examples": [
+                            "200"
+                        ],
+                        "title": "Per Member Monthly Limit Usd",
+                        "x-null-distinct": true
+                    }
+                },
+                "title": "UpdateRouteTeamSpendLimitSettingV1",
                 "type": "object"
             },
             "UpdateRouteTeamSettingsRequestV1": {
@@ -31761,6 +31900,19 @@
                         ],
                         "default": null,
                         "description": "Harnesses to change; harnesses left out are unchanged. Pass null to clear every harness, so each role uses the team's default.",
+                        "x-null-distinct": true
+                    },
+                    "spend_limit": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateRouteTeamSpendLimitSettingV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Spend limit fields to change. Pass null to remove the team's per-member limit; omit to leave it unchanged.",
                         "x-null-distinct": true
                     }
                 },
