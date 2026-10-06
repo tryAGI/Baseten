@@ -60,7 +60,7 @@ internal static partial class EditRoutesSettingsUsersByUserIdCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"edit-routes-settings-users-by-user-id", @"Updates a user's route settings
-Changes only the fields in the request. Once the user's metered spend in a month reaches the spend limit, requests with Routes keys they created are rejected until the limit is raised or the next month starts. A limit of 0 blocks the user after their first metered request. Spend is metered every 15 minutes and can lag, so a user can go over the limit. If the user has spend this month, changes take effect within seconds; otherwise at the next metering run.");
+Changes only the fields in the request. Once the user's metered spend in a month reaches the spend limit, requests with Routes keys they created are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit.");
                         command.Arguments.Add(UserId);
                         command.Options.Add(SpendLimit);
           command.Options.Add(Input);
