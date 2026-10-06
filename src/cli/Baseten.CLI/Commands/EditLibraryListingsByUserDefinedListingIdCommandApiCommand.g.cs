@@ -30,7 +30,7 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdCommandAp
     private static Option<global::Baseten.LibraryListingMetadataV1?> Metadata { get; } = new(
         name: @"--metadata")
     {
-        Description = @"Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected.",
+        Description = @"Model-level metadata for the listing. When provided, replaces the stored metadata.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

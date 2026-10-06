@@ -482,7 +482,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="metadata">
-        /// Model-level metadata for the listing. When provided, replaces the stored metadata. Unknown fields are rejected.<br/>
+        /// Model-level metadata for the listing. When provided, replaces the stored metadata.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
