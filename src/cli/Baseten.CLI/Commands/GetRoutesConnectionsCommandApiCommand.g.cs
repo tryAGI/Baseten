@@ -5,7 +5,7 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class GetRoutesCommandApiCommand
+internal static partial class GetRoutesConnectionsCommandApiCommand
 {
     private static Option<string?> Cursor { get; } = new(
         name: @"--cursor")
@@ -22,16 +22,10 @@ internal static partial class GetRoutesCommandApiCommand
     private static Option<string?> TeamId { get; } = new(
         name: @"--team-id")
     {
-        Description = @"Identifier of the team whose routes to list.",
+        Description = @"Identifier of the team whose connections to list.",
     };
 
-    private static Option<string?> NameOption { get; } = new(
-        name: @"--name")
-    {
-        Description = @"Filter by exact route name. Preserved by the cursor; if repeated, must match the original filter.",
-    };
-
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RoutesResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteConnectionsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -47,7 +41,7 @@ internal static partial class GetRoutesCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RoutesResponseV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RouteConnectionsResponseV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -55,12 +49,11 @@ internal static partial class GetRoutesCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"get-routes", @"Lists routes
-Lists routes you can invoke in the team, newest first, optionally filtered by exact name.");
+        var command = new Command(commandName ?? @"get-routes-connections", @"Lists connections
+Lists the team's connections, newest first.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
                         command.Options.Add(TeamId);
-                        command.Options.Add(NameOption);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -69,15 +62,13 @@ Lists routes you can invoke in the team, newest first, optionally filtered by ex
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
                         var teamId = parseResult.GetValue(TeamId);
-                        var name = parseResult.GetValue(NameOption);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.GetRoutesAsync(
+                                var response = await client.GetRoutesConnectionsAsync(
                                     cursor: cursor,
                                     limit: limit,
                                     teamId: teamId,
-                                    name: name,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

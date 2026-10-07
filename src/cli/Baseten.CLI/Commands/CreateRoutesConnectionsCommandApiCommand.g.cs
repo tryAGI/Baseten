@@ -5,31 +5,19 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class CreateRoutesCommandApiCommand
+internal static partial class CreateRoutesConnectionsCommandApiCommand
 {
     private static Option<string?> TeamId { get; } = new(
         name: @"--team-id")
     {
-        Description = @"Identifier of the team that owns the route.",
+        Description = @"Identifier of the team that owns the connection.",
     };
 
-    private static Option<string?> DisplayName { get; } = new(
-        name: @"--display-name")
+    private static Option<global::Baseten.Config2> Config { get; } = new(
+        name: @"--config")
     {
-        Description = @"Display label. Omit to use the route name; null is not accepted.",
-    };
-
-    private static Option<global::Baseten.Target2> Target { get; } = new(
-        name: @"--target")
-    {
-        Description = @"Upstream target for the route.",
+        Description = @"Provider the connection authenticates with, and the team secret holding its API key.",
         Required = true,
-    };
-
-    private static Option<string?> DescriptionOption { get; } = new(
-        name: @"--description")
-    {
-        Description = @"Short description of the route. Omit for no description; null is not accepted.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -48,7 +36,7 @@ internal static partial class CreateRoutesCommandApiCommand
           Hidden = true,
       };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteConnectionV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -64,7 +52,7 @@ internal static partial class CreateRoutesCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RouteV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RouteConnectionV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -72,12 +60,10 @@ internal static partial class CreateRoutesCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"create-routes", @"Creates a route
-Creates and derives a name for the provided route configuration");
+        var command = new Command(commandName ?? @"create-routes-connections", @"Creates a connection
+Creates a connection from the team to an upstream provider.");
                         command.Options.Add(TeamId);
-                        command.Options.Add(DisplayName);
-                        command.Options.Add(Target);
-                        command.Options.Add(DescriptionOption);
+                        command.Options.Add(Config);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -96,7 +82,7 @@ Creates and derives a name for the provided route configuration");
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.CreateRouteRequestV1>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.CreateRouteConnectionRequestV1>(
                             parseResult,
                             Input,
                             RequestJson,
@@ -104,17 +90,13 @@ Creates and derives a name for the provided route configuration");
                             global::Baseten.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var teamId = CliRuntime.WasSpecified(parseResult, TeamId) ? parseResult.GetValue(TeamId) : (__requestBase is { } __TeamIdBaseValue ? __TeamIdBaseValue.TeamId : default);
-                        var displayName = CliRuntime.WasSpecified(parseResult, DisplayName) ? parseResult.GetValue(DisplayName) : (__requestBase is { } __DisplayNameBaseValue ? __DisplayNameBaseValue.DisplayName : default);
-                        var target = parseResult.GetRequiredValue(Target);
-                        var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
+                        var config = parseResult.GetRequiredValue(Config);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.CreateRoutesAsync(
+                                var response = await client.CreateRoutesConnectionsAsync(
                                     teamId: teamId,
-                                    displayName: displayName,
-                                    target: target,
-                                    description: description,
+                                    config: config,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

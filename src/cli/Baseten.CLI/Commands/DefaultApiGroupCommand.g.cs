@@ -61,6 +61,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateModelsByModelIdEnvironmentsByEnvNameResumePromotionCommandApiCommand.Create());
                          command.Subcommands.Add(CreatePrepareModelUploadCommandApiCommand.Create());
                          command.Subcommands.Add(CreateRoutesCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateRoutesConnectionsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdApiKeysCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdLlmModelsCommandApiCommand.Create());
@@ -93,6 +94,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteRoutesByRouteIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteRoutesConnectionsByConnectionIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteSecretsBySecretNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTeamsByTeamIdSecretsBySecretNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdCommandApiCommand.Create());
@@ -115,6 +117,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsProductionAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditRoutesByRouteIdCommandApiCommand.Create());
+                         command.Subcommands.Add(EditRoutesConnectionsByConnectionIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditRoutesSettingsTeamsByTeamIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditRoutesSettingsUsersByUserIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditTeamsByTeamIdEnvironmentGroupsByEnvNameCommandApiCommand.Create());
@@ -189,6 +192,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetRegionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesByRouteIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetRoutesConnectionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesSettingsTeamsByTeamIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesSettingsUsersByUserIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetRoutesUsageCommandApiCommand.Create());

@@ -9482,7 +9482,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'team_id': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Lists routes you can invoke, newest first, optionally filtered by team and exact name.",
+                "description": "Lists routes you can invoke in the team, newest first, optionally filtered by exact name.",
                 "parameters": [
                     {
                         "name": "cursor",
@@ -9519,7 +9519,7 @@
                         "name": "team_id",
                         "in": "query",
                         "required": false,
-                        "description": "Filter by owning team ID. Preserved by the cursor; if repeated, must match the original filter.",
+                        "description": "Identifier of the team whose routes to list.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -9890,6 +9890,194 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/RouteTeamSettingsV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/routes/connections": {
+            "get": {
+                "summary": "Lists connections",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/routes/connections \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/connections\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'team_id': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the team's connections, newest first.",
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of items to return.",
+                        "schema": {
+                            "default": 100,
+                            "maximum": 1000,
+                            "minimum": 1,
+                            "title": "Limit",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "team_id",
+                        "in": "query",
+                        "required": false,
+                        "description": "Identifier of the team whose connections to list.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Team Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RouteConnectionsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "post": {
+                "summary": "Creates a connection",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/routes/connections \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"team_id\": \"abc1234\",\n  \"config\": {\n    \"provider\": \"ANTHROPIC\",\n    \"secret_id\": \"abc1234\"\n  }\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/connections\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'team_id': 'abc1234', 'config': {'provider': 'ANTHROPIC', 'secret_id': 'abc1234'}}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a connection from the team to an upstream provider.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateRouteConnectionRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RouteConnectionV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/routes/connections/{connection_id}": {
+            "delete": {
+                "summary": "Deletes a connection",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request DELETE \\\n--url https://api.baseten.co/v1/routes/connections/{connection_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/connections/{connection_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"DELETE\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Deletes the connection. The team secret it points at is left in place.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RouteConnectionTombstoneV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/connection_id"
+                }
+            ],
+            "patch": {
+                "summary": "Updates a connection",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/connections/{connection_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"config\": {\n    \"provider\": \"ANTHROPIC\",\n    \"secret_id\": \"abc1234\"\n  }\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/connections/{connection_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'config': {'provider': 'ANTHROPIC', 'secret_id': 'abc1234'}}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates the connection's fields. The provider and owning team are immutable; point the connection at a new team secret to change its API key, or rotate the key itself by updating the secret.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRouteConnectionRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RouteConnectionV1"
                                 }
                             }
                         }
@@ -30782,7 +30970,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Filter by owning team ID. Preserved by the cursor; if repeated, must match the original filter.",
+                        "description": "Identifier of the team whose routes to list.",
                         "title": "Team Id"
                     },
                     "name": {
@@ -30996,7 +31184,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Identifier of the team that owns the route. When omitted, uses your organization's default team.",
+                        "description": "Identifier of the team that owns the route.",
                         "examples": [
                             "abc1234"
                         ],
@@ -31846,6 +32034,478 @@
                     }
                 },
                 "title": "UpdateRouteTeamSettingsRequestV1",
+                "type": "object"
+            },
+            "RouteConnectionAnthropicV1": {
+                "properties": {
+                    "provider": {
+                        "const": "ANTHROPIC",
+                        "description": "Provider kind for Anthropic.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of the team secret holding the provider API key.",
+                        "title": "Secret Id",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of the team secret holding the provider API key.",
+                        "title": "Secret Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id",
+                    "secret_name"
+                ],
+                "title": "RouteConnectionAnthropicV1",
+                "type": "object"
+            },
+            "RouteConnectionOpenAIV1": {
+                "properties": {
+                    "provider": {
+                        "const": "OPENAI",
+                        "description": "Provider kind for OpenAI.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of the team secret holding the provider API key.",
+                        "title": "Secret Id",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of the team secret holding the provider API key.",
+                        "title": "Secret Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id",
+                    "secret_name"
+                ],
+                "title": "RouteConnectionOpenAIV1",
+                "type": "object"
+            },
+            "RouteConnectionV1": {
+                "properties": {
+                    "id": {
+                        "description": "Stable connection identifier.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "description": "Identifier of the team that owns the connection.",
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "config": {
+                        "description": "Provider the connection authenticates with, and the team secret holding its API key.",
+                        "discriminator": {
+                            "mapping": {
+                                "ANTHROPIC": "#/components/schemas/RouteConnectionAnthropicV1",
+                                "OPENAI": "#/components/schemas/RouteConnectionOpenAIV1",
+                                "XAI": "#/components/schemas/RouteConnectionXAIV1"
+                            },
+                            "propertyName": "provider"
+                        },
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/RouteConnectionAnthropicV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/RouteConnectionOpenAIV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/RouteConnectionXAIV1"
+                            }
+                        ],
+                        "title": "Config"
+                    },
+                    "created_at": {
+                        "description": "Creation time, ISO 8601.",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "Last update time, ISO 8601.",
+                        "format": "date-time",
+                        "title": "Updated At",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "team_id",
+                    "config",
+                    "created_at",
+                    "updated_at"
+                ],
+                "title": "RouteConnectionV1",
+                "type": "object"
+            },
+            "RouteConnectionXAIV1": {
+                "properties": {
+                    "provider": {
+                        "const": "XAI",
+                        "description": "Provider kind for xAI.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of the team secret holding the provider API key.",
+                        "title": "Secret Id",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of the team secret holding the provider API key.",
+                        "title": "Secret Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id",
+                    "secret_name"
+                ],
+                "title": "RouteConnectionXAIV1",
+                "type": "object"
+            },
+            "RouteConnectionsResponseV1": {
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/RouteConnectionV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "RouteConnectionsResponseV1",
+                "type": "object"
+            },
+            "RouteConnectionsRequestV1": {
+                "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "default": 100,
+                        "description": "Maximum number of items to return.",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Identifier of the team whose connections to list.",
+                        "title": "Team Id"
+                    }
+                },
+                "title": "RouteConnectionsRequestV1",
+                "type": "object"
+            },
+            "RouteConnectionConfigAnthropicV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "ANTHROPIC",
+                        "description": "Provider kind for Anthropic.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of an existing secret, owned by the same team, that holds the provider API key.",
+                        "minLength": 1,
+                        "title": "Secret Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id"
+                ],
+                "title": "RouteConnectionConfigAnthropicV1",
+                "type": "object"
+            },
+            "RouteConnectionConfigOpenAIV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "OPENAI",
+                        "description": "Provider kind for OpenAI.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of an existing secret, owned by the same team, that holds the provider API key.",
+                        "minLength": 1,
+                        "title": "Secret Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id"
+                ],
+                "title": "RouteConnectionConfigOpenAIV1",
+                "type": "object"
+            },
+            "RouteConnectionConfigXAIV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "XAI",
+                        "description": "Provider kind for xAI.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of an existing secret, owned by the same team, that holds the provider API key.",
+                        "minLength": 1,
+                        "title": "Secret Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id"
+                ],
+                "title": "RouteConnectionConfigXAIV1",
+                "type": "object"
+            },
+            "CreateRouteConnectionRequestV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Identifier of the team that owns the connection.",
+                        "examples": [
+                            "abc1234"
+                        ],
+                        "title": "Team Id"
+                    },
+                    "config": {
+                        "description": "Provider the connection authenticates with, and the team secret holding its API key.",
+                        "discriminator": {
+                            "mapping": {
+                                "ANTHROPIC": "#/components/schemas/RouteConnectionConfigAnthropicV1",
+                                "OPENAI": "#/components/schemas/RouteConnectionConfigOpenAIV1",
+                                "XAI": "#/components/schemas/RouteConnectionConfigXAIV1"
+                            },
+                            "propertyName": "provider"
+                        },
+                        "examples": [
+                            {
+                                "provider": "ANTHROPIC",
+                                "secret_id": "abc1234"
+                            }
+                        ],
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/RouteConnectionConfigAnthropicV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/RouteConnectionConfigOpenAIV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/RouteConnectionConfigXAIV1"
+                            }
+                        ],
+                        "title": "Config"
+                    }
+                },
+                "required": [
+                    "config"
+                ],
+                "title": "CreateRouteConnectionRequestV1",
+                "type": "object"
+            },
+            "RouteConnectionTombstoneV1": {
+                "properties": {
+                    "id": {
+                        "description": "Stable identifier of the deleted connection.",
+                        "title": "Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "title": "RouteConnectionTombstoneV1",
+                "type": "object"
+            },
+            "UpdateRouteConnectionConfigAnthropicV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "ANTHROPIC",
+                        "description": "Provider kind for Anthropic.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Identifier of the new secret, owned by the connection's team, that holds the provider API key. Omit to keep the current secret.",
+                        "title": "Secret Id",
+                        "x-null-distinct": true
+                    }
+                },
+                "required": [
+                    "provider"
+                ],
+                "title": "UpdateRouteConnectionConfigAnthropicV1",
+                "type": "object"
+            },
+            "UpdateRouteConnectionConfigOpenAIV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "OPENAI",
+                        "description": "Provider kind for OpenAI.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Identifier of the new secret, owned by the connection's team, that holds the provider API key. Omit to keep the current secret.",
+                        "title": "Secret Id",
+                        "x-null-distinct": true
+                    }
+                },
+                "required": [
+                    "provider"
+                ],
+                "title": "UpdateRouteConnectionConfigOpenAIV1",
+                "type": "object"
+            },
+            "UpdateRouteConnectionConfigXAIV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "XAI",
+                        "description": "Provider kind for xAI.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Identifier of the new secret, owned by the connection's team, that holds the provider API key. Omit to keep the current secret.",
+                        "title": "Secret Id",
+                        "x-null-distinct": true
+                    }
+                },
+                "required": [
+                    "provider"
+                ],
+                "title": "UpdateRouteConnectionConfigXAIV1",
+                "type": "object"
+            },
+            "UpdateRouteConnectionRequestV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "config": {
+                        "description": "Connection fields to change. The provider must match the connection and is immutable.",
+                        "discriminator": {
+                            "mapping": {
+                                "ANTHROPIC": "#/components/schemas/UpdateRouteConnectionConfigAnthropicV1",
+                                "OPENAI": "#/components/schemas/UpdateRouteConnectionConfigOpenAIV1",
+                                "XAI": "#/components/schemas/UpdateRouteConnectionConfigXAIV1"
+                            },
+                            "propertyName": "provider"
+                        },
+                        "examples": [
+                            {
+                                "provider": "ANTHROPIC",
+                                "secret_id": "abc1234"
+                            }
+                        ],
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateRouteConnectionConfigAnthropicV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpdateRouteConnectionConfigOpenAIV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpdateRouteConnectionConfigXAIV1"
+                            }
+                        ],
+                        "title": "Config"
+                    }
+                },
+                "required": [
+                    "config"
+                ],
+                "title": "UpdateRouteConnectionRequestV1",
                 "type": "object"
             },
             "RouteTombstoneV1": {
@@ -33209,6 +33869,14 @@
                     "type": "string"
                 },
                 "name": "user_id",
+                "in": "path",
+                "required": true
+            },
+            "connection_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "connection_id",
                 "in": "path",
                 "required": true
             },

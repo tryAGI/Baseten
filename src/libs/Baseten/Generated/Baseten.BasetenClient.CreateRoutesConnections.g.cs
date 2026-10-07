@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetRoutesSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_CreateRoutesConnectionsSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,69 +21,55 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetRoutesSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_CreateRoutesConnectionsSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetRoutesSecurityRequirement0,
+            {                s_CreateRoutesConnectionsSecurityRequirement0,
             };
-        partial void PrepareGetRoutesArguments(
+        partial void PrepareCreateRoutesConnectionsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? cursor,
-            ref int? limit,
-            ref string? teamId,
-            ref string? name);
-        partial void PrepareGetRoutesRequest(
+            global::Baseten.CreateRouteConnectionRequestV1 request);
+        partial void PrepareCreateRoutesConnectionsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? cursor,
-            int? limit,
-            string? teamId,
-            string? name);
-        partial void ProcessGetRoutesResponse(
+            global::Baseten.CreateRouteConnectionRequestV1 request);
+        partial void ProcessCreateRoutesConnectionsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRoutesResponseContent(
+        partial void ProcessCreateRoutesConnectionsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Lists routes<br/>
-        /// Lists routes you can invoke in the team, newest first, optionally filtered by exact name.
+        /// Creates a connection<br/>
+        /// Creates a connection from the team to an upstream provider.
         /// </summary>
-        /// <param name="cursor">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="limit">
-        /// Default Value: 100
-        /// </param>
-        /// <param name="teamId">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="name">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/routes \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/routes/connections \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "team_id": "abc1234",<br/>
+        ///   "config": {<br/>
+        ///     "provider": "ANTHROPIC",<br/>
+        ///     "secret_id": "abc1234"<br/>
+        ///   }<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.RoutesResponseV1> GetRoutesAsync(
-            string? cursor = default,
-            int? limit = default,
-            string? teamId = default,
-            string? name = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.RouteConnectionV1> CreateRoutesConnectionsAsync(
+
+            global::Baseten.CreateRouteConnectionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetRoutesAsResponseAsync(
-                cursor: cursor,
-                limit: limit,
-                teamId: teamId,
-                name: name,
+            var __response = await CreateRoutesConnectionsAsResponseAsync(
+
+                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -91,51 +77,44 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Lists routes<br/>
-        /// Lists routes you can invoke in the team, newest first, optionally filtered by exact name.
+        /// Creates a connection<br/>
+        /// Creates a connection from the team to an upstream provider.
         /// </summary>
-        /// <param name="cursor">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="limit">
-        /// Default Value: 100
-        /// </param>
-        /// <param name="teamId">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="name">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/routes \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// curl --request POST \<br/>
+        /// --url https://api.baseten.co/v1/routes/connections \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "team_id": "abc1234",<br/>
+        ///   "config": {<br/>
+        ///     "provider": "ANTHROPIC",<br/>
+        ///     "secret_id": "abc1234"<br/>
+        ///   }<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RoutesResponseV1>> GetRoutesAsResponseAsync(
-            string? cursor = default,
-            int? limit = default,
-            string? teamId = default,
-            string? name = default,
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteConnectionV1>> CreateRoutesConnectionsAsResponseAsync(
+
+            global::Baseten.CreateRouteConnectionRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRoutesArguments(
+            PrepareCreateRoutesConnectionsArguments(
                 httpClient: HttpClient,
-                cursor: ref cursor,
-                limit: ref limit,
-                teamId: ref teamId,
-                name: ref name);
+                request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetRoutesSecurityRequirements,
-                operationName: "GetRoutesAsync");
+                securityRequirements: s_CreateRoutesConnectionsSecurityRequirements,
+                operationName: "CreateRoutesConnectionsAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -155,21 +134,15 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: "/v1/routes",
+                                path: "/v1/routes/connections",
                                 baseUri: HttpClient.BaseAddress);
-                            __pathBuilder
-                                .AddOptionalParameter("cursor", cursor)
-                                .AddOptionalParameter("limit", limit?.ToString())
-                                .AddOptionalParameter("team_id", teamId)
-                                .AddOptionalParameter("name", name)
-                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Get,
+                    method: global::System.Net.Http.HttpMethod.Post,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -192,6 +165,12 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -200,13 +179,10 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetRoutesRequest(
+                PrepareCreateRoutesConnectionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    cursor: cursor,
-                    limit: limit,
-                    teamId: teamId,
-                    name: name);
+                    request: request);
 
                 return __httpRequest;
             }
@@ -223,10 +199,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutes",
-                                methodName: "GetRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "GET",
+                                operationId: "createRoutesConnections",
+                                methodName: "CreateRoutesConnectionsAsync",
+                                pathTemplate: "\"/v1/routes/connections\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
@@ -257,10 +233,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutes",
-                                methodName: "GetRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "GET",
+                                operationId: "createRoutesConnections",
+                                methodName: "CreateRoutesConnectionsAsync",
+                                pathTemplate: "\"/v1/routes/connections\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
@@ -298,10 +274,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutes",
-                                methodName: "GetRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "GET",
+                                operationId: "createRoutesConnections",
+                                methodName: "CreateRoutesConnectionsAsync",
+                                pathTemplate: "\"/v1/routes/connections\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -338,7 +314,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetRoutesResponse(
+                ProcessCreateRoutesConnectionsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -346,10 +322,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutes",
-                                methodName: "GetRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "GET",
+                                operationId: "createRoutesConnections",
+                                methodName: "CreateRoutesConnectionsAsync",
+                                pathTemplate: "\"/v1/routes/connections\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -368,10 +344,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutes",
-                                methodName: "GetRoutesAsync",
-                                pathTemplate: "\"/v1/routes\"",
-                                httpMethod: "GET",
+                                operationId: "createRoutesConnections",
+                                methodName: "CreateRoutesConnectionsAsync",
+                                pathTemplate: "\"/v1/routes/connections\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -398,7 +374,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetRoutesResponseContent(
+                                ProcessCreateRoutesConnectionsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -407,9 +383,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.RoutesResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.RouteConnectionV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RoutesResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteConnectionV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -439,9 +415,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.RoutesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.RouteConnectionV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RoutesResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteConnectionV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -480,6 +456,37 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Creates a connection<br/>
+        /// Creates a connection from the team to an upstream provider.
+        /// </summary>
+        /// <param name="teamId">
+        /// Identifier of the team that owns the connection.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="config">
+        /// Provider the connection authenticates with, and the team secret holding its API key.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Baseten.RouteConnectionV1> CreateRoutesConnectionsAsync(
+            global::Baseten.Config2 config,
+            string? teamId = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Baseten.CreateRouteConnectionRequestV1
+            {
+                TeamId = teamId,
+                Config = config,
+            };
+
+            return await CreateRoutesConnectionsAsync(
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
