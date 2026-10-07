@@ -13,6 +13,8 @@ internal static partial class ApiCommand
         var command = new Command("api", "Generated endpoint commands.");
 
                          command.Subcommands.Add(DefaultApiGroupCommand.Create());
+                         command.Subcommands.Add(ImagesApiGroupCommand.Create());
+                         command.Subcommands.Add(SandboxesApiGroupCommand.Create());
         CustomizeCommand(ref command);
         return command;
     }
