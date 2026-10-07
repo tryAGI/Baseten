@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class CreateRouteRequestV1
     {
         /// <summary>
-        /// Identifier of the team that owns the route. When omitted, uses your organization's default team.<br/>
+        /// Identifier of the team that owns the route.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
@@ -50,7 +50,7 @@ namespace Baseten
         /// Upstream target for the route.
         /// </param>
         /// <param name="teamId">
-        /// Identifier of the team that owns the route. When omitted, uses your organization's default team.<br/>
+        /// Identifier of the team that owns the route.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="displayName">

@@ -466,7 +466,7 @@ namespace Baseten
         /// Creates and derives a name for the provided route configuration
         /// </summary>
         /// <param name="teamId">
-        /// Identifier of the team that owns the route. When omitted, uses your organization's default team.<br/>
+        /// Identifier of the team that owns the route.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="displayName">
