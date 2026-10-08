@@ -29,12 +29,14 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             ref string? teamId,
             ref string? xTeamId,
+            ref bool? showSecrets,
             ref string sandboxName);
         partial void PrepareGetSandboxRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? teamId,
             string? xTeamId,
+            bool? showSecrets,
             string sandboxName);
         partial void ProcessGetSandboxResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -47,10 +49,13 @@ namespace Baseten
 
         /// <summary>
         /// Get a sandbox<br/>
-        /// Return the sandbox configuration and current state.
+        /// Return the sandbox configuration and status.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
+        /// <param name="showSecrets">
+        /// Default Value: false
+        /// </param>
         /// <param name="sandboxName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -59,6 +64,7 @@ namespace Baseten
             string sandboxName,
             string? teamId = default,
             string? xTeamId = default,
+            bool? showSecrets = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -66,6 +72,7 @@ namespace Baseten
                 sandboxName: sandboxName,
                 teamId: teamId,
                 xTeamId: xTeamId,
+                showSecrets: showSecrets,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -74,10 +81,13 @@ namespace Baseten
         }
         /// <summary>
         /// Get a sandbox<br/>
-        /// Return the sandbox configuration and current state.
+        /// Return the sandbox configuration and status.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
+        /// <param name="showSecrets">
+        /// Default Value: false
+        /// </param>
         /// <param name="sandboxName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -86,6 +96,7 @@ namespace Baseten
             string sandboxName,
             string? teamId = default,
             string? xTeamId = default,
+            bool? showSecrets = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -95,6 +106,7 @@ namespace Baseten
                 httpClient: HttpClient,
                 teamId: ref teamId,
                 xTeamId: ref xTeamId,
+                showSecrets: ref showSecrets,
                 sandboxName: ref sandboxName);
 
 
@@ -125,6 +137,7 @@ namespace Baseten
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("team_id", teamId)
+                                .AddOptionalParameter("show_secrets", showSecrets?.ToString().ToLowerInvariant())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -174,6 +187,7 @@ namespace Baseten
                     httpRequestMessage: __httpRequest,
                     teamId: teamId,
                     xTeamId: xTeamId,
+                    showSecrets: showSecrets,
                     sandboxName: sandboxName);
 
                 return __httpRequest;

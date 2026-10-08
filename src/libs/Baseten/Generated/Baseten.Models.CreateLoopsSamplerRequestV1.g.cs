@@ -58,6 +58,13 @@ namespace Baseten
         public string? ReuseFromSessionId { get; set; }
 
         /// <summary>
+        /// Number of replicas the sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a paired sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged, and when a run ends, its sampler is scaled down.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("num_replicas")]
+        public int? NumReplicas { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -93,6 +100,10 @@ namespace Baseten
         /// Optional ID of a prior Loops session to reuse a trainer and/or sampler from. Deprecated.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="numReplicas">
+        /// Number of replicas the sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a paired sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged, and when a run ends, its sampler is scaled down.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -103,7 +114,8 @@ namespace Baseten
             string? runId,
             int? maxSeqLength,
             string? modelPath,
-            string? reuseFromSessionId)
+            string? reuseFromSessionId,
+            int? numReplicas)
         {
             this.AvailabilityModel = availabilityModel;
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
@@ -112,6 +124,7 @@ namespace Baseten
             this.MaxSeqLength = maxSeqLength;
             this.ModelPath = modelPath;
             this.ReuseFromSessionId = reuseFromSessionId;
+            this.NumReplicas = numReplicas;
         }
 
         /// <summary>

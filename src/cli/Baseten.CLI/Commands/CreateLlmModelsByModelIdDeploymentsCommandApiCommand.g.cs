@@ -67,6 +67,12 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
     {
         Description = @"Weight configurations for BDN model weight distribution",
     };
+
+    private static Option<global::Baseten.EgressRestrictionsV1?> EgressRestrictions { get; } = new(
+        name: @"--egress-restrictions")
+    {
+        Description = @"Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.",
+    };
     private static readonly UpdateAutoscalingSettingsV1OptionSet AutoscalingSettingsOptions = UpdateAutoscalingSettingsV1OptionSet.Create(@"autoscaling-settings");
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -119,7 +125,8 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                         command.Options.Add(ModelMetadata);
                         command.Options.Add(AdditionalAutoscalingConfig);
                         command.Options.Add(Metadata);
-                        command.Options.Add(Weights);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
+                        command.Options.Add(Weights);
+                        command.Options.Add(EgressRestrictions);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
                         command.Options.Add(AutoscalingSettingsOptions.AutoscalingWindow);
                         command.Options.Add(AutoscalingSettingsOptions.ScaleDownDelay);
@@ -162,6 +169,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                         var additionalAutoscalingConfig = CliRuntime.WasSpecified(parseResult, AdditionalAutoscalingConfig) ? parseResult.GetValue(AdditionalAutoscalingConfig) : (__requestBase is { } __AdditionalAutoscalingConfigBaseValue ? __AdditionalAutoscalingConfigBaseValue.AdditionalAutoscalingConfig : default);
                         var metadata = CliRuntime.WasSpecified(parseResult, Metadata) ? parseResult.GetValue(Metadata) : (__requestBase is { } __MetadataBaseValue ? __MetadataBaseValue.Metadata : default);
                         var weights = CliRuntime.WasSpecified(parseResult, Weights) ? parseResult.GetValue(Weights) : (__requestBase is { } __WeightsBaseValue ? __WeightsBaseValue.Weights : default);
+                        var egressRestrictions = CliRuntime.WasSpecified(parseResult, EgressRestrictions) ? parseResult.GetValue(EgressRestrictions) : (__requestBase is { } __EgressRestrictionsBaseValue ? __EgressRestrictionsBaseValue.EgressRestrictions : default);
 
                         var __AutoscalingSettingsBase = __requestBase is { } __AutoscalingSettingsBaseValue ? __AutoscalingSettingsBaseValue.AutoscalingSettings : default;                        var autoscalingSettingsMinReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MinReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MinReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsminReplicaBaseValue ? __AutoscalingSettingsminReplicaBaseValue.MinReplica : default);
                         var autoscalingSettingsMaxReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MaxReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MaxReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsmaxReplicaBaseValue ? __AutoscalingSettingsmaxReplicaBaseValue.MaxReplica : default);
@@ -201,6 +209,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                                     additionalAutoscalingConfig: additionalAutoscalingConfig,
                                     metadata: metadata,
                                     weights: weights,
+                                    egressRestrictions: egressRestrictions,
                                     autoscalingSettings: autoscalingSettings,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

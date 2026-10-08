@@ -77,6 +77,13 @@ namespace Baseten
         public global::System.Collections.Generic.IList<object>? Weights { get; set; }
 
         /// <summary>
+        /// Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("egress_restrictions")]
+        public global::Baseten.EgressRestrictionsV1? EgressRestrictions { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -122,6 +129,10 @@ namespace Baseten
         /// Weight configurations for BDN model weight distribution<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="egressRestrictions">
+        /// Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -135,7 +146,8 @@ namespace Baseten
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings,
             object? additionalAutoscalingConfig,
             object? metadata,
-            global::System.Collections.Generic.IList<object>? weights)
+            global::System.Collections.Generic.IList<object>? weights,
+            global::Baseten.EgressRestrictionsV1? egressRestrictions)
         {
             this.Resources = resources ?? throw new global::System.ArgumentNullException(nameof(resources));
             this.Region = region;
@@ -147,6 +159,7 @@ namespace Baseten
             this.AdditionalAutoscalingConfig = additionalAutoscalingConfig;
             this.Metadata = metadata;
             this.Weights = weights;
+            this.EgressRestrictions = egressRestrictions;
         }
 
         /// <summary>

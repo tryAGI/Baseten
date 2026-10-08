@@ -23,7 +23,8 @@ namespace Baseten
         ///   "run_id": null,<br/>
         ///   "max_seq_length": null,<br/>
         ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100",<br/>
-        ///   "reuse_from_session_id": null<br/>
+        ///   "reuse_from_session_id": null,<br/>
+        ///   "num_replicas": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsSamplerResponseV1> CreateLoopsSamplersAsync(
@@ -50,7 +51,8 @@ namespace Baseten
         ///   "run_id": null,<br/>
         ///   "max_seq_length": null,<br/>
         ///   "model_path": "bt://loops:k4q95w5/sampler_weights/step-100",<br/>
-        ///   "reuse_from_session_id": null<br/>
+        ///   "reuse_from_session_id": null,<br/>
+        ///   "num_replicas": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsSamplerResponseV1>> CreateLoopsSamplersAsResponseAsync(
@@ -89,6 +91,10 @@ namespace Baseten
         /// Optional ID of a prior Loops session to reuse a trainer and/or sampler from. Deprecated.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="numReplicas">
+        /// Number of replicas the sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a paired sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged, and when a run ends, its sampler is scaled down.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -100,6 +106,7 @@ namespace Baseten
             int? maxSeqLength = default,
             string? modelPath = default,
             string? reuseFromSessionId = default,
+            int? numReplicas = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -32,7 +32,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateTeamsByTeamIdLoopsTrainersAsync(
             string teamId,
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateLoopsTrainerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -63,7 +63,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateTeamsByTeamIdLoopsTrainersAsResponseAsync(
             string teamId,
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateLoopsTrainerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>

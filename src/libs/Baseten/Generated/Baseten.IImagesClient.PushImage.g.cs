@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Push a sandbox image<br/>
-        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
+        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -14,16 +14,16 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.PushImageResponseV1> PushImageAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.PushSandboxImageResponseV1> PushImageAsync(
 
-            global::Baseten.PushImageRequestV1 request,
+            global::Baseten.PushSandboxImageRequestV1 request,
             string? teamId = default,
             string? xTeamId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Push a sandbox image<br/>
-        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
+        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -31,16 +31,16 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.PushImageResponseV1>> PushImageAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.PushSandboxImageResponseV1>> PushImageAsResponseAsync(
 
-            global::Baseten.PushImageRequestV1 request,
+            global::Baseten.PushSandboxImageRequestV1 request,
             string? teamId = default,
             string? xTeamId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Push a sandbox image<br/>
-        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
+        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -49,7 +49,7 @@ namespace Baseten
         /// Example: base-image
         /// </param>
         /// <param name="image">
-        /// Optional source registry image reference including a registry hostname. When omitted, the response provides an archive upload URL.<br/>
+        /// Optional source registry image reference including a registry hostname. When omitted, the response provides an archive upload URL. The uploaded ZIP archive must not exceed 5 GB.<br/>
         /// Example: docker.io/b10/base-image:latest
         /// </param>
         /// <param name="dockerConfig">
@@ -60,7 +60,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.PushImageResponseV1> PushImageAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.PushSandboxImageResponseV1> PushImageAsync(
             string name,
             string? teamId = default,
             string? xTeamId = default,

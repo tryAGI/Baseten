@@ -15,7 +15,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.ImageV1> DeleteImageTagAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.SandboxImageV1> DeleteImageTagAsync(
             string imageName,
             string tagName,
             string? teamId = default,
@@ -33,7 +33,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ImageV1>> DeleteImageTagAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.SandboxImageV1>> DeleteImageTagAsResponseAsync(
             string imageName,
             string tagName,
             string? teamId = default,

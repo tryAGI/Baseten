@@ -71,7 +71,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.ListImagesResponseV1> ListImagesAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.ListSandboxImagesResponseV1> ListImagesAsync(
             string? teamId = default,
             string? xTeamId = default,
             string? cursor = default,
@@ -114,7 +114,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListImagesResponseV1>> ListImagesAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListSandboxImagesResponseV1>> ListImagesAsResponseAsync(
             string? teamId = default,
             string? xTeamId = default,
             string? cursor = default,
@@ -580,9 +580,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.ListImagesResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.ListSandboxImagesResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListImagesResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListSandboxImagesResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -612,9 +612,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.ListImagesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.ListSandboxImagesResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListImagesResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.ListSandboxImagesResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

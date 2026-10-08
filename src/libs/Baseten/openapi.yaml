@@ -6549,11 +6549,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null,\n  \"sampler_num_replicas\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None, 'sampler_num_replicas': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a Loops run with an associated sampler in the given session.",
@@ -6665,7 +6665,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/CreateLoopsRunRequestV1"
+                                "$ref": "#/components/schemas/CreateLoopsTrainerRequestV1"
                             }
                         }
                     },
@@ -6740,11 +6740,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"availability_model\": null,\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"availability_model\": null,\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null,\n  \"num_replicas\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'availability_model': None, 'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'availability_model': None, 'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None, 'num_replicas': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a standalone Loops sampler not linked to a run.",
@@ -7585,11 +7585,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/runs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null,\n  \"sampler_num_replicas\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/runs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None, 'sampler_num_replicas': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a Loops run with an associated sampler in the given session; the run's infrastructure belongs to the given team.",
@@ -7635,7 +7635,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/CreateLoopsRunRequestV1"
+                                "$ref": "#/components/schemas/CreateLoopsTrainerRequestV1"
                             }
                         }
                     },
@@ -7720,11 +7720,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"availability_model\": null,\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"availability_model\": null,\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null,\n  \"num_replicas\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'availability_model': None, 'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'availability_model': None, 'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None, 'num_replicas': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a standalone Loops sampler not linked to a run; the sampler belongs to the given team.",
@@ -8351,11 +8351,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -8388,11 +8388,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -8430,11 +8430,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ]\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}]}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -10615,6 +10615,233 @@
                 }
             ]
         },
+        "/v1/sandboxes/configuration": {
+            "get": {
+                "operationId": "GetSandboxConfiguration",
+                "summary": "Get sandbox configuration",
+                "description": "Return available Carbon-compatible sandbox regions. Configuration is the same for every team, so no team is selected. Only enabled regions supporting Carbon are returned. This describes regional capability, not the runtime selected for a particular team or sandbox. Region configuration is cached for up to 30 seconds.",
+                "tags": [
+                    "Sandboxes"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetSandboxConfigurationResponseV1"
+                                },
+                                "example": {
+                                    "regions": [
+                                        {
+                                            "name": "us-was-1",
+                                            "country": "us",
+                                            "continent": "na",
+                                            "location": "Washington",
+                                            "info_generation": "CARBON"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/SandboxError400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/SandboxError401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/SandboxError403"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/SandboxError429"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/SandboxError500"
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/sandboxes/instances/{sandbox_name}/metrics": {
+            "get": {
+                "operationId": "GetSandboxMetrics",
+                "summary": "Get sandbox metrics",
+                "description": "Returns every interval in the requested half-open range [start_time, end_time).\nBuckets align to UTC interval boundaries; partial boundary buckets include only samples\nwithin the requested range. The first bucket may start before start_time. Ranges are limited to 31 days\nand 10000 buckets. Request counts are zero when there is no traffic, and null\nfor buckets entirely before sandbox creation. CPU and memory are null without\nsamples, including standby. Error rate is the fraction of requests returning\n4xx or 5xx, null when there are no requests. Telemetry failures return an error.\n",
+                "tags": [
+                    "Sandboxes"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/TeamId"
+                    },
+                    {
+                        "$ref": "#/components/parameters/TeamIdHeader"
+                    },
+                    {
+                        "$ref": "#/components/parameters/SandboxName"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "interval_seconds",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "enum": [
+                                10,
+                                30,
+                                60,
+                                300,
+                                900,
+                                3600
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Complete sandbox metrics time series.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SandboxMetricsV1"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid range, interval, or query parameter."
+                    },
+                    "401": {
+                        "description": "Authentication required."
+                    },
+                    "403": {
+                        "description": "Team access denied."
+                    },
+                    "404": {
+                        "description": "Sandbox not found."
+                    },
+                    "502": {
+                        "description": "Metrics query failed."
+                    },
+                    "503": {
+                        "description": "Metrics are unavailable."
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/sandboxes/instances/{sandbox_name}/logs": {
+            "get": {
+                "operationId": "GetSandboxLogs",
+                "summary": "Get sandbox logs",
+                "description": "Returns sandbox runtime logs, newest first, within the half-open range\n[start_time, end_time). Ranges are limited to 7 days. Follow next_cursor\nuntil it is null to retrieve all pages, keeping the same range and limit.\nLogs before sandbox creation are excluded. Unavailable telemetry returns an error.\n",
+                "tags": [
+                    "Sandboxes"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/TeamId"
+                    },
+                    {
+                        "$ref": "#/components/parameters/TeamIdHeader"
+                    },
+                    {
+                        "$ref": "#/components/parameters/SandboxName"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 1000,
+                            "default": 100
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque next_cursor from the previous page. Omit for the first page.",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 4096
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A page of sandbox logs.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SandboxLogsV1"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid range, limit, cursor, or query parameter."
+                    },
+                    "401": {
+                        "description": "Authentication required."
+                    },
+                    "403": {
+                        "description": "Team access denied."
+                    },
+                    "404": {
+                        "description": "Sandbox not found."
+                    },
+                    "502": {
+                        "description": "Logs query failed."
+                    },
+                    "503": {
+                        "description": "Logs are unavailable."
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
         "/v1/sandboxes/instances": {
             "get": {
                 "operationId": "ListSandboxes",
@@ -10725,12 +10952,12 @@
                 ],
                 "operationId": "CreateSandbox",
                 "summary": "Create a sandbox",
-                "description": "Create a sandbox with an optional client-provided name, generated by the server when omitted. The request waits briefly for deployment, then returns the created resource. Deployment may continue after the response; inspect status to determine readiness. Names belonging to failed or terminated sandboxes can be reused; an active sandbox reserves its name. To get started, set image to blaxel/base-image:latest, the built-in image with the sandbox execution API ready to use. It is available directly; no image build, push, or GET /v1/sandboxes/images is needed. Use the returned url to execute commands with the same Bearer API key.",
+                "description": "Create a sandbox with an optional client-provided name, generated by the server when omitted. The request waits briefly for deployment, then returns the created resource. Deployment may continue after the response; inspect status to determine readiness. Names belonging to failed or terminated sandboxes can be reused; an active sandbox reserves its name. Every field is optional. The server applies image and memory defaults; SDKs should omit fields the caller did not set. A request with no body creates a sandbox from baseten/base-image:latest, the built-in image with the sandbox execution API ready to use, with 4096 MB of memory. It is available directly; no image build, push, or GET /v1/sandboxes/images is needed. Use the returned url to execute commands with your authentication token as a Bearer token, not your Baseten API key.",
                 "tags": [
                     "Sandboxes"
                 ],
                 "requestBody": {
-                    "required": true,
+                    "required": false,
                     "content": {
                         "application/json": {
                             "schema": {
@@ -10805,7 +11032,7 @@
             "get": {
                 "operationId": "GetSandbox",
                 "summary": "Get a sandbox",
-                "description": "Return the sandbox configuration and current state.",
+                "description": "Return the sandbox configuration and status.",
                 "tags": [
                     "Sandboxes"
                 ],
@@ -10815,6 +11042,15 @@
                     },
                     {
                         "$ref": "#/components/parameters/TeamIdHeader"
+                    },
+                    {
+                        "name": "show_secrets",
+                        "in": "query",
+                        "description": "Reveal environment variable values for workspace administrators. Defaults to false. Callers without the admin role receive masked values even when true.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
                     }
                 ],
                 "responses": {
@@ -10862,7 +11098,7 @@
                 ],
                 "operationId": "UpdateSandbox",
                 "summary": "Update a sandbox",
-                "description": "Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. Changes to image may reset running state. The name, memory, and network configuration are immutable after creation. Supplying memory or network returns 400, including unchanged, empty, or null values.",
+                "description": "Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, and ports are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.",
                 "tags": [
                     "Sandboxes"
                 ],
@@ -10982,6 +11218,46 @@
                 "x-stability": "unstable"
             }
         },
+        "/v1/sandboxes/library_images": {
+            "get": {
+                "operationId": "ListSandboxLibraryImages",
+                "summary": "List built-in sandbox images",
+                "description": "Return the built-in sandbox images, the same for every team, so no team is selected. Use the image field directly as the image of a sandbox, without building or pushing it. Hidden and upcoming images are excluded.",
+                "tags": [
+                    "Images"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ListSandboxLibraryImagesResponseV1"
+                                },
+                                "examples": {
+                                    "complete": {
+                                        "$ref": "#/components/examples/SandboxLibraryImages"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/SandboxError401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/SandboxError403"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/SandboxError429"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/SandboxError500"
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
         "/v1/sandboxes/images": {
             "get": {
                 "operationId": "ListImages",
@@ -11027,7 +11303,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ListImagesResponseV1"
+                                    "$ref": "#/components/schemas/ListSandboxImagesResponseV1"
                                 },
                                 "examples": {
                                     "complete": {
@@ -11066,7 +11342,7 @@
                 ],
                 "operationId": "PushImage",
                 "summary": "Push a sandbox image",
-                "description": "With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.",
+                "description": "With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.",
                 "tags": [
                     "Images"
                 ],
@@ -11075,7 +11351,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/PushImageRequestV1"
+                                "$ref": "#/components/schemas/PushSandboxImageRequestV1"
                             },
                             "examples": {
                                 "archive": {
@@ -11094,7 +11370,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/PushImageResponseV1"
+                                    "$ref": "#/components/schemas/PushSandboxImageResponseV1"
                                 },
                                 "examples": {
                                     "archive": {
@@ -11148,7 +11424,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CleanupImagesResponseV1"
+                                    "$ref": "#/components/schemas/CleanupSandboxImagesResponseV1"
                                 },
                                 "examples": {
                                     "complete": {
@@ -11180,7 +11456,7 @@
         "/v1/sandboxes/images/{image_name}": {
             "parameters": [
                 {
-                    "$ref": "#/components/parameters/ImageName"
+                    "$ref": "#/components/parameters/SandboxImageName"
                 }
             ],
             "get": {
@@ -11204,7 +11480,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ImageV1"
+                                    "$ref": "#/components/schemas/SandboxImageV1"
                                 },
                                 "examples": {
                                     "complete": {
@@ -11253,7 +11529,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ImageV1"
+                                    "$ref": "#/components/schemas/SandboxImageV1"
                                 },
                                 "examples": {
                                     "complete": {
@@ -11285,10 +11561,117 @@
                 "x-stability": "unstable"
             }
         },
+        "/v1/sandboxes/images/{image_name}/logs": {
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/SandboxImageName"
+                }
+            ],
+            "get": {
+                "operationId": "GetImageBuildLogs",
+                "summary": "Get image build logs",
+                "description": "Return one page of logs from the latest recorded build of this image, including failed builds, newest first. Logs may take a short time to appear. Defaults to the last 24 hours; the requested time range must not exceed 7 days. Keep start_time and end_time fixed when paging with offset. A new build changes the log source; this endpoint does not retrieve a historical build by ID. While a new upload is waiting to start, logs may still refer to the preceding build. Older builds without a recorded environment use image-level build logs within the requested time range.",
+                "tags": [
+                    "Images"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/TeamId"
+                    },
+                    {
+                        "$ref": "#/components/parameters/TeamIdHeader"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "description": "Inclusive RFC 3339 start time. Defaults to 24 hours before end_time.",
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "description": "RFC 3339 end time. Defaults to the current time.",
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Maximum number of log entries to return.",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 1000,
+                            "default": 100
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Number of log entries to skip. Narrow the time range beyond 10000 entries.",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000,
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Build logs in the requested time range. An empty array means no logs are available in that range.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SandboxImageBuildLogsResponseV1"
+                                },
+                                "example": {
+                                    "logs": [
+                                        {
+                                            "timestamp": "2026-09-29T12:00:00Z",
+                                            "message": "Step 1/2: loading build context",
+                                            "severity": 9
+                                        }
+                                    ],
+                                    "total_count": 1
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/SandboxError400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/SandboxError401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/SandboxError403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/SandboxError404"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/SandboxError429"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/SandboxError500"
+                    },
+                    "503": {
+                        "description": "Build log service is temporarily unavailable. Returns a JSON error with code and message."
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
         "/v1/sandboxes/images/{image_name}/tags": {
             "parameters": [
                 {
-                    "$ref": "#/components/parameters/ImageName"
+                    "$ref": "#/components/parameters/SandboxImageName"
                 }
             ],
             "get": {
@@ -11343,7 +11726,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ListImageTagsResponseV1"
+                                    "$ref": "#/components/schemas/ListSandboxImageTagsResponseV1"
                                 }
                             }
                         }
@@ -11373,7 +11756,7 @@
         "/v1/sandboxes/images/{image_name}/tags/{tag_name}": {
             "parameters": [
                 {
-                    "$ref": "#/components/parameters/ImageName"
+                    "$ref": "#/components/parameters/SandboxImageName"
                 },
                 {
                     "$ref": "#/components/parameters/TagName"
@@ -11400,7 +11783,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ImageV1"
+                                    "$ref": "#/components/schemas/SandboxImageV1"
                                 },
                                 "examples": {
                                     "complete": {
@@ -25654,6 +26037,206 @@
                 "type": "object"
             },
             "CreateLoopsRunRequestV1": {
+                "description": "Request to create a Loops run together with its paired sampler.",
+                "properties": {
+                    "session_id": {
+                        "description": "ID of the Loops session this run belongs to.",
+                        "title": "Session Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "Base model ID (e.g. 'Qwen/Qwen3-8B').",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
+                    "name": {
+                        "anyOf": [
+                            {
+                                "maxLength": 255,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional display name for the run. Defaults to the base model name when omitted.",
+                        "title": "Name"
+                    },
+                    "max_seq_len": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Maximum prompt length (in tokens) the run must handle. Set this to the longest training example you plan to send. Defaults to the maximum supported by the model configuration.",
+                        "title": "Max Seq Len"
+                    },
+                    "lora_rank": {
+                        "default": 64,
+                        "description": "LoRA rank.",
+                        "minimum": 1,
+                        "title": "Lora Rank",
+                        "type": "integer"
+                    },
+                    "seed": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Random seed for reproducibility.",
+                        "title": "Seed"
+                    },
+                    "scale_down_delay_seconds": {
+                        "default": 900,
+                        "description": "Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 900 (15 minutes).",
+                        "exclusiveMinimum": 0,
+                        "maximum": 3600,
+                        "title": "Scale Down Delay Seconds",
+                        "type": "integer"
+                    },
+                    "availability_model": {
+                        "$ref": "#/components/schemas/V1AvailabilityModel",
+                        "default": "dedicated",
+                        "description": "Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
+                        "examples": [
+                            "spot"
+                        ]
+                    },
+                    "replicas": {
+                        "default": 1,
+                        "description": "Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset \u2192 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.",
+                        "minimum": 1,
+                        "title": "Replicas",
+                        "type": "integer"
+                    },
+                    "path": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional bt:// URI of an existing checkpoint to load weights from on startup. Form: bt://loops:<run_id>/weights/<checkpoint_name>.",
+                        "examples": [
+                            "bt://loops:k4q95w5/weights/step-100"
+                        ],
+                        "title": "Path"
+                    },
+                    "reuse_from_run_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional ID of a prior Loops run whose trainer and/or sampler should be reused for this run instead of provisioning fresh. The prior run must use the same base model and belong to the same team.",
+                        "title": "Reuse From Run Id"
+                    },
+                    "reuse_from_session_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.",
+                        "title": "Reuse From Session Id"
+                    },
+                    "sampler_num_replicas": {
+                        "anyOf": [
+                            {
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Number of replicas the run's sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged. When the run ends, its sampler is scaled down.",
+                        "title": "Sampler Num Replicas"
+                    }
+                },
+                "required": [
+                    "session_id",
+                    "base_model"
+                ],
+                "title": "CreateLoopsRunRequestV1",
+                "type": "object"
+            },
+            "CreateLoopsRunResponseV1": {
+                "properties": {
+                    "run": {
+                        "$ref": "#/components/schemas/LoopsRunV1"
+                    }
+                },
+                "required": [
+                    "run"
+                ],
+                "title": "CreateLoopsRunResponseV1",
+                "type": "object"
+            },
+            "DeactivateLoopsRunResponseV1": {
+                "description": "Response for ``POST /v1/loops/runs/<run_id>/deactivate``.",
+                "properties": {
+                    "id": {
+                        "description": "The deactivated Loops run ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "description": "The base model whose Loops run was deactivated.",
+                        "title": "Base Model",
+                        "type": "string"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserV1",
+                        "description": "The user who owns the Loops run."
+                    }
+                },
+                "required": [
+                    "id",
+                    "base_model",
+                    "user"
+                ],
+                "title": "DeactivateLoopsRunResponseV1",
+                "type": "object"
+            },
+            "GetLoopsRunResponseV1": {
+                "description": "Response for ``GET /v1/loops/runs/<run_id>``.",
+                "properties": {
+                    "run": {
+                        "$ref": "#/components/schemas/LoopsRunV1",
+                        "description": "The Loops run with its associated sampler."
+                    }
+                },
+                "required": [
+                    "run"
+                ],
+                "title": "GetLoopsRunResponseV1",
+                "type": "object"
+            },
+            "CreateLoopsTrainerRequestV1": {
                 "properties": {
                     "session_id": {
                         "description": "ID of the Loops session this run belongs to.",
@@ -25783,59 +26366,7 @@
                     "session_id",
                     "base_model"
                 ],
-                "title": "CreateLoopsRunRequestV1",
-                "type": "object"
-            },
-            "CreateLoopsRunResponseV1": {
-                "properties": {
-                    "run": {
-                        "$ref": "#/components/schemas/LoopsRunV1"
-                    }
-                },
-                "required": [
-                    "run"
-                ],
-                "title": "CreateLoopsRunResponseV1",
-                "type": "object"
-            },
-            "DeactivateLoopsRunResponseV1": {
-                "description": "Response for ``POST /v1/loops/runs/<run_id>/deactivate``.",
-                "properties": {
-                    "id": {
-                        "description": "The deactivated Loops run ID.",
-                        "title": "Id",
-                        "type": "string"
-                    },
-                    "base_model": {
-                        "description": "The base model whose Loops run was deactivated.",
-                        "title": "Base Model",
-                        "type": "string"
-                    },
-                    "user": {
-                        "$ref": "#/components/schemas/UserV1",
-                        "description": "The user who owns the Loops run."
-                    }
-                },
-                "required": [
-                    "id",
-                    "base_model",
-                    "user"
-                ],
-                "title": "DeactivateLoopsRunResponseV1",
-                "type": "object"
-            },
-            "GetLoopsRunResponseV1": {
-                "description": "Response for ``GET /v1/loops/runs/<run_id>``.",
-                "properties": {
-                    "run": {
-                        "$ref": "#/components/schemas/LoopsRunV1",
-                        "description": "The Loops run with its associated sampler."
-                    }
-                },
-                "required": [
-                    "run"
-                ],
-                "title": "GetLoopsRunResponseV1",
+                "title": "CreateLoopsTrainerRequestV1",
                 "type": "object"
             },
             "ListLoopsSamplersResponseV1": {
@@ -25965,6 +26496,20 @@
                         "default": null,
                         "description": "Optional ID of a prior Loops session to reuse a trainer and/or sampler from. Deprecated.",
                         "title": "Reuse From Session Id"
+                    },
+                    "num_replicas": {
+                        "anyOf": [
+                            {
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Number of replicas the sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a paired sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged, and when a run ends, its sampler is scaled down.",
+                        "title": "Num Replicas"
                     }
                 },
                 "required": [
@@ -28462,6 +29007,54 @@
                 "title": "ModelApisUsageRequestV1",
                 "type": "object"
             },
+            "EgressRestrictionsV1": {
+                "properties": {
+                    "fqdn_allow_list": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Allowed outbound FQDNs; '*' wildcards are supported.",
+                        "examples": [
+                            [
+                                "*.example.com"
+                            ]
+                        ],
+                        "title": "Fqdn Allow List"
+                    },
+                    "ip_allow_list": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Allowed outbound IPv4 addresses or CIDR ranges.",
+                        "examples": [
+                            [
+                                "1.1.1.1/32"
+                            ]
+                        ],
+                        "title": "Ip Allow List"
+                    }
+                },
+                "title": "EgressRestrictionsV1",
+                "type": "object"
+            },
             "CreateLLMModelRequestV1": {
                 "description": "A request to create a BIS-LLM model",
                 "properties": {
@@ -28615,6 +29208,18 @@
                             ]
                         ],
                         "title": "Weights"
+                    },
+                    "egress_restrictions": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/EgressRestrictionsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled."
                     },
                     "name": {
                         "description": "Name of the model",
@@ -28822,6 +29427,18 @@
                             ]
                         ],
                         "title": "Weights"
+                    },
+                    "egress_restrictions": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/EgressRestrictionsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled."
                     }
                 },
                 "required": [
@@ -34495,6 +35112,268 @@
                 "title": "RegisterAPIKeyResponseV1",
                 "type": "object"
             },
+            "GetSandboxConfigurationResponseV1": {
+                "type": "object",
+                "required": [
+                    "regions"
+                ],
+                "properties": {
+                    "regions": {
+                        "type": "array",
+                        "description": "Available Carbon-compatible regions, sorted by name. Empty when none are available.",
+                        "items": {
+                            "$ref": "#/components/schemas/SandboxRegionV1"
+                        }
+                    }
+                }
+            },
+            "SandboxRegionV1": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "country",
+                    "continent",
+                    "location",
+                    "info_generation"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Public region identifier to use when creating a sandbox.",
+                        "example": "us-was-1"
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "Country code.",
+                        "example": "us"
+                    },
+                    "continent": {
+                        "type": "string",
+                        "description": "Continent code.",
+                        "example": "na"
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Region location.",
+                        "example": "Washington"
+                    },
+                    "info_generation": {
+                        "type": "string",
+                        "description": "Runtime generation supported by this region, using the public name CARBON. Actual runtime selection depends on the team and sandbox configuration.",
+                        "enum": [
+                            "CARBON"
+                        ]
+                    }
+                }
+            },
+            "SandboxLogsV1": {
+                "type": "object",
+                "required": [
+                    "sandbox_name",
+                    "start_time",
+                    "end_time",
+                    "logs",
+                    "next_cursor"
+                ],
+                "properties": {
+                    "sandbox_name": {
+                        "type": "string"
+                    },
+                    "start_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "end_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "logs": {
+                        "type": "array",
+                        "maxItems": 1000,
+                        "items": {
+                            "$ref": "#/components/schemas/SandboxLogEntryV1"
+                        }
+                    },
+                    "next_cursor": {
+                        "description": "Opaque cursor for the next page; null when there are no more entries.",
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                }
+            },
+            "SandboxLogEntryV1": {
+                "type": "object",
+                "required": [
+                    "timestamp",
+                    "message",
+                    "severity",
+                    "trace_id"
+                ],
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "severity": {
+                        "type": "integer",
+                        "description": "Numeric log severity."
+                    },
+                    "trace_id": {
+                        "type": "string",
+                        "description": "Associated trace identifier, or an empty string when unavailable."
+                    },
+                    "action": {
+                        "type": "string",
+                        "description": "Action or command when present on the log entry."
+                    }
+                }
+            },
+            "SandboxMetricsV1": {
+                "type": "object",
+                "required": [
+                    "sandbox_name",
+                    "start_time",
+                    "end_time",
+                    "interval_seconds",
+                    "data"
+                ],
+                "properties": {
+                    "sandbox_name": {
+                        "type": "string"
+                    },
+                    "start_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "end_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "interval_seconds": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "array",
+                        "maxItems": 10000,
+                        "items": {
+                            "$ref": "#/components/schemas/SandboxMetricsPointV1"
+                        }
+                    }
+                }
+            },
+            "SandboxMetricsPointV1": {
+                "type": "object",
+                "required": [
+                    "timestamp",
+                    "requests",
+                    "cpu_percent",
+                    "memory_bytes",
+                    "error_rate"
+                ],
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Start of this interval."
+                    },
+                    "requests": {
+                        "description": "Request count. Zero without traffic; null for intervals entirely before creation.",
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "cpu_percent": {
+                        "description": "Peak CPU usage in this interval, where 100 is one full CPU core. Null without a sample.",
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "memory_bytes": {
+                        "description": "Memory usage in bytes, averaged per series then maximum across series. Null without a sample.",
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "error_rate": {
+                        "description": "Fraction of requests returning 4xx or 5xx. Null when there are no requests.",
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                }
+            },
+            "SandboxImageBuildLogV1": {
+                "type": "object",
+                "required": [
+                    "timestamp",
+                    "message",
+                    "severity"
+                ],
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "severity": {
+                        "type": "integer",
+                        "description": "Numeric OpenTelemetry severity level."
+                    }
+                }
+            },
+            "SandboxImageBuildLogsResponseV1": {
+                "type": "object",
+                "required": [
+                    "logs",
+                    "total_count"
+                ],
+                "properties": {
+                    "logs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SandboxImageBuildLogV1"
+                        }
+                    },
+                    "total_count": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of matching log entries in the requested time range."
+                    }
+                }
+            },
             "SandboxLifecycleV1": {
                 "type": "object",
                 "description": "Lifecycle configuration controlling automatic sandbox deletion based on idle time, max age, or specific dates",
@@ -34524,7 +35403,11 @@
                         ]
                     },
                     "terminated_retention": {
-                        "type": "string",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/SandboxDurationV1"
+                            }
+                        ],
                         "description": "Duration to keep the sandbox record after termination for log access (e.g., '1h', '24h', '7d'). Defaults to 5m. Subject to maximum quota limits.",
                         "example": "24h"
                     }
@@ -34574,7 +35457,7 @@
             },
             "SandboxDurationV1": {
                 "type": "string",
-                "description": "Duration using seconds, minutes, hours, or composite durations such as 1h30m. Whole days and weeks are also supported, for example 7d or 2w.",
+                "description": "Duration using seconds, minutes, hours, or composite durations such as 1h30m. Whole days and weeks are also supported, for example 7d or 2w, where d is 24h and w is 7 \u00d7 24h. Days and weeks cannot be combined with other units, so 1d12h is rejected; use 36h instead. Values are returned exactly as sent, without normalization.",
                 "pattern": "^[+-]?(0|[0-9]+[dw]|([0-9]+(\\.[0-9]*)?|\\.[0-9]+)(ns|us|\u00b5s|\u03bcs|ms|s|m|h)(([0-9]+(\\.[0-9]*)?|\\.[0-9]+)(ns|us|\u00b5s|\u03bcs|ms|s|m|h))*)$",
                 "example": "24h"
             },
@@ -34912,7 +35795,8 @@
                     },
                     "secret": {
                         "type": "boolean",
-                        "description": "Whether the value is a secret",
+                        "description": "Whether the value is a secret. Defaults to true; secret values are returned as \"****\". Set false explicitly to return the original value.",
+                        "default": true,
                         "example": false
                     },
                     "value": {
@@ -34994,12 +35878,6 @@
                 "type": "object",
                 "description": "Writable sandbox configuration. Fields are serialized at the root of the request or resource.",
                 "properties": {
-                    "enabled": {
-                        "type": "boolean",
-                        "description": "When false, the sandbox is disabled and will not accept connections",
-                        "example": true,
-                        "default": true
-                    },
                     "lifecycle": {
                         "description": "Lifecycle configuration controlling automatic sandbox deletion based on idle time, max age, or specific dates",
                         "allOf": [
@@ -35096,8 +35974,8 @@
                     },
                     "image": {
                         "type": "string",
-                        "description": "Image reference including its tag. Use blaxel/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.",
-                        "example": "blaxel/base-image:latest"
+                        "description": "Image reference including its tag. Built-in image references are returned in the canonical baseten/ namespace. Use baseten/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.",
+                        "example": "baseten/base-image:latest"
                     },
                     "memory": {
                         "type": "integer",
@@ -35119,12 +35997,6 @@
                                 "target": 3000
                             }
                         ]
-                    },
-                    "display_name": {
-                        "type": "string",
-                        "description": "Human-readable name for display in the UI. Can contain spaces and special characters, max 63 characters.",
-                        "example": "Baseten API review",
-                        "maxLength": 63
                     },
                     "external_id": {
                         "type": "string",
@@ -35148,7 +36020,6 @@
                     }
                 },
                 "example": {
-                    "enabled": true,
                     "lifecycle": {
                         "expiration_policies": [
                             {
@@ -35216,7 +36087,7 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
+                    "image": "baseten/base-image:latest",
                     "memory": 4096,
                     "ports": [
                         {
@@ -35225,7 +36096,6 @@
                             "target": 3000
                         }
                     ],
-                    "display_name": "Baseten API review",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -35238,6 +36108,10 @@
                 "type": "object",
                 "description": "Configuration for a new sandbox. The client may provide a name; otherwise the server generates one. The name is immutable after creation.",
                 "properties": {
+                    "create_if_not_exists": {
+                        "type": "boolean",
+                        "description": "When true, return the existing live sandbox with this name or recreate it if it is failed, terminated, or being deleted. The server handles concurrent creation and deletion races with a bounded wait; persistent contention returns a conflict. Requires name. Existing configuration is preserved. Defaults to false when omitted."
+                    },
                     "name": {
                         "type": "string",
                         "description": "Optional unique sandbox name. Generated by the server when omitted; immutable after creation.",
@@ -35340,12 +36214,14 @@
                     },
                     "image": {
                         "type": "string",
-                        "description": "Image reference including its tag. Use blaxel/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.",
-                        "example": "blaxel/base-image:latest"
+                        "description": "Image reference including its tag. Defaults to baseten/base-image:latest, the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.",
+                        "default": "baseten/base-image:latest",
+                        "example": "baseten/base-image:latest"
                     },
                     "memory": {
                         "type": "integer",
-                        "description": "Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs).",
+                        "description": "Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096.",
+                        "default": 4096,
                         "example": 4096,
                         "minimum": 1
                     },
@@ -35363,12 +36239,6 @@
                                 "target": 3000
                             }
                         ]
-                    },
-                    "display_name": {
-                        "type": "string",
-                        "description": "Human-readable name for display in the UI. Can contain spaces and special characters, max 63 characters.",
-                        "example": "Baseten API review",
-                        "maxLength": 63
                     },
                     "external_id": {
                         "type": "string",
@@ -35460,7 +36330,7 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
+                    "image": "baseten/base-image:latest",
                     "memory": 4096,
                     "ports": [
                         {
@@ -35469,7 +36339,6 @@
                             "target": 3000
                         }
                     ],
-                    "display_name": "Baseten API review",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -35480,13 +36349,8 @@
             },
             "UpdateSandboxRequestV1": {
                 "type": "object",
-                "description": "Partial sandbox update. Omitted fields remain unchanged. Supplied arrays and maps (including labels) replace their previous values; supplied structured objects update only their supplied fields. Null is not accepted. The name, memory, and network configuration are immutable after creation. Supplying memory or network returns 400, including unchanged, empty, or null values.",
+                "description": "Partial sandbox update. Omitted fields remain unchanged. Supplied arrays and maps (including labels) replace their previous values; supplied structured objects update only their supplied fields. Null is not accepted. The name, memory, network, region, image, and ports are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.",
                 "properties": {
-                    "enabled": {
-                        "type": "boolean",
-                        "description": "When false, the sandbox is disabled and will not accept connections",
-                        "example": true
-                    },
                     "lifecycle": {
                         "description": "Lifecycle configuration controlling automatic sandbox deletion based on idle time, max age, or specific dates",
                         "allOf": [
@@ -35515,11 +36379,6 @@
                             "terminated_retention": "24h"
                         }
                     },
-                    "region": {
-                        "type": "string",
-                        "description": "Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the closest region is selected.",
-                        "example": "us-pdx-1"
-                    },
                     "envs": {
                         "type": "array",
                         "description": "Environment variables injected into the sandbox.",
@@ -35538,32 +36397,6 @@
                                 "value": "3000"
                             }
                         ]
-                    },
-                    "image": {
-                        "type": "string",
-                        "description": "Image reference including its tag. Use blaxel/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.",
-                        "example": "blaxel/base-image:latest"
-                    },
-                    "ports": {
-                        "description": "Set of ports for a resource",
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/SandboxPortsV1"
-                            }
-                        ],
-                        "example": [
-                            {
-                                "name": "http",
-                                "protocol": "HTTP",
-                                "target": 3000
-                            }
-                        ]
-                    },
-                    "display_name": {
-                        "type": "string",
-                        "description": "Human-readable name for display in the UI. Can contain spaces and special characters, max 63 characters.",
-                        "example": "Baseten API review - revised",
-                        "maxLength": 63
                     },
                     "external_id": {
                         "type": "string",
@@ -35589,7 +36422,6 @@
                 },
                 "minProperties": 1,
                 "example": {
-                    "enabled": true,
                     "lifecycle": {
                         "expiration_policies": [
                             {
@@ -35610,7 +36442,6 @@
                         ],
                         "terminated_retention": "24h"
                     },
-                    "region": "us-pdx-1",
                     "envs": [
                         {
                             "name": "NODE_ENV",
@@ -35623,15 +36454,6 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
-                    "ports": [
-                        {
-                            "name": "http",
-                            "protocol": "HTTP",
-                            "target": 3000
-                        }
-                    ],
-                    "display_name": "Baseten API review - revised",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -35659,7 +36481,7 @@
                             },
                             "url": {
                                 "type": "string",
-                                "description": "Base URL of this sandbox's execution API. Use this exact returned URL; do not reconstruct its hostname. Authenticate requests with the same Authorization: Bearer <api_key> header used to create the sandbox. No additional routing headers are required. Fetch GET {url}/swagger/doc.json with that header for the API reference served by this sandbox. For example, POST {url}/process with Content-Type: application/json and {\"command\":\"echo hello\",\"waitForCompletion\":true} executes a command and waits for its result. Execution API fields use camelCase, independently of this API's snake_case fields.",
+                                "description": "Base URL of this sandbox's execution API, always present on successful creation. The URL is assigned before deployment completes; inspect status for readiness. Use this exact returned URL; do not reconstruct its hostname. Authenticate requests with your authentication token using Authorization: Bearer <token>. Do not send the Baseten API key directly. No additional routing headers are required. Fetch GET {url}/swagger/doc.json with that header for the API reference served by this sandbox. For example, POST {url}/process with Content-Type: application/json and {\"command\":\"echo hello\",\"waitForCompletion\":true} executes a command and waits for its result. Execution API fields use camelCase, independently of this API's snake_case fields.",
                                 "format": "uri",
                                 "readOnly": true,
                                 "example": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run"
@@ -35672,16 +36494,6 @@
                                     }
                                 ],
                                 "example": "DEPLOYED"
-                            },
-                            "state": {
-                                "type": "string",
-                                "description": "Current execution state when available.",
-                                "enum": [
-                                    "RUNNING",
-                                    "STANDBY"
-                                ],
-                                "readOnly": true,
-                                "example": "RUNNING"
                             },
                             "created_at": {
                                 "type": "string",
@@ -35726,6 +36538,7 @@
                         },
                         "required": [
                             "name",
+                            "url",
                             "status",
                             "created_at"
                         ],
@@ -35733,7 +36546,6 @@
                             "name": "baseten-api-review-0916",
                             "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                             "status": "DEPLOYED",
-                            "state": "RUNNING",
                             "created_at": "2026-09-16T21:26:58.545765901Z",
                             "updated_at": "2026-09-16T21:31:13Z",
                             "created_by": "sandbox-automation",
@@ -35744,7 +36556,6 @@
                     }
                 ],
                 "example": {
-                    "enabled": true,
                     "lifecycle": {
                         "expiration_policies": [
                             {
@@ -35809,7 +36620,7 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
+                    "image": "baseten/base-image:latest",
                     "memory": 4096,
                     "ports": [
                         {
@@ -35818,7 +36629,6 @@
                             "target": 3000
                         }
                     ],
-                    "display_name": "Baseten API review",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -35828,7 +36638,6 @@
                     "name": "baseten-api-review-0916",
                     "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                     "status": "DEPLOYED",
-                    "state": "RUNNING",
                     "created_at": "2026-09-16T21:26:58.545765901Z",
                     "updated_at": "2026-09-16T21:31:13Z",
                     "created_by": "sandbox-automation",
@@ -35839,7 +36648,7 @@
             },
             "SandboxStatusV1": {
                 "type": "string",
-                "description": "Sandbox deployment status.",
+                "description": "Sandbox deployment status, always uppercase. This tracks provisioning and differs from the execution API state, whose values such as running are lowercase.",
                 "enum": [
                     "DEPLOYING",
                     "DEPLOYED",
@@ -35893,7 +36702,6 @@
                         },
                         "example": [
                             {
-                                "enabled": true,
                                 "lifecycle": {
                                     "expiration_policies": [
                                         {
@@ -35958,7 +36766,7 @@
                                         "value": "3000"
                                     }
                                 ],
-                                "image": "blaxel/base-image:latest",
+                                "image": "baseten/base-image:latest",
                                 "memory": 4096,
                                 "ports": [
                                     {
@@ -35967,7 +36775,6 @@
                                         "target": 3000
                                     }
                                 ],
-                                "display_name": "Baseten API review",
                                 "external_id": "api-review-20260916-001",
                                 "labels": {
                                     "env": "development",
@@ -35977,7 +36784,6 @@
                                 "name": "baseten-api-review-0916",
                                 "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                                 "status": "DEPLOYED",
-                                "state": "RUNNING",
                                 "created_at": "2026-09-16T21:26:58.545765901Z",
                                 "updated_at": "2026-09-16T21:31:13Z",
                                 "created_by": "sandbox-automation",
@@ -36007,7 +36813,6 @@
                 "example": {
                     "items": [
                         {
-                            "enabled": true,
                             "lifecycle": {
                                 "expiration_policies": [
                                     {
@@ -36072,7 +36877,7 @@
                                     "value": "3000"
                                 }
                             ],
-                            "image": "blaxel/base-image:latest",
+                            "image": "baseten/base-image:latest",
                             "memory": 4096,
                             "ports": [
                                 {
@@ -36081,7 +36886,6 @@
                                     "target": 3000
                                 }
                             ],
-                            "display_name": "Baseten API review",
                             "external_id": "api-review-20260916-001",
                             "labels": {
                                 "env": "development",
@@ -36091,7 +36895,6 @@
                             "name": "baseten-api-review-0916",
                             "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                             "status": "DEPLOYED",
-                            "state": "RUNNING",
                             "created_at": "2026-09-16T21:26:58.545765901Z",
                             "updated_at": "2026-09-16T21:31:13Z",
                             "created_by": "sandbox-automation",
@@ -36106,7 +36909,7 @@
                     }
                 }
             },
-            "ListImagesResponseV1": {
+            "ListSandboxImagesResponseV1": {
                 "type": "object",
                 "description": "One page of image repository summaries. Fetch tags through the separate tag listing endpoint.",
                 "properties": {
@@ -36114,7 +36917,7 @@
                         "type": "array",
                         "description": "Image repositories on this page.",
                         "items": {
-                            "$ref": "#/components/schemas/ImageV1"
+                            "$ref": "#/components/schemas/SandboxImageSummaryV1"
                         }
                     },
                     "pagination": {
@@ -36126,14 +36929,14 @@
                     "pagination"
                 ]
             },
-            "ListImageTagsResponseV1": {
+            "ListSandboxImageTagsResponseV1": {
                 "type": "object",
                 "description": "One page of image tags.",
                 "properties": {
                     "items": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/ImageTagV1"
+                            "$ref": "#/components/schemas/SandboxImageTagV1"
                         }
                     },
                     "pagination": {
@@ -36145,7 +36948,7 @@
                     "pagination"
                 ]
             },
-            "ImageStatusV1": {
+            "SandboxImageStatusV1": {
                 "type": "string",
                 "description": "Image processing status. Only BUILT images are ready to use.",
                 "enum": [
@@ -36157,7 +36960,7 @@
                 "readOnly": true,
                 "example": "BUILT"
             },
-            "ImageTagV1": {
+            "SandboxImageTagV1": {
                 "type": "object",
                 "description": "A tag identifying a version of a sandbox image.",
                 "properties": {
@@ -36199,25 +37002,20 @@
                     "size": 134217728
                 }
             },
-            "ImageV1": {
+            "SandboxImageSummaryV1": {
                 "type": "object",
-                "description": "Sandbox image repository. List and get operations return a summary without embedded tags.",
+                "description": "Sandbox image repository summary. Fetch tags through GET /sandboxes/images/{image_name}/tags.",
                 "properties": {
                     "name": {
                         "type": "string",
                         "description": "Stable repository name supplied when pushing the image.",
                         "example": "base-image"
                     },
-                    "display_name": {
-                        "type": "string",
-                        "description": "Human-readable image repository name.",
-                        "example": "b10/base-image"
-                    },
                     "status": {
                         "description": "Image processing status. Only BUILT images are ready to use.",
                         "allOf": [
                             {
-                                "$ref": "#/components/schemas/ImageStatusV1"
+                                "$ref": "#/components/schemas/SandboxImageStatusV1"
                             }
                         ],
                         "example": "BUILT"
@@ -36258,59 +37056,57 @@
                         "readOnly": true,
                         "description": "Number of image versions in the repository.",
                         "example": 2
-                    },
-                    "tags": {
-                        "type": "array",
-                        "description": "Empty for list and get summary responses. Use GET /sandboxes/images/{image_name}/tags to retrieve paginated image versions.",
-                        "items": {
-                            "$ref": "#/components/schemas/ImageTagV1"
-                        },
-                        "example": [
-                            {
-                                "name": "latest",
-                                "created_at": "2026-09-16T21:20:00Z",
-                                "updated_at": "2026-09-16T21:25:00Z",
-                                "size": 134217728
-                            },
-                            {
-                                "name": "20260915212000",
-                                "created_at": "2026-09-15T21:20:00Z",
-                                "updated_at": "2026-09-15T21:25:00Z",
-                                "size": 125829120
-                            }
-                        ]
                     }
                 },
                 "required": [
                     "name",
-                    "status",
-                    "tags"
+                    "status"
                 ],
                 "example": {
                     "name": "base-image",
-                    "display_name": "b10/base-image",
                     "status": "BUILT",
                     "created_at": "2026-09-15T21:20:00Z",
                     "updated_at": "2026-09-16T21:25:00Z",
                     "last_deployed_at": "2026-09-16T21:26:58.545765901Z",
                     "size": 260046848,
-                    "tags": [
-                        {
-                            "name": "latest",
-                            "created_at": "2026-09-16T21:20:00Z",
-                            "updated_at": "2026-09-16T21:25:00Z",
-                            "size": 134217728
-                        },
-                        {
-                            "name": "20260915212000",
-                            "created_at": "2026-09-15T21:20:00Z",
-                            "updated_at": "2026-09-15T21:25:00Z",
-                            "size": 125829120
-                        }
-                    ]
+                    "tag_count": 2
                 }
             },
-            "PushImageRequestV1": {
+            "SandboxImageV1": {
+                "description": "Sandbox image repository. Get operations return a summary with an empty tags array.",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/SandboxImageSummaryV1"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "tags": {
+                                "type": "array",
+                                "description": "Empty for get summary responses. Use GET /sandboxes/images/{image_name}/tags to retrieve paginated image versions.",
+                                "items": {
+                                    "$ref": "#/components/schemas/SandboxImageTagV1"
+                                },
+                                "example": []
+                            }
+                        },
+                        "required": [
+                            "tags"
+                        ]
+                    }
+                ],
+                "example": {
+                    "name": "base-image",
+                    "status": "BUILT",
+                    "created_at": "2026-09-15T21:20:00Z",
+                    "updated_at": "2026-09-16T21:25:00Z",
+                    "last_deployed_at": "2026-09-16T21:26:58.545765901Z",
+                    "size": 260046848,
+                    "tag_count": 2,
+                    "tags": []
+                }
+            },
+            "PushSandboxImageRequestV1": {
                 "type": "object",
                 "description": "Push a sandbox image from a source archive or an existing registry image.",
                 "properties": {
@@ -36322,7 +37118,7 @@
                     },
                     "image": {
                         "type": "string",
-                        "description": "Optional source registry image reference including a registry hostname. When omitted, the response provides an archive upload URL.",
+                        "description": "Optional source registry image reference including a registry hostname. When omitted, the response provides an archive upload URL. The uploaded ZIP archive must not exceed 5 GB.",
                         "example": "docker.io/b10/base-image:latest"
                     },
                     "docker_config": {
@@ -36341,7 +37137,7 @@
                     "docker_config": "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"YjEwLXJldmlldzpkZW1vLW5vdC1hLXZhbGlkLXJlZ2lzdHJ5LXRva2Vu\"}}}"
                 }
             },
-            "PushImageResponseV1": {
+            "PushSandboxImageResponseV1": {
                 "type": "object",
                 "description": "Accepted image push. Acceptance does not imply readiness; poll GET /sandboxes/images/{image_name} until status is BUILT or FAILED.",
                 "properties": {
@@ -36354,14 +37150,14 @@
                         "description": "Image processing status. Only BUILT images are ready to use.",
                         "allOf": [
                             {
-                                "$ref": "#/components/schemas/ImageStatusV1"
+                                "$ref": "#/components/schemas/SandboxImageStatusV1"
                             }
                         ],
                         "example": "BUILDING"
                     },
                     "upload_url": {
                         "type": "string",
-                        "description": "Temporary signed URL for uploading the source ZIP archive with HTTP PUT. Present only when no source image was supplied. Uploading starts asynchronous processing. This storage upload is separate from the API endpoints.",
+                        "description": "Temporary signed URL for uploading the source ZIP archive with HTTP PUT. Present only when no source image was supplied. The uploaded ZIP archive must not exceed 5 GB. Uploading starts asynchronous processing. This storage upload is separate from the API endpoints.",
                         "format": "uri",
                         "example": "https://uploads.b10.run/images/base-image/20260916212658/source.zip?expires=2026-09-16T22%3A26%3A58Z&signature=demo-not-a-valid-upload-signature"
                     },
@@ -36381,7 +37177,168 @@
                     "image": "b10/base-image:latest"
                 }
             },
-            "CleanupImagesResponseV1": {
+            "SandboxLibraryImageVolumeV1": {
+                "type": "object",
+                "description": "Volume attachment suggested by a built-in image.",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Volume name, or an internal identifier for ephemeral volumes.",
+                        "example": "scratch"
+                    },
+                    "mount_path": {
+                        "type": "string",
+                        "description": "Absolute filesystem path where the volume is mounted.",
+                        "example": "/mnt/data"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Volume type, persistent when empty.",
+                        "example": "ephemeral"
+                    },
+                    "size_mb": {
+                        "type": "integer",
+                        "description": "Storage capacity in megabytes for ephemeral volumes.",
+                        "example": 10240
+                    },
+                    "read_only": {
+                        "type": "boolean",
+                        "description": "Whether the volume is mounted read-only.",
+                        "example": false
+                    }
+                },
+                "required": [
+                    "name",
+                    "mount_path"
+                ]
+            },
+            "SandboxLibraryImageCreationOptionsV1": {
+                "type": "object",
+                "description": "Optional settings suggested when creating a sandbox from this image.",
+                "properties": {
+                    "extra_args": {
+                        "type": "object",
+                        "description": "Kernel selection arguments.",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "volumes": {
+                        "type": "array",
+                        "description": "Volume attachments.",
+                        "items": {
+                            "$ref": "#/components/schemas/SandboxLibraryImageVolumeV1"
+                        }
+                    }
+                }
+            },
+            "SandboxLibraryImageV1": {
+                "type": "object",
+                "description": "Built-in sandbox image usable directly as a sandbox image.",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Stable identifier of the built-in image.",
+                        "example": "base-image"
+                    },
+                    "display_name": {
+                        "type": "string",
+                        "description": "Human-readable name.",
+                        "example": "Base Image"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Short description.",
+                        "example": "A minimal sandbox environment with the sandbox execution API."
+                    },
+                    "long_description": {
+                        "type": "string",
+                        "description": "Detailed description."
+                    },
+                    "image": {
+                        "type": "string",
+                        "description": "Image reference including its tag, usable as the image of a sandbox.",
+                        "example": "baseten/base-image:latest"
+                    },
+                    "memory": {
+                        "type": "integer",
+                        "description": "Recommended memory allocation in megabytes.",
+                        "example": 4096
+                    },
+                    "ports": {
+                        "$ref": "#/components/schemas/SandboxPortsV1"
+                    },
+                    "categories": {
+                        "type": "array",
+                        "description": "Categories of the image.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tags": {
+                        "type": "array",
+                        "description": "Tags of the image.",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "Documentation URL."
+                    },
+                    "icon": {
+                        "type": "string",
+                        "description": "Icon URL."
+                    },
+                    "icon_light": {
+                        "type": "string",
+                        "description": "Light-mode icon URL."
+                    },
+                    "icon_dark": {
+                        "type": "string",
+                        "description": "Dark-mode icon URL."
+                    },
+                    "enterprise": {
+                        "type": "boolean",
+                        "description": "Whether the image requires an enterprise plan.",
+                        "example": false
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the image is hidden. Always false in listings.",
+                        "example": false
+                    },
+                    "coming_soon": {
+                        "type": "boolean",
+                        "description": "Whether the image is not yet available. Always false in listings.",
+                        "example": false
+                    },
+                    "creation_options": {
+                        "$ref": "#/components/schemas/SandboxLibraryImageCreationOptionsV1"
+                    }
+                },
+                "required": [
+                    "name",
+                    "image"
+                ]
+            },
+            "ListSandboxLibraryImagesResponseV1": {
+                "type": "object",
+                "description": "Built-in sandbox images.",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "description": "Built-in images.",
+                        "items": {
+                            "$ref": "#/components/schemas/SandboxLibraryImageV1"
+                        }
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            },
+            "CleanupSandboxImagesResponseV1": {
                 "type": "object",
                 "description": "Result of cleaning up unused sandbox images.",
                 "properties": {
@@ -36663,7 +37620,7 @@
                     "example": "baseten-api-review-0916"
                 }
             },
-            "ImageName": {
+            "SandboxImageName": {
                 "name": "image_name",
                 "in": "path",
                 "required": true,
@@ -36737,7 +37694,7 @@
                     "application/json": {
                         "example": {
                             "code": "UNAUTHORIZED",
-                            "message": "Provide a valid API key in the Authorization header.",
+                            "message": "Provide a valid authentication token in the Authorization header.",
                             "details": {
                                 "header": "Authorization"
                             }
@@ -36751,7 +37708,7 @@
                     "application/json": {
                         "example": {
                             "code": "FORBIDDEN",
-                            "message": "This API key does not have permission to perform this operation.",
+                            "message": "This authentication token does not grant permission to perform this operation.",
                             "details": {
                                 "request_id": "a3b7c4d2-91e6-4f08-9b5a-2c6d7e8f1043"
                             }
@@ -36819,10 +37776,11 @@
         "examples": {
             "CreateSandboxQuickstart": {
                 "summary": "Run code with the built-in image",
-                "description": "Create directly with the built-in image; no image discovery, build, or push is needed. Use the returned url to call the sandbox execution API with the same Bearer API key.",
+                "description": "Create directly with the built-in image; no image discovery, build, or push is needed. Use the returned url to call the sandbox execution API with your authentication token as a Bearer token, not your Baseten API key.",
                 "value": {
-                    "image": "blaxel/base-image:latest",
-                    "memory": 2048
+                    "image": "baseten/base-image:latest",
+                    "memory": 2048,
+                    "region": "us-was-1"
                 }
             },
             "CreateSandbox": {
@@ -36896,7 +37854,7 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
+                    "image": "baseten/base-image:latest",
                     "memory": 4096,
                     "ports": [
                         {
@@ -36905,7 +37863,6 @@
                             "target": 3000
                         }
                     ],
-                    "display_name": "Baseten API review",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -36918,7 +37875,6 @@
             "UpdateSandbox": {
                 "summary": "Update every mutable field",
                 "value": {
-                    "enabled": true,
                     "lifecycle": {
                         "expiration_policies": [
                             {
@@ -36939,7 +37895,6 @@
                         ],
                         "terminated_retention": "24h"
                     },
-                    "region": "us-pdx-1",
                     "envs": [
                         {
                             "name": "NODE_ENV",
@@ -36952,15 +37907,6 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
-                    "ports": [
-                        {
-                            "name": "http",
-                            "protocol": "HTTP",
-                            "target": 3000
-                        }
-                    ],
-                    "display_name": "Baseten API review - revised",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -36974,7 +37920,6 @@
             "SandboxReady": {
                 "summary": "Running sandbox with complete configuration",
                 "value": {
-                    "enabled": true,
                     "lifecycle": {
                         "expiration_policies": [
                             {
@@ -37039,7 +37984,7 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
+                    "image": "baseten/base-image:latest",
                     "memory": 4096,
                     "ports": [
                         {
@@ -37048,7 +37993,6 @@
                             "target": 3000
                         }
                     ],
-                    "display_name": "Baseten API review",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -37058,7 +38002,6 @@
                     "name": "baseten-api-review-0916",
                     "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                     "status": "DEPLOYED",
-                    "state": "RUNNING",
                     "created_at": "2026-09-16T21:26:58.545765901Z",
                     "updated_at": "2026-09-16T21:31:13Z",
                     "created_by": "sandbox-automation",
@@ -37071,7 +38014,6 @@
             "SandboxUpdated": {
                 "summary": "Updated sandbox with complete configuration",
                 "value": {
-                    "enabled": true,
                     "lifecycle": {
                         "expiration_policies": [
                             {
@@ -37136,7 +38078,7 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
+                    "image": "baseten/base-image:latest",
                     "memory": 4096,
                     "ports": [
                         {
@@ -37145,7 +38087,6 @@
                             "target": 3000
                         }
                     ],
-                    "display_name": "Baseten API review - revised",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -37156,7 +38097,6 @@
                     "name": "baseten-api-review-0916",
                     "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                     "status": "DEPLOYED",
-                    "state": "RUNNING",
                     "created_at": "2026-09-16T21:26:58.545765901Z",
                     "updated_at": "2026-09-16T21:36:13Z",
                     "created_by": "sandbox-automation",
@@ -37168,7 +38108,6 @@
             "SandboxDeleting": {
                 "summary": "Sandbox deletion accepted",
                 "value": {
-                    "enabled": true,
                     "lifecycle": {
                         "expiration_policies": [
                             {
@@ -37233,7 +38172,7 @@
                             "value": "3000"
                         }
                     ],
-                    "image": "blaxel/base-image:latest",
+                    "image": "baseten/base-image:latest",
                     "memory": 4096,
                     "ports": [
                         {
@@ -37242,7 +38181,6 @@
                             "target": 3000
                         }
                     ],
-                    "display_name": "Baseten API review",
                     "external_id": "api-review-20260916-001",
                     "labels": {
                         "env": "development",
@@ -37252,7 +38190,6 @@
                     "name": "baseten-api-review-0916",
                     "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                     "status": "DELETING",
-                    "state": "RUNNING",
                     "created_at": "2026-09-16T21:26:58.545765901Z",
                     "updated_at": "2026-09-16T21:41:13Z",
                     "created_by": "sandbox-automation",
@@ -37266,7 +38203,6 @@
                 "value": {
                     "items": [
                         {
-                            "enabled": true,
                             "lifecycle": {
                                 "expiration_policies": [
                                     {
@@ -37331,7 +38267,7 @@
                                     "value": "3000"
                                 }
                             ],
-                            "image": "blaxel/base-image:latest",
+                            "image": "baseten/base-image:latest",
                             "memory": 4096,
                             "ports": [
                                 {
@@ -37340,7 +38276,6 @@
                                     "target": 3000
                                 }
                             ],
-                            "display_name": "Baseten API review",
                             "external_id": "api-review-20260916-001",
                             "labels": {
                                 "env": "development",
@@ -37350,7 +38285,6 @@
                             "name": "baseten-api-review-0916",
                             "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                             "status": "DEPLOYED",
-                            "state": "RUNNING",
                             "created_at": "2026-09-16T21:26:58.545765901Z",
                             "updated_at": "2026-09-16T21:31:13Z",
                             "created_by": "sandbox-automation",
@@ -37371,7 +38305,6 @@
                 "value": {
                     "items": [
                         {
-                            "enabled": true,
                             "lifecycle": {
                                 "expiration_policies": [
                                     {
@@ -37436,7 +38369,7 @@
                                     "value": "3000"
                                 }
                             ],
-                            "image": "blaxel/base-image:latest",
+                            "image": "baseten/base-image:latest",
                             "memory": 4096,
                             "ports": [
                                 {
@@ -37445,7 +38378,6 @@
                                     "target": 3000
                                 }
                             ],
-                            "display_name": "Baseten API review",
                             "external_id": "api-review-20260916-001",
                             "labels": {
                                 "env": "development",
@@ -37455,7 +38387,6 @@
                             "name": "baseten-api-review-0916",
                             "url": "https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run",
                             "status": "DEPLOYED",
-                            "state": "RUNNING",
                             "created_at": "2026-09-16T21:26:58.545765901Z",
                             "updated_at": "2026-09-16T21:31:13Z",
                             "created_by": "sandbox-automation",
@@ -37473,7 +38404,6 @@
                 "summary": "Built image with all metadata and tags",
                 "value": {
                     "name": "base-image",
-                    "display_name": "b10/base-image",
                     "status": "BUILT",
                     "created_at": "2026-09-15T21:20:00Z",
                     "updated_at": "2026-09-16T21:25:00Z",
@@ -37500,7 +38430,6 @@
                 "summary": "Image after deleting its older tag",
                 "value": {
                     "name": "base-image",
-                    "display_name": "b10/base-image",
                     "status": "BUILT",
                     "created_at": "2026-09-15T21:20:00Z",
                     "updated_at": "2026-09-16T21:41:13Z",
@@ -37520,7 +38449,6 @@
                 "summary": "Image repository summary",
                 "value": {
                     "name": "base-image",
-                    "display_name": "b10/base-image",
                     "status": "BUILT",
                     "created_at": "2026-09-15T21:20:00Z",
                     "size": 260046848,
@@ -37534,14 +38462,12 @@
                     "items": [
                         {
                             "name": "base-image",
-                            "display_name": "b10/base-image",
                             "status": "BUILT",
                             "created_at": "2026-09-15T21:20:00Z",
                             "updated_at": "2026-09-16T21:25:00Z",
                             "last_deployed_at": "2026-09-16T21:26:58.545765901Z",
                             "size": 260046848,
-                            "tag_count": 2,
-                            "tags": []
+                            "tag_count": 2
                         }
                     ],
                     "pagination": {
@@ -37582,6 +38508,37 @@
                     "image": "b10/base-image:latest"
                 },
                 "description": "No upload_url is returned for registry imports."
+            },
+            "SandboxLibraryImages": {
+                "summary": "Built-in sandbox images",
+                "value": {
+                    "items": [
+                        {
+                            "name": "base-image",
+                            "display_name": "Base Image",
+                            "description": "A minimal sandbox environment with the sandbox execution API.",
+                            "long_description": "",
+                            "image": "baseten/base-image:latest",
+                            "memory": 4096,
+                            "ports": [
+                                {
+                                    "name": "sandbox-api",
+                                    "protocol": "HTTP",
+                                    "target": 8080
+                                }
+                            ],
+                            "categories": [],
+                            "tags": [],
+                            "url": "",
+                            "icon": "https://example.com/base-image.png",
+                            "icon_light": "https://example.com/base-image.png",
+                            "icon_dark": "https://example.com/base-image.png",
+                            "enterprise": false,
+                            "hidden": false,
+                            "coming_soon": false
+                        }
+                    ]
+                }
             },
             "CleanupImages": {
                 "summary": "Unused image versions removed",

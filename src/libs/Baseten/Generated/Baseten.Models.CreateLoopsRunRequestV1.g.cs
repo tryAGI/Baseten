@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    ///
+    /// Request to create a Loops run together with its paired sampler.
     /// </summary>
     public sealed partial class CreateLoopsRunRequestV1
     {
@@ -94,6 +94,13 @@ namespace Baseten
         public string? ReuseFromSessionId { get; set; }
 
         /// <summary>
+        /// Number of replicas the run's sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged. When the run ends, its sampler is scaled down.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sampler_num_replicas")]
+        public int? SamplerNumReplicas { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -148,6 +155,10 @@ namespace Baseten
         /// Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="samplerNumReplicas">
+        /// Number of replicas the run's sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged. When the run ends, its sampler is scaled down.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -163,7 +174,8 @@ namespace Baseten
             int? replicas,
             string? path,
             string? reuseFromRunId,
-            string? reuseFromSessionId)
+            string? reuseFromSessionId,
+            int? samplerNumReplicas)
         {
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
@@ -177,6 +189,7 @@ namespace Baseten
             this.Path = path;
             this.ReuseFromRunId = reuseFromRunId;
             this.ReuseFromSessionId = reuseFromSessionId;
+            this.SamplerNumReplicas = samplerNumReplicas;
         }
 
         /// <summary>

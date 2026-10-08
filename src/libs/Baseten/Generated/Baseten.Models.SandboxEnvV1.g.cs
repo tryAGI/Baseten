@@ -18,7 +18,8 @@ namespace Baseten
         public string? Name { get; set; }
 
         /// <summary>
-        /// Whether the value is a secret<br/>
+        /// Whether the value is a secret. Defaults to true; secret values are returned as "****". Set false explicitly to return the original value.<br/>
+        /// Default Value: true<br/>
         /// Example: false
         /// </summary>
         /// <example>false</example>
@@ -47,7 +48,8 @@ namespace Baseten
         /// Example: NODE_ENV
         /// </param>
         /// <param name="secret">
-        /// Whether the value is a secret<br/>
+        /// Whether the value is a secret. Defaults to true; secret values are returned as "****". Set false explicitly to return the original value.<br/>
+        /// Default Value: true<br/>
         /// Example: false
         /// </param>
         /// <param name="value">

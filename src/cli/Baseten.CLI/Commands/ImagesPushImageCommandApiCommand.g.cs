@@ -28,7 +28,7 @@ internal static partial class ImagesPushImageCommandApiCommand
     private static Option<string?> Image { get; } = new(
         name: @"--image")
     {
-        Description = @"Optional source registry image reference including a registry hostname. When omitted, the response provides an archive upload URL.",
+        Description = @"Optional source registry image reference including a registry hostname. When omitted, the response provides an archive upload URL. The uploaded ZIP archive must not exceed 5 GB.",
     };
 
     private static Option<string?> DockerConfig { get; } = new(
@@ -53,7 +53,7 @@ internal static partial class ImagesPushImageCommandApiCommand
           Hidden = true,
       };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.PushImageResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.PushSandboxImageResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -69,7 +69,7 @@ internal static partial class ImagesPushImageCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.PushImageResponseV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.PushSandboxImageResponseV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -78,7 +78,7 @@ internal static partial class ImagesPushImageCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"push-image", @"Push a sandbox image
-With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.");
+With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.");
                         command.Arguments.Add(NameOption);
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);
@@ -102,7 +102,7 @@ With image supplied, import the registry image asynchronously. Otherwise return 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.PushImageRequestV1>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.PushSandboxImageRequestV1>(
                             parseResult,
                             Input,
                             RequestJson,

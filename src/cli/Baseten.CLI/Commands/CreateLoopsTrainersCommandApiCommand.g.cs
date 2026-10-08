@@ -7,7 +7,7 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class CreateLoopsTrainersCommandApiCommand
 {
-    private static readonly CreateLoopsRunRequestV1OptionSet CreateLoopsRunRequestV1OptionSetOptions = CreateLoopsRunRequestV1OptionSet.Create();
+    private static readonly CreateLoopsTrainerRequestV1OptionSet CreateLoopsTrainerRequestV1OptionSetOptions = CreateLoopsTrainerRequestV1OptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -51,18 +51,18 @@ internal static partial class CreateLoopsTrainersCommandApiCommand
     {
         var command = new Command(commandName ?? @"create-loops-trainers", @"Creates a Loops trainer
 Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.");
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.SessionId);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.BaseModel);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.NameOption);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.MaxSeqLen);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.LoraRank);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Seed);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.AvailabilityModel);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Replicas);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Path);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.SessionId);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.BaseModel);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.NameOption);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.MaxSeqLen);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.LoraRank);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.Seed);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.ScaleDownDelaySeconds);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.AvailabilityModel);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.Replicas);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.Path);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromRunId);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromSessionId);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -81,24 +81,24 @@ Creates a trainer-only Loops run in the given session, without a sampler. To sam
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.CreateLoopsRunRequestV1>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Baseten.CreateLoopsTrainerRequestV1>(
                             parseResult,
                             Input,
                             RequestJson,
                             RequestFile,
                             global::Baseten.SourceGenerationContext.Default,
-                            cancellationToken).ConfigureAwait(false);                        var sessionId = parseResult.GetRequiredValue(CreateLoopsRunRequestV1OptionSetOptions.SessionId);
-                        var baseModel = parseResult.GetRequiredValue(CreateLoopsRunRequestV1OptionSetOptions.BaseModel);
-                        var name = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.NameOption) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
-                        var maxSeqLen = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.MaxSeqLen) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.MaxSeqLen) : (__requestBase is { } __MaxSeqLenBaseValue ? __MaxSeqLenBaseValue.MaxSeqLen : default);
-                        var loraRank = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.LoraRank) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.LoraRank) : (__requestBase is { } __LoraRankBaseValue ? __LoraRankBaseValue.LoraRank : default);
-                        var seed = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Seed) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Seed) : (__requestBase is { } __SeedBaseValue ? __SeedBaseValue.Seed : default);
-                        var scaleDownDelaySeconds = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ScaleDownDelaySeconds) : (__requestBase is { } __ScaleDownDelaySecondsBaseValue ? __ScaleDownDelaySecondsBaseValue.ScaleDownDelaySeconds : default);
-                        var availabilityModel = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.AvailabilityModel) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.AvailabilityModel) : (__requestBase is { } __AvailabilityModelBaseValue ? __AvailabilityModelBaseValue.AvailabilityModel : default);
-                        var replicas = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Replicas) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Replicas) : (__requestBase is { } __ReplicasBaseValue ? __ReplicasBaseValue.Replicas : default);
-                        var path = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Path) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Path) : (__requestBase is { } __PathBaseValue ? __PathBaseValue.Path : default);
-                        var reuseFromRunId = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId) : (__requestBase is { } __ReuseFromRunIdBaseValue ? __ReuseFromRunIdBaseValue.ReuseFromRunId : default);
-                        var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
+                            cancellationToken).ConfigureAwait(false);                        var sessionId = parseResult.GetRequiredValue(CreateLoopsTrainerRequestV1OptionSetOptions.SessionId);
+                        var baseModel = parseResult.GetRequiredValue(CreateLoopsTrainerRequestV1OptionSetOptions.BaseModel);
+                        var name = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.NameOption) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var maxSeqLen = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.MaxSeqLen) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.MaxSeqLen) : (__requestBase is { } __MaxSeqLenBaseValue ? __MaxSeqLenBaseValue.MaxSeqLen : default);
+                        var loraRank = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.LoraRank) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.LoraRank) : (__requestBase is { } __LoraRankBaseValue ? __LoraRankBaseValue.LoraRank : default);
+                        var seed = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.Seed) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.Seed) : (__requestBase is { } __SeedBaseValue ? __SeedBaseValue.Seed : default);
+                        var scaleDownDelaySeconds = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.ScaleDownDelaySeconds) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.ScaleDownDelaySeconds) : (__requestBase is { } __ScaleDownDelaySecondsBaseValue ? __ScaleDownDelaySecondsBaseValue.ScaleDownDelaySeconds : default);
+                        var availabilityModel = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.AvailabilityModel) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.AvailabilityModel) : (__requestBase is { } __AvailabilityModelBaseValue ? __AvailabilityModelBaseValue.AvailabilityModel : default);
+                        var replicas = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.Replicas) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.Replicas) : (__requestBase is { } __ReplicasBaseValue ? __ReplicasBaseValue.Replicas : default);
+                        var path = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.Path) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.Path) : (__requestBase is { } __PathBaseValue ? __PathBaseValue.Path : default);
+                        var reuseFromRunId = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromRunId) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromRunId) : (__requestBase is { } __ReuseFromRunIdBaseValue ? __ReuseFromRunIdBaseValue.ReuseFromRunId : default);
+                        var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromSessionId) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

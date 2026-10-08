@@ -15,10 +15,22 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Text.Json.JsonElement?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetSandboxConfigurationResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxRegionV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxRegionV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxRegionV1InfoGeneration), TypeInfoPropertyName = "SandboxRegionV1InfoGeneration2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLogsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxLogEntryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLogEntryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxMetricsPointV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricsPointV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLifecycleV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxExpirationPolicyV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxExpirationPolicyV1), TypeInfoPropertyName = "SandboxExpirationPolicyV12")]
@@ -48,13 +60,14 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxV1), TypeInfoPropertyName = "SandboxV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxV1Variant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxStatusV1), TypeInfoPropertyName = "SandboxStatusV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxV1Variant2State), TypeInfoPropertyName = "SandboxV1Variant2State2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxApiPaginationV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxRegionV1InfoGeneration?), TypeInfoPropertyName = "NullableSandboxRegionV1InfoGeneration2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxExpirationPolicyV1?), TypeInfoPropertyName = "NullableSandboxExpirationPolicyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxExpirationPolicyV1DiscriminatorType?), TypeInfoPropertyName = "NullableSandboxExpirationPolicyV1DiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLIdleExpirationPolicyV1Action?), TypeInfoPropertyName = "NullableSandboxTTLIdleExpirationPolicyV1Action2")]
@@ -66,8 +79,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxPortV1Protocol?), TypeInfoPropertyName = "NullableSandboxPortV1Protocol2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxV1?), TypeInfoPropertyName = "NullableSandboxV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxStatusV1?), TypeInfoPropertyName = "NullableSandboxStatusV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxV1Variant2State?), TypeInfoPropertyName = "NullableSandboxV1Variant2State2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxRegionV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxLogEntryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxMetricsPointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxExpirationPolicyV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxProxyTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxPortV1>))]
@@ -165,7 +180,11 @@ namespace Baseten
             public override bool CanConvert(global::System.Type typeToConvert)
             {
                 return
-                    typeToConvert == typeof(global::Baseten.SandboxExpirationPolicyV1DiscriminatorType)
+                    typeToConvert == typeof(global::Baseten.SandboxRegionV1InfoGeneration)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxRegionV1InfoGeneration?)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxExpirationPolicyV1DiscriminatorType)
 
                     || typeToConvert == typeof(global::Baseten.SandboxExpirationPolicyV1DiscriminatorType?)
 
@@ -197,10 +216,6 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.SandboxPortV1Protocol?)
 
-                    || typeToConvert == typeof(global::Baseten.SandboxV1Variant2State)
-
-                    || typeToConvert == typeof(global::Baseten.SandboxV1Variant2State?)
-
                     || typeToConvert == typeof(global::Baseten.SandboxStatusV1)
 
                     || typeToConvert == typeof(global::Baseten.SandboxStatusV1?);
@@ -210,6 +225,16 @@ namespace Baseten
                 global::System.Type typeToConvert,
                 global::System.Text.Json.JsonSerializerOptions options)
             {
+                if (typeToConvert == typeof(global::Baseten.SandboxRegionV1InfoGeneration))
+                {
+                    return new global::Baseten.JsonConverters.SandboxRegionV1InfoGenerationJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxRegionV1InfoGeneration?))
+                {
+                    return new global::Baseten.JsonConverters.SandboxRegionV1InfoGenerationNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Baseten.SandboxExpirationPolicyV1DiscriminatorType))
                 {
                     return new global::Baseten.JsonConverters.SandboxExpirationPolicyV1DiscriminatorTypeJsonConverter();
@@ -288,16 +313,6 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.SandboxPortV1Protocol?))
                 {
                     return new global::Baseten.JsonConverters.SandboxPortV1ProtocolNullableJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.SandboxV1Variant2State))
-                {
-                    return new global::Baseten.JsonConverters.SandboxV1Variant2StateJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.SandboxV1Variant2State?))
-                {
-                    return new global::Baseten.JsonConverters.SandboxV1Variant2StateNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.SandboxStatusV1))

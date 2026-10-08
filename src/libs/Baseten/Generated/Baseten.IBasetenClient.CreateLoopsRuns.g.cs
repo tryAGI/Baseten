@@ -25,7 +25,8 @@ namespace Baseten
         ///   "availability_model": "spot",<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
-        ///   "reuse_from_session_id": null<br/>
+        ///   "reuse_from_session_id": null,<br/>
+        ///   "sampler_num_replicas": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsRunsAsync(
@@ -54,7 +55,8 @@ namespace Baseten
         ///   "availability_model": "spot",<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
-        ///   "reuse_from_session_id": null<br/>
+        ///   "reuse_from_session_id": null,<br/>
+        ///   "sampler_num_replicas": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsRunsAsResponseAsync(
@@ -112,6 +114,10 @@ namespace Baseten
         /// Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="samplerNumReplicas">
+        /// Number of replicas the run's sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged. When the run ends, its sampler is scaled down.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -128,6 +134,7 @@ namespace Baseten
             string? path = default,
             string? reuseFromRunId = default,
             string? reuseFromSessionId = default,
+            int? samplerNumReplicas = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

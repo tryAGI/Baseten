@@ -55,7 +55,7 @@ internal static partial class ImagesListImageTagsCommandApiCommand
         Description = @"Exact tag name. Cannot be combined with q. Forces ascending name order.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.ListImageTagsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.ListSandboxImageTagsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -71,7 +71,7 @@ internal static partial class ImagesListImageTagsCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.ListImageTagsResponseV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.ListSandboxImageTagsResponseV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

@@ -31,7 +31,7 @@ internal static partial class ImagesDeleteImageTagCommandApiCommand
         Description = @"Optional team ID. Must match the team_id query parameter when both are supplied. If neither selector is supplied, defaults to the caller's only accessible team. Callers with multiple accessible teams must select a team. Requests without access to any team are forbidden.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.ImageV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.SandboxImageV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -47,7 +47,7 @@ internal static partial class ImagesDeleteImageTagCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.ImageV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.SandboxImageV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -81,20 +81,12 @@ Delete a specific image version. Reject deletion if the version is referenced by
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
-                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
-                                        parseResult,
-                                        response,
-                                        global::Baseten.SourceGenerationContext.Default,
-                                        @"Tags",
-                                        cancellationToken).ConfigureAwait(false))
-                                {
                                 await CliRuntime.WriteResponseAsync(
                                     parseResult,
                                     response,
                                     global::Baseten.SourceGenerationContext.Default,
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
-                                }
             }, cancellationToken).ConfigureAwait(false));
         CustomizeCommand(ref command);
         return command;
