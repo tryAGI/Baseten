@@ -5,8 +5,14 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class EditRoutesSettingsUsersByUserIdCommandApiCommand
+internal static partial class EditRoutesSettingsTeamsByTeamIdUsersByUserIdCommandApiCommand
 {
+    private static Argument<string> TeamId { get; } = new(
+        name: @"team-id")
+    {
+        Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
+    };
+
     private static Argument<string> UserId { get; } = new(
         name: @"user-id")
     {
@@ -30,7 +36,7 @@ internal static partial class EditRoutesSettingsUsersByUserIdCommandApiCommand
           Hidden = true,
       };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteUserSettingsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteTeamUserSettingsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -46,7 +52,7 @@ internal static partial class EditRoutesSettingsUsersByUserIdCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RouteUserSettingsV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RouteTeamUserSettingsV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -54,8 +60,9 @@ internal static partial class EditRoutesSettingsUsersByUserIdCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"edit-routes-settings-users-by-user-id", @"Updates a user's route settings
-Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has Code spend in this month, else in their only team; the request fails when there is none.");
+        var command = new Command(commandName ?? @"edit-routes-settings-teams-by-team-id-users-by-user-id", @"Updates a user's route settings in a team
+Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.");
+                        command.Arguments.Add(TeamId);
                         command.Arguments.Add(UserId);                        command.Options.Add(SpendLimitOptions.UserMonthlyLimitUsd);
                         command.Options.Add(SpendLimitOptions.MonthOverrideUsd);
           command.Options.Add(Input);
@@ -83,6 +90,7 @@ Changes only the fields in the request. Once the user's metered spend in a team 
                             RequestFile,
                             global::Baseten.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
+                        var teamId = parseResult.GetRequiredValue(TeamId);
                         var userId = parseResult.GetRequiredValue(UserId);
 
                         var __SpendLimitBase = __requestBase is { } __SpendLimitBaseValue ? __SpendLimitBaseValue.SpendLimit : default;                        var spendLimitUserMonthlyLimitUsd = CliRuntime.WasSpecified(parseResult, SpendLimitOptions.UserMonthlyLimitUsd) ? parseResult.GetValue(SpendLimitOptions.UserMonthlyLimitUsd) : (__SpendLimitBase is { } __SpendLimituserMonthlyLimitUsdBaseValue ? __SpendLimituserMonthlyLimitUsdBaseValue.UserMonthlyLimitUsd : default);
@@ -100,7 +108,8 @@ Changes only the fields in the request. Once the user's metered spend in a team 
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.EditRoutesSettingsUsersByUserIdAsync(
+                                var response = await client.EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync(
+                                    teamId: teamId,
                                     userId: userId,
                                     spendLimit: spendLimit,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

@@ -7,7 +7,7 @@ namespace Baseten
     {
 
 
-        private static readonly global::Baseten.EndPointSecurityRequirement s_GetRoutesSettingsUsersByUserIdSecurityRequirement0 =
+        private static readonly global::Baseten.EndPointSecurityRequirement s_EditRoutesSettingsTeamsByTeamIdUsersByUserIdSecurityRequirement0 =
             new global::Baseten.EndPointSecurityRequirement
             {
                 Authorizations = new global::Baseten.EndPointAuthorizationRequirement[]
@@ -21,53 +21,61 @@ namespace Baseten
                     },
                 },
             };
-        private static readonly global::Baseten.EndPointSecurityRequirement[] s_GetRoutesSettingsUsersByUserIdSecurityRequirements =
+        private static readonly global::Baseten.EndPointSecurityRequirement[] s_EditRoutesSettingsTeamsByTeamIdUsersByUserIdSecurityRequirements =
             new global::Baseten.EndPointSecurityRequirement[]
-            {                s_GetRoutesSettingsUsersByUserIdSecurityRequirement0,
+            {                s_EditRoutesSettingsTeamsByTeamIdUsersByUserIdSecurityRequirement0,
             };
-        partial void PrepareGetRoutesSettingsUsersByUserIdArguments(
+        partial void PrepareEditRoutesSettingsTeamsByTeamIdUsersByUserIdArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? teamId,
-            ref string userId);
-        partial void PrepareGetRoutesSettingsUsersByUserIdRequest(
+            ref string teamId,
+            ref string userId,
+            global::Baseten.UpdateRouteUserSettingsRequestV1 request);
+        partial void PrepareEditRoutesSettingsTeamsByTeamIdUsersByUserIdRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? teamId,
-            string userId);
-        partial void ProcessGetRoutesSettingsUsersByUserIdResponse(
+            string teamId,
+            string userId,
+            global::Baseten.UpdateRouteUserSettingsRequestV1 request);
+        partial void ProcessEditRoutesSettingsTeamsByTeamIdUsersByUserIdResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetRoutesSettingsUsersByUserIdResponseContent(
+        partial void ProcessEditRoutesSettingsTeamsByTeamIdUsersByUserIdResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Gets a user's route settings<br/>
-        /// Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month: the limit set on the user, their team's per-member limit, and the effective limit for this user. The user limit always overrides the team's per-member limit. The limits are read in `team_id` when given, else in the only team the user has Code spend in this month, else in their only team; they are null when there is none.
+        /// Updates a user's route settings in a team<br/>
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
         /// </summary>
-        /// <param name="teamId">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
+        /// <param name="teamId"></param>
         /// <param name="userId"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/routes/settings/users/{user_id} \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// curl --request PATCH \<br/>
+        /// --url https://api.baseten.co/v1/routes/settings/teams/{team_id}/users/{user_id} \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "spend_limit": null<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.RouteUserSettingsV1> GetRoutesSettingsUsersByUserIdAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.RouteTeamUserSettingsV1> EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync(
+            string teamId,
             string userId,
-            string? teamId = default,
+
+            global::Baseten.UpdateRouteUserSettingsRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetRoutesSettingsUsersByUserIdAsResponseAsync(
-                userId: userId,
+            var __response = await EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsResponseAsync(
                 teamId: teamId,
+                userId: userId,
+
+                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -75,39 +83,46 @@ namespace Baseten
             return __response.Body;
         }
         /// <summary>
-        /// Gets a user's route settings<br/>
-        /// Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month: the limit set on the user, their team's per-member limit, and the effective limit for this user. The user limit always overrides the team's per-member limit. The limits are read in `team_id` when given, else in the only team the user has Code spend in this month, else in their only team; they are null when there is none.
+        /// Updates a user's route settings in a team<br/>
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
         /// </summary>
-        /// <param name="teamId">
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
+        /// <param name="teamId"></param>
         /// <param name="userId"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
-        /// curl --request GET \<br/>
-        /// --url https://api.baseten.co/v1/routes/settings/users/{user_id} \<br/>
-        /// --header "Authorization: Bearer $BASETEN_API_KEY"
+        /// curl --request PATCH \<br/>
+        /// --url https://api.baseten.co/v1/routes/settings/teams/{team_id}/users/{user_id} \<br/>
+        /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
+        /// --data '{<br/>
+        ///   "spend_limit": null<br/>
+        /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteUserSettingsV1>> GetRoutesSettingsUsersByUserIdAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteTeamUserSettingsV1>> EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsResponseAsync(
+            string teamId,
             string userId,
-            string? teamId = default,
+
+            global::Baseten.UpdateRouteUserSettingsRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetRoutesSettingsUsersByUserIdArguments(
+            PrepareEditRoutesSettingsTeamsByTeamIdUsersByUserIdArguments(
                 httpClient: HttpClient,
                 teamId: ref teamId,
-                userId: ref userId);
+                userId: ref userId,
+                request: request);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetRoutesSettingsUsersByUserIdSecurityRequirements,
-                operationName: "GetRoutesSettingsUsersByUserIdAsync");
+                securityRequirements: s_EditRoutesSettingsTeamsByTeamIdUsersByUserIdSecurityRequirements,
+                operationName: "EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync");
 
             using var __timeoutCancellationTokenSource = global::Baseten.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -127,18 +142,15 @@ namespace Baseten
             {
 
                             var __pathBuilder = new global::Baseten.PathBuilder(
-                                path: $"/v1/routes/settings/users/{userId}",
+                                path: $"/v1/routes/settings/teams/{teamId}/users/{userId}",
                                 baseUri: HttpClient.BaseAddress);
-                            __pathBuilder
-                                .AddOptionalParameter("team_id", teamId)
-                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Get,
+                    method: new global::System.Net.Http.HttpMethod("PATCH"),
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -161,6 +173,12 @@ namespace Baseten
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Baseten.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -169,11 +187,12 @@ namespace Baseten
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetRoutesSettingsUsersByUserIdRequest(
+                PrepareEditRoutesSettingsTeamsByTeamIdUsersByUserIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     teamId: teamId,
-                    userId: userId);
+                    userId: userId,
+                    request: request);
 
                 return __httpRequest;
             }
@@ -190,10 +209,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutesSettingsUsersByUserId",
-                                methodName: "GetRoutesSettingsUsersByUserIdAsync",
-                                pathTemplate: "$\"/v1/routes/settings/users/{userId}\"",
-                                httpMethod: "GET",
+                                operationId: "editRoutesSettingsTeamsByTeamIdUsersByUserId",
+                                methodName: "EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync",
+                                pathTemplate: "$\"/v1/routes/settings/teams/{teamId}/users/{userId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
@@ -224,10 +243,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutesSettingsUsersByUserId",
-                                methodName: "GetRoutesSettingsUsersByUserIdAsync",
-                                pathTemplate: "$\"/v1/routes/settings/users/{userId}\"",
-                                httpMethod: "GET",
+                                operationId: "editRoutesSettingsTeamsByTeamIdUsersByUserId",
+                                methodName: "EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync",
+                                pathTemplate: "$\"/v1/routes/settings/teams/{teamId}/users/{userId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
@@ -265,10 +284,10 @@ namespace Baseten
                         await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutesSettingsUsersByUserId",
-                                methodName: "GetRoutesSettingsUsersByUserIdAsync",
-                                pathTemplate: "$\"/v1/routes/settings/users/{userId}\"",
-                                httpMethod: "GET",
+                                operationId: "editRoutesSettingsTeamsByTeamIdUsersByUserId",
+                                methodName: "EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync",
+                                pathTemplate: "$\"/v1/routes/settings/teams/{teamId}/users/{userId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -305,7 +324,7 @@ namespace Baseten
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetRoutesSettingsUsersByUserIdResponse(
+                ProcessEditRoutesSettingsTeamsByTeamIdUsersByUserIdResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -313,10 +332,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutesSettingsUsersByUserId",
-                                methodName: "GetRoutesSettingsUsersByUserIdAsync",
-                                pathTemplate: "$\"/v1/routes/settings/users/{userId}\"",
-                                httpMethod: "GET",
+                                operationId: "editRoutesSettingsTeamsByTeamIdUsersByUserId",
+                                methodName: "EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync",
+                                pathTemplate: "$\"/v1/routes/settings/teams/{teamId}/users/{userId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -335,10 +354,10 @@ namespace Baseten
                     await global::Baseten.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Baseten.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "getRoutesSettingsUsersByUserId",
-                                methodName: "GetRoutesSettingsUsersByUserIdAsync",
-                                pathTemplate: "$\"/v1/routes/settings/users/{userId}\"",
-                                httpMethod: "GET",
+                                operationId: "editRoutesSettingsTeamsByTeamIdUsersByUserId",
+                                methodName: "EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync",
+                                pathTemplate: "$\"/v1/routes/settings/teams/{teamId}/users/{userId}\"",
+                                httpMethod: "PATCH",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -365,7 +384,7 @@ namespace Baseten
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetRoutesSettingsUsersByUserIdResponseContent(
+                                ProcessEditRoutesSettingsTeamsByTeamIdUsersByUserIdResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -374,9 +393,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.RouteUserSettingsV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.RouteTeamUserSettingsV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteUserSettingsV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteTeamUserSettingsV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -406,9 +425,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.RouteUserSettingsV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.RouteTeamUserSettingsV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteUserSettingsV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteTeamUserSettingsV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -447,6 +466,38 @@ namespace Baseten
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Updates a user's route settings in a team<br/>
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
+        /// </summary>
+        /// <param name="teamId"></param>
+        /// <param name="userId"></param>
+        /// <param name="spendLimit">
+        /// Spend limit fields to change. Pass null to remove the user's limit; omit to leave it unchanged.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Baseten.RouteTeamUserSettingsV1> EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync(
+            string teamId,
+            string userId,
+            global::Baseten.UpdateRouteSpendLimitSettingV1? spendLimit = default,
+            global::Baseten.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Baseten.UpdateRouteUserSettingsRequestV1
+            {
+                SpendLimit = spendLimit,
+            };
+
+            return await EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync(
+                teamId: teamId,
+                userId: userId,
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

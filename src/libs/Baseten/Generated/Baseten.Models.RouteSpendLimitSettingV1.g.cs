@@ -9,13 +9,19 @@ namespace Baseten
     public sealed partial class RouteSpendLimitSettingV1
     {
         /// <summary>
-        /// Standing spend limit in USD for each UTC calendar month set on the user. Null when the user has no limit of their own.
+        /// Standing spend limit in USD for each UTC calendar month set on the user in the team. Null when the user has no limit of their own there.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user_monthly_limit_usd")]
         public string? UserMonthlyLimitUsd { get; set; }
 
         /// <summary>
-        /// Per-member limit of the team the user's active Code key belongs to. This limit applies when the user has no limit of their own. Null when there is none.
+        /// Spend limit in USD for the current UTC calendar month set on the user in the team, which supersedes their standing limit. Null when there is none.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("month_override_usd")]
+        public string? MonthOverrideUsd { get; set; }
+
+        /// <summary>
+        /// Per-member limit of the team. This limit applies when the user has no limit of their own. Null when there is none.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("team_default")]
         public global::Baseten.RouteSpendLimitTeamDefaultV1? TeamDefault { get; set; }
@@ -40,10 +46,13 @@ namespace Baseten
         /// The effective limit enforced for the current month.
         /// </param>
         /// <param name="userMonthlyLimitUsd">
-        /// Standing spend limit in USD for each UTC calendar month set on the user. Null when the user has no limit of their own.
+        /// Standing spend limit in USD for each UTC calendar month set on the user in the team. Null when the user has no limit of their own there.
+        /// </param>
+        /// <param name="monthOverrideUsd">
+        /// Spend limit in USD for the current UTC calendar month set on the user in the team, which supersedes their standing limit. Null when there is none.
         /// </param>
         /// <param name="teamDefault">
-        /// Per-member limit of the team the user's active Code key belongs to. This limit applies when the user has no limit of their own. Null when there is none.
+        /// Per-member limit of the team. This limit applies when the user has no limit of their own. Null when there is none.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -51,9 +60,11 @@ namespace Baseten
         public RouteSpendLimitSettingV1(
             global::Baseten.RouteEffectiveSpendLimitV1 effective,
             string? userMonthlyLimitUsd,
+            string? monthOverrideUsd,
             global::Baseten.RouteSpendLimitTeamDefaultV1? teamDefault)
         {
             this.UserMonthlyLimitUsd = userMonthlyLimitUsd;
+            this.MonthOverrideUsd = monthOverrideUsd;
             this.TeamDefault = teamDefault;
             this.Effective = effective ?? throw new global::System.ArgumentNullException(nameof(effective));
         }

@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Updates a user's route settings<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in a month reaches the spend limit, requests with Routes keys they created are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit.
+        /// Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has Code spend in this month, else in their only team; the request fails when there is none.
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="request"></param>
@@ -79,7 +79,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates a user's route settings<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in a month reaches the spend limit, requests with Routes keys they created are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit.
+        /// Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has Code spend in this month, else in their only team; the request fails when there is none.
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="request"></param>
@@ -460,7 +460,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates a user's route settings<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in a month reaches the spend limit, requests with Routes keys they created are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit.
+        /// Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has Code spend in this month, else in their only team; the request fails when there is none.
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="spendLimit">
