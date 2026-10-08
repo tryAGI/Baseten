@@ -5,21 +5,15 @@ using System.CommandLine;
 
 namespace Baseten.CLI.Commands;
 
-internal static partial class GetRoutesSettingsUsersByUserIdCommandApiCommand
+internal static partial class GetRoutesSettingsTeamsByTeamIdUsersCommandApiCommand
 {
-    private static Argument<string> UserId { get; } = new(
-        name: @"user-id")
+    private static Argument<string> TeamId { get; } = new(
+        name: @"team-id")
     {
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
-    private static Option<string?> TeamId { get; } = new(
-        name: @"--team-id")
-    {
-        Description = @"ID of the team to read the user's spend limit in. Defaults to the only team the user has Code spend in this month, else their only team.",
-    };
-
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteUserSettingsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteTeamUserSettingsListV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -35,7 +29,7 @@ internal static partial class GetRoutesSettingsUsersByUserIdCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RouteUserSettingsV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.RouteTeamUserSettingsListV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -43,32 +37,37 @@ internal static partial class GetRoutesSettingsUsersByUserIdCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"get-routes-settings-users-by-user-id", @"Gets a user's route settings
-Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month: the limit set on the user, their team's per-member limit, and the effective limit for this user. The user limit always overrides the team's per-member limit. The limits are read in `team_id` when given, else in the only team the user has Code spend in this month, else in their only team; they are null when there is none.");
-                        command.Arguments.Add(UserId);
-                        command.Options.Add(TeamId);
+        var command = new Command(commandName ?? @"get-routes-settings-teams-by-team-id-users", @"Lists users' route settings in a team
+Returns the settings in the team of each user with a role in the team and of anyone with Code spend in the team this month. Requires organization admin.");
+                        command.Arguments.Add(TeamId);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var userId = parseResult.GetRequiredValue(UserId);
-                        var teamId = parseResult.GetValue(TeamId);
+                        var teamId = parseResult.GetRequiredValue(TeamId);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.GetRoutesSettingsUsersByUserIdAsync(
-                                    userId: userId,
+                                var response = await client.GetRoutesSettingsTeamsByTeamIdUsersAsync(
                                     teamId: teamId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
+                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
+                                        parseResult,
+                                        response,
+                                        global::Baseten.SourceGenerationContext.Default,
+                                        @"Users",
+                                        cancellationToken).ConfigureAwait(false))
+                                {
                                 await CliRuntime.WriteResponseAsync(
                                     parseResult,
                                     response,
                                     global::Baseten.SourceGenerationContext.Default,
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
+                                }
             }, cancellationToken).ConfigureAwait(false));
         CustomizeCommand(ref command);
         return command;

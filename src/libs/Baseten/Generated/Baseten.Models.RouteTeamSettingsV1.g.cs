@@ -23,7 +23,7 @@ namespace Baseten
         public required global::Baseten.RouteHarnessDefaultsV1 HarnessDefaults { get; set; }
 
         /// <summary>
-        /// Spend limits for Baseten Code for members whose active Code key belongs to this team.
+        /// Spend limits for Baseten Code for members' spend in this team.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("spend_limit")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -45,7 +45,7 @@ namespace Baseten
         /// Route for each model role of each coding harness. A role with no route set by a team admin uses the default chosen from the team's Model API routes: the recommended model for `primary` and the lowest-priced model for `background`. These defaults never use external-provider routes.
         /// </param>
         /// <param name="spendLimit">
-        /// Spend limits for Baseten Code for members whose active Code key belongs to this team.
+        /// Spend limits for Baseten Code for members' spend in this team.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

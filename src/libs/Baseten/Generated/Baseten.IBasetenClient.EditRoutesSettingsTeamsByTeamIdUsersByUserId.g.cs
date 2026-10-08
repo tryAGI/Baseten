@@ -5,9 +5,10 @@ namespace Baseten
     public partial interface IBasetenClient
     {
         /// <summary>
-        /// Updates a user's route settings<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has Code spend in this month, else in their only team; the request fails when there is none.
+        /// Updates a user's route settings in a team<br/>
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
         /// </summary>
+        /// <param name="teamId"></param>
         /// <param name="userId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -15,22 +16,24 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/routes/settings/users/{user_id} \<br/>
+        /// --url https://api.baseten.co/v1/routes/settings/teams/{team_id}/users/{user_id} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "spend_limit": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.RouteUserSettingsV1> EditRoutesSettingsUsersByUserIdAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.RouteTeamUserSettingsV1> EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync(
+            string teamId,
             string userId,
 
             global::Baseten.UpdateRouteUserSettingsRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Updates a user's route settings<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has Code spend in this month, else in their only team; the request fails when there is none.
+        /// Updates a user's route settings in a team<br/>
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
         /// </summary>
+        /// <param name="teamId"></param>
         /// <param name="userId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -38,22 +41,24 @@ namespace Baseten
         /// <exception cref="global::Baseten.ApiException"></exception>
         /// <remarks>
         /// curl --request PATCH \<br/>
-        /// --url https://api.baseten.co/v1/routes/settings/users/{user_id} \<br/>
+        /// --url https://api.baseten.co/v1/routes/settings/teams/{team_id}/users/{user_id} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "spend_limit": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteUserSettingsV1>> EditRoutesSettingsUsersByUserIdAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RouteTeamUserSettingsV1>> EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsResponseAsync(
+            string teamId,
             string userId,
 
             global::Baseten.UpdateRouteUserSettingsRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Updates a user's route settings<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has Code spend in this month, else in their only team; the request fails when there is none.
+        /// Updates a user's route settings in a team<br/>
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
         /// </summary>
+        /// <param name="teamId"></param>
         /// <param name="userId"></param>
         /// <param name="spendLimit">
         /// Spend limit fields to change. Pass null to remove the user's limit; omit to leave it unchanged.<br/>
@@ -62,7 +67,8 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.RouteUserSettingsV1> EditRoutesSettingsUsersByUserIdAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.RouteTeamUserSettingsV1> EditRoutesSettingsTeamsByTeamIdUsersByUserIdAsync(
+            string teamId,
             string userId,
             global::Baseten.UpdateRouteSpendLimitSettingV1? spendLimit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

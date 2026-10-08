@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class RouteSpendLimitTeamDefaultV1
     {
         /// <summary>
-        /// ID of the team the user's active Code key belongs to.
+        /// ID of the team whose per-member limit this is.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,7 +32,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="RouteSpendLimitTeamDefaultV1" /> class.
         /// </summary>
         /// <param name="teamId">
-        /// ID of the team the user's active Code key belongs to.
+        /// ID of the team whose per-member limit this is.
         /// </param>
         /// <param name="perMemberMonthlyLimitUsd">
         /// The team's per-member spend limit in USD for each UTC calendar month.
