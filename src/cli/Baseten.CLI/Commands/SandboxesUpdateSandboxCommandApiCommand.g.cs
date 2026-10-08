@@ -25,38 +25,10 @@ internal static partial class SandboxesUpdateSandboxCommandApiCommand
         Description = @"Optional team ID. Must match the team_id query parameter when both are supplied. If neither selector is supplied, defaults to the caller's only accessible team. Callers with multiple accessible teams must select a team. Requests without access to any team are forbidden.",
     };
 
-    private static Option<bool?> Enabled { get; } = CliRuntime.CreateNullableBoolOption(
-        name: @"--enabled",
-        description: @"When false, the sandbox is disabled and will not accept connections");
-
-    private static Option<string?> Region { get; } = new(
-        name: @"--region")
-    {
-        Description = @"Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the closest region is selected.",
-    };
-
     private static Option<global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>?> Envs { get; } = new(
         name: @"--envs")
     {
         Description = @"Environment variables injected into the sandbox.",
-    };
-
-    private static Option<string?> Image { get; } = new(
-        name: @"--image")
-    {
-        Description = @"Image reference including its tag. Use blaxel/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.",
-    };
-
-    private static Option<global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>?> Ports { get; } = new(
-        name: @"--ports")
-    {
-        Description = @"Set of ports for a resource",
-    };
-
-    private static Option<string?> DisplayName { get; } = new(
-        name: @"--display-name")
-    {
-        Description = @"Human-readable name for display in the UI. Can contain spaces and special characters, max 63 characters.",
     };
 
     private static Option<string?> ExternalId { get; } = new(
@@ -113,16 +85,11 @@ internal static partial class SandboxesUpdateSandboxCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"update-sandbox", @"Update a sandbox
-Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. Changes to image may reset running state. The name, memory, and network configuration are immutable after creation. Supplying memory or network returns 400, including unchanged, empty, or null values.");
+Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, and ports are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.");
                         command.Arguments.Add(SandboxName);
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);
-                        command.Options.Add(Enabled);
-                        command.Options.Add(Region);
                         command.Options.Add(Envs);
-                        command.Options.Add(Image);
-                        command.Options.Add(Ports);
-                        command.Options.Add(DisplayName);
                         command.Options.Add(ExternalId);
                         command.Options.Add(Labels);                        command.Options.Add(LifecycleOptions.TerminatedRetention);
           command.Options.Add(Input);
@@ -153,12 +120,7 @@ Partially update configuration. Omitted fields remain unchanged; supplied arrays
                         var sandboxName = parseResult.GetRequiredValue(SandboxName);
                         var teamId = parseResult.GetValue(TeamId);
                         var xTeamId = parseResult.GetValue(XTeamId);
-                        var enabled = CliRuntime.WasSpecified(parseResult, Enabled) ? parseResult.GetValue(Enabled) : (__requestBase is { } __EnabledBaseValue ? __EnabledBaseValue.Enabled : default);
-                        var region = CliRuntime.WasSpecified(parseResult, Region) ? parseResult.GetValue(Region) : (__requestBase is { } __RegionBaseValue ? __RegionBaseValue.Region : default);
                         var envs = CliRuntime.WasSpecified(parseResult, Envs) ? parseResult.GetValue(Envs) : (__requestBase is { } __EnvsBaseValue ? __EnvsBaseValue.Envs : default);
-                        var image = CliRuntime.WasSpecified(parseResult, Image) ? parseResult.GetValue(Image) : (__requestBase is { } __ImageBaseValue ? __ImageBaseValue.Image : default);
-                        var ports = CliRuntime.WasSpecified(parseResult, Ports) ? parseResult.GetValue(Ports) : (__requestBase is { } __PortsBaseValue ? __PortsBaseValue.Ports : default);
-                        var displayName = CliRuntime.WasSpecified(parseResult, DisplayName) ? parseResult.GetValue(DisplayName) : (__requestBase is { } __DisplayNameBaseValue ? __DisplayNameBaseValue.DisplayName : default);
                         var externalId = CliRuntime.WasSpecified(parseResult, ExternalId) ? parseResult.GetValue(ExternalId) : (__requestBase is { } __ExternalIdBaseValue ? __ExternalIdBaseValue.ExternalId : default);
                         var labels = CliRuntime.WasSpecified(parseResult, Labels) ? parseResult.GetValue(Labels) : (__requestBase is { } __LabelsBaseValue ? __LabelsBaseValue.Labels : default);
 
@@ -179,12 +141,7 @@ Partially update configuration. Omitted fields remain unchanged; supplied arrays
                                     sandboxName: sandboxName,
                                     teamId: teamId,
                                     xTeamId: xTeamId,
-                                    enabled: enabled,
-                                    region: region,
                                     envs: envs,
-                                    image: image,
-                                    ports: ports,
-                                    displayName: displayName,
                                     externalId: externalId,
                                     labels: labels,
                                     lifecycle: lifecycle,

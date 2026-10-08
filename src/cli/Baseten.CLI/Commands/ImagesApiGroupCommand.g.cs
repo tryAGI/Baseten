@@ -15,8 +15,10 @@ internal static partial class ImagesApiGroupCommand
                          command.Subcommands.Add(ImagesDeleteImageCommandApiCommand.Create());
                          command.Subcommands.Add(ImagesDeleteImageTagCommandApiCommand.Create());
                          command.Subcommands.Add(ImagesGetImageCommandApiCommand.Create());
+                         command.Subcommands.Add(ImagesGetImageBuildLogsCommandApiCommand.Create());
                          command.Subcommands.Add(ImagesListImageTagsCommandApiCommand.Create());
                          command.Subcommands.Add(ImagesListImagesCommandApiCommand.Create());
+                         command.Subcommands.Add(ImagesListSandboxLibraryImagesCommandApiCommand.Create());
                          command.Subcommands.Add(ImagesPushImageCommandApiCommand.Create());
         CustomizeCommand(ref command);
         return command;

@@ -28,12 +28,12 @@ namespace Baseten
         partial void PrepareCreateTeamsByTeamIdLoopsTrainersArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string teamId,
-            global::Baseten.CreateLoopsRunRequestV1 request);
+            global::Baseten.CreateLoopsTrainerRequestV1 request);
         partial void PrepareCreateTeamsByTeamIdLoopsTrainersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string teamId,
-            global::Baseten.CreateLoopsRunRequestV1 request);
+            global::Baseten.CreateLoopsTrainerRequestV1 request);
         partial void ProcessCreateTeamsByTeamIdLoopsTrainersResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -71,7 +71,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateTeamsByTeamIdLoopsTrainersAsync(
             string teamId,
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateLoopsTrainerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -113,7 +113,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateTeamsByTeamIdLoopsTrainersAsResponseAsync(
             string teamId,
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateLoopsTrainerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -545,7 +545,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateLoopsRunRequestV1
+            var __request = new global::Baseten.CreateLoopsTrainerRequestV1
             {
                 SessionId = sessionId,
                 BaseModel = baseModel,

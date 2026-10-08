@@ -62,6 +62,7 @@ Creates a standalone Loops sampler not linked to a run.");
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.MaxSeqLength);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.ModelPath);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.ReuseFromSessionId);
+                        command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.NumReplicas);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -93,6 +94,7 @@ Creates a standalone Loops sampler not linked to a run.");
                         var maxSeqLength = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.MaxSeqLength) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.MaxSeqLength) : (__requestBase is { } __MaxSeqLengthBaseValue ? __MaxSeqLengthBaseValue.MaxSeqLength : default);
                         var modelPath = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.ModelPath) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.ModelPath) : (__requestBase is { } __ModelPathBaseValue ? __ModelPathBaseValue.ModelPath : default);
                         var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.ReuseFromSessionId) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
+                        var numReplicas = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.NumReplicas) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.NumReplicas) : (__requestBase is { } __NumReplicasBaseValue ? __NumReplicasBaseValue.NumReplicas : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -104,6 +106,7 @@ Creates a standalone Loops sampler not linked to a run.");
                                     maxSeqLength: maxSeqLength,
                                     modelPath: modelPath,
                                     reuseFromSessionId: reuseFromSessionId,
+                                    numReplicas: numReplicas,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

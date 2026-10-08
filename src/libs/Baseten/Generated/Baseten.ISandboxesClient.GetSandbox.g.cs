@@ -6,10 +6,13 @@ namespace Baseten
     {
         /// <summary>
         /// Get a sandbox<br/>
-        /// Return the sandbox configuration and current state.
+        /// Return the sandbox configuration and status.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
+        /// <param name="showSecrets">
+        /// Default Value: false
+        /// </param>
         /// <param name="sandboxName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -18,14 +21,18 @@ namespace Baseten
             string sandboxName,
             string? teamId = default,
             string? xTeamId = default,
+            bool? showSecrets = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get a sandbox<br/>
-        /// Return the sandbox configuration and current state.
+        /// Return the sandbox configuration and status.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
+        /// <param name="showSecrets">
+        /// Default Value: false
+        /// </param>
         /// <param name="sandboxName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -34,6 +41,7 @@ namespace Baseten
             string sandboxName,
             string? teamId = default,
             string? xTeamId = default,
+            bool? showSecrets = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

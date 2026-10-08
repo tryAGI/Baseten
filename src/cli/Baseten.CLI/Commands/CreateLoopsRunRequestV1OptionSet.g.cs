@@ -16,7 +16,8 @@ internal sealed record CreateLoopsRunRequestV1OptionSet(
                      Option<int?> Replicas,
                      Option<string?> Path,
                      Option<string?> ReuseFromRunId,
-                     Option<string?> ReuseFromSessionId)
+                     Option<string?> ReuseFromSessionId,
+                     Option<int?> SamplerNumReplicas)
 {
     public static CreateLoopsRunRequestV1OptionSet Create(string? prefix = null)
     {
@@ -73,6 +74,10 @@ internal sealed record CreateLoopsRunRequestV1OptionSet(
                 ReuseFromSessionId: new Option<string?>($"--{normalizedPrefix}reuse-from-session-id")
                 {
                     Description = @"Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.",
+                },
+                SamplerNumReplicas: new Option<int?>($"--{normalizedPrefix}sampler-num-replicas")
+                {
+                    Description = @"Number of replicas the run's sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged. When the run ends, its sampler is scaled down.",
                 }
         );
     }

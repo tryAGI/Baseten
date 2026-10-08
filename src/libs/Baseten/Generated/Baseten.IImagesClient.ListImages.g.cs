@@ -24,7 +24,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.ListImagesResponseV1> ListImagesAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.ListSandboxImagesResponseV1> ListImagesAsync(
             string? teamId = default,
             string? xTeamId = default,
             string? cursor = default,
@@ -53,7 +53,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListImagesResponseV1>> ListImagesAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListSandboxImagesResponseV1>> ListImagesAsResponseAsync(
             string? teamId = default,
             string? xTeamId = default,
             string? cursor = default,

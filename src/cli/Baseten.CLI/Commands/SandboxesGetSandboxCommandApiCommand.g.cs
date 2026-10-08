@@ -25,6 +25,10 @@ internal static partial class SandboxesGetSandboxCommandApiCommand
         Description = @"Optional team ID. Must match the team_id query parameter when both are supplied. If neither selector is supplied, defaults to the caller's only accessible team. Callers with multiple accessible teams must select a team. Requests without access to any team are forbidden.",
     };
 
+    private static Option<bool?> ShowSecrets { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--show-secrets",
+        description: @"Reveal environment variable values for workspace administrators. Defaults to false. Callers without the admin role receive masked values even when true.");
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.SandboxV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -50,10 +54,11 @@ internal static partial class SandboxesGetSandboxCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-sandbox", @"Get a sandbox
-Return the sandbox configuration and current state.");
+Return the sandbox configuration and status.");
                         command.Arguments.Add(SandboxName);
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);
+                        command.Options.Add(ShowSecrets);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -62,6 +67,7 @@ Return the sandbox configuration and current state.");
                         var sandboxName = parseResult.GetRequiredValue(SandboxName);
                         var teamId = parseResult.GetValue(TeamId);
                         var xTeamId = parseResult.GetValue(XTeamId);
+                        var showSecrets = parseResult.GetValue(ShowSecrets);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -69,6 +75,7 @@ Return the sandbox configuration and current state.");
                                     sandboxName: sandboxName,
                                     teamId: teamId,
                                     xTeamId: xTeamId,
+                                    showSecrets: showSecrets,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

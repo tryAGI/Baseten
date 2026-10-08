@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// Sandbox deployment status.<br/>
+    /// Sandbox deployment status, always uppercase. This tracks provisioning and differs from the execution API state, whose values such as running are lowercase.<br/>
     /// Included only in responses<br/>
     /// Example: DEPLOYED
     /// </summary>

@@ -68,6 +68,7 @@ Creates a Loops run with an associated sampler in the given session; the run's i
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.Path);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId);
+                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.SamplerNumReplicas);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -105,6 +106,7 @@ Creates a Loops run with an associated sampler in the given session; the run's i
                         var path = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.Path) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.Path) : (__requestBase is { } __PathBaseValue ? __PathBaseValue.Path : default);
                         var reuseFromRunId = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId) : (__requestBase is { } __ReuseFromRunIdBaseValue ? __ReuseFromRunIdBaseValue.ReuseFromRunId : default);
                         var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
+                        var samplerNumReplicas = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.SamplerNumReplicas) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.SamplerNumReplicas) : (__requestBase is { } __SamplerNumReplicasBaseValue ? __SamplerNumReplicasBaseValue.SamplerNumReplicas : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -122,6 +124,7 @@ Creates a Loops run with an associated sampler in the given session; the run's i
                                     path: path,
                                     reuseFromRunId: reuseFromRunId,
                                     reuseFromSessionId: reuseFromSessionId,
+                                    samplerNumReplicas: samplerNumReplicas,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

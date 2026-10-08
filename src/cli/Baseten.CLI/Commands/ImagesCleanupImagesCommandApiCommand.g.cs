@@ -19,7 +19,7 @@ internal static partial class ImagesCleanupImagesCommandApiCommand
         Description = @"Optional team ID. Must match the team_id query parameter when both are supplied. If neither selector is supplied, defaults to the caller's only accessible team. Callers with multiple accessible teams must select a team. Requests without access to any team are forbidden.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.CleanupImagesResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.CleanupSandboxImagesResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -35,7 +35,7 @@ internal static partial class ImagesCleanupImagesCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.CleanupImagesResponseV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.CleanupSandboxImagesResponseV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

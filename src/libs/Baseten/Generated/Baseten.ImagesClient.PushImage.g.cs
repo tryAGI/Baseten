@@ -29,13 +29,13 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             ref string? teamId,
             ref string? xTeamId,
-            global::Baseten.PushImageRequestV1 request);
+            global::Baseten.PushSandboxImageRequestV1 request);
         partial void PreparePushImageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? teamId,
             string? xTeamId,
-            global::Baseten.PushImageRequestV1 request);
+            global::Baseten.PushSandboxImageRequestV1 request);
         partial void ProcessPushImageResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -47,7 +47,7 @@ namespace Baseten
 
         /// <summary>
         /// Push a sandbox image<br/>
-        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
+        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -55,9 +55,9 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.PushImageResponseV1> PushImageAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.PushSandboxImageResponseV1> PushImageAsync(
 
-            global::Baseten.PushImageRequestV1 request,
+            global::Baseten.PushSandboxImageRequestV1 request,
             string? teamId = default,
             string? xTeamId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -76,7 +76,7 @@ namespace Baseten
         }
         /// <summary>
         /// Push a sandbox image<br/>
-        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
+        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -84,9 +84,9 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.PushImageResponseV1>> PushImageAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.PushSandboxImageResponseV1>> PushImageAsResponseAsync(
 
-            global::Baseten.PushImageRequestV1 request,
+            global::Baseten.PushSandboxImageRequestV1 request,
             string? teamId = default,
             string? xTeamId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -546,9 +546,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.PushImageResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.PushSandboxImageResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.PushImageResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.PushSandboxImageResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -578,9 +578,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.PushImageResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.PushSandboxImageResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.PushImageResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.PushSandboxImageResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -622,7 +622,7 @@ namespace Baseten
         }
         /// <summary>
         /// Push a sandbox image<br/>
-        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
+        /// With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -631,7 +631,7 @@ namespace Baseten
         /// Example: base-image
         /// </param>
         /// <param name="image">
-        /// Optional source registry image reference including a registry hostname. When omitted, the response provides an archive upload URL.<br/>
+        /// Optional source registry image reference including a registry hostname. When omitted, the response provides an archive upload URL. The uploaded ZIP archive must not exceed 5 GB.<br/>
         /// Example: docker.io/b10/base-image:latest
         /// </param>
         /// <param name="dockerConfig">
@@ -642,7 +642,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.PushImageResponseV1> PushImageAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.PushSandboxImageResponseV1> PushImageAsync(
             string name,
             string? teamId = default,
             string? xTeamId = default,
@@ -651,7 +651,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.PushImageRequestV1
+            var __request = new global::Baseten.PushSandboxImageRequestV1
             {
                 Name = name,
                 Image = image,

@@ -14,6 +14,9 @@ internal static partial class SandboxesApiGroupCommand
                          command.Subcommands.Add(SandboxesCreateSandboxCommandApiCommand.Create());
                          command.Subcommands.Add(SandboxesDeleteSandboxCommandApiCommand.Create());
                          command.Subcommands.Add(SandboxesGetSandboxCommandApiCommand.Create());
+                         command.Subcommands.Add(SandboxesGetSandboxConfigurationCommandApiCommand.Create());
+                         command.Subcommands.Add(SandboxesGetSandboxLogsCommandApiCommand.Create());
+                         command.Subcommands.Add(SandboxesGetSandboxMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(SandboxesListSandboxesCommandApiCommand.Create());
                          command.Subcommands.Add(SandboxesUpdateSandboxCommandApiCommand.Create());
         CustomizeCommand(ref command);

@@ -27,11 +27,11 @@ namespace Baseten
             };
         partial void PrepareCreateLoopsTrainersArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Baseten.CreateLoopsRunRequestV1 request);
+            global::Baseten.CreateLoopsTrainerRequestV1 request);
         partial void PrepareCreateLoopsTrainersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.CreateLoopsRunRequestV1 request);
+            global::Baseten.CreateLoopsTrainerRequestV1 request);
         partial void ProcessCreateLoopsTrainersResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -67,7 +67,7 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateLoopsTrainersAsync(
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateLoopsTrainerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -106,7 +106,7 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateLoopsTrainersAsResponseAsync(
 
-            global::Baseten.CreateLoopsRunRequestV1 request,
+            global::Baseten.CreateLoopsTrainerRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -534,7 +534,7 @@ namespace Baseten
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Baseten.CreateLoopsRunRequestV1
+            var __request = new global::Baseten.CreateLoopsTrainerRequestV1
             {
                 SessionId = sessionId,
                 BaseModel = baseModel,

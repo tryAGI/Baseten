@@ -23,7 +23,7 @@ namespace Baseten
         public global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Type Type { get; set; }
 
         /// <summary>
-        /// Duration using seconds, minutes, hours, or composite durations such as 1h30m. Whole days and weeks are also supported, for example 7d or 2w.<br/>
+        /// Duration using seconds, minutes, hours, or composite durations such as 1h30m. Whole days and weeks are also supported, for example 7d or 2w, where d is 24h and w is 7 × 24h. Days and weeks cannot be combined with other units, so 1d12h is rejected; use 36h instead. Values are returned exactly as sent, without normalization.<br/>
         /// Example: 24h
         /// </summary>
         /// <example>24h</example>
@@ -41,7 +41,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="SandboxTTLMaxAgeExpirationPolicyV1" /> class.
         /// </summary>
         /// <param name="value">
-        /// Duration using seconds, minutes, hours, or composite durations such as 1h30m. Whole days and weeks are also supported, for example 7d or 2w.<br/>
+        /// Duration using seconds, minutes, hours, or composite durations such as 1h30m. Whole days and weeks are also supported, for example 7d or 2w, where d is 24h and w is 7 × 24h. Days and weeks cannot be combined with other units, so 1d12h is rejected; use 36h instead. Values are returned exactly as sent, without normalization.<br/>
         /// Example: 24h
         /// </param>
         /// <param name="action"></param>

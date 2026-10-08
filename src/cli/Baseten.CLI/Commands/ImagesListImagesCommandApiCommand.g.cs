@@ -43,7 +43,7 @@ internal static partial class ImagesListImagesCommandApiCommand
         Description = @"Case-sensitive repository name prefix. Search is applied before pagination.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.ListImagesResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.ListSandboxImagesResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -59,7 +59,7 @@ internal static partial class ImagesListImagesCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.ListImagesResponseV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.ListSandboxImagesResponseV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

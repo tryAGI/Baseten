@@ -5,7 +5,7 @@ namespace Baseten
 {
     /// <summary>
     /// Server-managed sandbox fields.<br/>
-    /// Example: {"name":"baseten-api-review-0916","url":"https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run","status":"DEPLOYED","state":"RUNNING","created_at":"2026-09-16T21:26:58.545765901Z","updated_at":"2026-09-16T21:31:13Z","created_by":"sandbox-automation","updated_by":"sandbox-automation","last_used_at":"2026-09-16T21:31:13Z","expires_in":86400}
+    /// Example: {"name":"baseten-api-review-0916","url":"https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run","status":"DEPLOYED","created_at":"2026-09-16T21:26:58.545765901Z","updated_at":"2026-09-16T21:31:13Z","created_by":"sandbox-automation","updated_by":"sandbox-automation","last_used_at":"2026-09-16T21:31:13Z","expires_in":86400}
     /// </summary>
     public sealed partial class SandboxV1Variant2
     {
@@ -20,13 +20,14 @@ namespace Baseten
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Base URL of this sandbox's execution API. Use this exact returned URL; do not reconstruct its hostname. Authenticate requests with the same Authorization: Bearer &lt;api_key&gt; header used to create the sandbox. No additional routing headers are required. Fetch GET {url}/swagger/doc.json with that header for the API reference served by this sandbox. For example, POST {url}/process with Content-Type: application/json and {"command":"echo hello","waitForCompletion":true} executes a command and waits for its result. Execution API fields use camelCase, independently of this API's snake_case fields.<br/>
+        /// Base URL of this sandbox's execution API, always present on successful creation. The URL is assigned before deployment completes; inspect status for readiness. Use this exact returned URL; do not reconstruct its hostname. Authenticate requests with your authentication token using Authorization: Bearer &lt;token&gt;. Do not send the Baseten API key directly. No additional routing headers are required. Fetch GET {url}/swagger/doc.json with that header for the API reference served by this sandbox. For example, POST {url}/process with Content-Type: application/json and {"command":"echo hello","waitForCompletion":true} executes a command and waits for its result. Execution API fields use camelCase, independently of this API's snake_case fields.<br/>
         /// Included only in responses<br/>
         /// Example: https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run
         /// </summary>
+        /// <default>default!</default>
         /// <example>https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string? Url { get; set; }
+        public string Url { get; set; } = default!;
 
         /// <summary>
         /// Sandbox deployment status.<br/>
@@ -37,16 +38,6 @@ namespace Baseten
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.SandboxStatusV1JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Baseten.SandboxStatusV1 Status { get; set; }
-
-        /// <summary>
-        /// Current execution state when available.<br/>
-        /// Included only in responses<br/>
-        /// Example: RUNNING
-        /// </summary>
-        /// <example>RUNNING</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("state")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.SandboxV1Variant2StateJsonConverter))]
-        public global::Baseten.SandboxV1Variant2State? State { get; set; }
 
         /// <summary>
         /// Time the sandbox was created.<br/>
@@ -116,16 +107,6 @@ namespace Baseten
         /// Sandbox deployment status.<br/>
         /// Example: DEPLOYED
         /// </param>
-        /// <param name="url">
-        /// Base URL of this sandbox's execution API. Use this exact returned URL; do not reconstruct its hostname. Authenticate requests with the same Authorization: Bearer &lt;api_key&gt; header used to create the sandbox. No additional routing headers are required. Fetch GET {url}/swagger/doc.json with that header for the API reference served by this sandbox. For example, POST {url}/process with Content-Type: application/json and {"command":"echo hello","waitForCompletion":true} executes a command and waits for its result. Execution API fields use camelCase, independently of this API's snake_case fields.<br/>
-        /// Included only in responses<br/>
-        /// Example: https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run
-        /// </param>
-        /// <param name="state">
-        /// Current execution state when available.<br/>
-        /// Included only in responses<br/>
-        /// Example: RUNNING
-        /// </param>
         /// <param name="updatedAt">
         /// Time the sandbox was last updated.<br/>
         /// Included only in responses<br/>
@@ -156,6 +137,11 @@ namespace Baseten
         /// Included only in responses<br/>
         /// Example: baseten-api-review-0916
         /// </param>
+        /// <param name="url">
+        /// Base URL of this sandbox's execution API, always present on successful creation. The URL is assigned before deployment completes; inspect status for readiness. Use this exact returned URL; do not reconstruct its hostname. Authenticate requests with your authentication token using Authorization: Bearer &lt;token&gt;. Do not send the Baseten API key directly. No additional routing headers are required. Fetch GET {url}/swagger/doc.json with that header for the API reference served by this sandbox. For example, POST {url}/process with Content-Type: application/json and {"command":"echo hello","waitForCompletion":true} executes a command and waits for its result. Execution API fields use camelCase, independently of this API's snake_case fields.<br/>
+        /// Included only in responses<br/>
+        /// Example: https://sbx-baseten-api-review-0916-esb1qo.us-pdx-1.b10.run
+        /// </param>
         /// <param name="createdAt">
         /// Time the sandbox was created.<br/>
         /// Included only in responses<br/>
@@ -166,20 +152,18 @@ namespace Baseten
 #endif
         public SandboxV1Variant2(
             global::Baseten.SandboxStatusV1 status,
-            string? url,
-            global::Baseten.SandboxV1Variant2State? state,
             global::System.DateTime? updatedAt,
             string? createdBy,
             string? updatedBy,
             global::System.DateTime? lastUsedAt,
             int? expiresIn,
             string name = default!,
+            string url = default!,
             global::System.DateTime createdAt = default!)
         {
             this.Name = name;
             this.Url = url;
             this.Status = status;
-            this.State = state;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.CreatedBy = createdBy;

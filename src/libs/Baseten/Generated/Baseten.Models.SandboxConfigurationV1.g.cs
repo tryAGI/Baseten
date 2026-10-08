@@ -5,19 +5,10 @@ namespace Baseten
 {
     /// <summary>
     /// Writable sandbox configuration. Fields are serialized at the root of the request or resource.<br/>
-    /// Example: {"enabled":true,"lifecycle":{"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"},"network":{"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"},"region":"us-pdx-1","envs":[{"name":"NODE_ENV","secret":false,"value":"production"},{"name":"PORT","secret":false,"value":"3000"}],"image":"blaxel/base-image:latest","memory":4096,"ports":[{"name":"http","protocol":"HTTP","target":3000}],"display_name":"Baseten API review","external_id":"api-review-20260916-001","labels":{"env":"development","project":"api-review","team":"engineering"}}
+    /// Example: {"lifecycle":{"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"},"network":{"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"},"region":"us-pdx-1","envs":[{"name":"NODE_ENV","secret":false,"value":"production"},{"name":"PORT","secret":false,"value":"3000"}],"image":"baseten/base-image:latest","memory":4096,"ports":[{"name":"http","protocol":"HTTP","target":3000}],"external_id":"api-review-20260916-001","labels":{"env":"development","project":"api-review","team":"engineering"}}
     /// </summary>
     public sealed partial class SandboxConfigurationV1
     {
-        /// <summary>
-        /// When false, the sandbox is disabled and will not accept connections<br/>
-        /// Default Value: true<br/>
-        /// Example: true
-        /// </summary>
-        /// <example>true</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool? Enabled { get; set; }
-
         /// <summary>
         /// Lifecycle configuration controlling automatic sandbox deletion based on idle time, max age, or specific dates<br/>
         /// Example: {"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"}
@@ -51,10 +42,10 @@ namespace Baseten
         public global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? Envs { get; set; }
 
         /// <summary>
-        /// Image reference including its tag. Use blaxel/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.<br/>
-        /// Example: blaxel/base-image:latest
+        /// Image reference including its tag. Built-in image references are returned in the canonical baseten/ namespace. Use baseten/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.<br/>
+        /// Example: baseten/base-image:latest
         /// </summary>
-        /// <example>blaxel/base-image:latest</example>
+        /// <example>baseten/base-image:latest</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
         public string? Image { get; set; }
 
@@ -73,14 +64,6 @@ namespace Baseten
         /// <example>[{"name":"http","protocol":"HTTP","target":3000}]</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("ports")]
         public global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? Ports { get; set; }
-
-        /// <summary>
-        /// Human-readable name for display in the UI. Can contain spaces and special characters, max 63 characters.<br/>
-        /// Example: Baseten API review
-        /// </summary>
-        /// <example>Baseten API review</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("display_name")]
-        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Caller-owned identifier for external lookups. Max 64 chars, alphanumeric + dash.<br/>
@@ -107,11 +90,6 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="SandboxConfigurationV1" /> class.
         /// </summary>
-        /// <param name="enabled">
-        /// When false, the sandbox is disabled and will not accept connections<br/>
-        /// Default Value: true<br/>
-        /// Example: true
-        /// </param>
         /// <param name="lifecycle">
         /// Lifecycle configuration controlling automatic sandbox deletion based on idle time, max age, or specific dates<br/>
         /// Example: {"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"}
@@ -129,8 +107,8 @@ namespace Baseten
         /// Example: [{"name":"NODE_ENV","secret":false,"value":"production"}, {"name":"PORT","secret":false,"value":"3000"}]
         /// </param>
         /// <param name="image">
-        /// Image reference including its tag. Use blaxel/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.<br/>
-        /// Example: blaxel/base-image:latest
+        /// Image reference including its tag. Built-in image references are returned in the canonical baseten/ namespace. Use baseten/base-image:latest to get started with the built-in sandbox execution API. This image is available directly without building, pushing, or listing images through GET /v1/sandboxes/images.<br/>
+        /// Example: baseten/base-image:latest
         /// </param>
         /// <param name="memory">
         /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs).<br/>
@@ -139,10 +117,6 @@ namespace Baseten
         /// <param name="ports">
         /// Set of ports for a resource<br/>
         /// Example: [{"name":"http","protocol":"HTTP","target":3000}]
-        /// </param>
-        /// <param name="displayName">
-        /// Human-readable name for display in the UI. Can contain spaces and special characters, max 63 characters.<br/>
-        /// Example: Baseten API review
         /// </param>
         /// <param name="externalId">
         /// Caller-owned identifier for external lookups. Max 64 chars, alphanumeric + dash.<br/>
@@ -156,7 +130,6 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SandboxConfigurationV1(
-            bool? enabled,
             global::Baseten.SandboxLifecycleV1? lifecycle,
             global::Baseten.SandboxNetworkV1? network,
             string? region,
@@ -164,11 +137,9 @@ namespace Baseten
             string? image,
             long? memory,
             global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? ports,
-            string? displayName,
             string? externalId,
             global::System.Collections.Generic.Dictionary<string, string>? labels)
         {
-            this.Enabled = enabled;
             this.Lifecycle = lifecycle;
             this.Network = network;
             this.Region = region;
@@ -176,7 +147,6 @@ namespace Baseten
             this.Image = image;
             this.Memory = memory;
             this.Ports = ports;
-            this.DisplayName = displayName;
             this.ExternalId = externalId;
             this.Labels = labels;
         }
