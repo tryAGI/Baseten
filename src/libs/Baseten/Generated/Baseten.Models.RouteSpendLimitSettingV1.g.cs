@@ -34,6 +34,12 @@ namespace Baseten
         public required global::Baseten.RouteEffectiveSpendLimitV1 Effective { get; set; }
 
         /// <summary>
+        /// Team-wide limit of the team in USD for each UTC calendar month. Once all members' spend in the team reaches it, the user's requests in the team are rejected whatever their own limit. Null when there is none.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_wide_monthly_limit_usd")]
+        public string? TeamWideMonthlyLimitUsd { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,6 +60,9 @@ namespace Baseten
         /// <param name="teamDefault">
         /// Per-member limit of the team. This limit applies when the user has no limit of their own. Null when there is none.
         /// </param>
+        /// <param name="teamWideMonthlyLimitUsd">
+        /// Team-wide limit of the team in USD for each UTC calendar month. Once all members' spend in the team reaches it, the user's requests in the team are rejected whatever their own limit. Null when there is none.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -61,12 +70,14 @@ namespace Baseten
             global::Baseten.RouteEffectiveSpendLimitV1 effective,
             string? userMonthlyLimitUsd,
             string? monthOverrideUsd,
-            global::Baseten.RouteSpendLimitTeamDefaultV1? teamDefault)
+            global::Baseten.RouteSpendLimitTeamDefaultV1? teamDefault,
+            string? teamWideMonthlyLimitUsd)
         {
             this.UserMonthlyLimitUsd = userMonthlyLimitUsd;
             this.MonthOverrideUsd = monthOverrideUsd;
             this.TeamDefault = teamDefault;
             this.Effective = effective ?? throw new global::System.ArgumentNullException(nameof(effective));
+            this.TeamWideMonthlyLimitUsd = teamWideMonthlyLimitUsd;
         }
 
         /// <summary>

@@ -256,6 +256,22 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelMetricDescriptorV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelMetricValueSetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetDeploymentMetricsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartAttemptV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartOutcomeV1), TypeInfoPropertyName = "ColdStartOutcomeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ColdStartPhaseSummaryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartPhaseSummaryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartPhaseStatusV1), TypeInfoPropertyName = "ColdStartPhaseStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartPhaseV1), TypeInfoPropertyName = "ColdStartPhaseV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartAttemptsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ColdStartAttemptV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartSortFieldV1), TypeInfoPropertyName = "ColdStartSortFieldV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetColdStartAttemptsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ColdStartOutcomeV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartPercentilesV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartPhasePercentilesV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartSummaryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ColdStartPhasePercentilesV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetColdStartSummaryRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TerminateReplicaResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SignSSHCertificateRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SignSSHCertificateResponseV1))]
@@ -493,6 +509,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TeamTrainingGpuCapacityItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchTeamTrainingGpuCapacityRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchTeamTrainingGpuCapacityResponseV1))]
+    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ActiveJobAtSubmitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CapacityAtSubmitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PendingJobAheadAtSubmitV1))]
@@ -509,16 +535,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyOwnerV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeysV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.APIKeyInfoV1>))]
-    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeysRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyTombstoneV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1), TypeInfoPropertyName = "LimitTypeV12")]
@@ -615,12 +631,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ExploreMetadataV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ExploreMetadataRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteRefV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetAnthropicV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetBasetenModelAPIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetClassifierModelBasedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteRefV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetOpenAIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetXAIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetConnectionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target), TypeInfoPropertyName = "Target2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteV1TargetDiscriminator))]
@@ -628,11 +642,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RoutesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RoutesRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetConfigAnthropicV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetConfigBasetenModelAPIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetConfigClassifierModelBasedV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetConfigOpenAIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetConfigXAIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteTargetBasetenModelAPIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteTargetClassifierModelBasedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteTargetConnectionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2), TypeInfoPropertyName = "Target22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteRequestV1TargetDiscriminator))]
@@ -669,27 +681,24 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTeamUserSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTeamUserSettingsListV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteTeamUserSettingsV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionAnthropicV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionOpenAIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigAnthropicV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigOpenAIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigXAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config), TypeInfoPropertyName = "Config2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionXAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionV1ConfigDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionV1ConfigDiscriminatorProvider), TypeInfoPropertyName = "RouteConnectionV1ConfigDiscriminatorProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteConnectionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionsRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigAnthropicV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigOpenAIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigXAIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteConnectionConfigAnthropicV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteConnectionConfigOpenAIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteConnectionConfigXAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteConnectionRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config2), TypeInfoPropertyName = "Config22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteConnectionRequestV1ConfigDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteConnectionRequestV1ConfigDiscriminatorProvider), TypeInfoPropertyName = "CreateRouteConnectionRequestV1ConfigDiscriminatorProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionTombstoneV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteConnectionConfigAnthropicV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteConnectionConfigOpenAIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteConnectionConfigXAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteConnectionRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config3), TypeInfoPropertyName = "Config32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteConnectionRequestV1ConfigDiscriminator))]
@@ -838,6 +847,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricUnitHintV1?), TypeInfoPropertyName = "NullableModelMetricUnitHintV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricKindV1?), TypeInfoPropertyName = "NullableModelMetricKindV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricModeV1?), TypeInfoPropertyName = "NullableModelMetricModeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartOutcomeV1?), TypeInfoPropertyName = "NullableColdStartOutcomeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartPhaseStatusV1?), TypeInfoPropertyName = "NullableColdStartPhaseStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartPhaseV1?), TypeInfoPropertyName = "NullableColdStartPhaseV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ColdStartSortFieldV1?), TypeInfoPropertyName = "NullableColdStartSortFieldV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleV1Cadence?), TypeInfoPropertyName = "NullableAutoscalingScheduleV1Cadence2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleWeekdayV1?), TypeInfoPropertyName = "NullableAutoscalingScheduleWeekdayV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SchedulesItem?), TypeInfoPropertyName = "NullableSchedulesItem2_3")]
@@ -934,6 +947,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double?>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelMetricDescriptorV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelMetricValueSetV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ColdStartPhaseSummaryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ColdStartAttemptV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ColdStartOutcomeV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ColdStartPhasePercentilesV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AutoscalingScheduleWeekdayV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SchedulesItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EnvironmentV1>))]
@@ -1002,6 +1019,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RouteTeamUserSettingsV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RouteConnectionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointTargetV1>))]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointTargetRequestV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EffectiveRateLimitV1>))]
@@ -1019,16 +1046,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxProxyTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxPortV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxEnvV1>))]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageSummaryV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageTagV1>))]
@@ -1240,6 +1257,22 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.ModelMetricUnitHintV1)
 
                     || typeToConvert == typeof(global::Baseten.ModelMetricUnitHintV1?)
+
+                    || typeToConvert == typeof(global::Baseten.ColdStartOutcomeV1)
+
+                    || typeToConvert == typeof(global::Baseten.ColdStartOutcomeV1?)
+
+                    || typeToConvert == typeof(global::Baseten.ColdStartPhaseStatusV1)
+
+                    || typeToConvert == typeof(global::Baseten.ColdStartPhaseStatusV1?)
+
+                    || typeToConvert == typeof(global::Baseten.ColdStartPhaseV1)
+
+                    || typeToConvert == typeof(global::Baseten.ColdStartPhaseV1?)
+
+                    || typeToConvert == typeof(global::Baseten.ColdStartSortFieldV1)
+
+                    || typeToConvert == typeof(global::Baseten.ColdStartSortFieldV1?)
 
                     || typeToConvert == typeof(global::Baseten.AutoscalingScheduleV1Cadence)
 
@@ -1734,6 +1767,46 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.ModelMetricUnitHintV1?))
                 {
                     return new global::Baseten.JsonConverters.ModelMetricUnitHintV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ColdStartOutcomeV1))
+                {
+                    return new global::Baseten.JsonConverters.ColdStartOutcomeV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ColdStartOutcomeV1?))
+                {
+                    return new global::Baseten.JsonConverters.ColdStartOutcomeV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ColdStartPhaseStatusV1))
+                {
+                    return new global::Baseten.JsonConverters.ColdStartPhaseStatusV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ColdStartPhaseStatusV1?))
+                {
+                    return new global::Baseten.JsonConverters.ColdStartPhaseStatusV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ColdStartPhaseV1))
+                {
+                    return new global::Baseten.JsonConverters.ColdStartPhaseV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ColdStartPhaseV1?))
+                {
+                    return new global::Baseten.JsonConverters.ColdStartPhaseV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ColdStartSortFieldV1))
+                {
+                    return new global::Baseten.JsonConverters.ColdStartSortFieldV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ColdStartSortFieldV1?))
+                {
+                    return new global::Baseten.JsonConverters.ColdStartSortFieldV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.AutoscalingScheduleV1Cadence))

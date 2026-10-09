@@ -22,7 +22,7 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdCommandApiCommand
     private static Option<global::Baseten.UpdateRouteTeamSpendLimitSettingV1?> SpendLimit { get; } = new(
         name: @"--spend-limit")
     {
-        Description = @"Spend limit fields to change. Pass null to remove the team's per-member limit; omit to leave it unchanged.",
+        Description = @"Spend limit fields to change. Pass null to remove the team's limits; omit to leave them unchanged.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -66,7 +66,7 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"edit-routes-settings-teams-by-team-id", @"Updates a team's route settings
-Changes only the fields in the request, all or nothing. Requires team admin.");
+Changes only the fields in the request, all or nothing. Requires team admin, and organization admin to change the team-wide spend limit.");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(HarnessDefaults);
                         command.Options.Add(SpendLimit);

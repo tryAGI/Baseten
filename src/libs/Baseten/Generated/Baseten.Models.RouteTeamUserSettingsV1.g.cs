@@ -43,7 +43,7 @@ namespace Baseten
         public required string MonthSpendUsd { get; set; }
 
         /// <summary>
-        /// Whether the user's spend this month reached their limit, so requests with Routes keys they created in the team are rejected.
+        /// Whether the user's spend this month reached their limit, or the team's spend reached its team-wide limit, so requests with Routes keys they created in the team are rejected.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("is_blocked")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -71,7 +71,7 @@ namespace Baseten
         /// The user's metered Code spend in USD in the team this UTC calendar month, returned as an exact decimal string.
         /// </param>
         /// <param name="isBlocked">
-        /// Whether the user's spend this month reached their limit, so requests with Routes keys they created in the team are rejected.
+        /// Whether the user's spend this month reached their limit, or the team's spend reached its team-wide limit, so requests with Routes keys they created in the team are rejected.
         /// </param>
         /// <param name="email">
         /// Email address of the user.

@@ -19,6 +19,12 @@ internal static partial class GetRoutesUsageCommandApiCommand
         Description = @"Number of daily buckets to return. Defaults to 7; maximum 31.",
     };
 
+    private static Option<string?> TeamId { get; } = new(
+        name: @"--team-id")
+    {
+        Description = @"Limit usage to a team you can access. Organization admins can view all usage in the team, team admins can view usage in teams they manage, and other members can view only their own usage. Without a team, organization admins see all organization usage, team admins see their managed teams, and other members see their own usage.",
+    };
+
     private static Option<global::System.DateTime?> StartDate { get; } = new(
         name: @"--start-date")
     {
@@ -34,7 +40,7 @@ internal static partial class GetRoutesUsageCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> UserIds { get; } = new(
@@ -80,9 +86,10 @@ internal static partial class GetRoutesUsageCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-routes-usage", @"Gets daily route usage and estimated costs
-Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.");
+Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Team admins see usage in teams they manage. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage can be filtered and grouped by the team it was metered in. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
+                        command.Options.Add(TeamId);
                         command.Options.Add(StartDate);
                         command.Options.Add(EndDate);
                         command.Options.Add(GroupBy);
@@ -96,6 +103,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
             {
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
+                        var teamId = parseResult.GetValue(TeamId);
                         var startDate = parseResult.GetValue(StartDate);
                         var endDate = parseResult.GetValue(EndDate);
                         var groupBy = parseResult.GetValue(GroupBy);
@@ -108,6 +116,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                                 var response = await client.GetRoutesUsageAsync(
                                     cursor: cursor,
                                     limit: limit,
+                                    teamId: teamId,
                                     startDate: startDate,
                                     endDate: endDate,
                                     groupBy: groupBy,

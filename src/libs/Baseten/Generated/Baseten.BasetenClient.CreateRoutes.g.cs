@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Creates a route<br/>
-        /// Creates and derives a name for the provided route configuration
+        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -80,7 +80,7 @@ namespace Baseten
         }
         /// <summary>
         /// Creates a route<br/>
-        /// Creates and derives a name for the provided route configuration
+        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -463,7 +463,7 @@ namespace Baseten
         }
         /// <summary>
         /// Creates a route<br/>
-        /// Creates and derives a name for the provided route configuration
+        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.
         /// </summary>
         /// <param name="teamId">
         /// Identifier of the team that owns the route.<br/>
@@ -474,7 +474,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="target">
-        /// Upstream target for the route.
+        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.
         /// </param>
         /// <param name="description">
         /// Short description of the route. Omit for no description; null is not accepted.<br/>

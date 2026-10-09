@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Lists users' route settings in a team<br/>
-        /// Returns the settings in the team of each user with a role in the team and of anyone with Code spend in the team this month. Requires organization admin.
+        /// Returns the settings in the team of each user with a role in the team and of anyone with Code spend in the team this month. Requires team admin for the specified team or organization admin.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -69,7 +69,7 @@ namespace Baseten
         }
         /// <summary>
         /// Lists users' route settings in a team<br/>
-        /// Returns the settings in the team of each user with a role in the team and of anyone with Code spend in the team this month. Requires organization admin.
+        /// Returns the settings in the team of each user with a role in the team and of anyone with Code spend in the team this month. Requires team admin for the specified team or organization admin.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

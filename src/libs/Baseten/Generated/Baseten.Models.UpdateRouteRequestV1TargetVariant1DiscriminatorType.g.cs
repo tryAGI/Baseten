@@ -11,10 +11,6 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        Anthropic,
-        /// <summary>
-        ///
-        /// </summary>
         BasetenModelApi,
         /// <summary>
         ///
@@ -23,11 +19,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        Openai,
-        /// <summary>
-        ///
-        /// </summary>
-        Xai,
+        Connection,
     }
 
     /// <summary>
@@ -42,11 +34,9 @@ namespace Baseten
         {
             return value switch
             {
-                UpdateRouteRequestV1TargetVariant1DiscriminatorType.Anthropic => "ANTHROPIC",
                 UpdateRouteRequestV1TargetVariant1DiscriminatorType.BasetenModelApi => "BASETEN_MODEL_API",
                 UpdateRouteRequestV1TargetVariant1DiscriminatorType.ClassifierModelBased => "CLASSIFIER_MODEL_BASED",
-                UpdateRouteRequestV1TargetVariant1DiscriminatorType.Openai => "OPENAI",
-                UpdateRouteRequestV1TargetVariant1DiscriminatorType.Xai => "XAI",
+                UpdateRouteRequestV1TargetVariant1DiscriminatorType.Connection => "CONNECTION",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +47,9 @@ namespace Baseten
         {
             return value switch
             {
-                "ANTHROPIC" => UpdateRouteRequestV1TargetVariant1DiscriminatorType.Anthropic,
                 "BASETEN_MODEL_API" => UpdateRouteRequestV1TargetVariant1DiscriminatorType.BasetenModelApi,
                 "CLASSIFIER_MODEL_BASED" => UpdateRouteRequestV1TargetVariant1DiscriminatorType.ClassifierModelBased,
-                "OPENAI" => UpdateRouteRequestV1TargetVariant1DiscriminatorType.Openai,
-                "XAI" => UpdateRouteRequestV1TargetVariant1DiscriminatorType.Xai,
+                "CONNECTION" => UpdateRouteRequestV1TargetVariant1DiscriminatorType.Connection,
                 _ => null,
             };
         }

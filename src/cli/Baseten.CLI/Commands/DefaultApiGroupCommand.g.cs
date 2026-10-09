@@ -178,6 +178,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdColdStartsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdColdStartsSummaryCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdConfigCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdDownloadCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdLogsCommandApiCommand.Create());
@@ -187,6 +189,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsProductionCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameColdStartsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameColdStartsSummaryCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(GetOrganizationsMeCommandApiCommand.Create());

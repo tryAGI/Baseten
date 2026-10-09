@@ -23,7 +23,7 @@ namespace Baseten
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Upstream target for the route.
+        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Target2JsonConverter))]
@@ -47,7 +47,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="CreateRouteRequestV1" /> class.
         /// </summary>
         /// <param name="target">
-        /// Upstream target for the route.
+        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.
         /// </param>
         /// <param name="teamId">
         /// Identifier of the team that owns the route.<br/>

@@ -61,7 +61,7 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdUsersByUserIdComman
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"edit-routes-settings-teams-by-team-id-users-by-user-id", @"Updates a user's route settings in a team
-Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.");
+Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires team admin for the specified team or organization admin.");
                         command.Arguments.Add(TeamId);
                         command.Arguments.Add(UserId);                        command.Options.Add(SpendLimitOptions.UserMonthlyLimitUsd);
                         command.Options.Add(SpendLimitOptions.MonthOverrideUsd);

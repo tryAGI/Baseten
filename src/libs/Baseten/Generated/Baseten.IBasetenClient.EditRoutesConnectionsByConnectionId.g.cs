@@ -62,7 +62,7 @@ namespace Baseten
         /// </summary>
         /// <param name="connectionId"></param>
         /// <param name="config">
-        /// Connection fields to change. The provider must match the connection and is immutable.
+        /// Complete new connection configuration, replacing the current one. The provider must match the connection and is immutable.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

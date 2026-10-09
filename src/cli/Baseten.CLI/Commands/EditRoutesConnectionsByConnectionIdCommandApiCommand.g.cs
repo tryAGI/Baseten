@@ -16,7 +16,7 @@ internal static partial class EditRoutesConnectionsByConnectionIdCommandApiComma
     private static Option<global::Baseten.Config3> Config { get; } = new(
         name: @"--config")
     {
-        Description = @"Connection fields to change. The provider must match the connection and is immutable.",
+        Description = @"Complete new connection configuration, replacing the current one. The provider must match the connection and is immutable.",
         Required = true,
     };
 

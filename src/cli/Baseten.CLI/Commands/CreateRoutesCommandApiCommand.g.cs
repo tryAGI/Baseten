@@ -22,7 +22,7 @@ internal static partial class CreateRoutesCommandApiCommand
     private static Option<global::Baseten.Target2> Target { get; } = new(
         name: @"--target")
     {
-        Description = @"Upstream target for the route.",
+        Description = @"Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.",
         Required = true,
     };
 
@@ -73,7 +73,7 @@ internal static partial class CreateRoutesCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"create-routes", @"Creates a route
-Creates and derives a name for the provided route configuration");
+Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.");
                         command.Options.Add(TeamId);
                         command.Options.Add(DisplayName);
                         command.Options.Add(Target);
