@@ -38,7 +38,7 @@ internal static partial class GetRoutesSettingsTeamsByTeamIdUsersCommandApiComma
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-routes-settings-teams-by-team-id-users", @"Lists users' route settings in a team
-Returns the settings in the team of each user with a role in the team and of anyone with Code spend in the team this month. Requires organization admin.");
+Returns the settings in the team of each user with a role in the team and of anyone with Code spend in the team this month. Requires team admin for the specified team or organization admin.");
                         command.Arguments.Add(TeamId);
 
 

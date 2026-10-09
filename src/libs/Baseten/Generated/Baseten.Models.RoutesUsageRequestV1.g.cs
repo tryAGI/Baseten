@@ -23,6 +23,13 @@ namespace Baseten
         public int? Limit { get; set; }
 
         /// <summary>
+        /// Limit usage to a team you can access. Organization admins can view all usage in the team, team admins can view usage in teams they manage, and other members can view only their own usage. Without a team, organization admins see all organization usage, team admins see their managed teams, and other members see their own usage.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
+        public string? TeamId { get; set; }
+
+        /// <summary>
         /// Inclusive UTC calendar day at the start of the query range. Defaults to the previous UTC date, and is ignored when you pass a cursor.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -37,7 +44,7 @@ namespace Baseten
         public global::System.DateTime? EndDate { get; set; }
 
         /// <summary>
-        /// Dimensions to break usage down by, repeated once per dimension: USER, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.
+        /// Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
         public global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? GroupBy { get; set; }
@@ -77,6 +84,10 @@ namespace Baseten
         /// Number of daily buckets to return. Defaults to 7; maximum 31.<br/>
         /// Default Value: 7
         /// </param>
+        /// <param name="teamId">
+        /// Limit usage to a team you can access. Organization admins can view all usage in the team, team admins can view usage in teams they manage, and other members can view only their own usage. Without a team, organization admins see all organization usage, team admins see their managed teams, and other members see their own usage.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="startDate">
         /// Inclusive UTC calendar day at the start of the query range. Defaults to the previous UTC date, and is ignored when you pass a cursor.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -86,7 +97,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="groupBy">
-        /// Dimensions to break usage down by, repeated once per dimension: USER, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.
+        /// Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.
         /// </param>
         /// <param name="userIds">
         /// Return only usage from Routes keys created by these user IDs, repeated once per ID.
@@ -103,6 +114,7 @@ namespace Baseten
         public RoutesUsageRequestV1(
             string? cursor,
             int? limit,
+            string? teamId,
             global::System.DateTime? startDate,
             global::System.DateTime? endDate,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy,
@@ -112,6 +124,7 @@ namespace Baseten
         {
             this.Cursor = cursor;
             this.Limit = limit;
+            this.TeamId = teamId;
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.GroupBy = groupBy;

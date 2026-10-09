@@ -47,7 +47,7 @@ namespace Baseten
 
         /// <summary>
         /// Updates a user's route settings in a team<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires team admin for the specified team or organization admin.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="userId"></param>
@@ -84,7 +84,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates a user's route settings in a team<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires team admin for the specified team or organization admin.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="userId"></param>
@@ -469,7 +469,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates a user's route settings in a team<br/>
-        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires organization admin.
+        /// Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires team admin for the specified team or organization admin.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="userId"></param>

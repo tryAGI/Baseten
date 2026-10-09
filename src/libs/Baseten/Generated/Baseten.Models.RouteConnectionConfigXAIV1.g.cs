@@ -16,11 +16,18 @@ namespace Baseten
         public string Provider { get; set; } = "XAI";
 
         /// <summary>
-        /// Identifier of an existing secret, owned by the same team, that holds the provider API key.
+        /// Identifier of the team secret holding the provider API key.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("secret_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string SecretId { get; set; }
+
+        /// <summary>
+        /// Name of the team secret holding the provider API key.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("secret_name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string SecretName { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,7 +39,10 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="RouteConnectionConfigXAIV1" /> class.
         /// </summary>
         /// <param name="secretId">
-        /// Identifier of an existing secret, owned by the same team, that holds the provider API key.
+        /// Identifier of the team secret holding the provider API key.
+        /// </param>
+        /// <param name="secretName">
+        /// Name of the team secret holding the provider API key.
         /// </param>
         /// <param name="provider">
         /// Provider kind for xAI.
@@ -42,10 +52,12 @@ namespace Baseten
 #endif
         public RouteConnectionConfigXAIV1(
             string secretId,
+            string secretName,
             string provider = "XAI")
         {
             this.Provider = provider;
             this.SecretId = secretId ?? throw new global::System.ArgumentNullException(nameof(secretId));
+            this.SecretName = secretName ?? throw new global::System.ArgumentNullException(nameof(secretName));
         }
 
         /// <summary>
@@ -53,18 +65,6 @@ namespace Baseten
         /// </summary>
         public RouteConnectionConfigXAIV1()
         {
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="RouteConnectionConfigXAIV1"/> from its single non-const required field,
-        /// hardcoding any const discriminator fields.
-        /// </summary>
-        public static RouteConnectionConfigXAIV1 FromSecretId(string secretId)
-        {
-            return new RouteConnectionConfigXAIV1
-            {
-                SecretId = secretId,
-            };
         }
 
     }

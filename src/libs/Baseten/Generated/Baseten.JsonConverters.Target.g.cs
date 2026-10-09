@@ -28,26 +28,12 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetBasetenModelAPIV1)}");
                 basetenModelApi = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.RouteTargetAnthropicV1? anthropic = default;
-            if (discriminator?.Type == global::Baseten.RouteV1TargetDiscriminatorType.Anthropic)
+            global::Baseten.RouteTargetConnectionV1? connection = default;
+            if (discriminator?.Type == global::Baseten.RouteV1TargetDiscriminatorType.Connection)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetAnthropicV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetAnthropicV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetAnthropicV1)}");
-                anthropic = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
-            global::Baseten.RouteTargetOpenAIV1? openai = default;
-            if (discriminator?.Type == global::Baseten.RouteV1TargetDiscriminatorType.Openai)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetOpenAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetOpenAIV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetOpenAIV1)}");
-                openai = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
-            }
-            global::Baseten.RouteTargetXAIV1? xai = default;
-            if (discriminator?.Type == global::Baseten.RouteV1TargetDiscriminatorType.Xai)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetXAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetXAIV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetXAIV1)}");
-                xai = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetConnectionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetConnectionV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.RouteTargetConnectionV1)}");
+                connection = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Baseten.RouteTargetClassifierModelBasedV1? classifierModelBased = default;
             if (discriminator?.Type == global::Baseten.RouteV1TargetDiscriminatorType.ClassifierModelBased)
@@ -61,11 +47,7 @@ namespace Baseten.JsonConverters
                 discriminator?.Type,
                 basetenModelApi,
 
-                anthropic,
-
-                openai,
-
-                xai,
+                connection,
 
                 classifierModelBased
                 );
@@ -88,23 +70,11 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.RouteTargetBasetenModelAPIV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBasetenModelApi(), typeInfo);
             }
-            else if (value.IsAnthropic)
+            else if (value.IsConnection)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetAnthropicV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetAnthropicV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.RouteTargetAnthropicV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAnthropic(), typeInfo);
-            }
-            else if (value.IsOpenai)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetOpenAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetOpenAIV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.RouteTargetOpenAIV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickOpenai(), typeInfo);
-            }
-            else if (value.IsXai)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetXAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetXAIV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.RouteTargetXAIV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickXai(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.RouteTargetConnectionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.RouteTargetConnectionV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.RouteTargetConnectionV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConnection(), typeInfo);
             }
             else if (value.IsClassifierModelBased)
             {

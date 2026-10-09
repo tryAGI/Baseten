@@ -16,7 +16,7 @@ namespace Baseten
         public global::Baseten.UpdateRouteHarnessDefaultsV1? HarnessDefaults { get; set; }
 
         /// <summary>
-        /// Spend limit fields to change. Pass null to remove the team's per-member limit; omit to leave it unchanged.<br/>
+        /// Spend limit fields to change. Pass null to remove the team's limits; omit to leave them unchanged.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("spend_limit")]
@@ -36,7 +36,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="spendLimit">
-        /// Spend limit fields to change. Pass null to remove the team's per-member limit; omit to leave it unchanged.<br/>
+        /// Spend limit fields to change. Pass null to remove the team's limits; omit to leave them unchanged.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER

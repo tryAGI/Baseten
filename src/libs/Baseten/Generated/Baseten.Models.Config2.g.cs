@@ -18,9 +18,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteConnectionConfigAnthropicV1? Anthropic { get; init; }
+        public global::Baseten.UpsertRouteConnectionConfigAnthropicV1? Anthropic { get; init; }
 #else
-        public global::Baseten.RouteConnectionConfigAnthropicV1? Anthropic { get; }
+        public global::Baseten.UpsertRouteConnectionConfigAnthropicV1? Anthropic { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteConnectionConfigAnthropicV1? value)
+            out global::Baseten.UpsertRouteConnectionConfigAnthropicV1? value)
         {
             value = Anthropic;
             return IsAnthropic;
@@ -47,7 +47,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteConnectionConfigAnthropicV1 PickAnthropic() => Anthropic is { } value
+        public global::Baseten.UpsertRouteConnectionConfigAnthropicV1 PickAnthropic() => Anthropic is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Anthropic' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteConnectionConfigOpenAIV1? Openai { get; init; }
+        public global::Baseten.UpsertRouteConnectionConfigOpenAIV1? Openai { get; init; }
 #else
-        public global::Baseten.RouteConnectionConfigOpenAIV1? Openai { get; }
+        public global::Baseten.UpsertRouteConnectionConfigOpenAIV1? Openai { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteConnectionConfigOpenAIV1? value)
+            out global::Baseten.UpsertRouteConnectionConfigOpenAIV1? value)
         {
             value = Openai;
             return IsOpenai;
@@ -84,7 +84,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteConnectionConfigOpenAIV1 PickOpenai() => Openai is { } value
+        public global::Baseten.UpsertRouteConnectionConfigOpenAIV1 PickOpenai() => Openai is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Openai' but the value was {ToString()}.");
 
@@ -92,9 +92,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteConnectionConfigXAIV1? Xai { get; init; }
+        public global::Baseten.UpsertRouteConnectionConfigXAIV1? Xai { get; init; }
 #else
-        public global::Baseten.RouteConnectionConfigXAIV1? Xai { get; }
+        public global::Baseten.UpsertRouteConnectionConfigXAIV1? Xai { get; }
 #endif
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteConnectionConfigXAIV1? value)
+            out global::Baseten.UpsertRouteConnectionConfigXAIV1? value)
         {
             value = Xai;
             return IsXai;
@@ -121,23 +121,23 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteConnectionConfigXAIV1 PickXai() => Xai is { } value
+        public global::Baseten.UpsertRouteConnectionConfigXAIV1 PickXai() => Xai is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Xai' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Config2(global::Baseten.RouteConnectionConfigAnthropicV1 value) => new Config2((global::Baseten.RouteConnectionConfigAnthropicV1?)value);
+        public static implicit operator Config2(global::Baseten.UpsertRouteConnectionConfigAnthropicV1 value) => new Config2((global::Baseten.UpsertRouteConnectionConfigAnthropicV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteConnectionConfigAnthropicV1?(Config2 @this) => @this.Anthropic;
+        public static implicit operator global::Baseten.UpsertRouteConnectionConfigAnthropicV1?(Config2 @this) => @this.Anthropic;
 
         /// <summary>
         ///
         /// </summary>
-        public Config2(global::Baseten.RouteConnectionConfigAnthropicV1? value)
+        public Config2(global::Baseten.UpsertRouteConnectionConfigAnthropicV1? value)
         {
             Anthropic = value;
         }
@@ -145,22 +145,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Config2 FromAnthropic(global::Baseten.RouteConnectionConfigAnthropicV1? value) => new Config2(value);
+        public static Config2 FromAnthropic(global::Baseten.UpsertRouteConnectionConfigAnthropicV1? value) => new Config2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Config2(global::Baseten.RouteConnectionConfigOpenAIV1 value) => new Config2((global::Baseten.RouteConnectionConfigOpenAIV1?)value);
+        public static implicit operator Config2(global::Baseten.UpsertRouteConnectionConfigOpenAIV1 value) => new Config2((global::Baseten.UpsertRouteConnectionConfigOpenAIV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteConnectionConfigOpenAIV1?(Config2 @this) => @this.Openai;
+        public static implicit operator global::Baseten.UpsertRouteConnectionConfigOpenAIV1?(Config2 @this) => @this.Openai;
 
         /// <summary>
         ///
         /// </summary>
-        public Config2(global::Baseten.RouteConnectionConfigOpenAIV1? value)
+        public Config2(global::Baseten.UpsertRouteConnectionConfigOpenAIV1? value)
         {
             Openai = value;
         }
@@ -168,22 +168,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Config2 FromOpenai(global::Baseten.RouteConnectionConfigOpenAIV1? value) => new Config2(value);
+        public static Config2 FromOpenai(global::Baseten.UpsertRouteConnectionConfigOpenAIV1? value) => new Config2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Config2(global::Baseten.RouteConnectionConfigXAIV1 value) => new Config2((global::Baseten.RouteConnectionConfigXAIV1?)value);
+        public static implicit operator Config2(global::Baseten.UpsertRouteConnectionConfigXAIV1 value) => new Config2((global::Baseten.UpsertRouteConnectionConfigXAIV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteConnectionConfigXAIV1?(Config2 @this) => @this.Xai;
+        public static implicit operator global::Baseten.UpsertRouteConnectionConfigXAIV1?(Config2 @this) => @this.Xai;
 
         /// <summary>
         ///
         /// </summary>
-        public Config2(global::Baseten.RouteConnectionConfigXAIV1? value)
+        public Config2(global::Baseten.UpsertRouteConnectionConfigXAIV1? value)
         {
             Xai = value;
         }
@@ -191,16 +191,16 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Config2 FromXai(global::Baseten.RouteConnectionConfigXAIV1? value) => new Config2(value);
+        public static Config2 FromXai(global::Baseten.UpsertRouteConnectionConfigXAIV1? value) => new Config2(value);
 
         /// <summary>
         ///
         /// </summary>
         public Config2(
             global::Baseten.CreateRouteConnectionRequestV1ConfigDiscriminatorProvider? provider,
-            global::Baseten.RouteConnectionConfigAnthropicV1? anthropic,
-            global::Baseten.RouteConnectionConfigOpenAIV1? openai,
-            global::Baseten.RouteConnectionConfigXAIV1? xai
+            global::Baseten.UpsertRouteConnectionConfigAnthropicV1? anthropic,
+            global::Baseten.UpsertRouteConnectionConfigOpenAIV1? openai,
+            global::Baseten.UpsertRouteConnectionConfigXAIV1? xai
             )
         {
             Provider = provider;
@@ -240,9 +240,9 @@ namespace Baseten
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Baseten.RouteConnectionConfigAnthropicV1, TResult>? anthropic = null,
-            global::System.Func<global::Baseten.RouteConnectionConfigOpenAIV1, TResult>? openai = null,
-            global::System.Func<global::Baseten.RouteConnectionConfigXAIV1, TResult>? xai = null,
+            global::System.Func<global::Baseten.UpsertRouteConnectionConfigAnthropicV1, TResult>? anthropic = null,
+            global::System.Func<global::Baseten.UpsertRouteConnectionConfigOpenAIV1, TResult>? openai = null,
+            global::System.Func<global::Baseten.UpsertRouteConnectionConfigXAIV1, TResult>? xai = null,
             bool validate = true)
         {
             if (validate)
@@ -270,11 +270,11 @@ namespace Baseten
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Baseten.RouteConnectionConfigAnthropicV1>? anthropic = null,
+            global::System.Action<global::Baseten.UpsertRouteConnectionConfigAnthropicV1>? anthropic = null,
 
-            global::System.Action<global::Baseten.RouteConnectionConfigOpenAIV1>? openai = null,
+            global::System.Action<global::Baseten.UpsertRouteConnectionConfigOpenAIV1>? openai = null,
 
-            global::System.Action<global::Baseten.RouteConnectionConfigXAIV1>? xai = null,
+            global::System.Action<global::Baseten.UpsertRouteConnectionConfigXAIV1>? xai = null,
             bool validate = true)
         {
             if (validate)
@@ -300,9 +300,9 @@ namespace Baseten
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Baseten.RouteConnectionConfigAnthropicV1>? anthropic = null,
-            global::System.Action<global::Baseten.RouteConnectionConfigOpenAIV1>? openai = null,
-            global::System.Action<global::Baseten.RouteConnectionConfigXAIV1>? xai = null,
+            global::System.Action<global::Baseten.UpsertRouteConnectionConfigAnthropicV1>? anthropic = null,
+            global::System.Action<global::Baseten.UpsertRouteConnectionConfigOpenAIV1>? openai = null,
+            global::System.Action<global::Baseten.UpsertRouteConnectionConfigXAIV1>? xai = null,
             bool validate = true)
         {
             if (validate)
@@ -332,11 +332,11 @@ namespace Baseten
             var fields = new object?[]
             {
                 Anthropic,
-                typeof(global::Baseten.RouteConnectionConfigAnthropicV1),
+                typeof(global::Baseten.UpsertRouteConnectionConfigAnthropicV1),
                 Openai,
-                typeof(global::Baseten.RouteConnectionConfigOpenAIV1),
+                typeof(global::Baseten.UpsertRouteConnectionConfigOpenAIV1),
                 Xai,
-                typeof(global::Baseten.RouteConnectionConfigXAIV1),
+                typeof(global::Baseten.UpsertRouteConnectionConfigXAIV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -353,9 +353,9 @@ namespace Baseten
         public bool Equals(Config2 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteConnectionConfigAnthropicV1?>.Default.Equals(Anthropic, other.Anthropic) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteConnectionConfigOpenAIV1?>.Default.Equals(Openai, other.Openai) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteConnectionConfigXAIV1?>.Default.Equals(Xai, other.Xai)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteConnectionConfigAnthropicV1?>.Default.Equals(Anthropic, other.Anthropic) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteConnectionConfigOpenAIV1?>.Default.Equals(Openai, other.Openai) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteConnectionConfigXAIV1?>.Default.Equals(Xai, other.Xai)
                 ;
         }
 

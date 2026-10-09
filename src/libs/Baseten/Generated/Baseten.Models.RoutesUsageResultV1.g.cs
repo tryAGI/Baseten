@@ -16,6 +16,13 @@ namespace Baseten
         public string? UserId { get; set; }
 
         /// <summary>
+        /// ID of the team the usage was metered in. Null when not grouping by TEAM, and for usage metered before it was attributed to teams.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
+        public string? TeamId { get; set; }
+
+        /// <summary>
         /// Model name. For external providers, the model name sent to the provider. Null when not grouping by MODEL.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -92,6 +99,10 @@ namespace Baseten
         /// ID of the user who created the Routes key. Null when not grouping by USER.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="teamId">
+        /// ID of the team the usage was metered in. Null when not grouping by TEAM, and for usage metered before it was attributed to teams.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="model">
         /// Model name. For external providers, the model name sent to the provider. Null when not grouping by MODEL.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -110,10 +121,12 @@ namespace Baseten
             int uncachedInputTokens,
             int outputTokens,
             string? userId,
+            string? teamId,
             string? model,
             global::Baseten.RouteProviderV1? provider)
         {
             this.UserId = userId;
+            this.TeamId = teamId;
             this.Model = model;
             this.Provider = provider;
             this.CostUsd = costUsd ?? throw new global::System.ArgumentNullException(nameof(costUsd));

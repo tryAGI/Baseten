@@ -44,7 +44,7 @@ internal static partial class GetRoutesSettingsTeamsByTeamIdUsersByUserIdCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-routes-settings-teams-by-team-id-users-by-user-id", @"Gets a user's route settings in a team
-Returns the user's spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.");
+Returns the user's spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; team admins can read members' settings in teams they administer, and organization admins can read anyone's.");
                         command.Arguments.Add(TeamId);
                         command.Arguments.Add(UserId);
 

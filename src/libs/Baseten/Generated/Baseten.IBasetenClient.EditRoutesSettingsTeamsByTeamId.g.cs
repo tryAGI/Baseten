@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Updates a team's route settings<br/>
-        /// Changes only the fields in the request, all or nothing. Requires team admin.
+        /// Changes only the fields in the request, all or nothing. Requires team admin, and organization admin to change the team-wide spend limit.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="request"></param>
@@ -30,7 +30,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a team's route settings<br/>
-        /// Changes only the fields in the request, all or nothing. Requires team admin.
+        /// Changes only the fields in the request, all or nothing. Requires team admin, and organization admin to change the team-wide spend limit.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="request"></param>
@@ -54,7 +54,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a team's route settings<br/>
-        /// Changes only the fields in the request, all or nothing. Requires team admin.
+        /// Changes only the fields in the request, all or nothing. Requires team admin, and organization admin to change the team-wide spend limit.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="harnessDefaults">
@@ -62,7 +62,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="spendLimit">
-        /// Spend limit fields to change. Pass null to remove the team's per-member limit; omit to leave it unchanged.<br/>
+        /// Spend limit fields to change. Pass null to remove the team's limits; omit to leave them unchanged.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

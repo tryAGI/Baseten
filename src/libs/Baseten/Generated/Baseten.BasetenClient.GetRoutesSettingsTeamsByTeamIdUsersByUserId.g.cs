@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets a user's route settings in a team<br/>
-        /// Returns the user's spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.
+        /// Returns the user's spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; team admins can read members' settings in teams they administer, and organization admins can read anyone's.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="userId"></param>
@@ -74,7 +74,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets a user's route settings in a team<br/>
-        /// Returns the user's spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.
+        /// Returns the user's spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; team admins can read members' settings in teams they administer, and organization admins can read anyone's.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="userId"></param>

@@ -29,6 +29,7 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
             ref int? limit,
+            ref string? teamId,
             global::System.DateTime? startDate,
             global::System.DateTime? endDate,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy,
@@ -40,6 +41,7 @@ namespace Baseten
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
             int? limit,
+            string? teamId,
             global::System.DateTime? startDate,
             global::System.DateTime? endDate,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy,
@@ -57,13 +59,16 @@ namespace Baseten
 
         /// <summary>
         /// Gets daily route usage and estimated costs<br/>
-        /// Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.
+        /// Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Team admins see usage in teams they manage. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage can be filtered and grouped by the team it was metered in. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="limit">
         /// Default Value: 7
+        /// </param>
+        /// <param name="teamId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="startDate">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -86,6 +91,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.RoutesUsageResponseV1> GetRoutesUsageAsync(
             string? cursor = default,
             int? limit = default,
+            string? teamId = default,
             global::System.DateTime? startDate = default,
             global::System.DateTime? endDate = default,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy = default,
@@ -98,6 +104,7 @@ namespace Baseten
             var __response = await GetRoutesUsageAsResponseAsync(
                 cursor: cursor,
                 limit: limit,
+                teamId: teamId,
                 startDate: startDate,
                 endDate: endDate,
                 groupBy: groupBy,
@@ -112,13 +119,16 @@ namespace Baseten
         }
         /// <summary>
         /// Gets daily route usage and estimated costs<br/>
-        /// Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.
+        /// Buckets are UTC days, and days with no usage are included. Organization admins see all route usage in the organization. Team admins see usage in teams they manage. Other members, including viewers, see only usage from Routes keys they created, including keys that have since expired, been revoked, or been deleted. Usage can be filtered and grouped by the team it was metered in. Usage is metered every 15 minutes, so the current hour can lag. Model API costs use your prices at the time of each request and include tool calls. xAI costs are the charges xAI reports. OpenAI and Anthropic costs are estimated from Baseten's reference prices and may differ from your provider's bill. Vertex and OpenAI-compatible usage is not included. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges. Usage is retained for 92 days.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="limit">
         /// Default Value: 7
+        /// </param>
+        /// <param name="teamId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="startDate">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -141,6 +151,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.RoutesUsageResponseV1>> GetRoutesUsageAsResponseAsync(
             string? cursor = default,
             int? limit = default,
+            string? teamId = default,
             global::System.DateTime? startDate = default,
             global::System.DateTime? endDate = default,
             global::System.Collections.Generic.IList<global::Baseten.RouteUsageDimensionV1>? groupBy = default,
@@ -156,6 +167,7 @@ namespace Baseten
                 httpClient: HttpClient,
                 cursor: ref cursor,
                 limit: ref limit,
+                teamId: ref teamId,
                 startDate: startDate,
                 endDate: endDate,
                 groupBy: groupBy,
@@ -192,6 +204,7 @@ namespace Baseten
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
                                 .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("team_id", teamId)
                                 .AddOptionalParameter("start_date", startDate?.ToString())
                                 .AddOptionalParameter("end_date", endDate?.ToString())
                                 .AddOptionalParameter("group_by", groupBy, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
@@ -241,6 +254,7 @@ namespace Baseten
                     httpRequestMessage: __httpRequest,
                     cursor: cursor,
                     limit: limit,
+                    teamId: teamId,
                     startDate: startDate,
                     endDate: endDate,
                     groupBy: groupBy,

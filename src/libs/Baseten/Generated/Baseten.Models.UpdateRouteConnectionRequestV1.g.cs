@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class UpdateRouteConnectionRequestV1
     {
         /// <summary>
-        /// Connection fields to change. The provider must match the connection and is immutable.
+        /// Complete new connection configuration, replacing the current one. The provider must match the connection and is immutable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("config")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Config3JsonConverter))]
@@ -26,7 +26,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="UpdateRouteConnectionRequestV1" /> class.
         /// </summary>
         /// <param name="config">
-        /// Connection fields to change. The provider must match the connection and is immutable.
+        /// Complete new connection configuration, replacing the current one. The provider must match the connection and is immutable.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
