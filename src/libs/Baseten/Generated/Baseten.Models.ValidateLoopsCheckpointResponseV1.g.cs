@@ -5,7 +5,8 @@ namespace Baseten
 {
     /// <summary>
     /// Response for ``POST /v1/loops/checkpoints/validate``. Empty on success;<br/>
-    /// inaccessible or malformed paths raise 400.
+    /// inaccessible or malformed paths, and checkpoints of another LoRA config than<br/>
+    /// ``run_id``'s, raise 400.
     /// </summary>
     public sealed partial class ValidateLoopsCheckpointResponseV1
     {

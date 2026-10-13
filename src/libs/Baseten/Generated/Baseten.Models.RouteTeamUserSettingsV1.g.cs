@@ -16,6 +16,13 @@ namespace Baseten
         public required string TeamId { get; set; }
 
         /// <summary>
+        /// Name of the team.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string TeamName { get; set; }
+
+        /// <summary>
         /// ID of the user.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user_id")]
@@ -50,6 +57,12 @@ namespace Baseten
         public required bool IsBlocked { get; set; }
 
         /// <summary>
+        /// `member` when the user's spend this month reached their limit, `team` when the team's spend reached its team-wide limit. Null when the user is not blocked.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("blocked_by")]
+        public global::Baseten.RouteSpendBlockedByV1? BlockedBy { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +73,9 @@ namespace Baseten
         /// </summary>
         /// <param name="teamId">
         /// ID of the team.
+        /// </param>
+        /// <param name="teamName">
+        /// Name of the team.
         /// </param>
         /// <param name="userId">
         /// ID of the user.
@@ -76,23 +92,30 @@ namespace Baseten
         /// <param name="email">
         /// Email address of the user.
         /// </param>
+        /// <param name="blockedBy">
+        /// `member` when the user's spend this month reached their limit, `team` when the team's spend reached its team-wide limit. Null when the user is not blocked.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RouteTeamUserSettingsV1(
             string teamId,
+            string teamName,
             string userId,
             global::Baseten.RouteSpendLimitSettingV1 spendLimit,
             string monthSpendUsd,
             bool isBlocked,
-            string? email)
+            string? email,
+            global::Baseten.RouteSpendBlockedByV1? blockedBy)
         {
             this.TeamId = teamId ?? throw new global::System.ArgumentNullException(nameof(teamId));
+            this.TeamName = teamName ?? throw new global::System.ArgumentNullException(nameof(teamName));
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.Email = email;
             this.SpendLimit = spendLimit ?? throw new global::System.ArgumentNullException(nameof(spendLimit));
             this.MonthSpendUsd = monthSpendUsd ?? throw new global::System.ArgumentNullException(nameof(monthSpendUsd));
             this.IsBlocked = isBlocked;
+            this.BlockedBy = blockedBy;
         }
 
         /// <summary>

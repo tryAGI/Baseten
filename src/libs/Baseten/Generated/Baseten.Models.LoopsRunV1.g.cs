@@ -44,6 +44,13 @@ namespace Baseten
         public required string BaseModel { get; set; }
 
         /// <summary>
+        /// The run's immutable LoRA config version.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lora_config_version")]
+        public string? LoraConfigVersion { get; set; }
+
+        /// <summary>
         /// The run's base URL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_url")]
@@ -115,6 +122,10 @@ namespace Baseten
         /// The ID of the Loops deployment the run executes on, if it has one.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="loraConfigVersion">
+        /// The run's immutable LoRA config version.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="sampler">
         /// The sampler bound to this run, or null for a trainer-only run that has not yet created a sampler.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -132,6 +143,7 @@ namespace Baseten
             global::Baseten.LoopsRunStatusV1 status,
             global::Baseten.UserV1 user,
             string? deploymentId,
+            string? loraConfigVersion,
             global::Baseten.LoopsSamplerV1? sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
@@ -139,6 +151,7 @@ namespace Baseten
             this.DeploymentId = deploymentId;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
+            this.LoraConfigVersion = loraConfigVersion;
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.CreatedAt = createdAt;
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));

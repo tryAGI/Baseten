@@ -63,6 +63,12 @@ namespace Baseten
         public required string Id { get; set; }
 
         /// <summary>
+        /// The immutable LoRA config used to save this checkpoint. Null means the checkpoint is unsupported and cannot be loaded.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("lora_config")]
+        public global::Baseten.LoopsLoRAConfigV1? LoraConfig { get; set; }
+
+        /// <summary>
         /// The ID of the run that produced the checkpoint.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("run_id")]
@@ -117,6 +123,9 @@ namespace Baseten
         /// Sync state of the checkpoint: SYNCING or COMPLETE.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="loraConfig">
+        /// The immutable LoRA config used to save this checkpoint. Null means the checkpoint is unsupported and cannot be loaded.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -130,7 +139,8 @@ namespace Baseten
             global::Baseten.TrainerCheckpointTarget target,
             string? baseModel,
             object? loraAdapterConfig,
-            string? syncStatus)
+            string? syncStatus,
+            global::Baseten.LoopsLoRAConfigV1? loraConfig)
         {
             this.CheckpointId = checkpointId ?? throw new global::System.ArgumentNullException(nameof(checkpointId));
             this.CreatedAt = createdAt;
@@ -140,6 +150,7 @@ namespace Baseten
             this.SizeBytes = sizeBytes;
             this.SyncStatus = syncStatus;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.LoraConfig = loraConfig;
             this.RunId = runId ?? throw new global::System.ArgumentNullException(nameof(runId));
             this.Target = target;
         }
