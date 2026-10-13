@@ -19,6 +19,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Router,
+        /// <summary>
+        ///
+        /// </summary>
         Team,
         /// <summary>
         ///
@@ -40,6 +44,7 @@ namespace Baseten
             {
                 RouteUsageDimensionV1.Model => "MODEL",
                 RouteUsageDimensionV1.Provider => "PROVIDER",
+                RouteUsageDimensionV1.Router => "ROUTER",
                 RouteUsageDimensionV1.Team => "TEAM",
                 RouteUsageDimensionV1.User => "USER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -54,6 +59,7 @@ namespace Baseten
             {
                 "MODEL" => RouteUsageDimensionV1.Model,
                 "PROVIDER" => RouteUsageDimensionV1.Provider,
+                "ROUTER" => RouteUsageDimensionV1.Router,
                 "TEAM" => RouteUsageDimensionV1.Team,
                 "USER" => RouteUsageDimensionV1.User,
                 _ => null,
