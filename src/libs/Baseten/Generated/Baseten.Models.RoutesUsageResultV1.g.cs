@@ -37,6 +37,13 @@ namespace Baseten
         public global::Baseten.RouteProviderV1? Provider { get; set; }
 
         /// <summary>
+        /// Slug of the intelligent router, matching its name in `GET /v1/routes`. Null when not grouping by ROUTER.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("router_id")]
+        public string? RouterId { get; set; }
+
+        /// <summary>
         /// Estimated cost in USD, returned as an exact decimal string. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_usd")]
@@ -72,6 +79,13 @@ namespace Baseten
         public required int OutputTokens { get; set; }
 
         /// <summary>
+        /// Number of requests; with ROUTER, the requests sent through that router. Usage recorded before requests were counted adds zero.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("requests")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int Requests { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -95,6 +109,9 @@ namespace Baseten
         /// <param name="outputTokens">
         /// Output tokens.
         /// </param>
+        /// <param name="requests">
+        /// Number of requests; with ROUTER, the requests sent through that router. Usage recorded before requests were counted adds zero.
+        /// </param>
         /// <param name="userId">
         /// ID of the user who created the Routes key. Null when not grouping by USER.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -111,6 +128,10 @@ namespace Baseten
         /// Provider that served the requests. Null when not grouping by PROVIDER.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="routerId">
+        /// Slug of the intelligent router, matching its name in `GET /v1/routes`. Null when not grouping by ROUTER.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -120,20 +141,24 @@ namespace Baseten
             int cachedInputTokens,
             int uncachedInputTokens,
             int outputTokens,
+            int requests,
             string? userId,
             string? teamId,
             string? model,
-            global::Baseten.RouteProviderV1? provider)
+            global::Baseten.RouteProviderV1? provider,
+            string? routerId)
         {
             this.UserId = userId;
             this.TeamId = teamId;
             this.Model = model;
             this.Provider = provider;
+            this.RouterId = routerId;
             this.CostUsd = costUsd ?? throw new global::System.ArgumentNullException(nameof(costUsd));
             this.InputTokens = inputTokens;
             this.CachedInputTokens = cachedInputTokens;
             this.UncachedInputTokens = uncachedInputTokens;
             this.OutputTokens = outputTokens;
+            this.Requests = requests;
         }
 
         /// <summary>

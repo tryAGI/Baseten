@@ -10248,7 +10248,7 @@
                         "name": "group_by",
                         "in": "query",
                         "required": false,
-                        "description": "Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.",
+                        "description": "Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, or ROUTER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. Defaults to MODEL.",
                         "schema": {
                             "items": {
                                 "$ref": "#/components/schemas/RouteUsageDimensionV1"
@@ -33956,6 +33956,19 @@
                         "default": null,
                         "description": "Provider that served the requests. Null when not grouping by PROVIDER."
                     },
+                    "router_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Slug of the intelligent router, matching its name in `GET /v1/routes`. Null when not grouping by ROUTER.",
+                        "title": "Router Id"
+                    },
                     "cost_usd": {
                         "description": "Estimated cost in USD, returned as an exact decimal string. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges.",
                         "examples": [
@@ -33983,6 +33996,11 @@
                         "description": "Output tokens.",
                         "title": "Output Tokens",
                         "type": "integer"
+                    },
+                    "requests": {
+                        "description": "Number of requests; with ROUTER, the requests sent through that router. Usage recorded before requests were counted adds zero.",
+                        "title": "Requests",
+                        "type": "integer"
                     }
                 },
                 "required": [
@@ -33990,7 +34008,8 @@
                     "input_tokens",
                     "cached_input_tokens",
                     "uncached_input_tokens",
-                    "output_tokens"
+                    "output_tokens",
+                    "requests"
                 ],
                 "title": "RoutesUsageResultV1",
                 "type": "object"
@@ -34022,7 +34041,8 @@
                     "USER",
                     "TEAM",
                     "MODEL",
-                    "PROVIDER"
+                    "PROVIDER",
+                    "ROUTER"
                 ],
                 "title": "RouteUsageDimensionV1",
                 "type": "string"
@@ -34092,7 +34112,7 @@
                         "title": "End Date"
                     },
                     "group_by": {
-                        "description": "Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, or PROVIDER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. Defaults to MODEL.",
+                        "description": "Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, or ROUTER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. Defaults to MODEL.",
                         "items": {
                             "$ref": "#/components/schemas/RouteUsageDimensionV1"
                         },
