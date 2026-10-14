@@ -25,6 +25,10 @@ internal static partial class CreateLibraryListingsCommandApiCommand
         name: @"--is-public",
         description: @"Whether the listing is publicly accessible");
 
+    private static Option<bool?> IsListed { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--is-listed",
+        description: @"Whether the listing appears in catalogs; unlisted listings still deploy from a direct link");
+
     private static Option<bool?> ClosedSource { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--closed-source",
         description: @"Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)");
@@ -74,6 +78,7 @@ Creates a new library listing for the authenticated user's organization.");
                         command.Options.Add(DisplayName);
                         command.Options.Add(UserDefinedId);
                         command.Options.Add(IsPublic);
+                        command.Options.Add(IsListed);
                         command.Options.Add(ClosedSource);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -103,6 +108,7 @@ Creates a new library listing for the authenticated user's organization.");
                         var displayName = parseResult.GetRequiredValue(DisplayName);
                         var userDefinedId = parseResult.GetRequiredValue(UserDefinedId);
                         var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : (__requestBase is { } __IsPublicBaseValue ? __IsPublicBaseValue.IsPublic : default);
+                        var isListed = CliRuntime.WasSpecified(parseResult, IsListed) ? parseResult.GetValue(IsListed) : (__requestBase is { } __IsListedBaseValue ? __IsListedBaseValue.IsListed : default);
                         var closedSource = CliRuntime.WasSpecified(parseResult, ClosedSource) ? parseResult.GetValue(ClosedSource) : (__requestBase is { } __ClosedSourceBaseValue ? __ClosedSourceBaseValue.ClosedSource : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -111,6 +117,7 @@ Creates a new library listing for the authenticated user's organization.");
                                     displayName: displayName,
                                     userDefinedId: userDefinedId,
                                     isPublic: isPublic,
+                                    isListed: isListed,
                                     closedSource: closedSource,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

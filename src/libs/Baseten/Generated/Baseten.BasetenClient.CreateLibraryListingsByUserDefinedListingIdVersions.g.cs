@@ -489,6 +489,14 @@ namespace Baseten
         /// <param name="versionTag">
         /// Human-readable tag for this version
         /// </param>
+        /// <param name="isListed">
+        /// Whether the listing appears in catalogs; unlisted listings still deploy from a direct link. Only used when creating a new listing.<br/>
+        /// Default Value: true
+        /// </param>
+        /// <param name="replaceModel">
+        /// Allow publishing from a different model than the listing's current one. The listing then points at the new model; earlier versions and existing deployments are unaffected. Fails if the new model already backs another listing.<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -500,6 +508,8 @@ namespace Baseten
             bool? isPublic = default,
             bool? allowTrussDownload = default,
             bool? closedSource = default,
+            bool? isListed = default,
+            bool? replaceModel = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -511,6 +521,8 @@ namespace Baseten
                 AllowTrussDownload = allowTrussDownload,
                 ClosedSource = closedSource,
                 VersionTag = versionTag,
+                IsListed = isListed,
+                ReplaceModel = replaceModel,
             };
 
             return await CreateLibraryListingsByUserDefinedListingIdVersionsAsync(

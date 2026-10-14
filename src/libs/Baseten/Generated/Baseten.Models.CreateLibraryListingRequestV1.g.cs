@@ -30,6 +30,13 @@ namespace Baseten
         public bool? IsPublic { get; set; }
 
         /// <summary>
+        /// Whether the listing appears in catalogs; unlisted listings still deploy from a direct link<br/>
+        /// Default Value: true
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_listed")]
+        public bool? IsListed { get; set; }
+
+        /// <summary>
         /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)<br/>
         /// Default Value: false
         /// </summary>
@@ -55,6 +62,10 @@ namespace Baseten
         /// Whether the listing is publicly accessible<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="isListed">
+        /// Whether the listing appears in catalogs; unlisted listings still deploy from a direct link<br/>
+        /// Default Value: true
+        /// </param>
         /// <param name="closedSource">
         /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)<br/>
         /// Default Value: false
@@ -66,11 +77,13 @@ namespace Baseten
             string displayName,
             string userDefinedId,
             bool? isPublic,
+            bool? isListed,
             bool? closedSource)
         {
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.UserDefinedId = userDefinedId ?? throw new global::System.ArgumentNullException(nameof(userDefinedId));
             this.IsPublic = isPublic;
+            this.IsListed = isListed;
             this.ClosedSource = closedSource;
         }
 

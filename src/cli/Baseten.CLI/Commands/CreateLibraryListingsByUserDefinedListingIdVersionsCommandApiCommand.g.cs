@@ -44,6 +44,14 @@ internal static partial class CreateLibraryListingsByUserDefinedListingIdVersion
         Description = @"Human-readable tag for this version",
         Required = true,
     };
+
+    private static Option<bool?> IsListed { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--is-listed",
+        description: @"Whether the listing appears in catalogs; unlisted listings still deploy from a direct link. Only used when creating a new listing.");
+
+    private static Option<bool?> ReplaceModel { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--replace-model",
+        description: @"Allow publishing from a different model than the listing's current one. The listing then points at the new model; earlier versions and existing deployments are unaffected. Fails if the new model already backs another listing.");
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -94,6 +102,8 @@ Creates a new library listing version from an existing model version. The model 
                         command.Options.Add(AllowTrussDownload);
                         command.Options.Add(ClosedSource);
                         command.Options.Add(VersionTag);
+                        command.Options.Add(IsListed);
+                        command.Options.Add(ReplaceModel);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -126,6 +136,8 @@ Creates a new library listing version from an existing model version. The model 
                         var allowTrussDownload = CliRuntime.WasSpecified(parseResult, AllowTrussDownload) ? parseResult.GetValue(AllowTrussDownload) : (__requestBase is { } __AllowTrussDownloadBaseValue ? __AllowTrussDownloadBaseValue.AllowTrussDownload : default);
                         var closedSource = CliRuntime.WasSpecified(parseResult, ClosedSource) ? parseResult.GetValue(ClosedSource) : (__requestBase is { } __ClosedSourceBaseValue ? __ClosedSourceBaseValue.ClosedSource : default);
                         var versionTag = parseResult.GetRequiredValue(VersionTag);
+                        var isListed = CliRuntime.WasSpecified(parseResult, IsListed) ? parseResult.GetValue(IsListed) : (__requestBase is { } __IsListedBaseValue ? __IsListedBaseValue.IsListed : default);
+                        var replaceModel = CliRuntime.WasSpecified(parseResult, ReplaceModel) ? parseResult.GetValue(ReplaceModel) : (__requestBase is { } __ReplaceModelBaseValue ? __ReplaceModelBaseValue.ReplaceModel : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -137,6 +149,8 @@ Creates a new library listing version from an existing model version. The model 
                                     allowTrussDownload: allowTrussDownload,
                                     closedSource: closedSource,
                                     versionTag: versionTag,
+                                    isListed: isListed,
+                                    replaceModel: replaceModel,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

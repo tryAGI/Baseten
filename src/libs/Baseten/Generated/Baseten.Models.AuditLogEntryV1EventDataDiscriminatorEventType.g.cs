@@ -191,6 +191,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        VolumeTagDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        VolumeTagSet,
+        /// <summary>
+        ///
+        /// </summary>
+        VolumeUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         VolumeVersionDeleted,
         /// <summary>
         ///
@@ -267,6 +279,9 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserRoleUpdated => "USER_ROLE_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserTeamRoleUpdated => "USER_TEAM_ROLE_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.VolumeDeleted => "VOLUME_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.VolumeTagDeleted => "VOLUME_TAG_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.VolumeTagSet => "VOLUME_TAG_SET",
+                AuditLogEntryV1EventDataDiscriminatorEventType.VolumeUpdated => "VOLUME_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionDeleted => "VOLUME_VERSION_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionRestored => "VOLUME_VERSION_RESTORED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.WebhookSigningSecretCreated => "WEBHOOK_SIGNING_SECRET_CREATED",
@@ -327,6 +342,9 @@ namespace Baseten
                 "USER_ROLE_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserRoleUpdated,
                 "USER_TEAM_ROLE_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserTeamRoleUpdated,
                 "VOLUME_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeDeleted,
+                "VOLUME_TAG_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeTagDeleted,
+                "VOLUME_TAG_SET" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeTagSet,
+                "VOLUME_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeUpdated,
                 "VOLUME_VERSION_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionDeleted,
                 "VOLUME_VERSION_RESTORED" => AuditLogEntryV1EventDataDiscriminatorEventType.VolumeVersionRestored,
                 "WEBHOOK_SIGNING_SECRET_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.WebhookSigningSecretCreated,

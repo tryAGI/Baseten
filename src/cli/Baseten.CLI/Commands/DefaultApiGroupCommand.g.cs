@@ -79,6 +79,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdRecreateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdSshSignCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdStopCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateVolumesByVolumeNamespaceByVolumeNameTagsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRestoreCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesSyncsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesSyncsByVolumeSyncIdCancelCommandApiCommand.Create());
@@ -100,6 +101,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameTagsByVolumeTagCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameChainletSettingsAutoscalingSettingsCommandApiCommand.Create());
@@ -125,6 +127,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(EditTrainingCapacityCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdCommandApiCommand.Create());
+                         command.Subcommands.Add(EditVolumesByVolumeNamespaceByVolumeNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingModelApisCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingToolCallUsageCommandApiCommand.Create());

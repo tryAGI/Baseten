@@ -55,7 +55,7 @@ internal static partial class EditRoutesSettingsUsersByUserIdCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"edit-routes-settings-users-by-user-id", @"Updates a user's route settings
-Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has Code spend in this month, else in their only team; the request fails when there is none.");
+Changes only the fields in the request. Once the user's metered spend in a team in a month reaches the spend limit, requests with Routes keys they created in that team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. The user's own limit supersedes their team's per-member limit. The limit is set in the only team the user has a role in; when they belong to none or several, use `PATCH /v1/routes/settings/teams/{team_id}/users/{user_id}` instead.");
                         command.Arguments.Add(UserId);                        command.Options.Add(SpendLimitOptions.UserMonthlyLimitUsd);
                         command.Options.Add(SpendLimitOptions.MonthOverrideUsd);
           command.Options.Add(Input);
