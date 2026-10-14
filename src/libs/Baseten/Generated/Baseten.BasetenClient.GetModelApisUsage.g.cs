@@ -34,6 +34,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? apiKeys,
             global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
+            global::System.Collections.Generic.IList<string>? teamIds,
             int? limit,
             ref string? cursor);
         partial void PrepareGetModelApisUsageRequest(
@@ -46,6 +47,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? apiKeys,
             global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
+            global::System.Collections.Generic.IList<string>? teamIds,
             int? limit,
             string? cursor);
         partial void ProcessGetModelApisUsageResponse(
@@ -59,7 +61,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets Model APIs token usage in time buckets<br/>
-        /// Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.
+        /// Returns Model APIs token usage for the teams you can manage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Organization admins receive organization-wide totals by default; other callers may receive lower totals than callers with management-access to more teams. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.
         /// </summary>
         /// <param name="startTime">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -74,6 +76,7 @@ namespace Baseten
         /// <param name="apiKeys"></param>
         /// <param name="userIds"></param>
         /// <param name="models"></param>
+        /// <param name="teamIds"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -96,6 +99,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? apiKeys = default,
             global::System.Collections.Generic.IList<string>? userIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
             int? limit = default,
             string? cursor = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -109,6 +113,7 @@ namespace Baseten
                 apiKeys: apiKeys,
                 userIds: userIds,
                 models: models,
+                teamIds: teamIds,
                 limit: limit,
                 cursor: cursor,
                 requestOptions: requestOptions,
@@ -119,7 +124,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets Model APIs token usage in time buckets<br/>
-        /// Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.
+        /// Returns Model APIs token usage for the teams you can manage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Organization admins receive organization-wide totals by default; other callers may receive lower totals than callers with management-access to more teams. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.
         /// </summary>
         /// <param name="startTime">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -134,6 +139,7 @@ namespace Baseten
         /// <param name="apiKeys"></param>
         /// <param name="userIds"></param>
         /// <param name="models"></param>
+        /// <param name="teamIds"></param>
         /// <param name="limit">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -156,6 +162,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? apiKeys = default,
             global::System.Collections.Generic.IList<string>? userIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
             int? limit = default,
             string? cursor = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -172,6 +179,7 @@ namespace Baseten
                 apiKeys: apiKeys,
                 userIds: userIds,
                 models: models,
+                teamIds: teamIds,
                 limit: limit,
                 cursor: ref cursor);
 
@@ -209,6 +217,7 @@ namespace Baseten
                                 .AddOptionalParameter("api_keys", apiKeys, delimiter: ",", explode: true)
                                 .AddOptionalParameter("user_ids", userIds, delimiter: ",", explode: true)
                                 .AddOptionalParameter("models", models, delimiter: ",", explode: true)
+                                .AddOptionalParameter("team_ids", teamIds, delimiter: ",", explode: true)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("cursor", cursor)
                                 ;
@@ -259,6 +268,7 @@ namespace Baseten
                     apiKeys: apiKeys,
                     userIds: userIds,
                     models: models,
+                    teamIds: teamIds,
                     limit: limit,
                     cursor: cursor);
 

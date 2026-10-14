@@ -465,6 +465,10 @@ namespace Baseten
         /// Whether the listing is publicly accessible<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="isListed">
+        /// Whether the listing appears in catalogs; unlisted listings still deploy from a direct link<br/>
+        /// Default Value: true
+        /// </param>
         /// <param name="closedSource">
         /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)<br/>
         /// Default Value: false
@@ -476,6 +480,7 @@ namespace Baseten
             string displayName,
             string userDefinedId,
             bool? isPublic = default,
+            bool? isListed = default,
             bool? closedSource = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -485,6 +490,7 @@ namespace Baseten
                 DisplayName = displayName,
                 UserDefinedId = userDefinedId,
                 IsPublic = isPublic,
+                IsListed = isListed,
                 ClosedSource = closedSource,
             };
 

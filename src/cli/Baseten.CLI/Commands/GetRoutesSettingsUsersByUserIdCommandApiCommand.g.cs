@@ -16,7 +16,7 @@ internal static partial class GetRoutesSettingsUsersByUserIdCommandApiCommand
     private static Option<string?> TeamId { get; } = new(
         name: @"--team-id")
     {
-        Description = @"ID of the team to read the user's spend limit in. Defaults to the only team the user has Code spend in this month, else their only team.",
+        Description = @"ID of the team to read the user's spend limit in. Defaults to the only team the user has a role in.",
     };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.RouteUserSettingsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
@@ -44,7 +44,7 @@ internal static partial class GetRoutesSettingsUsersByUserIdCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-routes-settings-users-by-user-id", @"Gets a user's route settings
-Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month: the limit set on the user, their team's per-member limit, and the effective limit for this user. The user limit always overrides the team's per-member limit. The limits are read in `team_id` when given, else in the only team the user has Code spend in this month, else in their only team; they are null when there is none.");
+Returns the settings that apply to the user, including the spend limit that caps what they can spend on Baseten Code each month: the limit set on the user, their team's per-member limit, and the effective limit for this user. The user limit always overrides the team's per-member limit. The limits are read in `team_id` when given, else in the only team the user has a role in; the request fails when they belong to none or several.");
                         command.Arguments.Add(UserId);
                         command.Options.Add(TeamId);
 

@@ -51,6 +51,20 @@ namespace Baseten
         public required string VersionTag { get; set; }
 
         /// <summary>
+        /// Whether the listing appears in catalogs; unlisted listings still deploy from a direct link. Only used when creating a new listing.<br/>
+        /// Default Value: true
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_listed")]
+        public bool? IsListed { get; set; }
+
+        /// <summary>
+        /// Allow publishing from a different model than the listing's current one. The listing then points at the new model; earlier versions and existing deployments are unaffected. Fails if the new model already backs another listing.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("replace_model")]
+        public bool? ReplaceModel { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -81,6 +95,14 @@ namespace Baseten
         /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream). Only used when creating a new listing.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="isListed">
+        /// Whether the listing appears in catalogs; unlisted listings still deploy from a direct link. Only used when creating a new listing.<br/>
+        /// Default Value: true
+        /// </param>
+        /// <param name="replaceModel">
+        /// Allow publishing from a different model than the listing's current one. The listing then points at the new model; earlier versions and existing deployments are unaffected. Fails if the new model already backs another listing.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -90,7 +112,9 @@ namespace Baseten
             string? displayName,
             bool? isPublic,
             bool? allowTrussDownload,
-            bool? closedSource)
+            bool? closedSource,
+            bool? isListed,
+            bool? replaceModel)
         {
             this.DisplayName = displayName;
             this.IsPublic = isPublic;
@@ -98,6 +122,8 @@ namespace Baseten
             this.AllowTrussDownload = allowTrussDownload;
             this.ClosedSource = closedSource;
             this.VersionTag = versionTag ?? throw new global::System.ArgumentNullException(nameof(versionTag));
+            this.IsListed = isListed;
+            this.ReplaceModel = replaceModel;
         }
 
         /// <summary>

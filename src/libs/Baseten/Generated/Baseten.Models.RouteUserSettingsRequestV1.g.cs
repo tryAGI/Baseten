@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class RouteUserSettingsRequestV1
     {
         /// <summary>
-        /// ID of the team to read the user's spend limit in. Defaults to the only team the user has Code spend in this month, else their only team.<br/>
+        /// ID of the team to read the user's spend limit in. Defaults to the only team the user has a role in.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
@@ -25,7 +25,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="RouteUserSettingsRequestV1" /> class.
         /// </summary>
         /// <param name="teamId">
-        /// ID of the team to read the user's spend limit in. Defaults to the only team the user has Code spend in this month, else their only team.<br/>
+        /// ID of the team to read the user's spend limit in. Defaults to the only team the user has a role in.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER

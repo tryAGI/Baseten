@@ -30,6 +30,13 @@ namespace Baseten
         public required bool IsPublic { get; set; }
 
         /// <summary>
+        /// Whether the listing appears in catalogs; unlisted listings still deploy from a direct link
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_listed")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool IsListed { get; set; }
+
+        /// <summary>
         /// Whether the listing is trending
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("trending")]
@@ -81,6 +88,9 @@ namespace Baseten
         /// <param name="isPublic">
         /// Whether the listing is publicly accessible
         /// </param>
+        /// <param name="isListed">
+        /// Whether the listing appears in catalogs; unlisted listings still deploy from a direct link
+        /// </param>
         /// <param name="closedSource">
         /// Whether the listing is closed source (deployers cannot view or download the Truss, and forks copy mirrored weights instead of re-mirroring from upstream)
         /// </param>
@@ -104,6 +114,7 @@ namespace Baseten
             string displayName,
             string userDefinedId,
             bool isPublic,
+            bool isListed,
             bool closedSource,
             global::System.DateTime createdAt,
             global::System.DateTime modifiedAt,
@@ -113,6 +124,7 @@ namespace Baseten
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.UserDefinedId = userDefinedId ?? throw new global::System.ArgumentNullException(nameof(userDefinedId));
             this.IsPublic = isPublic;
+            this.IsListed = isListed;
             this.Trending = trending;
             this.ClosedSource = closedSource;
             this.CreatedAt = createdAt;

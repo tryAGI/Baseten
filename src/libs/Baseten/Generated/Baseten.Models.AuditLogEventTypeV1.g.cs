@@ -191,6 +191,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        VolumeTagDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        VolumeTagSet,
+        /// <summary>
+        ///
+        /// </summary>
+        VolumeUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         VolumeVersionDeleted,
         /// <summary>
         ///
@@ -267,6 +279,9 @@ namespace Baseten
                 AuditLogEventTypeV1.UserRoleUpdated => "USER_ROLE_UPDATED",
                 AuditLogEventTypeV1.UserTeamRoleUpdated => "USER_TEAM_ROLE_UPDATED",
                 AuditLogEventTypeV1.VolumeDeleted => "VOLUME_DELETED",
+                AuditLogEventTypeV1.VolumeTagDeleted => "VOLUME_TAG_DELETED",
+                AuditLogEventTypeV1.VolumeTagSet => "VOLUME_TAG_SET",
+                AuditLogEventTypeV1.VolumeUpdated => "VOLUME_UPDATED",
                 AuditLogEventTypeV1.VolumeVersionDeleted => "VOLUME_VERSION_DELETED",
                 AuditLogEventTypeV1.VolumeVersionRestored => "VOLUME_VERSION_RESTORED",
                 AuditLogEventTypeV1.WebhookSigningSecretCreated => "WEBHOOK_SIGNING_SECRET_CREATED",
@@ -327,6 +342,9 @@ namespace Baseten
                 "USER_ROLE_UPDATED" => AuditLogEventTypeV1.UserRoleUpdated,
                 "USER_TEAM_ROLE_UPDATED" => AuditLogEventTypeV1.UserTeamRoleUpdated,
                 "VOLUME_DELETED" => AuditLogEventTypeV1.VolumeDeleted,
+                "VOLUME_TAG_DELETED" => AuditLogEventTypeV1.VolumeTagDeleted,
+                "VOLUME_TAG_SET" => AuditLogEventTypeV1.VolumeTagSet,
+                "VOLUME_UPDATED" => AuditLogEventTypeV1.VolumeUpdated,
                 "VOLUME_VERSION_DELETED" => AuditLogEventTypeV1.VolumeVersionDeleted,
                 "VOLUME_VERSION_RESTORED" => AuditLogEventTypeV1.VolumeVersionRestored,
                 "WEBHOOK_SIGNING_SECRET_CREATED" => AuditLogEventTypeV1.WebhookSigningSecretCreated,

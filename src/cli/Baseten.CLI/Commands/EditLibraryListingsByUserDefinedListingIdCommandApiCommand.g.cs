@@ -27,6 +27,10 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdCommandAp
         name: @"--trending",
         description: @"Whether the listing is trending");
 
+    private static Option<bool?> IsListed { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--is-listed",
+        description: @"Whether the listing appears in catalogs; unlisted listings still deploy from a direct link");
+
     private static Option<global::Baseten.LibraryListingMetadataV1?> Metadata { get; } = new(
         name: @"--metadata")
     {
@@ -74,11 +78,12 @@ internal static partial class EditLibraryListingsByUserDefinedListingIdCommandAp
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"edit-library-listings-by-user-defined-listing-id", @"Updates a library listing
-Updates a library listing. Supported fields are the display name, public visibility, trending status, and the model-level metadata. When metadata is provided, it replaces the stored metadata.");
+Updates a library listing. Supported fields are the display name, public visibility, listed status, trending status, and the model-level metadata. An unlisted listing is left out of catalogs but still deploys from its direct link. When metadata is provided, it replaces the stored metadata.");
                         command.Arguments.Add(UserDefinedListingId);
                         command.Options.Add(DisplayName);
                         command.Options.Add(IsPublic);
                         command.Options.Add(Trending);
+                        command.Options.Add(IsListed);
                         command.Options.Add(Metadata);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -109,6 +114,7 @@ Updates a library listing. Supported fields are the display name, public visibil
                         var displayName = CliRuntime.WasSpecified(parseResult, DisplayName) ? parseResult.GetValue(DisplayName) : (__requestBase is { } __DisplayNameBaseValue ? __DisplayNameBaseValue.DisplayName : default);
                         var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : (__requestBase is { } __IsPublicBaseValue ? __IsPublicBaseValue.IsPublic : default);
                         var trending = CliRuntime.WasSpecified(parseResult, Trending) ? parseResult.GetValue(Trending) : (__requestBase is { } __TrendingBaseValue ? __TrendingBaseValue.Trending : default);
+                        var isListed = CliRuntime.WasSpecified(parseResult, IsListed) ? parseResult.GetValue(IsListed) : (__requestBase is { } __IsListedBaseValue ? __IsListedBaseValue.IsListed : default);
                         var metadata = CliRuntime.WasSpecified(parseResult, Metadata) ? parseResult.GetValue(Metadata) : (__requestBase is { } __MetadataBaseValue ? __MetadataBaseValue.Metadata : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -118,6 +124,7 @@ Updates a library listing. Supported fields are the display name, public visibil
                                     displayName: displayName,
                                     isPublic: isPublic,
                                     trending: trending,
+                                    isListed: isListed,
                                     metadata: metadata,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

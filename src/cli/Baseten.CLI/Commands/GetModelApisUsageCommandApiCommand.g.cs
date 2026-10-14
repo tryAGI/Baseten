@@ -28,7 +28,7 @@ internal static partial class GetModelApisUsageCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: api_key, user, model. Defaults to model.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: api_key, user, model, or team. Defaults to model.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> ApiKeys { get; } = new(
@@ -47,6 +47,12 @@ internal static partial class GetModelApisUsageCommandApiCommand
         name: @"--models")
     {
         Description = @"Return only usage for these models, repeated once per model.",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<string>?> TeamIds { get; } = new(
+        name: @"--team-ids")
+    {
+        Description = @"Return only usage for these teams, repeated once per team. Defaults to all teams you can manage.",
     };
 
     private static Option<int?> Limit { get; } = new(
@@ -86,7 +92,7 @@ internal static partial class GetModelApisUsageCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-model-apis-usage", @"Gets Model APIs token usage in time buckets
-Returns your organization's Model APIs token usage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.");
+Returns Model APIs token usage for the teams you can manage as a series of contiguous time buckets, broken down by the dimensions you pass in group_by. Organization admins receive organization-wide totals by default; other callers may receive lower totals than callers with management-access to more teams. Buckets with no usage are included, so the series has no gaps. Usage is retained for 92 days, so buckets older than that are returned with no results.");
                         command.Options.Add(StartTime);
                         command.Options.Add(EndTime);
                         command.Options.Add(BucketWidth);
@@ -94,6 +100,7 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                         command.Options.Add(ApiKeys);
                         command.Options.Add(UserIds);
                         command.Options.Add(Models);
+                        command.Options.Add(TeamIds);
                         command.Options.Add(Limit);
                         command.Options.Add(Cursor);
 
@@ -108,6 +115,7 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                         var apiKeys = parseResult.GetValue(ApiKeys);
                         var userIds = parseResult.GetValue(UserIds);
                         var models = parseResult.GetValue(Models);
+                        var teamIds = parseResult.GetValue(TeamIds);
                         var limit = parseResult.GetValue(Limit);
                         var cursor = parseResult.GetValue(Cursor);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -121,6 +129,7 @@ Returns your organization's Model APIs token usage as a series of contiguous tim
                                     apiKeys: apiKeys,
                                     userIds: userIds,
                                     models: models,
+                                    teamIds: teamIds,
                                     limit: limit,
                                     cursor: cursor,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

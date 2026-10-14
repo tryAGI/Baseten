@@ -31,7 +31,7 @@ namespace Baseten
         public global::Baseten.BucketWidth? BucketWidth { get; set; }
 
         /// <summary>
-        /// Dimensions to break usage down by, repeated once per dimension: api_key, user, model. Defaults to model.
+        /// Dimensions to break usage down by, repeated once per dimension: api_key, user, model, or team. Defaults to model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
         public global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>? GroupBy { get; set; }
@@ -53,6 +53,12 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("models")]
         public global::System.Collections.Generic.IList<string>? Models { get; set; }
+
+        /// <summary>
+        /// Return only usage for these teams, repeated once per team. Defaults to all teams you can manage.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_ids")]
+        public global::System.Collections.Generic.IList<string>? TeamIds { get; set; }
 
         /// <summary>
         /// Number of time buckets to return. Defaults and maximums depend on bucket_width: 1d defaults to 7 and allows 31, 1h defaults to 24 and allows 168, 1m defaults to 60 and allows 1440.<br/>
@@ -90,7 +96,7 @@ namespace Baseten
         /// Default Value: 1d
         /// </param>
         /// <param name="groupBy">
-        /// Dimensions to break usage down by, repeated once per dimension: api_key, user, model. Defaults to model.
+        /// Dimensions to break usage down by, repeated once per dimension: api_key, user, model, or team. Defaults to model.
         /// </param>
         /// <param name="apiKeys">
         /// Return only usage for these API key prefixes, repeated once per prefix.
@@ -100,6 +106,9 @@ namespace Baseten
         /// </param>
         /// <param name="models">
         /// Return only usage for these models, repeated once per model.
+        /// </param>
+        /// <param name="teamIds">
+        /// Return only usage for these teams, repeated once per team. Defaults to all teams you can manage.
         /// </param>
         /// <param name="limit">
         /// Number of time buckets to return. Defaults and maximums depend on bucket_width: 1d defaults to 7 and allows 31, 1h defaults to 24 and allows 168, 1m defaults to 60 and allows 1440.<br/>
@@ -120,6 +129,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? apiKeys,
             global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
+            global::System.Collections.Generic.IList<string>? teamIds,
             int? limit,
             string? cursor)
         {
@@ -130,6 +140,7 @@ namespace Baseten
             this.ApiKeys = apiKeys;
             this.UserIds = userIds;
             this.Models = models;
+            this.TeamIds = teamIds;
             this.Limit = limit;
             this.Cursor = cursor;
         }

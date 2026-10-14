@@ -19,6 +19,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Team,
+        /// <summary>
+        ///
+        /// </summary>
         User,
     }
 
@@ -36,6 +40,7 @@ namespace Baseten
             {
                 UsageDimensionV1.ApiKey => "api_key",
                 UsageDimensionV1.Model => "model",
+                UsageDimensionV1.Team => "team",
                 UsageDimensionV1.User => "user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -49,6 +54,7 @@ namespace Baseten
             {
                 "api_key" => UsageDimensionV1.ApiKey,
                 "model" => UsageDimensionV1.Model,
+                "team" => UsageDimensionV1.Team,
                 "user" => UsageDimensionV1.User,
                 _ => null,
             };
