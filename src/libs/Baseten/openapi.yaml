@@ -83,8 +83,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             }
         },
         "/v1/volumes/token": {
@@ -122,8 +121,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             }
         },
         "/v1/volumes/namespaces": {
@@ -184,8 +182,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             }
         },
         "/v1/volumes/syncs": {
@@ -264,8 +261,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "post": {
                 "summary": "Starts a volume sync",
@@ -301,8 +297,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             }
         },
         "/v1/volumes/syncs/{volume_sync_id}": {
@@ -329,8 +324,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "parameters": [
                 {
@@ -363,8 +357,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "parameters": [
                 {
@@ -407,8 +400,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "parameters": [
                 {
@@ -442,8 +434,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "patch": {
                 "summary": "Updates a volume",
@@ -479,8 +470,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             }
         },
         "/v1/volumes/{volume_namespace}/{volume_name}/versions": {
@@ -521,8 +511,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "parameters": [
                 {
@@ -568,8 +557,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "parameters": [
                 {
@@ -606,8 +594,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             }
         },
         "/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version}/restore": {
@@ -645,8 +632,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "parameters": [
                 {
@@ -695,8 +681,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "parameters": [
                 {
@@ -742,8 +727,7 @@
                             }
                         }
                     }
-                },
-                "x-stability": "unstable"
+                }
             },
             "parameters": [
                 {
