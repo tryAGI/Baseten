@@ -27,14 +27,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxPortV1Protocol), TypeInfoPropertyName = "SandboxPortV1Protocol2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxApiPaginationV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxImagesResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageSummaryV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageSummaryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxImageTagsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageTagV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageTagV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageStatusV1), TypeInfoPropertyName = "SandboxImageStatusV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1), TypeInfoPropertyName = "SandboxImageV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1Variant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PushSandboxImageRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PushSandboxImageResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLibraryImageVolumeV1))]
@@ -49,11 +47,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxPortV1Protocol?), TypeInfoPropertyName = "NullableSandboxPortV1Protocol2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageStatusV1?), TypeInfoPropertyName = "NullableSandboxImageStatusV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1?), TypeInfoPropertyName = "NullableSandboxImageV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageBuildLogV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxPortV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageSummaryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageTagV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxLibraryImageVolumeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxLibraryImageV1>))]
@@ -104,7 +101,6 @@ namespace Baseten
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
-            options.Converters.Add(new global::Baseten.JsonConverters.SandboxImageV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());

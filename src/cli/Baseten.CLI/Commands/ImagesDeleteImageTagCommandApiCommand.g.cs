@@ -56,7 +56,7 @@ internal static partial class ImagesDeleteImageTagCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"delete-image-tag", @"Delete an image tag
-Delete a specific image version. Reject deletion if the version is referenced by an active deployment. Return the updated image with its remaining tags, possibly empty.");
+Delete a specific image version. Reject deletion if the version is referenced by an active deployment. Return the updated repository summary. Use the tag listing endpoint for remaining image versions.");
                         command.Arguments.Add(ImageName);
                         command.Arguments.Add(TagName);
                         command.Options.Add(TeamId);

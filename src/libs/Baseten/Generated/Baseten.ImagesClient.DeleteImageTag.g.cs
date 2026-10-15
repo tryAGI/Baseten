@@ -49,7 +49,7 @@ namespace Baseten
 
         /// <summary>
         /// Delete an image tag<br/>
-        /// Delete a specific image version. Reject deletion if the version is referenced by an active deployment. Return the updated image with its remaining tags, possibly empty.
+        /// Delete a specific image version. Reject deletion if the version is referenced by an active deployment. Return the updated repository summary. Use the tag listing endpoint for remaining image versions.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -79,7 +79,7 @@ namespace Baseten
         }
         /// <summary>
         /// Delete an image tag<br/>
-        /// Delete a specific image version. Reject deletion if the version is referenced by an active deployment. Return the updated image with its remaining tags, possibly empty.
+        /// Delete a specific image version. Reject deletion if the version is referenced by an active deployment. Return the updated repository summary. Use the tag listing endpoint for remaining image versions.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>

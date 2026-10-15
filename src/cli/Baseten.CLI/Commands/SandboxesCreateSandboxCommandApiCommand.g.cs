@@ -56,7 +56,7 @@ internal static partial class SandboxesCreateSandboxCommandApiCommand
     private static Option<long?> Memory { get; } = new(
         name: @"--memory")
     {
-        Description = @"Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096.",
+        Description = @"Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096. Must be between 1024 and 262144.",
     };
 
     private static Option<global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>?> Ports { get; } = new(

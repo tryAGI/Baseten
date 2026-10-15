@@ -36,6 +36,18 @@ internal static partial class ImagesPushImageCommandApiCommand
     {
         Description = @"Optional serialized registry authentication configuration for importing a private image. Used only when image is supplied; never returned.",
     };
+
+    private static Option<long?> Memory { get; } = new(
+        name: @"--memory")
+    {
+        Description = @"Memory in megabytes of the temporary environment that builds the source archive or imports the registry image. Omit it to use the default size. Does not change the memory of sandboxes created from the image.",
+    };
+
+    private static Option<long?> Volume { get; } = new(
+        name: @"--volume")
+    {
+        Description = @"Scratch disk in megabytes attached to the temporary build environment for intermediate layers. Set it for large images that run out of space while building or importing. 0 builds in memory, which is the default. Teams with HIPAA compliance enabled accept only 0.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -78,12 +90,14 @@ internal static partial class ImagesPushImageCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"push-image", @"Push a sandbox image
-With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED.");
+With image supplied, import the registry image asynchronously. Otherwise return an upload URL for a ZIP source archive containing its Dockerfile and build context. The uploaded ZIP archive must not exceed 5 GB. Processing starts after upload. No sandbox is created. Poll the image until BUILT or FAILED. Set memory and volume to size the temporary environment that builds or imports the image; for a source archive, upload with the returned upload_headers.");
                         command.Arguments.Add(NameOption);
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);
                         command.Options.Add(Image);
                         command.Options.Add(DockerConfig);
+                        command.Options.Add(Memory);
+                        command.Options.Add(Volume);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -114,6 +128,8 @@ With image supplied, import the registry image asynchronously. Otherwise return 
                         var xTeamId = parseResult.GetValue(XTeamId);
                         var image = CliRuntime.WasSpecified(parseResult, Image) ? parseResult.GetValue(Image) : (__requestBase is { } __ImageBaseValue ? __ImageBaseValue.Image : default);
                         var dockerConfig = CliRuntime.WasSpecified(parseResult, DockerConfig) ? parseResult.GetValue(DockerConfig) : (__requestBase is { } __DockerConfigBaseValue ? __DockerConfigBaseValue.DockerConfig : default);
+                        var memory = CliRuntime.WasSpecified(parseResult, Memory) ? parseResult.GetValue(Memory) : (__requestBase is { } __MemoryBaseValue ? __MemoryBaseValue.Memory : default);
+                        var volume = CliRuntime.WasSpecified(parseResult, Volume) ? parseResult.GetValue(Volume) : (__requestBase is { } __VolumeBaseValue ? __VolumeBaseValue.Volume : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -123,6 +139,8 @@ With image supplied, import the registry image asynchronously. Otherwise return 
                                     xTeamId: xTeamId,
                                     image: image,
                                     dockerConfig: dockerConfig,
+                                    memory: memory,
+                                    volume: volume,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

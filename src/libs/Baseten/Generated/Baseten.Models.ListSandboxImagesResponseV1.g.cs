@@ -13,7 +13,7 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Baseten.SandboxImageSummaryV1> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Baseten.SandboxImageV1> Items { get; set; }
 
         /// <summary>
         /// Cursor pagination information. The cursor is present only when another page is available.<br/>
@@ -44,7 +44,7 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListSandboxImagesResponseV1(
-            global::System.Collections.Generic.IList<global::Baseten.SandboxImageSummaryV1> items,
+            global::System.Collections.Generic.IList<global::Baseten.SandboxImageV1> items,
             global::Baseten.SandboxApiPaginationV1 pagination)
         {
             this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));

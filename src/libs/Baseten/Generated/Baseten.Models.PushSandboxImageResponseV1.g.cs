@@ -37,7 +37,13 @@ namespace Baseten
         public string? UploadUrl { get; set; }
 
         /// <summary>
-        /// Registered image reference including its tag, when available. Tags are assigned by the service; GET /sandboxes/images/{image_name} returns the available tags once processing completes.<br/>
+        /// Headers the source archive upload must send, in addition to Content-Type, with exactly these names and values. Present only with upload_url, when memory or volume was set. upload_url is signed for these headers, so storage rejects an upload that omits or changes them. Treat names and values as opaque.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("upload_headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? UploadHeaders { get; set; }
+
+        /// <summary>
+        /// Registered image reference including its tag, when available. Tags are assigned by the service; GET /sandboxes/images/{image_name}/tags returns the available tags once processing completes.<br/>
         /// Example: b10/base-image:latest
         /// </summary>
         /// <example>b10/base-image:latest</example>
@@ -65,8 +71,11 @@ namespace Baseten
         /// Temporary signed URL for uploading the source ZIP archive with HTTP PUT. Present only when no source image was supplied. The uploaded ZIP archive must not exceed 5 GB. Uploading starts asynchronous processing. This storage upload is separate from the API endpoints.<br/>
         /// Example: https://uploads.b10.run/images/base-image/20260916212658/source.zip?expires=2026-09-16T22%3A26%3A58Z&amp;signature=demo-not-a-valid-upload-signature
         /// </param>
+        /// <param name="uploadHeaders">
+        /// Headers the source archive upload must send, in addition to Content-Type, with exactly these names and values. Present only with upload_url, when memory or volume was set. upload_url is signed for these headers, so storage rejects an upload that omits or changes them. Treat names and values as opaque.
+        /// </param>
         /// <param name="image">
-        /// Registered image reference including its tag, when available. Tags are assigned by the service; GET /sandboxes/images/{image_name} returns the available tags once processing completes.<br/>
+        /// Registered image reference including its tag, when available. Tags are assigned by the service; GET /sandboxes/images/{image_name}/tags returns the available tags once processing completes.<br/>
         /// Example: b10/base-image:latest
         /// </param>
 #if NET7_0_OR_GREATER
@@ -76,11 +85,13 @@ namespace Baseten
             string name,
             global::Baseten.SandboxImageStatusV1 status,
             string? uploadUrl,
+            global::System.Collections.Generic.Dictionary<string, string>? uploadHeaders,
             string? image)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Status = status;
             this.UploadUrl = uploadUrl;
+            this.UploadHeaders = uploadHeaders;
             this.Image = image;
         }
 

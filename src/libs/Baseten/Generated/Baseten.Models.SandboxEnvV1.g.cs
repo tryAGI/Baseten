@@ -10,7 +10,7 @@ namespace Baseten
     public sealed partial class SandboxEnvV1
     {
         /// <summary>
-        /// Name of the environment variable<br/>
+        /// Name of the environment variable. Must start with a letter or underscore and contain only letters, digits and underscores (^[A-Za-z_][A-Za-z0-9_]*$); create and update reject other names.<br/>
         /// Example: NODE_ENV
         /// </summary>
         /// <example>NODE_ENV</example>
@@ -44,7 +44,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="SandboxEnvV1" /> class.
         /// </summary>
         /// <param name="name">
-        /// Name of the environment variable<br/>
+        /// Name of the environment variable. Must start with a letter or underscore and contain only letters, digits and underscores (^[A-Za-z_][A-Za-z0-9_]*$); create and update reject other names.<br/>
         /// Example: NODE_ENV
         /// </param>
         /// <param name="secret">

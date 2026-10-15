@@ -38,7 +38,7 @@ internal static partial class GetRoutesSettingsUsersByUserIdTeamsCommandApiComma
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-routes-settings-users-by-user-id-teams", @"Lists a user's route settings in each of their teams
-Returns the user's settings in each team they have a role in and in any team they have Code spend in this month, alphabetical by team name: their spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.");
+Returns the user's settings in each team they belong to (every team, for organization admins), alphabetical by team name: their spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.");
                         command.Arguments.Add(UserId);
 
 
