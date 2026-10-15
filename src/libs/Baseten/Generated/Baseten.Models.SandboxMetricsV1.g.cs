@@ -9,39 +9,46 @@ namespace Baseten
     public sealed partial class SandboxMetricsV1
     {
         /// <summary>
-        ///
+        /// Returned window start, snapped outward in SERIES. Equal to end for CURRENT.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("sandbox_name")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_epoch_millis")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string SandboxName { get; set; }
+        public required long StartEpochMillis { get; set; }
+
+        /// <summary>
+        /// Returned exclusive window end, snapped outward in SERIES. Snapshot timestamp for CURRENT.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("end_epoch_millis")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required long EndEpochMillis { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("start_time")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.SandboxMetricModeV1JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.DateTime StartTime { get; set; }
+        public required global::Baseten.SandboxMetricModeV1 Mode { get; set; }
+
+        /// <summary>
+        /// Seconds per SERIES interval; null in CURRENT and SUMMARY.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("step_seconds")]
+        public int? StepSeconds { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("end_time")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric_descriptors")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.DateTime EndTime { get; set; }
+        public required global::System.Collections.Generic.IList<global::Baseten.SandboxMetricDescriptorV1> MetricDescriptors { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("interval_seconds")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("metric_values")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int IntervalSeconds { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Baseten.SandboxMetricsPointV1> Data { get; set; }
+        public required global::System.Collections.Generic.IList<global::Baseten.SandboxMetricValueSetV1> MetricValues { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,26 +59,35 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="SandboxMetricsV1" /> class.
         /// </summary>
-        /// <param name="sandboxName"></param>
-        /// <param name="startTime"></param>
-        /// <param name="endTime"></param>
-        /// <param name="intervalSeconds"></param>
-        /// <param name="data"></param>
+        /// <param name="startEpochMillis">
+        /// Returned window start, snapped outward in SERIES. Equal to end for CURRENT.
+        /// </param>
+        /// <param name="endEpochMillis">
+        /// Returned exclusive window end, snapped outward in SERIES. Snapshot timestamp for CURRENT.
+        /// </param>
+        /// <param name="mode"></param>
+        /// <param name="metricDescriptors"></param>
+        /// <param name="metricValues"></param>
+        /// <param name="stepSeconds">
+        /// Seconds per SERIES interval; null in CURRENT and SUMMARY.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SandboxMetricsV1(
-            string sandboxName,
-            global::System.DateTime startTime,
-            global::System.DateTime endTime,
-            int intervalSeconds,
-            global::System.Collections.Generic.IList<global::Baseten.SandboxMetricsPointV1> data)
+            long startEpochMillis,
+            long endEpochMillis,
+            global::Baseten.SandboxMetricModeV1 mode,
+            global::System.Collections.Generic.IList<global::Baseten.SandboxMetricDescriptorV1> metricDescriptors,
+            global::System.Collections.Generic.IList<global::Baseten.SandboxMetricValueSetV1> metricValues,
+            int? stepSeconds)
         {
-            this.SandboxName = sandboxName ?? throw new global::System.ArgumentNullException(nameof(sandboxName));
-            this.StartTime = startTime;
-            this.EndTime = endTime;
-            this.IntervalSeconds = intervalSeconds;
-            this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
+            this.StartEpochMillis = startEpochMillis;
+            this.EndEpochMillis = endEpochMillis;
+            this.Mode = mode;
+            this.StepSeconds = stepSeconds;
+            this.MetricDescriptors = metricDescriptors ?? throw new global::System.ArgumentNullException(nameof(metricDescriptors));
+            this.MetricValues = metricValues ?? throw new global::System.ArgumentNullException(nameof(metricValues));
         }
 
         /// <summary>

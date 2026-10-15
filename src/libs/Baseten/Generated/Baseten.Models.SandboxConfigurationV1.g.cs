@@ -50,7 +50,7 @@ namespace Baseten
         public string? Image { get; set; }
 
         /// <summary>
-        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs).<br/>
+        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Must be between 1024 and 262144.<br/>
         /// Example: 4096
         /// </summary>
         /// <example>4096</example>
@@ -111,7 +111,7 @@ namespace Baseten
         /// Example: baseten/base-image:latest
         /// </param>
         /// <param name="memory">
-        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs).<br/>
+        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Must be between 1024 and 262144.<br/>
         /// Example: 4096
         /// </param>
         /// <param name="ports">

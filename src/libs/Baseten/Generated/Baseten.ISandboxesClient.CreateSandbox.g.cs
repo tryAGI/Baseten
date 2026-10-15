@@ -73,7 +73,7 @@ namespace Baseten
         /// Example: baseten/base-image:latest
         /// </param>
         /// <param name="memory">
-        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096.<br/>
+        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096. Must be between 1024 and 262144.<br/>
         /// Default Value: 4096<br/>
         /// Example: 4096
         /// </param>

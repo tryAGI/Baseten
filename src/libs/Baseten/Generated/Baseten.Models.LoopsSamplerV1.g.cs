@@ -37,18 +37,18 @@ namespace Baseten
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Hashid of the underlying Baseten model.
+        /// Hashid of the underlying Baseten model. Null for a serverless sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ModelId { get; set; }
+        public string? ModelId { get; set; }
 
         /// <summary>
-        /// Hashid of the specific model deployment (version).
+        /// Hashid of the specific model deployment (version). Null for a serverless sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deployment_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string DeploymentId { get; set; }
+        public string? DeploymentId { get; set; }
 
         /// <summary>
         /// The sampler's current status.
@@ -95,17 +95,19 @@ namespace Baseten
         /// <param name="createdAt">
         /// Time the sampler was created in ISO 8601 format
         /// </param>
-        /// <param name="modelId">
-        /// Hashid of the underlying Baseten model.
-        /// </param>
-        /// <param name="deploymentId">
-        /// Hashid of the specific model deployment (version).
-        /// </param>
         /// <param name="status">
         /// The sampler's current status.
         /// </param>
         /// <param name="user">
         /// The user who owns the sampler.
+        /// </param>
+        /// <param name="modelId">
+        /// Hashid of the underlying Baseten model. Null for a serverless sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="deploymentId">
+        /// Hashid of the specific model deployment (version). Null for a serverless sampler.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="instanceType">
         /// Instance type serving the sampler.<br/>
@@ -123,10 +125,10 @@ namespace Baseten
             string baseUrl,
             string baseModel,
             global::System.DateTime createdAt,
-            string modelId,
-            string deploymentId,
             global::Baseten.LoopsSamplerStatusV1 status,
             global::Baseten.UserV1 user,
+            string? modelId,
+            string? deploymentId,
             global::Baseten.InstanceTypeV1? instanceType,
             int? nodeCount)
         {
@@ -134,8 +136,8 @@ namespace Baseten
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.CreatedAt = createdAt;
-            this.ModelId = modelId ?? throw new global::System.ArgumentNullException(nameof(modelId));
-            this.DeploymentId = deploymentId ?? throw new global::System.ArgumentNullException(nameof(deploymentId));
+            this.ModelId = modelId;
+            this.DeploymentId = deploymentId;
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
             this.User = user ?? throw new global::System.ArgumentNullException(nameof(user));
             this.InstanceType = instanceType;

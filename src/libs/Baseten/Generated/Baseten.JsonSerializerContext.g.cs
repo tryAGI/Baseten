@@ -672,13 +672,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteProviderV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteEffectiveSpendLimitV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSettingSourceV1), TypeInfoPropertyName = "RouteSettingSourceV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSpendBlockedByV1), TypeInfoPropertyName = "RouteSpendBlockedByV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSpendLimitSettingV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSpendLimitTeamDefaultV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteUserSettingsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteUserSettingsRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteSpendLimitSettingV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteUserSettingsRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteSpendBlockedByV1), TypeInfoPropertyName = "RouteSpendBlockedByV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTeamUserSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteUserTeamSettingsListV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteTeamUserSettingsV1>))]
@@ -694,6 +690,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteTeamSpendLimitSettingV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteTeamSettingsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTeamUserSettingsListV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteSpendLimitSettingV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateRouteUserSettingsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigAnthropicV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigOpenAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteConnectionConfigXAIV1))]
@@ -762,16 +760,22 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateApiKeyForGroupResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RegisterAPIKeyRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RegisterAPIKeyResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLogsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxLogEntryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLogEntryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricModeV1), TypeInfoPropertyName = "SandboxMetricModeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricNameV1), TypeInfoPropertyName = "SandboxMetricNameV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxMetricDescriptorV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricDescriptorV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxMetricValueSetV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricValueSetV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricDescriptorV1UnitHint), TypeInfoPropertyName = "SandboxMetricDescriptorV1UnitHint2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricDescriptorV1Kind), TypeInfoPropertyName = "SandboxMetricDescriptorV1Kind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetSandboxConfigurationResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxRegionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxRegionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxRegionV1InfoGeneration), TypeInfoPropertyName = "SandboxRegionV1InfoGeneration2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLogsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxLogEntryV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLogEntryV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxMetricsPointV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricsPointV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageBuildLogV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageBuildLogsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageBuildLogV1>))]
@@ -808,14 +812,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxImagesResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageSummaryV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageSummaryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxImageTagsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageTagV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageTagV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageStatusV1), TypeInfoPropertyName = "SandboxImageStatusV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1), TypeInfoPropertyName = "SandboxImageV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1Variant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PushSandboxImageRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PushSandboxImageResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLibraryImageVolumeV1))]
@@ -825,6 +827,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxLibraryImagesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxLibraryImageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CleanupSandboxImagesResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxMetricNameV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
@@ -921,6 +924,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SharedEndpointRegionV1?), TypeInfoPropertyName = "NullableSharedEndpointRegionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitUnitV1?), TypeInfoPropertyName = "NullableUsageLimitUnitV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitEnforcementV1?), TypeInfoPropertyName = "NullableLimitEnforcementV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricModeV1?), TypeInfoPropertyName = "NullableSandboxMetricModeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricNameV1?), TypeInfoPropertyName = "NullableSandboxMetricNameV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricDescriptorV1UnitHint?), TypeInfoPropertyName = "NullableSandboxMetricDescriptorV1UnitHint2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxMetricDescriptorV1Kind?), TypeInfoPropertyName = "NullableSandboxMetricDescriptorV1Kind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxRegionV1InfoGeneration?), TypeInfoPropertyName = "NullableSandboxRegionV1InfoGeneration2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxExpirationPolicyV1?), TypeInfoPropertyName = "NullableSandboxExpirationPolicyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxExpirationPolicyV1DiscriminatorType?), TypeInfoPropertyName = "NullableSandboxExpirationPolicyV1DiscriminatorType2")]
@@ -934,7 +941,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxV1?), TypeInfoPropertyName = "NullableSandboxV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxStatusV1?), TypeInfoPropertyName = "NullableSandboxStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageStatusV1?), TypeInfoPropertyName = "NullableSandboxImageStatusV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1?), TypeInfoPropertyName = "NullableSandboxImageV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeTagV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeTokenScopeV1>))]
@@ -1013,12 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingVersionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisCostResultV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisCostBucketV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApiCostDimensionV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyDedicatedUsageV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DedicatedItemV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyModelApiUsageV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApiItemV1>))]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisCostBucketV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApiCostDimensionV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyDedicatedUsageV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DedicatedItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyModelApiUsageV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApiItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyTrainingUsageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ToolCallUsageBucketV1>))]
@@ -1053,19 +1059,21 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.UsageLimitV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GroupV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GatewayKeyInfoV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxRegionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxLogEntryV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxMetricsPointV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxMetricDescriptorV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxMetricValueSetV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxRegionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageBuildLogV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxExpirationPolicyV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxProxyTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxPortV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxEnvV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageSummaryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxImageTagV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxLibraryImageVolumeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxLibraryImageV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxMetricNameV1>))]
     internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1120,7 +1128,6 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.TargetVariant1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.SandboxExpirationPolicyV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.SandboxV1JsonConverter());
-            options.Converters.Add(new global::Baseten.JsonConverters.SandboxImageV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
@@ -1472,6 +1479,22 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.UsageLimitUnitV1)
 
                     || typeToConvert == typeof(global::Baseten.UsageLimitUnitV1?)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxMetricModeV1)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxMetricModeV1?)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxMetricNameV1)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxMetricNameV1?)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxMetricDescriptorV1UnitHint)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxMetricDescriptorV1UnitHint?)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxMetricDescriptorV1Kind)
+
+                    || typeToConvert == typeof(global::Baseten.SandboxMetricDescriptorV1Kind?)
 
                     || typeToConvert == typeof(global::Baseten.SandboxRegionV1InfoGeneration)
 
@@ -2290,6 +2313,46 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.UsageLimitUnitV1?))
                 {
                     return new global::Baseten.JsonConverters.UsageLimitUnitV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxMetricModeV1))
+                {
+                    return new global::Baseten.JsonConverters.SandboxMetricModeV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxMetricModeV1?))
+                {
+                    return new global::Baseten.JsonConverters.SandboxMetricModeV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxMetricNameV1))
+                {
+                    return new global::Baseten.JsonConverters.SandboxMetricNameV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxMetricNameV1?))
+                {
+                    return new global::Baseten.JsonConverters.SandboxMetricNameV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxMetricDescriptorV1UnitHint))
+                {
+                    return new global::Baseten.JsonConverters.SandboxMetricDescriptorV1UnitHintJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxMetricDescriptorV1UnitHint?))
+                {
+                    return new global::Baseten.JsonConverters.SandboxMetricDescriptorV1UnitHintNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxMetricDescriptorV1Kind))
+                {
+                    return new global::Baseten.JsonConverters.SandboxMetricDescriptorV1KindJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.SandboxMetricDescriptorV1Kind?))
+                {
+                    return new global::Baseten.JsonConverters.SandboxMetricDescriptorV1KindNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.SandboxRegionV1InfoGeneration))

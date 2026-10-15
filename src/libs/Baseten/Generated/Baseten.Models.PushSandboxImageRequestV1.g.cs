@@ -5,7 +5,7 @@ namespace Baseten
 {
     /// <summary>
     /// Push a sandbox image from a source archive or an existing registry image.<br/>
-    /// Example: {"name":"base-image","image":"docker.io/b10/base-image:latest","docker_config":"{\u0022auths\u0022:{\u0022https://index.docker.io/v1/\u0022:{\u0022auth\u0022:\u0022YjEwLXJldmlldzpkZW1vLW5vdC1hLXZhbGlkLXJlZ2lzdHJ5LXRva2Vu\u0022}}}"}
+    /// Example: {"name":"base-image","image":"docker.io/b10/base-image:latest","docker_config":"{\u0022auths\u0022:{\u0022https://index.docker.io/v1/\u0022:{\u0022auth\u0022:\u0022YjEwLXJldmlldzpkZW1vLW5vdC1hLXZhbGlkLXJlZ2lzdHJ5LXRva2Vu\u0022}}}","memory":16384,"volume":32768}
     /// </summary>
     public sealed partial class PushSandboxImageRequestV1
     {
@@ -36,6 +36,22 @@ namespace Baseten
         public string? DockerConfig { get; set; }
 
         /// <summary>
+        /// Memory in megabytes of the temporary environment that builds the source archive or imports the registry image. Omit it to use the default size. Does not change the memory of sandboxes created from the image.<br/>
+        /// Example: 16384
+        /// </summary>
+        /// <example>16384</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("memory")]
+        public long? Memory { get; set; }
+
+        /// <summary>
+        /// Scratch disk in megabytes attached to the temporary build environment for intermediate layers. Set it for large images that run out of space while building or importing. 0 builds in memory, which is the default. Teams with HIPAA compliance enabled accept only 0.<br/>
+        /// Example: 32768
+        /// </summary>
+        /// <example>32768</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("volume")]
+        public long? Volume { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -57,17 +73,29 @@ namespace Baseten
         /// Included only in requests<br/>
         /// Example: {"auths":{"https://index.docker.io/v1/":{"auth":"YjEwLXJldmlldzpkZW1vLW5vdC1hLXZhbGlkLXJlZ2lzdHJ5LXRva2Vu"}}}
         /// </param>
+        /// <param name="memory">
+        /// Memory in megabytes of the temporary environment that builds the source archive or imports the registry image. Omit it to use the default size. Does not change the memory of sandboxes created from the image.<br/>
+        /// Example: 16384
+        /// </param>
+        /// <param name="volume">
+        /// Scratch disk in megabytes attached to the temporary build environment for intermediate layers. Set it for large images that run out of space while building or importing. 0 builds in memory, which is the default. Teams with HIPAA compliance enabled accept only 0.<br/>
+        /// Example: 32768
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PushSandboxImageRequestV1(
             string name,
             string? image,
-            string? dockerConfig)
+            string? dockerConfig,
+            long? memory,
+            long? volume)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Image = image;
             this.DockerConfig = dockerConfig;
+            this.Memory = memory;
+            this.Volume = volume;
         }
 
         /// <summary>

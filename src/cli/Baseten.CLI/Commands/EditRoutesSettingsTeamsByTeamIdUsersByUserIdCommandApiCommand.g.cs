@@ -18,7 +18,12 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdUsersByUserIdComman
     {
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
-    private static readonly UpdateRouteSpendLimitSettingV1OptionSet SpendLimitOptions = UpdateRouteSpendLimitSettingV1OptionSet.Create(@"spend-limit");
+
+    private static Option<global::Baseten.UpdateRouteSpendLimitSettingV1?> SpendLimit { get; } = new(
+        name: @"--spend-limit")
+    {
+        Description = @"Spend limit fields to change. Pass null to remove the user's limit; omit to leave it unchanged.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -63,8 +68,8 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdUsersByUserIdComman
         var command = new Command(commandName ?? @"edit-routes-settings-teams-by-team-id-users-by-user-id", @"Updates a user's route settings in a team
 Changes only the fields in the request. Once the user's metered spend in the team in a month reaches the spend limit, requests with Routes keys they created in the team are rejected until the limit is raised or the next month starts. Spend is metered every 15 minutes and can lag, so a user can go over the limit. Requires team admin for the specified team or organization admin.");
                         command.Arguments.Add(TeamId);
-                        command.Arguments.Add(UserId);                        command.Options.Add(SpendLimitOptions.UserMonthlyLimitUsd);
-                        command.Options.Add(SpendLimitOptions.MonthOverrideUsd);
+                        command.Arguments.Add(UserId);
+                        command.Options.Add(SpendLimit);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -92,19 +97,7 @@ Changes only the fields in the request. Once the user's metered spend in the tea
                             cancellationToken).ConfigureAwait(false);
                         var teamId = parseResult.GetRequiredValue(TeamId);
                         var userId = parseResult.GetRequiredValue(UserId);
-
-                        var __SpendLimitBase = __requestBase is { } __SpendLimitBaseValue ? __SpendLimitBaseValue.SpendLimit : default;                        var spendLimitUserMonthlyLimitUsd = CliRuntime.WasSpecified(parseResult, SpendLimitOptions.UserMonthlyLimitUsd) ? parseResult.GetValue(SpendLimitOptions.UserMonthlyLimitUsd) : (__SpendLimitBase is { } __SpendLimituserMonthlyLimitUsdBaseValue ? __SpendLimituserMonthlyLimitUsdBaseValue.UserMonthlyLimitUsd : default);
-                        var spendLimitMonthOverrideUsd = CliRuntime.WasSpecified(parseResult, SpendLimitOptions.MonthOverrideUsd) ? parseResult.GetValue(SpendLimitOptions.MonthOverrideUsd) : (__SpendLimitBase is { } __SpendLimitmonthOverrideUsdBaseValue ? __SpendLimitmonthOverrideUsdBaseValue.MonthOverrideUsd : default);
-                        var __SpendLimitSpecified = CliRuntime.WasSpecified(parseResult, SpendLimitOptions.UserMonthlyLimitUsd) || CliRuntime.WasSpecified(parseResult, SpendLimitOptions.MonthOverrideUsd);
-                        var spendLimit =
-                            __SpendLimitSpecified || __SpendLimitBase is not null
-                                ? new global::Baseten.UpdateRouteSpendLimitSettingV1
-                                {
-	                                UserMonthlyLimitUsd = spendLimitUserMonthlyLimitUsd,
-                                MonthOverrideUsd = spendLimitMonthOverrideUsd,
-
-                                }
-                                : __SpendLimitBase;
+                        var spendLimit = CliRuntime.WasSpecified(parseResult, SpendLimit) ? parseResult.GetValue(SpendLimit) : (__requestBase is { } __SpendLimitBaseValue ? __SpendLimitBaseValue.SpendLimit : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

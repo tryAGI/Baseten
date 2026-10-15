@@ -2,7 +2,7 @@
 
 namespace Baseten
 {
-    public readonly partial struct SandboxImageV1
+    public sealed partial class SandboxImageV1
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace Baseten
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Baseten.SandboxImageV1),
-                jsonSerializerContext) as global::Baseten.SandboxImageV1?;
+                jsonSerializerContext) as global::Baseten.SandboxImageV1;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Baseten
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Baseten.SandboxImageV1),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Baseten.SandboxImageV1?;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Baseten.SandboxImageV1;
         }
 
         /// <summary>

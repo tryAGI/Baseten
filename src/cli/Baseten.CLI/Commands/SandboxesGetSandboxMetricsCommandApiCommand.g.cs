@@ -25,25 +25,28 @@ internal static partial class SandboxesGetSandboxMetricsCommandApiCommand
         Description = @"Optional team ID. Must match the team_id query parameter when both are supplied. If neither selector is supplied, defaults to the caller's only accessible team. Callers with multiple accessible teams must select a team. Requests without access to any team are forbidden.",
     };
 
-    private static Option<global::System.DateTime> StartTime { get; } = new(
-        name: @"--start-time")
+    private static Option<global::Baseten.SandboxMetricModeV1?> Mode { get; } = new(
+        name: @"--mode")
     {
-        Description = @"",
-        Required = true,
+        Description = @"Defaults to CURRENT, which rejects start_epoch_millis and end_epoch_millis. SERIES uses a server-selected step of 30 seconds up to 2 hours, 60 seconds up to 1 day, 600 seconds up to 3 days, and 3600 seconds beyond 3 days.",
     };
 
-    private static Option<global::System.DateTime> EndTime { get; } = new(
-        name: @"--end-time")
+    private static Option<long?> StartEpochMillis { get; } = new(
+        name: @"--start-epoch-millis")
     {
-        Description = @"",
-        Required = true,
+        Description = @"Unix milliseconds. Defaults to one hour before end; SERIES snaps outward.",
     };
 
-    private static Option<int> IntervalSeconds { get; } = new(
-        name: @"--interval-seconds")
+    private static Option<long?> EndEpochMillis { get; } = new(
+        name: @"--end-epoch-millis")
     {
-        Description = @"",
-        Required = true,
+        Description = @"Exclusive end in Unix milliseconds, default now. Maximum aligned window is 7 days.",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<global::Baseten.SandboxMetricNameV1>?> Metrics { get; } = new(
+        name: @"--metrics")
+    {
+        Description = @"Metric names in response order. Omit to request all three signals.",
     };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.SandboxMetricsV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
@@ -71,20 +74,24 @@ internal static partial class SandboxesGetSandboxMetricsCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-sandbox-metrics", @"Get sandbox metrics
-Returns every interval in the requested half-open range [start_time, end_time).
-Buckets align to UTC interval boundaries; partial boundary buckets include only samples
-within the requested range. The first bucket may start before start_time. Ranges are limited to 31 days
-and 10000 buckets. Request counts are zero when there is no traffic, and null
-for buckets entirely before sandbox creation. CPU and memory are null without
-samples, including standby. Error rate is the fraction of requests returning
-4xx or 5xx, null when there are no requests. Telemetry failures return an error.
+Returns every interval with labeled request counts, CPU cores, and RSS memory bytes. CURRENT returns one snapshot at now, with
+request counts over the preceding minute and latest gauges.
+SUMMARY returns one value set over the window. SERIES snaps the window outward
+to UTC step boundaries and echoes those boundaries; each value covers
+[start_epoch_millis, start_epoch_millis + step_seconds).
+Missing gauge samples remain null. Request counts are zero after
+creation without traffic, and null before creation. CPU averages are averages
+of valid sampled CPU rates; memory averages are averages of sampled RSS.
+Windows default to one hour, are limited to 7 days after alignment, and at most
+10000 intervals. Telemetry failures return an error.
 ");
                         command.Arguments.Add(SandboxName);
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);
-                        command.Options.Add(StartTime);
-                        command.Options.Add(EndTime);
-                        command.Options.Add(IntervalSeconds);
+                        command.Options.Add(Mode);
+                        command.Options.Add(StartEpochMillis);
+                        command.Options.Add(EndEpochMillis);
+                        command.Options.Add(Metrics);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -93,9 +100,10 @@ samples, including standby. Error rate is the fraction of requests returning
                         var sandboxName = parseResult.GetRequiredValue(SandboxName);
                         var teamId = parseResult.GetValue(TeamId);
                         var xTeamId = parseResult.GetValue(XTeamId);
-                        var startTime = parseResult.GetRequiredValue(StartTime);
-                        var endTime = parseResult.GetRequiredValue(EndTime);
-                        var intervalSeconds = parseResult.GetRequiredValue(IntervalSeconds);
+                        var mode = parseResult.GetValue(Mode);
+                        var startEpochMillis = parseResult.GetValue(StartEpochMillis);
+                        var endEpochMillis = parseResult.GetValue(EndEpochMillis);
+                        var metrics = parseResult.GetValue(Metrics);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -103,26 +111,19 @@ samples, including standby. Error rate is the fraction of requests returning
                                     sandboxName: sandboxName,
                                     teamId: teamId,
                                     xTeamId: xTeamId,
-                                    startTime: startTime,
-                                    endTime: endTime,
-                                    intervalSeconds: intervalSeconds,
+                                    mode: mode,
+                                    startEpochMillis: startEpochMillis,
+                                    endEpochMillis: endEpochMillis,
+                                    metrics: metrics,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
-                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
-                                        parseResult,
-                                        response,
-                                        global::Baseten.SourceGenerationContext.Default,
-                                        @"Data",
-                                        cancellationToken).ConfigureAwait(false))
-                                {
                                 await CliRuntime.WriteResponseAsync(
                                     parseResult,
                                     response,
                                     global::Baseten.SourceGenerationContext.Default,
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
-                                }
             }, cancellationToken).ConfigureAwait(false));
         CustomizeCommand(ref command);
         return command;
