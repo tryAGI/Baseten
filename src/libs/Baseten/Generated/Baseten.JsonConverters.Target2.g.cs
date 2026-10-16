@@ -35,12 +35,12 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteTargetConnectionV1)}");
                 connection = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.UpsertRouteTargetClassifierModelBasedV1? classifierModelBased = default;
-            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.ClassifierModelBased)
+            global::Baseten.UpsertRouteTargetClassifierV1? classifier = default;
+            if (discriminator?.Type == global::Baseten.CreateRouteRequestV1TargetDiscriminatorType.Classifier)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetClassifierModelBasedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetClassifierModelBasedV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteTargetClassifierModelBasedV1)}");
-                classifierModelBased = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetClassifierV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetClassifierV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteTargetClassifierV1)}");
+                classifier = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var __value = new global::Baseten.Target2(
@@ -49,7 +49,7 @@ namespace Baseten.JsonConverters
 
                 connection,
 
-                classifierModelBased
+                classifier
                 );
 
             return __value;
@@ -76,11 +76,11 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteTargetConnectionV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConnection(), typeInfo);
             }
-            else if (value.IsClassifierModelBased)
+            else if (value.IsClassifier)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetClassifierModelBasedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetClassifierModelBasedV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteTargetClassifierModelBasedV1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickClassifierModelBased(), typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetClassifierV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetClassifierV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteTargetClassifierV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickClassifier(), typeInfo);
             }
         }
     }

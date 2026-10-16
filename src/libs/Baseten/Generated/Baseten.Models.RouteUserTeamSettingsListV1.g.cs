@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class RouteUserTeamSettingsListV1
     {
         /// <summary>
-        /// The user's settings in each team they have a role in and in any team they have Code spend in this month, alphabetical by team name.
+        /// The user's settings in each team they have a role in and in any team they have Grid spend in this month, alphabetical by team name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("teams")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -25,7 +25,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="RouteUserTeamSettingsListV1" /> class.
         /// </summary>
         /// <param name="teams">
-        /// The user's settings in each team they have a role in and in any team they have Code spend in this month, alphabetical by team name.
+        /// The user's settings in each team they have a role in and in any team they have Grid spend in this month, alphabetical by team name.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

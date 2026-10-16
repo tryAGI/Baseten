@@ -28,7 +28,7 @@ internal static partial class EditRoutesByRouteIdCommandApiCommand
     private static Option<global::Baseten.TargetVariant1?> Target { get; } = new(
         name: @"--target")
     {
-        Description = @"Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER_MODEL_BASED configuration of a router route is mutable.",
+        Description = @"Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER configuration of a router route is mutable.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

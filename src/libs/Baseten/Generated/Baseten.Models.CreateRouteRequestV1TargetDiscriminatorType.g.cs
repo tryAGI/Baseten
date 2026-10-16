@@ -15,7 +15,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        ClassifierModelBased,
+        Classifier,
         /// <summary>
         ///
         /// </summary>
@@ -35,7 +35,7 @@ namespace Baseten
             return value switch
             {
                 CreateRouteRequestV1TargetDiscriminatorType.BasetenModelApi => "BASETEN_MODEL_API",
-                CreateRouteRequestV1TargetDiscriminatorType.ClassifierModelBased => "CLASSIFIER_MODEL_BASED",
+                CreateRouteRequestV1TargetDiscriminatorType.Classifier => "CLASSIFIER",
                 CreateRouteRequestV1TargetDiscriminatorType.Connection => "CONNECTION",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -48,7 +48,7 @@ namespace Baseten
             return value switch
             {
                 "BASETEN_MODEL_API" => CreateRouteRequestV1TargetDiscriminatorType.BasetenModelApi,
-                "CLASSIFIER_MODEL_BASED" => CreateRouteRequestV1TargetDiscriminatorType.ClassifierModelBased,
+                "CLASSIFIER" => CreateRouteRequestV1TargetDiscriminatorType.Classifier,
                 "CONNECTION" => CreateRouteRequestV1TargetDiscriminatorType.Connection,
                 _ => null,
             };

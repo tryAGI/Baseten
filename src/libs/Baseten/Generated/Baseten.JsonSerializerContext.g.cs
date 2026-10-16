@@ -641,9 +641,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ExploreMetadataResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ExploreMetadataV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ExploreMetadataRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteClassifierListingRefV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteRefV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetBasetenModelAPIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetClassifierModelBasedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetClassifierV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteRefV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteTargetConnectionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RouteV1))]
@@ -654,7 +655,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.RouteV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RoutesRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteTargetBasetenModelAPIV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteTargetClassifierModelBasedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteTargetClassifierV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertRouteTargetConnectionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateRouteRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2), TypeInfoPropertyName = "Target22")]
@@ -1018,7 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingModality>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingVersionV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisCostResultV1>))]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisCostResultV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisCostBucketV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApiCostDimensionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyDedicatedUsageV1>))]
