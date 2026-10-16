@@ -21690,14 +21690,16 @@
                 "type": "string"
             },
             "ModelMetricUnitHintV1": {
-                "description": "Advisory unit of a metric's values. Values are reported as scraped, so the\nhint describes the raw value (e.g. GPU memory is reported in mebibytes).\n\n- ``PER_SECOND``: a rate per second.\n- ``SECONDS``: a duration in seconds.\n- ``BYTES``: a size in bytes.\n- ``MEBIBYTES``: a size in mebibytes (MiB).\n- ``COUNT``: a dimensionless tally of discrete things.\n- ``RATIO``: a dimensionless ratio. Usually in ``[0, 1]`` but may exceed 1\n  (e.g. CPU usage in cores = cpu-seconds/second).",
+                "description": "Advisory unit of a metric's values. Values are reported as scraped, so the\nhint describes the raw value (e.g. GPU memory is reported in mebibytes).\n\n- ``PER_SECOND``: a rate per second.\n- ``SECONDS``: a duration in seconds.\n- ``BYTES``: a size in bytes.\n- ``MEBIBYTES``: a size in mebibytes (MiB).\n- ``COUNT``: a dimensionless tally of discrete things.\n- ``RATIO``: a dimensionless ratio. Usually in ``[0, 1]`` but may exceed 1\n  (e.g. CPU usage in cores = cpu-seconds/second).\n- ``CELSIUS``: a temperature in degrees Celsius.\n- ``WATTS``: power draw in watts.",
                 "enum": [
                     "PER_SECOND",
                     "SECONDS",
                     "BYTES",
                     "MEBIBYTES",
                     "COUNT",
-                    "RATIO"
+                    "RATIO",
+                    "CELSIUS",
+                    "WATTS"
                 ],
                 "title": "ModelMetricUnitHintV1",
                 "type": "string"
@@ -31802,6 +31804,18 @@
                         "default": false,
                         "title": "Trending",
                         "type": "boolean"
+                    },
+                    "model_family": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Model Family"
                     }
                 },
                 "required": [
