@@ -36,14 +36,14 @@ namespace Baseten
         public string? Email { get; set; }
 
         /// <summary>
-        /// Spend limit for Baseten Code in the team. Applies to requests with Routes keys the user created in the team; personal API keys are not limited.
+        /// Spend limit for Baseten Grid in the team. Applies to requests with Routes keys the user created in the team; personal API keys are not limited.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("spend_limit")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Baseten.RouteSpendLimitSettingV1 SpendLimit { get; set; }
 
         /// <summary>
-        /// The user's metered Code spend in USD in the team this UTC calendar month, returned as an exact decimal string.
+        /// The user's metered Grid spend in USD in the team this UTC calendar month, returned as an exact decimal string.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("month_spend_usd")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -81,10 +81,10 @@ namespace Baseten
         /// ID of the user.
         /// </param>
         /// <param name="spendLimit">
-        /// Spend limit for Baseten Code in the team. Applies to requests with Routes keys the user created in the team; personal API keys are not limited.
+        /// Spend limit for Baseten Grid in the team. Applies to requests with Routes keys the user created in the team; personal API keys are not limited.
         /// </param>
         /// <param name="monthSpendUsd">
-        /// The user's metered Code spend in USD in the team this UTC calendar month, returned as an exact decimal string.
+        /// The user's metered Grid spend in USD in the team this UTC calendar month, returned as an exact decimal string.
         /// </param>
         /// <param name="isBlocked">
         /// Whether the user's spend this month reached their limit, or the team's spend reached its team-wide limit, so requests with Routes keys they created in the team are rejected.

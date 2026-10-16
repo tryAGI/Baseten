@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Lists users' route settings in a team<br/>
-        /// Returns the settings in the team of each member of the team, including organization admins and Code service accounts. Requires team admin for the specified team or organization admin.
+        /// Returns the settings in the team of each member of the team, including organization admins and Grid service accounts. Requires team admin for the specified team or organization admin.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -23,7 +23,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Lists users' route settings in a team<br/>
-        /// Returns the settings in the team of each member of the team, including organization admins and Code service accounts. Requires team admin for the specified team or organization admin.
+        /// Returns the settings in the team of each member of the team, including organization admins and Grid service accounts. Requires team admin for the specified team or organization admin.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

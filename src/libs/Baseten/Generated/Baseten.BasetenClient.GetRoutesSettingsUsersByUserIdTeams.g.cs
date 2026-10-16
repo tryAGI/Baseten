@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Lists a user's route settings in each of their teams<br/>
-        /// Returns the user's settings in each team they belong to (every team, for organization admins), alphabetical by team name: their spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.
+        /// Returns the user's settings in each team they belong to (every team, for organization admins), alphabetical by team name: their spend limit for Baseten Grid in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -69,7 +69,7 @@ namespace Baseten
         }
         /// <summary>
         /// Lists a user's route settings in each of their teams<br/>
-        /// Returns the user's settings in each team they belong to (every team, for organization admins), alphabetical by team name: their spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.
+        /// Returns the user's settings in each team they belong to (every team, for organization admins), alphabetical by team name: their spend limit for Baseten Grid in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

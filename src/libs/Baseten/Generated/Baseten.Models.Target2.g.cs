@@ -92,38 +92,38 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.UpsertRouteTargetClassifierModelBasedV1? ClassifierModelBased { get; init; }
+        public global::Baseten.UpsertRouteTargetClassifierV1? Classifier { get; init; }
 #else
-        public global::Baseten.UpsertRouteTargetClassifierModelBasedV1? ClassifierModelBased { get; }
+        public global::Baseten.UpsertRouteTargetClassifierV1? Classifier { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ClassifierModelBased))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Classifier))]
 #endif
-        public bool IsClassifierModelBased => ClassifierModelBased != null;
+        public bool IsClassifier => Classifier != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickClassifierModelBased(
+        public bool TryPickClassifier(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.UpsertRouteTargetClassifierModelBasedV1? value)
+            out global::Baseten.UpsertRouteTargetClassifierV1? value)
         {
-            value = ClassifierModelBased;
-            return IsClassifierModelBased;
+            value = Classifier;
+            return IsClassifier;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertRouteTargetClassifierModelBasedV1 PickClassifierModelBased() => ClassifierModelBased is { } value
+        public global::Baseten.UpsertRouteTargetClassifierV1 PickClassifier() => Classifier is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'ClassifierModelBased' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Classifier' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -173,25 +173,25 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target2(global::Baseten.UpsertRouteTargetClassifierModelBasedV1 value) => new Target2((global::Baseten.UpsertRouteTargetClassifierModelBasedV1?)value);
+        public static implicit operator Target2(global::Baseten.UpsertRouteTargetClassifierV1 value) => new Target2((global::Baseten.UpsertRouteTargetClassifierV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.UpsertRouteTargetClassifierModelBasedV1?(Target2 @this) => @this.ClassifierModelBased;
+        public static implicit operator global::Baseten.UpsertRouteTargetClassifierV1?(Target2 @this) => @this.Classifier;
 
         /// <summary>
         ///
         /// </summary>
-        public Target2(global::Baseten.UpsertRouteTargetClassifierModelBasedV1? value)
+        public Target2(global::Baseten.UpsertRouteTargetClassifierV1? value)
         {
-            ClassifierModelBased = value;
+            Classifier = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static Target2 FromClassifierModelBased(global::Baseten.UpsertRouteTargetClassifierModelBasedV1? value) => new Target2(value);
+        public static Target2 FromClassifier(global::Baseten.UpsertRouteTargetClassifierV1? value) => new Target2(value);
 
         /// <summary>
         ///
@@ -200,21 +200,21 @@ namespace Baseten
             global::Baseten.CreateRouteRequestV1TargetDiscriminatorType? type,
             global::Baseten.UpsertRouteTargetBasetenModelAPIV1? basetenModelApi,
             global::Baseten.UpsertRouteTargetConnectionV1? connection,
-            global::Baseten.UpsertRouteTargetClassifierModelBasedV1? classifierModelBased
+            global::Baseten.UpsertRouteTargetClassifierV1? classifier
             )
         {
             Type = type;
 
             BasetenModelApi = basetenModelApi;
             Connection = connection;
-            ClassifierModelBased = classifierModelBased;
+            Classifier = classifier;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
-            ClassifierModelBased as object ??
+            Classifier as object ??
             Connection as object ??
             BasetenModelApi as object
             ;
@@ -225,7 +225,7 @@ namespace Baseten
         public override string? ToString() =>
             BasetenModelApi?.ToString() ??
             Connection?.ToString() ??
-            ClassifierModelBased?.ToString()
+            Classifier?.ToString()
             ;
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Baseten
         /// </summary>
         public bool Validate()
         {
-            return IsBasetenModelApi && !IsConnection && !IsClassifierModelBased || !IsBasetenModelApi && IsConnection && !IsClassifierModelBased || !IsBasetenModelApi && !IsConnection && IsClassifierModelBased;
+            return IsBasetenModelApi && !IsConnection && !IsClassifier || !IsBasetenModelApi && IsConnection && !IsClassifier || !IsBasetenModelApi && !IsConnection && IsClassifier;
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Baseten
         public TResult? Match<TResult>(
             global::System.Func<global::Baseten.UpsertRouteTargetBasetenModelAPIV1, TResult>? basetenModelApi = null,
             global::System.Func<global::Baseten.UpsertRouteTargetConnectionV1, TResult>? connection = null,
-            global::System.Func<global::Baseten.UpsertRouteTargetClassifierModelBasedV1, TResult>? classifierModelBased = null,
+            global::System.Func<global::Baseten.UpsertRouteTargetClassifierV1, TResult>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -258,9 +258,9 @@ namespace Baseten
             {
                 return connection(__value1);
             }
-            else if (ClassifierModelBased is { } __value2 && classifierModelBased != null)
+            else if (Classifier is { } __value2 && classifier != null)
             {
-                return classifierModelBased(__value2);
+                return classifier(__value2);
             }
 
             return default(TResult);
@@ -274,7 +274,7 @@ namespace Baseten
 
             global::System.Action<global::Baseten.UpsertRouteTargetConnectionV1>? connection = null,
 
-            global::System.Action<global::Baseten.UpsertRouteTargetClassifierModelBasedV1>? classifierModelBased = null,
+            global::System.Action<global::Baseten.UpsertRouteTargetClassifierV1>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -290,9 +290,9 @@ namespace Baseten
             {
                 connection?.Invoke(__value1);
             }
-            else if (ClassifierModelBased is { } __value2)
+            else if (Classifier is { } __value2)
             {
-                classifierModelBased?.Invoke(__value2);
+                classifier?.Invoke(__value2);
             }
         }
 
@@ -302,7 +302,7 @@ namespace Baseten
         public void Switch(
             global::System.Action<global::Baseten.UpsertRouteTargetBasetenModelAPIV1>? basetenModelApi = null,
             global::System.Action<global::Baseten.UpsertRouteTargetConnectionV1>? connection = null,
-            global::System.Action<global::Baseten.UpsertRouteTargetClassifierModelBasedV1>? classifierModelBased = null,
+            global::System.Action<global::Baseten.UpsertRouteTargetClassifierV1>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -318,9 +318,9 @@ namespace Baseten
             {
                 connection?.Invoke(__value1);
             }
-            else if (ClassifierModelBased is { } __value2)
+            else if (Classifier is { } __value2)
             {
-                classifierModelBased?.Invoke(__value2);
+                classifier?.Invoke(__value2);
             }
         }
 
@@ -335,8 +335,8 @@ namespace Baseten
                 typeof(global::Baseten.UpsertRouteTargetBasetenModelAPIV1),
                 Connection,
                 typeof(global::Baseten.UpsertRouteTargetConnectionV1),
-                ClassifierModelBased,
-                typeof(global::Baseten.UpsertRouteTargetClassifierModelBasedV1),
+                Classifier,
+                typeof(global::Baseten.UpsertRouteTargetClassifierV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -355,7 +355,7 @@ namespace Baseten
             return
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteTargetBasetenModelAPIV1?>.Default.Equals(BasetenModelApi, other.BasetenModelApi) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteTargetConnectionV1?>.Default.Equals(Connection, other.Connection) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteTargetClassifierModelBasedV1?>.Default.Equals(ClassifierModelBased, other.ClassifierModelBased)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteTargetClassifierV1?>.Default.Equals(Classifier, other.Classifier)
                 ;
         }
 

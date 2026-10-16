@@ -10456,7 +10456,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/settings/users/{user_id}/teams\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns the user's settings in each team they belong to (every team, for organization admins), alphabetical by team name: their spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.",
+                "description": "Returns the user's settings in each team they belong to (every team, for organization admins), alphabetical by team name: their spend limit for Baseten Grid in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; organization admins can read anyone's.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -10561,7 +10561,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/settings/teams/{team_id}/users\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns the settings in the team of each member of the team, including organization admins and Code service accounts. Requires team admin for the specified team or organization admin.",
+                "description": "Returns the settings in the team of each member of the team, including organization admins and Grid service accounts. Requires team admin for the specified team or organization admin.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -10595,7 +10595,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/settings/teams/{team_id}/users/{user_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns the user's spend limit for Baseten Code in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; team admins can read members' settings in teams they administer, and organization admins can read anyone's.",
+                "description": "Returns the user's spend limit for Baseten Grid in the team, their spend in the team this month, and whether that spend reached the limit. Members can read their own settings; team admins can read members' settings in teams they administer, and organization admins can read anyone's.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -33827,6 +33827,32 @@
                 "title": "ExploreMetadataRequestV1",
                 "type": "object"
             },
+            "RouteClassifierListingRefV1": {
+                "properties": {
+                    "id": {
+                        "description": "Stable classifier identifier.",
+                        "examples": [
+                            "general-v1"
+                        ],
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Display name of the classifier.",
+                        "examples": [
+                            "General"
+                        ],
+                        "title": "Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "title": "RouteClassifierListingRefV1",
+                "type": "object"
+            },
             "RouteRefV1": {
                 "properties": {
                     "id": {
@@ -33869,36 +33895,24 @@
                 "title": "RouteTargetBasetenModelAPIV1",
                 "type": "object"
             },
-            "RouteTargetClassifierModelBasedV1": {
+            "RouteTargetClassifierV1": {
                 "properties": {
                     "type": {
-                        "const": "CLASSIFIER_MODEL_BASED",
-                        "description": "Target kind for a classifier-model-based route.",
+                        "const": "CLASSIFIER",
+                        "description": "Target kind for a classifier-based route.",
                         "title": "Type",
                         "type": "string"
                     },
-                    "classifier_model_id": {
-                        "description": "ID of the Baseten model that picks a route for each request.",
-                        "examples": [
-                            "abcd123"
-                        ],
-                        "title": "Classifier Model Id",
-                        "type": "string"
-                    },
-                    "classifier_environment_name": {
+                    "classifier": {
                         "anyOf": [
                             {
-                                "type": "string"
+                                "$ref": "#/components/schemas/RouteClassifierListingRefV1"
                             },
                             {
                                 "type": "null"
                             }
                         ],
-                        "description": "Environment of the classifier model. Null for production.",
-                        "examples": [
-                            "production"
-                        ],
-                        "title": "Classifier Environment Name"
+                        "description": "Classifier that picks a route for each request. Null for routers created before classifiers could be selected."
                     },
                     "default_route": {
                         "$ref": "#/components/schemas/RouteRefV1",
@@ -33915,12 +33929,11 @@
                 },
                 "required": [
                     "type",
-                    "classifier_model_id",
-                    "classifier_environment_name",
+                    "classifier",
                     "default_route",
                     "allowed_routes"
                 ],
-                "title": "RouteTargetClassifierModelBasedV1",
+                "title": "RouteTargetClassifierV1",
                 "type": "object"
             },
             "RouteTargetConnectionV1": {
@@ -33988,7 +34001,7 @@
                         "discriminator": {
                             "mapping": {
                                 "BASETEN_MODEL_API": "#/components/schemas/RouteTargetBasetenModelAPIV1",
-                                "CLASSIFIER_MODEL_BASED": "#/components/schemas/RouteTargetClassifierModelBasedV1",
+                                "CLASSIFIER": "#/components/schemas/RouteTargetClassifierV1",
                                 "CONNECTION": "#/components/schemas/RouteTargetConnectionV1"
                             },
                             "propertyName": "type"
@@ -34001,7 +34014,7 @@
                                 "$ref": "#/components/schemas/RouteTargetConnectionV1"
                             },
                             {
-                                "$ref": "#/components/schemas/RouteTargetClassifierModelBasedV1"
+                                "$ref": "#/components/schemas/RouteTargetClassifierV1"
                             }
                         ],
                         "title": "Target"
@@ -34142,40 +34155,23 @@
                 "title": "UpsertRouteTargetBasetenModelAPIV1",
                 "type": "object"
             },
-            "UpsertRouteTargetClassifierModelBasedV1": {
+            "UpsertRouteTargetClassifierV1": {
                 "additionalProperties": false,
                 "properties": {
                     "type": {
-                        "const": "CLASSIFIER_MODEL_BASED",
-                        "description": "Target kind for a classifier-model-based route. Not intended for general use: classifiers are deployed by Baseten's post-training team.",
+                        "const": "CLASSIFIER",
+                        "description": "Target kind for a classifier-based route.",
                         "title": "Type",
                         "type": "string"
                     },
-                    "classifier_model_id": {
-                        "description": "ID of the Baseten model that picks a route for each request. Only classifiers deployed by Baseten's post-training team are supported.",
+                    "classifier_id": {
+                        "description": "ID of the classifier that picks a route for each request.",
                         "examples": [
-                            "abcd123"
+                            "general-v1"
                         ],
                         "minLength": 1,
-                        "title": "Classifier Model Id",
+                        "title": "Classifier Id",
                         "type": "string"
-                    },
-                    "classifier_environment_name": {
-                        "anyOf": [
-                            {
-                                "minLength": 1,
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Environment of the classifier model. Omit for production, which is returned as null.",
-                        "examples": [
-                            "production"
-                        ],
-                        "title": "Classifier Environment Name"
                     },
                     "allowed_route_ids": {
                         "description": "IDs of the routes the classifier may pick. All must belong to the route's team and must not be routers themselves.",
@@ -34202,11 +34198,11 @@
                 },
                 "required": [
                     "type",
-                    "classifier_model_id",
+                    "classifier_id",
                     "allowed_route_ids",
                     "default_route_id"
                 ],
-                "title": "UpsertRouteTargetClassifierModelBasedV1",
+                "title": "UpsertRouteTargetClassifierV1",
                 "type": "object"
             },
             "UpsertRouteTargetConnectionV1": {
@@ -34285,7 +34281,7 @@
                         "discriminator": {
                             "mapping": {
                                 "BASETEN_MODEL_API": "#/components/schemas/UpsertRouteTargetBasetenModelAPIV1",
-                                "CLASSIFIER_MODEL_BASED": "#/components/schemas/UpsertRouteTargetClassifierModelBasedV1",
+                                "CLASSIFIER": "#/components/schemas/UpsertRouteTargetClassifierV1",
                                 "CONNECTION": "#/components/schemas/UpsertRouteTargetConnectionV1"
                             },
                             "propertyName": "type"
@@ -34304,7 +34300,7 @@
                                 "$ref": "#/components/schemas/UpsertRouteTargetConnectionV1"
                             },
                             {
-                                "$ref": "#/components/schemas/UpsertRouteTargetClassifierModelBasedV1"
+                                "$ref": "#/components/schemas/UpsertRouteTargetClassifierV1"
                             }
                         ],
                         "title": "Target"
@@ -34808,10 +34804,10 @@
                     },
                     "spend_limit": {
                         "$ref": "#/components/schemas/RouteSpendLimitSettingV1",
-                        "description": "Spend limit for Baseten Code in the team. Applies to requests with Routes keys the user created in the team; personal API keys are not limited."
+                        "description": "Spend limit for Baseten Grid in the team. Applies to requests with Routes keys the user created in the team; personal API keys are not limited."
                     },
                     "month_spend_usd": {
-                        "description": "The user's metered Code spend in USD in the team this UTC calendar month, returned as an exact decimal string.",
+                        "description": "The user's metered Grid spend in USD in the team this UTC calendar month, returned as an exact decimal string.",
                         "examples": [
                             "12.5"
                         ],
@@ -34851,7 +34847,7 @@
             "RouteUserTeamSettingsListV1": {
                 "properties": {
                     "teams": {
-                        "description": "The user's settings in each team they have a role in and in any team they have Code spend in this month, alphabetical by team name.",
+                        "description": "The user's settings in each team they have a role in and in any team they have Grid spend in this month, alphabetical by team name.",
                         "items": {
                             "$ref": "#/components/schemas/RouteTeamUserSettingsV1"
                         },
@@ -34974,7 +34970,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Spend limit in USD for each UTC calendar month that applies to each member's Code spend in this team, unless the member has a limit of their own. Returned as an exact decimal string. Null when the team has no per-member limit.",
+                        "description": "Spend limit in USD for each UTC calendar month that applies to each member's Grid spend in this team, unless the member has a limit of their own. Returned as an exact decimal string. Null when the team has no per-member limit.",
                         "examples": [
                             "200"
                         ],
@@ -34989,7 +34985,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Spend limit in USD for each UTC calendar month on the Code spend of all members in this team together. Once it is reached, every member's requests in the team are rejected. Returned as an exact decimal string. Null when the team has no team-wide limit.",
+                        "description": "Spend limit in USD for each UTC calendar month on the Grid spend of all members in this team together. Once it is reached, every member's requests in the team are rejected. Returned as an exact decimal string. Null when the team has no team-wide limit.",
                         "examples": [
                             "5000"
                         ],
@@ -35019,7 +35015,7 @@
                     },
                     "spend_limit": {
                         "$ref": "#/components/schemas/RouteTeamSpendLimitSettingV1",
-                        "description": "Spend limits for Baseten Code for members' spend in this team."
+                        "description": "Spend limits for Baseten Grid for members' spend in this team."
                     }
                 },
                 "required": [
@@ -35174,7 +35170,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Spend limit in USD for each UTC calendar month that applies to each member's Code spend in this team, unless the member has a limit of their own. Send null to remove it; omit to leave it unchanged.",
+                        "description": "Spend limit in USD for each UTC calendar month that applies to each member's Grid spend in this team, unless the member has a limit of their own. Send null to remove it; omit to leave it unchanged.",
                         "examples": [
                             "200"
                         ],
@@ -35191,7 +35187,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Spend limit in USD for each UTC calendar month on the Code spend of all members in this team together. Send null to remove it; omit to leave it unchanged.",
+                        "description": "Spend limit in USD for each UTC calendar month on the Grid spend of all members in this team together. Send null to remove it; omit to leave it unchanged.",
                         "examples": [
                             "5000"
                         ],
@@ -35239,7 +35235,7 @@
             "RouteTeamUserSettingsListV1": {
                 "properties": {
                     "users": {
-                        "description": "Settings of each user with a role in the team and of anyone with Code spend in the team this month.",
+                        "description": "Settings of each user with a role in the team and of anyone with Grid spend in the team this month.",
                         "items": {
                             "$ref": "#/components/schemas/RouteTeamUserSettingsV1"
                         },
@@ -35760,7 +35756,7 @@
                                 "discriminator": {
                                     "mapping": {
                                         "BASETEN_MODEL_API": "#/components/schemas/UpsertRouteTargetBasetenModelAPIV1",
-                                        "CLASSIFIER_MODEL_BASED": "#/components/schemas/UpsertRouteTargetClassifierModelBasedV1",
+                                        "CLASSIFIER": "#/components/schemas/UpsertRouteTargetClassifierV1",
                                         "CONNECTION": "#/components/schemas/UpsertRouteTargetConnectionV1"
                                     },
                                     "propertyName": "type"
@@ -35773,7 +35769,7 @@
                                         "$ref": "#/components/schemas/UpsertRouteTargetConnectionV1"
                                     },
                                     {
-                                        "$ref": "#/components/schemas/UpsertRouteTargetClassifierModelBasedV1"
+                                        "$ref": "#/components/schemas/UpsertRouteTargetClassifierV1"
                                     }
                                 ]
                             },
@@ -35781,7 +35777,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER_MODEL_BASED configuration of a router route is mutable.",
+                        "description": "Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER configuration of a router route is mutable.",
                         "title": "Target",
                         "x-null-distinct": true
                     }
