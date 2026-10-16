@@ -53,6 +53,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        public PreviewsClient Previews { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public SandboxesClient Sandboxes { get; }
 
     }
