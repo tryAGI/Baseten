@@ -76,6 +76,12 @@ namespace Baseten
         public bool? Trending { get; set; }
 
         /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_family")]
+        public string? ModelFamily { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -115,6 +121,9 @@ namespace Baseten
         /// <param name="trending">
         /// Default Value: false
         /// </param>
+        /// <param name="modelFamily">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -129,7 +138,8 @@ namespace Baseten
             string? modelApiSlug,
             global::System.DateTime? releaseDate,
             string? description,
-            bool? trending)
+            bool? trending,
+            string? modelFamily)
         {
             this.ParameterCount = parameterCount;
             this.ContextLength = contextLength;
@@ -142,6 +152,7 @@ namespace Baseten
             this.ReleaseDate = releaseDate;
             this.Description = description;
             this.Trending = trending;
+            this.ModelFamily = modelFamily;
         }
 
         /// <summary>

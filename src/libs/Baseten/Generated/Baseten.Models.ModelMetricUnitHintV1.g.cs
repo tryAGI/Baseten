@@ -12,7 +12,9 @@ namespace Baseten
     /// - ``MEBIBYTES``: a size in mebibytes (MiB).<br/>
     /// - ``COUNT``: a dimensionless tally of discrete things.<br/>
     /// - ``RATIO``: a dimensionless ratio. Usually in ``[0, 1]`` but may exceed 1<br/>
-    ///   (e.g. CPU usage in cores = cpu-seconds/second).
+    ///   (e.g. CPU usage in cores = cpu-seconds/second).<br/>
+    /// - ``CELSIUS``: a temperature in degrees Celsius.<br/>
+    /// - ``WATTS``: power draw in watts.
     /// </summary>
     public enum ModelMetricUnitHintV1
     {
@@ -20,6 +22,10 @@ namespace Baseten
         /// a size in bytes.
         /// </summary>
         Bytes,
+        /// <summary>
+        /// a temperature in degrees Celsius.
+        /// </summary>
+        Celsius,
         /// <summary>
         /// a dimensionless tally of discrete things.
         /// </summary>
@@ -40,6 +46,10 @@ namespace Baseten
         /// a duration in seconds.
         /// </summary>
         Seconds,
+        /// <summary>
+        /// power draw in watts.
+        /// </summary>
+        Watts,
     }
 
     /// <summary>
@@ -55,11 +65,13 @@ namespace Baseten
             return value switch
             {
                 ModelMetricUnitHintV1.Bytes => "BYTES",
+                ModelMetricUnitHintV1.Celsius => "CELSIUS",
                 ModelMetricUnitHintV1.Count => "COUNT",
                 ModelMetricUnitHintV1.Mebibytes => "MEBIBYTES",
                 ModelMetricUnitHintV1.PerSecond => "PER_SECOND",
                 ModelMetricUnitHintV1.Ratio => "RATIO",
                 ModelMetricUnitHintV1.Seconds => "SECONDS",
+                ModelMetricUnitHintV1.Watts => "WATTS",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -71,11 +83,13 @@ namespace Baseten
             return value switch
             {
                 "BYTES" => ModelMetricUnitHintV1.Bytes,
+                "CELSIUS" => ModelMetricUnitHintV1.Celsius,
                 "COUNT" => ModelMetricUnitHintV1.Count,
                 "MEBIBYTES" => ModelMetricUnitHintV1.Mebibytes,
                 "PER_SECOND" => ModelMetricUnitHintV1.PerSecond,
                 "RATIO" => ModelMetricUnitHintV1.Ratio,
                 "SECONDS" => ModelMetricUnitHintV1.Seconds,
+                "WATTS" => ModelMetricUnitHintV1.Watts,
                 _ => null,
             };
         }
