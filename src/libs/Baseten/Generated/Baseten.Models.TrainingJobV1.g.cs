@@ -30,7 +30,7 @@ namespace Baseten
         public required string CurrentStatus { get; set; }
 
         /// <summary>
-        /// Error message if the training job failed.<br/>
+        /// Error message if the training job failed. While the job is pending, a hint when switching it to spot capacity would let it start sooner.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_message")]
@@ -138,7 +138,7 @@ namespace Baseten
         /// Summary of the training project.
         /// </param>
         /// <param name="errorMessage">
-        /// Error message if the training job failed.<br/>
+        /// Error message if the training job failed. While the job is pending, a hint when switching it to spot capacity would let it start sooner.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="nodeCount">

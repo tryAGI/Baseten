@@ -101,6 +101,94 @@
     },
     {
       "Order": 10,
+      "Title": "Create a sandbox preview",
+      "Slug": "createsandboxpreview",
+      "Description": "Expose a port of the sandbox on an HTTPS URL. A public preview is reachable by anyone with the URL. A private preview requires a preview token, created with the tokens endpoint and sent as the bl_preview_token query parameter; the first request sets a bl_preview_token cookie so a browser can keep navigating without it. Port 80 and the sandbox\u0027s reserved system ports are rejected, and port 443 must stay private. Without a name, the name is generated from the sandbox name and port, or is public-\u003Cport\u003E or private-\u003Cport\u003E when create_if_not_exists is true.",
+      "Language": "http",
+      "Code": "### Create a sandbox preview\n# @name CreateSandboxPreview\nPOST {{host}}/v1/sandboxes/instances/{{sandbox_name}}/previews?team_id={{team_id}}\nAuthorization: Bearer {{token}}\nX-Team-Id: {{X-Team-Id}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022port\u0022: 8080,\n  \u0022ttl\u0022: \u002224h\u0022\n}\n\n## Responses\n# 201\n# Description: Preview created.\n# Content-Type: application/json\n# 400\n# Description: Invalid request. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 401\n# Description: Missing or invalid authentication. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 403\n# Description: Insufficient permissions. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 404\n# Description: Resource not found. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 409\n# Description: Resource is currently in use or conflicts with the requested operation. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 429\n# Description: Request limit exceeded. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 500\n# Description: Internal server error. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "CreateSandboxPreview",
+      "Setup": null
+    },
+    {
+      "Order": 11,
+      "Title": "Create a preview token",
+      "Slug": "createsandboxpreviewtoken",
+      "Description": "Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?bl_preview_token=\u003Ctoken\u003E.",
+      "Language": "http",
+      "Code": "### Create a preview token\n# @name CreateSandboxPreviewToken\nPOST {{host}}/v1/sandboxes/instances/{{sandbox_name}}/previews/{{preview_name}}/tokens?team_id={{team_id}}\nAuthorization: Bearer {{token}}\nX-Team-Id: {{X-Team-Id}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022expires_at\u0022: \u00222026-10-13T12:00:00Z\u0022\n}\n\n## Responses\n# 201\n# Description: Token created.\n# Content-Type: application/json\n# 400\n# Description: Invalid request. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 401\n# Description: Missing or invalid authentication. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 403\n# Description: Insufficient permissions. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 404\n# Description: Resource not found. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 429\n# Description: Request limit exceeded. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 500\n# Description: Internal server error. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "CreateSandboxPreviewToken",
+      "Setup": null
+    },
+    {
+      "Order": 12,
+      "Title": "Delete a sandbox preview",
+      "Slug": "deletesandboxpreview",
+      "Description": "Delete the preview and revoke its tokens. The URL stops serving immediately. Return the deleted preview, with status TERMINATED, or DELETING while a preview with many tokens finishes in the background.",
+      "Language": "http",
+      "Code": "### Delete a sandbox preview\n# @name DeleteSandboxPreview\nDELETE {{host}}/v1/sandboxes/instances/{{sandbox_name}}/previews/{{preview_name}}?team_id={{team_id}}\nAuthorization: Bearer {{token}}\nX-Team-Id: {{X-Team-Id}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Successful operation.\n# Content-Type: application/json\n# 401\n# Description: Missing or invalid authentication. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 403\n# Description: Insufficient permissions. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 404\n# Description: Resource not found. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 429\n# Description: Request limit exceeded. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 500\n# Description: Internal server error. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "DeleteSandboxPreview",
+      "Setup": null
+    },
+    {
+      "Order": 13,
+      "Title": "Delete a preview token",
+      "Slug": "deletesandboxpreviewtoken",
+      "Description": "Revoke the token. Requests using it are rejected immediately.",
+      "Language": "http",
+      "Code": "### Delete a preview token\n# @name DeleteSandboxPreviewToken\nDELETE {{host}}/v1/sandboxes/instances/{{sandbox_name}}/previews/{{preview_name}}/tokens/{{token_name}}?team_id={{team_id}}\nAuthorization: Bearer {{token}}\nX-Team-Id: {{X-Team-Id}}\nAccept: application/json\n\n## Responses\n# 204\n# Description: Token deleted.\n# 401\n# Description: Missing or invalid authentication. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 403\n# Description: Insufficient permissions. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 404\n# Description: Resource not found. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 429\n# Description: Request limit exceeded. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 500\n# Description: Internal server error. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "DeleteSandboxPreviewToken",
+      "Setup": null
+    },
+    {
+      "Order": 14,
+      "Title": "Get a sandbox preview",
+      "Slug": "getsandboxpreview",
+      "Description": "Return the preview configuration, URL and status.",
+      "Language": "http",
+      "Code": "### Get a sandbox preview\n# @name GetSandboxPreview\nGET {{host}}/v1/sandboxes/instances/{{sandbox_name}}/previews/{{preview_name}}?team_id={{team_id}}\u0026show_secrets=false\nAuthorization: Bearer {{token}}\nX-Team-Id: {{X-Team-Id}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Successful operation.\n# Content-Type: application/json\n# 401\n# Description: Missing or invalid authentication. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 403\n# Description: Insufficient permissions. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 404\n# Description: Resource not found. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 429\n# Description: Request limit exceeded. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 500\n# Description: Internal server error. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "GetSandboxPreview",
+      "Setup": null
+    },
+    {
+      "Order": 15,
+      "Title": "List preview tokens",
+      "Slug": "listsandboxpreviewtokens",
+      "Description": "Return the tokens of a private preview in the paginated list format, including expired tokens until they are removed. cursor and limit are accepted but not applied yet; all tokens fit on one page, so has_more is false. Follow pagination.cursor while has_more is true to stay compatible when they are applied.",
+      "Language": "http",
+      "Code": "### List preview tokens\n# @name ListSandboxPreviewTokens\nGET {{host}}/v1/sandboxes/instances/{{sandbox_name}}/previews/{{preview_name}}/tokens?team_id={{team_id}}\u0026cursor={{cursor}}\u0026limit=20\nAuthorization: Bearer {{token}}\nX-Team-Id: {{X-Team-Id}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Successful operation.\n# Content-Type: application/json\n# 400\n# Description: The preview is public, so it has no tokens. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 401\n# Description: Missing or invalid authentication. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 403\n# Description: Insufficient permissions. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 404\n# Description: Resource not found. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 429\n# Description: Request limit exceeded. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 500\n# Description: Internal server error. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "ListSandboxPreviewTokens",
+      "Setup": null
+    },
+    {
+      "Order": 16,
+      "Title": "List sandbox previews",
+      "Slug": "listsandboxpreviews",
+      "Description": "Return the previews of the sandbox in the paginated list format. cursor and limit are accepted but not applied yet; all previews fit on one page, so has_more is false. Follow pagination.cursor while has_more is true to stay compatible when they are applied.",
+      "Language": "http",
+      "Code": "### List sandbox previews\n# @name ListSandboxPreviews\nGET {{host}}/v1/sandboxes/instances/{{sandbox_name}}/previews?team_id={{team_id}}\u0026cursor={{cursor}}\u0026limit=20\nAuthorization: Bearer {{token}}\nX-Team-Id: {{X-Team-Id}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Successful operation.\n# Content-Type: application/json\n# 401\n# Description: Missing or invalid authentication. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 403\n# Description: Insufficient permissions. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 404\n# Description: Resource not found. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 429\n# Description: Request limit exceeded. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 500\n# Description: Internal server error. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "ListSandboxPreviews",
+      "Setup": null
+    },
+    {
+      "Order": 17,
+      "Title": "Update a sandbox preview",
+      "Slug": "updatesandboxpreview",
+      "Description": "Partially update the preview. Omitted fields remain unchanged; supplied header maps replace their previous values. The URL does not change. Setting ttl or expires_at replaces any previous expiration and restarts it from now. The name and port are immutable; supplying either returns 400.",
+      "Language": "http",
+      "Code": "### Update a sandbox preview\n# @name UpdateSandboxPreview\nPATCH {{host}}/v1/sandboxes/instances/{{sandbox_name}}/previews/{{preview_name}}?team_id={{team_id}}\nAuthorization: Bearer {{token}}\nX-Team-Id: {{X-Team-Id}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022public\u0022: false,\n  \u0022ttl\u0022: \u00227d\u0022\n}\n\n## Responses\n# 200\n# Description: Successful operation.\n# Content-Type: application/json\n# 400\n# Description: Invalid request. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 401\n# Description: Missing or invalid authentication. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 403\n# Description: Insufficient permissions. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 404\n# Description: Resource not found. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 409\n# Description: Resource is currently in use or conflicts with the requested operation. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 429\n# Description: Request limit exceeded. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json\n# 500\n# Description: Internal server error. Returns a JSON error with code, message, and optional details.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "UpdateSandboxPreview",
+      "Setup": null
+    },
+    {
+      "Order": 18,
       "Title": "Create a sandbox",
       "Slug": "createsandbox",
       "Description": "Create a sandbox with an optional client-provided name, generated by the server when omitted. The request waits briefly for deployment, then returns the created resource. Deployment may continue after the response; inspect status to determine readiness. Names belonging to failed or terminated sandboxes can be reused; an active sandbox reserves its name. Every field is optional. The server applies image and memory defaults; SDKs should omit fields the caller did not set. A request with no body creates a sandbox from baseten/base-image:latest, the built-in image with the sandbox execution API ready to use, with 4096 MB of memory. It is available directly; no image build, push, or GET /v1/sandboxes/images is needed. Use the returned url to execute commands with your authentication token as a Bearer token, not your Baseten API key.",
@@ -111,7 +199,7 @@
       "Setup": "This example assumes \u0060using Baseten;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 11,
+      "Order": 19,
       "Title": "Delete a sandbox",
       "Slug": "deletesandbox",
       "Description": "Permanently delete the sandbox and its local data asynchronously. The returned resource has status DELETING.",
@@ -122,7 +210,7 @@
       "Setup": null
     },
     {
-      "Order": 12,
+      "Order": 20,
       "Title": "Get a sandbox",
       "Slug": "getsandbox",
       "Description": "Return the sandbox configuration and status.",
@@ -133,7 +221,7 @@
       "Setup": null
     },
     {
-      "Order": 13,
+      "Order": 21,
       "Title": "Get sandbox configuration",
       "Slug": "getsandboxconfiguration",
       "Description": "Return available Carbon-compatible sandbox regions. Configuration is the same for every team, so no team is selected. Only enabled regions supporting Carbon are returned. This describes regional capability, not the runtime selected for a particular team or sandbox. Region configuration is cached for up to 30 seconds.",
@@ -144,7 +232,7 @@
       "Setup": "This example assumes \u0060using Baseten;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 14,
+      "Order": 22,
       "Title": "List sandboxes",
       "Slug": "listsandboxes",
       "Description": "Return a cursor-paginated page of sandboxes. Terminated sandboxes are hidden by default.",
@@ -155,7 +243,7 @@
       "Setup": "This example assumes \u0060using Baseten;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 15,
+      "Order": 23,
       "Title": "Update a sandbox",
       "Slug": "updatesandbox",
       "Description": "Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, and ports are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.",

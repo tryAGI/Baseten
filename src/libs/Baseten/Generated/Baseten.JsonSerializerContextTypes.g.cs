@@ -3257,7 +3257,59 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxMetricNameV1>? Type806 { get; set; }
+        public global::Baseten.SandboxPreviewStatusV1? Type806 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.SandboxPreviewConfigurationV1? Type807 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.CreateSandboxPreviewRequestV1? Type808 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.CreateSandboxPreviewRequestV1Variant2? Type809 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.UpdateSandboxPreviewRequestV1? Type810 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.SandboxPreviewV1? Type811 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.SandboxPreviewV1Variant2? Type812 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.ListSandboxPreviewsResponseV1? Type813 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxPreviewV1>? Type814 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.CreateSandboxPreviewTokenRequestV1? Type815 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.SandboxPreviewTokenV1? Type816 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.ListSandboxPreviewTokensResponseV1? Type817 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxPreviewTokenV1>? Type818 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxMetricNameV1>? Type819 { get; set; }
 
         /// <summary>
         ///
@@ -3754,6 +3806,14 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.SandboxMetricNameV1>? ListType123 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.SandboxPreviewV1>? ListType123 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Baseten.SandboxPreviewTokenV1>? ListType124 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Baseten.SandboxMetricNameV1>? ListType125 { get; set; }
     }
 }
