@@ -18,12 +18,7 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdCommandApiCommand
     {
         Description = @"Harnesses to change; harnesses left out are unchanged. Pass null to clear every harness, so each role uses the team's default.",
     };
-
-    private static Option<global::Baseten.UpdateRouteTeamSpendLimitSettingV1?> SpendLimit { get; } = new(
-        name: @"--spend-limit")
-    {
-        Description = @"Spend limit fields to change. Pass null to remove the team's limits; omit to leave them unchanged.",
-    };
+    private static readonly UpdateRouteTeamSpendLimitSettingV1OptionSet SpendLimitOptions = UpdateRouteTeamSpendLimitSettingV1OptionSet.Create(@"spend-limit");
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -68,8 +63,8 @@ internal static partial class EditRoutesSettingsTeamsByTeamIdCommandApiCommand
         var command = new Command(commandName ?? @"edit-routes-settings-teams-by-team-id", @"Updates a team's route settings
 Changes only the fields in the request, all or nothing. Requires team admin, and organization admin to change the team-wide spend limit.");
                         command.Arguments.Add(TeamId);
-                        command.Options.Add(HarnessDefaults);
-                        command.Options.Add(SpendLimit);
+                        command.Options.Add(HarnessDefaults);                        command.Options.Add(SpendLimitOptions.PerMemberMonthlyLimitUsd);
+                        command.Options.Add(SpendLimitOptions.TeamWideMonthlyLimitUsd);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -97,7 +92,19 @@ Changes only the fields in the request, all or nothing. Requires team admin, and
                             cancellationToken).ConfigureAwait(false);
                         var teamId = parseResult.GetRequiredValue(TeamId);
                         var harnessDefaults = CliRuntime.WasSpecified(parseResult, HarnessDefaults) ? parseResult.GetValue(HarnessDefaults) : (__requestBase is { } __HarnessDefaultsBaseValue ? __HarnessDefaultsBaseValue.HarnessDefaults : default);
-                        var spendLimit = CliRuntime.WasSpecified(parseResult, SpendLimit) ? parseResult.GetValue(SpendLimit) : (__requestBase is { } __SpendLimitBaseValue ? __SpendLimitBaseValue.SpendLimit : default);
+
+                        var __SpendLimitBase = __requestBase is { } __SpendLimitBaseValue ? __SpendLimitBaseValue.SpendLimit : default;                        var spendLimitPerMemberMonthlyLimitUsd = CliRuntime.WasSpecified(parseResult, SpendLimitOptions.PerMemberMonthlyLimitUsd) ? parseResult.GetValue(SpendLimitOptions.PerMemberMonthlyLimitUsd) : (__SpendLimitBase is { } __SpendLimitperMemberMonthlyLimitUsdBaseValue ? __SpendLimitperMemberMonthlyLimitUsdBaseValue.PerMemberMonthlyLimitUsd : default);
+                        var spendLimitTeamWideMonthlyLimitUsd = CliRuntime.WasSpecified(parseResult, SpendLimitOptions.TeamWideMonthlyLimitUsd) ? parseResult.GetValue(SpendLimitOptions.TeamWideMonthlyLimitUsd) : (__SpendLimitBase is { } __SpendLimitteamWideMonthlyLimitUsdBaseValue ? __SpendLimitteamWideMonthlyLimitUsdBaseValue.TeamWideMonthlyLimitUsd : default);
+                        var __SpendLimitSpecified = CliRuntime.WasSpecified(parseResult, SpendLimitOptions.PerMemberMonthlyLimitUsd) || CliRuntime.WasSpecified(parseResult, SpendLimitOptions.TeamWideMonthlyLimitUsd);
+                        var spendLimit =
+                            __SpendLimitSpecified || __SpendLimitBase is not null
+                                ? new global::Baseten.UpdateRouteTeamSpendLimitSettingV1
+                                {
+	                                PerMemberMonthlyLimitUsd = spendLimitPerMemberMonthlyLimitUsd,
+                                TeamWideMonthlyLimitUsd = spendLimitTeamWideMonthlyLimitUsd,
+
+                                }
+                                : __SpendLimitBase;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

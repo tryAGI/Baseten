@@ -10656,6 +10656,96 @@
                 "x-stability": "unstable"
             }
         },
+        "/v1/routes/team_settings": {
+            "get": {
+                "summary": "Gets a team's route settings by team ID or your only team",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/routes/team_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/team_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'team_id': 'abc1234'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns the settings that apply to the team, including the default models for each coding harness and the team's spend limits. Any member who can invoke the team's routes can read them. The team comes from `team_id` instead of the path. Omit it to use the team you belong to; when you belong to several, the request fails with a 400.",
+                "parameters": [
+                    {
+                        "name": "team_id",
+                        "in": "query",
+                        "required": false,
+                        "description": "ID of the team. When omitted, the team you belong to; required when you belong to several.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                "abc1234"
+                            ],
+                            "title": "Team Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RouteTeamSettingsV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "patch": {
+                "summary": "Updates a team's route settings by team ID or your only team",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/routes/team_settings \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"harness_defaults\": null,\n  \"spend_limit\": null,\n  \"team_id\": \"abc1234\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/routes/team_settings\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'harness_defaults': None, 'spend_limit': None, 'team_id': 'abc1234'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Changes only the fields in the request, all or nothing. Requires team admin, and organization admin to change the team-wide spend limit. The team comes from `team_id` instead of the path. Omit it to use the team you belong to; when you belong to several, the request fails with a 400.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateResolvedRouteTeamSettingsRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RouteTeamSettingsV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
         "/v1/routes/connections": {
             "get": {
                 "summary": "Lists connections",
@@ -35839,6 +35929,79 @@
                     }
                 },
                 "title": "UpdateRouteUserSettingsRequestV1",
+                "type": "object"
+            },
+            "RouteTeamSettingsRequestV1": {
+                "properties": {
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "ID of the team. When omitted, the team you belong to; required when you belong to several.",
+                        "examples": [
+                            "abc1234"
+                        ],
+                        "title": "Team Id"
+                    }
+                },
+                "title": "RouteTeamSettingsRequestV1",
+                "type": "object"
+            },
+            "UpdateResolvedRouteTeamSettingsRequestV1": {
+                "additionalProperties": false,
+                "minProperties": 1,
+                "properties": {
+                    "harness_defaults": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateRouteHarnessDefaultsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Harnesses to change; harnesses left out are unchanged. Pass null to clear every harness, so each role uses the team's default.",
+                        "x-null-distinct": true
+                    },
+                    "spend_limit": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateRouteTeamSpendLimitSettingV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Spend limit fields to change. Pass null to remove the team's limits; omit to leave them unchanged.",
+                        "x-null-distinct": true
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "ID of the team. When omitted, the team you belong to; required when you belong to several.",
+                        "examples": [
+                            "abc1234"
+                        ],
+                        "title": "Team Id"
+                    }
+                },
+                "title": "UpdateResolvedRouteTeamSettingsRequestV1",
                 "type": "object"
             },
             "RouteConnectionConfigAnthropicV1": {
