@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class LoopsLoRAConfigV1
     {
         /// <summary>
-        /// The config version, unique per base model.
+        /// The config version, like v1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("config_version")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -39,7 +39,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="LoopsLoRAConfigV1" /> class.
         /// </summary>
         /// <param name="configVersion">
-        /// The config version, unique per base model.
+        /// The config version, like v1.
         /// </param>
         /// <param name="targets">
         /// The module names the LoRA adapter targets.
