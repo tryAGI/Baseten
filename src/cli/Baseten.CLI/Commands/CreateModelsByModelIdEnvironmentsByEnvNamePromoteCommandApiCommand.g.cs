@@ -33,6 +33,9 @@ internal static partial class CreateModelsByModelIdEnvironmentsByEnvNamePromoteC
     private static Option<bool?> PreserveEnvInstanceType { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--preserve-env-instance-type",
         description: @"Whether to use the promoting deployment's instance type or preserve target environment's instance type");
+    private static readonly PromotionEnvironmentSettingsUpdateV1OptionSet EnvironmentSettingsUpdateOptions = PromotionEnvironmentSettingsUpdateV1OptionSet.Create(@"environment-settings-update");
+
+    private static readonly UpdatePromotionSettingsV1OptionSet PromotionSettingsOverrideOptions = UpdatePromotionSettingsV1OptionSet.Create(@"promotion-settings-override");
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -80,7 +83,11 @@ Promotes an existing deployment to an environment and returns the promoted deplo
                         command.Arguments.Add(EnvName);
                         command.Options.Add(ScaleDownPreviousDeployment);
                         command.Options.Add(DeploymentId);
-                        command.Options.Add(PreserveEnvInstanceType);
+                        command.Options.Add(PreserveEnvInstanceType);                        command.Options.Add(EnvironmentSettingsUpdateOptions.Region);
+                        command.Options.Add(EnvironmentSettingsUpdateOptions.InstanceTypeId);                        command.Options.Add(PromotionSettingsOverrideOptions.RedeployOnPromotion);
+                        command.Options.Add(PromotionSettingsOverrideOptions.RollingDeploy);
+                        command.Options.Add(PromotionSettingsOverrideOptions.RampUpWhilePromoting);
+                        command.Options.Add(PromotionSettingsOverrideOptions.RampUpDurationSeconds);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -111,6 +118,36 @@ Promotes an existing deployment to an environment and returns the promoted deplo
                         var scaleDownPreviousDeployment = CliRuntime.WasSpecified(parseResult, ScaleDownPreviousDeployment) ? parseResult.GetValue(ScaleDownPreviousDeployment) : (__requestBase is { } __ScaleDownPreviousDeploymentBaseValue ? __ScaleDownPreviousDeploymentBaseValue.ScaleDownPreviousDeployment : default);
                         var deploymentId = parseResult.GetRequiredValue(DeploymentId);
                         var preserveEnvInstanceType = CliRuntime.WasSpecified(parseResult, PreserveEnvInstanceType) ? parseResult.GetValue(PreserveEnvInstanceType) : (__requestBase is { } __PreserveEnvInstanceTypeBaseValue ? __PreserveEnvInstanceTypeBaseValue.PreserveEnvInstanceType : default);
+
+                        var __EnvironmentSettingsUpdateBase = __requestBase is { } __EnvironmentSettingsUpdateBaseValue ? __EnvironmentSettingsUpdateBaseValue.EnvironmentSettingsUpdate : default;                        var environmentSettingsUpdateRegion = CliRuntime.WasSpecified(parseResult, EnvironmentSettingsUpdateOptions.Region) ? parseResult.GetValue(EnvironmentSettingsUpdateOptions.Region) : (__EnvironmentSettingsUpdateBase is { } __EnvironmentSettingsUpdateregionBaseValue ? __EnvironmentSettingsUpdateregionBaseValue.Region : default);
+                        var environmentSettingsUpdateInstanceTypeId = CliRuntime.WasSpecified(parseResult, EnvironmentSettingsUpdateOptions.InstanceTypeId) ? parseResult.GetValue(EnvironmentSettingsUpdateOptions.InstanceTypeId) : (__EnvironmentSettingsUpdateBase is { } __EnvironmentSettingsUpdateinstanceTypeIdBaseValue ? __EnvironmentSettingsUpdateinstanceTypeIdBaseValue.InstanceTypeId : default);
+                        var __EnvironmentSettingsUpdateSpecified = CliRuntime.WasSpecified(parseResult, EnvironmentSettingsUpdateOptions.Region) || CliRuntime.WasSpecified(parseResult, EnvironmentSettingsUpdateOptions.InstanceTypeId);
+                        var environmentSettingsUpdate =
+                            __EnvironmentSettingsUpdateSpecified || __EnvironmentSettingsUpdateBase is not null
+                                ? new global::Baseten.PromotionEnvironmentSettingsUpdateV1
+                                {
+	                                Region = environmentSettingsUpdateRegion,
+                                InstanceTypeId = environmentSettingsUpdateInstanceTypeId,
+
+                                }
+                                : __EnvironmentSettingsUpdateBase;
+
+                        var __PromotionSettingsOverrideBase = __requestBase is { } __PromotionSettingsOverrideBaseValue ? __PromotionSettingsOverrideBaseValue.PromotionSettingsOverride : default;                        var promotionSettingsOverrideRedeployOnPromotion = CliRuntime.WasSpecified(parseResult, PromotionSettingsOverrideOptions.RedeployOnPromotion) ? parseResult.GetValue(PromotionSettingsOverrideOptions.RedeployOnPromotion) : (__PromotionSettingsOverrideBase is { } __PromotionSettingsOverrideredeployOnPromotionBaseValue ? __PromotionSettingsOverrideredeployOnPromotionBaseValue.RedeployOnPromotion : default);
+                        var promotionSettingsOverrideRollingDeploy = CliRuntime.WasSpecified(parseResult, PromotionSettingsOverrideOptions.RollingDeploy) ? parseResult.GetValue(PromotionSettingsOverrideOptions.RollingDeploy) : (__PromotionSettingsOverrideBase is { } __PromotionSettingsOverriderollingDeployBaseValue ? __PromotionSettingsOverriderollingDeployBaseValue.RollingDeploy : default);
+                        var promotionSettingsOverrideRampUpWhilePromoting = CliRuntime.WasSpecified(parseResult, PromotionSettingsOverrideOptions.RampUpWhilePromoting) ? parseResult.GetValue(PromotionSettingsOverrideOptions.RampUpWhilePromoting) : (__PromotionSettingsOverrideBase is { } __PromotionSettingsOverriderampUpWhilePromotingBaseValue ? __PromotionSettingsOverriderampUpWhilePromotingBaseValue.RampUpWhilePromoting : default);
+                        var promotionSettingsOverrideRampUpDurationSeconds = CliRuntime.WasSpecified(parseResult, PromotionSettingsOverrideOptions.RampUpDurationSeconds) ? parseResult.GetValue(PromotionSettingsOverrideOptions.RampUpDurationSeconds) : (__PromotionSettingsOverrideBase is { } __PromotionSettingsOverriderampUpDurationSecondsBaseValue ? __PromotionSettingsOverriderampUpDurationSecondsBaseValue.RampUpDurationSeconds : default);
+                        var __PromotionSettingsOverrideSpecified = CliRuntime.WasSpecified(parseResult, PromotionSettingsOverrideOptions.RedeployOnPromotion) || CliRuntime.WasSpecified(parseResult, PromotionSettingsOverrideOptions.RollingDeploy) || CliRuntime.WasSpecified(parseResult, PromotionSettingsOverrideOptions.RampUpWhilePromoting) || CliRuntime.WasSpecified(parseResult, PromotionSettingsOverrideOptions.RampUpDurationSeconds);
+                        var promotionSettingsOverride =
+                            __PromotionSettingsOverrideSpecified || __PromotionSettingsOverrideBase is not null
+                                ? new global::Baseten.UpdatePromotionSettingsV1
+                                {
+	                                RedeployOnPromotion = promotionSettingsOverrideRedeployOnPromotion,
+                                RollingDeploy = promotionSettingsOverrideRollingDeploy,
+                                RampUpWhilePromoting = promotionSettingsOverrideRampUpWhilePromoting,
+                                RampUpDurationSeconds = promotionSettingsOverrideRampUpDurationSeconds,
+
+                                }
+                                : __PromotionSettingsOverrideBase;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -120,6 +157,8 @@ Promotes an existing deployment to an environment and returns the promoted deplo
                                     scaleDownPreviousDeployment: scaleDownPreviousDeployment,
                                     deploymentId: deploymentId,
                                     preserveEnvInstanceType: preserveEnvInstanceType,
+                                    environmentSettingsUpdate: environmentSettingsUpdate,
+                                    promotionSettingsOverride: promotionSettingsOverride,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

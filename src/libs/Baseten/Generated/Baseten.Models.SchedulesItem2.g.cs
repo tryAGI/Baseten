@@ -12,15 +12,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence? Cadence { get; }
+        public global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadence? Cadence { get; }
 
         /// <summary>
-        /// A complete recurring schedule submitted for create or replacement.
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.AutoscalingScheduleUpsertV1? Daily { get; init; }
+        public global::Baseten.AutoscalingScheduleV1? Daily { get; init; }
 #else
-        public global::Baseten.AutoscalingScheduleUpsertV1? Daily { get; }
+        public global::Baseten.AutoscalingScheduleV1? Daily { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.AutoscalingScheduleUpsertV1? value)
+            out global::Baseten.AutoscalingScheduleV1? value)
         {
             value = Daily;
             return IsDaily;
@@ -47,17 +47,17 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.AutoscalingScheduleUpsertV1 PickDaily() => Daily is { } value
+        public global::Baseten.AutoscalingScheduleV1 PickDaily() => Daily is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Daily' but the value was {ToString()}.");
 
         /// <summary>
-        /// A complete one-time schedule submitted for create or replacement.
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.OneTimeAutoscalingScheduleUpsertV1? OneTime { get; init; }
+        public global::Baseten.OneTimeAutoscalingScheduleV1? OneTime { get; init; }
 #else
-        public global::Baseten.OneTimeAutoscalingScheduleUpsertV1? OneTime { get; }
+        public global::Baseten.OneTimeAutoscalingScheduleV1? OneTime { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.OneTimeAutoscalingScheduleUpsertV1? value)
+            out global::Baseten.OneTimeAutoscalingScheduleV1? value)
         {
             value = OneTime;
             return IsOneTime;
@@ -84,23 +84,23 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.OneTimeAutoscalingScheduleUpsertV1 PickOneTime() => OneTime is { } value
+        public global::Baseten.OneTimeAutoscalingScheduleV1 PickOneTime() => OneTime is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'OneTime' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator SchedulesItem2(global::Baseten.AutoscalingScheduleUpsertV1 value) => new SchedulesItem2((global::Baseten.AutoscalingScheduleUpsertV1?)value);
+        public static implicit operator SchedulesItem2(global::Baseten.AutoscalingScheduleV1 value) => new SchedulesItem2((global::Baseten.AutoscalingScheduleV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.AutoscalingScheduleUpsertV1?(SchedulesItem2 @this) => @this.Daily;
+        public static implicit operator global::Baseten.AutoscalingScheduleV1?(SchedulesItem2 @this) => @this.Daily;
 
         /// <summary>
         ///
         /// </summary>
-        public SchedulesItem2(global::Baseten.AutoscalingScheduleUpsertV1? value)
+        public SchedulesItem2(global::Baseten.AutoscalingScheduleV1? value)
         {
             Daily = value;
         }
@@ -108,22 +108,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static SchedulesItem2 FromDaily(global::Baseten.AutoscalingScheduleUpsertV1? value) => new SchedulesItem2(value);
+        public static SchedulesItem2 FromDaily(global::Baseten.AutoscalingScheduleV1? value) => new SchedulesItem2(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator SchedulesItem2(global::Baseten.OneTimeAutoscalingScheduleUpsertV1 value) => new SchedulesItem2((global::Baseten.OneTimeAutoscalingScheduleUpsertV1?)value);
+        public static implicit operator SchedulesItem2(global::Baseten.OneTimeAutoscalingScheduleV1 value) => new SchedulesItem2((global::Baseten.OneTimeAutoscalingScheduleV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.OneTimeAutoscalingScheduleUpsertV1?(SchedulesItem2 @this) => @this.OneTime;
+        public static implicit operator global::Baseten.OneTimeAutoscalingScheduleV1?(SchedulesItem2 @this) => @this.OneTime;
 
         /// <summary>
         ///
         /// </summary>
-        public SchedulesItem2(global::Baseten.OneTimeAutoscalingScheduleUpsertV1? value)
+        public SchedulesItem2(global::Baseten.OneTimeAutoscalingScheduleV1? value)
         {
             OneTime = value;
         }
@@ -131,15 +131,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static SchedulesItem2 FromOneTime(global::Baseten.OneTimeAutoscalingScheduleUpsertV1? value) => new SchedulesItem2(value);
+        public static SchedulesItem2 FromOneTime(global::Baseten.OneTimeAutoscalingScheduleV1? value) => new SchedulesItem2(value);
 
         /// <summary>
         ///
         /// </summary>
         public SchedulesItem2(
-            global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence? cadence,
-            global::Baseten.AutoscalingScheduleUpsertV1? daily,
-            global::Baseten.OneTimeAutoscalingScheduleUpsertV1? oneTime
+            global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadence? cadence,
+            global::Baseten.AutoscalingScheduleV1? daily,
+            global::Baseten.OneTimeAutoscalingScheduleV1? oneTime
             )
         {
             Cadence = cadence;
@@ -176,8 +176,8 @@ namespace Baseten
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Baseten.AutoscalingScheduleUpsertV1, TResult>? daily = null,
-            global::System.Func<global::Baseten.OneTimeAutoscalingScheduleUpsertV1, TResult>? oneTime = null,
+            global::System.Func<global::Baseten.AutoscalingScheduleV1, TResult>? daily = null,
+            global::System.Func<global::Baseten.OneTimeAutoscalingScheduleV1, TResult>? oneTime = null,
             bool validate = true)
         {
             if (validate)
@@ -201,9 +201,9 @@ namespace Baseten
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Baseten.AutoscalingScheduleUpsertV1>? daily = null,
+            global::System.Action<global::Baseten.AutoscalingScheduleV1>? daily = null,
 
-            global::System.Action<global::Baseten.OneTimeAutoscalingScheduleUpsertV1>? oneTime = null,
+            global::System.Action<global::Baseten.OneTimeAutoscalingScheduleV1>? oneTime = null,
             bool validate = true)
         {
             if (validate)
@@ -225,8 +225,8 @@ namespace Baseten
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Baseten.AutoscalingScheduleUpsertV1>? daily = null,
-            global::System.Action<global::Baseten.OneTimeAutoscalingScheduleUpsertV1>? oneTime = null,
+            global::System.Action<global::Baseten.AutoscalingScheduleV1>? daily = null,
+            global::System.Action<global::Baseten.OneTimeAutoscalingScheduleV1>? oneTime = null,
             bool validate = true)
         {
             if (validate)
@@ -252,9 +252,9 @@ namespace Baseten
             var fields = new object?[]
             {
                 Daily,
-                typeof(global::Baseten.AutoscalingScheduleUpsertV1),
+                typeof(global::Baseten.AutoscalingScheduleV1),
                 OneTime,
-                typeof(global::Baseten.OneTimeAutoscalingScheduleUpsertV1),
+                typeof(global::Baseten.OneTimeAutoscalingScheduleV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -271,8 +271,8 @@ namespace Baseten
         public bool Equals(SchedulesItem2 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.AutoscalingScheduleUpsertV1?>.Default.Equals(Daily, other.Daily) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.OneTimeAutoscalingScheduleUpsertV1?>.Default.Equals(OneTime, other.OneTime)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.AutoscalingScheduleV1?>.Default.Equals(Daily, other.Daily) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.OneTimeAutoscalingScheduleV1?>.Default.Equals(OneTime, other.OneTime)
                 ;
         }
 
