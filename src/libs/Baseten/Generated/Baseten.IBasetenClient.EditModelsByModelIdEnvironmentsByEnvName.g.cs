@@ -31,10 +31,10 @@ namespace Baseten
         ///   },<br/>
         ///   "promotion_settings": {<br/>
         ///     "promotion_cleanup_strategy": null,<br/>
-        ///     "ramp_up_duration_seconds": 600,<br/>
-        ///     "ramp_up_while_promoting": true,<br/>
+        ///     "ramp_up_duration_seconds": null,<br/>
+        ///     "ramp_up_while_promoting": null,<br/>
         ///     "redeploy_on_promotion": true,<br/>
-        ///     "rolling_deploy": null,<br/>
+        ///     "rolling_deploy": true,<br/>
         ///     "rolling_deploy_config": null<br/>
         ///   },<br/>
         ///   "autoscaling_schedule_settings": {<br/>
@@ -107,10 +107,10 @@ namespace Baseten
         ///   },<br/>
         ///   "promotion_settings": {<br/>
         ///     "promotion_cleanup_strategy": null,<br/>
-        ///     "ramp_up_duration_seconds": 600,<br/>
-        ///     "ramp_up_while_promoting": true,<br/>
+        ///     "ramp_up_duration_seconds": null,<br/>
+        ///     "ramp_up_while_promoting": null,<br/>
         ///     "redeploy_on_promotion": true,<br/>
-        ///     "rolling_deploy": null,<br/>
+        ///     "rolling_deploy": true,<br/>
         ///     "rolling_deploy_config": null<br/>
         ///   },<br/>
         ///   "autoscaling_schedule_settings": {<br/>
@@ -185,7 +185,7 @@ namespace Baseten
             string modelId,
             string envName,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
-            global::Baseten.UpdatePromotionSettingsV1? promotionSettings = default,
+            global::Baseten.UpdateModelPromotionSettingsV1? promotionSettings = default,
             global::Baseten.UpdateAutoscalingScheduleSettingsV1? autoscalingScheduleSettings = default,
             global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

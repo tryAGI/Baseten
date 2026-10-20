@@ -70,8 +70,8 @@ namespace Baseten
         ///   },<br/>
         ///   "promotion_settings": {<br/>
         ///     "promotion_cleanup_strategy": null,<br/>
-        ///     "ramp_up_duration_seconds": 600,<br/>
-        ///     "ramp_up_while_promoting": true,<br/>
+        ///     "ramp_up_duration_seconds": null,<br/>
+        ///     "ramp_up_while_promoting": null,<br/>
         ///     "redeploy_on_promotion": true,<br/>
         ///     "rolling_deploy": false,<br/>
         ///     "rolling_deploy_config": null<br/>
@@ -123,8 +123,8 @@ namespace Baseten
         ///   },<br/>
         ///   "promotion_settings": {<br/>
         ///     "promotion_cleanup_strategy": null,<br/>
-        ///     "ramp_up_duration_seconds": 600,<br/>
-        ///     "ramp_up_while_promoting": true,<br/>
+        ///     "ramp_up_duration_seconds": null,<br/>
+        ///     "ramp_up_while_promoting": null,<br/>
         ///     "redeploy_on_promotion": true,<br/>
         ///     "rolling_deploy": false,<br/>
         ///     "rolling_deploy_config": null<br/>
@@ -523,7 +523,7 @@ namespace Baseten
             string modelId,
             string name,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings = default,
-            global::Baseten.UpdatePromotionSettingsV1? promotionSettings = default,
+            global::Baseten.UpdateModelPromotionSettingsV1? promotionSettings = default,
             global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
