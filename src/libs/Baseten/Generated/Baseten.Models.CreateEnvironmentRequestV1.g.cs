@@ -27,7 +27,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promotion_settings")]
-        public global::Baseten.UpdatePromotionSettingsV1? PromotionSettings { get; set; }
+        public global::Baseten.UpdateModelPromotionSettingsV1? PromotionSettings { get; set; }
 
         /// <summary>
         /// Request backpressure settings for the environment.<br/>
@@ -66,7 +66,7 @@ namespace Baseten
         public CreateEnvironmentRequestV1(
             string name,
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings,
-            global::Baseten.UpdatePromotionSettingsV1? promotionSettings,
+            global::Baseten.UpdateModelPromotionSettingsV1? promotionSettings,
             global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));

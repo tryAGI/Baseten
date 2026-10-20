@@ -32,7 +32,7 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
     };
     private static readonly UpdateAutoscalingSettingsV1OptionSet AutoscalingSettingsOptions = UpdateAutoscalingSettingsV1OptionSet.Create(@"autoscaling-settings");
 
-    private static readonly UpdatePromotionSettingsV1OptionSet PromotionSettingsOptions = UpdatePromotionSettingsV1OptionSet.Create(@"promotion-settings");
+    private static readonly UpdateModelPromotionSettingsV1OptionSet PromotionSettingsOptions = UpdateModelPromotionSettingsV1OptionSet.Create(@"promotion-settings");
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -152,7 +152,7 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                         var __PromotionSettingsSpecified = CliRuntime.WasSpecified(parseResult, PromotionSettingsOptions.RedeployOnPromotion) || CliRuntime.WasSpecified(parseResult, PromotionSettingsOptions.RollingDeploy) || CliRuntime.WasSpecified(parseResult, PromotionSettingsOptions.RampUpWhilePromoting) || CliRuntime.WasSpecified(parseResult, PromotionSettingsOptions.RampUpDurationSeconds);
                         var promotionSettings =
                             __PromotionSettingsSpecified || __PromotionSettingsBase is not null
-                                ? new global::Baseten.UpdatePromotionSettingsV1
+                                ? new global::Baseten.UpdateModelPromotionSettingsV1
                                 {
 	                                RedeployOnPromotion = promotionSettingsRedeployOnPromotion,
                                 RollingDeploy = promotionSettingsRollingDeploy,

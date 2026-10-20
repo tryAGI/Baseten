@@ -61,7 +61,7 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("promotion_settings")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.PromotionSettingsV1 PromotionSettings { get; set; }
+        public required global::Baseten.ModelPromotionSettingsV1 PromotionSettings { get; set; }
 
         /// <summary>
         /// Instance type for the environment
@@ -137,7 +137,7 @@ namespace Baseten
             global::System.DateTime createdAt,
             string modelId,
             global::Baseten.AutoscalingSettingsV1 autoscalingSettings,
-            global::Baseten.PromotionSettingsV1 promotionSettings,
+            global::Baseten.ModelPromotionSettingsV1 promotionSettings,
             global::Baseten.InstanceTypeV1 instanceType,
             global::Baseten.RequestBackpressureSettingsV1 requestBackpressureSettings,
             global::Baseten.DeploymentV1? currentDeployment,
