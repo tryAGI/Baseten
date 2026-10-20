@@ -31,6 +31,10 @@ namespace Baseten.JsonConverters
             catch (global::System.InvalidOperationException)
             {
             }
+            catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+            {
+                // Legacy enum converters signal an incompatible JSON token with this exception.
+            }
 
             global::Baseten.CreateSandboxPreviewRequestV1Variant2? createSandboxPreviewRequestV1Variant2 = default;
             try
@@ -44,6 +48,10 @@ namespace Baseten.JsonConverters
             }
             catch (global::System.InvalidOperationException)
             {
+            }
+            catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+            {
+                // Legacy enum converters signal an incompatible JSON token with this exception.
             }
             var __value = new global::Baseten.CreateSandboxPreviewRequestV1(
                 configuration,
