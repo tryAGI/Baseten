@@ -20,7 +20,7 @@ internal sealed record PromotionEnvironmentSettingsUpdateV1OptionSet(
                 },
                 InstanceTypeId: new Option<string?>($"--{normalizedPrefix}instance-type-id")
                 {
-                    Description = @"Instance type for the promoted deployment, from `GET /v1/instance_types`.",
+                    Description = @"Instance type for the promoted deployment, from `GET /v1/instance_types`. A different instance type than the deployment's creates a new deployment on it. Cannot be set with `preserve_env_instance_type: true`.",
                 }
         );
     }

@@ -16,7 +16,7 @@ namespace Baseten
         public string? Region { get; set; }
 
         /// <summary>
-        /// Instance type for the promoted deployment, from `GET /v1/instance_types`.<br/>
+        /// Instance type for the promoted deployment, from `GET /v1/instance_types`. A different instance type than the deployment's creates a new deployment on it. Cannot be set with `preserve_env_instance_type: true`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instance_type_id")]
@@ -30,7 +30,7 @@ namespace Baseten
         public global::Baseten.UpdateAutoscalingSettingsV1? AutoscalingSettings { get; set; }
 
         /// <summary>
-        /// Request backpressure settings for the promoted deployment.<br/>
+        /// Request backpressure settings for the promoted deployment. A null policy clears it.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("request_backpressure_settings")]
@@ -64,7 +64,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="instanceTypeId">
-        /// Instance type for the promoted deployment, from `GET /v1/instance_types`.<br/>
+        /// Instance type for the promoted deployment, from `GET /v1/instance_types`. A different instance type than the deployment's creates a new deployment on it. Cannot be set with `preserve_env_instance_type: true`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="autoscalingSettings">
@@ -72,7 +72,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestBackpressureSettings">
-        /// Request backpressure settings for the promoted deployment.<br/>
+        /// Request backpressure settings for the promoted deployment. A null policy clears it.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="autoscalingScheduleSettings">
