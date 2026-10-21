@@ -85,6 +85,13 @@ namespace Baseten
         public global::Baseten.EnvironmentAutoscalingSchedulesV1? AutoscalingSchedules { get; set; }
 
         /// <summary>
+        /// The environment's traffic routing rules. In development.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("traffic_routing")]
+        public global::Baseten.EnvironmentTrafficRoutingV1? TrafficRouting { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -129,6 +136,10 @@ namespace Baseten
         /// Autoscaling schedules and their evaluated state<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="trafficRouting">
+        /// The environment's traffic routing rules. In development.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -143,7 +154,8 @@ namespace Baseten
             global::Baseten.DeploymentV1? currentDeployment,
             global::Baseten.DeploymentV1? candidateDeployment,
             global::Baseten.InProgressPromotionV1? inProgressPromotion,
-            global::Baseten.EnvironmentAutoscalingSchedulesV1? autoscalingSchedules)
+            global::Baseten.EnvironmentAutoscalingSchedulesV1? autoscalingSchedules,
+            global::Baseten.EnvironmentTrafficRoutingV1? trafficRouting)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.CreatedAt = createdAt;
@@ -156,6 +168,7 @@ namespace Baseten
             this.InstanceType = instanceType ?? throw new global::System.ArgumentNullException(nameof(instanceType));
             this.RequestBackpressureSettings = requestBackpressureSettings ?? throw new global::System.ArgumentNullException(nameof(requestBackpressureSettings));
             this.AutoscalingSchedules = autoscalingSchedules;
+            this.TrafficRouting = trafficRouting;
         }
 
         /// <summary>

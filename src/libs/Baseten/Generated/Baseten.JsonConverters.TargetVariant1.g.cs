@@ -17,29 +17,29 @@ namespace Baseten.JsonConverters
 
 
             var readerCopy = reader;
-            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpdateRouteRequestV1TargetVariant1Discriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpdateRouteRequestV1TargetVariant1Discriminator> ??
-                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpdateRouteRequestV1TargetVariant1Discriminator)}");
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpdateGridRouteRequestV1TargetVariant1Discriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpdateGridRouteRequestV1TargetVariant1Discriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpdateGridRouteRequestV1TargetVariant1Discriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Baseten.UpsertRouteTargetBasetenModelAPIV1? basetenModelApi = default;
-            if (discriminator?.Type == global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType.BasetenModelApi)
+            global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? basetenModelApi = default;
+            if (discriminator?.Type == global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType.BasetenModelApi)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetBasetenModelAPIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetBasetenModelAPIV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteTargetBasetenModelAPIV1)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1)}");
                 basetenModelApi = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.UpsertRouteTargetConnectionV1? connection = default;
-            if (discriminator?.Type == global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType.Connection)
+            global::Baseten.UpsertGridRouteTargetConnectionV1? connection = default;
+            if (discriminator?.Type == global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType.Connection)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetConnectionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetConnectionV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteTargetConnectionV1)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridRouteTargetConnectionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridRouteTargetConnectionV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridRouteTargetConnectionV1)}");
                 connection = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.UpsertRouteTargetClassifierV1? classifier = default;
-            if (discriminator?.Type == global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType.Classifier)
+            global::Baseten.UpsertGridRouteTargetClassifierV1? classifier = default;
+            if (discriminator?.Type == global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType.Classifier)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetClassifierV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetClassifierV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteTargetClassifierV1)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridRouteTargetClassifierV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridRouteTargetClassifierV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridRouteTargetClassifierV1)}");
                 classifier = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -66,20 +66,20 @@ namespace Baseten.JsonConverters
 
             if (value.IsBasetenModelApi)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetBasetenModelAPIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetBasetenModelAPIV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteTargetBasetenModelAPIV1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBasetenModelApi(), typeInfo);
             }
             else if (value.IsConnection)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetConnectionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetConnectionV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteTargetConnectionV1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridRouteTargetConnectionV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridRouteTargetConnectionV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridRouteTargetConnectionV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConnection(), typeInfo);
             }
             else if (value.IsClassifier)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteTargetClassifierV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteTargetClassifierV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteTargetClassifierV1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridRouteTargetClassifierV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridRouteTargetClassifierV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridRouteTargetClassifierV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickClassifier(), typeInfo);
             }
         }

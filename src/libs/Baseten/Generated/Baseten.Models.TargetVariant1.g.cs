@@ -12,15 +12,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType? Type { get; }
+        public global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType? Type { get; }
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.UpsertRouteTargetBasetenModelAPIV1? BasetenModelApi { get; init; }
+        public global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? BasetenModelApi { get; init; }
 #else
-        public global::Baseten.UpsertRouteTargetBasetenModelAPIV1? BasetenModelApi { get; }
+        public global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? BasetenModelApi { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.UpsertRouteTargetBasetenModelAPIV1? value)
+            out global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? value)
         {
             value = BasetenModelApi;
             return IsBasetenModelApi;
@@ -47,7 +47,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertRouteTargetBasetenModelAPIV1 PickBasetenModelApi() => BasetenModelApi is { } value
+        public global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1 PickBasetenModelApi() => BasetenModelApi is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenModelApi' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.UpsertRouteTargetConnectionV1? Connection { get; init; }
+        public global::Baseten.UpsertGridRouteTargetConnectionV1? Connection { get; init; }
 #else
-        public global::Baseten.UpsertRouteTargetConnectionV1? Connection { get; }
+        public global::Baseten.UpsertGridRouteTargetConnectionV1? Connection { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.UpsertRouteTargetConnectionV1? value)
+            out global::Baseten.UpsertGridRouteTargetConnectionV1? value)
         {
             value = Connection;
             return IsConnection;
@@ -84,7 +84,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertRouteTargetConnectionV1 PickConnection() => Connection is { } value
+        public global::Baseten.UpsertGridRouteTargetConnectionV1 PickConnection() => Connection is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Connection' but the value was {ToString()}.");
 
@@ -92,9 +92,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.UpsertRouteTargetClassifierV1? Classifier { get; init; }
+        public global::Baseten.UpsertGridRouteTargetClassifierV1? Classifier { get; init; }
 #else
-        public global::Baseten.UpsertRouteTargetClassifierV1? Classifier { get; }
+        public global::Baseten.UpsertGridRouteTargetClassifierV1? Classifier { get; }
 #endif
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.UpsertRouteTargetClassifierV1? value)
+            out global::Baseten.UpsertGridRouteTargetClassifierV1? value)
         {
             value = Classifier;
             return IsClassifier;
@@ -121,23 +121,23 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertRouteTargetClassifierV1 PickClassifier() => Classifier is { } value
+        public global::Baseten.UpsertGridRouteTargetClassifierV1 PickClassifier() => Classifier is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Classifier' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator TargetVariant1(global::Baseten.UpsertRouteTargetBasetenModelAPIV1 value) => new TargetVariant1((global::Baseten.UpsertRouteTargetBasetenModelAPIV1?)value);
+        public static implicit operator TargetVariant1(global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1 value) => new TargetVariant1((global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.UpsertRouteTargetBasetenModelAPIV1?(TargetVariant1 @this) => @this.BasetenModelApi;
+        public static implicit operator global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1?(TargetVariant1 @this) => @this.BasetenModelApi;
 
         /// <summary>
         ///
         /// </summary>
-        public TargetVariant1(global::Baseten.UpsertRouteTargetBasetenModelAPIV1? value)
+        public TargetVariant1(global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? value)
         {
             BasetenModelApi = value;
         }
@@ -145,22 +145,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static TargetVariant1 FromBasetenModelApi(global::Baseten.UpsertRouteTargetBasetenModelAPIV1? value) => new TargetVariant1(value);
+        public static TargetVariant1 FromBasetenModelApi(global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? value) => new TargetVariant1(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator TargetVariant1(global::Baseten.UpsertRouteTargetConnectionV1 value) => new TargetVariant1((global::Baseten.UpsertRouteTargetConnectionV1?)value);
+        public static implicit operator TargetVariant1(global::Baseten.UpsertGridRouteTargetConnectionV1 value) => new TargetVariant1((global::Baseten.UpsertGridRouteTargetConnectionV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.UpsertRouteTargetConnectionV1?(TargetVariant1 @this) => @this.Connection;
+        public static implicit operator global::Baseten.UpsertGridRouteTargetConnectionV1?(TargetVariant1 @this) => @this.Connection;
 
         /// <summary>
         ///
         /// </summary>
-        public TargetVariant1(global::Baseten.UpsertRouteTargetConnectionV1? value)
+        public TargetVariant1(global::Baseten.UpsertGridRouteTargetConnectionV1? value)
         {
             Connection = value;
         }
@@ -168,22 +168,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static TargetVariant1 FromConnection(global::Baseten.UpsertRouteTargetConnectionV1? value) => new TargetVariant1(value);
+        public static TargetVariant1 FromConnection(global::Baseten.UpsertGridRouteTargetConnectionV1? value) => new TargetVariant1(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator TargetVariant1(global::Baseten.UpsertRouteTargetClassifierV1 value) => new TargetVariant1((global::Baseten.UpsertRouteTargetClassifierV1?)value);
+        public static implicit operator TargetVariant1(global::Baseten.UpsertGridRouteTargetClassifierV1 value) => new TargetVariant1((global::Baseten.UpsertGridRouteTargetClassifierV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.UpsertRouteTargetClassifierV1?(TargetVariant1 @this) => @this.Classifier;
+        public static implicit operator global::Baseten.UpsertGridRouteTargetClassifierV1?(TargetVariant1 @this) => @this.Classifier;
 
         /// <summary>
         ///
         /// </summary>
-        public TargetVariant1(global::Baseten.UpsertRouteTargetClassifierV1? value)
+        public TargetVariant1(global::Baseten.UpsertGridRouteTargetClassifierV1? value)
         {
             Classifier = value;
         }
@@ -191,16 +191,16 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static TargetVariant1 FromClassifier(global::Baseten.UpsertRouteTargetClassifierV1? value) => new TargetVariant1(value);
+        public static TargetVariant1 FromClassifier(global::Baseten.UpsertGridRouteTargetClassifierV1? value) => new TargetVariant1(value);
 
         /// <summary>
         ///
         /// </summary>
         public TargetVariant1(
-            global::Baseten.UpdateRouteRequestV1TargetVariant1DiscriminatorType? type,
-            global::Baseten.UpsertRouteTargetBasetenModelAPIV1? basetenModelApi,
-            global::Baseten.UpsertRouteTargetConnectionV1? connection,
-            global::Baseten.UpsertRouteTargetClassifierV1? classifier
+            global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType? type,
+            global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? basetenModelApi,
+            global::Baseten.UpsertGridRouteTargetConnectionV1? connection,
+            global::Baseten.UpsertGridRouteTargetClassifierV1? classifier
             )
         {
             Type = type;
@@ -240,9 +240,9 @@ namespace Baseten
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Baseten.UpsertRouteTargetBasetenModelAPIV1, TResult>? basetenModelApi = null,
-            global::System.Func<global::Baseten.UpsertRouteTargetConnectionV1, TResult>? connection = null,
-            global::System.Func<global::Baseten.UpsertRouteTargetClassifierV1, TResult>? classifier = null,
+            global::System.Func<global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1, TResult>? basetenModelApi = null,
+            global::System.Func<global::Baseten.UpsertGridRouteTargetConnectionV1, TResult>? connection = null,
+            global::System.Func<global::Baseten.UpsertGridRouteTargetClassifierV1, TResult>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -270,11 +270,11 @@ namespace Baseten
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Baseten.UpsertRouteTargetBasetenModelAPIV1>? basetenModelApi = null,
+            global::System.Action<global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1>? basetenModelApi = null,
 
-            global::System.Action<global::Baseten.UpsertRouteTargetConnectionV1>? connection = null,
+            global::System.Action<global::Baseten.UpsertGridRouteTargetConnectionV1>? connection = null,
 
-            global::System.Action<global::Baseten.UpsertRouteTargetClassifierV1>? classifier = null,
+            global::System.Action<global::Baseten.UpsertGridRouteTargetClassifierV1>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -300,9 +300,9 @@ namespace Baseten
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Baseten.UpsertRouteTargetBasetenModelAPIV1>? basetenModelApi = null,
-            global::System.Action<global::Baseten.UpsertRouteTargetConnectionV1>? connection = null,
-            global::System.Action<global::Baseten.UpsertRouteTargetClassifierV1>? classifier = null,
+            global::System.Action<global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1>? basetenModelApi = null,
+            global::System.Action<global::Baseten.UpsertGridRouteTargetConnectionV1>? connection = null,
+            global::System.Action<global::Baseten.UpsertGridRouteTargetClassifierV1>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -332,11 +332,11 @@ namespace Baseten
             var fields = new object?[]
             {
                 BasetenModelApi,
-                typeof(global::Baseten.UpsertRouteTargetBasetenModelAPIV1),
+                typeof(global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1),
                 Connection,
-                typeof(global::Baseten.UpsertRouteTargetConnectionV1),
+                typeof(global::Baseten.UpsertGridRouteTargetConnectionV1),
                 Classifier,
-                typeof(global::Baseten.UpsertRouteTargetClassifierV1),
+                typeof(global::Baseten.UpsertGridRouteTargetClassifierV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -353,9 +353,9 @@ namespace Baseten
         public bool Equals(TargetVariant1 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteTargetBasetenModelAPIV1?>.Default.Equals(BasetenModelApi, other.BasetenModelApi) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteTargetConnectionV1?>.Default.Equals(Connection, other.Connection) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertRouteTargetClassifierV1?>.Default.Equals(Classifier, other.Classifier)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1?>.Default.Equals(BasetenModelApi, other.BasetenModelApi) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridRouteTargetConnectionV1?>.Default.Equals(Connection, other.Connection) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridRouteTargetClassifierV1?>.Default.Equals(Classifier, other.Classifier)
                 ;
         }
 

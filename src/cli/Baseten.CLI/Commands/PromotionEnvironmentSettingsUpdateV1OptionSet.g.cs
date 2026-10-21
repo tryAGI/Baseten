@@ -16,7 +16,7 @@ internal sealed record PromotionEnvironmentSettingsUpdateV1OptionSet(
         return new PromotionEnvironmentSettingsUpdateV1OptionSet(
                         Region: new Option<string?>($"--{normalizedPrefix}region")
                 {
-                    Description = @"Region for the promoted deployment, from `GET /v1/teams/{team_id}/regions`. Use an empty string for Global.",
+                    Description = @"Region for the promoted deployment, from `GET /v1/teams/{team_id}/regions`. Use an empty string for Global. If omitted, the deployment keeps its region. Regional environments only accept Global deployments.",
                 },
                 InstanceTypeId: new Option<string?>($"--{normalizedPrefix}instance-type-id")
                 {

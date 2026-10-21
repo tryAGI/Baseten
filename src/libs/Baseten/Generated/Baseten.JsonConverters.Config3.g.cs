@@ -17,29 +17,29 @@ namespace Baseten.JsonConverters
 
 
             var readerCopy = reader;
-            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpdateRouteConnectionRequestV1ConfigDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpdateRouteConnectionRequestV1ConfigDiscriminator> ??
-                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpdateRouteConnectionRequestV1ConfigDiscriminator)}");
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Baseten.UpsertRouteConnectionConfigAnthropicV1? anthropic = default;
-            if (discriminator?.Provider == global::Baseten.UpdateRouteConnectionRequestV1ConfigDiscriminatorProvider.Anthropic)
+            global::Baseten.UpsertGridConnectionConfigAnthropicV1? anthropic = default;
+            if (discriminator?.Provider == global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Anthropic)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteConnectionConfigAnthropicV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteConnectionConfigAnthropicV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteConnectionConfigAnthropicV1)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigAnthropicV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigAnthropicV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridConnectionConfigAnthropicV1)}");
                 anthropic = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.UpsertRouteConnectionConfigOpenAIV1? openai = default;
-            if (discriminator?.Provider == global::Baseten.UpdateRouteConnectionRequestV1ConfigDiscriminatorProvider.Openai)
+            global::Baseten.UpsertGridConnectionConfigOpenAIV1? openai = default;
+            if (discriminator?.Provider == global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Openai)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteConnectionConfigOpenAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteConnectionConfigOpenAIV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteConnectionConfigOpenAIV1)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigOpenAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigOpenAIV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridConnectionConfigOpenAIV1)}");
                 openai = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.UpsertRouteConnectionConfigXAIV1? xai = default;
-            if (discriminator?.Provider == global::Baseten.UpdateRouteConnectionRequestV1ConfigDiscriminatorProvider.Xai)
+            global::Baseten.UpsertGridConnectionConfigXAIV1? xai = default;
+            if (discriminator?.Provider == global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Xai)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteConnectionConfigXAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteConnectionConfigXAIV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertRouteConnectionConfigXAIV1)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigXAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigXAIV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridConnectionConfigXAIV1)}");
                 xai = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -66,20 +66,20 @@ namespace Baseten.JsonConverters
 
             if (value.IsAnthropic)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteConnectionConfigAnthropicV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteConnectionConfigAnthropicV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteConnectionConfigAnthropicV1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigAnthropicV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigAnthropicV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridConnectionConfigAnthropicV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAnthropic(), typeInfo);
             }
             else if (value.IsOpenai)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteConnectionConfigOpenAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteConnectionConfigOpenAIV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteConnectionConfigOpenAIV1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigOpenAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigOpenAIV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridConnectionConfigOpenAIV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickOpenai(), typeInfo);
             }
             else if (value.IsXai)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertRouteConnectionConfigXAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertRouteConnectionConfigXAIV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertRouteConnectionConfigXAIV1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigXAIV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigXAIV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridConnectionConfigXAIV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickXai(), typeInfo);
             }
         }

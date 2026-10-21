@@ -12,15 +12,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteV1TargetDiscriminatorType? Type { get; }
+        public global::Baseten.GridRouteV1TargetDiscriminatorType? Type { get; }
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetBasetenModelAPIV1? BasetenModelApi { get; init; }
+        public global::Baseten.GridRouteTargetBasetenModelAPIV1? BasetenModelApi { get; init; }
 #else
-        public global::Baseten.RouteTargetBasetenModelAPIV1? BasetenModelApi { get; }
+        public global::Baseten.GridRouteTargetBasetenModelAPIV1? BasetenModelApi { get; }
 #endif
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteTargetBasetenModelAPIV1? value)
+            out global::Baseten.GridRouteTargetBasetenModelAPIV1? value)
         {
             value = BasetenModelApi;
             return IsBasetenModelApi;
@@ -47,7 +47,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetBasetenModelAPIV1 PickBasetenModelApi() => BasetenModelApi is { } value
+        public global::Baseten.GridRouteTargetBasetenModelAPIV1 PickBasetenModelApi() => BasetenModelApi is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenModelApi' but the value was {ToString()}.");
 
@@ -55,9 +55,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetConnectionV1? Connection { get; init; }
+        public global::Baseten.GridRouteTargetConnectionV1? Connection { get; init; }
 #else
-        public global::Baseten.RouteTargetConnectionV1? Connection { get; }
+        public global::Baseten.GridRouteTargetConnectionV1? Connection { get; }
 #endif
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteTargetConnectionV1? value)
+            out global::Baseten.GridRouteTargetConnectionV1? value)
         {
             value = Connection;
             return IsConnection;
@@ -84,7 +84,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetConnectionV1 PickConnection() => Connection is { } value
+        public global::Baseten.GridRouteTargetConnectionV1 PickConnection() => Connection is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Connection' but the value was {ToString()}.");
 
@@ -92,9 +92,9 @@ namespace Baseten
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.RouteTargetClassifierV1? Classifier { get; init; }
+        public global::Baseten.GridRouteTargetClassifierV1? Classifier { get; init; }
 #else
-        public global::Baseten.RouteTargetClassifierV1? Classifier { get; }
+        public global::Baseten.GridRouteTargetClassifierV1? Classifier { get; }
 #endif
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Baseten
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.RouteTargetClassifierV1? value)
+            out global::Baseten.GridRouteTargetClassifierV1? value)
         {
             value = Classifier;
             return IsClassifier;
@@ -121,23 +121,23 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RouteTargetClassifierV1 PickClassifier() => Classifier is { } value
+        public global::Baseten.GridRouteTargetClassifierV1 PickClassifier() => Classifier is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Classifier' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetBasetenModelAPIV1 value) => new Target((global::Baseten.RouteTargetBasetenModelAPIV1?)value);
+        public static implicit operator Target(global::Baseten.GridRouteTargetBasetenModelAPIV1 value) => new Target((global::Baseten.GridRouteTargetBasetenModelAPIV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteTargetBasetenModelAPIV1?(Target @this) => @this.BasetenModelApi;
+        public static implicit operator global::Baseten.GridRouteTargetBasetenModelAPIV1?(Target @this) => @this.BasetenModelApi;
 
         /// <summary>
         ///
         /// </summary>
-        public Target(global::Baseten.RouteTargetBasetenModelAPIV1? value)
+        public Target(global::Baseten.GridRouteTargetBasetenModelAPIV1? value)
         {
             BasetenModelApi = value;
         }
@@ -145,22 +145,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Target FromBasetenModelApi(global::Baseten.RouteTargetBasetenModelAPIV1? value) => new Target(value);
+        public static Target FromBasetenModelApi(global::Baseten.GridRouteTargetBasetenModelAPIV1? value) => new Target(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetConnectionV1 value) => new Target((global::Baseten.RouteTargetConnectionV1?)value);
+        public static implicit operator Target(global::Baseten.GridRouteTargetConnectionV1 value) => new Target((global::Baseten.GridRouteTargetConnectionV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteTargetConnectionV1?(Target @this) => @this.Connection;
+        public static implicit operator global::Baseten.GridRouteTargetConnectionV1?(Target @this) => @this.Connection;
 
         /// <summary>
         ///
         /// </summary>
-        public Target(global::Baseten.RouteTargetConnectionV1? value)
+        public Target(global::Baseten.GridRouteTargetConnectionV1? value)
         {
             Connection = value;
         }
@@ -168,22 +168,22 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Target FromConnection(global::Baseten.RouteTargetConnectionV1? value) => new Target(value);
+        public static Target FromConnection(global::Baseten.GridRouteTargetConnectionV1? value) => new Target(value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Target(global::Baseten.RouteTargetClassifierV1 value) => new Target((global::Baseten.RouteTargetClassifierV1?)value);
+        public static implicit operator Target(global::Baseten.GridRouteTargetClassifierV1 value) => new Target((global::Baseten.GridRouteTargetClassifierV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::Baseten.RouteTargetClassifierV1?(Target @this) => @this.Classifier;
+        public static implicit operator global::Baseten.GridRouteTargetClassifierV1?(Target @this) => @this.Classifier;
 
         /// <summary>
         ///
         /// </summary>
-        public Target(global::Baseten.RouteTargetClassifierV1? value)
+        public Target(global::Baseten.GridRouteTargetClassifierV1? value)
         {
             Classifier = value;
         }
@@ -191,16 +191,16 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public static Target FromClassifier(global::Baseten.RouteTargetClassifierV1? value) => new Target(value);
+        public static Target FromClassifier(global::Baseten.GridRouteTargetClassifierV1? value) => new Target(value);
 
         /// <summary>
         ///
         /// </summary>
         public Target(
-            global::Baseten.RouteV1TargetDiscriminatorType? type,
-            global::Baseten.RouteTargetBasetenModelAPIV1? basetenModelApi,
-            global::Baseten.RouteTargetConnectionV1? connection,
-            global::Baseten.RouteTargetClassifierV1? classifier
+            global::Baseten.GridRouteV1TargetDiscriminatorType? type,
+            global::Baseten.GridRouteTargetBasetenModelAPIV1? basetenModelApi,
+            global::Baseten.GridRouteTargetConnectionV1? connection,
+            global::Baseten.GridRouteTargetClassifierV1? classifier
             )
         {
             Type = type;
@@ -240,9 +240,9 @@ namespace Baseten
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Baseten.RouteTargetBasetenModelAPIV1, TResult>? basetenModelApi = null,
-            global::System.Func<global::Baseten.RouteTargetConnectionV1, TResult>? connection = null,
-            global::System.Func<global::Baseten.RouteTargetClassifierV1, TResult>? classifier = null,
+            global::System.Func<global::Baseten.GridRouteTargetBasetenModelAPIV1, TResult>? basetenModelApi = null,
+            global::System.Func<global::Baseten.GridRouteTargetConnectionV1, TResult>? connection = null,
+            global::System.Func<global::Baseten.GridRouteTargetClassifierV1, TResult>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -270,11 +270,11 @@ namespace Baseten
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Baseten.RouteTargetBasetenModelAPIV1>? basetenModelApi = null,
+            global::System.Action<global::Baseten.GridRouteTargetBasetenModelAPIV1>? basetenModelApi = null,
 
-            global::System.Action<global::Baseten.RouteTargetConnectionV1>? connection = null,
+            global::System.Action<global::Baseten.GridRouteTargetConnectionV1>? connection = null,
 
-            global::System.Action<global::Baseten.RouteTargetClassifierV1>? classifier = null,
+            global::System.Action<global::Baseten.GridRouteTargetClassifierV1>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -300,9 +300,9 @@ namespace Baseten
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Baseten.RouteTargetBasetenModelAPIV1>? basetenModelApi = null,
-            global::System.Action<global::Baseten.RouteTargetConnectionV1>? connection = null,
-            global::System.Action<global::Baseten.RouteTargetClassifierV1>? classifier = null,
+            global::System.Action<global::Baseten.GridRouteTargetBasetenModelAPIV1>? basetenModelApi = null,
+            global::System.Action<global::Baseten.GridRouteTargetConnectionV1>? connection = null,
+            global::System.Action<global::Baseten.GridRouteTargetClassifierV1>? classifier = null,
             bool validate = true)
         {
             if (validate)
@@ -332,11 +332,11 @@ namespace Baseten
             var fields = new object?[]
             {
                 BasetenModelApi,
-                typeof(global::Baseten.RouteTargetBasetenModelAPIV1),
+                typeof(global::Baseten.GridRouteTargetBasetenModelAPIV1),
                 Connection,
-                typeof(global::Baseten.RouteTargetConnectionV1),
+                typeof(global::Baseten.GridRouteTargetConnectionV1),
                 Classifier,
-                typeof(global::Baseten.RouteTargetClassifierV1),
+                typeof(global::Baseten.GridRouteTargetClassifierV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -353,9 +353,9 @@ namespace Baseten
         public bool Equals(Target other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetBasetenModelAPIV1?>.Default.Equals(BasetenModelApi, other.BasetenModelApi) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetConnectionV1?>.Default.Equals(Connection, other.Connection) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.RouteTargetClassifierV1?>.Default.Equals(Classifier, other.Classifier)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.GridRouteTargetBasetenModelAPIV1?>.Default.Equals(BasetenModelApi, other.BasetenModelApi) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.GridRouteTargetConnectionV1?>.Default.Equals(Connection, other.Connection) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.GridRouteTargetClassifierV1?>.Default.Equals(Classifier, other.Classifier)
                 ;
         }
 

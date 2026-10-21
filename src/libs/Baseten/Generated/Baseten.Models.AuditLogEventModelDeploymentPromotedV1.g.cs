@@ -56,6 +56,18 @@ namespace Baseten
         public string? EnvironmentId { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("region_update")]
+        public string? RegionUpdate { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promotion_settings_override")]
+        public global::Baseten.AuditLogEventPromotionSettingsOverrideV1? PromotionSettingsOverride { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -70,6 +82,8 @@ namespace Baseten
         /// <param name="deploymentName"></param>
         /// <param name="environmentName"></param>
         /// <param name="environmentId"></param>
+        /// <param name="regionUpdate"></param>
+        /// <param name="promotionSettingsOverride"></param>
         /// <param name="eventType"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -81,6 +95,8 @@ namespace Baseten
             string deploymentName,
             string? environmentName,
             string? environmentId,
+            string? regionUpdate,
+            global::Baseten.AuditLogEventPromotionSettingsOverrideV1? promotionSettingsOverride,
             string eventType = "MODEL_DEPLOYMENT_PROMOTED")
         {
             this.EventType = eventType;
@@ -90,6 +106,8 @@ namespace Baseten
             this.DeploymentName = deploymentName ?? throw new global::System.ArgumentNullException(nameof(deploymentName));
             this.EnvironmentName = environmentName;
             this.EnvironmentId = environmentId;
+            this.RegionUpdate = regionUpdate;
+            this.PromotionSettingsOverride = promotionSettingsOverride;
         }
 
         /// <summary>
