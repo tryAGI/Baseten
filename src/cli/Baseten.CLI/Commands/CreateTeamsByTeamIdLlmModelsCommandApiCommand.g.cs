@@ -61,6 +61,12 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
     {
         Description = @"Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.",
     };
+
+    private static Option<global::Baseten.LLMRuntimeV1?> Runtime { get; } = new(
+        name: @"--runtime")
+    {
+        Description = @"Runtime configuration for the deployment",
+    };
     private static readonly CreateLLMModelRequestV1OptionSet CreateLLMModelRequestV1OptionSetOptions = CreateLLMModelRequestV1OptionSet.Create();
 
     private static readonly UpdateAutoscalingSettingsV1OptionSet AutoscalingSettingsOptions = UpdateAutoscalingSettingsV1OptionSet.Create(@"autoscaling-settings");
@@ -114,7 +120,8 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
                         command.Options.Add(AdditionalAutoscalingConfig);
                         command.Options.Add(Metadata);
                         command.Options.Add(Weights);
-                        command.Options.Add(EgressRestrictions);                        command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.Region);
+                        command.Options.Add(EgressRestrictions);
+                        command.Options.Add(Runtime);                        command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.Region);
                         command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.LlmVersion);
                         command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.NameOption);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
@@ -157,7 +164,8 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
                         var additionalAutoscalingConfig = CliRuntime.WasSpecified(parseResult, AdditionalAutoscalingConfig) ? parseResult.GetValue(AdditionalAutoscalingConfig) : (__requestBase is { } __AdditionalAutoscalingConfigBaseValue ? __AdditionalAutoscalingConfigBaseValue.AdditionalAutoscalingConfig : default);
                         var metadata = CliRuntime.WasSpecified(parseResult, Metadata) ? parseResult.GetValue(Metadata) : (__requestBase is { } __MetadataBaseValue ? __MetadataBaseValue.Metadata : default);
                         var weights = CliRuntime.WasSpecified(parseResult, Weights) ? parseResult.GetValue(Weights) : (__requestBase is { } __WeightsBaseValue ? __WeightsBaseValue.Weights : default);
-                        var egressRestrictions = CliRuntime.WasSpecified(parseResult, EgressRestrictions) ? parseResult.GetValue(EgressRestrictions) : (__requestBase is { } __EgressRestrictionsBaseValue ? __EgressRestrictionsBaseValue.EgressRestrictions : default);                        var region = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.Region) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.Region) : (__requestBase is { } __RegionBaseValue ? __RegionBaseValue.Region : default);
+                        var egressRestrictions = CliRuntime.WasSpecified(parseResult, EgressRestrictions) ? parseResult.GetValue(EgressRestrictions) : (__requestBase is { } __EgressRestrictionsBaseValue ? __EgressRestrictionsBaseValue.EgressRestrictions : default);
+                        var runtime = CliRuntime.WasSpecified(parseResult, Runtime) ? parseResult.GetValue(Runtime) : (__requestBase is { } __RuntimeBaseValue ? __RuntimeBaseValue.Runtime : default);                        var region = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.Region) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.Region) : (__requestBase is { } __RegionBaseValue ? __RegionBaseValue.Region : default);
                         var llmVersion = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.LlmVersion) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.LlmVersion) : (__requestBase is { } __LlmVersionBaseValue ? __LlmVersionBaseValue.LlmVersion : default);
                         var name = parseResult.GetRequiredValue(CreateLLMModelRequestV1OptionSetOptions.NameOption);
 
@@ -198,6 +206,7 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
                                     metadata: metadata,
                                     weights: weights,
                                     egressRestrictions: egressRestrictions,
+                                    runtime: runtime,
                                     region: region,
                                     llmVersion: llmVersion,
                                     name: name,

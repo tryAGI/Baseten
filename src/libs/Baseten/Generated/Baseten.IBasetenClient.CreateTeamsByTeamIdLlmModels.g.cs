@@ -50,6 +50,7 @@ namespace Baseten
         ///     }<br/>
         ///   ],<br/>
         ///   "egress_restrictions": null,<br/>
+        ///   "runtime": null,<br/>
         ///   "name": null<br/>
         /// }'
         /// </remarks>
@@ -105,6 +106,7 @@ namespace Baseten
         ///     }<br/>
         ///   ],<br/>
         ///   "egress_restrictions": null,<br/>
+        ///   "runtime": null,<br/>
         ///   "name": null<br/>
         /// }'
         /// </remarks>
@@ -159,6 +161,10 @@ namespace Baseten
         /// Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="runtime">
+        /// Runtime configuration for the deployment<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="name">
         /// Name of the model
         /// </param>
@@ -179,6 +185,7 @@ namespace Baseten
             object? metadata = default,
             global::System.Collections.Generic.IList<object>? weights = default,
             global::Baseten.EgressRestrictionsV1? egressRestrictions = default,
+            global::Baseten.LLMRuntimeV1? runtime = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
