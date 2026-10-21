@@ -17,6 +17,54 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("redeploy_on_promotion")]
+        public bool? RedeployOnPromotion { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rolling_deploy")]
+        public bool? RollingDeploy { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("rolling_deploy_strategy")]
+        public string? RollingDeployStrategy { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_unavailable_percent")]
+        public int? MaxUnavailablePercent { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_surge_percent")]
+        public int? MaxSurgePercent { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stabilization_time_seconds")]
+        public int? StabilizationTimeSeconds { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("replica_overhead_percent")]
+        public int? ReplicaOverheadPercent { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promotion_cleanup_strategy")]
+        public string? PromotionCleanupStrategy { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("min_replica")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MinReplica { get; set; }
@@ -64,54 +112,6 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_scale_down_rate")]
         public double? MaxScaleDownRate { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("redeploy_on_promotion")]
-        public bool? RedeployOnPromotion { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("rolling_deploy")]
-        public bool? RollingDeploy { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("rolling_deploy_strategy")]
-        public string? RollingDeployStrategy { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("max_unavailable_percent")]
-        public int? MaxUnavailablePercent { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("max_surge_percent")]
-        public int? MaxSurgePercent { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("stabilization_time_seconds")]
-        public int? StabilizationTimeSeconds { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("replica_overhead_percent")]
-        public int? ReplicaOverheadPercent { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("promotion_cleanup_strategy")]
-        public string? PromotionCleanupStrategy { get; set; }
 
         /// <summary>
         ///
@@ -193,11 +193,6 @@ namespace Baseten
         /// <param name="modelName"></param>
         /// <param name="environmentName"></param>
         /// <param name="schedules"></param>
-        /// <param name="autoscalingWindow"></param>
-        /// <param name="scaleDownDelay"></param>
-        /// <param name="targetUtilizationPercentage"></param>
-        /// <param name="targetInFlightTokens"></param>
-        /// <param name="maxScaleDownRate"></param>
         /// <param name="redeployOnPromotion"></param>
         /// <param name="rollingDeploy"></param>
         /// <param name="rollingDeployStrategy"></param>
@@ -206,6 +201,11 @@ namespace Baseten
         /// <param name="stabilizationTimeSeconds"></param>
         /// <param name="replicaOverheadPercent"></param>
         /// <param name="promotionCleanupStrategy"></param>
+        /// <param name="autoscalingWindow"></param>
+        /// <param name="scaleDownDelay"></param>
+        /// <param name="targetUtilizationPercentage"></param>
+        /// <param name="targetInFlightTokens"></param>
+        /// <param name="maxScaleDownRate"></param>
         /// <param name="rampUpWhilePromoting"></param>
         /// <param name="rampUpDurationSeconds"></param>
         /// <param name="rampUpStepSize"></param>
@@ -226,11 +226,6 @@ namespace Baseten
             string modelName,
             string environmentName,
             global::System.Collections.Generic.IList<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>? schedules,
-            int? autoscalingWindow,
-            int? scaleDownDelay,
-            int? targetUtilizationPercentage,
-            int? targetInFlightTokens,
-            double? maxScaleDownRate,
             bool? redeployOnPromotion,
             bool? rollingDeploy,
             string? rollingDeployStrategy,
@@ -239,6 +234,11 @@ namespace Baseten
             int? stabilizationTimeSeconds,
             int? replicaOverheadPercent,
             string? promotionCleanupStrategy,
+            int? autoscalingWindow,
+            int? scaleDownDelay,
+            int? targetUtilizationPercentage,
+            int? targetInFlightTokens,
+            double? maxScaleDownRate,
             bool? rampUpWhilePromoting,
             int? rampUpDurationSeconds,
             int? rampUpStepSize,
@@ -248,14 +248,6 @@ namespace Baseten
             string eventType = "ENVIRONMENT_UPDATED")
         {
             this.Schedules = schedules;
-            this.MinReplica = minReplica;
-            this.MaxReplica = maxReplica;
-            this.ConcurrencyTarget = concurrencyTarget;
-            this.AutoscalingWindow = autoscalingWindow;
-            this.ScaleDownDelay = scaleDownDelay;
-            this.TargetUtilizationPercentage = targetUtilizationPercentage;
-            this.TargetInFlightTokens = targetInFlightTokens;
-            this.MaxScaleDownRate = maxScaleDownRate;
             this.RedeployOnPromotion = redeployOnPromotion;
             this.RollingDeploy = rollingDeploy;
             this.RollingDeployStrategy = rollingDeployStrategy;
@@ -264,6 +256,14 @@ namespace Baseten
             this.StabilizationTimeSeconds = stabilizationTimeSeconds;
             this.ReplicaOverheadPercent = replicaOverheadPercent;
             this.PromotionCleanupStrategy = promotionCleanupStrategy;
+            this.MinReplica = minReplica;
+            this.MaxReplica = maxReplica;
+            this.ConcurrencyTarget = concurrencyTarget;
+            this.AutoscalingWindow = autoscalingWindow;
+            this.ScaleDownDelay = scaleDownDelay;
+            this.TargetUtilizationPercentage = targetUtilizationPercentage;
+            this.TargetInFlightTokens = targetInFlightTokens;
+            this.MaxScaleDownRate = maxScaleDownRate;
             this.RampUpWhilePromoting = rampUpWhilePromoting;
             this.RampUpDurationSeconds = rampUpDurationSeconds;
             this.RampUpStepSize = rampUpStepSize;

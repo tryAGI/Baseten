@@ -30,6 +30,12 @@ internal static partial class EditModelsByModelIdEnvironmentsByEnvNameCommandApi
     {
         Description = @"Request backpressure settings for the environment.",
     };
+
+    private static Option<global::Baseten.UpdateTrafficRoutingSettingsV1?> TrafficRoutingSettings { get; } = new(
+        name: @"--traffic-routing-settings")
+    {
+        Description = @"Partial traffic routing rule update. Each submitted rule is a complete create or replace. Deletes are applied first. In development.",
+    };
     private static readonly UpdateAutoscalingSettingsV1OptionSet AutoscalingSettingsOptions = UpdateAutoscalingSettingsV1OptionSet.Create(@"autoscaling-settings");
 
     private static readonly UpdateModelPromotionSettingsV1OptionSet PromotionSettingsOptions = UpdateModelPromotionSettingsV1OptionSet.Create(@"promotion-settings");
@@ -79,7 +85,8 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(EnvName);
                         command.Options.Add(AutoscalingScheduleSettings);
-                        command.Options.Add(RequestBackpressureSettings);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
+                        command.Options.Add(RequestBackpressureSettings);
+                        command.Options.Add(TrafficRoutingSettings);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
                         command.Options.Add(AutoscalingSettingsOptions.AutoscalingWindow);
                         command.Options.Add(AutoscalingSettingsOptions.ScaleDownDelay);
@@ -119,6 +126,7 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                         var envName = parseResult.GetRequiredValue(EnvName);
                         var autoscalingScheduleSettings = CliRuntime.WasSpecified(parseResult, AutoscalingScheduleSettings) ? parseResult.GetValue(AutoscalingScheduleSettings) : (__requestBase is { } __AutoscalingScheduleSettingsBaseValue ? __AutoscalingScheduleSettingsBaseValue.AutoscalingScheduleSettings : default);
                         var requestBackpressureSettings = CliRuntime.WasSpecified(parseResult, RequestBackpressureSettings) ? parseResult.GetValue(RequestBackpressureSettings) : (__requestBase is { } __RequestBackpressureSettingsBaseValue ? __RequestBackpressureSettingsBaseValue.RequestBackpressureSettings : default);
+                        var trafficRoutingSettings = CliRuntime.WasSpecified(parseResult, TrafficRoutingSettings) ? parseResult.GetValue(TrafficRoutingSettings) : (__requestBase is { } __TrafficRoutingSettingsBaseValue ? __TrafficRoutingSettingsBaseValue.TrafficRoutingSettings : default);
 
                         var __AutoscalingSettingsBase = __requestBase is { } __AutoscalingSettingsBaseValue ? __AutoscalingSettingsBaseValue.AutoscalingSettings : default;                        var autoscalingSettingsMinReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MinReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MinReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsminReplicaBaseValue ? __AutoscalingSettingsminReplicaBaseValue.MinReplica : default);
                         var autoscalingSettingsMaxReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MaxReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MaxReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsmaxReplicaBaseValue ? __AutoscalingSettingsmaxReplicaBaseValue.MaxReplica : default);
@@ -169,6 +177,7 @@ Asynchronously updates an environment's settings. Poll the GET endpoint for the 
                                     envName: envName,
                                     autoscalingScheduleSettings: autoscalingScheduleSettings,
                                     requestBackpressureSettings: requestBackpressureSettings,
+                                    trafficRoutingSettings: trafficRoutingSettings,
                                     autoscalingSettings: autoscalingSettings,
                                     promotionSettings: promotionSettings,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

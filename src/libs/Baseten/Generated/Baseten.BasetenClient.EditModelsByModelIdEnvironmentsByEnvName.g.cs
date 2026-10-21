@@ -111,6 +111,22 @@ namespace Baseten
         ///   },<br/>
         ///   "request_backpressure_settings": {<br/>
         ///     "policy": "REJECT_ON_FULL"<br/>
+        ///   },<br/>
+        ///   "traffic_routing_settings": {<br/>
+        ///     "rules": [<br/>
+        ///       {<br/>
+        ///         "expires_at": "2026-10-13T18:00:00Z",<br/>
+        ///         "percent_traffic": 25,<br/>
+        ///         "propagate_client_cancellation": true,<br/>
+        ///         "sampling_mode": "USER_SESSION",<br/>
+        ///         "targets": [<br/>
+        ///           {<br/>
+        ///             "deployment_id": "abc123"<br/>
+        ///           }<br/>
+        ///         ],<br/>
+        ///         "type": "SHADOW"<br/>
+        ///       }<br/>
+        ///     ]<br/>
         ///   }<br/>
         /// }'
         /// </remarks>
@@ -199,6 +215,22 @@ namespace Baseten
         ///   },<br/>
         ///   "request_backpressure_settings": {<br/>
         ///     "policy": "REJECT_ON_FULL"<br/>
+        ///   },<br/>
+        ///   "traffic_routing_settings": {<br/>
+        ///     "rules": [<br/>
+        ///       {<br/>
+        ///         "expires_at": "2026-10-13T18:00:00Z",<br/>
+        ///         "percent_traffic": 25,<br/>
+        ///         "propagate_client_cancellation": true,<br/>
+        ///         "sampling_mode": "USER_SESSION",<br/>
+        ///         "targets": [<br/>
+        ///           {<br/>
+        ///             "deployment_id": "abc123"<br/>
+        ///           }<br/>
+        ///         ],<br/>
+        ///         "type": "SHADOW"<br/>
+        ///       }<br/>
+        ///     ]<br/>
         ///   }<br/>
         /// }'
         /// </remarks>
@@ -591,6 +623,10 @@ namespace Baseten
         /// Request backpressure settings for the environment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="trafficRoutingSettings">
+        /// Partial traffic routing rule update. Each submitted rule is a complete create or replace. Deletes are applied first. In development.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -601,6 +637,7 @@ namespace Baseten
             global::Baseten.UpdateModelPromotionSettingsV1? promotionSettings = default,
             global::Baseten.UpdateAutoscalingScheduleSettingsV1? autoscalingScheduleSettings = default,
             global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings = default,
+            global::Baseten.UpdateTrafficRoutingSettingsV1? trafficRoutingSettings = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -610,6 +647,7 @@ namespace Baseten
                 PromotionSettings = promotionSettings,
                 AutoscalingScheduleSettings = autoscalingScheduleSettings,
                 RequestBackpressureSettings = requestBackpressureSettings,
+                TrafficRoutingSettings = trafficRoutingSettings,
             };
 
             return await EditModelsByModelIdEnvironmentsByEnvNameAsync(

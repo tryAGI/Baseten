@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class PromotionEnvironmentSettingsUpdateV1
     {
         /// <summary>
-        /// Region for the promoted deployment, from `GET /v1/teams/{team_id}/regions`. Use an empty string for Global.<br/>
+        /// Region for the promoted deployment, from `GET /v1/teams/{team_id}/regions`. Use an empty string for Global. If omitted, the deployment keeps its region. Regional environments only accept Global deployments.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("region")]
@@ -60,7 +60,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="PromotionEnvironmentSettingsUpdateV1" /> class.
         /// </summary>
         /// <param name="region">
-        /// Region for the promoted deployment, from `GET /v1/teams/{team_id}/regions`. Use an empty string for Global.<br/>
+        /// Region for the promoted deployment, from `GET /v1/teams/{team_id}/regions`. Use an empty string for Global. If omitted, the deployment keeps its region. Regional environments only accept Global deployments.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="instanceTypeId">

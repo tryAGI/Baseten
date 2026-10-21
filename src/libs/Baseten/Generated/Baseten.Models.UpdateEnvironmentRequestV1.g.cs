@@ -37,6 +37,13 @@ namespace Baseten
         public global::Baseten.UpdateRequestBackpressureSettingsV1? RequestBackpressureSettings { get; set; }
 
         /// <summary>
+        /// Partial traffic routing rule update. Each submitted rule is a complete create or replace. Deletes are applied first. In development.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("traffic_routing_settings")]
+        public global::Baseten.UpdateTrafficRoutingSettingsV1? TrafficRoutingSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -61,6 +68,10 @@ namespace Baseten
         /// Request backpressure settings for the environment.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="trafficRoutingSettings">
+        /// Partial traffic routing rule update. Each submitted rule is a complete create or replace. Deletes are applied first. In development.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -68,12 +79,14 @@ namespace Baseten
             global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings,
             global::Baseten.UpdateModelPromotionSettingsV1? promotionSettings,
             global::Baseten.UpdateAutoscalingScheduleSettingsV1? autoscalingScheduleSettings,
-            global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings)
+            global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings,
+            global::Baseten.UpdateTrafficRoutingSettingsV1? trafficRoutingSettings)
         {
             this.AutoscalingSettings = autoscalingSettings;
             this.PromotionSettings = promotionSettings;
             this.AutoscalingScheduleSettings = autoscalingScheduleSettings;
             this.RequestBackpressureSettings = requestBackpressureSettings;
+            this.TrafficRoutingSettings = trafficRoutingSettings;
         }
 
         /// <summary>
