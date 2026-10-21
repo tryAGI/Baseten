@@ -179,10 +179,15 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleActionV1), TypeInfoPropertyName = "AuditLogEventAutoscalingScheduleActionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleChangeV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleSettingsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleOperationsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEventAutoscalingScheduleUpsertV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleUpsertV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingSettingsUpdateV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventEnvironmentSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventPromotionSettingsOverrideV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventRequestBackpressureSettingsUpdateV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1), TypeInfoPropertyName = "AuditLogPromotionControlActionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListAuditLogsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEntryV1>))]
@@ -504,11 +509,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsCheckpointFilesRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointS3SourceV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointVolumeSourceV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointSourceResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Source4), TypeInfoPropertyName = "Source42")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointSourceResponseV1SourceDiscriminator))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointSourceResponseV1SourceDiscriminatorKind), TypeInfoPropertyName = "LoopsCheckpointSourceResponseV1SourceDiscriminatorKind2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsDeploymentStatusV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,6 +519,11 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointSourceResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Source4), TypeInfoPropertyName = "Source42")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointSourceResponseV1SourceDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointSourceResponseV1SourceDiscriminatorKind), TypeInfoPropertyName = "LoopsCheckpointSourceResponseV1SourceDiscriminatorKind2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsDeploymentStatusV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Name), TypeInfoPropertyName = "Name2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsDeploymentV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsDeploymentsResponseV1))]
@@ -993,6 +998,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.RegionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.InstanceTypeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.InstanceTypeWithPriceV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventAutoscalingScheduleUpsertV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEntryV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventTypeGroupV1>))]
@@ -1013,12 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.StartupOutcomeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.StartupPhasePercentilesV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SchedulesItem2>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingRuleV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingTargetV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EnvironmentV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingTargetUpsertV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingRuleUpsertV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainV1>))]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingRuleV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingTargetV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EnvironmentV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingTargetUpsertV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingRuleUpsertV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainletV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainDeploymentV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainletEnvironmentSettingsRequestV1>))]
