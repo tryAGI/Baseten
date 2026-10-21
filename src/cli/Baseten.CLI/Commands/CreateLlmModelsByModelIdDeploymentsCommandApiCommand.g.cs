@@ -73,6 +73,12 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
     {
         Description = @"Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.",
     };
+
+    private static Option<global::Baseten.LLMRuntimeV1?> Runtime { get; } = new(
+        name: @"--runtime")
+    {
+        Description = @"Runtime configuration for the deployment",
+    };
     private static readonly UpdateAutoscalingSettingsV1OptionSet AutoscalingSettingsOptions = UpdateAutoscalingSettingsV1OptionSet.Create(@"autoscaling-settings");
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -126,7 +132,8 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                         command.Options.Add(AdditionalAutoscalingConfig);
                         command.Options.Add(Metadata);
                         command.Options.Add(Weights);
-                        command.Options.Add(EgressRestrictions);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
+                        command.Options.Add(EgressRestrictions);
+                        command.Options.Add(Runtime);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
                         command.Options.Add(AutoscalingSettingsOptions.AutoscalingWindow);
                         command.Options.Add(AutoscalingSettingsOptions.ScaleDownDelay);
@@ -170,6 +177,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                         var metadata = CliRuntime.WasSpecified(parseResult, Metadata) ? parseResult.GetValue(Metadata) : (__requestBase is { } __MetadataBaseValue ? __MetadataBaseValue.Metadata : default);
                         var weights = CliRuntime.WasSpecified(parseResult, Weights) ? parseResult.GetValue(Weights) : (__requestBase is { } __WeightsBaseValue ? __WeightsBaseValue.Weights : default);
                         var egressRestrictions = CliRuntime.WasSpecified(parseResult, EgressRestrictions) ? parseResult.GetValue(EgressRestrictions) : (__requestBase is { } __EgressRestrictionsBaseValue ? __EgressRestrictionsBaseValue.EgressRestrictions : default);
+                        var runtime = CliRuntime.WasSpecified(parseResult, Runtime) ? parseResult.GetValue(Runtime) : (__requestBase is { } __RuntimeBaseValue ? __RuntimeBaseValue.Runtime : default);
 
                         var __AutoscalingSettingsBase = __requestBase is { } __AutoscalingSettingsBaseValue ? __AutoscalingSettingsBaseValue.AutoscalingSettings : default;                        var autoscalingSettingsMinReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MinReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MinReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsminReplicaBaseValue ? __AutoscalingSettingsminReplicaBaseValue.MinReplica : default);
                         var autoscalingSettingsMaxReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MaxReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MaxReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsmaxReplicaBaseValue ? __AutoscalingSettingsmaxReplicaBaseValue.MaxReplica : default);
@@ -210,6 +218,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                                     metadata: metadata,
                                     weights: weights,
                                     egressRestrictions: egressRestrictions,
+                                    runtime: runtime,
                                     autoscalingSettings: autoscalingSettings,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
