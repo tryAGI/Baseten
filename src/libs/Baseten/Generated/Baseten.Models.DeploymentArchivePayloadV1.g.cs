@@ -89,6 +89,41 @@ namespace Baseten
         public bool? IsDevelopment { get; set; }
 
         /// <summary>
+        /// Autoscaling settings for the new deployment. With `environment_name`, the new deployment starts from the environment's settings with these changes applied, and the environment keeps the result when the promotion completes. Without it, they apply to the new deployment only.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_settings")]
+        public global::Baseten.UpdateAutoscalingSettingsV1? AutoscalingSettings { get; set; }
+
+        /// <summary>
+        /// Request backpressure settings for the new deployment, applied the same way as `autoscaling_settings`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_backpressure_settings")]
+        public global::Baseten.UpdateRequestBackpressureSettingsV1? RequestBackpressureSettings { get; set; }
+
+        /// <summary>
+        /// Autoscaling schedule changes for the environment named by `environment_name`, applied when the promotion completes. Requires `environment_name`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_schedule_settings")]
+        public global::Baseten.UpdateAutoscalingScheduleSettingsV1? AutoscalingScheduleSettings { get; set; }
+
+        /// <summary>
+        /// Promotion settings for promoting the new deployment into the environment named by `environment_name`, for this promotion only. Omitted fields keep the environment's values, and the environment's promotion settings are unchanged. Requires `environment_name`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("promotion_settings_override")]
+        public global::Baseten.UpdatePromotionSettingsV1? PromotionSettingsOverride { get; set; }
+
+        /// <summary>
+        /// Instance type for the new deployment, from `GET /v1/instance_types`, in place of the one in `config`. With `environment_name`, the environment takes it when the promotion completes. Without it, it applies to the new deployment only. Cannot be set with `preserve_env_instance_type: true`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("instance_type_id")]
+        public string? InstanceTypeId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -140,6 +175,26 @@ namespace Baseten
         /// If true, push as a development deployment: the model's single mutable dev slot, created if absent and overwritten in place otherwise. The following fields must be left at their defaults: `environment_name`, `preserve_env_instance_type`, `deployment_name`.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="autoscalingSettings">
+        /// Autoscaling settings for the new deployment. With `environment_name`, the new deployment starts from the environment's settings with these changes applied, and the environment keeps the result when the promotion completes. Without it, they apply to the new deployment only.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="requestBackpressureSettings">
+        /// Request backpressure settings for the new deployment, applied the same way as `autoscaling_settings`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="autoscalingScheduleSettings">
+        /// Autoscaling schedule changes for the environment named by `environment_name`, applied when the promotion completes. Requires `environment_name`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="promotionSettingsOverride">
+        /// Promotion settings for promoting the new deployment into the environment named by `environment_name`, for this promotion only. Omitted fields keep the environment's values, and the environment's promotion settings are unchanged. Requires `environment_name`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="instanceTypeId">
+        /// Instance type for the new deployment, from `GET /v1/instance_types`, in place of the one in `config`. With `environment_name`, the environment takes it when the promotion completes. Without it, it applies to the new deployment only. Cannot be set with `preserve_env_instance_type: true`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -154,7 +209,12 @@ namespace Baseten
             int? deployTimeoutMinutes,
             string? deploymentName,
             object? labels,
-            bool? isDevelopment)
+            bool? isDevelopment,
+            global::Baseten.UpdateAutoscalingSettingsV1? autoscalingSettings,
+            global::Baseten.UpdateRequestBackpressureSettingsV1? requestBackpressureSettings,
+            global::Baseten.UpdateAutoscalingScheduleSettingsV1? autoscalingScheduleSettings,
+            global::Baseten.UpdatePromotionSettingsV1? promotionSettingsOverride,
+            string? instanceTypeId)
         {
             this.Config = config ?? throw new global::System.ArgumentNullException(nameof(config));
             this.RawConfig = rawConfig;
@@ -167,6 +227,11 @@ namespace Baseten
             this.DeploymentName = deploymentName;
             this.Labels = labels;
             this.IsDevelopment = isDevelopment;
+            this.AutoscalingSettings = autoscalingSettings;
+            this.RequestBackpressureSettings = requestBackpressureSettings;
+            this.AutoscalingScheduleSettings = autoscalingScheduleSettings;
+            this.PromotionSettingsOverride = promotionSettingsOverride;
+            this.InstanceTypeId = instanceTypeId;
         }
 
         /// <summary>

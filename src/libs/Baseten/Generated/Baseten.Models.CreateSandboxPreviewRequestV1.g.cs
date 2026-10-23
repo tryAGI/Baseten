@@ -5,12 +5,12 @@
 namespace Baseten
 {
     /// <summary>
-    /// Preview to create. Only port is required.
+    /// Preview to create. Only port is required. ttl and expires_at are mutually exclusive; supplying both returns 400.
     /// </summary>
     public readonly partial struct CreateSandboxPreviewRequestV1 : global::System.IEquatable<CreateSandboxPreviewRequestV1>
     {
         /// <summary>
-        /// Mutable preview configuration. ttl and expires_at are mutually exclusive; supplying both returns 400.
+        /// Mutable preview configuration.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Baseten.SandboxPreviewConfigurationV1? Configuration { get; init; }

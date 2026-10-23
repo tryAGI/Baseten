@@ -10,7 +10,7 @@ namespace Baseten
     public readonly partial struct SandboxPreviewV1 : global::System.IEquatable<SandboxPreviewV1>
     {
         /// <summary>
-        /// Mutable preview configuration. ttl and expires_at are mutually exclusive; supplying both returns 400.
+        /// Mutable preview configuration.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Baseten.SandboxPreviewConfigurationV1? Configuration { get; init; }

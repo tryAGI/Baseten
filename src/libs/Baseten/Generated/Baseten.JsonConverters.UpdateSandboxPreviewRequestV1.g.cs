@@ -35,8 +35,28 @@ namespace Baseten.JsonConverters
             {
                 // Legacy enum converters signal an incompatible JSON token with this exception.
             }
+
+            global::Baseten.UpdateSandboxPreviewRequestV1Variant2? updateSandboxPreviewRequestV1Variant2 = default;
+            try
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpdateSandboxPreviewRequestV1Variant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpdateSandboxPreviewRequestV1Variant2> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpdateSandboxPreviewRequestV1Variant2).Name}");
+                updateSandboxPreviewRequestV1Variant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+            }
+            catch (global::System.Text.Json.JsonException)
+            {
+            }
+            catch (global::System.InvalidOperationException)
+            {
+            }
+            catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+            {
+                // Legacy enum converters signal an incompatible JSON token with this exception.
+            }
             var __value = new global::Baseten.UpdateSandboxPreviewRequestV1(
-                configuration
+                configuration,
+
+                updateSandboxPreviewRequestV1Variant2
                 );
 
             return __value;
@@ -65,6 +85,24 @@ namespace Baseten.JsonConverters
                 }
 
                 foreach (var __property in __element0.EnumerateObject())
+                {
+                    if (__writtenPropertyNames.Add(__property.Name))
+                    {
+                        __property.WriteTo(writer);
+                    }
+                }
+            }
+            if (value.IsUpdateSandboxPreviewRequestV1Variant2)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpdateSandboxPreviewRequestV1Variant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpdateSandboxPreviewRequestV1Variant2?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpdateSandboxPreviewRequestV1Variant2).Name}");
+                var __element1 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.PickUpdateSandboxPreviewRequestV1Variant2(), typeInfo);
+                if (__element1.ValueKind != global::System.Text.Json.JsonValueKind.Object)
+                {
+                    throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
+                }
+
+                foreach (var __property in __element1.EnumerateObject())
                 {
                     if (__writtenPropertyNames.Add(__property.Name))
                     {

@@ -61,7 +61,21 @@ namespace Baseten
         ///     "region": null,<br/>
         ///     "deploy_timeout_minutes": null,<br/>
         ///     "deployment_name": null,<br/>
-        ///     "labels": null<br/>
+        ///     "labels": null,<br/>
+        ///     "autoscaling_settings": {<br/>
+        ///       "max_replica": 4,<br/>
+        ///       "min_replica": 2<br/>
+        ///     },<br/>
+        ///     "request_backpressure_settings": {<br/>
+        ///       "policy": "REJECT_ON_FULL"<br/>
+        ///     },<br/>
+        ///     "autoscaling_schedule_settings": null,<br/>
+        ///     "promotion_settings_override": {<br/>
+        ///       "rolling_deploy_config": {<br/>
+        ///         "max_surge_percent": 50<br/>
+        ///       }<br/>
+        ///     },<br/>
+        ///     "instance_type_id": null<br/>
         ///   },<br/>
         ///   "name": null,<br/>
         ///   "team_id": null,<br/>
@@ -103,7 +117,21 @@ namespace Baseten
         ///     "region": null,<br/>
         ///     "deploy_timeout_minutes": null,<br/>
         ///     "deployment_name": null,<br/>
-        ///     "labels": null<br/>
+        ///     "labels": null,<br/>
+        ///     "autoscaling_settings": {<br/>
+        ///       "max_replica": 4,<br/>
+        ///       "min_replica": 2<br/>
+        ///     },<br/>
+        ///     "request_backpressure_settings": {<br/>
+        ///       "policy": "REJECT_ON_FULL"<br/>
+        ///     },<br/>
+        ///     "autoscaling_schedule_settings": null,<br/>
+        ///     "promotion_settings_override": {<br/>
+        ///       "rolling_deploy_config": {<br/>
+        ///         "max_surge_percent": 50<br/>
+        ///       }<br/>
+        ///     },<br/>
+        ///     "instance_type_id": null<br/>
         ///   },<br/>
         ///   "name": null,<br/>
         ///   "team_id": null,<br/>

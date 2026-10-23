@@ -18,7 +18,7 @@ namespace Baseten
         public required string Name { get; set; }
 
         /// <summary>
-        /// Value to send as the bl_preview_token query parameter.<br/>
+        /// Value to send as the preview_token query parameter.<br/>
         /// Example: 7f3k2m9q1x8c4v6b0n5z
         /// </summary>
         /// <example>7f3k2m9q1x8c4v6b0n5z</example>
@@ -57,7 +57,7 @@ namespace Baseten
         /// Example: 7f3k2m9q1x8c4v6b0n5z
         /// </param>
         /// <param name="token">
-        /// Value to send as the bl_preview_token query parameter.<br/>
+        /// Value to send as the preview_token query parameter.<br/>
         /// Example: 7f3k2m9q1x8c4v6b0n5z
         /// </param>
         /// <param name="expiresAt">

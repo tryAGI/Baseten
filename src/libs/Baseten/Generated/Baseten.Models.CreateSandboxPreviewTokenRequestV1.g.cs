@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class CreateSandboxPreviewTokenRequestV1
     {
         /// <summary>
-        /// When true, return an existing unexpired token of this preview that stays valid at least until expires_at instead of creating a new one. Defaults to false when omitted.
+        /// When true, may return an existing unexpired token of this preview that stays valid at least until expires_at instead of creating a new one. A token created a moment earlier may not be found yet, in which case a new token is created. Defaults to false when omitted.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("create_if_not_exists")]
         public bool? CreateIfNotExists { get; set; }
@@ -37,7 +37,7 @@ namespace Baseten
         /// Example: 2026-10-13T12:00:00Z
         /// </param>
         /// <param name="createIfNotExists">
-        /// When true, return an existing unexpired token of this preview that stays valid at least until expires_at instead of creating a new one. Defaults to false when omitted.
+        /// When true, may return an existing unexpired token of this preview that stays valid at least until expires_at instead of creating a new one. A token created a moment earlier may not be found yet, in which case a new token is created. Defaults to false when omitted.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -66,7 +66,7 @@ internal static partial class PreviewsCreateSandboxPreviewCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"create-sandbox-preview", @"Create a sandbox preview
-Expose a port of the sandbox on an HTTPS URL. A public preview is reachable by anyone with the URL. A private preview requires a preview token, created with the tokens endpoint and sent as the bl_preview_token query parameter; the first request sets a bl_preview_token cookie so a browser can keep navigating without it. Port 80 and the sandbox's reserved system ports are rejected, and port 443 must stay private. Without a name, the name is generated from the sandbox name and port, or is public-&lt;port&gt; or private-&lt;port&gt; when create_if_not_exists is true.");
+Expose a port of the sandbox on an HTTPS URL. A public preview is reachable by anyone with the URL. A private preview requires a preview token, created with the tokens endpoint and sent as the preview_token query parameter; the first request sets a cookie so a browser can keep navigating without it. Port 80 and the sandbox's reserved system ports are rejected, and port 443 must stay private. Without a name, the name is generated from the sandbox name and port, or is public-&lt;port&gt; or private-&lt;port&gt; when create_if_not_exists is true.");
                         command.Arguments.Add(SandboxName);
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);
