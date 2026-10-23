@@ -51,7 +51,7 @@ namespace Baseten
 
         /// <summary>
         /// Create a preview token<br/>
-        /// Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?bl_preview_token=&lt;token&gt;.
+        /// Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?preview_token=&lt;token&gt;.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -86,7 +86,7 @@ namespace Baseten
         }
         /// <summary>
         /// Create a preview token<br/>
-        /// Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?bl_preview_token=&lt;token&gt;.
+        /// Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?preview_token=&lt;token&gt;.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -672,14 +672,14 @@ namespace Baseten
         }
         /// <summary>
         /// Create a preview token<br/>
-        /// Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?bl_preview_token=&lt;token&gt;.
+        /// Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?preview_token=&lt;token&gt;.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
         /// <param name="sandboxName"></param>
         /// <param name="previewName"></param>
         /// <param name="createIfNotExists">
-        /// When true, return an existing unexpired token of this preview that stays valid at least until expires_at instead of creating a new one. Defaults to false when omitted.
+        /// When true, may return an existing unexpired token of this preview that stays valid at least until expires_at instead of creating a new one. A token created a moment earlier may not be found yet, in which case a new token is created. Defaults to false when omitted.
         /// </param>
         /// <param name="expiresAt">
         /// Time at which the token stops working. Must be in the future.<br/>

@@ -691,6 +691,10 @@ namespace Baseten
         /// Default Value: 4096<br/>
         /// Example: 4096
         /// </param>
+        /// <param name="filesystem">
+        /// Filesystem configuration. Set at creation only.<br/>
+        /// Example: {"max_memory_usage":"80%"}
+        /// </param>
         /// <param name="ports">
         /// Set of ports for a resource<br/>
         /// Example: [{"name":"http","protocol":"HTTP","target":3000}]
@@ -717,6 +721,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? envs = default,
             string? image = default,
             long? memory = default,
+            global::Baseten.SandboxFilesystemV1? filesystem = default,
             global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? ports = default,
             string? externalId = default,
             global::System.Collections.Generic.Dictionary<string, string>? labels = default,
@@ -733,6 +738,7 @@ namespace Baseten
                 Envs = envs,
                 Image = image,
                 Memory = memory,
+                Filesystem = filesystem,
                 Ports = ports,
                 ExternalId = externalId,
                 Labels = labels,

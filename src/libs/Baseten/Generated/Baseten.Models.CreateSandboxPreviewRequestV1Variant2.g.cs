@@ -9,6 +9,14 @@ namespace Baseten
     public sealed partial class CreateSandboxPreviewRequestV1Variant2
     {
         /// <summary>
+        /// Lifetime counted from the request, using seconds, minutes, hours or composite durations such as 1h30m. Whole days are also supported, for example 7d; days cannot be combined with other units. The preview is deleted when it elapses.<br/>
+        /// Example: 24h
+        /// </summary>
+        /// <example>24h</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ttl")]
+        public string? Ttl { get; set; }
+
+        /// <summary>
         /// When true, return the existing preview with this name instead of failing with a conflict. Without name, the name is public-&lt;port&gt; or private-&lt;port&gt;, so the same port and visibility return the same preview. Existing configuration is preserved. Defaults to false when omitted.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("create_if_not_exists")]
@@ -44,6 +52,10 @@ namespace Baseten
         /// Sandbox port to expose.<br/>
         /// Example: 3000
         /// </param>
+        /// <param name="ttl">
+        /// Lifetime counted from the request, using seconds, minutes, hours or composite durations such as 1h30m. Whole days are also supported, for example 7d; days cannot be combined with other units. The preview is deleted when it elapses.<br/>
+        /// Example: 24h
+        /// </param>
         /// <param name="createIfNotExists">
         /// When true, return the existing preview with this name instead of failing with a conflict. Without name, the name is public-&lt;port&gt; or private-&lt;port&gt;, so the same port and visibility return the same preview. Existing configuration is preserved. Defaults to false when omitted.
         /// </param>
@@ -56,9 +68,11 @@ namespace Baseten
 #endif
         public CreateSandboxPreviewRequestV1Variant2(
             int port,
+            string? ttl,
             bool? createIfNotExists,
             string? name)
         {
+            this.Ttl = ttl;
             this.CreateIfNotExists = createIfNotExists;
             this.Name = name;
             this.Port = port;

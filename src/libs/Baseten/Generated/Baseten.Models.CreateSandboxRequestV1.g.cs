@@ -74,6 +74,14 @@ namespace Baseten
         public long? Memory { get; set; }
 
         /// <summary>
+        /// Filesystem configuration. Set at creation only.<br/>
+        /// Example: {"max_memory_usage":"80%"}
+        /// </summary>
+        /// <example>{"max_memory_usage":"80%"}</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("filesystem")]
+        public global::Baseten.SandboxFilesystemV1? Filesystem { get; set; }
+
+        /// <summary>
         /// Set of ports for a resource<br/>
         /// Example: [{"name":"http","protocol":"HTTP","target":3000}]
         /// </summary>
@@ -139,6 +147,10 @@ namespace Baseten
         /// Default Value: 4096<br/>
         /// Example: 4096
         /// </param>
+        /// <param name="filesystem">
+        /// Filesystem configuration. Set at creation only.<br/>
+        /// Example: {"max_memory_usage":"80%"}
+        /// </param>
         /// <param name="ports">
         /// Set of ports for a resource<br/>
         /// Example: [{"name":"http","protocol":"HTTP","target":3000}]
@@ -163,6 +175,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? envs,
             string? image,
             long? memory,
+            global::Baseten.SandboxFilesystemV1? filesystem,
             global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? ports,
             string? externalId,
             global::System.Collections.Generic.Dictionary<string, string>? labels)
@@ -175,6 +188,7 @@ namespace Baseten
             this.Envs = envs;
             this.Image = image;
             this.Memory = memory;
+            this.Filesystem = filesystem;
             this.Ports = ports;
             this.ExternalId = externalId;
             this.Labels = labels;

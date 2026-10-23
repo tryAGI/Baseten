@@ -33,7 +33,7 @@ internal static partial class PreviewsCreateSandboxPreviewTokenCommandApiCommand
 
     private static Option<bool?> CreateIfNotExists { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--create-if-not-exists",
-        description: @"When true, return an existing unexpired token of this preview that stays valid at least until expires_at instead of creating a new one. Defaults to false when omitted.");
+        description: @"When true, may return an existing unexpired token of this preview that stays valid at least until expires_at instead of creating a new one. A token created a moment earlier may not be found yet, in which case a new token is created. Defaults to false when omitted.");
 
     private static Option<global::System.DateTime> ExpiresAt { get; } = new(
         name: @"--expires-at")
@@ -83,7 +83,7 @@ internal static partial class PreviewsCreateSandboxPreviewTokenCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"create-sandbox-preview-token", @"Create a preview token
-Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?bl_preview_token=&lt;token&gt;.");
+Create a token granting access to a private preview until expires_at. Append it to the preview URL as ?preview_token=&lt;token&gt;.");
                         command.Arguments.Add(SandboxName);
                         command.Arguments.Add(PreviewName);
                         command.Options.Add(TeamId);

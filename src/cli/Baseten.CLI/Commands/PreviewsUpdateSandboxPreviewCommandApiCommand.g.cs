@@ -30,34 +30,22 @@ internal static partial class PreviewsUpdateSandboxPreviewCommandApiCommand
     {
         Description = @"Optional team ID. Must match the team_id query parameter when both are supplied. If neither selector is supplied, defaults to the caller's only accessible team. Callers with multiple accessible teams must select a team. Requests without access to any team are forbidden.",
     };
+      private static Option<string?> Input { get; } = new(@"--input")
+      {
+          Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
+      };
 
-    private static Option<bool?> Public { get; } = CliRuntime.CreateNullableBoolOption(
-        name: @"--public",
-        description: @"Whether the URL is reachable without a preview token. Defaults to false.");
+      private static Option<string?> RequestJson { get; } = new(@"--request-json")
+      {
+          Description = "Request body as JSON.",
+          Hidden = true,
+      };
 
-    private static Option<global::System.Collections.Generic.Dictionary<string, string>?> ResponseHeaders { get; } = new(
-        name: @"--response-headers")
-    {
-        Description = @"Headers added to every response served by the preview, for example CORS headers.",
-    };
-
-    private static Option<global::System.Collections.Generic.Dictionary<string, string>?> RequestHeaders { get; } = new(
-        name: @"--request-headers")
-    {
-        Description = @"Headers added to every request forwarded to the sandbox, for example an Authorization header expected by the application. Responses return each name with the value ""****"", except a GET with show_secrets=true by a workspace administrator. Sending ""****"" back as a value returns 400. A PATCH replaces the whole set.",
-    };
-
-    private static Option<string?> Ttl { get; } = new(
-        name: @"--ttl")
-    {
-        Description = @"Lifetime counted from the request, using seconds, minutes, hours or composite durations such as 1h30m. Whole days are also supported, for example 7d; days cannot be combined with other units. The preview is deleted when it elapses.",
-    };
-
-    private static Option<global::System.DateTime?> ExpiresAt { get; } = new(
-        name: @"--expires-at")
-    {
-        Description = @"Time at which the preview is deleted. Must be in the future.",
-    };
+      private static Option<string?> RequestFile { get; } = new(@"--request-file")
+      {
+          Description = "Path to a JSON request file, or '-' for stdin.",
+          Hidden = true,
+      };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.SandboxPreviewV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -89,12 +77,20 @@ Partially update the preview. Omitted fields remain unchanged; supplied header m
                         command.Arguments.Add(PreviewName);
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);
-                        command.Options.Add(Public);
-                        command.Options.Add(ResponseHeaders);
-                        command.Options.Add(RequestHeaders);
-                        command.Options.Add(Ttl);
-                        command.Options.Add(ExpiresAt);
-
+          command.Options.Add(Input);
+          command.Options.Add(RequestJson);
+          command.Options.Add(RequestFile);
+          command.Validators.Add(result =>
+          {
+              var hasInput = result.GetResult(Input) is not null;
+              var hasRequestJson = result.GetResult(RequestJson) is not null;
+              var hasRequestFile = result.GetResult(RequestFile) is not null;
+              var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
+              if (specifiedCount != 1)
+              {
+                  result.AddError(@"Specify exactly one of --input, --request-json, or --request-file.");
+              }
+          });
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
@@ -103,11 +99,13 @@ Partially update the preview. Omitted fields remain unchanged; supplied header m
                         var previewName = parseResult.GetRequiredValue(PreviewName);
                         var teamId = parseResult.GetValue(TeamId);
                         var xTeamId = parseResult.GetValue(XTeamId);
-                        var @public = parseResult.GetValue(Public);
-                        var responseHeaders = parseResult.GetValue(ResponseHeaders);
-                        var requestHeaders = parseResult.GetValue(RequestHeaders);
-                        var ttl = parseResult.GetValue(Ttl);
-                        var expiresAt = parseResult.GetValue(ExpiresAt);
+                        var request = await CliRuntime.ReadRequestAsync<global::Baseten.UpdateSandboxPreviewRequestV1>(
+                            parseResult,
+                            Input,
+                            RequestJson,
+                            RequestFile,
+                            global::Baseten.SourceGenerationContext.Default,
+                            cancellationToken).ConfigureAwait(false);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -116,11 +114,7 @@ Partially update the preview. Omitted fields remain unchanged; supplied header m
                                     previewName: previewName,
                                     teamId: teamId,
                                     xTeamId: xTeamId,
-                                    @public: @public,
-                                    responseHeaders: responseHeaders,
-                                    requestHeaders: requestHeaders,
-                                    ttl: ttl,
-                                    expiresAt: expiresAt,
+                                    request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
