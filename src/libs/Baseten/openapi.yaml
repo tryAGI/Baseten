@@ -17069,6 +17069,9 @@
                                 "SECRET_DELETED": "#/components/schemas/AuditLogEventSecretDeletedV1",
                                 "SECRET_UPDATED": "#/components/schemas/AuditLogEventSecretUpdatedV1",
                                 "SSH_CERTIFICATE_SIGNED": "#/components/schemas/AuditLogEventSshCertificateSignedV1",
+                                "TELEMETRY_EXPORT_CREATED": "#/components/schemas/AuditLogEventTelemetryExportCreatedV1",
+                                "TELEMETRY_EXPORT_DELETED": "#/components/schemas/AuditLogEventTelemetryExportDeletedV1",
+                                "TELEMETRY_EXPORT_UPDATED": "#/components/schemas/AuditLogEventTelemetryExportUpdatedV1",
                                 "USER_INVITED": "#/components/schemas/AuditLogEventUserInvitedV1",
                                 "USER_JOINED_ORGANIZATION": "#/components/schemas/AuditLogEventUserJoinedOrganizationV1",
                                 "USER_REMOVED": "#/components/schemas/AuditLogEventUserRemovedV1",
@@ -17245,6 +17248,15 @@
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventVolumeUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventTelemetryExportCreatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventTelemetryExportUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventTelemetryExportDeletedV1"
                             }
                         ],
                         "title": "Event Data"
@@ -20687,6 +20699,83 @@
                 "title": "AuditLogEventSshCertificateSignedV1",
                 "type": "object"
             },
+            "AuditLogEventTelemetryExportCreatedV1": {
+                "description": "A telemetry export configuration was created.",
+                "properties": {
+                    "telemetry_export_configuration_id": {
+                        "title": "Telemetry Export Configuration Id",
+                        "type": "string"
+                    },
+                    "event_type": {
+                        "const": "TELEMETRY_EXPORT_CREATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "telemetry_export_configuration_id",
+                    "event_type"
+                ],
+                "title": "AuditLogEventTelemetryExportCreatedV1",
+                "type": "object"
+            },
+            "AuditLogEventTelemetryExportDeletedV1": {
+                "description": "A telemetry export configuration was deleted.",
+                "properties": {
+                    "telemetry_export_configuration_id": {
+                        "title": "Telemetry Export Configuration Id",
+                        "type": "string"
+                    },
+                    "event_type": {
+                        "const": "TELEMETRY_EXPORT_DELETED",
+                        "title": "Event Type",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "telemetry_export_configuration_id",
+                    "event_type"
+                ],
+                "title": "AuditLogEventTelemetryExportDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventTelemetryExportUpdatedV1": {
+                "description": "A telemetry export configuration was updated. `enabled` is the new value when this update\npaused or resumed exporting and null when only the endpoint, protocol, headers, or credential\nchanged; a pause whose actor is the Baseten system was Baseten's own.",
+                "properties": {
+                    "telemetry_export_configuration_id": {
+                        "title": "Telemetry Export Configuration Id",
+                        "type": "string"
+                    },
+                    "event_type": {
+                        "const": "TELEMETRY_EXPORT_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "credential_rotated": {
+                        "title": "Credential Rotated",
+                        "type": "boolean"
+                    },
+                    "enabled": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Enabled"
+                    }
+                },
+                "required": [
+                    "telemetry_export_configuration_id",
+                    "event_type",
+                    "credential_rotated",
+                    "enabled"
+                ],
+                "title": "AuditLogEventTelemetryExportUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventTypeV1": {
                 "description": "Type of action recorded by an audit-log entry.",
                 "enum": [
@@ -20742,7 +20831,10 @@
                     "VOLUME_VERSION_RESTORED",
                     "VOLUME_TAG_SET",
                     "VOLUME_TAG_DELETED",
-                    "VOLUME_UPDATED"
+                    "VOLUME_UPDATED",
+                    "TELEMETRY_EXPORT_CREATED",
+                    "TELEMETRY_EXPORT_UPDATED",
+                    "TELEMETRY_EXPORT_DELETED"
                 ],
                 "title": "AuditLogEventTypeV1",
                 "type": "string"
@@ -21235,7 +21327,8 @@
                     "WEBHOOK_SIGNING_SECRETS",
                     "USER_MANAGEMENT",
                     "DIRECTORY_GROUP_MANAGEMENT",
-                    "SSH"
+                    "SSH",
+                    "TELEMETRY_EXPORT"
                 ],
                 "title": "AuditLogEventTypeGroupV1",
                 "type": "string"

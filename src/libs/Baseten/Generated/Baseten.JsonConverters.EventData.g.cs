@@ -392,6 +392,27 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventVolumeUpdatedV1)}");
                 volumeUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.AuditLogEventTelemetryExportCreatedV1? telemetryExportCreated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventTelemetryExportCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventTelemetryExportCreatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventTelemetryExportCreatedV1)}");
+                telemetryExportCreated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventTelemetryExportUpdatedV1? telemetryExportUpdated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventTelemetryExportUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventTelemetryExportUpdatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventTelemetryExportUpdatedV1)}");
+                telemetryExportUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventTelemetryExportDeletedV1? telemetryExportDeleted = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventTelemetryExportDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventTelemetryExportDeletedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventTelemetryExportDeletedV1)}");
+                telemetryExportDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Baseten.EventData(
                 discriminator?.EventType,
@@ -499,7 +520,13 @@ namespace Baseten.JsonConverters
 
                 volumeTagDeleted,
 
-                volumeUpdated
+                volumeUpdated,
+
+                telemetryExportCreated,
+
+                telemetryExportUpdated,
+
+                telemetryExportDeleted
                 );
 
             return __value;
@@ -831,6 +858,24 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventVolumeUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventVolumeUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventVolumeUpdatedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVolumeUpdated(), typeInfo);
+            }
+            else if (value.IsTelemetryExportCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventTelemetryExportCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventTelemetryExportCreatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventTelemetryExportCreatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTelemetryExportCreated(), typeInfo);
+            }
+            else if (value.IsTelemetryExportUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventTelemetryExportUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventTelemetryExportUpdatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventTelemetryExportUpdatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTelemetryExportUpdated(), typeInfo);
+            }
+            else if (value.IsTelemetryExportDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventTelemetryExportDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventTelemetryExportDeletedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventTelemetryExportDeletedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTelemetryExportDeleted(), typeInfo);
             }
         }
     }

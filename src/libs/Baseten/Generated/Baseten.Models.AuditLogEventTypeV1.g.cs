@@ -167,6 +167,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        TelemetryExportCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        TelemetryExportDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        TelemetryExportUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         UserInvited,
         /// <summary>
         ///
@@ -273,6 +285,9 @@ namespace Baseten
                 AuditLogEventTypeV1.SecretDeleted => "SECRET_DELETED",
                 AuditLogEventTypeV1.SecretUpdated => "SECRET_UPDATED",
                 AuditLogEventTypeV1.SshCertificateSigned => "SSH_CERTIFICATE_SIGNED",
+                AuditLogEventTypeV1.TelemetryExportCreated => "TELEMETRY_EXPORT_CREATED",
+                AuditLogEventTypeV1.TelemetryExportDeleted => "TELEMETRY_EXPORT_DELETED",
+                AuditLogEventTypeV1.TelemetryExportUpdated => "TELEMETRY_EXPORT_UPDATED",
                 AuditLogEventTypeV1.UserInvited => "USER_INVITED",
                 AuditLogEventTypeV1.UserJoinedOrganization => "USER_JOINED_ORGANIZATION",
                 AuditLogEventTypeV1.UserRemoved => "USER_REMOVED",
@@ -336,6 +351,9 @@ namespace Baseten
                 "SECRET_DELETED" => AuditLogEventTypeV1.SecretDeleted,
                 "SECRET_UPDATED" => AuditLogEventTypeV1.SecretUpdated,
                 "SSH_CERTIFICATE_SIGNED" => AuditLogEventTypeV1.SshCertificateSigned,
+                "TELEMETRY_EXPORT_CREATED" => AuditLogEventTypeV1.TelemetryExportCreated,
+                "TELEMETRY_EXPORT_DELETED" => AuditLogEventTypeV1.TelemetryExportDeleted,
+                "TELEMETRY_EXPORT_UPDATED" => AuditLogEventTypeV1.TelemetryExportUpdated,
                 "USER_INVITED" => AuditLogEventTypeV1.UserInvited,
                 "USER_JOINED_ORGANIZATION" => AuditLogEventTypeV1.UserJoinedOrganization,
                 "USER_REMOVED" => AuditLogEventTypeV1.UserRemoved,
