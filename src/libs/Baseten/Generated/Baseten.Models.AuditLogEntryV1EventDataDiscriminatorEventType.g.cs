@@ -167,6 +167,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        TelemetryExportCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        TelemetryExportDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        TelemetryExportUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         UserInvited,
         /// <summary>
         ///
@@ -273,6 +285,9 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.SecretDeleted => "SECRET_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.SecretUpdated => "SECRET_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.SshCertificateSigned => "SSH_CERTIFICATE_SIGNED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportCreated => "TELEMETRY_EXPORT_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportDeleted => "TELEMETRY_EXPORT_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportUpdated => "TELEMETRY_EXPORT_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserInvited => "USER_INVITED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserJoinedOrganization => "USER_JOINED_ORGANIZATION",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserRemoved => "USER_REMOVED",
@@ -336,6 +351,9 @@ namespace Baseten
                 "SECRET_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.SecretDeleted,
                 "SECRET_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.SecretUpdated,
                 "SSH_CERTIFICATE_SIGNED" => AuditLogEntryV1EventDataDiscriminatorEventType.SshCertificateSigned,
+                "TELEMETRY_EXPORT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportCreated,
+                "TELEMETRY_EXPORT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportDeleted,
+                "TELEMETRY_EXPORT_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportUpdated,
                 "USER_INVITED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserInvited,
                 "USER_JOINED_ORGANIZATION" => AuditLogEntryV1EventDataDiscriminatorEventType.UserJoinedOrganization,
                 "USER_REMOVED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserRemoved,

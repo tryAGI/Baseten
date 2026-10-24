@@ -75,6 +75,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        TelemetryExport,
+        /// <summary>
+        ///
+        /// </summary>
         UserManagement,
         /// <summary>
         ///
@@ -110,6 +114,7 @@ namespace Baseten
                 AuditLogEventTypeGroupV1.RequestBackpressureSettings => "REQUEST_BACKPRESSURE_SETTINGS",
                 AuditLogEventTypeGroupV1.Secrets => "SECRETS",
                 AuditLogEventTypeGroupV1.Ssh => "SSH",
+                AuditLogEventTypeGroupV1.TelemetryExport => "TELEMETRY_EXPORT",
                 AuditLogEventTypeGroupV1.UserManagement => "USER_MANAGEMENT",
                 AuditLogEventTypeGroupV1.WebhookSigningSecrets => "WEBHOOK_SIGNING_SECRETS",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -138,6 +143,7 @@ namespace Baseten
                 "REQUEST_BACKPRESSURE_SETTINGS" => AuditLogEventTypeGroupV1.RequestBackpressureSettings,
                 "SECRETS" => AuditLogEventTypeGroupV1.Secrets,
                 "SSH" => AuditLogEventTypeGroupV1.Ssh,
+                "TELEMETRY_EXPORT" => AuditLogEventTypeGroupV1.TelemetryExport,
                 "USER_MANAGEMENT" => AuditLogEventTypeGroupV1.UserManagement,
                 "WEBHOOK_SIGNING_SECRETS" => AuditLogEventTypeGroupV1.WebhookSigningSecrets,
                 _ => null,
