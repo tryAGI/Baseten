@@ -68,6 +68,7 @@ Creates a trainer-only Loops run in the given session, without a sampler. To sam
                         command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.Path);
                         command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromRunId);
                         command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromSessionId);
+                        command.Options.Add(CreateLoopsTrainerRequestV1OptionSetOptions.BaseCheckpoint);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -105,6 +106,7 @@ Creates a trainer-only Loops run in the given session, without a sampler. To sam
                         var path = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.Path) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.Path) : (__requestBase is { } __PathBaseValue ? __PathBaseValue.Path : default);
                         var reuseFromRunId = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromRunId) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromRunId) : (__requestBase is { } __ReuseFromRunIdBaseValue ? __ReuseFromRunIdBaseValue.ReuseFromRunId : default);
                         var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromSessionId) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
+                        var baseCheckpoint = CliRuntime.WasSpecified(parseResult, CreateLoopsTrainerRequestV1OptionSetOptions.BaseCheckpoint) ? parseResult.GetValue(CreateLoopsTrainerRequestV1OptionSetOptions.BaseCheckpoint) : (__requestBase is { } __BaseCheckpointBaseValue ? __BaseCheckpointBaseValue.BaseCheckpoint : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -122,6 +124,7 @@ Creates a trainer-only Loops run in the given session, without a sampler. To sam
                                     path: path,
                                     reuseFromRunId: reuseFromRunId,
                                     reuseFromSessionId: reuseFromSessionId,
+                                    baseCheckpoint: baseCheckpoint,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

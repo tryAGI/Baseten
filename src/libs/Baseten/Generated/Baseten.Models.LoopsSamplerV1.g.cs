@@ -79,6 +79,13 @@ namespace Baseten
         public int? NodeCount { get; set; }
 
         /// <summary>
+        /// The custom base checkpoint the sampler serves, pinned to a commit (hf://&lt;org&gt;/&lt;repo&gt;@&lt;sha&gt;). Null when it uses the base model's own weights.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_checkpoint")]
+        public string? BaseCheckpoint { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -117,6 +124,10 @@ namespace Baseten
         /// Number of nodes serving the sampler.<br/>
         /// Default Value: 1
         /// </param>
+        /// <param name="baseCheckpoint">
+        /// The custom base checkpoint the sampler serves, pinned to a commit (hf://&lt;org&gt;/&lt;repo&gt;@&lt;sha&gt;). Null when it uses the base model's own weights.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -130,7 +141,8 @@ namespace Baseten
             string? modelId,
             string? deploymentId,
             global::Baseten.InstanceTypeV1? instanceType,
-            int? nodeCount)
+            int? nodeCount,
+            string? baseCheckpoint)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
@@ -142,6 +154,7 @@ namespace Baseten
             this.User = user ?? throw new global::System.ArgumentNullException(nameof(user));
             this.InstanceType = instanceType;
             this.NodeCount = nodeCount;
+            this.BaseCheckpoint = baseCheckpoint;
         }
 
         /// <summary>

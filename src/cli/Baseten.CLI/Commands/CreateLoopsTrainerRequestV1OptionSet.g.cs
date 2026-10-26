@@ -16,7 +16,8 @@ internal sealed record CreateLoopsTrainerRequestV1OptionSet(
                      Option<int?> Replicas,
                      Option<string?> Path,
                      Option<string?> ReuseFromRunId,
-                     Option<string?> ReuseFromSessionId)
+                     Option<string?> ReuseFromSessionId,
+                     Option<string?> BaseCheckpoint)
 {
     public static CreateLoopsTrainerRequestV1OptionSet Create(string? prefix = null)
     {
@@ -73,6 +74,10 @@ internal sealed record CreateLoopsTrainerRequestV1OptionSet(
                 ReuseFromSessionId: new Option<string?>($"--{normalizedPrefix}reuse-from-session-id")
                 {
                     Description = @"Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.",
+                },
+                BaseCheckpoint: new Option<string?>($"--{normalizedPrefix}base-checkpoint")
+                {
+                    Description = @"Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://<org>/<repo>[@<revision>]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.",
                 }
         );
     }
