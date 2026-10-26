@@ -40,6 +40,13 @@ namespace Baseten
         public required string BaseModel { get; set; }
 
         /// <summary>
+        /// The custom base checkpoint the deployment's trainer loaded, pinned to a commit (hf://&lt;org&gt;/&lt;repo&gt;@&lt;sha&gt;). Null when it uses the base model's own weights.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_checkpoint")]
+        public string? BaseCheckpoint { get; set; }
+
+        /// <summary>
         /// The run's base URL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_url")]
@@ -134,6 +141,10 @@ namespace Baseten
         /// The ID of the most recent run on this deployment, active or not, so idle deployments still expose a usable run handle. Null only if the deployment has no runs.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="baseCheckpoint">
+        /// The custom base checkpoint the deployment's trainer loaded, pinned to a commit (hf://&lt;org&gt;/&lt;repo&gt;@&lt;sha&gt;). Null when it uses the base model's own weights.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="availabilityModel">
         /// Capacity the trainer was scheduled on.<br/>
         /// Default Value: dedicated
@@ -159,6 +170,7 @@ namespace Baseten
             global::Baseten.InstanceTypeV1 instanceType,
             string? activeRunId,
             string? latestRunId,
+            string? baseCheckpoint,
             global::Baseten.V1AvailabilityModel? availabilityModel,
             int? nodeCount,
             global::Baseten.LoopsSamplerV1? sampler)
@@ -167,6 +179,7 @@ namespace Baseten
             this.ActiveRunId = activeRunId;
             this.LatestRunId = latestRunId;
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
+            this.BaseCheckpoint = baseCheckpoint;
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));
             this.User = user ?? throw new global::System.ArgumentNullException(nameof(user));

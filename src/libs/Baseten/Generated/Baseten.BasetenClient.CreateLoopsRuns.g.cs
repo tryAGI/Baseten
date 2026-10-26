@@ -63,6 +63,7 @@ namespace Baseten
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
         ///   "reuse_from_session_id": null,<br/>
+        ///   "base_checkpoint": null,<br/>
         ///   "sampler_num_replicas": null<br/>
         /// }'
         /// </remarks>
@@ -103,6 +104,7 @@ namespace Baseten
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
         ///   "reuse_from_session_id": null,<br/>
+        ///   "base_checkpoint": null,<br/>
         ///   "sampler_num_replicas": null<br/>
         /// }'
         /// </remarks>
@@ -517,6 +519,10 @@ namespace Baseten
         /// Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="baseCheckpoint">
+        /// Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://&lt;org&gt;/&lt;repo&gt;[@&lt;revision&gt;]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="samplerNumReplicas">
         /// Number of replicas the run's sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged. When the run ends, its sampler is scaled down.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -537,6 +543,7 @@ namespace Baseten
             string? path = default,
             string? reuseFromRunId = default,
             string? reuseFromSessionId = default,
+            string? baseCheckpoint = default,
             int? samplerNumReplicas = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -555,6 +562,7 @@ namespace Baseten
                 Path = path,
                 ReuseFromRunId = reuseFromRunId,
                 ReuseFromSessionId = reuseFromSessionId,
+                BaseCheckpoint = baseCheckpoint,
                 SamplerNumReplicas = samplerNumReplicas,
             };
 

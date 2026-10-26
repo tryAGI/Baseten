@@ -51,6 +51,13 @@ namespace Baseten
         public string? LoraConfigVersion { get; set; }
 
         /// <summary>
+        /// The custom base checkpoint the run started from, pinned to a commit (hf://&lt;org&gt;/&lt;repo&gt;@&lt;sha&gt;). Null when it uses the base model's own weights.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_checkpoint")]
+        public string? BaseCheckpoint { get; set; }
+
+        /// <summary>
         /// The run's base URL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_url")]
@@ -126,6 +133,10 @@ namespace Baseten
         /// The run's immutable LoRA config version.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="baseCheckpoint">
+        /// The custom base checkpoint the run started from, pinned to a commit (hf://&lt;org&gt;/&lt;repo&gt;@&lt;sha&gt;). Null when it uses the base model's own weights.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="sampler">
         /// The sampler bound to this run, or null for a trainer-only run that has not yet created a sampler.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -144,6 +155,7 @@ namespace Baseten
             global::Baseten.UserV1 user,
             string? deploymentId,
             string? loraConfigVersion,
+            string? baseCheckpoint,
             global::Baseten.LoopsSamplerV1? sampler)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
@@ -152,6 +164,7 @@ namespace Baseten
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.LoraConfigVersion = loraConfigVersion;
+            this.BaseCheckpoint = baseCheckpoint;
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.CreatedAt = createdAt;
             this.Status = status ?? throw new global::System.ArgumentNullException(nameof(status));

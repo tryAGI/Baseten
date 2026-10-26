@@ -65,7 +65,8 @@ namespace Baseten
         ///   "availability_model": "spot",<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
-        ///   "reuse_from_session_id": null<br/>
+        ///   "reuse_from_session_id": null,<br/>
+        ///   "base_checkpoint": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateTeamsByTeamIdLoopsTrainersAsync(
@@ -107,7 +108,8 @@ namespace Baseten
         ///   "availability_model": "spot",<br/>
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
-        ///   "reuse_from_session_id": null<br/>
+        ///   "reuse_from_session_id": null,<br/>
+        ///   "base_checkpoint": null<br/>
         /// }'
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateTeamsByTeamIdLoopsTrainersAsResponseAsync(
@@ -525,6 +527,10 @@ namespace Baseten
         /// Optional ID of a prior Loops session whose trainer and/or sampler should be reused for this run. Deprecated in favor of reuse_from_run_id.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="baseCheckpoint">
+        /// Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://&lt;org&gt;/&lt;repo&gt;[@&lt;revision&gt;]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -542,6 +548,7 @@ namespace Baseten
             string? path = default,
             string? reuseFromRunId = default,
             string? reuseFromSessionId = default,
+            string? baseCheckpoint = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -559,6 +566,7 @@ namespace Baseten
                 Path = path,
                 ReuseFromRunId = reuseFromRunId,
                 ReuseFromSessionId = reuseFromSessionId,
+                BaseCheckpoint = baseCheckpoint,
             };
 
             return await CreateTeamsByTeamIdLoopsTrainersAsync(
