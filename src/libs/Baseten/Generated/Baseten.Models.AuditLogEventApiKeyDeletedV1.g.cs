@@ -38,6 +38,12 @@ namespace Baseten
         public required string Prefix { get; set; }
 
         /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("revocation_reason")]
+        public global::Baseten.AuditLogApiKeyRevocationReasonV1? RevocationReason { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -51,6 +57,9 @@ namespace Baseten
         /// Type of API key recorded on an API-key event.
         /// </param>
         /// <param name="prefix"></param>
+        /// <param name="revocationReason">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="eventType"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,12 +68,14 @@ namespace Baseten
             string apiKeyId,
             global::Baseten.AuditLogApiKeyTypeV1 apiKeyType,
             string prefix,
+            global::Baseten.AuditLogApiKeyRevocationReasonV1? revocationReason,
             string eventType = "API_KEY_DELETED")
         {
             this.EventType = eventType;
             this.ApiKeyId = apiKeyId ?? throw new global::System.ArgumentNullException(nameof(apiKeyId));
             this.ApiKeyType = apiKeyType;
             this.Prefix = prefix ?? throw new global::System.ArgumentNullException(nameof(prefix));
+            this.RevocationReason = revocationReason;
         }
 
         /// <summary>

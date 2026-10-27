@@ -16990,6 +16990,14 @@
                 "title": "AuditLogActorV1",
                 "type": "object"
             },
+            "AuditLogApiKeyRevocationReasonV1": {
+                "description": "Reason an API key was revoked.",
+                "enum": [
+                    "INACTIVITY"
+                ],
+                "title": "AuditLogApiKeyRevocationReasonV1",
+                "type": "string"
+            },
             "AuditLogApiKeyTypeV1": {
                 "description": "Type of API key recorded on an API-key event.",
                 "enum": [
@@ -17374,6 +17382,17 @@
                     "prefix": {
                         "title": "Prefix",
                         "type": "string"
+                    },
+                    "revocation_reason": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogApiKeyRevocationReasonV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null
                     }
                 },
                 "required": [
