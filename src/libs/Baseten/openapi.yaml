@@ -33516,7 +33516,8 @@
                     "audio",
                     "video",
                     "embedding",
-                    "rerank"
+                    "rerank",
+                    "decision"
                 ],
                 "title": "LibraryListingModality",
                 "type": "string"

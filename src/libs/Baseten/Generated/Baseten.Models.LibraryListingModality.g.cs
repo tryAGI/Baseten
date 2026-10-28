@@ -15,6 +15,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Decision,
+        /// <summary>
+        ///
+        /// </summary>
         Embedding,
         /// <summary>
         ///
@@ -47,6 +51,7 @@ namespace Baseten
             return value switch
             {
                 LibraryListingModality.Audio => "audio",
+                LibraryListingModality.Decision => "decision",
                 LibraryListingModality.Embedding => "embedding",
                 LibraryListingModality.Image => "image",
                 LibraryListingModality.Rerank => "rerank",
@@ -63,6 +68,7 @@ namespace Baseten
             return value switch
             {
                 "audio" => LibraryListingModality.Audio,
+                "decision" => LibraryListingModality.Decision,
                 "embedding" => LibraryListingModality.Embedding,
                 "image" => LibraryListingModality.Image,
                 "rerank" => LibraryListingModality.Rerank,
