@@ -23,7 +23,7 @@ namespace Baseten
         public global::System.Collections.Generic.Dictionary<string, string>? ResponseHeaders { get; set; }
 
         /// <summary>
-        /// Headers added to every request forwarded to the sandbox, for example an Authorization header expected by the application. Responses return each name with the value "****", except a GET with show_secrets=true by a workspace administrator. Sending "****" back as a value returns 400. A PATCH replaces the whole set.<br/>
+        /// Headers added to every request forwarded to the sandbox, for example an Authorization header expected by the application. Responses return each name with the value "****", except a GET with show_secrets=true by a workspace administrator. Sending "****" back as a value returns 400. A PATCH replaces the whole set. Some header names are reserved by the platform.<br/>
         /// Example: {"Authorization":"Bearer app-internal-token"}
         /// </summary>
         /// <example>{"Authorization":"Bearer app-internal-token"}</example>
@@ -55,7 +55,7 @@ namespace Baseten
         /// Headers added to every response served by the preview, for example CORS headers.
         /// </param>
         /// <param name="requestHeaders">
-        /// Headers added to every request forwarded to the sandbox, for example an Authorization header expected by the application. Responses return each name with the value "****", except a GET with show_secrets=true by a workspace administrator. Sending "****" back as a value returns 400. A PATCH replaces the whole set.<br/>
+        /// Headers added to every request forwarded to the sandbox, for example an Authorization header expected by the application. Responses return each name with the value "****", except a GET with show_secrets=true by a workspace administrator. Sending "****" back as a value returns 400. A PATCH replaces the whole set. Some header names are reserved by the platform.<br/>
         /// Example: {"Authorization":"Bearer app-internal-token"}
         /// </param>
         /// <param name="expiresAt">

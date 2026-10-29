@@ -67,6 +67,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.OneOf<string, int?>), TypeInfoPropertyName = "OneOfStringInt322")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxConfigurationV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxVolumeAttachmentV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateSandboxRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateSandboxRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxV1), TypeInfoPropertyName = "SandboxV12")]
@@ -110,6 +112,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxProxyTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxPortV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxEnvV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxVolumeAttachmentV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SandboxMetricNameV1>))]
     internal sealed partial class SandboxesSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -182,6 +185,9 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.OneOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Baseten.JsonConverters.OneOfJsonConverter<string, int?>());
+            options.Converters.Add(new global::Baseten.JsonConverters.OneOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Baseten.JsonConverters.OneOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Baseten.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());

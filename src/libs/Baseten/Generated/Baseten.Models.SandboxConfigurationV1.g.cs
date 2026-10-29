@@ -26,7 +26,7 @@ namespace Baseten
         public global::Baseten.SandboxNetworkV1? Network { get; set; }
 
         /// <summary>
-        /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the closest region is selected.<br/>
+        /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the default sandbox region is used.<br/>
         /// Example: us-pdx-1
         /// </summary>
         /// <example>us-pdx-1</example>
@@ -64,6 +64,12 @@ namespace Baseten
         /// <example>{"max_memory_usage":"80%"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("filesystem")]
         public global::Baseten.SandboxFilesystemV1? Filesystem { get; set; }
+
+        /// <summary>
+        /// Volumes mounted in the sandbox. Set at creation only.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("volumes")]
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>? Volumes { get; set; }
 
         /// <summary>
         /// Set of ports for a resource<br/>
@@ -107,7 +113,7 @@ namespace Baseten
         /// Example: {"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"}
         /// </param>
         /// <param name="region">
-        /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the closest region is selected.<br/>
+        /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the default sandbox region is used.<br/>
         /// Example: us-pdx-1
         /// </param>
         /// <param name="envs">
@@ -125,6 +131,9 @@ namespace Baseten
         /// <param name="filesystem">
         /// Filesystem configuration. Set at creation only.<br/>
         /// Example: {"max_memory_usage":"80%"}
+        /// </param>
+        /// <param name="volumes">
+        /// Volumes mounted in the sandbox. Set at creation only.
         /// </param>
         /// <param name="ports">
         /// Set of ports for a resource<br/>
@@ -149,6 +158,7 @@ namespace Baseten
             string? image,
             long? memory,
             global::Baseten.SandboxFilesystemV1? filesystem,
+            global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>? volumes,
             global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? ports,
             string? externalId,
             global::System.Collections.Generic.Dictionary<string, string>? labels)
@@ -160,6 +170,7 @@ namespace Baseten
             this.Image = image;
             this.Memory = memory;
             this.Filesystem = filesystem;
+            this.Volumes = volumes;
             this.Ports = ports;
             this.ExternalId = externalId;
             this.Labels = labels;

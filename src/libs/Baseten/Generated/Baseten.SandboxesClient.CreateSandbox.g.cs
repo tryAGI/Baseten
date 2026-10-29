@@ -674,7 +674,7 @@ namespace Baseten
         /// Example: {"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"}
         /// </param>
         /// <param name="region">
-        /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the closest region is selected.<br/>
+        /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the default sandbox region is used.<br/>
         /// Example: us-pdx-1
         /// </param>
         /// <param name="envs">
@@ -694,6 +694,9 @@ namespace Baseten
         /// <param name="filesystem">
         /// Filesystem configuration. Set at creation only.<br/>
         /// Example: {"max_memory_usage":"80%"}
+        /// </param>
+        /// <param name="volumes">
+        /// Volumes mounted in the sandbox. Set at creation only.
         /// </param>
         /// <param name="ports">
         /// Set of ports for a resource<br/>
@@ -722,6 +725,7 @@ namespace Baseten
             string? image = default,
             long? memory = default,
             global::Baseten.SandboxFilesystemV1? filesystem = default,
+            global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>? volumes = default,
             global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? ports = default,
             string? externalId = default,
             global::System.Collections.Generic.Dictionary<string, string>? labels = default,
@@ -739,6 +743,7 @@ namespace Baseten
                 Image = image,
                 Memory = memory,
                 Filesystem = filesystem,
+                Volumes = volumes,
                 Ports = ports,
                 ExternalId = externalId,
                 Labels = labels,

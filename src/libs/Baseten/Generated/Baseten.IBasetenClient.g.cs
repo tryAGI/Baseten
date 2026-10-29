@@ -60,5 +60,10 @@ namespace Baseten
         /// </summary>
         public SandboxesClient Sandboxes { get; }
 
+        /// <summary>
+        ///
+        /// </summary>
+        public VolumesClient Volumes { get; }
+
     }
 }

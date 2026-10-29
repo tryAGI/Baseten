@@ -85,7 +85,7 @@ internal static partial class SandboxesUpdateSandboxCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"update-sandbox", @"Update a sandbox
-Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, and ports are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.");
+Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, ports, filesystem, and volumes are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.");
                         command.Arguments.Add(SandboxName);
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);

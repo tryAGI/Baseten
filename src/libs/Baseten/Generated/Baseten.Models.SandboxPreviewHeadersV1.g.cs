@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// HTTP headers as name-value pairs.<br/>
+    /// HTTP headers as name-value pairs. At most 20 headers and 8 KiB of names and values in total unless your quota allows more.<br/>
     /// Example: {"Access-Control-Allow-Origin":"*"}
     /// </summary>
     public sealed partial class SandboxPreviewHeadersV1

@@ -28,6 +28,22 @@ namespace Baseten
         public required string Message { get; set; }
 
         /// <summary>
+        /// Number of unused image versions left for a next call.<br/>
+        /// Example: 0
+        /// </summary>
+        /// <example>0</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("remaining")]
+        public int? Remaining { get; set; }
+
+        /// <summary>
+        /// True when the cleanup stopped on its time limit before every unused version was removed. Call it again to continue.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
+        public bool? HasMore { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,15 +60,27 @@ namespace Baseten
         /// Human-readable cleanup result.<br/>
         /// Example: Removed 3 unused image versions. Image versions used by active sandboxes were retained.
         /// </param>
+        /// <param name="remaining">
+        /// Number of unused image versions left for a next call.<br/>
+        /// Example: 0
+        /// </param>
+        /// <param name="hasMore">
+        /// True when the cleanup stopped on its time limit before every unused version was removed. Call it again to continue.<br/>
+        /// Example: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CleanupSandboxImagesResponseV1(
             int deleted,
-            string message)
+            string message,
+            int? remaining,
+            bool? hasMore)
         {
             this.Deleted = deleted;
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
+            this.Remaining = remaining;
+            this.HasMore = hasMore;
         }
 
         /// <summary>

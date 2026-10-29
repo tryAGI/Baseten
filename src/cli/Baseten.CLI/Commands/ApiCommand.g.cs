@@ -16,6 +16,7 @@ internal static partial class ApiCommand
                          command.Subcommands.Add(ImagesApiGroupCommand.Create());
                          command.Subcommands.Add(PreviewsApiGroupCommand.Create());
                          command.Subcommands.Add(SandboxesApiGroupCommand.Create());
+                         command.Subcommands.Add(VolumesApiGroupCommand.Create());
         CustomizeCommand(ref command);
         return command;
     }
