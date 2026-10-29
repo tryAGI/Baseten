@@ -9,10 +9,10 @@ namespace Baseten
     public sealed partial class SandboxLibraryImageVolumeV1
     {
         /// <summary>
-        /// Volume name, or an internal identifier for ephemeral volumes.<br/>
-        /// Example: scratch
+        /// Volume name, used in volume_name path parameters and sandbox volumes.<br/>
+        /// Example: datasets
         /// </summary>
-        /// <example>scratch</example>
+        /// <example>datasets</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Name { get; set; }
@@ -25,22 +25,6 @@ namespace Baseten
         [global::System.Text.Json.Serialization.JsonPropertyName("mount_path")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string MountPath { get; set; }
-
-        /// <summary>
-        /// Volume type, persistent when empty.<br/>
-        /// Example: ephemeral
-        /// </summary>
-        /// <example>ephemeral</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; }
-
-        /// <summary>
-        /// Storage capacity in megabytes for ephemeral volumes.<br/>
-        /// Example: 10240
-        /// </summary>
-        /// <example>10240</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("size_mb")]
-        public long? SizeMb { get; set; }
 
         /// <summary>
         /// Whether the volume is mounted read-only.<br/>
@@ -60,20 +44,12 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="SandboxLibraryImageVolumeV1" /> class.
         /// </summary>
         /// <param name="name">
-        /// Volume name, or an internal identifier for ephemeral volumes.<br/>
-        /// Example: scratch
+        /// Volume name, used in volume_name path parameters and sandbox volumes.<br/>
+        /// Example: datasets
         /// </param>
         /// <param name="mountPath">
         /// Absolute filesystem path where the volume is mounted.<br/>
         /// Example: /mnt/data
-        /// </param>
-        /// <param name="type">
-        /// Volume type, persistent when empty.<br/>
-        /// Example: ephemeral
-        /// </param>
-        /// <param name="sizeMb">
-        /// Storage capacity in megabytes for ephemeral volumes.<br/>
-        /// Example: 10240
         /// </param>
         /// <param name="readOnly">
         /// Whether the volume is mounted read-only.<br/>
@@ -85,14 +61,10 @@ namespace Baseten
         public SandboxLibraryImageVolumeV1(
             string name,
             string mountPath,
-            string? type,
-            long? sizeMb,
             bool? readOnly)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.MountPath = mountPath ?? throw new global::System.ArgumentNullException(nameof(mountPath));
-            this.Type = type;
-            this.SizeMb = sizeMb;
             this.ReadOnly = readOnly;
         }
 

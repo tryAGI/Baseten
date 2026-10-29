@@ -49,7 +49,7 @@ namespace Baseten
 
         /// <summary>
         /// Update a sandbox<br/>
-        /// Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, and ports are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.
+        /// Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, ports, filesystem, and volumes are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -81,7 +81,7 @@ namespace Baseten
         }
         /// <summary>
         /// Update a sandbox<br/>
-        /// Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, and ports are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.
+        /// Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, ports, filesystem, and volumes are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -695,7 +695,7 @@ namespace Baseten
         }
         /// <summary>
         /// Update a sandbox<br/>
-        /// Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, and ports are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.
+        /// Partially update configuration. Omitted fields remain unchanged; supplied arrays and maps replace their previous values. Structured objects update only supplied fields. The name, memory, network, region, image, ports, filesystem, and volumes are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>

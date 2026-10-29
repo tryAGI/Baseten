@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Clean up unused images<br/>
-        /// Remove unused sandbox image versions. Versions referenced by active deployments are preserved.
+        /// Remove unused sandbox image versions. Versions referenced by active deployments are preserved. One call runs for a limited time; when has_more is true, only part of the unused versions were removed and the call should be repeated.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>
@@ -69,7 +69,7 @@ namespace Baseten
         }
         /// <summary>
         /// Clean up unused images<br/>
-        /// Remove unused sandbox image versions. Versions referenced by active deployments are preserved.
+        /// Remove unused sandbox image versions. Versions referenced by active deployments are preserved. One call runs for a limited time; when has_more is true, only part of the unused versions were removed and the call should be repeated.
         /// </summary>
         /// <param name="teamId"></param>
         /// <param name="xTeamId"></param>

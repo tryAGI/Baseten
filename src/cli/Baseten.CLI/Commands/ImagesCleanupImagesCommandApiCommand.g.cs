@@ -44,7 +44,7 @@ internal static partial class ImagesCleanupImagesCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"cleanup-images", @"Clean up unused images
-Remove unused sandbox image versions. Versions referenced by active deployments are preserved.");
+Remove unused sandbox image versions. Versions referenced by active deployments are preserved. One call runs for a limited time; when has_more is true, only part of the unused versions were removed and the call should be repeated.");
                         command.Options.Add(TeamId);
                         command.Options.Add(XTeamId);
 
