@@ -11,6 +11,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Grid,
+        /// <summary>
+        ///
+        /// </summary>
         Personal,
         /// <summary>
         ///
@@ -46,6 +50,7 @@ namespace Baseten
         {
             return value switch
             {
+                APIKeyCategory.Grid => "GRID",
                 APIKeyCategory.Personal => "PERSONAL",
                 APIKeyCategory.Routes => "ROUTES",
                 APIKeyCategory.WorkspaceExportMetrics => "WORKSPACE_EXPORT_METRICS",
@@ -62,6 +67,7 @@ namespace Baseten
         {
             return value switch
             {
+                "GRID" => APIKeyCategory.Grid,
                 "PERSONAL" => APIKeyCategory.Personal,
                 "ROUTES" => APIKeyCategory.Routes,
                 "WORKSPACE_EXPORT_METRICS" => APIKeyCategory.WorkspaceExportMetrics,

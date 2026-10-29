@@ -2618,871 +2618,879 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridClassifierV1? Type645 { get; set; }
+        public global::Baseten.CreateGridTokenRequestV1? Type645 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteRefV1? Type646 { get; set; }
+        public global::Baseten.GridTokenV1? Type646 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteTargetBasetenModelAPIV1? Type647 { get; set; }
+        public global::Baseten.GridClassifierV1? Type647 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteTargetClassifierV1? Type648 { get; set; }
+        public global::Baseten.GridRouteRefV1? Type648 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridRouteRefV1>? Type649 { get; set; }
+        public global::Baseten.GridRouteTargetBasetenModelAPIV1? Type649 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteTargetConnectionV1? Type650 { get; set; }
+        public global::Baseten.GridRouteTargetClassifierV1? Type650 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteV1? Type651 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridRouteRefV1>? Type651 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.Target? Type652 { get; set; }
+        public global::Baseten.GridRouteTargetConnectionV1? Type652 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteV1TargetDiscriminator? Type653 { get; set; }
+        public global::Baseten.GridRouteV1? Type653 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteV1TargetDiscriminatorType? Type654 { get; set; }
+        public global::Baseten.Target? Type654 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRoutesResponseV1? Type655 { get; set; }
+        public global::Baseten.GridRouteV1TargetDiscriminator? Type655 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridRouteV1>? Type656 { get; set; }
+        public global::Baseten.GridRouteV1TargetDiscriminatorType? Type656 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRoutesRequestV1? Type657 { get; set; }
+        public global::Baseten.GridRoutesResponseV1? Type657 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? Type658 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridRouteV1>? Type658 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertGridRouteTargetClassifierV1? Type659 { get; set; }
+        public global::Baseten.GridRoutesRequestV1? Type659 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertGridRouteTargetConnectionV1? Type660 { get; set; }
+        public global::Baseten.UpsertGridRouteTargetBasetenModelAPIV1? Type660 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateGridRouteRequestV1? Type661 { get; set; }
+        public global::Baseten.UpsertGridRouteTargetClassifierV1? Type661 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.Target2? Type662 { get; set; }
+        public global::Baseten.UpsertGridRouteTargetConnectionV1? Type662 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateGridRouteRequestV1TargetDiscriminator? Type663 { get; set; }
+        public global::Baseten.CreateGridRouteRequestV1? Type663 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateGridRouteRequestV1TargetDiscriminatorType? Type664 { get; set; }
+        public global::Baseten.Target2? Type664 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridProviderV1? Type665 { get; set; }
+        public global::Baseten.CreateGridRouteRequestV1TargetDiscriminator? Type665 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteUsageBucketV1? Type666 { get; set; }
+        public global::Baseten.CreateGridRouteRequestV1TargetDiscriminatorType? Type666 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageResultV1>? Type667 { get; set; }
+        public global::Baseten.GridProviderV1? Type667 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteUsageResultV1? Type668 { get; set; }
+        public global::Baseten.GridRouteUsageBucketV1? Type668 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteUsageResponseV1? Type669 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageResultV1>? Type669 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageBucketV1>? Type670 { get; set; }
+        public global::Baseten.GridRouteUsageResultV1? Type670 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteUsageDimensionV1? Type671 { get; set; }
+        public global::Baseten.GridRouteUsageResponseV1? Type671 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteUsageRequestV1? Type672 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageBucketV1>? Type672 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageDimensionV1>? Type673 { get; set; }
+        public global::Baseten.GridRouteUsageDimensionV1? Type673 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? Type674 { get; set; }
+        public global::Baseten.GridRouteUsageRequestV1? Type674 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridRouteTombstoneV1? Type675 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageDimensionV1>? Type675 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridRouteRequestV1? Type676 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? Type676 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.TargetVariant1? Type677 { get; set; }
+        public global::Baseten.GridRouteTombstoneV1? Type677 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridRouteRequestV1TargetVariant1Discriminator? Type678 { get; set; }
+        public global::Baseten.UpdateGridRouteRequestV1? Type678 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType? Type679 { get; set; }
+        public global::Baseten.TargetVariant1? Type679 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridBackgroundHarnessDefaultsV1? Type680 { get; set; }
+        public global::Baseten.UpdateGridRouteRequestV1TargetVariant1Discriminator? Type680 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridHarnessModelV1? Type681 { get; set; }
+        public global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType? Type681 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridHarnessDefaultsV1? Type682 { get; set; }
+        public global::Baseten.GridBackgroundHarnessDefaultsV1? Type682 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridPrimaryHarnessDefaultsV1? Type683 { get; set; }
+        public global::Baseten.GridHarnessModelV1? Type683 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridSettingSourceV1? Type684 { get; set; }
+        public global::Baseten.GridHarnessDefaultsV1? Type684 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridTeamSpendLimitSettingV1? Type685 { get; set; }
+        public global::Baseten.GridPrimaryHarnessDefaultsV1? Type685 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridTeamSettingsV1? Type686 { get; set; }
+        public global::Baseten.GridSettingSourceV1? Type686 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridTeamSettingsRequestV1? Type687 { get; set; }
+        public global::Baseten.GridTeamSpendLimitSettingV1? Type687 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridBackgroundHarnessModelsV1? Type688 { get; set; }
+        public global::Baseten.GridTeamSettingsV1? Type688 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridHarnessDefaultsV1? Type689 { get; set; }
+        public global::Baseten.GridTeamSettingsRequestV1? Type689 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridPrimaryHarnessModelsV1? Type690 { get; set; }
+        public global::Baseten.UpdateGridBackgroundHarnessModelsV1? Type690 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridTeamSpendLimitSettingV1? Type691 { get; set; }
+        public global::Baseten.UpdateGridHarnessDefaultsV1? Type691 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridTeamSettingsRequestV1? Type692 { get; set; }
+        public global::Baseten.UpdateGridPrimaryHarnessModelsV1? Type692 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridEffectiveSpendLimitV1? Type693 { get; set; }
+        public global::Baseten.UpdateGridTeamSpendLimitSettingV1? Type693 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridSpendBlockedByV1? Type694 { get; set; }
+        public global::Baseten.UpdateGridTeamSettingsRequestV1? Type694 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridSpendLimitSettingV1? Type695 { get; set; }
+        public global::Baseten.GridEffectiveSpendLimitV1? Type695 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridSpendLimitTeamDefaultV1? Type696 { get; set; }
+        public global::Baseten.GridSpendBlockedByV1? Type696 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridTeamUserSettingsV1? Type697 { get; set; }
+        public global::Baseten.GridSpendLimitSettingV1? Type697 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridTeamUserSettingsListV1? Type698 { get; set; }
+        public global::Baseten.GridSpendLimitTeamDefaultV1? Type698 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridTeamUserSettingsV1>? Type699 { get; set; }
+        public global::Baseten.GridTeamUserSettingsV1? Type699 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridTeamUserSettingsListRequestV1? Type700 { get; set; }
+        public global::Baseten.GridTeamUserSettingsListV1? Type700 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridSpendLimitSettingV1? Type701 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridTeamUserSettingsV1>? Type701 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridUserSettingsRequestV1? Type702 { get; set; }
+        public global::Baseten.GridTeamUserSettingsListRequestV1? Type702 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionConfigAnthropicV1? Type703 { get; set; }
+        public global::Baseten.UpdateGridSpendLimitSettingV1? Type703 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionConfigOpenAIV1? Type704 { get; set; }
+        public global::Baseten.UpdateGridUserSettingsRequestV1? Type704 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionConfigXAIV1? Type705 { get; set; }
+        public global::Baseten.GridConnectionConfigAnthropicV1? Type705 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionV1? Type706 { get; set; }
+        public global::Baseten.GridConnectionConfigOpenAIV1? Type706 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.Config? Type707 { get; set; }
+        public global::Baseten.GridConnectionConfigXAIV1? Type707 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionV1ConfigDiscriminator? Type708 { get; set; }
+        public global::Baseten.GridConnectionV1? Type708 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionV1ConfigDiscriminatorProvider? Type709 { get; set; }
+        public global::Baseten.Config? Type709 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionsResponseV1? Type710 { get; set; }
+        public global::Baseten.GridConnectionV1ConfigDiscriminator? Type710 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridConnectionV1>? Type711 { get; set; }
+        public global::Baseten.GridConnectionV1ConfigDiscriminatorProvider? Type711 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionsRequestV1? Type712 { get; set; }
+        public global::Baseten.GridConnectionsResponseV1? Type712 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertGridConnectionConfigAnthropicV1? Type713 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridConnectionV1>? Type713 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertGridConnectionConfigOpenAIV1? Type714 { get; set; }
+        public global::Baseten.GridConnectionsRequestV1? Type714 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpsertGridConnectionConfigXAIV1? Type715 { get; set; }
+        public global::Baseten.UpsertGridConnectionConfigAnthropicV1? Type715 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateGridConnectionRequestV1? Type716 { get; set; }
+        public global::Baseten.UpsertGridConnectionConfigOpenAIV1? Type716 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.Config2? Type717 { get; set; }
+        public global::Baseten.UpsertGridConnectionConfigXAIV1? Type717 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminator? Type718 { get; set; }
+        public global::Baseten.CreateGridConnectionRequestV1? Type718 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider? Type719 { get; set; }
+        public global::Baseten.Config2? Type719 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridConnectionTombstoneV1? Type720 { get; set; }
+        public global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminator? Type720 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridConnectionRequestV1? Type721 { get; set; }
+        public global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider? Type721 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.Config3? Type722 { get; set; }
+        public global::Baseten.GridConnectionTombstoneV1? Type722 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminator? Type723 { get; set; }
+        public global::Baseten.UpdateGridConnectionRequestV1? Type723 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider? Type724 { get; set; }
+        public global::Baseten.Config3? Type724 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridClassifiersResponseV1? Type725 { get; set; }
+        public global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminator? Type725 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GridClassifierV1>? Type726 { get; set; }
+        public global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider? Type726 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridClassifiersRequestV1? Type727 { get; set; }
+        public global::Baseten.GridClassifiersResponseV1? Type727 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.EndpointTargetV1? Type728 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GridClassifierV1>? Type728 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GatewayProvider? Type729 { get; set; }
+        public global::Baseten.GridClassifiersRequestV1? Type729 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VertexTargetConfigV1? Type730 { get; set; }
+        public global::Baseten.EndpointTargetV1? Type730 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.EndpointV1? Type731 { get; set; }
+        public global::Baseten.GatewayProvider? Type731 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SharedEndpointRegionV1? Type732 { get; set; }
+        public global::Baseten.VertexTargetConfigV1? Type732 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EndpointTargetV1>? Type733 { get; set; }
+        public global::Baseten.EndpointV1? Type733 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.EndpointsResponseV1? Type734 { get; set; }
+        public global::Baseten.SharedEndpointRegionV1? Type734 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EndpointV1>? Type735 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EndpointTargetV1>? Type735 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.EndpointTargetRequestV1? Type736 { get; set; }
+        public global::Baseten.EndpointsResponseV1? Type736 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateEndpointRequestV1? Type737 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EndpointV1>? Type737 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1>? Type738 { get; set; }
+        public global::Baseten.EndpointTargetRequestV1? Type738 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.EndpointTombstoneV1? Type739 { get; set; }
+        public global::Baseten.CreateEndpointRequestV1? Type739 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateEndpointRequestV1? Type740 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EndpointTargetRequestV1>? Type740 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.EffectiveModelConfigV1? Type741 { get; set; }
+        public global::Baseten.EndpointTombstoneV1? Type741 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EffectiveRateLimitV1>? Type742 { get; set; }
+        public global::Baseten.UpdateEndpointRequestV1? Type742 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.EffectiveRateLimitV1? Type743 { get; set; }
+        public global::Baseten.EffectiveModelConfigV1? Type743 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EffectiveUsageLimitV1>? Type744 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EffectiveRateLimitV1>? Type744 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.EffectiveUsageLimitV1? Type745 { get; set; }
+        public global::Baseten.EffectiveRateLimitV1? Type745 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UsageLimitUnitV1? Type746 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EffectiveUsageLimitV1>? Type746 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GroupHierarchyV1? Type747 { get; set; }
+        public global::Baseten.EffectiveUsageLimitV1? Type747 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.LimitEnforcementV1? Type748 { get; set; }
+        public global::Baseten.UsageLimitUnitV1? Type748 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GroupMetadataV1? Type749 { get; set; }
+        public global::Baseten.GroupHierarchyV1? Type749 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GroupV1? Type750 { get; set; }
+        public global::Baseten.LimitEnforcementV1? Type750 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1>? Type751 { get; set; }
+        public global::Baseten.GroupMetadataV1? Type751 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ModelConfigV1? Type752 { get; set; }
+        public global::Baseten.GroupV1? Type752 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.EffectiveModelConfigV1>? Type753 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.ModelConfigV1>? Type753 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.UsageLimitV1>? Type754 { get; set; }
+        public global::Baseten.ModelConfigV1? Type754 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UsageLimitV1? Type755 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.EffectiveModelConfigV1>? Type755 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GroupsResponseV1? Type756 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.UsageLimitV1>? Type756 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GroupV1>? Type757 { get; set; }
+        public global::Baseten.UsageLimitV1? Type757 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateGroupHierarchyV1? Type758 { get; set; }
+        public global::Baseten.GroupsResponseV1? Type758 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateGroupRequestV1? Type759 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GroupV1>? Type759 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGroupMetadataV1? Type760 { get; set; }
+        public global::Baseten.CreateGroupHierarchyV1? Type760 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGroupRequestV1? Type761 { get; set; }
+        public global::Baseten.CreateGroupRequestV1? Type761 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GatewayKeyInfoV1? Type762 { get; set; }
+        public global::Baseten.UpdateGroupMetadataV1? Type762 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.KeysForGroupResponseV1? Type763 { get; set; }
+        public global::Baseten.UpdateGroupRequestV1? Type763 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.GatewayKeyInfoV1>? Type764 { get; set; }
+        public global::Baseten.GatewayKeyInfoV1? Type764 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateApiKeyForGroupRequestV1? Type765 { get; set; }
+        public global::Baseten.KeysForGroupResponseV1? Type765 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateApiKeyForGroupResponseV1? Type766 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.GatewayKeyInfoV1>? Type766 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RegisterAPIKeyRequestV1? Type767 { get; set; }
+        public global::Baseten.CreateApiKeyForGroupRequestV1? Type767 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.RegisterAPIKeyResponseV1? Type768 { get; set; }
+        public global::Baseten.CreateApiKeyForGroupResponseV1? Type768 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxLogsV1? Type769 { get; set; }
+        public global::Baseten.RegisterAPIKeyRequestV1? Type769 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxLogEntryV1>? Type770 { get; set; }
+        public global::Baseten.RegisterAPIKeyResponseV1? Type770 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxLogEntryV1? Type771 { get; set; }
+        public global::Baseten.SandboxLogsV1? Type771 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxMetricModeV1? Type772 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxLogEntryV1>? Type772 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxMetricNameV1? Type773 { get; set; }
+        public global::Baseten.SandboxLogEntryV1? Type773 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxMetricsV1? Type774 { get; set; }
+        public global::Baseten.SandboxMetricModeV1? Type774 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxMetricDescriptorV1>? Type775 { get; set; }
+        public global::Baseten.SandboxMetricNameV1? Type775 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxMetricDescriptorV1? Type776 { get; set; }
+        public global::Baseten.SandboxMetricsV1? Type776 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxMetricValueSetV1>? Type777 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxMetricDescriptorV1>? Type777 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxMetricValueSetV1? Type778 { get; set; }
+        public global::Baseten.SandboxMetricDescriptorV1? Type778 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxMetricDescriptorV1UnitHint? Type779 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxMetricValueSetV1>? Type779 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxMetricDescriptorV1Kind? Type780 { get; set; }
+        public global::Baseten.SandboxMetricValueSetV1? Type780 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GetSandboxConfigurationResponseV1? Type781 { get; set; }
+        public global::Baseten.SandboxMetricDescriptorV1UnitHint? Type781 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxRegionV1>? Type782 { get; set; }
+        public global::Baseten.SandboxMetricDescriptorV1Kind? Type782 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxRegionV1? Type783 { get; set; }
+        public global::Baseten.GetSandboxConfigurationResponseV1? Type783 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxRegionV1InfoGeneration? Type784 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxRegionV1>? Type784 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxImageBuildLogV1? Type785 { get; set; }
+        public global::Baseten.SandboxRegionV1? Type785 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxImageBuildLogsResponseV1? Type786 { get; set; }
+        public global::Baseten.SandboxRegionV1InfoGeneration? Type786 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxImageBuildLogV1>? Type787 { get; set; }
+        public global::Baseten.SandboxImageBuildLogV1? Type787 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxLifecycleV1? Type788 { get; set; }
+        public global::Baseten.SandboxImageBuildLogsResponseV1? Type788 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxExpirationPolicyV1>? Type789 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxImageBuildLogV1>? Type789 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxExpirationPolicyV1? Type790 { get; set; }
+        public global::Baseten.SandboxLifecycleV1? Type790 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxTTLIdleExpirationPolicyV1? Type791 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxExpirationPolicyV1>? Type791 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1? Type792 { get; set; }
+        public global::Baseten.SandboxExpirationPolicyV1? Type792 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxDateExpirationPolicyV1? Type793 { get; set; }
+        public global::Baseten.SandboxTTLIdleExpirationPolicyV1? Type793 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxExpirationPolicyV1Discriminator? Type794 { get; set; }
+        public global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1? Type794 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxExpirationPolicyV1DiscriminatorType? Type795 { get; set; }
+        public global::Baseten.SandboxDateExpirationPolicyV1? Type795 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxTTLIdleExpirationPolicyV1Action? Type796 { get; set; }
+        public global::Baseten.SandboxExpirationPolicyV1Discriminator? Type796 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxTTLIdleExpirationPolicyV1Type? Type797 { get; set; }
+        public global::Baseten.SandboxExpirationPolicyV1DiscriminatorType? Type797 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Action? Type798 { get; set; }
+        public global::Baseten.SandboxTTLIdleExpirationPolicyV1Action? Type798 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Type? Type799 { get; set; }
+        public global::Baseten.SandboxTTLIdleExpirationPolicyV1Type? Type799 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxDateExpirationPolicyV1Action? Type800 { get; set; }
+        public global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Action? Type800 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxDateExpirationPolicyV1Type? Type801 { get; set; }
+        public global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Type? Type801 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxNetworkV1? Type802 { get; set; }
+        public global::Baseten.SandboxDateExpirationPolicyV1Action? Type802 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxProxyConfigV1? Type803 { get; set; }
+        public global::Baseten.SandboxDateExpirationPolicyV1Type? Type803 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxProxyTargetV1>? Type804 { get; set; }
+        public global::Baseten.SandboxNetworkV1? Type804 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxProxyTargetV1? Type805 { get; set; }
+        public global::Baseten.SandboxProxyConfigV1? Type805 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxEnvV1? Type806 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxProxyTargetV1>? Type806 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? Type807 { get; set; }
+        public global::Baseten.SandboxProxyTargetV1? Type807 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxPortV1? Type808 { get; set; }
+        public global::Baseten.SandboxEnvV1? Type808 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxPortV1Protocol? Type809 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? Type809 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxFilesystemV1? Type810 { get; set; }
+        public global::Baseten.SandboxPortV1? Type810 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.OneOf<string, int?>? Type811 { get; set; }
+        public global::Baseten.SandboxPortV1Protocol? Type811 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxConfigurationV1? Type812 { get; set; }
+        public global::Baseten.SandboxFilesystemV1? Type812 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? Type813 { get; set; }
+        public global::Baseten.OneOf<string, int?>? Type813 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>? Type814 { get; set; }
+        public global::Baseten.SandboxConfigurationV1? Type814 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxVolumeAttachmentV1? Type815 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? Type815 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateSandboxRequestV1? Type816 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>? Type816 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateSandboxRequestV1? Type817 { get; set; }
+        public global::Baseten.SandboxVolumeAttachmentV1? Type817 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxV1? Type818 { get; set; }
+        public global::Baseten.CreateSandboxRequestV1? Type818 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxV1Variant2? Type819 { get; set; }
+        public global::Baseten.UpdateSandboxRequestV1? Type819 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxStatusV1? Type820 { get; set; }
+        public global::Baseten.SandboxV1? Type820 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxApiPaginationV1? Type821 { get; set; }
+        public global::Baseten.SandboxV1Variant2? Type821 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ListSandboxesResponseV1? Type822 { get; set; }
+        public global::Baseten.SandboxStatusV1? Type822 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxV1>? Type823 { get; set; }
+        public global::Baseten.SandboxApiPaginationV1? Type823 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ListSandboxImagesResponseV1? Type824 { get; set; }
+        public global::Baseten.ListSandboxesResponseV1? Type824 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxImageV1>? Type825 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxV1>? Type825 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxImageV1? Type826 { get; set; }
+        public global::Baseten.ListSandboxImagesResponseV1? Type826 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ListSandboxImageTagsResponseV1? Type827 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxImageV1>? Type827 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxImageTagV1>? Type828 { get; set; }
+        public global::Baseten.SandboxImageV1? Type828 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxImageTagV1? Type829 { get; set; }
+        public global::Baseten.ListSandboxImageTagsResponseV1? Type829 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxImageStatusV1? Type830 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxImageTagV1>? Type830 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.PushSandboxImageRequestV1? Type831 { get; set; }
+        public global::Baseten.SandboxImageTagV1? Type831 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.PushSandboxImageResponseV1? Type832 { get; set; }
+        public global::Baseten.SandboxImageStatusV1? Type832 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxLibraryImageVolumeV1? Type833 { get; set; }
+        public global::Baseten.PushSandboxImageRequestV1? Type833 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxLibraryImageCreationOptionsV1? Type834 { get; set; }
+        public global::Baseten.PushSandboxImageResponseV1? Type834 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxLibraryImageVolumeV1>? Type835 { get; set; }
+        public global::Baseten.SandboxLibraryImageVolumeV1? Type835 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxLibraryImageV1? Type836 { get; set; }
+        public global::Baseten.SandboxLibraryImageCreationOptionsV1? Type836 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ListSandboxLibraryImagesResponseV1? Type837 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxLibraryImageVolumeV1>? Type837 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxLibraryImageV1>? Type838 { get; set; }
+        public global::Baseten.SandboxLibraryImageV1? Type838 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CleanupSandboxImagesResponseV1? Type839 { get; set; }
+        public global::Baseten.ListSandboxLibraryImagesResponseV1? Type839 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxPreviewStatusV1? Type840 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxLibraryImageV1>? Type840 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxPreviewConfigurationV1? Type841 { get; set; }
+        public global::Baseten.CleanupSandboxImagesResponseV1? Type841 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateSandboxPreviewRequestV1? Type842 { get; set; }
+        public global::Baseten.SandboxPreviewStatusV1? Type842 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateSandboxPreviewRequestV1Variant2? Type843 { get; set; }
+        public global::Baseten.SandboxPreviewConfigurationV1? Type843 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateSandboxPreviewRequestV1? Type844 { get; set; }
+        public global::Baseten.CreateSandboxPreviewRequestV1? Type844 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateSandboxPreviewRequestV1Variant2? Type845 { get; set; }
+        public global::Baseten.CreateSandboxPreviewRequestV1Variant2? Type845 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxPreviewV1? Type846 { get; set; }
+        public global::Baseten.UpdateSandboxPreviewRequestV1? Type846 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxPreviewV1Variant2? Type847 { get; set; }
+        public global::Baseten.UpdateSandboxPreviewRequestV1Variant2? Type847 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ListSandboxPreviewsResponseV1? Type848 { get; set; }
+        public global::Baseten.SandboxPreviewV1? Type848 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxPreviewV1>? Type849 { get; set; }
+        public global::Baseten.SandboxPreviewV1Variant2? Type849 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateSandboxPreviewTokenRequestV1? Type850 { get; set; }
+        public global::Baseten.ListSandboxPreviewsResponseV1? Type850 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxPreviewTokenV1? Type851 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxPreviewV1>? Type851 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ListSandboxPreviewTokensResponseV1? Type852 { get; set; }
+        public global::Baseten.CreateSandboxPreviewTokenRequestV1? Type852 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxPreviewTokenV1>? Type853 { get; set; }
+        public global::Baseten.SandboxPreviewTokenV1? Type853 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxVolumeStatusV1? Type854 { get; set; }
+        public global::Baseten.ListSandboxPreviewTokensResponseV1? Type854 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateSandboxVolumeRequestV1? Type855 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxPreviewTokenV1>? Type855 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateSandboxVolumeRequestV1? Type856 { get; set; }
+        public global::Baseten.SandboxVolumeStatusV1? Type856 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SandboxVolumeV1? Type857 { get; set; }
+        public global::Baseten.CreateSandboxVolumeRequestV1? Type857 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ListSandboxVolumesResponseV1? Type858 { get; set; }
+        public global::Baseten.UpdateSandboxVolumeRequestV1? Type858 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeV1>? Type859 { get; set; }
+        public global::Baseten.SandboxVolumeV1? Type859 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxMetricNameV1>? Type860 { get; set; }
+        public global::Baseten.ListSandboxVolumesResponseV1? Type860 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeStatusV1>? Type861 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeV1>? Type861 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxMetricNameV1>? Type862 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeStatusV1>? Type863 { get; set; }
 
         /// <summary>
         ///

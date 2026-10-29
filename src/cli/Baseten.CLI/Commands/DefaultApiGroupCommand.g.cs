@@ -21,6 +21,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateGatewayGroupsByGroupIdApiKeysRegisterCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGridConnectionsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGridRoutesCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateGridTokenCommandApiCommand.Create());
                          command.Subcommands.Add(CreateKeysCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLibraryListingsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateLibraryListingsByUserDefinedListingIdVersionsCommandApiCommand.Create());
