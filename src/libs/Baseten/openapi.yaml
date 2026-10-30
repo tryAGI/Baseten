@@ -20182,6 +20182,68 @@
                             }
                         ],
                         "title": "Environment Name"
+                    },
+                    "region_update": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Region Update"
+                    },
+                    "instance_type_id_update": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Instance Type Id Update"
+                    },
+                    "promotion_settings_override": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventPromotionSettingsOverrideV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "autoscaling_settings_update": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventAutoscalingSettingsUpdateV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "request_backpressure_settings_update": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventRequestBackpressureSettingsUpdateV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "autoscaling_schedule_settings_update": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventAutoscalingScheduleOperationsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     }
                 },
                 "required": [
@@ -20193,7 +20255,13 @@
                     "scale_previous_to_zero",
                     "trusted",
                     "publish",
-                    "environment_name"
+                    "environment_name",
+                    "region_update",
+                    "instance_type_id_update",
+                    "promotion_settings_override",
+                    "autoscaling_settings_update",
+                    "request_backpressure_settings_update",
+                    "autoscaling_schedule_settings_update"
                 ],
                 "title": "AuditLogEventModelDeployedV1",
                 "type": "object"
@@ -38406,6 +38474,45 @@
                 "title": "GridConnectionConfigOpenAIV1",
                 "type": "object"
             },
+            "GridConnectionConfigVertexV1": {
+                "properties": {
+                    "provider": {
+                        "const": "VERTEX",
+                        "description": "Provider kind for Google Vertex.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of the team secret holding the provider API key.",
+                        "title": "Secret Id",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of the team secret holding the provider API key.",
+                        "title": "Secret Name",
+                        "type": "string"
+                    },
+                    "project_id": {
+                        "description": "Google Cloud project ID or number of a project with Vertex AI enabled.",
+                        "title": "Project Id",
+                        "type": "string"
+                    },
+                    "location": {
+                        "description": "Google Cloud region that serves the Vertex AI models, for example `us-central1`.",
+                        "title": "Location",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id",
+                    "secret_name",
+                    "project_id",
+                    "location"
+                ],
+                "title": "GridConnectionConfigVertexV1",
+                "type": "object"
+            },
             "GridConnectionConfigXAIV1": {
                 "properties": {
                     "provider": {
@@ -38456,6 +38563,7 @@
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/GridConnectionConfigAnthropicV1",
                                 "OPENAI": "#/components/schemas/GridConnectionConfigOpenAIV1",
+                                "VERTEX": "#/components/schemas/GridConnectionConfigVertexV1",
                                 "XAI": "#/components/schemas/GridConnectionConfigXAIV1"
                             },
                             "propertyName": "provider"
@@ -38469,6 +38577,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/GridConnectionConfigXAIV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GridConnectionConfigVertexV1"
                             }
                         ],
                         "title": "Config"
@@ -38611,6 +38722,52 @@
                 "title": "UpsertGridConnectionConfigOpenAIV1",
                 "type": "object"
             },
+            "UpsertGridConnectionConfigVertexV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "VERTEX",
+                        "description": "Provider kind for Google Vertex.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of an existing secret, owned by the same team, that holds the provider API key.",
+                        "examples": [
+                            "anthropic-key"
+                        ],
+                        "minLength": 1,
+                        "title": "Secret Name",
+                        "type": "string"
+                    },
+                    "project_id": {
+                        "description": "Google Cloud project ID or number of a project with Vertex AI enabled.",
+                        "examples": [
+                            "my-gcp-project"
+                        ],
+                        "minLength": 1,
+                        "title": "Project Id",
+                        "type": "string"
+                    },
+                    "location": {
+                        "description": "Google Cloud region that serves the Vertex AI models, for example `us-central1`.",
+                        "examples": [
+                            "us-central1"
+                        ],
+                        "minLength": 1,
+                        "title": "Location",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_name",
+                    "project_id",
+                    "location"
+                ],
+                "title": "UpsertGridConnectionConfigVertexV1",
+                "type": "object"
+            },
             "UpsertGridConnectionConfigXAIV1": {
                 "additionalProperties": false,
                 "properties": {
@@ -38663,6 +38820,7 @@
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/UpsertGridConnectionConfigAnthropicV1",
                                 "OPENAI": "#/components/schemas/UpsertGridConnectionConfigOpenAIV1",
+                                "VERTEX": "#/components/schemas/UpsertGridConnectionConfigVertexV1",
                                 "XAI": "#/components/schemas/UpsertGridConnectionConfigXAIV1"
                             },
                             "propertyName": "provider"
@@ -38682,6 +38840,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/UpsertGridConnectionConfigXAIV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpsertGridConnectionConfigVertexV1"
                             }
                         ],
                         "title": "Config"
@@ -38716,6 +38877,7 @@
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/UpsertGridConnectionConfigAnthropicV1",
                                 "OPENAI": "#/components/schemas/UpsertGridConnectionConfigOpenAIV1",
+                                "VERTEX": "#/components/schemas/UpsertGridConnectionConfigVertexV1",
                                 "XAI": "#/components/schemas/UpsertGridConnectionConfigXAIV1"
                             },
                             "propertyName": "provider"
@@ -38735,6 +38897,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/UpsertGridConnectionConfigXAIV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpsertGridConnectionConfigVertexV1"
                             }
                         ],
                         "title": "Config"
@@ -38799,8 +38964,12 @@
                 "description": "One configured upstream target of an endpoint.",
                 "properties": {
                     "provider": {
-                        "$ref": "#/components/schemas/GatewayProvider",
-                        "description": "Upstream provider."
+                        "$ref": "#/components/schemas/GatewayEndpointProviderV1",
+                        "description": "Upstream provider.",
+                        "examples": [
+                            "ANTHROPIC",
+                            "OPENAI_COMPATIBLE"
+                        ]
                     },
                     "secret_id": {
                         "anyOf": [
@@ -38938,7 +39107,7 @@
                 "title": "EndpointV1",
                 "type": "object"
             },
-            "GatewayProvider": {
+            "GatewayEndpointProviderV1": {
                 "enum": [
                     "ANTHROPIC",
                     "OPENAI",
@@ -38948,7 +39117,7 @@
                     "VERTEX",
                     "OPENAI_COMPATIBLE"
                 ],
-                "title": "GatewayProvider",
+                "title": "GatewayEndpointProviderV1",
                 "type": "string"
             },
             "SharedEndpointRegionV1": {
@@ -39012,7 +39181,7 @@
                 "description": "One desired upstream target. The customer picks a provider; Baseten owns the\nupstream host and protocol adapter.",
                 "properties": {
                     "provider": {
-                        "$ref": "#/components/schemas/GatewayProvider",
+                        "$ref": "#/components/schemas/GatewayEndpointProviderV1",
                         "description": "Upstream provider for this target.",
                         "examples": [
                             "ANTHROPIC",

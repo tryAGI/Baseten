@@ -6,7 +6,7 @@ namespace Baseten
     /// <summary>
     ///
     /// </summary>
-    public enum GatewayProvider
+    public enum GatewayEndpointProviderV1
     {
         /// <summary>
         ///
@@ -41,39 +41,39 @@ namespace Baseten
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class GatewayProviderExtensions
+    public static class GatewayEndpointProviderV1Extensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this GatewayProvider value)
+        public static string ToValueString(this GatewayEndpointProviderV1 value)
         {
             return value switch
             {
-                GatewayProvider.Anthropic => "ANTHROPIC",
-                GatewayProvider.Baseten => "BASETEN",
-                GatewayProvider.BasetenModelApi => "BASETEN_MODEL_API",
-                GatewayProvider.Openai => "OPENAI",
-                GatewayProvider.OpenaiCompatible => "OPENAI_COMPATIBLE",
-                GatewayProvider.Vertex => "VERTEX",
-                GatewayProvider.Xai => "XAI",
+                GatewayEndpointProviderV1.Anthropic => "ANTHROPIC",
+                GatewayEndpointProviderV1.Baseten => "BASETEN",
+                GatewayEndpointProviderV1.BasetenModelApi => "BASETEN_MODEL_API",
+                GatewayEndpointProviderV1.Openai => "OPENAI",
+                GatewayEndpointProviderV1.OpenaiCompatible => "OPENAI_COMPATIBLE",
+                GatewayEndpointProviderV1.Vertex => "VERTEX",
+                GatewayEndpointProviderV1.Xai => "XAI",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static GatewayProvider? ToEnum(string value)
+        public static GatewayEndpointProviderV1? ToEnum(string value)
         {
             return value switch
             {
-                "ANTHROPIC" => GatewayProvider.Anthropic,
-                "BASETEN" => GatewayProvider.Baseten,
-                "BASETEN_MODEL_API" => GatewayProvider.BasetenModelApi,
-                "OPENAI" => GatewayProvider.Openai,
-                "OPENAI_COMPATIBLE" => GatewayProvider.OpenaiCompatible,
-                "VERTEX" => GatewayProvider.Vertex,
-                "XAI" => GatewayProvider.Xai,
+                "ANTHROPIC" => GatewayEndpointProviderV1.Anthropic,
+                "BASETEN" => GatewayEndpointProviderV1.Baseten,
+                "BASETEN_MODEL_API" => GatewayEndpointProviderV1.BasetenModelApi,
+                "OPENAI" => GatewayEndpointProviderV1.Openai,
+                "OPENAI_COMPATIBLE" => GatewayEndpointProviderV1.OpenaiCompatible,
+                "VERTEX" => GatewayEndpointProviderV1.Vertex,
+                "XAI" => GatewayEndpointProviderV1.Xai,
                 _ => null,
             };
         }

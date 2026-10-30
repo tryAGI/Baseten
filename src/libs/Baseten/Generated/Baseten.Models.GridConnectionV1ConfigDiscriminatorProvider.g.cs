@@ -19,6 +19,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Vertex,
+        /// <summary>
+        ///
+        /// </summary>
         Xai,
     }
 
@@ -36,6 +40,7 @@ namespace Baseten
             {
                 GridConnectionV1ConfigDiscriminatorProvider.Anthropic => "ANTHROPIC",
                 GridConnectionV1ConfigDiscriminatorProvider.Openai => "OPENAI",
+                GridConnectionV1ConfigDiscriminatorProvider.Vertex => "VERTEX",
                 GridConnectionV1ConfigDiscriminatorProvider.Xai => "XAI",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -49,6 +54,7 @@ namespace Baseten
             {
                 "ANTHROPIC" => GridConnectionV1ConfigDiscriminatorProvider.Anthropic,
                 "OPENAI" => GridConnectionV1ConfigDiscriminatorProvider.Openai,
+                "VERTEX" => GridConnectionV1ConfigDiscriminatorProvider.Vertex,
                 "XAI" => GridConnectionV1ConfigDiscriminatorProvider.Xai,
                 _ => null,
             };
