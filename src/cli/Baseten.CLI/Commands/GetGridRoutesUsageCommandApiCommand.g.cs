@@ -40,7 +40,7 @@ internal static partial class GetGridRoutesUsageCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, or ROUTER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. Defaults to MODEL.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, ROUTER, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> UserIds { get; } = new(
@@ -59,6 +59,12 @@ internal static partial class GetGridRoutesUsageCommandApiCommand
         name: @"--providers")
     {
         Description = @"Return only usage for these providers, repeated once per provider.",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>?> Harnesses { get; } = new(
+        name: @"--harnesses")
+    {
+        Description = @"Return only usage for these harnesses, repeated once per harness. Omit to include all usage, including usage with no recorded harness.",
     };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.GridRouteUsageResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
@@ -96,6 +102,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                         command.Options.Add(UserIds);
                         command.Options.Add(Models);
                         command.Options.Add(Providers);
+                        command.Options.Add(Harnesses);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -110,6 +117,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                         var userIds = parseResult.GetValue(UserIds);
                         var models = parseResult.GetValue(Models);
                         var providers = parseResult.GetValue(Providers);
+                        var harnesses = parseResult.GetValue(Harnesses);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -123,6 +131,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                                     userIds: userIds,
                                     models: models,
                                     providers: providers,
+                                    harnesses: harnesses,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

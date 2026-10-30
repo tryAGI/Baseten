@@ -6,8 +6,11 @@ namespace Baseten
     {
         /// <summary>
         /// Lists Loops samplers<br/>
-        /// Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.
+        /// Lists Loops samplers (paired and standalone), optionally filtered by session. Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.
         /// </summary>
+        /// <param name="sessionId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="scope">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -20,13 +23,17 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.ListLoopsSamplersResponseV1> GetLoopsSamplersAsync(
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Lists Loops samplers<br/>
-        /// Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.
+        /// Lists Loops samplers (paired and standalone), optionally filtered by session. Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.
         /// </summary>
+        /// <param name="sessionId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="scope">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -39,6 +46,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsSamplersResponseV1>> GetLoopsSamplersAsResponseAsync(
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

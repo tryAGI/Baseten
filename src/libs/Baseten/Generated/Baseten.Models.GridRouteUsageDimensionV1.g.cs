@@ -11,6 +11,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Harness,
+        /// <summary>
+        ///
+        /// </summary>
         Model,
         /// <summary>
         ///
@@ -42,6 +46,7 @@ namespace Baseten
         {
             return value switch
             {
+                GridRouteUsageDimensionV1.Harness => "HARNESS",
                 GridRouteUsageDimensionV1.Model => "MODEL",
                 GridRouteUsageDimensionV1.Provider => "PROVIDER",
                 GridRouteUsageDimensionV1.Router => "ROUTER",
@@ -57,6 +62,7 @@ namespace Baseten
         {
             return value switch
             {
+                "HARNESS" => GridRouteUsageDimensionV1.Harness,
                 "MODEL" => GridRouteUsageDimensionV1.Model,
                 "PROVIDER" => GridRouteUsageDimensionV1.Provider,
                 "ROUTER" => GridRouteUsageDimensionV1.Router,

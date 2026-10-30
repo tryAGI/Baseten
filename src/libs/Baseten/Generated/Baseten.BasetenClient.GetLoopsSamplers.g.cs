@@ -27,10 +27,12 @@ namespace Baseten
             };
         partial void PrepareGetLoopsSamplersArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? sessionId,
             ref string? scope);
         partial void PrepareGetLoopsSamplersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? sessionId,
             string? scope);
         partial void ProcessGetLoopsSamplersResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -43,8 +45,11 @@ namespace Baseten
 
         /// <summary>
         /// Lists Loops samplers<br/>
-        /// Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.
+        /// Lists Loops samplers (paired and standalone), optionally filtered by session. Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.
         /// </summary>
+        /// <param name="sessionId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="scope">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -57,11 +62,13 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ListLoopsSamplersResponseV1> GetLoopsSamplersAsync(
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetLoopsSamplersAsResponseAsync(
+                sessionId: sessionId,
                 scope: scope,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -71,8 +78,11 @@ namespace Baseten
         }
         /// <summary>
         /// Lists Loops samplers<br/>
-        /// Lists Loops samplers (paired and standalone). Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.
+        /// Lists Loops samplers (paired and standalone), optionally filtered by session. Defaults to the caller's own; pass ?scope=org to list every sampler in the caller's organization.
         /// </summary>
+        /// <param name="sessionId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="scope">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -85,6 +95,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsSamplersResponseV1>> GetLoopsSamplersAsResponseAsync(
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -93,6 +104,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetLoopsSamplersArguments(
                 httpClient: HttpClient,
+                sessionId: ref sessionId,
                 scope: ref scope);
 
 
@@ -122,6 +134,7 @@ namespace Baseten
                                 path: "/v1/loops/samplers",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("session_id", sessionId)
                                 .AddOptionalParameter("scope", scope)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -164,6 +177,7 @@ namespace Baseten
                 PrepareGetLoopsSamplersRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    sessionId: sessionId,
                     scope: scope);
 
                 return __httpRequest;

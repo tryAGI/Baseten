@@ -25,6 +25,12 @@ internal static partial class GetTeamsByTeamIdLoopsRunsCommandApiCommand
         Description = @"Filter runs by base model name.",
     };
 
+    private static Option<string?> SessionId { get; } = new(
+        name: @"--session-id")
+    {
+        Description = @"Filter runs by the session that created them. An unknown or inaccessible session returns an empty list.",
+    };
+
     private static Option<string?> Scope { get; } = new(
         name: @"--scope")
     {
@@ -56,10 +62,11 @@ internal static partial class GetTeamsByTeamIdLoopsRunsCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-teams-by-team-id-loops-runs", @"Lists a team's Loops runs
-Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id and/or base model.");
+Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id, base model, and/or session.");
                         command.Arguments.Add(TeamId);
                         command.Options.Add(RunId);
                         command.Options.Add(BaseModel);
+                        command.Options.Add(SessionId);
                         command.Options.Add(Scope);
 
 
@@ -69,6 +76,7 @@ Lists Loops runs in the given team, visible to the requesting user, optionally f
                         var teamId = parseResult.GetRequiredValue(TeamId);
                         var runId = parseResult.GetValue(RunId);
                         var baseModel = parseResult.GetValue(BaseModel);
+                        var sessionId = parseResult.GetValue(SessionId);
                         var scope = parseResult.GetValue(Scope);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -77,6 +85,7 @@ Lists Loops runs in the given team, visible to the requesting user, optionally f
                                     teamId: teamId,
                                     runId: runId,
                                     baseModel: baseModel,
+                                    sessionId: sessionId,
                                     scope: scope,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

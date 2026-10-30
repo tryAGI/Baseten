@@ -51,6 +51,13 @@ namespace Baseten
         public string? RouterId { get; set; }
 
         /// <summary>
+        /// Coding harness. Null when not grouping by HARNESS, when no harness was recorded (including usage from before harness tracking), or when the recorded harness is not recognized by this API version.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("harness")]
+        public global::Baseten.GridRouteUsageHarnessV1? Harness { get; set; }
+
+        /// <summary>
         /// Estimated cost in USD, returned as an exact decimal string. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_usd")]
@@ -143,6 +150,10 @@ namespace Baseten
         /// Slug of the intelligent router, matching its name in `GET /v1/grid/routes`. Null when not grouping by ROUTER.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="harness">
+        /// Coding harness. Null when not grouping by HARNESS, when no harness was recorded (including usage from before harness tracking), or when the recorded harness is not recognized by this API version.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -158,7 +169,8 @@ namespace Baseten
             string? teamName,
             string? model,
             global::Baseten.GridProviderV1? provider,
-            string? routerId)
+            string? routerId,
+            global::Baseten.GridRouteUsageHarnessV1? harness)
         {
             this.UserId = userId;
             this.TeamId = teamId;
@@ -166,6 +178,7 @@ namespace Baseten
             this.Model = model;
             this.Provider = provider;
             this.RouterId = routerId;
+            this.Harness = harness;
             this.CostUsd = costUsd ?? throw new global::System.ArgumentNullException(nameof(costUsd));
             this.InputTokens = inputTokens;
             this.CachedInputTokens = cachedInputTokens;

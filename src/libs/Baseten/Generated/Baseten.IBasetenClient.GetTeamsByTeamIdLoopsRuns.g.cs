@@ -6,12 +6,15 @@ namespace Baseten
     {
         /// <summary>
         /// Lists a team's Loops runs<br/>
-        /// Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id and/or base model.
+        /// Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id, base model, and/or session.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseModel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="sessionId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="scope">
@@ -30,17 +33,21 @@ namespace Baseten
             string teamId,
             string? runId = default,
             string? baseModel = default,
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Lists a team's Loops runs<br/>
-        /// Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id and/or base model.
+        /// Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id, base model, and/or session.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseModel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="sessionId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="scope">
@@ -59,6 +66,7 @@ namespace Baseten
             string teamId,
             string? runId = default,
             string? baseModel = default,
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
