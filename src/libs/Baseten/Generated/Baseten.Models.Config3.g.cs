@@ -124,6 +124,43 @@ namespace Baseten
         public global::Baseten.UpsertGridConnectionConfigXAIV1 PickXai() => Xai is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Xai' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Baseten.UpsertGridConnectionConfigVertexV1? Vertex { get; init; }
+#else
+        public global::Baseten.UpsertGridConnectionConfigVertexV1? Vertex { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Vertex))]
+#endif
+        public bool IsVertex => Vertex != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickVertex(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Baseten.UpsertGridConnectionConfigVertexV1? value)
+        {
+            value = Vertex;
+            return IsVertex;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.UpsertGridConnectionConfigVertexV1 PickVertex() => Vertex is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Vertex' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -196,11 +233,35 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator Config3(global::Baseten.UpsertGridConnectionConfigVertexV1 value) => new Config3((global::Baseten.UpsertGridConnectionConfigVertexV1?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Baseten.UpsertGridConnectionConfigVertexV1?(Config3 @this) => @this.Vertex;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Config3(global::Baseten.UpsertGridConnectionConfigVertexV1? value)
+        {
+            Vertex = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static Config3 FromVertex(global::Baseten.UpsertGridConnectionConfigVertexV1? value) => new Config3(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public Config3(
             global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider? provider,
             global::Baseten.UpsertGridConnectionConfigAnthropicV1? anthropic,
             global::Baseten.UpsertGridConnectionConfigOpenAIV1? openai,
-            global::Baseten.UpsertGridConnectionConfigXAIV1? xai
+            global::Baseten.UpsertGridConnectionConfigXAIV1? xai,
+            global::Baseten.UpsertGridConnectionConfigVertexV1? vertex
             )
         {
             Provider = provider;
@@ -208,12 +269,14 @@ namespace Baseten
             Anthropic = anthropic;
             Openai = openai;
             Xai = xai;
+            Vertex = vertex;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
+            Vertex as object ??
             Xai as object ??
             Openai as object ??
             Anthropic as object
@@ -225,7 +288,8 @@ namespace Baseten
         public override string? ToString() =>
             Anthropic?.ToString() ??
             Openai?.ToString() ??
-            Xai?.ToString()
+            Xai?.ToString() ??
+            Vertex?.ToString()
             ;
 
         /// <summary>
@@ -233,7 +297,7 @@ namespace Baseten
         /// </summary>
         public bool Validate()
         {
-            return IsAnthropic && !IsOpenai && !IsXai || !IsAnthropic && IsOpenai && !IsXai || !IsAnthropic && !IsOpenai && IsXai;
+            return IsAnthropic && !IsOpenai && !IsXai && !IsVertex || !IsAnthropic && IsOpenai && !IsXai && !IsVertex || !IsAnthropic && !IsOpenai && IsXai && !IsVertex || !IsAnthropic && !IsOpenai && !IsXai && IsVertex;
         }
 
         /// <summary>
@@ -243,6 +307,7 @@ namespace Baseten
             global::System.Func<global::Baseten.UpsertGridConnectionConfigAnthropicV1, TResult>? anthropic = null,
             global::System.Func<global::Baseten.UpsertGridConnectionConfigOpenAIV1, TResult>? openai = null,
             global::System.Func<global::Baseten.UpsertGridConnectionConfigXAIV1, TResult>? xai = null,
+            global::System.Func<global::Baseten.UpsertGridConnectionConfigVertexV1, TResult>? vertex = null,
             bool validate = true)
         {
             if (validate)
@@ -262,6 +327,10 @@ namespace Baseten
             {
                 return xai(__value2);
             }
+            else if (Vertex is { } __value3 && vertex != null)
+            {
+                return vertex(__value3);
+            }
 
             return default(TResult);
         }
@@ -275,6 +344,8 @@ namespace Baseten
             global::System.Action<global::Baseten.UpsertGridConnectionConfigOpenAIV1>? openai = null,
 
             global::System.Action<global::Baseten.UpsertGridConnectionConfigXAIV1>? xai = null,
+
+            global::System.Action<global::Baseten.UpsertGridConnectionConfigVertexV1>? vertex = null,
             bool validate = true)
         {
             if (validate)
@@ -293,6 +364,10 @@ namespace Baseten
             else if (Xai is { } __value2)
             {
                 xai?.Invoke(__value2);
+            }
+            else if (Vertex is { } __value3)
+            {
+                vertex?.Invoke(__value3);
             }
         }
 
@@ -303,6 +378,7 @@ namespace Baseten
             global::System.Action<global::Baseten.UpsertGridConnectionConfigAnthropicV1>? anthropic = null,
             global::System.Action<global::Baseten.UpsertGridConnectionConfigOpenAIV1>? openai = null,
             global::System.Action<global::Baseten.UpsertGridConnectionConfigXAIV1>? xai = null,
+            global::System.Action<global::Baseten.UpsertGridConnectionConfigVertexV1>? vertex = null,
             bool validate = true)
         {
             if (validate)
@@ -321,6 +397,10 @@ namespace Baseten
             else if (Xai is { } __value2)
             {
                 xai?.Invoke(__value2);
+            }
+            else if (Vertex is { } __value3)
+            {
+                vertex?.Invoke(__value3);
             }
         }
 
@@ -337,6 +417,8 @@ namespace Baseten
                 typeof(global::Baseten.UpsertGridConnectionConfigOpenAIV1),
                 Xai,
                 typeof(global::Baseten.UpsertGridConnectionConfigXAIV1),
+                Vertex,
+                typeof(global::Baseten.UpsertGridConnectionConfigVertexV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -355,7 +437,8 @@ namespace Baseten
             return
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigAnthropicV1?>.Default.Equals(Anthropic, other.Anthropic) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigOpenAIV1?>.Default.Equals(Openai, other.Openai) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigXAIV1?>.Default.Equals(Xai, other.Xai)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigXAIV1?>.Default.Equals(Xai, other.Xai) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigVertexV1?>.Default.Equals(Vertex, other.Vertex)
                 ;
         }
 

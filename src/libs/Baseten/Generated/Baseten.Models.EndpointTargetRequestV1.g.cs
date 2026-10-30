@@ -13,9 +13,9 @@ namespace Baseten
         /// Upstream provider for this target.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.GatewayProviderJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.GatewayEndpointProviderV1JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.GatewayProvider Provider { get; set; }
+        public required global::Baseten.GatewayEndpointProviderV1 Provider { get; set; }
 
         /// <summary>
         /// Secret holding the provider credential. Required for external providers.<br/>
@@ -99,7 +99,7 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EndpointTargetRequestV1(
-            global::Baseten.GatewayProvider provider,
+            global::Baseten.GatewayEndpointProviderV1 provider,
             string? secretId,
             string? targetModel,
             string? baseUrl,

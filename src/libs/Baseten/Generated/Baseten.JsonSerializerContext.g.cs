@@ -732,6 +732,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridUserSettingsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigAnthropicV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigOpenAIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigVertexV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigXAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config), TypeInfoPropertyName = "Config2_3")]
@@ -742,6 +743,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigAnthropicV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigOpenAIV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigVertexV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigXAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridConnectionRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config2), TypeInfoPropertyName = "Config22")]
@@ -756,7 +758,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridClassifierV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridClassifiersRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointTargetV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider), TypeInfoPropertyName = "GatewayProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEndpointProviderV1), TypeInfoPropertyName = "GatewayEndpointProviderV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.VertexTargetConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SharedEndpointRegionV1), TypeInfoPropertyName = "SharedEndpointRegionV12")]
@@ -986,7 +988,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableCreateGridConnectionRequestV1ConfigDiscriminatorProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config3?), TypeInfoPropertyName = "NullableConfig32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableUpdateGridConnectionRequestV1ConfigDiscriminatorProvider2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayProvider?), TypeInfoPropertyName = "NullableGatewayProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEndpointProviderV1?), TypeInfoPropertyName = "NullableGatewayEndpointProviderV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SharedEndpointRegionV1?), TypeInfoPropertyName = "NullableSharedEndpointRegionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageLimitUnitV1?), TypeInfoPropertyName = "NullableUsageLimitUnitV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitEnforcementV1?), TypeInfoPropertyName = "NullableLimitEnforcementV12")]
@@ -1017,8 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeTokenScopeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeSyncV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeVersionV1>))]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeSyncV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeVersionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TokenScopeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SecretV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EnvironmentGroupUserV1>))]
@@ -1567,9 +1569,9 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider?)
 
-                    || typeToConvert == typeof(global::Baseten.GatewayProvider)
+                    || typeToConvert == typeof(global::Baseten.GatewayEndpointProviderV1)
 
-                    || typeToConvert == typeof(global::Baseten.GatewayProvider?)
+                    || typeToConvert == typeof(global::Baseten.GatewayEndpointProviderV1?)
 
                     || typeToConvert == typeof(global::Baseten.SharedEndpointRegionV1)
 
@@ -2416,14 +2418,14 @@ namespace Baseten
                     return new global::Baseten.JsonConverters.UpdateGridConnectionRequestV1ConfigDiscriminatorProviderNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.GatewayProvider))
+                if (typeToConvert == typeof(global::Baseten.GatewayEndpointProviderV1))
                 {
-                    return new global::Baseten.JsonConverters.GatewayProviderJsonConverter();
+                    return new global::Baseten.JsonConverters.GatewayEndpointProviderV1JsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.GatewayProvider?))
+                if (typeToConvert == typeof(global::Baseten.GatewayEndpointProviderV1?))
                 {
-                    return new global::Baseten.JsonConverters.GatewayProviderNullableJsonConverter();
+                    return new global::Baseten.JsonConverters.GatewayEndpointProviderV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.SharedEndpointRegionV1))

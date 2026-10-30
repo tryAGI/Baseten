@@ -3,10 +3,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class GatewayProviderJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.GatewayProvider>
+    public sealed class GatewayEndpointProviderV1NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.GatewayEndpointProviderV1?>
     {
         /// <inheritdoc />
-        public override global::Baseten.GatewayProvider Read(
+        public override global::Baseten.GatewayEndpointProviderV1? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.GatewayProviderExtensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.GatewayEndpointProviderV1Extensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Baseten.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Baseten.GatewayProvider)numValue;
+                    return (global::Baseten.GatewayEndpointProviderV1)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Baseten.GatewayProvider);
+                    return default(global::Baseten.GatewayEndpointProviderV1?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.GatewayProvider value,
+            global::Baseten.GatewayEndpointProviderV1? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Baseten.GatewayProviderExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Baseten.GatewayEndpointProviderV1Extensions.ToValueString(value.Value));
+            }
         }
     }
 }
