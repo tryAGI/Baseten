@@ -27,11 +27,13 @@ namespace Baseten
             };
         partial void PrepareGetTeamsByTeamIdLoopsSamplersArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? sessionId,
             ref string? scope,
             ref string teamId);
         partial void PrepareGetTeamsByTeamIdLoopsSamplersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? sessionId,
             string? scope,
             string teamId);
         partial void ProcessGetTeamsByTeamIdLoopsSamplersResponse(
@@ -45,8 +47,11 @@ namespace Baseten
 
         /// <summary>
         /// Lists a team's Loops samplers<br/>
-        /// Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.
+        /// Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user, optionally filtered by session. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.
         /// </summary>
+        /// <param name="sessionId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="scope">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -61,12 +66,14 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ListLoopsSamplersResponseV1> GetTeamsByTeamIdLoopsSamplersAsync(
             string teamId,
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetTeamsByTeamIdLoopsSamplersAsResponseAsync(
                 teamId: teamId,
+                sessionId: sessionId,
                 scope: scope,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -76,8 +83,11 @@ namespace Baseten
         }
         /// <summary>
         /// Lists a team's Loops samplers<br/>
-        /// Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.
+        /// Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user, optionally filtered by session. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.
         /// </summary>
+        /// <param name="sessionId">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="scope">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -92,6 +102,7 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListLoopsSamplersResponseV1>> GetTeamsByTeamIdLoopsSamplersAsResponseAsync(
             string teamId,
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -100,6 +111,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetTeamsByTeamIdLoopsSamplersArguments(
                 httpClient: HttpClient,
+                sessionId: ref sessionId,
                 scope: ref scope,
                 teamId: ref teamId);
 
@@ -130,6 +142,7 @@ namespace Baseten
                                 path: $"/v1/teams/{teamId}/loops/samplers",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("session_id", sessionId)
                                 .AddOptionalParameter("scope", scope)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -172,6 +185,7 @@ namespace Baseten
                 PrepareGetTeamsByTeamIdLoopsSamplersRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    sessionId: sessionId,
                     scope: scope,
                     teamId: teamId);
 

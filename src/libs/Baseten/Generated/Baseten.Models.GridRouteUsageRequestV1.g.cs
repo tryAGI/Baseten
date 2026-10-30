@@ -44,7 +44,7 @@ namespace Baseten
         public global::System.DateTime? EndDate { get; set; }
 
         /// <summary>
-        /// Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, or ROUTER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. Defaults to MODEL.
+        /// Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, ROUTER, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
         public global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageDimensionV1>? GroupBy { get; set; }
@@ -66,6 +66,12 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("providers")]
         public global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? Providers { get; set; }
+
+        /// <summary>
+        /// Return only usage for these harnesses, repeated once per harness. Omit to include all usage, including usage with no recorded harness.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("harnesses")]
+        public global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? Harnesses { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -97,7 +103,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="groupBy">
-        /// Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, or ROUTER. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. Defaults to MODEL.
+        /// Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, ROUTER, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.
         /// </param>
         /// <param name="userIds">
         /// Return only usage from Routes keys created by these user IDs, repeated once per ID.
@@ -107,6 +113,9 @@ namespace Baseten
         /// </param>
         /// <param name="providers">
         /// Return only usage for these providers, repeated once per provider.
+        /// </param>
+        /// <param name="harnesses">
+        /// Return only usage for these harnesses, repeated once per harness. Omit to include all usage, including usage with no recorded harness.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -120,7 +129,8 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageDimensionV1>? groupBy,
             global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
-            global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? providers)
+            global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? providers,
+            global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses)
         {
             this.Cursor = cursor;
             this.Limit = limit;
@@ -131,6 +141,7 @@ namespace Baseten
             this.UserIds = userIds;
             this.Models = models;
             this.Providers = providers;
+            this.Harnesses = harnesses;
         }
 
         /// <summary>

@@ -13,6 +13,12 @@ internal static partial class GetTeamsByTeamIdLoopsSamplersCommandApiCommand
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<string?> SessionId { get; } = new(
+        name: @"--session-id")
+    {
+        Description = @"Filter samplers by the session that created them. An unknown or inaccessible session returns an empty list.",
+    };
+
     private static Option<string?> Scope { get; } = new(
         name: @"--scope")
     {
@@ -44,8 +50,9 @@ internal static partial class GetTeamsByTeamIdLoopsSamplersCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-teams-by-team-id-loops-samplers", @"Lists a team's Loops samplers
-Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.");
+Lists Loops samplers (paired and standalone) in the given team, visible to the requesting user, optionally filtered by session. Defaults to the caller's own; pass ?scope=org to list every sampler in the team.");
                         command.Arguments.Add(TeamId);
+                        command.Options.Add(SessionId);
                         command.Options.Add(Scope);
 
 
@@ -53,12 +60,14 @@ Lists Loops samplers (paired and standalone) in the given team, visible to the r
             await CliRuntime.RunAsync(async () =>
             {
                         var teamId = parseResult.GetRequiredValue(TeamId);
+                        var sessionId = parseResult.GetValue(SessionId);
                         var scope = parseResult.GetValue(Scope);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetTeamsByTeamIdLoopsSamplersAsync(
                                     teamId: teamId,
+                                    sessionId: sessionId,
                                     scope: scope,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

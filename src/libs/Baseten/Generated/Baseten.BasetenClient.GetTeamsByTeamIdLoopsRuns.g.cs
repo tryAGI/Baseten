@@ -29,6 +29,7 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             ref string? runId,
             ref string? baseModel,
+            ref string? sessionId,
             ref string? scope,
             ref string teamId);
         partial void PrepareGetTeamsByTeamIdLoopsRunsRequest(
@@ -36,6 +37,7 @@ namespace Baseten
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? runId,
             string? baseModel,
+            string? sessionId,
             string? scope,
             string teamId);
         partial void ProcessGetTeamsByTeamIdLoopsRunsResponse(
@@ -49,12 +51,15 @@ namespace Baseten
 
         /// <summary>
         /// Lists a team's Loops runs<br/>
-        /// Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id and/or base model.
+        /// Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id, base model, and/or session.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseModel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="sessionId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="scope">
@@ -73,6 +78,7 @@ namespace Baseten
             string teamId,
             string? runId = default,
             string? baseModel = default,
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -81,6 +87,7 @@ namespace Baseten
                 teamId: teamId,
                 runId: runId,
                 baseModel: baseModel,
+                sessionId: sessionId,
                 scope: scope,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -90,12 +97,15 @@ namespace Baseten
         }
         /// <summary>
         /// Lists a team's Loops runs<br/>
-        /// Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id and/or base model.
+        /// Lists Loops runs in the given team, visible to the requesting user, optionally filtered by run id, base model, and/or session.
         /// </summary>
         /// <param name="runId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseModel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="sessionId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="scope">
@@ -114,6 +124,7 @@ namespace Baseten
             string teamId,
             string? runId = default,
             string? baseModel = default,
+            string? sessionId = default,
             string? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -124,6 +135,7 @@ namespace Baseten
                 httpClient: HttpClient,
                 runId: ref runId,
                 baseModel: ref baseModel,
+                sessionId: ref sessionId,
                 scope: ref scope,
                 teamId: ref teamId);
 
@@ -156,6 +168,7 @@ namespace Baseten
                             __pathBuilder
                                 .AddOptionalParameter("run_id", runId)
                                 .AddOptionalParameter("base_model", baseModel)
+                                .AddOptionalParameter("session_id", sessionId)
                                 .AddOptionalParameter("scope", scope)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -200,6 +213,7 @@ namespace Baseten
                     httpRequestMessage: __httpRequest,
                     runId: runId,
                     baseModel: baseModel,
+                    sessionId: sessionId,
                     scope: scope,
                     teamId: teamId);
 

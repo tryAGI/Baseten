@@ -26,6 +26,13 @@ namespace Baseten
         public string? BaseModel { get; set; }
 
         /// <summary>
+        /// Filter runs by the session that created them. An unknown or inaccessible session returns an empty list.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("session_id")]
+        public string? SessionId { get; set; }
+
+        /// <summary>
         /// Defaults to the caller's own runs; pass 'org' to list every run in the caller's organization.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -49,6 +56,10 @@ namespace Baseten
         /// Filter runs by base model name.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="sessionId">
+        /// Filter runs by the session that created them. An unknown or inaccessible session returns an empty list.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="scope">
         /// Defaults to the caller's own runs; pass 'org' to list every run in the caller's organization.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -59,10 +70,12 @@ namespace Baseten
         public ListLoopsRunsQueryParamsV1(
             string? runId,
             string? baseModel,
+            string? sessionId,
             string? scope)
         {
             this.RunId = runId;
             this.BaseModel = baseModel;
+            this.SessionId = sessionId;
             this.Scope = scope;
         }
 

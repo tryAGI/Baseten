@@ -27,6 +27,7 @@ namespace Baseten
         /// <param name="userIds"></param>
         /// <param name="models"></param>
         /// <param name="providers"></param>
+        /// <param name="harnesses"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -45,6 +46,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? userIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
             global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? providers = default,
+            global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -70,6 +72,7 @@ namespace Baseten
         /// <param name="userIds"></param>
         /// <param name="models"></param>
         /// <param name="providers"></param>
+        /// <param name="harnesses"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -88,6 +91,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? userIds = default,
             global::System.Collections.Generic.IList<string>? models = default,
             global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? providers = default,
+            global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

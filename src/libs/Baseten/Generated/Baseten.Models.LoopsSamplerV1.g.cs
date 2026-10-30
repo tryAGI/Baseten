@@ -16,6 +16,13 @@ namespace Baseten
         public required string Id { get; set; }
 
         /// <summary>
+        /// The session ID this sampler belongs to.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("session_id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string SessionId { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_url")]
@@ -95,6 +102,9 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="LoopsSamplerV1" /> class.
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="sessionId">
+        /// The session ID this sampler belongs to.
+        /// </param>
         /// <param name="baseUrl"></param>
         /// <param name="baseModel">
         /// The HuggingFace base model the sampler is serving.
@@ -133,6 +143,7 @@ namespace Baseten
 #endif
         public LoopsSamplerV1(
             string id,
+            string sessionId,
             string baseUrl,
             string baseModel,
             global::System.DateTime createdAt,
@@ -145,6 +156,7 @@ namespace Baseten
             string? baseCheckpoint)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
             this.BaseUrl = baseUrl ?? throw new global::System.ArgumentNullException(nameof(baseUrl));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
             this.CreatedAt = createdAt;
