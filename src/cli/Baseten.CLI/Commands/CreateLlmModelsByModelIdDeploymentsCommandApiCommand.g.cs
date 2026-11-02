@@ -20,6 +20,12 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
         Required = true,
     };
 
+    private static Option<string?> DeploymentName { get; } = new(
+        name: @"--deployment-name")
+    {
+        Description = @"Name of the deployment, unique within the model. Use only A-Z, a-z, 0-9, '-', '_', and '.'. The name 'development' is reserved. If omitted or empty, a name is generated automatically.",
+    };
+
     private static Option<string?> Region { get; } = new(
         name: @"--region")
     {
@@ -124,6 +130,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
         var command = new Command(commandName ?? @"create-llm-models-by-model-id-deployments", @"Creates a new BIS-LLM deployment version");
                         command.Arguments.Add(ModelId);
                         command.Options.Add(Resources);
+                        command.Options.Add(DeploymentName);
                         command.Options.Add(Region);
                         command.Options.Add(LlmVersion);
                         command.Options.Add(LlmConfig);
@@ -168,6 +175,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                             cancellationToken).ConfigureAwait(false);
                         var modelId = parseResult.GetRequiredValue(ModelId);
                         var resources = parseResult.GetRequiredValue(Resources);
+                        var deploymentName = CliRuntime.WasSpecified(parseResult, DeploymentName) ? parseResult.GetValue(DeploymentName) : (__requestBase is { } __DeploymentNameBaseValue ? __DeploymentNameBaseValue.DeploymentName : default);
                         var region = CliRuntime.WasSpecified(parseResult, Region) ? parseResult.GetValue(Region) : (__requestBase is { } __RegionBaseValue ? __RegionBaseValue.Region : default);
                         var llmVersion = CliRuntime.WasSpecified(parseResult, LlmVersion) ? parseResult.GetValue(LlmVersion) : (__requestBase is { } __LlmVersionBaseValue ? __LlmVersionBaseValue.LlmVersion : default);
                         var llmConfig = CliRuntime.WasSpecified(parseResult, LlmConfig) ? parseResult.GetValue(LlmConfig) : (__requestBase is { } __LlmConfigBaseValue ? __LlmConfigBaseValue.LlmConfig : default);
@@ -209,6 +217,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                                 var response = await client.CreateLlmModelsByModelIdDeploymentsAsync(
                                     modelId: modelId,
                                     resources: resources,
+                                    deploymentName: deploymentName,
                                     region: region,
                                     llmVersion: llmVersion,
                                     llmConfig: llmConfig,

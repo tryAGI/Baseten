@@ -54,6 +54,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "resources": null,<br/>
+        ///   "deployment_name": null,<br/>
         ///   "region": null,<br/>
         ///   "llm_version": null,<br/>
         ///   "model_metadata": null,<br/>
@@ -118,6 +119,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "resources": null,<br/>
+        ///   "deployment_name": null,<br/>
         ///   "region": null,<br/>
         ///   "llm_version": null,<br/>
         ///   "model_metadata": null,<br/>
@@ -521,6 +523,10 @@ namespace Baseten
         /// <param name="resources">
         /// Resources allocated to the model
         /// </param>
+        /// <param name="deploymentName">
+        /// Name of the deployment, unique within the model. Use only A-Z, a-z, 0-9, '-', '_', and '.'. The name 'development' is reserved. If omitted or empty, a name is generated automatically.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="region">
         /// Region in which to deploy the model<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -572,6 +578,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.LLMModelHandleV1> CreateLlmModelsAsync(
             object resources,
             string name,
+            string? deploymentName = default,
             string? region = default,
             string? llmVersion = default,
             object? llmConfig = default,
@@ -589,6 +596,7 @@ namespace Baseten
             var __request = new global::Baseten.CreateLLMModelRequestV1
             {
                 Resources = resources,
+                DeploymentName = deploymentName,
                 Region = region,
                 LlmVersion = llmVersion,
                 LlmConfig = llmConfig,

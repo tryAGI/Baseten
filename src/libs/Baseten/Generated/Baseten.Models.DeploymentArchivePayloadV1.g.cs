@@ -89,7 +89,7 @@ namespace Baseten
         public bool? IsDevelopment { get; set; }
 
         /// <summary>
-        /// Autoscaling settings for the new deployment. With `environment_name`, the new deployment starts from the environment's settings with these changes applied, and the environment keeps the result when the promotion completes. Without it, they apply to the new deployment only.<br/>
+        /// Autoscaling settings for the new deployment. The new deployment starts from the settings of the environment named by `environment_name` with these changes applied, and the environment keeps the result when the promotion completes. Requires `environment_name`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("autoscaling_settings")]
@@ -117,7 +117,7 @@ namespace Baseten
         public global::Baseten.UpdatePromotionSettingsV1? PromotionSettingsOverride { get; set; }
 
         /// <summary>
-        /// Instance type for the new deployment, from `GET /v1/instance_types`, in place of the one in `config`. With `environment_name`, the environment takes it when the promotion completes. Without it, it applies to the new deployment only. Cannot be set with `preserve_env_instance_type: true`.<br/>
+        /// Instance type for the new deployment, from `GET /v1/instance_types`, in place of the one in `config`. The environment named by `environment_name` takes it when the promotion completes. Requires `environment_name`. Cannot be set with `preserve_env_instance_type: true`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instance_type_id")]
@@ -176,7 +176,7 @@ namespace Baseten
         /// Default Value: false
         /// </param>
         /// <param name="autoscalingSettings">
-        /// Autoscaling settings for the new deployment. With `environment_name`, the new deployment starts from the environment's settings with these changes applied, and the environment keeps the result when the promotion completes. Without it, they apply to the new deployment only.<br/>
+        /// Autoscaling settings for the new deployment. The new deployment starts from the settings of the environment named by `environment_name` with these changes applied, and the environment keeps the result when the promotion completes. Requires `environment_name`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestBackpressureSettings">
@@ -192,7 +192,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="instanceTypeId">
-        /// Instance type for the new deployment, from `GET /v1/instance_types`, in place of the one in `config`. With `environment_name`, the environment takes it when the promotion completes. Without it, it applies to the new deployment only. Cannot be set with `preserve_env_instance_type: true`.<br/>
+        /// Instance type for the new deployment, from `GET /v1/instance_types`, in place of the one in `config`. The environment named by `environment_name` takes it when the promotion completes. Requires `environment_name`. Cannot be set with `preserve_env_instance_type: true`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER

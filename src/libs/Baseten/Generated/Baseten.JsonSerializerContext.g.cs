@@ -388,6 +388,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertTrainingProjectResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListTrainingProjectsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingProjectV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListTrainingProjectsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListTrainingJobsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingJobV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuthMethod), TypeInfoPropertyName = "AuthMethod2")]
@@ -508,7 +509,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsCheckpointsQueryParamsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeployLoopsCheckpointRequestV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,6 +519,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeployLoopsCheckpointRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeployLoopsCheckpointResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointFilesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsCheckpointFilesRequestV1))]
@@ -730,7 +731,13 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridTeamUserSettingsListRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridSpendLimitSettingV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridUserSettingsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionBedrockAccessKeysAuthV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionBedrockApiKeyAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigAnthropicV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigBedrockV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth), TypeInfoPropertyName = "Auth2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminatorMethod), TypeInfoPropertyName = "GridConnectionConfigBedrockV1AuthDiscriminatorMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigOpenAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigVertexV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigXAIV1))]
@@ -741,7 +748,13 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridConnectionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionBedrockAccessKeysAuthV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionBedrockApiKeyAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigAnthropicV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth2), TypeInfoPropertyName = "Auth22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminator))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod), TypeInfoPropertyName = "UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigOpenAIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigVertexV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigXAIV1))]
@@ -982,8 +995,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType?), TypeInfoPropertyName = "NullableUpdateGridRouteRequestV1TargetVariant1DiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridSettingSourceV1?), TypeInfoPropertyName = "NullableGridSettingSourceV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridSpendBlockedByV1?), TypeInfoPropertyName = "NullableGridSpendBlockedByV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth?), TypeInfoPropertyName = "NullableAuth2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminatorMethod?), TypeInfoPropertyName = "NullableGridConnectionConfigBedrockV1AuthDiscriminatorMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config?), TypeInfoPropertyName = "NullableConfig2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableGridConnectionV1ConfigDiscriminatorProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth2?), TypeInfoPropertyName = "NullableAuth22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod?), TypeInfoPropertyName = "NullableUpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config2?), TypeInfoPropertyName = "NullableConfig22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableCreateGridConnectionRequestV1ConfigDiscriminatorProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config3?), TypeInfoPropertyName = "NullableConfig32")]
@@ -1002,6 +1019,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLIdleExpirationPolicyV1Action?), TypeInfoPropertyName = "NullableSandboxTTLIdleExpirationPolicyV1Action2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLIdleExpirationPolicyV1Type?), TypeInfoPropertyName = "NullableSandboxTTLIdleExpirationPolicyV1Type2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Action?), TypeInfoPropertyName = "NullableSandboxTTLMaxAgeExpirationPolicyV1Action2")]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Type?), TypeInfoPropertyName = "NullableSandboxTTLMaxAgeExpirationPolicyV1Type2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxDateExpirationPolicyV1Action?), TypeInfoPropertyName = "NullableSandboxDateExpirationPolicyV1Action2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxDateExpirationPolicyV1Type?), TypeInfoPropertyName = "NullableSandboxDateExpirationPolicyV1Type2")]
@@ -1019,16 +1046,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeTokenScopeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeSyncV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.VolumeVersionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TokenScopeV1>))]
@@ -1209,7 +1226,9 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.TargetJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.Target2JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.TargetVariant1JsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.AuthJsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.ConfigJsonConverter());
+            options.Converters.Add(new global::Baseten.JsonConverters.Auth2JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.Config2JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.Config3JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.SandboxExpirationPolicyV1JsonConverter());
@@ -1557,9 +1576,17 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.GridSpendBlockedByV1?)
 
+                    || typeToConvert == typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminatorMethod)
+
+                    || typeToConvert == typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminatorMethod?)
+
                     || typeToConvert == typeof(global::Baseten.GridConnectionV1ConfigDiscriminatorProvider)
 
                     || typeToConvert == typeof(global::Baseten.GridConnectionV1ConfigDiscriminatorProvider?)
+
+                    || typeToConvert == typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod)
+
+                    || typeToConvert == typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod?)
 
                     || typeToConvert == typeof(global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider)
 
@@ -2388,6 +2415,16 @@ namespace Baseten
                     return new global::Baseten.JsonConverters.GridSpendBlockedByV1NullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminatorMethod))
+                {
+                    return new global::Baseten.JsonConverters.GridConnectionConfigBedrockV1AuthDiscriminatorMethodJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminatorMethod?))
+                {
+                    return new global::Baseten.JsonConverters.GridConnectionConfigBedrockV1AuthDiscriminatorMethodNullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Baseten.GridConnectionV1ConfigDiscriminatorProvider))
                 {
                     return new global::Baseten.JsonConverters.GridConnectionV1ConfigDiscriminatorProviderJsonConverter();
@@ -2396,6 +2433,16 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.GridConnectionV1ConfigDiscriminatorProvider?))
                 {
                     return new global::Baseten.JsonConverters.GridConnectionV1ConfigDiscriminatorProviderNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod))
+                {
+                    return new global::Baseten.JsonConverters.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethodJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod?))
+                {
+                    return new global::Baseten.JsonConverters.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethodNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider))

@@ -19,6 +19,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Bedrock,
+        /// <summary>
+        ///
+        /// </summary>
         Openai,
         /// <summary>
         ///
@@ -48,6 +52,7 @@ namespace Baseten
             {
                 GridProviderV1.Anthropic => "ANTHROPIC",
                 GridProviderV1.BasetenModelApi => "BASETEN_MODEL_API",
+                GridProviderV1.Bedrock => "BEDROCK",
                 GridProviderV1.Openai => "OPENAI",
                 GridProviderV1.OpenaiCompatible => "OPENAI_COMPATIBLE",
                 GridProviderV1.Vertex => "VERTEX",
@@ -64,6 +69,7 @@ namespace Baseten
             {
                 "ANTHROPIC" => GridProviderV1.Anthropic,
                 "BASETEN_MODEL_API" => GridProviderV1.BasetenModelApi,
+                "BEDROCK" => GridProviderV1.Bedrock,
                 "OPENAI" => GridProviderV1.Openai,
                 "OPENAI_COMPATIBLE" => GridProviderV1.OpenaiCompatible,
                 "VERTEX" => GridProviderV1.Vertex,

@@ -16,6 +16,13 @@ namespace Baseten
         public required object Resources { get; set; }
 
         /// <summary>
+        /// Name of the deployment, unique within the model. Use only A-Z, a-z, 0-9, '-', '_', and '.'. The name 'development' is reserved. If omitted or empty, a name is generated automatically.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deployment_name")]
+        public string? DeploymentName { get; set; }
+
+        /// <summary>
         /// Region in which to deploy the model<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -112,6 +119,10 @@ namespace Baseten
         /// <param name="name">
         /// Name of the model
         /// </param>
+        /// <param name="deploymentName">
+        /// Name of the deployment, unique within the model. Use only A-Z, a-z, 0-9, '-', '_', and '.'. The name 'development' is reserved. If omitted or empty, a name is generated automatically.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="region">
         /// Region in which to deploy the model<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -160,6 +171,7 @@ namespace Baseten
         public CreateLLMModelRequestV1(
             object resources,
             string name,
+            string? deploymentName,
             string? region,
             string? llmVersion,
             object? llmConfig,
@@ -173,6 +185,7 @@ namespace Baseten
             global::Baseten.LLMRuntimeV1? runtime)
         {
             this.Resources = resources ?? throw new global::System.ArgumentNullException(nameof(resources));
+            this.DeploymentName = deploymentName;
             this.Region = region;
             this.LlmVersion = llmVersion;
             this.LlmConfig = llmConfig;

@@ -7,7 +7,23 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetTrainingProjectsCommandApiCommand
 {
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"Return only the project with this exact name.",
+    };
 
+    private static Option<string?> Cursor { get; } = new(
+        name: @"--cursor")
+    {
+        Description = @"Opaque cursor from the pagination.cursor field of a previous response. Omit both cursor and limit to get every project in one response.",
+    };
+
+    private static Option<int?> Limit { get; } = new(
+        name: @"--limit")
+    {
+        Description = @"Maximum number of projects to return, up to 1000.",
+    };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ListTrainingProjectsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -34,19 +50,25 @@ internal static partial class GetTrainingProjectsCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-training-projects", @"Lists training projects
-Lists all training projects for the organization.");
-
+Lists the organization's training projects, newest first.");
+                        command.Options.Add(NameOption);
+                        command.Options.Add(Cursor);
+                        command.Options.Add(Limit);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-
+                        var name = parseResult.GetValue(NameOption);
+                        var cursor = parseResult.GetValue(Cursor);
+                        var limit = parseResult.GetValue(Limit);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetTrainingProjectsAsync(
-
+                                    name: name,
+                                    cursor: cursor,
+                                    limit: limit,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
