@@ -121,7 +121,8 @@ internal static partial class CreateLlmModelsCommandApiCommand
                         command.Options.Add(Metadata);
                         command.Options.Add(Weights);
                         command.Options.Add(EgressRestrictions);
-                        command.Options.Add(Runtime);                        command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.Region);
+                        command.Options.Add(Runtime);                        command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.DeploymentName);
+                        command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.Region);
                         command.Options.Add(CreateLLMModelRequestV1OptionSetOptions.LlmVersion);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
                         command.Options.Add(AutoscalingSettingsOptions.AutoscalingWindow);
@@ -164,7 +165,8 @@ internal static partial class CreateLlmModelsCommandApiCommand
                         var metadata = CliRuntime.WasSpecified(parseResult, Metadata) ? parseResult.GetValue(Metadata) : (__requestBase is { } __MetadataBaseValue ? __MetadataBaseValue.Metadata : default);
                         var weights = CliRuntime.WasSpecified(parseResult, Weights) ? parseResult.GetValue(Weights) : (__requestBase is { } __WeightsBaseValue ? __WeightsBaseValue.Weights : default);
                         var egressRestrictions = CliRuntime.WasSpecified(parseResult, EgressRestrictions) ? parseResult.GetValue(EgressRestrictions) : (__requestBase is { } __EgressRestrictionsBaseValue ? __EgressRestrictionsBaseValue.EgressRestrictions : default);
-                        var runtime = CliRuntime.WasSpecified(parseResult, Runtime) ? parseResult.GetValue(Runtime) : (__requestBase is { } __RuntimeBaseValue ? __RuntimeBaseValue.Runtime : default);                        var region = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.Region) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.Region) : (__requestBase is { } __RegionBaseValue ? __RegionBaseValue.Region : default);
+                        var runtime = CliRuntime.WasSpecified(parseResult, Runtime) ? parseResult.GetValue(Runtime) : (__requestBase is { } __RuntimeBaseValue ? __RuntimeBaseValue.Runtime : default);                        var deploymentName = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.DeploymentName) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.DeploymentName) : (__requestBase is { } __DeploymentNameBaseValue ? __DeploymentNameBaseValue.DeploymentName : default);
+                        var region = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.Region) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.Region) : (__requestBase is { } __RegionBaseValue ? __RegionBaseValue.Region : default);
                         var llmVersion = CliRuntime.WasSpecified(parseResult, CreateLLMModelRequestV1OptionSetOptions.LlmVersion) ? parseResult.GetValue(CreateLLMModelRequestV1OptionSetOptions.LlmVersion) : (__requestBase is { } __LlmVersionBaseValue ? __LlmVersionBaseValue.LlmVersion : default);
 
                         var __AutoscalingSettingsBase = __requestBase is { } __AutoscalingSettingsBaseValue ? __AutoscalingSettingsBaseValue.AutoscalingSettings : default;                        var autoscalingSettingsMinReplica = CliRuntime.WasSpecified(parseResult, AutoscalingSettingsOptions.MinReplica) ? parseResult.GetValue(AutoscalingSettingsOptions.MinReplica) : (__AutoscalingSettingsBase is { } __AutoscalingSettingsminReplicaBaseValue ? __AutoscalingSettingsminReplicaBaseValue.MinReplica : default);
@@ -205,6 +207,7 @@ internal static partial class CreateLlmModelsCommandApiCommand
                                     weights: weights,
                                     egressRestrictions: egressRestrictions,
                                     runtime: runtime,
+                                    deploymentName: deploymentName,
                                     region: region,
                                     llmVersion: llmVersion,
                                     autoscalingSettings: autoscalingSettings,

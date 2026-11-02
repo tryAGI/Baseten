@@ -49,6 +49,13 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridConnectionConfigVertexV1)}");
                 vertex = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.UpsertGridConnectionConfigBedrockV1? bedrock = default;
+            if (discriminator?.Provider == global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider.Bedrock)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigBedrockV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridConnectionConfigBedrockV1)}");
+                bedrock = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Baseten.Config2(
                 discriminator?.Provider,
@@ -58,7 +65,9 @@ namespace Baseten.JsonConverters
 
                 xai,
 
-                vertex
+                vertex,
+
+                bedrock
                 );
 
             return __value;
@@ -96,6 +105,12 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigVertexV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigVertexV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridConnectionConfigVertexV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickVertex(), typeInfo);
+            }
+            else if (value.IsBedrock)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigBedrockV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBedrock(), typeInfo);
             }
         }
     }

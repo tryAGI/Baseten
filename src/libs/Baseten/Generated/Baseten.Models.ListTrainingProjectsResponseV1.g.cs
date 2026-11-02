@@ -16,6 +16,13 @@ namespace Baseten
         public required global::System.Collections.Generic.IList<global::Baseten.TrainingProjectV1> TrainingProjects { get; set; }
 
         /// <summary>
+        /// Pagination metadata for the page.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pagination")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.PaginationResponseV1 Pagination { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -27,13 +34,18 @@ namespace Baseten
         /// <param name="trainingProjects">
         /// List of training projects.
         /// </param>
+        /// <param name="pagination">
+        /// Pagination metadata for the page.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListTrainingProjectsResponseV1(
-            global::System.Collections.Generic.IList<global::Baseten.TrainingProjectV1> trainingProjects)
+            global::System.Collections.Generic.IList<global::Baseten.TrainingProjectV1> trainingProjects,
+            global::Baseten.PaginationResponseV1 pagination)
         {
             this.TrainingProjects = trainingProjects ?? throw new global::System.ArgumentNullException(nameof(trainingProjects));
+            this.Pagination = pagination ?? throw new global::System.ArgumentNullException(nameof(pagination));
         }
 
         /// <summary>

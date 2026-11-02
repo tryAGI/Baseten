@@ -5,7 +5,8 @@ using System.CommandLine;
 namespace Baseten.CLI.Commands;
 
 internal sealed record CreateLLMModelRequestV1OptionSet(
-    Option<string?> Region,
+    Option<string?> DeploymentName,
+                     Option<string?> Region,
                      Option<string?> LlmVersion,
                      Option<string> NameOption)
 {
@@ -15,7 +16,11 @@ internal sealed record CreateLLMModelRequestV1OptionSet(
             ? string.Empty
             : prefix.Trim().Trim('-') + "-";
         return new CreateLLMModelRequestV1OptionSet(
-                        Region: new Option<string?>($"--{normalizedPrefix}region")
+                        DeploymentName: new Option<string?>($"--{normalizedPrefix}deployment-name")
+                {
+                    Description = @"Name of the deployment, unique within the model. Use only A-Z, a-z, 0-9, '-', '_', and '.'. The name 'development' is reserved. If omitted or empty, a name is generated automatically.",
+                },
+                Region: new Option<string?>($"--{normalizedPrefix}region")
                 {
                     Description = @"Region in which to deploy the model",
                 },

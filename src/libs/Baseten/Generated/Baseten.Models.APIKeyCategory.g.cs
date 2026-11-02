@@ -19,10 +19,6 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        Routes,
-        /// <summary>
-        ///
-        /// </summary>
         WorkspaceExportMetrics,
         /// <summary>
         ///
@@ -52,7 +48,6 @@ namespace Baseten
             {
                 APIKeyCategory.Grid => "GRID",
                 APIKeyCategory.Personal => "PERSONAL",
-                APIKeyCategory.Routes => "ROUTES",
                 APIKeyCategory.WorkspaceExportMetrics => "WORKSPACE_EXPORT_METRICS",
                 APIKeyCategory.WorkspaceInvoke => "WORKSPACE_INVOKE",
                 APIKeyCategory.WorkspaceManageAll => "WORKSPACE_MANAGE_ALL",
@@ -69,7 +64,6 @@ namespace Baseten
             {
                 "GRID" => APIKeyCategory.Grid,
                 "PERSONAL" => APIKeyCategory.Personal,
-                "ROUTES" => APIKeyCategory.Routes,
                 "WORKSPACE_EXPORT_METRICS" => APIKeyCategory.WorkspaceExportMetrics,
                 "WORKSPACE_INVOKE" => APIKeyCategory.WorkspaceInvoke,
                 "WORKSPACE_MANAGE_ALL" => APIKeyCategory.WorkspaceManageAll,

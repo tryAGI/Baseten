@@ -7,6 +7,18 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class CreateTrainingJobsSearchCommandApiCommand
 {
+    private static Option<string?> Cursor { get; } = new(
+        name: @"--cursor")
+    {
+        Description = @"Opaque cursor returned by a previous page. Omit to fetch the first page.",
+    };
+
+    private static Option<int?> Limit { get; } = new(
+        name: @"--limit")
+    {
+        Description = @"Maximum number of items to return.",
+    };
+
     private static Option<string?> ProjectId { get; } = new(
         name: @"--project-id")
     {
@@ -72,7 +84,9 @@ internal static partial class CreateTrainingJobsSearchCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"create-training-jobs-search", @"Searches training jobs
-Searches training jobs for the organization.");
+Searches training jobs for the organization. Send the same filters with every page.");
+                        command.Options.Add(Cursor);
+                        command.Options.Add(Limit);
                         command.Options.Add(ProjectId);
                         command.Options.Add(JobId);
                         command.Options.Add(Statuses);
@@ -102,6 +116,8 @@ Searches training jobs for the organization.");
                             RequestFile,
                             global::Baseten.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
+                        var cursor = CliRuntime.WasSpecified(parseResult, Cursor) ? parseResult.GetValue(Cursor) : (__requestBase is { } __CursorBaseValue ? __CursorBaseValue.Cursor : default);
+                        var limit = CliRuntime.WasSpecified(parseResult, Limit) ? parseResult.GetValue(Limit) : (__requestBase is { } __LimitBaseValue ? __LimitBaseValue.Limit : default);
                         var projectId = CliRuntime.WasSpecified(parseResult, ProjectId) ? parseResult.GetValue(ProjectId) : (__requestBase is { } __ProjectIdBaseValue ? __ProjectIdBaseValue.ProjectId : default);
                         var jobId = CliRuntime.WasSpecified(parseResult, JobId) ? parseResult.GetValue(JobId) : (__requestBase is { } __JobIdBaseValue ? __JobIdBaseValue.JobId : default);
                         var statuses = CliRuntime.WasSpecified(parseResult, Statuses) ? parseResult.GetValue(Statuses) : (__requestBase is { } __StatusesBaseValue ? __StatusesBaseValue.Statuses : default);
@@ -110,6 +126,8 @@ Searches training jobs for the organization.");
 
 
                                 var response = await client.CreateTrainingJobsSearchAsync(
+                                    cursor: cursor,
+                                    limit: limit,
                                     projectId: projectId,
                                     jobId: jobId,
                                     statuses: statuses,

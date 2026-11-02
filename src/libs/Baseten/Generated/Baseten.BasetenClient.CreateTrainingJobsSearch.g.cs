@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Searches training jobs<br/>
-        /// Searches training jobs for the organization.
+        /// Searches training jobs for the organization. Send the same filters with every page.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -54,6 +54,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/training_jobs/search \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "cursor": null,<br/>
         ///   "project_id": "n4q95w5",<br/>
         ///   "job_id": "p7qr9qv",<br/>
         ///   "statuses": [<br/>
@@ -79,7 +80,7 @@ namespace Baseten
         }
         /// <summary>
         /// Searches training jobs<br/>
-        /// Searches training jobs for the organization.
+        /// Searches training jobs for the organization. Send the same filters with every page.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -90,6 +91,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/training_jobs/search \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "cursor": null,<br/>
         ///   "project_id": "n4q95w5",<br/>
         ///   "job_id": "p7qr9qv",<br/>
         ///   "statuses": [<br/>
@@ -461,8 +463,16 @@ namespace Baseten
         }
         /// <summary>
         /// Searches training jobs<br/>
-        /// Searches training jobs for the organization.
+        /// Searches training jobs for the organization. Send the same filters with every page.
         /// </summary>
+        /// <param name="cursor">
+        /// Opaque cursor returned by a previous page. Omit to fetch the first page.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Maximum number of items to return.<br/>
+        /// Default Value: 1000
+        /// </param>
         /// <param name="projectId">
         /// Filter the training jobs by project ID.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -483,6 +493,8 @@ namespace Baseten
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Baseten.SearchTrainingJobsResponseV1> CreateTrainingJobsSearchAsync(
+            string? cursor = default,
+            int? limit = default,
             string? projectId = default,
             string? jobId = default,
             global::System.Collections.Generic.IList<string>? statuses = default,
@@ -492,6 +504,8 @@ namespace Baseten
         {
             var __request = new global::Baseten.SearchTrainingJobsRequestV1
             {
+                Cursor = cursor,
+                Limit = limit,
                 ProjectId = projectId,
                 JobId = jobId,
                 Statuses = statuses,

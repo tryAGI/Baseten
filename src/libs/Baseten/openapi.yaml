@@ -5967,10 +5967,68 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'name': None, 'cursor': None, 'limit': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Lists all training projects for the organization.",
+                "description": "Lists the organization's training projects, newest first.",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only the project with this exact name.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Name"
+                        }
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor from the pagination.cursor field of a previous response. Omit both cursor and limit to get every project in one response.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of projects to return, up to 1000.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "maximum": 1000,
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Limit"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -6929,14 +6987,14 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_jobs/search \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"project_id\": \"n4q95w5\",\n  \"job_id\": \"p7qr9qv\",\n  \"statuses\": [\n    \"TRAINING_JOB_RUNNING\",\n    \"TRAINING_JOB_COMPLETED\"\n  ]\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_jobs/search \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"cursor\": null,\n  \"project_id\": \"n4q95w5\",\n  \"job_id\": \"p7qr9qv\",\n  \"statuses\": [\n    \"TRAINING_JOB_RUNNING\",\n    \"TRAINING_JOB_COMPLETED\"\n  ]\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_jobs/search\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'project_id': 'n4q95w5', 'job_id': 'p7qr9qv', 'statuses': ['TRAINING_JOB_RUNNING', 'TRAINING_JOB_COMPLETED']}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_jobs/search\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'cursor': None, 'project_id': 'n4q95w5', 'job_id': 'p7qr9qv', 'statuses': ['TRAINING_JOB_RUNNING', 'TRAINING_JOB_COMPLETED']}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Searches training jobs for the organization.",
+                "description": "Searches training jobs for the organization. Send the same filters with every page.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -9104,11 +9162,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -9141,11 +9199,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -9183,11 +9241,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -16679,7 +16737,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Autoscaling settings for the new deployment. With `environment_name`, the new deployment starts from the environment's settings with these changes applied, and the environment keeps the result when the promotion completes. Without it, they apply to the new deployment only.",
+                        "description": "Autoscaling settings for the new deployment. The new deployment starts from the settings of the environment named by `environment_name` with these changes applied, and the environment keeps the result when the promotion completes. Requires `environment_name`.",
                         "examples": [
                             {
                                 "max_replica": 4,
@@ -16745,7 +16803,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Instance type for the new deployment, from `GET /v1/instance_types`, in place of the one in `config`. With `environment_name`, the environment takes it when the promotion completes. Without it, it applies to the new deployment only. Cannot be set with `preserve_env_instance_type: true`.",
+                        "description": "Instance type for the new deployment, from `GET /v1/instance_types`, in place of the one in `config`. The environment named by `environment_name` takes it when the promotion completes. Requires `environment_name`. Cannot be set with `preserve_env_instance_type: true`.",
                         "title": "Instance Type Id"
                     }
                 },
@@ -27210,12 +27268,65 @@
                         },
                         "title": "Training Projects",
                         "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
                     }
                 },
                 "required": [
-                    "training_projects"
+                    "training_projects",
+                    "pagination"
                 ],
                 "title": "ListTrainingProjectsResponseV1",
+                "type": "object"
+            },
+            "ListTrainingProjectsRequestV1": {
+                "description": "A request to list training projects.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Return only the project with this exact name.",
+                        "title": "Name"
+                    },
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor from the pagination.cursor field of a previous response. Omit both cursor and limit to get every project in one response.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "anyOf": [
+                            {
+                                "maximum": 1000,
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Maximum number of projects to return, up to 1000.",
+                        "title": "Limit"
+                    }
+                },
+                "title": "ListTrainingProjectsRequestV1",
                 "type": "object"
             },
             "ListTrainingJobsResponseV1": {
@@ -29680,6 +29791,27 @@
             "SearchTrainingJobsRequestV1": {
                 "description": "A request to search training jobs.",
                 "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "default": 1000,
+                        "description": "Maximum number of items to return.",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Limit",
+                        "type": "integer"
+                    },
                     "project_id": {
                         "anyOf": [
                             {
@@ -29762,10 +29894,15 @@
                         },
                         "title": "Training Jobs",
                         "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
                     }
                 },
                 "required": [
-                    "training_jobs"
+                    "training_jobs",
+                    "pagination"
                 ],
                 "title": "SearchTrainingJobsResponseV1",
                 "type": "object"
@@ -32584,7 +32721,6 @@
                 "description": "Enum representing the category of an API key.",
                 "enum": [
                     "PERSONAL",
-                    "ROUTES",
                     "GRID",
                     "WORKSPACE_MANAGE_ALL",
                     "WORKSPACE_EXPORT_METRICS",
@@ -32618,7 +32754,6 @@
                         "description": "Type of the API key.",
                         "examples": [
                             "PERSONAL",
-                            "ROUTES",
                             "GRID",
                             "WORKSPACE_MANAGE_API_KEYS",
                             "WORKSPACE_EXPORT_METRICS",
@@ -32712,7 +32847,7 @@
                         "description": "Type of the API key.",
                         "examples": [
                             "PERSONAL",
-                            "ROUTES",
+                            "GRID",
                             "WORKSPACE_MANAGE_API_KEYS",
                             "WORKSPACE_EXPORT_METRICS",
                             "WORKSPACE_INVOKE",
@@ -33549,6 +33684,19 @@
                         "title": "Resources",
                         "type": "object"
                     },
+                    "deployment_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name of the deployment, unique within the model. Use only A-Z, a-z, 0-9, '-', '_', and '.'. The name 'development' is reserved. If omitted or empty, a name is generated automatically.",
+                        "title": "Deployment Name"
+                    },
                     "region": {
                         "anyOf": [
                             {
@@ -33779,6 +33927,19 @@
                         "description": "Resources allocated to the model",
                         "title": "Resources",
                         "type": "object"
+                    },
+                    "deployment_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name of the deployment, unique within the model. Use only A-Z, a-z, 0-9, '-', '_', and '.'. The name 'development' is reserved. If omitted or empty, a name is generated automatically.",
+                        "title": "Deployment Name"
                     },
                     "region": {
                         "anyOf": [
@@ -37202,7 +37363,8 @@
                     "ANTHROPIC",
                     "XAI",
                     "VERTEX",
-                    "OPENAI_COMPATIBLE"
+                    "OPENAI_COMPATIBLE",
+                    "BEDROCK"
                 ],
                 "title": "GridProviderV1",
                 "type": "string"
@@ -38420,6 +38582,36 @@
                 "title": "UpdateGridUserSettingsRequestV1",
                 "type": "object"
             },
+            "GridConnectionBedrockAccessKeysAuthV1": {
+                "properties": {
+                    "method": {
+                        "const": "access_keys",
+                        "description": "The secret holds the access keys of an IAM user, as the base64-encoded JSON object `{\"AccessKeyId\": \"...\", \"SecretAccessKey\": \"...\"}`",
+                        "title": "Method",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "method"
+                ],
+                "title": "GridConnectionBedrockAccessKeysAuthV1",
+                "type": "object"
+            },
+            "GridConnectionBedrockApiKeyAuthV1": {
+                "properties": {
+                    "method": {
+                        "const": "api_key",
+                        "description": "The secret holds a long-term Amazon Bedrock API key.",
+                        "title": "Method",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "method"
+                ],
+                "title": "GridConnectionBedrockApiKeyAuthV1",
+                "type": "object"
+            },
             "GridConnectionConfigAnthropicV1": {
                 "properties": {
                     "provider": {
@@ -38445,6 +38637,59 @@
                     "secret_name"
                 ],
                 "title": "GridConnectionConfigAnthropicV1",
+                "type": "object"
+            },
+            "GridConnectionConfigBedrockV1": {
+                "properties": {
+                    "provider": {
+                        "const": "BEDROCK",
+                        "description": "Provider kind for Amazon Bedrock.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of the team secret holding the provider API key.",
+                        "title": "Secret Id",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of the team secret holding the provider API key.",
+                        "title": "Secret Name",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "AWS Region of the Amazon Bedrock endpoint.",
+                        "title": "Region",
+                        "type": "string"
+                    },
+                    "auth": {
+                        "description": "How the connection's secret authenticates with Amazon Bedrock.",
+                        "discriminator": {
+                            "mapping": {
+                                "access_keys": "#/components/schemas/GridConnectionBedrockAccessKeysAuthV1",
+                                "api_key": "#/components/schemas/GridConnectionBedrockApiKeyAuthV1"
+                            },
+                            "propertyName": "method"
+                        },
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/GridConnectionBedrockApiKeyAuthV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GridConnectionBedrockAccessKeysAuthV1"
+                            }
+                        ],
+                        "title": "Auth"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id",
+                    "secret_name",
+                    "region",
+                    "auth"
+                ],
+                "title": "GridConnectionConfigBedrockV1",
                 "type": "object"
             },
             "GridConnectionConfigOpenAIV1": {
@@ -38562,6 +38807,7 @@
                         "discriminator": {
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/GridConnectionConfigAnthropicV1",
+                                "BEDROCK": "#/components/schemas/GridConnectionConfigBedrockV1",
                                 "OPENAI": "#/components/schemas/GridConnectionConfigOpenAIV1",
                                 "VERTEX": "#/components/schemas/GridConnectionConfigVertexV1",
                                 "XAI": "#/components/schemas/GridConnectionConfigXAIV1"
@@ -38580,6 +38826,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/GridConnectionConfigVertexV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GridConnectionConfigBedrockV1"
                             }
                         ],
                         "title": "Config"
@@ -38670,6 +38919,38 @@
                 "title": "GridConnectionsRequestV1",
                 "type": "object"
             },
+            "UpsertGridConnectionBedrockAccessKeysAuthV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "method": {
+                        "const": "access_keys",
+                        "description": "The secret holds the access keys of an IAM user, as the base64-encoded JSON object `{\"AccessKeyId\": \"...\", \"SecretAccessKey\": \"...\"}`",
+                        "title": "Method",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "method"
+                ],
+                "title": "UpsertGridConnectionBedrockAccessKeysAuthV1",
+                "type": "object"
+            },
+            "UpsertGridConnectionBedrockApiKeyAuthV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "method": {
+                        "const": "api_key",
+                        "description": "The secret holds a long-term Amazon Bedrock API key.",
+                        "title": "Method",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "method"
+                ],
+                "title": "UpsertGridConnectionBedrockApiKeyAuthV1",
+                "type": "object"
+            },
             "UpsertGridConnectionConfigAnthropicV1": {
                 "additionalProperties": false,
                 "properties": {
@@ -38694,6 +38975,62 @@
                     "secret_name"
                 ],
                 "title": "UpsertGridConnectionConfigAnthropicV1",
+                "type": "object"
+            },
+            "UpsertGridConnectionConfigBedrockV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "BEDROCK",
+                        "description": "Provider kind for Amazon Bedrock. Claude models (`anthropic.*`) use the Anthropic Messages API, and other models use the OpenAI-compatible APIs.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of an existing secret, owned by the same team, that holds the provider API key.",
+                        "examples": [
+                            "anthropic-key"
+                        ],
+                        "minLength": 1,
+                        "title": "Secret Name",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "AWS Region of the Amazon Bedrock endpoint, for example `us-east-1`.",
+                        "examples": [
+                            "us-east-1"
+                        ],
+                        "minLength": 1,
+                        "title": "Region",
+                        "type": "string"
+                    },
+                    "auth": {
+                        "description": "How the connection's secret authenticates with Amazon Bedrock.",
+                        "discriminator": {
+                            "mapping": {
+                                "access_keys": "#/components/schemas/UpsertGridConnectionBedrockAccessKeysAuthV1",
+                                "api_key": "#/components/schemas/UpsertGridConnectionBedrockApiKeyAuthV1"
+                            },
+                            "propertyName": "method"
+                        },
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/UpsertGridConnectionBedrockApiKeyAuthV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpsertGridConnectionBedrockAccessKeysAuthV1"
+                            }
+                        ],
+                        "title": "Auth"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_name",
+                    "region",
+                    "auth"
+                ],
+                "title": "UpsertGridConnectionConfigBedrockV1",
                 "type": "object"
             },
             "UpsertGridConnectionConfigOpenAIV1": {
@@ -38819,6 +39156,7 @@
                         "discriminator": {
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/UpsertGridConnectionConfigAnthropicV1",
+                                "BEDROCK": "#/components/schemas/UpsertGridConnectionConfigBedrockV1",
                                 "OPENAI": "#/components/schemas/UpsertGridConnectionConfigOpenAIV1",
                                 "VERTEX": "#/components/schemas/UpsertGridConnectionConfigVertexV1",
                                 "XAI": "#/components/schemas/UpsertGridConnectionConfigXAIV1"
@@ -38843,6 +39181,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/UpsertGridConnectionConfigVertexV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpsertGridConnectionConfigBedrockV1"
                             }
                         ],
                         "title": "Config"
@@ -38876,6 +39217,7 @@
                         "discriminator": {
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/UpsertGridConnectionConfigAnthropicV1",
+                                "BEDROCK": "#/components/schemas/UpsertGridConnectionConfigBedrockV1",
                                 "OPENAI": "#/components/schemas/UpsertGridConnectionConfigOpenAIV1",
                                 "VERTEX": "#/components/schemas/UpsertGridConnectionConfigVertexV1",
                                 "XAI": "#/components/schemas/UpsertGridConnectionConfigXAIV1"
@@ -38900,6 +39242,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/UpsertGridConnectionConfigVertexV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpsertGridConnectionConfigBedrockV1"
                             }
                         ],
                         "title": "Config"
