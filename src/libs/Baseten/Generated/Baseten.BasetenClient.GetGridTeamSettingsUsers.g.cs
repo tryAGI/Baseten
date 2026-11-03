@@ -47,7 +47,7 @@ namespace Baseten
 
         /// <summary>
         /// Lists members' Grid settings<br/>
-        /// Returns each member's settings in each team, including organization admins and Grid service accounts, one row per team membership. With `team_id`, one team, which requires team admin for it or organization admin; without it, every team you administer.
+        /// Returns each member's settings in each team, including organization admins and Grid service accounts, one row per team membership. With `team_id`, one team, which requires team admin for it or organization admin; without it, every team you administer, which is none for members.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -85,7 +85,7 @@ namespace Baseten
         }
         /// <summary>
         /// Lists members' Grid settings<br/>
-        /// Returns each member's settings in each team, including organization admins and Grid service accounts, one row per team membership. With `team_id`, one team, which requires team admin for it or organization admin; without it, every team you administer.
+        /// Returns each member's settings in each team, including organization admins and Grid service accounts, one row per team membership. With `team_id`, one team, which requires team admin for it or organization admin; without it, every team you administer, which is none for members.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464

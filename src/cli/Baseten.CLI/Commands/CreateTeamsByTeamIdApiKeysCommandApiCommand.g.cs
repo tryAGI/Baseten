@@ -18,6 +18,12 @@ internal static partial class CreateTeamsByTeamIdApiKeysCommandApiCommand
     {
         Description = @"List of model IDs to scope the API key to, only present if type is 'WORKSPACE_EXPORT_METRICS' or 'WORKSPACE_INVOKE'",
     };
+
+    private static Option<global::System.DateTime?> ExpiresAt { get; } = new(
+        name: @"--expires-at")
+    {
+        Description = @"Expiration time in UTC. Must be in the future. Personal keys require an expiration no more than 90 days away; other keys may omit it or use null.",
+    };
     private static readonly CreateAPIKeyRequestV1OptionSet CreateAPIKeyRequestV1OptionSetOptions = CreateAPIKeyRequestV1OptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -63,7 +69,8 @@ internal static partial class CreateTeamsByTeamIdApiKeysCommandApiCommand
         var command = new Command(commandName ?? @"create-teams-by-team-id-api-keys", @"Creates a team API key
 Creates a team API key with the provided name and type. The API key is returned in the response.");
                         command.Arguments.Add(TeamId);
-                        command.Options.Add(ModelIds);                        command.Options.Add(CreateAPIKeyRequestV1OptionSetOptions.NameOption);
+                        command.Options.Add(ModelIds);
+                        command.Options.Add(ExpiresAt);                        command.Options.Add(CreateAPIKeyRequestV1OptionSetOptions.NameOption);
                         command.Options.Add(CreateAPIKeyRequestV1OptionSetOptions.Type);
                         command.Options.Add(CreateAPIKeyRequestV1OptionSetOptions.TeamId);
           command.Options.Add(Input);
@@ -92,7 +99,8 @@ Creates a team API key with the provided name and type. The API key is returned 
                             global::Baseten.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var teamId = parseResult.GetRequiredValue(TeamId);
-                        var modelIds = CliRuntime.WasSpecified(parseResult, ModelIds) ? parseResult.GetValue(ModelIds) : (__requestBase is { } __ModelIdsBaseValue ? __ModelIdsBaseValue.ModelIds : default);                        var name = CliRuntime.WasSpecified(parseResult, CreateAPIKeyRequestV1OptionSetOptions.NameOption) ? parseResult.GetValue(CreateAPIKeyRequestV1OptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var modelIds = CliRuntime.WasSpecified(parseResult, ModelIds) ? parseResult.GetValue(ModelIds) : (__requestBase is { } __ModelIdsBaseValue ? __ModelIdsBaseValue.ModelIds : default);
+                        var expiresAt = CliRuntime.WasSpecified(parseResult, ExpiresAt) ? parseResult.GetValue(ExpiresAt) : (__requestBase is { } __ExpiresAtBaseValue ? __ExpiresAtBaseValue.ExpiresAt : default);                        var name = CliRuntime.WasSpecified(parseResult, CreateAPIKeyRequestV1OptionSetOptions.NameOption) ? parseResult.GetValue(CreateAPIKeyRequestV1OptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
                         var type = parseResult.GetRequiredValue(CreateAPIKeyRequestV1OptionSetOptions.Type);
                         var requestTeamId = CliRuntime.WasSpecified(parseResult, CreateAPIKeyRequestV1OptionSetOptions.TeamId) ? parseResult.GetValue(CreateAPIKeyRequestV1OptionSetOptions.TeamId) : (__requestBase is { } __RequestTeamIdBaseValue ? __RequestTeamIdBaseValue.TeamId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -101,6 +109,7 @@ Creates a team API key with the provided name and type. The API key is returned 
                                 var response = await client.CreateTeamsByTeamIdApiKeysAsync(
                                     teamId: teamId,
                                     modelIds: modelIds,
+                                    expiresAt: expiresAt,
                                     name: name,
                                     type: type,
                                     requestTeamId: requestTeamId,

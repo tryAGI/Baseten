@@ -20,6 +20,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateGatewayGroupsByGroupIdApiKeysCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGatewayGroupsByGroupIdApiKeysRegisterCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGridConnectionsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateGridMachineUsersCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateGridMachineUsersByMachineUserIdApiKeysCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGridRoutesCommandApiCommand.Create());
                          command.Subcommands.Add(CreateGridTokenCommandApiCommand.Create());
                          command.Subcommands.Add(CreateKeysCommandApiCommand.Create());
@@ -89,6 +91,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteChainsByChainIdDeploymentsByChainDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteGridConnectionsByConnectionIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteGridMachineUsersByMachineUserIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteGridMachineUsersByMachineUserIdApiKeysByApiKeyPrefixCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteGridRoutesByRouteIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteKeysByApiKeyPrefixCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteLibraryListingsByUserDefinedListingIdCommandApiCommand.Create());
@@ -110,6 +114,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(EditGatewayEndpointsByEndpointIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditGatewayGroupsByGroupIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditGridConnectionsByConnectionIdCommandApiCommand.Create());
+                         command.Subcommands.Add(EditGridMachineUsersByMachineUserIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditGridRoutesByRouteIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditGridTeamSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditGridTeamSettingsUsersByUserIdCommandApiCommand.Create());
@@ -155,6 +160,10 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetGridClassifiersCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridClassifiersByClassifierIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridConnectionsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGridConnectionsByConnectionIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGridMachineUsersCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGridMachineUsersByMachineUserIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGridMachineUsersByMachineUserIdApiKeysCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridRoutesCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridRoutesByRouteIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridRoutesUsageCommandApiCommand.Create());

@@ -50,7 +50,7 @@ internal static partial class GetGridTeamSettingsUsersCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-grid-team-settings-users", @"Lists members' Grid settings
-Returns each member's settings in each team, including organization admins and Grid service accounts, one row per team membership. With `team_id`, one team, which requires team admin for it or organization admin; without it, every team you administer.");
+Returns each member's settings in each team, including organization admins and Grid service accounts, one row per team membership. With `team_id`, one team, which requires team admin for it or organization admin; without it, every team you administer, which is none for members.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
                         command.Options.Add(TeamId);

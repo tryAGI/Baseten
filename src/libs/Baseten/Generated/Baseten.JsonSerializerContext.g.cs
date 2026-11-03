@@ -631,12 +631,20 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind), TypeInfoPropertyName = "ResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ChainMetadataV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyDedicatedUsageV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyLoopsUsageV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsMeterUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyModelApiUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DailyTrainingUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DedicatedItemV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.DailyDedicatedUsageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DedicatedUsageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.DedicatedItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsBaseModelItemV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.DailyLoopsUsageV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsResourceItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsResourceItemV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsUsageV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsBaseModelItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApiItemV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.DailyModelApiUsageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApisUsageV1))]
@@ -770,6 +778,15 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridClassifiersResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridClassifierV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridClassifiersRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridMachineUserV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridMachineUsersResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridMachineUserV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridMachineUsersRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridMachineUserAPIKeyRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridMachineUserRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreatedGridMachineUserV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridMachineUserTombstoneV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridMachineUserRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EndpointTargetV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEndpointProviderV1), TypeInfoPropertyName = "GatewayEndpointProviderV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.VertexTargetConfigV1))]
@@ -1002,6 +1019,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth2?), TypeInfoPropertyName = "NullableAuth22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod?), TypeInfoPropertyName = "NullableUpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config2?), TypeInfoPropertyName = "NullableConfig22")]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableCreateGridConnectionRequestV1ConfigDiscriminatorProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config3?), TypeInfoPropertyName = "NullableConfig32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableUpdateGridConnectionRequestV1ConfigDiscriminatorProvider2")]
@@ -1019,16 +1046,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLIdleExpirationPolicyV1Action?), TypeInfoPropertyName = "NullableSandboxTTLIdleExpirationPolicyV1Action2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLIdleExpirationPolicyV1Type?), TypeInfoPropertyName = "NullableSandboxTTLIdleExpirationPolicyV1Type2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Action?), TypeInfoPropertyName = "NullableSandboxTTLMaxAgeExpirationPolicyV1Action2")]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxTTLMaxAgeExpirationPolicyV1Type?), TypeInfoPropertyName = "NullableSandboxTTLMaxAgeExpirationPolicyV1Type2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxDateExpirationPolicyV1Action?), TypeInfoPropertyName = "NullableSandboxDateExpirationPolicyV1Action2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxDateExpirationPolicyV1Type?), TypeInfoPropertyName = "NullableSandboxDateExpirationPolicyV1Type2")]
@@ -1129,6 +1146,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApiCostDimensionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyDedicatedUsageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DedicatedItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyLoopsUsageV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsResourceItemV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsBaseModelItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyModelApiUsageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApiItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyTrainingUsageV1>))]
@@ -1147,6 +1167,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridTeamUserSettingsV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridConnectionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridClassifierV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridMachineUserV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointTargetRequestV1>))]
@@ -1237,6 +1258,13 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.UpdateSandboxPreviewRequestV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.SandboxPreviewV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());

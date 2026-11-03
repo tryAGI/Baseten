@@ -30,6 +30,13 @@ namespace Baseten
         public global::Baseten.ModelApisUsageV1? ModelApisUsage { get; set; }
 
         /// <summary>
+        /// Serverless Loops usage, billed per token. Loops usage on dedicated trainers and samplers is billed by the minute and is part of training usage.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("loops_usage")]
+        public global::Baseten.LoopsUsageV1? LoopsUsage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,17 +57,23 @@ namespace Baseten
         /// Model APIs usage<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="loopsUsage">
+        /// Serverless Loops usage, billed per token. Loops usage on dedicated trainers and samplers is billed by the minute and is part of training usage.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UsageSummaryV1(
             global::Baseten.DedicatedUsageV1? dedicatedUsage,
             global::Baseten.TrainingUsageV1? trainingUsage,
-            global::Baseten.ModelApisUsageV1? modelApisUsage)
+            global::Baseten.ModelApisUsageV1? modelApisUsage,
+            global::Baseten.LoopsUsageV1? loopsUsage)
         {
             this.DedicatedUsage = dedicatedUsage;
             this.TrainingUsage = trainingUsage;
             this.ModelApisUsage = modelApisUsage;
+            this.LoopsUsage = loopsUsage;
         }
 
         /// <summary>
