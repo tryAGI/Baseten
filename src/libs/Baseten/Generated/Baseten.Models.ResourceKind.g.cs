@@ -15,6 +15,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        LoopsRun,
+        /// <summary>
+        ///
+        /// </summary>
         LoopsSampler,
         /// <summary>
         ///
@@ -43,6 +47,7 @@ namespace Baseten
             return value switch
             {
                 ResourceKind.Chainlet => "CHAINLET",
+                ResourceKind.LoopsRun => "LOOPS_RUN",
                 ResourceKind.LoopsSampler => "LOOPS_SAMPLER",
                 ResourceKind.LoopsTrainer => "LOOPS_TRAINER",
                 ResourceKind.ModelDeployment => "MODEL_DEPLOYMENT",
@@ -58,6 +63,7 @@ namespace Baseten
             return value switch
             {
                 "CHAINLET" => ResourceKind.Chainlet,
+                "LOOPS_RUN" => ResourceKind.LoopsRun,
                 "LOOPS_SAMPLER" => ResourceKind.LoopsSampler,
                 "LOOPS_TRAINER" => ResourceKind.LoopsTrainer,
                 "MODEL_DEPLOYMENT" => ResourceKind.ModelDeployment,

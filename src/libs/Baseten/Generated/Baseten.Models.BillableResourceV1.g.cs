@@ -16,7 +16,7 @@ namespace Baseten
         public required string Id { get; set; }
 
         /// <summary>
-        /// Resource kind (MODEL_DEPLOYMENT, CHAINLET, TRAINING_JOB, LOOPS_TRAINER, or LOOPS_SAMPLER)
+        /// Resource kind (MODEL_DEPLOYMENT, CHAINLET, TRAINING_JOB, LOOPS_TRAINER, LOOPS_SAMPLER, or LOOPS_RUN)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.ResourceKindJsonConverter))]
@@ -59,7 +59,7 @@ namespace Baseten
         public string? InstanceType { get; set; }
 
         /// <summary>
-        /// Base model used by this Loops trainer or sampler<br/>
+        /// Base model used by this Loops run, trainer, or sampler<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_model")]
@@ -106,7 +106,7 @@ namespace Baseten
         /// Unique identifier of the resource
         /// </param>
         /// <param name="kind">
-        /// Resource kind (MODEL_DEPLOYMENT, CHAINLET, TRAINING_JOB, LOOPS_TRAINER, or LOOPS_SAMPLER)
+        /// Resource kind (MODEL_DEPLOYMENT, CHAINLET, TRAINING_JOB, LOOPS_TRAINER, LOOPS_SAMPLER, or LOOPS_RUN)
         /// </param>
         /// <param name="isDeleted">
         /// Indicates if the resource has been deleted
@@ -128,7 +128,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseModel">
-        /// Base model used by this Loops trainer or sampler<br/>
+        /// Base model used by this Loops run, trainer, or sampler<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="environmentName">

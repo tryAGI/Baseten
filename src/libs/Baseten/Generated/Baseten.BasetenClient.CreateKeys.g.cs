@@ -466,6 +466,10 @@ namespace Baseten
         /// List of model IDs to scope the API key to, only present if type is 'WORKSPACE_EXPORT_METRICS' or 'WORKSPACE_INVOKE'<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="expiresAt">
+        /// Expiration time in UTC. Must be in the future. Personal keys require an expiration no more than 90 days away; other keys may omit it or use null.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="teamId">
         /// Team ID for a team-scoped key. When omitted, uses the team in the URL if present, otherwise your organization's default team. Must match the URL team when both are provided. Not supported for PERSONAL or WORKSPACE_MANAGE_API_KEYS keys.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -477,6 +481,7 @@ namespace Baseten
             global::Baseten.APIKeyCategory type,
             string? name = default,
             global::System.Collections.Generic.IList<string>? modelIds = default,
+            global::System.DateTime? expiresAt = default,
             string? teamId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -486,6 +491,7 @@ namespace Baseten
                 Name = name,
                 Type = type,
                 ModelIds = modelIds,
+                ExpiresAt = expiresAt,
                 TeamId = teamId,
             };
 

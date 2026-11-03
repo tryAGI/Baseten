@@ -31,6 +31,13 @@ namespace Baseten
         public global::System.Collections.Generic.IList<string>? ModelIds { get; set; }
 
         /// <summary>
+        /// Expiration time in UTC. Must be in the future. Personal keys require an expiration no more than 90 days away; other keys may omit it or use null.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public global::System.DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
         /// Team ID for a team-scoped key. When omitted, uses the team in the URL if present, otherwise your organization's default team. Must match the URL team when both are provided. Not supported for PERSONAL or WORKSPACE_MANAGE_API_KEYS keys.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -57,6 +64,10 @@ namespace Baseten
         /// List of model IDs to scope the API key to, only present if type is 'WORKSPACE_EXPORT_METRICS' or 'WORKSPACE_INVOKE'<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="expiresAt">
+        /// Expiration time in UTC. Must be in the future. Personal keys require an expiration no more than 90 days away; other keys may omit it or use null.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="teamId">
         /// Team ID for a team-scoped key. When omitted, uses the team in the URL if present, otherwise your organization's default team. Must match the URL team when both are provided. Not supported for PERSONAL or WORKSPACE_MANAGE_API_KEYS keys.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -68,11 +79,13 @@ namespace Baseten
             global::Baseten.APIKeyCategory type,
             string? name,
             global::System.Collections.Generic.IList<string>? modelIds,
+            global::System.DateTime? expiresAt,
             string? teamId)
         {
             this.Name = name;
             this.Type = type;
             this.ModelIds = modelIds;
+            this.ExpiresAt = expiresAt;
             this.TeamId = teamId;
         }
 
