@@ -27,7 +27,7 @@ namespace Baseten
             };
         partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdMetricsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::Baseten.ModelMetricModeV1? mode,
+            ref global::Baseten.MetricModeV1? mode,
             int? startEpochMillis,
             int? endEpochMillis,
             global::System.Collections.Generic.IList<string>? metrics,
@@ -36,7 +36,7 @@ namespace Baseten
         partial void PrepareGetModelsByModelIdDeploymentsByDeploymentIdMetricsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Baseten.ModelMetricModeV1? mode,
+            global::Baseten.MetricModeV1? mode,
             int? startEpochMillis,
             int? endEpochMillis,
             global::System.Collections.Generic.IList<string>? metrics,
@@ -76,10 +76,10 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.GetModelMetricsResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.GetMetricsResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync(
             string modelId,
             string deploymentId,
-            global::Baseten.ModelMetricModeV1? mode = default,
+            global::Baseten.MetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
             global::System.Collections.Generic.IList<string>? metrics = default,
@@ -124,10 +124,10 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetMetricsResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsResponseAsync(
             string modelId,
             string deploymentId,
-            global::Baseten.ModelMetricModeV1? mode = default,
+            global::Baseten.MetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
             global::System.Collections.Generic.IList<string>? metrics = default,
@@ -423,9 +423,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.GetModelMetricsResponseV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.GetMetricsResponseV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetMetricsResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -455,9 +455,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.GetModelMetricsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.GetMetricsResponseV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.GetMetricsResponseV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

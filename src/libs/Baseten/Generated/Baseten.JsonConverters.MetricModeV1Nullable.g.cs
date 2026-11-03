@@ -3,10 +3,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ModelMetricKindV1JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.ModelMetricKindV1>
+    public sealed class MetricModeV1NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.MetricModeV1?>
     {
         /// <inheritdoc />
-        public override global::Baseten.ModelMetricKindV1 Read(
+        public override global::Baseten.MetricModeV1? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.ModelMetricKindV1Extensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.MetricModeV1Extensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Baseten.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Baseten.ModelMetricKindV1)numValue;
+                    return (global::Baseten.MetricModeV1)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Baseten.ModelMetricKindV1);
+                    return default(global::Baseten.MetricModeV1?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.ModelMetricKindV1 value,
+            global::Baseten.MetricModeV1? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Baseten.ModelMetricKindV1Extensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Baseten.MetricModeV1Extensions.ToValueString(value.Value));
+            }
         }
     }
 }

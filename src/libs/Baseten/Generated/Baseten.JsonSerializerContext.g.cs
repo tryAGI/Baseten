@@ -280,17 +280,17 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetDeploymentPatchesStateResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SyncDeploymentPatchesRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SyncDeploymentPatchesResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricDescriptorV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricUnitHintV1), TypeInfoPropertyName = "ModelMetricUnitHintV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricKindV1), TypeInfoPropertyName = "ModelMetricKindV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.MetricDescriptorV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.MetricUnitHintV1), TypeInfoPropertyName = "MetricUnitHintV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.MetricKindV1), TypeInfoPropertyName = "MetricKindV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.Dictionary<string, string>>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricModeV1), TypeInfoPropertyName = "ModelMetricModeV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricValueSetV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.MetricModeV1), TypeInfoPropertyName = "MetricModeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.MetricValueSetV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double?>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double?>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetModelMetricsResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelMetricDescriptorV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ModelMetricValueSetV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetMetricsResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.MetricDescriptorV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.MetricValueSetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetDeploymentMetricsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupAttemptV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupOutcomeV1), TypeInfoPropertyName = "StartupOutcomeV12")]
@@ -962,9 +962,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentPatchActionV1?), TypeInfoPropertyName = "NullableDeploymentPatchActionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchOpsItem?), TypeInfoPropertyName = "NullablePatchOpsItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType?), TypeInfoPropertyName = "NullableCreateDeploymentPatchRequestV1PatchOpDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricUnitHintV1?), TypeInfoPropertyName = "NullableModelMetricUnitHintV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricKindV1?), TypeInfoPropertyName = "NullableModelMetricKindV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelMetricModeV1?), TypeInfoPropertyName = "NullableModelMetricModeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.MetricUnitHintV1?), TypeInfoPropertyName = "NullableMetricUnitHintV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.MetricKindV1?), TypeInfoPropertyName = "NullableMetricKindV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.MetricModeV1?), TypeInfoPropertyName = "NullableMetricModeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupOutcomeV1?), TypeInfoPropertyName = "NullableStartupOutcomeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupPhaseStatusV1?), TypeInfoPropertyName = "NullableStartupPhaseStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupPhaseV1?), TypeInfoPropertyName = "NullableStartupPhaseV12")]
@@ -1087,8 +1087,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.Dictionary<string, string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Collections.Generic.List<double?>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double?>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelMetricDescriptorV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelMetricValueSetV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.MetricDescriptorV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.MetricValueSetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.StartupPhaseSummaryV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.StartupAttemptV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.StartupOutcomeV1>))]
@@ -1432,17 +1432,17 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.CreateDeploymentPatchRequestV1PatchOpDiscriminatorType?)
 
-                    || typeToConvert == typeof(global::Baseten.ModelMetricKindV1)
+                    || typeToConvert == typeof(global::Baseten.MetricKindV1)
 
-                    || typeToConvert == typeof(global::Baseten.ModelMetricKindV1?)
+                    || typeToConvert == typeof(global::Baseten.MetricKindV1?)
 
-                    || typeToConvert == typeof(global::Baseten.ModelMetricModeV1)
+                    || typeToConvert == typeof(global::Baseten.MetricModeV1)
 
-                    || typeToConvert == typeof(global::Baseten.ModelMetricModeV1?)
+                    || typeToConvert == typeof(global::Baseten.MetricModeV1?)
 
-                    || typeToConvert == typeof(global::Baseten.ModelMetricUnitHintV1)
+                    || typeToConvert == typeof(global::Baseten.MetricUnitHintV1)
 
-                    || typeToConvert == typeof(global::Baseten.ModelMetricUnitHintV1?)
+                    || typeToConvert == typeof(global::Baseten.MetricUnitHintV1?)
 
                     || typeToConvert == typeof(global::Baseten.StartupOutcomeV1)
 
@@ -2013,34 +2013,34 @@ namespace Baseten
                     return new global::Baseten.JsonConverters.CreateDeploymentPatchRequestV1PatchOpDiscriminatorTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.ModelMetricKindV1))
+                if (typeToConvert == typeof(global::Baseten.MetricKindV1))
                 {
-                    return new global::Baseten.JsonConverters.ModelMetricKindV1JsonConverter();
+                    return new global::Baseten.JsonConverters.MetricKindV1JsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.ModelMetricKindV1?))
+                if (typeToConvert == typeof(global::Baseten.MetricKindV1?))
                 {
-                    return new global::Baseten.JsonConverters.ModelMetricKindV1NullableJsonConverter();
+                    return new global::Baseten.JsonConverters.MetricKindV1NullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.ModelMetricModeV1))
+                if (typeToConvert == typeof(global::Baseten.MetricModeV1))
                 {
-                    return new global::Baseten.JsonConverters.ModelMetricModeV1JsonConverter();
+                    return new global::Baseten.JsonConverters.MetricModeV1JsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.ModelMetricModeV1?))
+                if (typeToConvert == typeof(global::Baseten.MetricModeV1?))
                 {
-                    return new global::Baseten.JsonConverters.ModelMetricModeV1NullableJsonConverter();
+                    return new global::Baseten.JsonConverters.MetricModeV1NullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.ModelMetricUnitHintV1))
+                if (typeToConvert == typeof(global::Baseten.MetricUnitHintV1))
                 {
-                    return new global::Baseten.JsonConverters.ModelMetricUnitHintV1JsonConverter();
+                    return new global::Baseten.JsonConverters.MetricUnitHintV1JsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.ModelMetricUnitHintV1?))
+                if (typeToConvert == typeof(global::Baseten.MetricUnitHintV1?))
                 {
-                    return new global::Baseten.JsonConverters.ModelMetricUnitHintV1NullableJsonConverter();
+                    return new global::Baseten.JsonConverters.MetricUnitHintV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.StartupOutcomeV1))

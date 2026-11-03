@@ -11,7 +11,7 @@ namespace Baseten
     /// - ``COUNTER``: a cumulative total over the step (e.g. tokens, restarts).<br/>
     /// - ``HISTOGRAM``: a distribution, exposed as quantile/average series.
     /// </summary>
-    public enum ModelMetricKindV1
+    public enum MetricKindV1
     {
         /// <summary>
         /// a cumulative total over the step (e.g. tokens, restarts).
@@ -30,31 +30,31 @@ namespace Baseten
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class ModelMetricKindV1Extensions
+    public static class MetricKindV1Extensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this ModelMetricKindV1 value)
+        public static string ToValueString(this MetricKindV1 value)
         {
             return value switch
             {
-                ModelMetricKindV1.Counter => "COUNTER",
-                ModelMetricKindV1.Gauge => "GAUGE",
-                ModelMetricKindV1.Histogram => "HISTOGRAM",
+                MetricKindV1.Counter => "COUNTER",
+                MetricKindV1.Gauge => "GAUGE",
+                MetricKindV1.Histogram => "HISTOGRAM",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static ModelMetricKindV1? ToEnum(string value)
+        public static MetricKindV1? ToEnum(string value)
         {
             return value switch
             {
-                "COUNTER" => ModelMetricKindV1.Counter,
-                "GAUGE" => ModelMetricKindV1.Gauge,
-                "HISTOGRAM" => ModelMetricKindV1.Histogram,
+                "COUNTER" => MetricKindV1.Counter,
+                "GAUGE" => MetricKindV1.Gauge,
+                "HISTOGRAM" => MetricKindV1.Histogram,
                 _ => null,
             };
         }

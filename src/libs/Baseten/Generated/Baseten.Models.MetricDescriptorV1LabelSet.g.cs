@@ -6,7 +6,7 @@ namespace Baseten
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class ModelMetricDescriptorV1LabelSet
+    public sealed partial class MetricDescriptorV1LabelSet
     {
 
         /// <summary>

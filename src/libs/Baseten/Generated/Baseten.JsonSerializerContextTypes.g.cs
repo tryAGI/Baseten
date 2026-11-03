@@ -1106,15 +1106,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ModelMetricDescriptorV1? Type267 { get; set; }
+        public global::Baseten.MetricDescriptorV1? Type267 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ModelMetricUnitHintV1? Type268 { get; set; }
+        public global::Baseten.MetricUnitHintV1? Type268 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ModelMetricKindV1? Type269 { get; set; }
+        public global::Baseten.MetricKindV1? Type269 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1122,11 +1122,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ModelMetricModeV1? Type271 { get; set; }
+        public global::Baseten.MetricModeV1? Type271 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.ModelMetricValueSetV1? Type272 { get; set; }
+        public global::Baseten.MetricValueSetV1? Type272 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1138,15 +1138,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GetModelMetricsResponseV1? Type275 { get; set; }
+        public global::Baseten.GetMetricsResponseV1? Type275 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ModelMetricDescriptorV1>? Type276 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.MetricDescriptorV1>? Type276 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.ModelMetricValueSetV1>? Type277 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.MetricValueSetV1>? Type277 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -3743,11 +3743,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.ModelMetricDescriptorV1>? ListType28 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.MetricDescriptorV1>? ListType28 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.ModelMetricValueSetV1>? ListType29 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.MetricValueSetV1>? ListType29 { get; set; }
         /// <summary>
         ///
         /// </summary>

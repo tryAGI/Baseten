@@ -7,7 +7,7 @@ namespace Baseten
     /// Model metrics over a time window, index-mapped: metric descriptors appear once<br/>
     /// in ``metric_descriptors``; each value set's ``values`` are aligned to that order.
     /// </summary>
-    public sealed partial class GetModelMetricsResponseV1
+    public sealed partial class GetMetricsResponseV1
     {
         /// <summary>
         /// Start of the returned window.
@@ -27,9 +27,9 @@ namespace Baseten
         /// The aggregation mode used.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.ModelMetricModeV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.MetricModeV1JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.ModelMetricModeV1 Mode { get; set; }
+        public required global::Baseten.MetricModeV1 Mode { get; set; }
 
         /// <summary>
         /// Seconds per step; populated only in SERIES mode, null otherwise.
@@ -42,14 +42,14 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metric_descriptors")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Baseten.ModelMetricDescriptorV1> MetricDescriptors { get; set; }
+        public required global::System.Collections.Generic.IList<global::Baseten.MetricDescriptorV1> MetricDescriptors { get; set; }
 
         /// <summary>
         /// Metric values per time step covering the window. In summary mode this always contains exactly one value set spanning the whole window.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metric_values")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Baseten.ModelMetricValueSetV1> MetricValues { get; set; }
+        public required global::System.Collections.Generic.IList<global::Baseten.MetricValueSetV1> MetricValues { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -58,7 +58,7 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetModelMetricsResponseV1" /> class.
+        /// Initializes a new instance of the <see cref="GetMetricsResponseV1" /> class.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Start of the returned window.
@@ -81,12 +81,12 @@ namespace Baseten
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public GetModelMetricsResponseV1(
+        public GetMetricsResponseV1(
             int startEpochMillis,
             int endEpochMillis,
-            global::Baseten.ModelMetricModeV1 mode,
-            global::System.Collections.Generic.IList<global::Baseten.ModelMetricDescriptorV1> metricDescriptors,
-            global::System.Collections.Generic.IList<global::Baseten.ModelMetricValueSetV1> metricValues,
+            global::Baseten.MetricModeV1 mode,
+            global::System.Collections.Generic.IList<global::Baseten.MetricDescriptorV1> metricDescriptors,
+            global::System.Collections.Generic.IList<global::Baseten.MetricValueSetV1> metricValues,
             int? stepSeconds)
         {
             this.StartEpochMillis = startEpochMillis;
@@ -98,9 +98,9 @@ namespace Baseten
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetModelMetricsResponseV1" /> class.
+        /// Initializes a new instance of the <see cref="GetMetricsResponseV1" /> class.
         /// </summary>
-        public GetModelMetricsResponseV1()
+        public GetMetricsResponseV1()
         {
         }
 

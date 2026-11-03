@@ -3485,7 +3485,7 @@
                         "required": false,
                         "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration.",
                         "schema": {
-                            "$ref": "#/components/schemas/ModelMetricModeV1",
+                            "$ref": "#/components/schemas/MetricModeV1",
                             "default": "CURRENT"
                         }
                     },
@@ -3545,7 +3545,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetModelMetricsResponseV1"
+                                    "$ref": "#/components/schemas/GetMetricsResponseV1"
                                 }
                             }
                         }
@@ -4336,7 +4336,7 @@
                         "required": false,
                         "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration.",
                         "schema": {
-                            "$ref": "#/components/schemas/ModelMetricModeV1",
+                            "$ref": "#/components/schemas/MetricModeV1",
                             "default": "CURRENT"
                         }
                     },
@@ -4396,7 +4396,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetModelMetricsResponseV1"
+                                    "$ref": "#/components/schemas/GetMetricsResponseV1"
                                 }
                             }
                         }
@@ -24121,7 +24121,7 @@
                 "title": "SyncDeploymentPatchesResponseV1",
                 "type": "object"
             },
-            "ModelMetricDescriptorV1": {
+            "MetricDescriptorV1": {
                 "description": "Describes one metric. Its position in the response ``metric_descriptors``\nlist is the index used to read that metric out of each value set's ``values``.\n\nA metric may break down into multiple labeled series (e.g. latency quantiles,\nor volume by status). ``label_sets`` enumerates those series in order; each\nvalue set's value for this metric is a list aligned to that order.",
                 "properties": {
                     "name": {
@@ -24130,15 +24130,15 @@
                         "type": "string"
                     },
                     "unit_hint": {
-                        "$ref": "#/components/schemas/ModelMetricUnitHintV1",
+                        "$ref": "#/components/schemas/MetricUnitHintV1",
                         "description": "Advisory unit of the metric's values."
                     },
                     "kind": {
-                        "$ref": "#/components/schemas/ModelMetricKindV1",
+                        "$ref": "#/components/schemas/MetricKindV1",
                         "description": "Semantic hint for how the metric behaves (GAUGE, COUNTER, HISTOGRAM)."
                     },
                     "label_sets": {
-                        "description": "The metric's series, in order. Each entry is the set of labels identifying one series; the value at the same index in each value set's ``values`` is that series' value. A plain metric has a single entry with no labels (`{}`). A histogram has one entry per quantile plus an average, e.g. {'quantile': '0.5'} \u2026 {'quantile': '0.99'}, {'stat': 'avg'}. A by-status metric has one entry per status, e.g. {'status': '2xx'}.",
+                        "description": "The metric's series, in order. Each entry is the set of labels identifying one series; the value at the same index in each value set's ``values`` is that series' value. A plain metric has a single entry with no labels (`{}`). A histogram has one entry per quantile plus an average, e.g. {'quantile': '0.5'} \u2026 {'quantile': '0.99'}, {'stat': 'avg'}.",
                         "items": {
                             "additionalProperties": {
                                 "type": "string"
@@ -24155,30 +24155,30 @@
                     "kind",
                     "label_sets"
                 ],
-                "title": "ModelMetricDescriptorV1",
+                "title": "MetricDescriptorV1",
                 "type": "object"
             },
-            "ModelMetricKindV1": {
+            "MetricKindV1": {
                 "description": "Semantic hint for how a metric behaves, to aid client rendering and\naggregation. It does not describe the value's shape (that is carried by the\ndescriptor's ``label_sets``; a metric may break down into multiple series).\n\n- ``GAUGE``: an instantaneous value (e.g. queue size, running requests).\n- ``COUNTER``: a cumulative total over the step (e.g. tokens, restarts).\n- ``HISTOGRAM``: a distribution, exposed as quantile/average series.",
                 "enum": [
                     "GAUGE",
                     "COUNTER",
                     "HISTOGRAM"
                 ],
-                "title": "ModelMetricKindV1",
+                "title": "MetricKindV1",
                 "type": "string"
             },
-            "ModelMetricModeV1": {
+            "MetricModeV1": {
                 "description": "How metric values are aggregated over the request.",
                 "enum": [
                     "CURRENT",
                     "SUMMARY",
                     "SERIES"
                 ],
-                "title": "ModelMetricModeV1",
+                "title": "MetricModeV1",
                 "type": "string"
             },
-            "ModelMetricUnitHintV1": {
+            "MetricUnitHintV1": {
                 "description": "Advisory unit of a metric's values. Values are reported as scraped, so the\nhint describes the raw value (e.g. GPU memory is reported in mebibytes).\n\n- ``PER_SECOND``: a rate per second.\n- ``SECONDS``: a duration in seconds.\n- ``BYTES``: a size in bytes.\n- ``MEBIBYTES``: a size in mebibytes (MiB).\n- ``COUNT``: a dimensionless tally of discrete things.\n- ``RATIO``: a dimensionless ratio. Usually in ``[0, 1]`` but may exceed 1\n  (e.g. CPU usage in cores = cpu-seconds/second).\n- ``CELSIUS``: a temperature in degrees Celsius.\n- ``WATTS``: power draw in watts.",
                 "enum": [
                     "PER_SECOND",
@@ -24190,10 +24190,10 @@
                     "CELSIUS",
                     "WATTS"
                 ],
-                "title": "ModelMetricUnitHintV1",
+                "title": "MetricUnitHintV1",
                 "type": "string"
             },
-            "ModelMetricValueSetV1": {
+            "MetricValueSetV1": {
                 "description": "The metric values for one time step. ``values`` is aligned by index to the\nresponse ``metric_descriptors`` list.",
                 "properties": {
                     "start_epoch_millis": {
@@ -24224,10 +24224,10 @@
                     "start_epoch_millis",
                     "values"
                 ],
-                "title": "ModelMetricValueSetV1",
+                "title": "MetricValueSetV1",
                 "type": "object"
             },
-            "GetModelMetricsResponseV1": {
+            "GetMetricsResponseV1": {
                 "description": "Model metrics over a time window, index-mapped: metric descriptors appear once\nin ``metric_descriptors``; each value set's ``values`` are aligned to that order.",
                 "properties": {
                     "start_epoch_millis": {
@@ -24241,7 +24241,7 @@
                         "type": "integer"
                     },
                     "mode": {
-                        "$ref": "#/components/schemas/ModelMetricModeV1",
+                        "$ref": "#/components/schemas/MetricModeV1",
                         "description": "The aggregation mode used."
                     },
                     "step_seconds": {
@@ -24259,7 +24259,7 @@
                     "metric_descriptors": {
                         "description": "Descriptors for each metric; position defines the values index.",
                         "items": {
-                            "$ref": "#/components/schemas/ModelMetricDescriptorV1"
+                            "$ref": "#/components/schemas/MetricDescriptorV1"
                         },
                         "title": "Metric Descriptors",
                         "type": "array"
@@ -24267,7 +24267,7 @@
                     "metric_values": {
                         "description": "Metric values per time step covering the window. In summary mode this always contains exactly one value set spanning the whole window.",
                         "items": {
-                            "$ref": "#/components/schemas/ModelMetricValueSetV1"
+                            "$ref": "#/components/schemas/MetricValueSetV1"
                         },
                         "title": "Metric Values",
                         "type": "array"
@@ -24281,14 +24281,14 @@
                     "metric_descriptors",
                     "metric_values"
                 ],
-                "title": "GetModelMetricsResponseV1",
+                "title": "GetMetricsResponseV1",
                 "type": "object"
             },
             "GetDeploymentMetricsRequestV1": {
                 "description": "Query params for ``GET /v1/models/.../deployments/.../metrics``.",
                 "properties": {
                     "mode": {
-                        "$ref": "#/components/schemas/ModelMetricModeV1",
+                        "$ref": "#/components/schemas/MetricModeV1",
                         "default": "CURRENT",
                         "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration."
                     },
@@ -26322,7 +26322,7 @@
                 "description": "Query params for ``GET /v1/models/.../environments/.../metrics``.",
                 "properties": {
                     "mode": {
-                        "$ref": "#/components/schemas/ModelMetricModeV1",
+                        "$ref": "#/components/schemas/MetricModeV1",
                         "default": "CURRENT",
                         "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration."
                     },

@@ -29,10 +29,10 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.GetModelMetricsResponseV1> GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.GetMetricsResponseV1> GetModelsByModelIdEnvironmentsByEnvNameMetricsAsync(
             string modelId,
             string envName,
-            global::Baseten.ModelMetricModeV1? mode = default,
+            global::Baseten.MetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
             global::System.Collections.Generic.IList<string>? metrics = default,
@@ -63,10 +63,10 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/models/{model_id}/environments/{env_name}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>> GetModelsByModelIdEnvironmentsByEnvNameMetricsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetMetricsResponseV1>> GetModelsByModelIdEnvironmentsByEnvNameMetricsAsResponseAsync(
             string modelId,
             string envName,
-            global::Baseten.ModelMetricModeV1? mode = default,
+            global::Baseten.MetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
             global::System.Collections.Generic.IList<string>? metrics = default,

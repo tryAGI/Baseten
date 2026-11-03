@@ -13,8 +13,8 @@ namespace Baseten
         /// Default Value: CURRENT
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.ModelMetricModeV1JsonConverter))]
-        public global::Baseten.ModelMetricModeV1? Mode { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.MetricModeV1JsonConverter))]
+        public global::Baseten.MetricModeV1? Mode { get; set; }
 
         /// <summary>
         /// Epoch millis timestamp to start fetching metrics. Defaults to one hour before the end.<br/>
@@ -64,7 +64,7 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetEnvironmentMetricsRequestV1(
-            global::Baseten.ModelMetricModeV1? mode,
+            global::Baseten.MetricModeV1? mode,
             int? startEpochMillis,
             int? endEpochMillis,
             global::System.Collections.Generic.IList<string>? metrics)
