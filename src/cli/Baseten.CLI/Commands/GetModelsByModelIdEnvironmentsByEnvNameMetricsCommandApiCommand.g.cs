@@ -19,7 +19,7 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameMetricsComm
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
-    private static Option<global::Baseten.ModelMetricModeV1?> Mode { get; } = new(
+    private static Option<global::Baseten.MetricModeV1?> Mode { get; } = new(
         name: @"--mode")
     {
         Description = @"'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration.",
@@ -43,7 +43,7 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameMetricsComm
         Description = @"Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_replicas_active, baseten_inference_requests_total, and baseten_end_to_end_response_time_seconds. Unknown names are rejected; valid names that do not apply are omitted from the response.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.GetModelMetricsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.GetMetricsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -59,7 +59,7 @@ internal static partial class GetModelsByModelIdEnvironmentsByEnvNameMetricsComm
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.GetModelMetricsResponseV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.GetMetricsResponseV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

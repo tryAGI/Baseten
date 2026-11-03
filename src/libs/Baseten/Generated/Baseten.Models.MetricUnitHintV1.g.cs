@@ -16,7 +16,7 @@ namespace Baseten
     /// - ``CELSIUS``: a temperature in degrees Celsius.<br/>
     /// - ``WATTS``: power draw in watts.
     /// </summary>
-    public enum ModelMetricUnitHintV1
+    public enum MetricUnitHintV1
     {
         /// <summary>
         /// a size in bytes.
@@ -55,41 +55,41 @@ namespace Baseten
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class ModelMetricUnitHintV1Extensions
+    public static class MetricUnitHintV1Extensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this ModelMetricUnitHintV1 value)
+        public static string ToValueString(this MetricUnitHintV1 value)
         {
             return value switch
             {
-                ModelMetricUnitHintV1.Bytes => "BYTES",
-                ModelMetricUnitHintV1.Celsius => "CELSIUS",
-                ModelMetricUnitHintV1.Count => "COUNT",
-                ModelMetricUnitHintV1.Mebibytes => "MEBIBYTES",
-                ModelMetricUnitHintV1.PerSecond => "PER_SECOND",
-                ModelMetricUnitHintV1.Ratio => "RATIO",
-                ModelMetricUnitHintV1.Seconds => "SECONDS",
-                ModelMetricUnitHintV1.Watts => "WATTS",
+                MetricUnitHintV1.Bytes => "BYTES",
+                MetricUnitHintV1.Celsius => "CELSIUS",
+                MetricUnitHintV1.Count => "COUNT",
+                MetricUnitHintV1.Mebibytes => "MEBIBYTES",
+                MetricUnitHintV1.PerSecond => "PER_SECOND",
+                MetricUnitHintV1.Ratio => "RATIO",
+                MetricUnitHintV1.Seconds => "SECONDS",
+                MetricUnitHintV1.Watts => "WATTS",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static ModelMetricUnitHintV1? ToEnum(string value)
+        public static MetricUnitHintV1? ToEnum(string value)
         {
             return value switch
             {
-                "BYTES" => ModelMetricUnitHintV1.Bytes,
-                "CELSIUS" => ModelMetricUnitHintV1.Celsius,
-                "COUNT" => ModelMetricUnitHintV1.Count,
-                "MEBIBYTES" => ModelMetricUnitHintV1.Mebibytes,
-                "PER_SECOND" => ModelMetricUnitHintV1.PerSecond,
-                "RATIO" => ModelMetricUnitHintV1.Ratio,
-                "SECONDS" => ModelMetricUnitHintV1.Seconds,
-                "WATTS" => ModelMetricUnitHintV1.Watts,
+                "BYTES" => MetricUnitHintV1.Bytes,
+                "CELSIUS" => MetricUnitHintV1.Celsius,
+                "COUNT" => MetricUnitHintV1.Count,
+                "MEBIBYTES" => MetricUnitHintV1.Mebibytes,
+                "PER_SECOND" => MetricUnitHintV1.PerSecond,
+                "RATIO" => MetricUnitHintV1.Ratio,
+                "SECONDS" => MetricUnitHintV1.Seconds,
+                "WATTS" => MetricUnitHintV1.Watts,
                 _ => null,
             };
         }

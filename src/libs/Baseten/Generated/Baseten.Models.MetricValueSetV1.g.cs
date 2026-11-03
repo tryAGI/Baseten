@@ -7,7 +7,7 @@ namespace Baseten
     /// The metric values for one time step. ``values`` is aligned by index to the<br/>
     /// response ``metric_descriptors`` list.
     /// </summary>
-    public sealed partial class ModelMetricValueSetV1
+    public sealed partial class MetricValueSetV1
     {
         /// <summary>
         /// Start of the step. The step spans until the next value set's start, or the window end for the last one; a summary has a single value set starting at the window start.
@@ -30,7 +30,7 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModelMetricValueSetV1" /> class.
+        /// Initializes a new instance of the <see cref="MetricValueSetV1" /> class.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Start of the step. The step spans until the next value set's start, or the window end for the last one; a summary has a single value set starting at the window start.
@@ -41,7 +41,7 @@ namespace Baseten
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ModelMetricValueSetV1(
+        public MetricValueSetV1(
             int startEpochMillis,
             global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double?>> values)
         {
@@ -50,9 +50,9 @@ namespace Baseten
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModelMetricValueSetV1" /> class.
+        /// Initializes a new instance of the <see cref="MetricValueSetV1" /> class.
         /// </summary>
-        public ModelMetricValueSetV1()
+        public MetricValueSetV1()
         {
         }
 

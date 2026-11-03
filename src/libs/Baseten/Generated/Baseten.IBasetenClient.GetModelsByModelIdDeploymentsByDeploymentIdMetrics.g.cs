@@ -29,10 +29,10 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.GetModelMetricsResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.GetMetricsResponseV1> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsync(
             string modelId,
             string deploymentId,
-            global::Baseten.ModelMetricModeV1? mode = default,
+            global::Baseten.MetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
             global::System.Collections.Generic.IList<string>? metrics = default,
@@ -63,10 +63,10 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/metrics \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetModelMetricsResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GetMetricsResponseV1>> GetModelsByModelIdDeploymentsByDeploymentIdMetricsAsResponseAsync(
             string modelId,
             string deploymentId,
-            global::Baseten.ModelMetricModeV1? mode = default,
+            global::Baseten.MetricModeV1? mode = default,
             int? startEpochMillis = default,
             int? endEpochMillis = default,
             global::System.Collections.Generic.IList<string>? metrics = default,
