@@ -196,6 +196,13 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventApiKeyDeletedV1)}");
                 apiKeyDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1? apiKeyLifetimeLimitsUpdated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.ApiKeyLifetimeLimitsUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1)}");
+                apiKeyLifetimeLimitsUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Baseten.AuditLogEventGatewayEndpointCreatedV1? gatewayEndpointCreated = default;
             if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointCreated)
             {
@@ -237,6 +244,27 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventProviderConnectionDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventProviderConnectionDeletedV1> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventProviderConnectionDeletedV1)}");
                 providerConnectionDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventGridMachineUserCreatedV1? gridMachineUserCreated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGridMachineUserCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGridMachineUserCreatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventGridMachineUserCreatedV1)}");
+                gridMachineUserCreated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventGridMachineUserUpdatedV1? gridMachineUserUpdated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGridMachineUserUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGridMachineUserUpdatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventGridMachineUserUpdatedV1)}");
+                gridMachineUserUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventGridMachineUserDeletedV1? gridMachineUserDeleted = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGridMachineUserDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGridMachineUserDeletedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventGridMachineUserDeletedV1)}");
+                gridMachineUserDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
             global::Baseten.AuditLogEventUserInvitedV1? userInvited = default;
             if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.UserInvited)
@@ -466,6 +494,8 @@ namespace Baseten.JsonConverters
 
                 apiKeyDeleted,
 
+                apiKeyLifetimeLimitsUpdated,
+
                 gatewayEndpointCreated,
 
                 gatewayEndpointUpdated,
@@ -477,6 +507,12 @@ namespace Baseten.JsonConverters
                 providerConnectionUpdated,
 
                 providerConnectionDeleted,
+
+                gridMachineUserCreated,
+
+                gridMachineUserUpdated,
+
+                gridMachineUserDeleted,
 
                 userInvited,
 
@@ -691,6 +727,12 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventApiKeyDeletedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickApiKeyDeleted(), typeInfo);
             }
+            else if (value.IsApiKeyLifetimeLimitsUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickApiKeyLifetimeLimitsUpdated(), typeInfo);
+            }
             else if (value.IsGatewayEndpointCreated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGatewayEndpointCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGatewayEndpointCreatedV1?> ??
@@ -726,6 +768,24 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventProviderConnectionDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventProviderConnectionDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventProviderConnectionDeletedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickProviderConnectionDeleted(), typeInfo);
+            }
+            else if (value.IsGridMachineUserCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGridMachineUserCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGridMachineUserCreatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventGridMachineUserCreatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGridMachineUserCreated(), typeInfo);
+            }
+            else if (value.IsGridMachineUserUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGridMachineUserUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGridMachineUserUpdatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventGridMachineUserUpdatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGridMachineUserUpdated(), typeInfo);
+            }
+            else if (value.IsGridMachineUserDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventGridMachineUserDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventGridMachineUserDeletedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventGridMachineUserDeletedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickGridMachineUserDeleted(), typeInfo);
             }
             else if (value.IsUserInvited)
             {

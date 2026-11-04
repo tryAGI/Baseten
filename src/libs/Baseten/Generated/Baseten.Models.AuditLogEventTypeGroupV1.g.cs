@@ -23,10 +23,6 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        Code,
-        /// <summary>
-        ///
-        /// </summary>
         Deleted,
         /// <summary>
         ///
@@ -44,6 +40,10 @@ namespace Baseten
         ///
         /// </summary>
         Gateway,
+        /// <summary>
+        ///
+        /// </summary>
+        Grid,
         /// <summary>
         ///
         /// </summary>
@@ -101,12 +101,12 @@ namespace Baseten
                 AuditLogEventTypeGroupV1.ActivatedDeactivated => "ACTIVATED_DEACTIVATED",
                 AuditLogEventTypeGroupV1.ApiKeys => "API_KEYS",
                 AuditLogEventTypeGroupV1.AutoscalingSettings => "AUTOSCALING_SETTINGS",
-                AuditLogEventTypeGroupV1.Code => "CODE",
                 AuditLogEventTypeGroupV1.Deleted => "DELETED",
                 AuditLogEventTypeGroupV1.Deployed => "DEPLOYED",
                 AuditLogEventTypeGroupV1.DirectoryGroupManagement => "DIRECTORY_GROUP_MANAGEMENT",
                 AuditLogEventTypeGroupV1.EnvironmentSettings => "ENVIRONMENT_SETTINGS",
                 AuditLogEventTypeGroupV1.Gateway => "GATEWAY",
+                AuditLogEventTypeGroupV1.Grid => "GRID",
                 AuditLogEventTypeGroupV1.InstanceTypeChanged => "INSTANCE_TYPE_CHANGED",
                 AuditLogEventTypeGroupV1.Metadata => "METADATA",
                 AuditLogEventTypeGroupV1.Promoted => "PROMOTED",
@@ -130,12 +130,12 @@ namespace Baseten
                 "ACTIVATED_DEACTIVATED" => AuditLogEventTypeGroupV1.ActivatedDeactivated,
                 "API_KEYS" => AuditLogEventTypeGroupV1.ApiKeys,
                 "AUTOSCALING_SETTINGS" => AuditLogEventTypeGroupV1.AutoscalingSettings,
-                "CODE" => AuditLogEventTypeGroupV1.Code,
                 "DELETED" => AuditLogEventTypeGroupV1.Deleted,
                 "DEPLOYED" => AuditLogEventTypeGroupV1.Deployed,
                 "DIRECTORY_GROUP_MANAGEMENT" => AuditLogEventTypeGroupV1.DirectoryGroupManagement,
                 "ENVIRONMENT_SETTINGS" => AuditLogEventTypeGroupV1.EnvironmentSettings,
                 "GATEWAY" => AuditLogEventTypeGroupV1.Gateway,
+                "GRID" => AuditLogEventTypeGroupV1.Grid,
                 "INSTANCE_TYPE_CHANGED" => AuditLogEventTypeGroupV1.InstanceTypeChanged,
                 "METADATA" => AuditLogEventTypeGroupV1.Metadata,
                 "PROMOTED" => AuditLogEventTypeGroupV1.Promoted,

@@ -165,12 +165,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventSecretDeletedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventApiKeyCreatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventApiKeyDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointCreatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointUpdatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointDeletedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventProviderConnectionCreatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventProviderConnectionUpdatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventProviderConnectionDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGridMachineUserCreatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGridMachineUserUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGridMachineUserDeletedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventUserInvitedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventUserJoinedOrganizationV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventWebhookSigningSecretCreatedV1))]
@@ -505,10 +509,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerCheckpointTarget), TypeInfoPropertyName = "TrainerCheckpointTarget2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsLoRAConfigV1ExpertLayout), TypeInfoPropertyName = "LoopsLoRAConfigV1ExpertLayout2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsCheckpointsResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsCheckpointV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsCheckpointsQueryParamsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointResponseV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,6 +519,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsCheckpointV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsCheckpointsQueryParamsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeployLoopsCheckpointRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeployLoopsCheckpointResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointFilesResponseV1))]
@@ -1015,10 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth?), TypeInfoPropertyName = "NullableAuth2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminatorMethod?), TypeInfoPropertyName = "NullableGridConnectionConfigBedrockV1AuthDiscriminatorMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config?), TypeInfoPropertyName = "NullableConfig2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableGridConnectionV1ConfigDiscriminatorProvider2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth2?), TypeInfoPropertyName = "NullableAuth22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod?), TypeInfoPropertyName = "NullableUpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config2?), TypeInfoPropertyName = "NullableConfig22")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableGridConnectionV1ConfigDiscriminatorProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth2?), TypeInfoPropertyName = "NullableAuth22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod?), TypeInfoPropertyName = "NullableUpsertGridConnectionConfigBedrockV1AuthDiscriminatorMethod2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config2?), TypeInfoPropertyName = "NullableConfig22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableCreateGridConnectionRequestV1ConfigDiscriminatorProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Config3?), TypeInfoPropertyName = "NullableConfig32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider?), TypeInfoPropertyName = "NullableUpdateGridConnectionRequestV1ConfigDiscriminatorProvider2")]

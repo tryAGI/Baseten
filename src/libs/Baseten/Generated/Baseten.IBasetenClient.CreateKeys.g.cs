@@ -64,7 +64,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="expiresAt">
-        /// Expiration time in UTC. Must be in the future. Personal keys require an expiration no more than 90 days away; other keys may omit it or use null.<br/>
+        /// Expiration time in UTC. Must be in the future. Personal keys must expire within 90 days, or sooner if your organization sets a lower limit. Team and organization keys require an expiration within your organization's limit when one is set; otherwise they may omit it or use null. Organization lifetime limits do not apply to Grid keys.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="teamId">
