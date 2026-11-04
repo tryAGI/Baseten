@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Updates a training job<br/>
-        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
+        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (standard or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -32,7 +32,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a training job<br/>
-        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
+        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (standard or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -58,7 +58,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a training job<br/>
-        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
+        /// Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (standard or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -67,7 +67,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="availabilityModel">
-        /// New capacity guarantee for a PENDING training job. 'dedicated' runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress. Only jobs in the PENDING state can have their availability model changed.<br/>
+        /// New capacity guarantee for a PENDING training job. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress. Only jobs in the PENDING state can have their availability model changed.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -77,7 +77,7 @@ namespace Baseten
             string trainingProjectId,
             string trainingJobId,
             int? priority = default,
-            global::Baseten.V1AvailabilityModel? availabilityModel = default,
+            global::Baseten.AvailabilityModelV1? availabilityModel = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

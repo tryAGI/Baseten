@@ -11,7 +11,8 @@ internal sealed record CreateLoopsSamplerRequestV1OptionSet(
                      Option<int?> MaxSeqLength,
                      Option<string?> ModelPath,
                      Option<string?> ReuseFromSessionId,
-                     Option<int?> NumReplicas)
+                     Option<int?> NumReplicas,
+                     Option<global::Baseten.LoopsPlacementScopeV1?> Scope)
 {
     public static CreateLoopsSamplerRequestV1OptionSet Create(string? prefix = null)
     {
@@ -47,6 +48,10 @@ internal sealed record CreateLoopsSamplerRequestV1OptionSet(
                 NumReplicas: new Option<int?>($"--{normalizedPrefix}num-replicas")
                 {
                     Description = @"Number of replicas the sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a paired sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged, and when a run ends, its sampler is scaled down.",
+                },
+                Scope: new Option<global::Baseten.LoopsPlacementScopeV1?>($"--{normalizedPrefix}scope")
+                {
+                    Description = @"Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for. Standalone samplers only: a run's sampler runs where its run does.",
                 }
         );
     }

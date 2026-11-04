@@ -102,8 +102,8 @@ namespace Baseten
         /// Default Value: 900
         /// </param>
         /// <param name="availabilityModel">
-        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
-        /// Default Value: dedicated
+        /// Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: standard
         /// </param>
         /// <param name="replicas">
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
@@ -141,7 +141,7 @@ namespace Baseten
             int? loraRank = default,
             int? seed = default,
             int? scaleDownDelaySeconds = default,
-            global::Baseten.V1AvailabilityModel? availabilityModel = default,
+            global::Baseten.AvailabilityModelV1? availabilityModel = default,
             int? replicas = default,
             string? path = default,
             string? reuseFromRunId = default,

@@ -76,11 +76,11 @@ namespace Baseten
 
         /// <summary>
         /// Capacity the trainer was scheduled on.<br/>
-        /// Default Value: dedicated
+        /// Default Value: standard
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
-        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AvailabilityModelV1JsonConverter))]
+        public global::Baseten.AvailabilityModelV1? AvailabilityModel { get; set; }
 
         /// <summary>
         /// Instance type backing the trainer.
@@ -147,7 +147,7 @@ namespace Baseten
         /// </param>
         /// <param name="availabilityModel">
         /// Capacity the trainer was scheduled on.<br/>
-        /// Default Value: dedicated
+        /// Default Value: standard
         /// </param>
         /// <param name="nodeCount">
         /// Number of nodes backing the trainer.<br/>
@@ -171,7 +171,7 @@ namespace Baseten
             string? activeRunId,
             string? latestRunId,
             string? baseCheckpoint,
-            global::Baseten.V1AvailabilityModel? availabilityModel,
+            global::Baseten.AvailabilityModelV1? availabilityModel,
             int? nodeCount,
             global::Baseten.LoopsSamplerV1? sampler)
         {

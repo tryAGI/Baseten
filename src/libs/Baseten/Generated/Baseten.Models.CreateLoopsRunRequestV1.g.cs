@@ -58,12 +58,12 @@ namespace Baseten
         public int? ScaleDownDelaySeconds { get; set; }
 
         /// <summary>
-        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
-        /// Default Value: dedicated
+        /// Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: standard
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
-        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AvailabilityModelV1JsonConverter))]
+        public global::Baseten.AvailabilityModelV1? AvailabilityModel { get; set; }
 
         /// <summary>
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
@@ -143,8 +143,8 @@ namespace Baseten
         /// Default Value: 900
         /// </param>
         /// <param name="availabilityModel">
-        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
-        /// Default Value: dedicated
+        /// Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: standard
         /// </param>
         /// <param name="replicas">
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
@@ -181,7 +181,7 @@ namespace Baseten
             int? loraRank,
             int? seed,
             int? scaleDownDelaySeconds,
-            global::Baseten.V1AvailabilityModel? availabilityModel,
+            global::Baseten.AvailabilityModelV1? availabilityModel,
             int? replicas,
             string? path,
             string? reuseFromRunId,

@@ -3,10 +3,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class V1AvailabilityModelNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.V1AvailabilityModel?>
+    public sealed class LoopsPlacementScopeV1JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.LoopsPlacementScopeV1>
     {
         /// <inheritdoc />
-        public override global::Baseten.V1AvailabilityModel? Read(
+        public override global::Baseten.LoopsPlacementScopeV1 Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.V1AvailabilityModelExtensions.ToEnum(stringValue);
+                        return global::Baseten.LoopsPlacementScopeV1Extensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Baseten.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Baseten.V1AvailabilityModel)numValue;
+                    return (global::Baseten.LoopsPlacementScopeV1)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Baseten.V1AvailabilityModel?);
+                    return default(global::Baseten.LoopsPlacementScopeV1);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.V1AvailabilityModel? value,
+            global::Baseten.LoopsPlacementScopeV1 value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::Baseten.V1AvailabilityModelExtensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::Baseten.LoopsPlacementScopeV1Extensions.ToValueString(value));
         }
     }
 }

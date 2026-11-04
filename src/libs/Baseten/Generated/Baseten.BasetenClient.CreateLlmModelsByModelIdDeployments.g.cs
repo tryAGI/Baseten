@@ -89,6 +89,14 @@ namespace Baseten
         ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
         ///     }<br/>
         ///   ],<br/>
+        ///   "bdn": {<br/>
+        ///     "mounts": [<br/>
+        ///       {<br/>
+        ///         "path": "/models/startup",<br/>
+        ///         "source": "bdn:my-namespace/my-volume:v1"<br/>
+        ///       }<br/>
+        ///     ]<br/>
+        ///   },<br/>
         ///   "egress_restrictions": null,<br/>
         ///   "runtime": null<br/>
         /// }'
@@ -156,6 +164,14 @@ namespace Baseten
         ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
         ///     }<br/>
         ///   ],<br/>
+        ///   "bdn": {<br/>
+        ///     "mounts": [<br/>
+        ///       {<br/>
+        ///         "path": "/models/startup",<br/>
+        ///         "source": "bdn:my-namespace/my-volume:v1"<br/>
+        ///       }<br/>
+        ///     ]<br/>
+        ///   },<br/>
         ///   "egress_restrictions": null,<br/>
         ///   "runtime": null<br/>
         /// }'
@@ -569,6 +585,10 @@ namespace Baseten
         /// Weight configurations for BDN model weight distribution<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="bdn">
+        /// BDN volume versions to mount read-only in the frontend and worker, each under /models/&lt;name&gt;. Requires the organization to have BDN volumes enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="egressRestrictions">
         /// Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -593,6 +613,7 @@ namespace Baseten
             object? additionalAutoscalingConfig = default,
             object? metadata = default,
             global::System.Collections.Generic.IList<object>? weights = default,
+            global::Baseten.BdnConfigV1? bdn = default,
             global::Baseten.EgressRestrictionsV1? egressRestrictions = default,
             global::Baseten.LLMRuntimeV1? runtime = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -611,6 +632,7 @@ namespace Baseten
                 AdditionalAutoscalingConfig = additionalAutoscalingConfig,
                 Metadata = metadata,
                 Weights = weights,
+                Bdn = bdn,
                 EgressRestrictions = egressRestrictions,
                 Runtime = runtime,
             };

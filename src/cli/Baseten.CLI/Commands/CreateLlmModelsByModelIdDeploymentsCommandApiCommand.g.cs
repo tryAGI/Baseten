@@ -74,6 +74,12 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
         Description = @"Weight configurations for BDN model weight distribution",
     };
 
+    private static Option<global::Baseten.BdnConfigV1?> Bdn { get; } = new(
+        name: @"--bdn")
+    {
+        Description = @"BDN volume versions to mount read-only in the frontend and worker, each under /models/<name>. Requires the organization to have BDN volumes enabled.",
+    };
+
     private static Option<global::Baseten.EgressRestrictionsV1?> EgressRestrictions { get; } = new(
         name: @"--egress-restrictions")
     {
@@ -139,6 +145,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                         command.Options.Add(AdditionalAutoscalingConfig);
                         command.Options.Add(Metadata);
                         command.Options.Add(Weights);
+                        command.Options.Add(Bdn);
                         command.Options.Add(EgressRestrictions);
                         command.Options.Add(Runtime);                        command.Options.Add(AutoscalingSettingsOptions.MinReplica);
                         command.Options.Add(AutoscalingSettingsOptions.MaxReplica);
@@ -184,6 +191,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                         var additionalAutoscalingConfig = CliRuntime.WasSpecified(parseResult, AdditionalAutoscalingConfig) ? parseResult.GetValue(AdditionalAutoscalingConfig) : (__requestBase is { } __AdditionalAutoscalingConfigBaseValue ? __AdditionalAutoscalingConfigBaseValue.AdditionalAutoscalingConfig : default);
                         var metadata = CliRuntime.WasSpecified(parseResult, Metadata) ? parseResult.GetValue(Metadata) : (__requestBase is { } __MetadataBaseValue ? __MetadataBaseValue.Metadata : default);
                         var weights = CliRuntime.WasSpecified(parseResult, Weights) ? parseResult.GetValue(Weights) : (__requestBase is { } __WeightsBaseValue ? __WeightsBaseValue.Weights : default);
+                        var bdn = CliRuntime.WasSpecified(parseResult, Bdn) ? parseResult.GetValue(Bdn) : (__requestBase is { } __BdnBaseValue ? __BdnBaseValue.Bdn : default);
                         var egressRestrictions = CliRuntime.WasSpecified(parseResult, EgressRestrictions) ? parseResult.GetValue(EgressRestrictions) : (__requestBase is { } __EgressRestrictionsBaseValue ? __EgressRestrictionsBaseValue.EgressRestrictions : default);
                         var runtime = CliRuntime.WasSpecified(parseResult, Runtime) ? parseResult.GetValue(Runtime) : (__requestBase is { } __RuntimeBaseValue ? __RuntimeBaseValue.Runtime : default);
 
@@ -226,6 +234,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
                                     additionalAutoscalingConfig: additionalAutoscalingConfig,
                                     metadata: metadata,
                                     weights: weights,
+                                    bdn: bdn,
                                     egressRestrictions: egressRestrictions,
                                     runtime: runtime,
                                     autoscalingSettings: autoscalingSettings,

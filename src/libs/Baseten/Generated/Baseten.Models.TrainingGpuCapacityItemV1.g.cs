@@ -37,7 +37,7 @@ namespace Baseten
         public required int UsageCount { get; set; }
 
         /// <summary>
-        /// Portion of usage_count from dedicated (on-demand) jobs, which run against the baseline.<br/>
+        /// Portion of usage_count from standard (non-spot) jobs, which run against the baseline.<br/>
         /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dedicated_usage_count")]
@@ -72,7 +72,7 @@ namespace Baseten
         /// GPUs currently in use by active training jobs
         /// </param>
         /// <param name="dedicatedUsageCount">
-        /// Portion of usage_count from dedicated (on-demand) jobs, which run against the baseline.<br/>
+        /// Portion of usage_count from standard (non-spot) jobs, which run against the baseline.<br/>
         /// Default Value: 0
         /// </param>
         /// <param name="spotUsageCount">
