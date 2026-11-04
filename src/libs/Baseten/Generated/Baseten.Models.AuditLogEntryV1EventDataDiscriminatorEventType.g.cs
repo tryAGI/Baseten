@@ -19,6 +19,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ApiKeyLifetimeLimitsUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         ChainletAutoscalingSettingsChanged,
         /// <summary>
         ///
@@ -84,6 +88,18 @@ namespace Baseten
         ///
         /// </summary>
         GatewayEndpointUpdated,
+        /// <summary>
+        ///
+        /// </summary>
+        GridMachineUserCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        GridMachineUserDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        GridMachineUserUpdated,
         /// <summary>
         ///
         /// </summary>
@@ -248,6 +264,7 @@ namespace Baseten
             {
                 AuditLogEntryV1EventDataDiscriminatorEventType.ApiKeyCreated => "API_KEY_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ApiKeyDeleted => "API_KEY_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ApiKeyLifetimeLimitsUpdated => "API_KEY_LIFETIME_LIMITS_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ChainletAutoscalingSettingsChanged => "CHAINLET_AUTOSCALING_SETTINGS_CHANGED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ChainletInstanceTypeChanged => "CHAINLET_INSTANCE_TYPE_CHANGED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ChainDeleted => "CHAIN_DELETED",
@@ -265,6 +282,9 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointCreated => "GATEWAY_ENDPOINT_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointDeleted => "GATEWAY_ENDPOINT_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointUpdated => "GATEWAY_ENDPOINT_UPDATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserCreated => "GRID_MACHINE_USER_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserDeleted => "GRID_MACHINE_USER_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserUpdated => "GRID_MACHINE_USER_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeleted => "MODEL_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeployed => "MODEL_DEPLOYED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentActivated => "MODEL_DEPLOYMENT_ACTIVATED",
@@ -314,6 +334,7 @@ namespace Baseten
             {
                 "API_KEY_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ApiKeyCreated,
                 "API_KEY_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ApiKeyDeleted,
+                "API_KEY_LIFETIME_LIMITS_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ApiKeyLifetimeLimitsUpdated,
                 "CHAINLET_AUTOSCALING_SETTINGS_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ChainletAutoscalingSettingsChanged,
                 "CHAINLET_INSTANCE_TYPE_CHANGED" => AuditLogEntryV1EventDataDiscriminatorEventType.ChainletInstanceTypeChanged,
                 "CHAIN_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ChainDeleted,
@@ -331,6 +352,9 @@ namespace Baseten
                 "GATEWAY_ENDPOINT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointCreated,
                 "GATEWAY_ENDPOINT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointDeleted,
                 "GATEWAY_ENDPOINT_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointUpdated,
+                "GRID_MACHINE_USER_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserCreated,
+                "GRID_MACHINE_USER_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserDeleted,
+                "GRID_MACHINE_USER_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserUpdated,
                 "MODEL_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeleted,
                 "MODEL_DEPLOYED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeployed,
                 "MODEL_DEPLOYMENT_ACTIVATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentActivated,

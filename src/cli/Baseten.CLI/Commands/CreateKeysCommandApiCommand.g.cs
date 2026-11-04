@@ -16,7 +16,7 @@ internal static partial class CreateKeysCommandApiCommand
     private static Option<global::System.DateTime?> ExpiresAt { get; } = new(
         name: @"--expires-at")
     {
-        Description = @"Expiration time in UTC. Must be in the future. Personal keys require an expiration no more than 90 days away; other keys may omit it or use null.",
+        Description = @"Expiration time in UTC. Must be in the future. Personal keys must expire within 90 days, or sooner if your organization sets a lower limit. Team and organization keys require an expiration within your organization's limit when one is set; otherwise they may omit it or use null. Organization lifetime limits do not apply to Grid keys.",
     };
     private static readonly CreateAPIKeyRequestV1OptionSet CreateAPIKeyRequestV1OptionSetOptions = CreateAPIKeyRequestV1OptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")

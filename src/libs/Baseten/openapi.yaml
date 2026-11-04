@@ -17907,6 +17907,7 @@
                             "mapping": {
                                 "API_KEY_CREATED": "#/components/schemas/AuditLogEventApiKeyCreatedV1",
                                 "API_KEY_DELETED": "#/components/schemas/AuditLogEventApiKeyDeletedV1",
+                                "API_KEY_LIFETIME_LIMITS_UPDATED": "#/components/schemas/AuditLogEventApiKeyLifetimeLimitsUpdatedV1",
                                 "CHAINLET_AUTOSCALING_SETTINGS_CHANGED": "#/components/schemas/AuditLogEventChainletAutoscalingSettingsChangedV1",
                                 "CHAINLET_INSTANCE_TYPE_CHANGED": "#/components/schemas/AuditLogEventChainletInstanceTypeChangedV1",
                                 "CHAIN_DELETED": "#/components/schemas/AuditLogEventChainDeletedV1",
@@ -17924,6 +17925,9 @@
                                 "GATEWAY_ENDPOINT_CREATED": "#/components/schemas/AuditLogEventGatewayEndpointCreatedV1",
                                 "GATEWAY_ENDPOINT_DELETED": "#/components/schemas/AuditLogEventGatewayEndpointDeletedV1",
                                 "GATEWAY_ENDPOINT_UPDATED": "#/components/schemas/AuditLogEventGatewayEndpointUpdatedV1",
+                                "GRID_MACHINE_USER_CREATED": "#/components/schemas/AuditLogEventGridMachineUserCreatedV1",
+                                "GRID_MACHINE_USER_DELETED": "#/components/schemas/AuditLogEventGridMachineUserDeletedV1",
+                                "GRID_MACHINE_USER_UPDATED": "#/components/schemas/AuditLogEventGridMachineUserUpdatedV1",
                                 "MODEL_DELETED": "#/components/schemas/AuditLogEventModelDeletedV1",
                                 "MODEL_DEPLOYED": "#/components/schemas/AuditLogEventModelDeployedV1",
                                 "MODEL_DEPLOYMENT_ACTIVATED": "#/components/schemas/AuditLogEventModelDeploymentActivatedV1",
@@ -18041,6 +18045,9 @@
                                 "$ref": "#/components/schemas/AuditLogEventApiKeyDeletedV1"
                             },
                             {
+                                "$ref": "#/components/schemas/AuditLogEventApiKeyLifetimeLimitsUpdatedV1"
+                            },
+                            {
                                 "$ref": "#/components/schemas/AuditLogEventGatewayEndpointCreatedV1"
                             },
                             {
@@ -18057,6 +18064,15 @@
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventProviderConnectionDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventGridMachineUserCreatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventGridMachineUserUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventGridMachineUserDeletedV1"
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventUserInvitedV1"
@@ -18269,6 +18285,74 @@
                     "prefix"
                 ],
                 "title": "AuditLogEventApiKeyDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventApiKeyLifetimeLimitsUpdatedV1": {
+                "description": "An administrator updated the organization's API key lifetime limits.",
+                "properties": {
+                    "event_type": {
+                        "const": "API_KEY_LIFETIME_LIMITS_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "organization_id": {
+                        "title": "Organization Id",
+                        "type": "string"
+                    },
+                    "previous_personal_limit_days": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Previous Personal Limit Days"
+                    },
+                    "new_personal_limit_days": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "New Personal Limit Days"
+                    },
+                    "previous_team_limit_days": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Previous Team Limit Days"
+                    },
+                    "new_team_limit_days": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "New Team Limit Days"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "organization_id",
+                    "previous_personal_limit_days",
+                    "new_personal_limit_days",
+                    "previous_team_limit_days",
+                    "new_team_limit_days"
+                ],
+                "title": "AuditLogEventApiKeyLifetimeLimitsUpdatedV1",
                 "type": "object"
             },
             "AuditLogEventAutoscalingScheduleActionV1": {
@@ -20518,6 +20602,116 @@
                 "title": "AuditLogEventGatewayEndpointUpdatedV1",
                 "type": "object"
             },
+            "AuditLogEventGridMachineUserCreatedV1": {
+                "description": "A Grid machine user was created.",
+                "properties": {
+                    "event_type": {
+                        "const": "GRID_MACHINE_USER_CREATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "machine_user_id": {
+                        "title": "Machine User Id",
+                        "type": "string"
+                    },
+                    "machine_user_name": {
+                        "title": "Machine User Name",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "title": "Team Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "machine_user_id",
+                    "machine_user_name",
+                    "team_id",
+                    "team_name"
+                ],
+                "title": "AuditLogEventGridMachineUserCreatedV1",
+                "type": "object"
+            },
+            "AuditLogEventGridMachineUserDeletedV1": {
+                "description": "A Grid machine user was deleted, revoking its API keys.",
+                "properties": {
+                    "event_type": {
+                        "const": "GRID_MACHINE_USER_DELETED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "machine_user_id": {
+                        "title": "Machine User Id",
+                        "type": "string"
+                    },
+                    "machine_user_name": {
+                        "title": "Machine User Name",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "title": "Team Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "machine_user_id",
+                    "machine_user_name",
+                    "team_id",
+                    "team_name"
+                ],
+                "title": "AuditLogEventGridMachineUserDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventGridMachineUserUpdatedV1": {
+                "description": "A Grid machine user was renamed.",
+                "properties": {
+                    "event_type": {
+                        "const": "GRID_MACHINE_USER_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "machine_user_id": {
+                        "title": "Machine User Id",
+                        "type": "string"
+                    },
+                    "machine_user_name": {
+                        "title": "Machine User Name",
+                        "type": "string"
+                    },
+                    "previous_machine_user_name": {
+                        "title": "Previous Machine User Name",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "title": "Team Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "machine_user_id",
+                    "machine_user_name",
+                    "previous_machine_user_name",
+                    "team_id",
+                    "team_name"
+                ],
+                "title": "AuditLogEventGridMachineUserUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventModelDeletedV1": {
                 "description": "A model was deleted.",
                 "properties": {
@@ -21758,12 +21952,16 @@
                     "SECRET_DELETED",
                     "API_KEY_CREATED",
                     "API_KEY_DELETED",
+                    "API_KEY_LIFETIME_LIMITS_UPDATED",
                     "GATEWAY_ENDPOINT_CREATED",
                     "GATEWAY_ENDPOINT_UPDATED",
                     "GATEWAY_ENDPOINT_DELETED",
                     "PROVIDER_CONNECTION_CREATED",
                     "PROVIDER_CONNECTION_UPDATED",
                     "PROVIDER_CONNECTION_DELETED",
+                    "GRID_MACHINE_USER_CREATED",
+                    "GRID_MACHINE_USER_UPDATED",
+                    "GRID_MACHINE_USER_DELETED",
                     "USER_INVITED",
                     "USER_JOINED_ORGANIZATION",
                     "WEBHOOK_SIGNING_SECRET_CREATED",
@@ -22277,7 +22475,7 @@
                     "SECRETS",
                     "API_KEYS",
                     "GATEWAY",
-                    "CODE",
+                    "GRID",
                     "WEBHOOK_SIGNING_SECRETS",
                     "USER_MANAGEMENT",
                     "DIRECTORY_GROUP_MANAGEMENT",
@@ -33142,7 +33340,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Expiration time in UTC. Must be in the future. Personal keys require an expiration no more than 90 days away; other keys may omit it or use null.",
+                        "description": "Expiration time in UTC. Must be in the future. Personal keys must expire within 90 days, or sooner if your organization sets a lower limit. Team and organization keys require an expiration within your organization's limit when one is set; otherwise they may omit it or use null. Organization lifetime limits do not apply to Grid keys.",
                         "examples": [
                             "2027-01-01T00:00:00Z"
                         ],

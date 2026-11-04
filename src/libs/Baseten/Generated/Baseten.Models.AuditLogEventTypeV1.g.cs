@@ -19,6 +19,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ApiKeyLifetimeLimitsUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         ChainletAutoscalingSettingsChanged,
         /// <summary>
         ///
@@ -84,6 +88,18 @@ namespace Baseten
         ///
         /// </summary>
         GatewayEndpointUpdated,
+        /// <summary>
+        ///
+        /// </summary>
+        GridMachineUserCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        GridMachineUserDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        GridMachineUserUpdated,
         /// <summary>
         ///
         /// </summary>
@@ -248,6 +264,7 @@ namespace Baseten
             {
                 AuditLogEventTypeV1.ApiKeyCreated => "API_KEY_CREATED",
                 AuditLogEventTypeV1.ApiKeyDeleted => "API_KEY_DELETED",
+                AuditLogEventTypeV1.ApiKeyLifetimeLimitsUpdated => "API_KEY_LIFETIME_LIMITS_UPDATED",
                 AuditLogEventTypeV1.ChainletAutoscalingSettingsChanged => "CHAINLET_AUTOSCALING_SETTINGS_CHANGED",
                 AuditLogEventTypeV1.ChainletInstanceTypeChanged => "CHAINLET_INSTANCE_TYPE_CHANGED",
                 AuditLogEventTypeV1.ChainDeleted => "CHAIN_DELETED",
@@ -265,6 +282,9 @@ namespace Baseten
                 AuditLogEventTypeV1.GatewayEndpointCreated => "GATEWAY_ENDPOINT_CREATED",
                 AuditLogEventTypeV1.GatewayEndpointDeleted => "GATEWAY_ENDPOINT_DELETED",
                 AuditLogEventTypeV1.GatewayEndpointUpdated => "GATEWAY_ENDPOINT_UPDATED",
+                AuditLogEventTypeV1.GridMachineUserCreated => "GRID_MACHINE_USER_CREATED",
+                AuditLogEventTypeV1.GridMachineUserDeleted => "GRID_MACHINE_USER_DELETED",
+                AuditLogEventTypeV1.GridMachineUserUpdated => "GRID_MACHINE_USER_UPDATED",
                 AuditLogEventTypeV1.ModelDeleted => "MODEL_DELETED",
                 AuditLogEventTypeV1.ModelDeployed => "MODEL_DEPLOYED",
                 AuditLogEventTypeV1.ModelDeploymentActivated => "MODEL_DEPLOYMENT_ACTIVATED",
@@ -314,6 +334,7 @@ namespace Baseten
             {
                 "API_KEY_CREATED" => AuditLogEventTypeV1.ApiKeyCreated,
                 "API_KEY_DELETED" => AuditLogEventTypeV1.ApiKeyDeleted,
+                "API_KEY_LIFETIME_LIMITS_UPDATED" => AuditLogEventTypeV1.ApiKeyLifetimeLimitsUpdated,
                 "CHAINLET_AUTOSCALING_SETTINGS_CHANGED" => AuditLogEventTypeV1.ChainletAutoscalingSettingsChanged,
                 "CHAINLET_INSTANCE_TYPE_CHANGED" => AuditLogEventTypeV1.ChainletInstanceTypeChanged,
                 "CHAIN_DELETED" => AuditLogEventTypeV1.ChainDeleted,
@@ -331,6 +352,9 @@ namespace Baseten
                 "GATEWAY_ENDPOINT_CREATED" => AuditLogEventTypeV1.GatewayEndpointCreated,
                 "GATEWAY_ENDPOINT_DELETED" => AuditLogEventTypeV1.GatewayEndpointDeleted,
                 "GATEWAY_ENDPOINT_UPDATED" => AuditLogEventTypeV1.GatewayEndpointUpdated,
+                "GRID_MACHINE_USER_CREATED" => AuditLogEventTypeV1.GridMachineUserCreated,
+                "GRID_MACHINE_USER_DELETED" => AuditLogEventTypeV1.GridMachineUserDeleted,
+                "GRID_MACHINE_USER_UPDATED" => AuditLogEventTypeV1.GridMachineUserUpdated,
                 "MODEL_DELETED" => AuditLogEventTypeV1.ModelDeleted,
                 "MODEL_DEPLOYED" => AuditLogEventTypeV1.ModelDeployed,
                 "MODEL_DEPLOYMENT_ACTIVATED" => AuditLogEventTypeV1.ModelDeploymentActivated,
