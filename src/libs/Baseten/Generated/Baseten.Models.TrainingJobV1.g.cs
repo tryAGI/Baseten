@@ -93,12 +93,12 @@ namespace Baseten
         public int? Priority { get; set; }
 
         /// <summary>
-        /// Capacity guarantee for the job. 'dedicated' is non-preemptible on-demand capacity; 'spot' is interruptible.<br/>
-        /// Default Value: dedicated
+        /// Capacity guarantee for the job. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress.<br/>
+        /// Default Value: standard
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
-        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AvailabilityModelV1JsonConverter))]
+        public global::Baseten.AvailabilityModelV1? AvailabilityModel { get; set; }
 
         /// <summary>
         /// The user who created the training job.<br/>
@@ -158,8 +158,8 @@ namespace Baseten
         /// Default Value: 0
         /// </param>
         /// <param name="availabilityModel">
-        /// Capacity guarantee for the job. 'dedicated' is non-preemptible on-demand capacity; 'spot' is interruptible.<br/>
-        /// Default Value: dedicated
+        /// Capacity guarantee for the job. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress.<br/>
+        /// Default Value: standard
         /// </param>
         /// <param name="user">
         /// The user who created the training job.<br/>
@@ -181,7 +181,7 @@ namespace Baseten
             string? name,
             global::Baseten.CheckpointSyncStatus? checkpointSyncStatus,
             int? priority,
-            global::Baseten.V1AvailabilityModel? availabilityModel,
+            global::Baseten.AvailabilityModelV1? availabilityModel,
             global::Baseten.UserV1? user)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));

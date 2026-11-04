@@ -9,11 +9,11 @@ namespace Baseten
     public sealed partial class CreateLoopsSamplerRequestV1
     {
         /// <summary>
-        /// Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'dedicated' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.<br/>
+        /// Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'standard' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
-        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+        public global::Baseten.AvailabilityModelV1? AvailabilityModel { get; set; }
 
         /// <summary>
         /// ID of the Loops session this sampler belongs to.
@@ -65,6 +65,14 @@ namespace Baseten
         public int? NumReplicas { get; set; }
 
         /// <summary>
+        /// Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for. Standalone samplers only: a run's sampler runs where its run does.<br/>
+        /// Default Value: default
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scope")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.LoopsPlacementScopeV1JsonConverter))]
+        public global::Baseten.LoopsPlacementScopeV1? Scope { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -77,7 +85,7 @@ namespace Baseten
         /// ID of the Loops session this sampler belongs to.
         /// </param>
         /// <param name="availabilityModel">
-        /// Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'dedicated' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.<br/>
+        /// Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'standard' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseModel">
@@ -104,18 +112,23 @@ namespace Baseten
         /// Number of replicas the sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a paired sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged, and when a run ends, its sampler is scaled down.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="scope">
+        /// Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for. Standalone samplers only: a run's sampler runs where its run does.<br/>
+        /// Default Value: default
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateLoopsSamplerRequestV1(
             string sessionId,
-            global::Baseten.V1AvailabilityModel? availabilityModel,
+            global::Baseten.AvailabilityModelV1? availabilityModel,
             string? baseModel,
             string? runId,
             int? maxSeqLength,
             string? modelPath,
             string? reuseFromSessionId,
-            int? numReplicas)
+            int? numReplicas,
+            global::Baseten.LoopsPlacementScopeV1? scope)
         {
             this.AvailabilityModel = availabilityModel;
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
@@ -125,6 +138,7 @@ namespace Baseten
             this.ModelPath = modelPath;
             this.ReuseFromSessionId = reuseFromSessionId;
             this.NumReplicas = numReplicas;
+            this.Scope = scope;
         }
 
         /// <summary>

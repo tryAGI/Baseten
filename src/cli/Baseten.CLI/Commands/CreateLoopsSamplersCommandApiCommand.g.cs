@@ -7,10 +7,10 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class CreateLoopsSamplersCommandApiCommand
 {
-    private static Option<global::Baseten.V1AvailabilityModel?> AvailabilityModel { get; } = new(
+    private static Option<global::Baseten.AvailabilityModelV1?> AvailabilityModel { get; } = new(
         name: @"--availability-model")
     {
-        Description = @"Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'dedicated' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.",
+        Description = @"Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'standard' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it.",
     };
     private static readonly CreateLoopsSamplerRequestV1OptionSet CreateLoopsSamplerRequestV1OptionSetOptions = CreateLoopsSamplerRequestV1OptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
@@ -63,6 +63,7 @@ Creates a standalone Loops sampler not linked to a run.");
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.ModelPath);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.ReuseFromSessionId);
                         command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.NumReplicas);
+                        command.Options.Add(CreateLoopsSamplerRequestV1OptionSetOptions.Scope);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -95,6 +96,7 @@ Creates a standalone Loops sampler not linked to a run.");
                         var modelPath = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.ModelPath) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.ModelPath) : (__requestBase is { } __ModelPathBaseValue ? __ModelPathBaseValue.ModelPath : default);
                         var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.ReuseFromSessionId) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
                         var numReplicas = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.NumReplicas) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.NumReplicas) : (__requestBase is { } __NumReplicasBaseValue ? __NumReplicasBaseValue.NumReplicas : default);
+                        var scope = CliRuntime.WasSpecified(parseResult, CreateLoopsSamplerRequestV1OptionSetOptions.Scope) ? parseResult.GetValue(CreateLoopsSamplerRequestV1OptionSetOptions.Scope) : (__requestBase is { } __ScopeBaseValue ? __ScopeBaseValue.Scope : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -107,6 +109,7 @@ Creates a standalone Loops sampler not linked to a run.");
                                     modelPath: modelPath,
                                     reuseFromSessionId: reuseFromSessionId,
                                     numReplicas: numReplicas,
+                                    scope: scope,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

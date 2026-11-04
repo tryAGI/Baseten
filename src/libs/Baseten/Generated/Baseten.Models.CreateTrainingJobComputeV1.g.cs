@@ -37,12 +37,12 @@ namespace Baseten
         public global::Baseten.CreateTrainingJobAcceleratorV1? Accelerator { get; set; }
 
         /// <summary>
-        /// Capacity guarantee for the job. 'dedicated' (the default) runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress.<br/>
-        /// Default Value: dedicated
+        /// Capacity guarantee for the job. Defaults to 'standard'. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress.<br/>
+        /// Default Value: standard
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
-        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AvailabilityModelV1JsonConverter))]
+        public global::Baseten.AvailabilityModelV1? AvailabilityModel { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -70,8 +70,8 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="availabilityModel">
-        /// Capacity guarantee for the job. 'dedicated' (the default) runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress.<br/>
-        /// Default Value: dedicated
+        /// Capacity guarantee for the job. Defaults to 'standard'. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress.<br/>
+        /// Default Value: standard
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -81,7 +81,7 @@ namespace Baseten
             int? cpuCount,
             string? memory,
             global::Baseten.CreateTrainingJobAcceleratorV1? accelerator,
-            global::Baseten.V1AvailabilityModel? availabilityModel)
+            global::Baseten.AvailabilityModelV1? availabilityModel)
         {
             this.NodeCount = nodeCount;
             this.CpuCount = cpuCount;

@@ -46,6 +46,7 @@ namespace Baseten
         ///         "enable_legacy_hf_mount": true,<br/>
         ///         "enabled": true,<br/>
         ///         "mount_base_path": "/root/.cache",<br/>
+        ///         "persistent_home": false,<br/>
         ///         "require_cache_affinity": true<br/>
         ///       },<br/>
         ///       "checkpointing_config": {<br/>
@@ -121,6 +122,7 @@ namespace Baseten
         ///         "enable_legacy_hf_mount": true,<br/>
         ///         "enabled": true,<br/>
         ///         "mount_base_path": "/root/.cache",<br/>
+        ///         "persistent_home": false,<br/>
         ///         "require_cache_affinity": true<br/>
         ///       },<br/>
         ///       "checkpointing_config": {<br/>

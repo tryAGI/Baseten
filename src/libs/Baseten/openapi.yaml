@@ -6116,11 +6116,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_job\": {\n    \"image\": {\n      \"base_image\": \"hello-world\",\n      \"docker_auth\": null\n    },\n    \"compute\": {\n      \"node_count\": 1,\n      \"cpu_count\": 1,\n      \"memory\": \"2Gi\",\n      \"accelerator\": {\n        \"accelerator\": \"H100\",\n        \"count\": 2\n      },\n      \"availability_model\": \"spot\"\n    },\n    \"runtime\": {\n      \"start_commands\": [\n        \"python main.py\"\n      ],\n      \"environment_variables\": {\n        \"API_KEY\": \"your_api_key_here\",\n        \"PATH\": \"/usr/bin\"\n      },\n      \"enable_cache\": true,\n      \"cache_config\": {\n        \"enable_legacy_hf_mount\": true,\n        \"enabled\": true,\n        \"mount_base_path\": \"/root/.cache\",\n        \"require_cache_affinity\": true\n      },\n      \"checkpointing_config\": {\n        \"enabled\": true,\n        \"checkpoint_path\": \"/mnt/ckpts\",\n        \"volume_size_gib\": 10\n      },\n      \"load_checkpoint_config\": null\n    },\n    \"name\": \"gpt-oss-job\",\n    \"truss_user_env\": null,\n    \"interactive_session\": null,\n    \"weights\": [\n      {\n        \"allow_patterns\": null,\n        \"auth\": null,\n        \"auth_secret_name\": null,\n        \"ignore_patterns\": null,\n        \"mount_location\": \"/app/models/base\",\n        \"source\": \"hf://meta-llama/Llama-3-8B@main\"\n      }\n    ],\n    \"enable_baseten_workdir\": false,\n    \"priority\": 0\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_job\": {\n    \"image\": {\n      \"base_image\": \"hello-world\",\n      \"docker_auth\": null\n    },\n    \"compute\": {\n      \"node_count\": 1,\n      \"cpu_count\": 1,\n      \"memory\": \"2Gi\",\n      \"accelerator\": {\n        \"accelerator\": \"H100\",\n        \"count\": 2\n      },\n      \"availability_model\": \"spot\"\n    },\n    \"runtime\": {\n      \"start_commands\": [\n        \"python main.py\"\n      ],\n      \"environment_variables\": {\n        \"API_KEY\": \"your_api_key_here\",\n        \"PATH\": \"/usr/bin\"\n      },\n      \"enable_cache\": true,\n      \"cache_config\": {\n        \"enable_legacy_hf_mount\": true,\n        \"enabled\": true,\n        \"mount_base_path\": \"/root/.cache\",\n        \"persistent_home\": false,\n        \"require_cache_affinity\": true\n      },\n      \"checkpointing_config\": {\n        \"enabled\": true,\n        \"checkpoint_path\": \"/mnt/ckpts\",\n        \"volume_size_gib\": 10\n      },\n      \"load_checkpoint_config\": null\n    },\n    \"name\": \"gpt-oss-job\",\n    \"truss_user_env\": null,\n    \"interactive_session\": null,\n    \"weights\": [\n      {\n        \"allow_patterns\": null,\n        \"auth\": null,\n        \"auth_secret_name\": null,\n        \"ignore_patterns\": null,\n        \"mount_location\": \"/app/models/base\",\n        \"source\": \"hf://meta-llama/Llama-3-8B@main\"\n      }\n    ],\n    \"enable_baseten_workdir\": false,\n    \"priority\": 0\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_job': {'image': {'base_image': 'hello-world', 'docker_auth': None}, 'compute': {'node_count': 1, 'cpu_count': 1, 'memory': '2Gi', 'accelerator': {'accelerator': 'H100', 'count': 2}, 'availability_model': 'spot'}, 'runtime': {'start_commands': ['python main.py'], 'environment_variables': {'API_KEY': 'your_api_key_here', 'PATH': '/usr/bin'}, 'enable_cache': True, 'cache_config': {'enable_legacy_hf_mount': True, 'enabled': True, 'mount_base_path': '/root/.cache', 'require_cache_affinity': True}, 'checkpointing_config': {'enabled': True, 'checkpoint_path': '/mnt/ckpts', 'volume_size_gib': 10}, 'load_checkpoint_config': None}, 'name': 'gpt-oss-job', 'truss_user_env': None, 'interactive_session': None, 'weights': [{'allow_patterns': None, 'auth': None, 'auth_secret_name': None, 'ignore_patterns': None, 'mount_location': '/app/models/base', 'source': 'hf://meta-llama/Llama-3-8B@main'}], 'enable_baseten_workdir': False, 'priority': 0}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_job': {'image': {'base_image': 'hello-world', 'docker_auth': None}, 'compute': {'node_count': 1, 'cpu_count': 1, 'memory': '2Gi', 'accelerator': {'accelerator': 'H100', 'count': 2}, 'availability_model': 'spot'}, 'runtime': {'start_commands': ['python main.py'], 'environment_variables': {'API_KEY': 'your_api_key_here', 'PATH': '/usr/bin'}, 'enable_cache': True, 'cache_config': {'enable_legacy_hf_mount': True, 'enabled': True, 'mount_base_path': '/root/.cache', 'persistent_home': False, 'require_cache_affinity': True}, 'checkpointing_config': {'enabled': True, 'checkpoint_path': '/mnt/ckpts', 'volume_size_gib': 10}, 'load_checkpoint_config': None}, 'name': 'gpt-oss-job', 'truss_user_env': None, 'interactive_session': None, 'weights': [{'allow_patterns': None, 'auth': None, 'auth_secret_name': None, 'ignore_patterns': None, 'mount_location': '/app/models/base', 'source': 'hf://meta-llama/Llama-3-8B@main'}], 'enable_baseten_workdir': False, 'priority': 0}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a training job with the specified configuration.",
@@ -6221,7 +6221,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'priority': 0, 'availability_model': 'spot'}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.",
+                "description": "Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (standard or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -7388,11 +7388,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null,\n  \"base_checkpoint\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null,\n  \"base_checkpoint\": null,\n  \"scope\": \"default\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None, 'base_checkpoint': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None, 'base_checkpoint': None, 'scope': 'default'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.",
@@ -7496,11 +7496,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"availability_model\": null,\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null,\n  \"num_replicas\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"availability_model\": null,\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null,\n  \"num_replicas\": null,\n  \"scope\": \"default\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'availability_model': None, 'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None, 'num_replicas': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'availability_model': None, 'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None, 'num_replicas': None, 'scope': 'default'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a standalone Loops sampler not linked to a run.",
@@ -8400,11 +8400,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null,\n  \"base_checkpoint\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/trainers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"session_id\": null,\n  \"base_model\": null,\n  \"name\": null,\n  \"max_seq_len\": null,\n  \"seed\": null,\n  \"availability_model\": \"spot\",\n  \"path\": \"bt://loops:k4q95w5/weights/step-100\",\n  \"reuse_from_run_id\": null,\n  \"reuse_from_session_id\": null,\n  \"base_checkpoint\": null,\n  \"scope\": \"default\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None, 'base_checkpoint': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/trainers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'session_id': None, 'base_model': None, 'name': None, 'max_seq_len': None, 'seed': None, 'availability_model': 'spot', 'path': 'bt://loops:k4q95w5/weights/step-100', 'reuse_from_run_id': None, 'reuse_from_session_id': None, 'base_checkpoint': None, 'scope': 'default'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a trainer-only Loops run in the given session, without a sampler. To sample from it, create a sampler with POST /v1/loops/samplers and pass this run's ID as run_id to pair the two. List and read the trainer through the /v1/loops/runs endpoints.",
@@ -8518,11 +8518,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"availability_model\": null,\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null,\n  \"num_replicas\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/loops/samplers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"availability_model\": null,\n  \"session_id\": null,\n  \"base_model\": null,\n  \"run_id\": null,\n  \"max_seq_length\": null,\n  \"model_path\": \"bt://loops:k4q95w5/sampler_weights/step-100\",\n  \"reuse_from_session_id\": null,\n  \"num_replicas\": null,\n  \"scope\": \"default\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'availability_model': None, 'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None, 'num_replicas': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/loops/samplers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'availability_model': None, 'session_id': None, 'base_model': None, 'run_id': None, 'max_seq_length': None, 'model_path': 'bt://loops:k4q95w5/sampler_weights/step-100', 'reuse_from_session_id': None, 'num_replicas': None, 'scope': 'default'}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a standalone Loops sampler not linked to a run; the sampler belongs to the given team.",
@@ -9162,11 +9162,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": {\n    \"mounts\": [\n      {\n        \"path\": \"/models/startup\",\n        \"source\": \"bdn:my-namespace/my-volume:v1\"\n      }\n    ]\n  },\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': {'mounts': [{'path': '/models/startup', 'source': 'bdn:my-namespace/my-volume:v1'}]}, 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -9199,11 +9199,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": {\n    \"mounts\": [\n      {\n        \"path\": \"/models/startup\",\n        \"source\": \"bdn:my-namespace/my-volume:v1\"\n      }\n    ]\n  },\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': {'mounts': [{'path': '/models/startup', 'source': 'bdn:my-namespace/my-volume:v1'}]}, 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -9241,11 +9241,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"egress_restrictions\": null,\n  \"runtime\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": {\n    \"mounts\": [\n      {\n        \"path\": \"/models/startup\",\n        \"source\": \"bdn:my-namespace/my-volume:v1\"\n      }\n    ]\n  },\n  \"egress_restrictions\": null,\n  \"runtime\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'egress_restrictions': None, 'runtime': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': {'mounts': [{'path': '/models/startup', 'source': 'bdn:my-namespace/my-volume:v1'}]}, 'egress_restrictions': None, 'runtime': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -27549,6 +27549,15 @@
                 "title": "UpsertTrainingProjectRequestV1",
                 "type": "object"
             },
+            "AvailabilityModelV1": {
+                "description": "Capacity a training job or Loops trainer runs on.",
+                "enum": [
+                    "standard",
+                    "spot"
+                ],
+                "title": "AvailabilityModelV1",
+                "type": "string"
+            },
             "CheckpointSyncStatus": {
                 "description": "Lifecycle state for the checkpoint uploader.",
                 "enum": [
@@ -27653,9 +27662,9 @@
                         "type": "integer"
                     },
                     "availability_model": {
-                        "$ref": "#/components/schemas/V1AvailabilityModel",
-                        "default": "dedicated",
-                        "description": "Capacity guarantee for the job. 'dedicated' is non-preemptible on-demand capacity; 'spot' is interruptible."
+                        "$ref": "#/components/schemas/AvailabilityModelV1",
+                        "default": "standard",
+                        "description": "Capacity guarantee for the job. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress."
                     },
                     "user": {
                         "anyOf": [
@@ -27781,15 +27790,6 @@
                 },
                 "title": "UserV1",
                 "type": "object"
-            },
-            "V1AvailabilityModel": {
-                "description": "Capacity guarantee under which a training job is scheduled.\n\n``DEDICATED`` is on-demand capacity that is not preempted (the default). ``SPOT`` is\ninterruptible capacity that may be preempted; the user is responsible for checkpointing\ntheir own progress. A managed/resumable model where the platform handles\ncheckpoint/resume on its own is intentionally not defined yet; it is planned for a\nfuture milestone.",
-                "enum": [
-                    "dedicated",
-                    "spot"
-                ],
-                "title": "V1AvailabilityModel",
-                "type": "string"
             },
             "UpsertTrainingProjectResponseV1": {
                 "description": "A response to upserting a training project.",
@@ -28246,6 +28246,16 @@
                         ],
                         "title": "Mount Base Path",
                         "type": "string"
+                    },
+                    "persistent_home": {
+                        "default": false,
+                        "description": "Whether to keep `$HOME` in a per-job directory on the project cache, so its contents outlive the job. Requires `enabled`.",
+                        "examples": [
+                            true,
+                            false
+                        ],
+                        "title": "Persistent Home",
+                        "type": "boolean"
                     }
                 },
                 "title": "CreateTrainingJobCacheConfig",
@@ -28347,9 +28357,9 @@
                         ]
                     },
                     "availability_model": {
-                        "$ref": "#/components/schemas/V1AvailabilityModel",
-                        "default": "dedicated",
-                        "description": "Capacity guarantee for the job. 'dedicated' (the default) runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress.",
+                        "$ref": "#/components/schemas/AvailabilityModelV1",
+                        "default": "standard",
+                        "description": "Capacity guarantee for the job. Defaults to 'standard'. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress.",
                         "examples": [
                             "spot"
                         ]
@@ -28465,6 +28475,7 @@
                                 "enable_legacy_hf_mount": true,
                                 "enabled": true,
                                 "mount_base_path": "/root/.cache",
+                                "persistent_home": false,
                                 "require_cache_affinity": true
                             }
                         ]
@@ -29307,14 +29318,14 @@
                     "availability_model": {
                         "anyOf": [
                             {
-                                "$ref": "#/components/schemas/V1AvailabilityModel"
+                                "$ref": "#/components/schemas/AvailabilityModelV1"
                             },
                             {
                                 "type": "null"
                             }
                         ],
                         "default": null,
-                        "description": "New capacity guarantee for a PENDING training job. 'dedicated' runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress. Only jobs in the PENDING state can have their availability model changed.",
+                        "description": "New capacity guarantee for a PENDING training job. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress. Only jobs in the PENDING state can have their availability model changed.",
                         "examples": [
                             "spot"
                         ]
@@ -31075,9 +31086,9 @@
                         "type": "integer"
                     },
                     "availability_model": {
-                        "$ref": "#/components/schemas/V1AvailabilityModel",
-                        "default": "dedicated",
-                        "description": "Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
+                        "$ref": "#/components/schemas/AvailabilityModelV1",
+                        "default": "standard",
+                        "description": "Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
                         "examples": [
                             "spot"
                         ]
@@ -31218,6 +31229,16 @@
                 "title": "GetLoopsRunResponseV1",
                 "type": "object"
             },
+            "LoopsPlacementScopeV1": {
+                "description": "Where a Loops run's trainer or a standalone sampler runs.",
+                "enum": [
+                    "default",
+                    "serverless",
+                    "dedicated"
+                ],
+                "title": "LoopsPlacementScopeV1",
+                "type": "string"
+            },
             "CreateLoopsTrainerRequestV1": {
                 "properties": {
                     "session_id": {
@@ -31287,9 +31308,9 @@
                         "type": "integer"
                     },
                     "availability_model": {
-                        "$ref": "#/components/schemas/V1AvailabilityModel",
-                        "default": "dedicated",
-                        "description": "Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
+                        "$ref": "#/components/schemas/AvailabilityModelV1",
+                        "default": "standard",
+                        "description": "Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
                         "examples": [
                             "spot"
                         ]
@@ -31355,6 +31376,11 @@
                         "default": null,
                         "description": "Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://<org>/<repo>[@<revision>]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.",
                         "title": "Base Checkpoint"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/LoopsPlacementScopeV1",
+                        "default": "default",
+                        "description": "Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for."
                     }
                 },
                 "required": [
@@ -31426,14 +31452,14 @@
                     "availability_model": {
                         "anyOf": [
                             {
-                                "$ref": "#/components/schemas/V1AvailabilityModel"
+                                "$ref": "#/components/schemas/AvailabilityModelV1"
                             },
                             {
                                 "type": "null"
                             }
                         ],
                         "default": null,
-                        "description": "Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'dedicated' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it."
+                        "description": "Capacity the sampler runs on. 'spot' allows preemption when its GPUs are reclaimed. Defaults to 'standard' for standalone samplers. Paired samplers inherit their run's availability model; an explicit value must match it."
                     },
                     "session_id": {
                         "description": "ID of the Loops session this sampler belongs to.",
@@ -31521,6 +31547,11 @@
                         "default": null,
                         "description": "Number of replicas the sampler runs, applied as both its minimum and maximum. Must be at least 1. If omitted, a new sampler uses the platform defaults and a paired sampler reused from an earlier run keeps its settings. A run that already has a sampler keeps it unchanged, and when a run ends, its sampler is scaled down.",
                         "title": "Num Replicas"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/LoopsPlacementScopeV1",
+                        "default": "default",
+                        "description": "Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for. Standalone samplers only: a run's sampler runs where its run does."
                     }
                 },
                 "required": [
@@ -32119,8 +32150,8 @@
                         "type": "string"
                     },
                     "availability_model": {
-                        "$ref": "#/components/schemas/V1AvailabilityModel",
-                        "default": "dedicated",
+                        "$ref": "#/components/schemas/AvailabilityModelV1",
+                        "default": "standard",
                         "description": "Capacity the trainer was scheduled on."
                     },
                     "instance_type": {
@@ -32747,7 +32778,7 @@
                     },
                     "dedicated_usage_count": {
                         "default": 0,
-                        "description": "Portion of usage_count from dedicated (on-demand) jobs.",
+                        "description": "Portion of usage_count from standard (non-spot) jobs.",
                         "title": "Dedicated Usage Count",
                         "type": "integer"
                     },
@@ -32794,7 +32825,7 @@
                     },
                     "dedicated_usage_count": {
                         "default": 0,
-                        "description": "Portion of usage_count from dedicated (on-demand) jobs, which run against the baseline.",
+                        "description": "Portion of usage_count from standard (non-spot) jobs, which run against the baseline.",
                         "title": "Dedicated Usage Count",
                         "type": "integer"
                     },
@@ -34154,6 +34185,53 @@
                 "title": "ModelApisUsageRequestV1",
                 "type": "object"
             },
+            "BdnConfigV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "mounts": {
+                        "description": "The BDN volume versions to mount.",
+                        "items": {
+                            "$ref": "#/components/schemas/BdnVolumeMountV1"
+                        },
+                        "minItems": 1,
+                        "title": "Mounts",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "mounts"
+                ],
+                "title": "BdnConfigV1",
+                "type": "object"
+            },
+            "BdnVolumeMountV1": {
+                "additionalProperties": false,
+                "description": "A BDN volume version mounted read-only in the frontend and worker.",
+                "properties": {
+                    "source": {
+                        "description": "The volume version to mount: bdn:<namespace>/<volume>, optionally followed by :<tag> or @b3:<digest>.",
+                        "examples": [
+                            "bdn:my-namespace/my-volume:v1"
+                        ],
+                        "title": "Source",
+                        "type": "string"
+                    },
+                    "path": {
+                        "description": "Where to mount it: /models/<name>, with <name> a single path segment.",
+                        "examples": [
+                            "/models/startup"
+                        ],
+                        "title": "Path",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "source",
+                    "path"
+                ],
+                "title": "BdnVolumeMountV1",
+                "type": "object"
+            },
             "EgressRestrictionsV1": {
                 "properties": {
                     "fqdn_allow_list": {
@@ -34420,6 +34498,28 @@
                         ],
                         "title": "Weights"
                     },
+                    "bdn": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/BdnConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "BDN volume versions to mount read-only in the frontend and worker, each under /models/<name>. Requires the organization to have BDN volumes enabled.",
+                        "examples": [
+                            {
+                                "mounts": [
+                                    {
+                                        "path": "/models/startup",
+                                        "source": "bdn:my-namespace/my-volume:v1"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     "egress_restrictions": {
                         "anyOf": [
                             {
@@ -34664,6 +34764,28 @@
                         ],
                         "title": "Weights"
                     },
+                    "bdn": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/BdnConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "BDN volume versions to mount read-only in the frontend and worker, each under /models/<name>. Requires the organization to have BDN volumes enabled.",
+                        "examples": [
+                            {
+                                "mounts": [
+                                    {
+                                        "path": "/models/startup",
+                                        "source": "bdn:my-namespace/my-volume:v1"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     "egress_restrictions": {
                         "anyOf": [
                             {
@@ -34756,6 +34878,18 @@
                         ],
                         "default": null,
                         "title": "Variant"
+                    },
+                    "base_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "title": "Base Model"
                     },
                     "publisher": {
                         "anyOf": [

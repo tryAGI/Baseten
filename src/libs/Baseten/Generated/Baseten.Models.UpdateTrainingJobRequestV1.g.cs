@@ -18,11 +18,11 @@ namespace Baseten
         public int? Priority { get; set; }
 
         /// <summary>
-        /// New capacity guarantee for a PENDING training job. 'dedicated' runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress. Only jobs in the PENDING state can have their availability model changed.<br/>
+        /// New capacity guarantee for a PENDING training job. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress. Only jobs in the PENDING state can have their availability model changed.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
-        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+        public global::Baseten.AvailabilityModelV1? AvailabilityModel { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,7 +38,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="availabilityModel">
-        /// New capacity guarantee for a PENDING training job. 'dedicated' runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress. Only jobs in the PENDING state can have their availability model changed.<br/>
+        /// New capacity guarantee for a PENDING training job. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress. Only jobs in the PENDING state can have their availability model changed.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
@@ -46,7 +46,7 @@ namespace Baseten
 #endif
         public UpdateTrainingJobRequestV1(
             int? priority,
-            global::Baseten.V1AvailabilityModel? availabilityModel)
+            global::Baseten.AvailabilityModelV1? availabilityModel)
         {
             this.Priority = priority;
             this.AvailabilityModel = availabilityModel;

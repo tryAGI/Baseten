@@ -58,12 +58,12 @@ namespace Baseten
         public int? ScaleDownDelaySeconds { get; set; }
 
         /// <summary>
-        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
-        /// Default Value: dedicated
+        /// Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: standard
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availability_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.V1AvailabilityModelJsonConverter))]
-        public global::Baseten.V1AvailabilityModel? AvailabilityModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AvailabilityModelV1JsonConverter))]
+        public global::Baseten.AvailabilityModelV1? AvailabilityModel { get; set; }
 
         /// <summary>
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
@@ -101,6 +101,14 @@ namespace Baseten
         public string? BaseCheckpoint { get; set; }
 
         /// <summary>
+        /// Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for.<br/>
+        /// Default Value: default
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scope")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.LoopsPlacementScopeV1JsonConverter))]
+        public global::Baseten.LoopsPlacementScopeV1? Scope { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -136,8 +144,8 @@ namespace Baseten
         /// Default Value: 900
         /// </param>
         /// <param name="availabilityModel">
-        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
-        /// Default Value: dedicated
+        /// Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: standard
         /// </param>
         /// <param name="replicas">
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
@@ -159,6 +167,10 @@ namespace Baseten
         /// Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://&lt;org&gt;/&lt;repo&gt;[@&lt;revision&gt;]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="scope">
+        /// Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for.<br/>
+        /// Default Value: default
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -170,12 +182,13 @@ namespace Baseten
             int? loraRank,
             int? seed,
             int? scaleDownDelaySeconds,
-            global::Baseten.V1AvailabilityModel? availabilityModel,
+            global::Baseten.AvailabilityModelV1? availabilityModel,
             int? replicas,
             string? path,
             string? reuseFromRunId,
             string? reuseFromSessionId,
-            string? baseCheckpoint)
+            string? baseCheckpoint,
+            global::Baseten.LoopsPlacementScopeV1? scope)
         {
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
             this.BaseModel = baseModel ?? throw new global::System.ArgumentNullException(nameof(baseModel));
@@ -190,6 +203,7 @@ namespace Baseten
             this.ReuseFromRunId = reuseFromRunId;
             this.ReuseFromSessionId = reuseFromSessionId;
             this.BaseCheckpoint = baseCheckpoint;
+            this.Scope = scope;
         }
 
         /// <summary>

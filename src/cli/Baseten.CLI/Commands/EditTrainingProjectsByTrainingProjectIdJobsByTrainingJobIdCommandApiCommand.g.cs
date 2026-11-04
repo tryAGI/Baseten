@@ -25,10 +25,10 @@ internal static partial class EditTrainingProjectsByTrainingProjectIdJobsByTrain
         Description = @"New queue priority for a PENDING training job. Higher values are dequeued first. Only jobs in the PENDING state can have their priority changed.",
     };
 
-    private static Option<global::Baseten.V1AvailabilityModel?> AvailabilityModel { get; } = new(
+    private static Option<global::Baseten.AvailabilityModelV1?> AvailabilityModel { get; } = new(
         name: @"--availability-model")
     {
-        Description = @"New capacity guarantee for a PENDING training job. 'dedicated' runs on on-demand capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; the user is responsible for checkpointing their own progress. Only jobs in the PENDING state can have their availability model changed.",
+        Description = @"New capacity guarantee for a PENDING training job. 'standard' runs on capacity that is not preempted. 'spot' runs on interruptible capacity that may be preempted; you are responsible for checkpointing your own progress. Only jobs in the PENDING state can have their availability model changed.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -72,7 +72,7 @@ internal static partial class EditTrainingProjectsByTrainingProjectIdJobsByTrain
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"edit-training-projects-by-training-project-id-jobs-by-training-job-id", @"Updates a training job
-Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (dedicated or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.");
+Updates mutable fields on a PENDING training job: the queue priority (higher priorities are dequeued first) and the availability model (standard or spot capacity). Changes take effect on the next queue evaluation, which is triggered immediately.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
                         command.Options.Add(Priority);

@@ -37,6 +37,13 @@ namespace Baseten
         public string? MountBasePath { get; set; }
 
         /// <summary>
+        /// Whether to keep `$HOME` in a per-job directory on the project cache, so its contents outlive the job. Requires `enabled`.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("persistent_home")]
+        public bool? PersistentHome { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -61,6 +68,10 @@ namespace Baseten
         /// Mount base path for the cache directory. The project cache and team cache will be mounted under this path.<br/>
         /// Default Value: /root/.cache
         /// </param>
+        /// <param name="persistentHome">
+        /// Whether to keep `$HOME` in a per-job directory on the project cache, so its contents outlive the job. Requires `enabled`.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -68,12 +79,14 @@ namespace Baseten
             bool? enableLegacyHfMount,
             bool? enabled,
             bool? requireCacheAffinity,
-            string? mountBasePath)
+            string? mountBasePath,
+            bool? persistentHome)
         {
             this.EnableLegacyHfMount = enableLegacyHfMount;
             this.Enabled = enabled;
             this.RequireCacheAffinity = requireCacheAffinity;
             this.MountBasePath = mountBasePath;
+            this.PersistentHome = persistentHome;
         }
 
         /// <summary>

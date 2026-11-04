@@ -27,7 +27,8 @@ namespace Baseten
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
         ///   "reuse_from_session_id": null,<br/>
-        ///   "base_checkpoint": null<br/>
+        ///   "base_checkpoint": null,<br/>
+        ///   "scope": "default"<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.CreateLoopsRunResponseV1> CreateTeamsByTeamIdLoopsTrainersAsync(
@@ -59,7 +60,8 @@ namespace Baseten
         ///   "path": "bt://loops:k4q95w5/weights/step-100",<br/>
         ///   "reuse_from_run_id": null,<br/>
         ///   "reuse_from_session_id": null,<br/>
-        ///   "base_checkpoint": null<br/>
+        ///   "base_checkpoint": null,<br/>
+        ///   "scope": "default"<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.CreateLoopsRunResponseV1>> CreateTeamsByTeamIdLoopsTrainersAsResponseAsync(
@@ -100,8 +102,8 @@ namespace Baseten
         /// Default Value: 900
         /// </param>
         /// <param name="availabilityModel">
-        /// Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
-        /// Default Value: dedicated
+        /// Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.<br/>
+        /// Default Value: standard
         /// </param>
         /// <param name="replicas">
         /// Number of data-parallel trainer replicas. Each replica is one full copy of the model's preset node group, so the trainer deployment runs (preset node_count * replicas) nodes (e.g. replicas=4 on a 4-node preset → 16 nodes, 4 DP workers). Must be a positive integer. Defaults to 1.<br/>
@@ -123,6 +125,10 @@ namespace Baseten
         /// Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://&lt;org&gt;/&lt;repo&gt;[@&lt;revision&gt;]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="scope">
+        /// Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for.<br/>
+        /// Default Value: default
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -135,12 +141,13 @@ namespace Baseten
             int? loraRank = default,
             int? seed = default,
             int? scaleDownDelaySeconds = default,
-            global::Baseten.V1AvailabilityModel? availabilityModel = default,
+            global::Baseten.AvailabilityModelV1? availabilityModel = default,
             int? replicas = default,
             string? path = default,
             string? reuseFromRunId = default,
             string? reuseFromSessionId = default,
             string? baseCheckpoint = default,
+            global::Baseten.LoopsPlacementScopeV1? scope = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

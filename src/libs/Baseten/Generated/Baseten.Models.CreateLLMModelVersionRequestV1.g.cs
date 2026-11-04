@@ -84,6 +84,13 @@ namespace Baseten
         public global::System.Collections.Generic.IList<object>? Weights { get; set; }
 
         /// <summary>
+        /// BDN volume versions to mount read-only in the frontend and worker, each under /models/&lt;name&gt;. Requires the organization to have BDN volumes enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bdn")]
+        public global::Baseten.BdnConfigV1? Bdn { get; set; }
+
+        /// <summary>
         /// Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -147,6 +154,10 @@ namespace Baseten
         /// Weight configurations for BDN model weight distribution<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="bdn">
+        /// BDN volume versions to mount read-only in the frontend and worker, each under /models/&lt;name&gt;. Requires the organization to have BDN volumes enabled.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="egressRestrictions">
         /// Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -170,6 +181,7 @@ namespace Baseten
             object? additionalAutoscalingConfig,
             object? metadata,
             global::System.Collections.Generic.IList<object>? weights,
+            global::Baseten.BdnConfigV1? bdn,
             global::Baseten.EgressRestrictionsV1? egressRestrictions,
             global::Baseten.LLMRuntimeV1? runtime)
         {
@@ -184,6 +196,7 @@ namespace Baseten
             this.AdditionalAutoscalingConfig = additionalAutoscalingConfig;
             this.Metadata = metadata;
             this.Weights = weights;
+            this.Bdn = bdn;
             this.EgressRestrictions = egressRestrictions;
             this.Runtime = runtime;
         }

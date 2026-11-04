@@ -48,6 +48,12 @@ namespace Baseten
         /// <summary>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_model")]
+        public string? BaseModel { get; set; }
+
+        /// <summary>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("publisher")]
         public string? Publisher { get; set; }
 
@@ -106,6 +112,9 @@ namespace Baseten
         /// <param name="variant">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="baseModel">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="publisher">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -134,6 +143,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.LibraryListingModality>? inputModalities,
             global::System.Collections.Generic.IList<global::Baseten.LibraryListingModality>? outputModalities,
             string? variant,
+            string? baseModel,
             string? publisher,
             string? modelApiSlug,
             global::System.DateTime? releaseDate,
@@ -147,6 +157,7 @@ namespace Baseten
             this.OutputModalities = outputModalities;
             this.License = license ?? throw new global::System.ArgumentNullException(nameof(license));
             this.Variant = variant;
+            this.BaseModel = baseModel;
             this.Publisher = publisher;
             this.ModelApiSlug = modelApiSlug;
             this.ReleaseDate = releaseDate;

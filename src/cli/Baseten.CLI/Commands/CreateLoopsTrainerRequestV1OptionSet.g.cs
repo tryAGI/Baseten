@@ -12,12 +12,13 @@ internal sealed record CreateLoopsTrainerRequestV1OptionSet(
                      Option<int?> LoraRank,
                      Option<int?> Seed,
                      Option<int?> ScaleDownDelaySeconds,
-                     Option<global::Baseten.V1AvailabilityModel?> AvailabilityModel,
+                     Option<global::Baseten.AvailabilityModelV1?> AvailabilityModel,
                      Option<int?> Replicas,
                      Option<string?> Path,
                      Option<string?> ReuseFromRunId,
                      Option<string?> ReuseFromSessionId,
-                     Option<string?> BaseCheckpoint)
+                     Option<string?> BaseCheckpoint,
+                     Option<global::Baseten.LoopsPlacementScopeV1?> Scope)
 {
     public static CreateLoopsTrainerRequestV1OptionSet Create(string? prefix = null)
     {
@@ -55,9 +56,9 @@ internal sealed record CreateLoopsTrainerRequestV1OptionSet(
                 {
                     Description = @"Seconds of inactivity before the run scales to zero. Must be between 1 and 3600 (1 hour). Defaults to 900 (15 minutes).",
                 },
-                AvailabilityModel: new Option<global::Baseten.V1AvailabilityModel?>($"--{normalizedPrefix}availability-model")
+                AvailabilityModel: new Option<global::Baseten.AvailabilityModelV1?>($"--{normalizedPrefix}availability-model")
                 {
-                    Description = @"Capacity the trainer runs on. 'dedicated' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
+                    Description = @"Capacity the trainer runs on. 'standard' is not preempted. 'spot' runs below inference and reaches idle reserved capacity, but the run is stopped if its GPUs are reclaimed and cannot be resumed.",
                 },
                 Replicas: new Option<int?>($"--{normalizedPrefix}replicas")
                 {
@@ -78,6 +79,10 @@ internal sealed record CreateLoopsTrainerRequestV1OptionSet(
                 BaseCheckpoint: new Option<string?>($"--{normalizedPrefix}base-checkpoint")
                 {
                     Description = @"Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://<org>/<repo>[@<revision>]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.",
+                },
+                Scope: new Option<global::Baseten.LoopsPlacementScopeV1?>($"--{normalizedPrefix}scope")
+                {
+                    Description = @"Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for.",
                 }
         );
     }
