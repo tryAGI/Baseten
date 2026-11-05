@@ -23,6 +23,13 @@ namespace Baseten
         public required string Name { get; set; }
 
         /// <summary>
+        /// Default GPU type for cache-enabled CPU job placement.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("project_accelerator")]
+        public string? ProjectAccelerator { get; set; }
+
+        /// <summary>
         /// Time the training project was created in ISO 8601 format.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_at")]
@@ -70,6 +77,10 @@ namespace Baseten
         /// <param name="updatedAt">
         /// Time the training project was updated in ISO 8601 format.
         /// </param>
+        /// <param name="projectAccelerator">
+        /// Default GPU type for cache-enabled CPU job placement.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="teamName">
         /// Name of the team associated with the training project.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -85,11 +96,13 @@ namespace Baseten
             string name,
             global::System.DateTime createdAt,
             global::System.DateTime updatedAt,
+            string? projectAccelerator,
             string? teamName,
             global::Baseten.TrainingJobV1? latestJob)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.ProjectAccelerator = projectAccelerator;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.TeamName = teamName;

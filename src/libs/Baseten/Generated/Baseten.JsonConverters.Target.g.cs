@@ -42,6 +42,13 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.GridRouteTargetClassifierV1)}");
                 classifier = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.GridRouteTargetIntelligentV1? intelligent = default;
+            if (discriminator?.Type == global::Baseten.GridRouteV1TargetDiscriminatorType.Intelligent)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.GridRouteTargetIntelligentV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.GridRouteTargetIntelligentV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.GridRouteTargetIntelligentV1)}");
+                intelligent = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Baseten.Target(
                 discriminator?.Type,
@@ -49,7 +56,9 @@ namespace Baseten.JsonConverters
 
                 connection,
 
-                classifier
+                classifier,
+
+                intelligent
                 );
 
             return __value;
@@ -81,6 +90,12 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.GridRouteTargetClassifierV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.GridRouteTargetClassifierV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.GridRouteTargetClassifierV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickClassifier(), typeInfo);
+            }
+            else if (value.IsIntelligent)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.GridRouteTargetIntelligentV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.GridRouteTargetIntelligentV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.GridRouteTargetIntelligentV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickIntelligent(), typeInfo);
             }
         }
     }

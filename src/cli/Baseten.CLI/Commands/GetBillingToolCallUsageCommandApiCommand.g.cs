@@ -20,6 +20,18 @@ internal static partial class GetBillingToolCallUsageCommandApiCommand
         Description = @"Exclusive UTC calendar day at the end of the query range. Defaults to the day after the current UTC date so current-day usage is included. The date range cannot exceed 90 days.",
     };
 
+    private static Option<global::System.Collections.Generic.IList<string>?> TeamIds { get; } = new(
+        name: @"--team-ids")
+    {
+        Description = @"Return only usage for these teams, repeated once per team. Defaults to all teams you can manage. An unauthorized team ID causes a 403 response.",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageDimensionV1>?> GroupBy { get; } = new(
+        name: @"--group-by")
+    {
+        Description = @"Pass TEAM to split daily rows by team. Defaults to aggregating across teams.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ToolCallUsageResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -45,9 +57,11 @@ internal static partial class GetBillingToolCallUsageCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-billing-tool-call-usage", @"Gets server-side tool call usage
-Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model.");
+Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model. Defaults to teams you can manage; org admins include all organization history. Use team_ids to narrow the scope and group_by=TEAM for per-team rows. An unauthorized team filter causes a 403 response.");
                         command.Options.Add(StartDate);
                         command.Options.Add(EndDate);
+                        command.Options.Add(TeamIds);
+                        command.Options.Add(GroupBy);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -55,12 +69,16 @@ Returns your organization's server-side tool call usage (web search and fetch to
             {
                         var startDate = parseResult.GetRequiredValue(StartDate);
                         var endDate = parseResult.GetValue(EndDate);
+                        var teamIds = parseResult.GetValue(TeamIds);
+                        var groupBy = parseResult.GetValue(GroupBy);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetBillingToolCallUsageAsync(
                                     startDate: startDate,
                                     endDate: endDate,
+                                    teamIds: teamIds,
+                                    groupBy: groupBy,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

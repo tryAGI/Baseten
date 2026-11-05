@@ -164,6 +164,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetGridMachineUsersCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridMachineUsersByMachineUserIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridMachineUsersByMachineUserIdApiKeysCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGridRouteClassifiersCommandApiCommand.Create());
+                         command.Subcommands.Add(GetGridRouteClassifiersByRouteClassifierIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridRoutesCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridRoutesByRouteIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridRoutesUsageCommandApiCommand.Create());
@@ -193,6 +195,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetLoopsUserConfigCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisByModelApiNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelApisByModelApiNameMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelApisUsageCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdCommandApiCommand.Create());

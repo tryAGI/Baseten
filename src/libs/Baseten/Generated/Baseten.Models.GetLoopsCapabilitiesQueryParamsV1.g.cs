@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class GetLoopsCapabilitiesQueryParamsV1
     {
         /// <summary>
-        /// Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. An empty list means Baseten does not support that model. Omit to list every supported model.<br/>
+        /// Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. Without 'enabled', an empty list means Baseten does not support that model. Omit to list every supported model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
@@ -31,6 +31,13 @@ namespace Baseten
         public int? MaxSeqLen { get; set; }
 
         /// <summary>
+        /// Pass true to list only the models this workspace can run now, or false for only the ones it cannot. Omit to list both. With 'model', an empty list can also mean the model is supported but filtered out.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -40,7 +47,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="GetLoopsCapabilitiesQueryParamsV1" /> class.
         /// </summary>
         /// <param name="model">
-        /// Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. An empty list means Baseten does not support that model. Omit to list every supported model.<br/>
+        /// Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. Without 'enabled', an empty list means Baseten does not support that model. Omit to list every supported model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="useCase">
@@ -51,17 +58,23 @@ namespace Baseten
         /// The sequence length the caller intends to train at — the same value they would pass as 'max_seq_len' when creating the run. Models that cannot serve it are reported as not enabled rather than returned with a ceiling the caller cannot use. Omit for the model's highest enabled sequence length.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="enabled">
+        /// Pass true to list only the models this workspace can run now, or false for only the ones it cannot. Omit to list both. With 'model', an empty list can also mean the model is supported but filtered out.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetLoopsCapabilitiesQueryParamsV1(
             string? model,
             global::Baseten.LoopsUseCaseV1? useCase,
-            int? maxSeqLen)
+            int? maxSeqLen,
+            bool? enabled)
         {
             this.Model = model;
             this.UseCase = useCase;
             this.MaxSeqLen = maxSeqLen;
+            this.Enabled = enabled;
         }
 
         /// <summary>

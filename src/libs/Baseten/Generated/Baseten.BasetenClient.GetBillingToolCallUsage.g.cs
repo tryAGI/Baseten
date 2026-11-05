@@ -28,12 +28,16 @@ namespace Baseten
         partial void PrepareGetBillingToolCallUsageArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.DateTime startDate,
-            global::System.DateTime? endDate);
+            global::System.DateTime? endDate,
+            global::System.Collections.Generic.IList<string>? teamIds,
+            global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageDimensionV1>? groupBy);
         partial void PrepareGetBillingToolCallUsageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.DateTime startDate,
-            global::System.DateTime? endDate);
+            global::System.DateTime? endDate,
+            global::System.Collections.Generic.IList<string>? teamIds,
+            global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageDimensionV1>? groupBy);
         partial void ProcessGetBillingToolCallUsageResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -45,12 +49,14 @@ namespace Baseten
 
         /// <summary>
         /// Gets server-side tool call usage<br/>
-        /// Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model.
+        /// Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model. Defaults to teams you can manage; org admins include all organization history. Use team_ids to narrow the scope and group_by=TEAM for per-team rows. An unauthorized team filter causes a 403 response.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="teamIds"></param>
+        /// <param name="groupBy"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -62,12 +68,16 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.ToolCallUsageResponseV1> GetBillingToolCallUsageAsync(
             global::System.DateTime startDate,
             global::System.DateTime? endDate = default,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
+            global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageDimensionV1>? groupBy = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetBillingToolCallUsageAsResponseAsync(
                 startDate: startDate,
                 endDate: endDate,
+                teamIds: teamIds,
+                groupBy: groupBy,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -76,12 +86,14 @@ namespace Baseten
         }
         /// <summary>
         /// Gets server-side tool call usage<br/>
-        /// Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model.
+        /// Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model. Defaults to teams you can manage; org admins include all organization history. Use team_ids to narrow the scope and group_by=TEAM for per-team rows. An unauthorized team filter causes a 403 response.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="teamIds"></param>
+        /// <param name="groupBy"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -93,6 +105,8 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ToolCallUsageResponseV1>> GetBillingToolCallUsageAsResponseAsync(
             global::System.DateTime startDate,
             global::System.DateTime? endDate = default,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
+            global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageDimensionV1>? groupBy = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -101,7 +115,9 @@ namespace Baseten
             PrepareGetBillingToolCallUsageArguments(
                 httpClient: HttpClient,
                 startDate: ref startDate,
-                endDate: endDate);
+                endDate: endDate,
+                teamIds: teamIds,
+                groupBy: groupBy);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
@@ -132,6 +148,8 @@ namespace Baseten
                             __pathBuilder
                                 .AddRequiredParameter("start_date", startDate.ToString("yyyy-MM-dd"))
                                 .AddOptionalParameter("end_date", endDate?.ToString())
+                                .AddOptionalParameter("team_ids", teamIds, delimiter: ",", explode: true)
+                                .AddOptionalParameter("group_by", groupBy, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -174,7 +192,9 @@ namespace Baseten
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     startDate: startDate,
-                    endDate: endDate);
+                    endDate: endDate,
+                    teamIds: teamIds,
+                    groupBy: groupBy);
 
                 return __httpRequest;
             }

@@ -37,7 +37,7 @@ namespace Baseten
         public global::System.DateTime? EndDate { get; set; }
 
         /// <summary>
-        /// Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, or service_tier. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily organization totals.
+        /// Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, service_tier, or team. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily totals across all teams you can manage.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
         public global::System.Collections.Generic.IList<global::Baseten.ModelApiCostDimensionV1>? GroupBy { get; set; }
@@ -67,6 +67,12 @@ namespace Baseten
         public global::System.Collections.Generic.IList<string>? ServiceTiers { get; set; }
 
         /// <summary>
+        /// Return only costs attributed to these teams, repeated once per team. Defaults to all teams you can manage.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_ids")]
+        public global::System.Collections.Generic.IList<string>? TeamIds { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -92,7 +98,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="groupBy">
-        /// Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, or service_tier. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily organization totals.
+        /// Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, service_tier, or team. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily totals across all teams you can manage.
         /// </param>
         /// <param name="apiKeyPrefixes">
         /// Return only costs for these exact API key prefixes, repeated once per prefix.
@@ -106,6 +112,9 @@ namespace Baseten
         /// <param name="serviceTiers">
         /// Return only costs for these exact service tiers, repeated once per tier.
         /// </param>
+        /// <param name="teamIds">
+        /// Return only costs attributed to these teams, repeated once per team. Defaults to all teams you can manage.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -118,7 +127,8 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? apiKeyPrefixes,
             global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
-            global::System.Collections.Generic.IList<string>? serviceTiers)
+            global::System.Collections.Generic.IList<string>? serviceTiers,
+            global::System.Collections.Generic.IList<string>? teamIds)
         {
             this.Cursor = cursor;
             this.Limit = limit;
@@ -129,6 +139,7 @@ namespace Baseten
             this.UserIds = userIds;
             this.Models = models;
             this.ServiceTiers = serviceTiers;
+            this.TeamIds = teamIds;
         }
 
         /// <summary>

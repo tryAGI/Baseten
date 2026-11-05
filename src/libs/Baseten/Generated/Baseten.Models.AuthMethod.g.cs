@@ -24,6 +24,10 @@ namespace Baseten
         ///
         /// </summary>
         GcpOidc,
+        /// <summary>
+        ///
+        /// </summary>
+        HuggingFaceOidc,
     }
 
     /// <summary>
@@ -42,6 +46,7 @@ namespace Baseten
                 AuthMethod.AwsOidc => "AWS_OIDC",
                 AuthMethod.CustomSecret => "CUSTOM_SECRET",
                 AuthMethod.GcpOidc => "GCP_OIDC",
+                AuthMethod.HuggingFaceOidc => "HUGGING_FACE_OIDC",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,6 +61,7 @@ namespace Baseten
                 "AWS_OIDC" => AuthMethod.AwsOidc,
                 "CUSTOM_SECRET" => AuthMethod.CustomSecret,
                 "GCP_OIDC" => AuthMethod.GcpOidc,
+                "HUGGING_FACE_OIDC" => AuthMethod.HuggingFaceOidc,
                 _ => null,
             };
         }

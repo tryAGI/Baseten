@@ -29,13 +29,15 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             ref string? model,
             ref global::Baseten.LoopsUseCaseV1? useCase,
-            int? maxSeqLen);
+            int? maxSeqLen,
+            bool? enabled);
         partial void PrepareGetLoopsCapabilitiesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? model,
             global::Baseten.LoopsUseCaseV1? useCase,
-            int? maxSeqLen);
+            int? maxSeqLen,
+            bool? enabled);
         partial void ProcessGetLoopsCapabilitiesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -47,7 +49,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets Loops server capabilities<br/>
-        /// Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot; filter on 'enabled' for the usable set. Capacity is resolved when the run is created, not here. Pass ?model= to ask about one model — an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.
+        /// Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot. Models this workspace can run come first. Capacity is resolved when the run is created, not here. Pass ?enabled=true for only the models you can use. Pass ?model= to ask about one model — without ?enabled=, an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.
         /// </summary>
         /// <param name="model">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -61,6 +63,9 @@ namespace Baseten
         /// Default Value: rl
         /// </param>
         /// <param name="maxSeqLen">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="enabled">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -75,6 +80,7 @@ namespace Baseten
             string? model = default,
             global::Baseten.LoopsUseCaseV1? useCase = default,
             int? maxSeqLen = default,
+            bool? enabled = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -82,6 +88,7 @@ namespace Baseten
                 model: model,
                 useCase: useCase,
                 maxSeqLen: maxSeqLen,
+                enabled: enabled,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -90,7 +97,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets Loops server capabilities<br/>
-        /// Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot; filter on 'enabled' for the usable set. Capacity is resolved when the run is created, not here. Pass ?model= to ask about one model — an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.
+        /// Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot. Models this workspace can run come first. Capacity is resolved when the run is created, not here. Pass ?enabled=true for only the models you can use. Pass ?model= to ask about one model — without ?enabled=, an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.
         /// </summary>
         /// <param name="model">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -106,6 +113,9 @@ namespace Baseten
         /// <param name="maxSeqLen">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="enabled">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -118,6 +128,7 @@ namespace Baseten
             string? model = default,
             global::Baseten.LoopsUseCaseV1? useCase = default,
             int? maxSeqLen = default,
+            bool? enabled = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -127,7 +138,8 @@ namespace Baseten
                 httpClient: HttpClient,
                 model: ref model,
                 useCase: ref useCase,
-                maxSeqLen: maxSeqLen);
+                maxSeqLen: maxSeqLen,
+                enabled: enabled);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
@@ -159,6 +171,7 @@ namespace Baseten
                                 .AddOptionalParameter("model", model)
                                 .AddOptionalParameter("use_case", useCase?.ToValueString())
                                 .AddOptionalParameter("max_seq_len", maxSeqLen?.ToString())
+                                .AddOptionalParameter("enabled", enabled?.ToString().ToLowerInvariant())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -202,7 +215,8 @@ namespace Baseten
                     httpRequestMessage: __httpRequest,
                     model: model,
                     useCase: useCase,
-                    maxSeqLen: maxSeqLen);
+                    maxSeqLen: maxSeqLen,
+                    enabled: enabled);
 
                 return __httpRequest;
             }

@@ -89,14 +89,7 @@ namespace Baseten
         ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
         ///     }<br/>
         ///   ],<br/>
-        ///   "bdn": {<br/>
-        ///     "mounts": [<br/>
-        ///       {<br/>
-        ///         "path": "/models/startup",<br/>
-        ///         "source": "bdn:my-namespace/my-volume:v1"<br/>
-        ///       }<br/>
-        ///     ]<br/>
-        ///   },<br/>
+        ///   "bdn": null,<br/>
         ///   "egress_restrictions": null,<br/>
         ///   "runtime": null<br/>
         /// }'
@@ -164,14 +157,7 @@ namespace Baseten
         ///       "source": "hf://meta-llama/Llama-3-8B"<br/>
         ///     }<br/>
         ///   ],<br/>
-        ///   "bdn": {<br/>
-        ///     "mounts": [<br/>
-        ///       {<br/>
-        ///         "path": "/models/startup",<br/>
-        ///         "source": "bdn:my-namespace/my-volume:v1"<br/>
-        ///       }<br/>
-        ///     ]<br/>
-        ///   },<br/>
+        ///   "bdn": null,<br/>
         ///   "egress_restrictions": null,<br/>
         ///   "runtime": null<br/>
         /// }'
@@ -586,7 +572,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="bdn">
-        /// BDN volume versions to mount read-only in the frontend and worker, each under /models/&lt;name&gt;. Requires the organization to have BDN volumes enabled.<br/>
+        /// BDN configuration for read-only sealed volume mounts; supports mounts only<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="egressRestrictions">
@@ -613,7 +599,7 @@ namespace Baseten
             object? additionalAutoscalingConfig = default,
             object? metadata = default,
             global::System.Collections.Generic.IList<object>? weights = default,
-            global::Baseten.BdnConfigV1? bdn = default,
+            object? bdn = default,
             global::Baseten.EgressRestrictionsV1? egressRestrictions = default,
             global::Baseten.LLMRuntimeV1? runtime = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
