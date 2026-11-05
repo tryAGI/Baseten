@@ -5,7 +5,7 @@ namespace Baseten
 {
     /// <summary>
     /// Configuration for a new sandbox. The client may provide a name; otherwise the server generates one. The name is immutable after creation.<br/>
-    /// Example: {"name":"baseten-api-review-0916","lifecycle":{"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"},"network":{"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"},"region":"us-pdx-1","envs":[{"name":"NODE_ENV","secret":false,"value":"production"},{"name":"PORT","secret":false,"value":"3000"}],"image":"baseten/base-image:latest","memory":4096,"ports":[{"name":"http","protocol":"HTTP","target":3000}],"external_id":"api-review-20260916-001","labels":{"env":"development","project":"api-review","team":"engineering"}}
+    /// Example: {"name":"baseten-api-review-0916","lifecycle":{"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"},"network":{"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"},"region":"us-pdx-1","envs":[{"name":"NODE_ENV","secret":false,"value":"production"},{"name":"PORT","secret":false,"value":"3000"}],"image":"baseten/base-image:latest","memory":4096,"cpu":2,"ports":[{"name":"http","protocol":"HTTP","target":3000}],"external_id":"api-review-20260916-001","labels":{"env":"development","project":"api-review","team":"engineering"}}
     /// </summary>
     public sealed partial class CreateSandboxRequestV1
     {
@@ -65,13 +65,20 @@ namespace Baseten
         public string? Image { get; set; }
 
         /// <summary>
-        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096. Must be between 1024 and 262144.<br/>
-        /// Default Value: 4096<br/>
+        /// Memory allocation in megabytes. Must be between 1024 and 262144. Defaults to 4096, or to 8192 MB per vCPU (a 1:8 ratio) when only cpu is set, capped at the account's memory quota. When cpu is omitted, memory also determines the CPU allocation (by default 2048 MB = 1 vCPU, 4096 MB = 2, 8192 MB = 4, 16384 MB = 6, 32768 MB = 8, 65536 MB = 16, 131072 MB or more = 32).<br/>
         /// Example: 4096
         /// </summary>
         /// <example>4096</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("memory")]
         public long? Memory { get; set; }
+
+        /// <summary>
+        /// Optional number of vCPUs, a whole number between 1 and 32. When omitted, the CPU allocation is derived from memory. When set, memory must be between 1024 and 8192 megabytes per vCPU (a ratio from 1:1 to 1:8), and cpu must not exceed the account's per-sandbox cpu quota. A value equal to the allocation memory alone would give is always accepted. When memory is omitted, it defaults to 8192 MB per vCPU, capped at the account's memory quota. Immutable after creation.<br/>
+        /// Example: 2
+        /// </summary>
+        /// <example>2</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cpu")]
+        public long? Cpu { get; set; }
 
         /// <summary>
         /// Filesystem configuration. Set at creation only.<br/>
@@ -149,9 +156,12 @@ namespace Baseten
         /// Example: baseten/base-image:latest
         /// </param>
         /// <param name="memory">
-        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096. Must be between 1024 and 262144.<br/>
-        /// Default Value: 4096<br/>
+        /// Memory allocation in megabytes. Must be between 1024 and 262144. Defaults to 4096, or to 8192 MB per vCPU (a 1:8 ratio) when only cpu is set, capped at the account's memory quota. When cpu is omitted, memory also determines the CPU allocation (by default 2048 MB = 1 vCPU, 4096 MB = 2, 8192 MB = 4, 16384 MB = 6, 32768 MB = 8, 65536 MB = 16, 131072 MB or more = 32).<br/>
         /// Example: 4096
+        /// </param>
+        /// <param name="cpu">
+        /// Optional number of vCPUs, a whole number between 1 and 32. When omitted, the CPU allocation is derived from memory. When set, memory must be between 1024 and 8192 megabytes per vCPU (a ratio from 1:1 to 1:8), and cpu must not exceed the account's per-sandbox cpu quota. A value equal to the allocation memory alone would give is always accepted. When memory is omitted, it defaults to 8192 MB per vCPU, capped at the account's memory quota. Immutable after creation.<br/>
+        /// Example: 2
         /// </param>
         /// <param name="filesystem">
         /// Filesystem configuration. Set at creation only.<br/>
@@ -184,6 +194,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? envs,
             string? image,
             long? memory,
+            long? cpu,
             global::Baseten.SandboxFilesystemV1? filesystem,
             global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>? volumes,
             global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? ports,
@@ -198,6 +209,7 @@ namespace Baseten
             this.Envs = envs;
             this.Image = image;
             this.Memory = memory;
+            this.Cpu = cpu;
             this.Filesystem = filesystem;
             this.Volumes = volumes;
             this.Ports = ports;

@@ -14858,6 +14858,26 @@
                 "title": "VolumeSyncAuthenticationGCPOIDCV1",
                 "type": "object"
             },
+            "VolumeSyncAuthenticationHuggingFaceOIDCV1": {
+                "description": "Authentication using a Hugging Face trusted publisher and Baseten workload identity.",
+                "properties": {
+                    "resource": {
+                        "description": "Hugging Face username for an account CI/CD identity, or namespace/repository for a repository trusted publisher. Configure trust in Hugging Face before starting the sync.",
+                        "examples": [
+                            "hf-user",
+                            "organization/private-model"
+                        ],
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)?$",
+                        "title": "Resource",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "resource"
+                ],
+                "title": "VolumeSyncAuthenticationHuggingFaceOIDCV1",
+                "type": "object"
+            },
             "VolumeSyncDestinationV1": {
                 "description": "BDN destination for a volume sync.",
                 "properties": {
@@ -15143,6 +15163,18 @@
                         "description": "Hugging Face source type.",
                         "title": "Type",
                         "type": "string"
+                    },
+                    "hf_oidc": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VolumeSyncAuthenticationHuggingFaceOIDCV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Hugging Face OIDC authentication for this source. Cannot be combined with auth_secret_name."
                     }
                 },
                 "required": [
@@ -43030,10 +43062,17 @@
                     },
                     "memory": {
                         "type": "integer",
-                        "description": "Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Must be between 1024 and 262144.",
+                        "description": "Memory allocation in megabytes. Must be between 1024 and 262144. When cpu is not set at creation, memory also determines the CPU allocation (by default 2048 MB = 1 vCPU, 4096 MB = 2, 8192 MB = 4, 16384 MB = 6, 32768 MB = 8, 65536 MB = 16, 131072 MB or more = 32).",
                         "example": 4096,
                         "minimum": 512,
                         "maximum": 262144
+                    },
+                    "cpu": {
+                        "type": "integer",
+                        "description": "Number of vCPUs the sandbox runs with. Always returned, including for sandboxes created without cpu, whose CPU allocation was derived from memory. Set at creation only.",
+                        "example": 2,
+                        "minimum": 1,
+                        "maximum": 32
                     },
                     "filesystem": {
                         "description": "Filesystem configuration. Set at creation only.",
@@ -43160,6 +43199,7 @@
                     ],
                     "image": "baseten/base-image:latest",
                     "memory": 4096,
+                    "cpu": 2,
                     "ports": [
                         {
                             "name": "http",
@@ -43291,11 +43331,17 @@
                     },
                     "memory": {
                         "type": "integer",
-                        "description": "Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096. Must be between 1024 and 262144.",
-                        "default": 4096,
+                        "description": "Memory allocation in megabytes. Must be between 1024 and 262144. Defaults to 4096, or to 8192 MB per vCPU (a 1:8 ratio) when only cpu is set, capped at the account's memory quota. When cpu is omitted, memory also determines the CPU allocation (by default 2048 MB = 1 vCPU, 4096 MB = 2, 8192 MB = 4, 16384 MB = 6, 32768 MB = 8, 65536 MB = 16, 131072 MB or more = 32).",
                         "example": 4096,
                         "minimum": 512,
                         "maximum": 262144
+                    },
+                    "cpu": {
+                        "type": "integer",
+                        "description": "Optional number of vCPUs, a whole number between 1 and 32. When omitted, the CPU allocation is derived from memory. When set, memory must be between 1024 and 8192 megabytes per vCPU (a ratio from 1:1 to 1:8), and cpu must not exceed the account's per-sandbox cpu quota. A value equal to the allocation memory alone would give is always accepted. When memory is omitted, it defaults to 8192 MB per vCPU, capped at the account's memory quota. Immutable after creation.",
+                        "example": 2,
+                        "minimum": 1,
+                        "maximum": 32
                     },
                     "filesystem": {
                         "description": "Filesystem configuration. Set at creation only.",
@@ -43423,6 +43469,7 @@
                     ],
                     "image": "baseten/base-image:latest",
                     "memory": 4096,
+                    "cpu": 2,
                     "ports": [
                         {
                             "name": "http",
@@ -43440,7 +43487,7 @@
             },
             "UpdateSandboxRequestV1": {
                 "type": "object",
-                "description": "Partial sandbox update. Omitted fields remain unchanged. Supplied arrays and maps (including labels) replace their previous values; supplied structured objects update only their supplied fields. Null is not accepted. The name, memory, network, region, image, ports, filesystem, and volumes are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.",
+                "description": "Partial sandbox update. Omitted fields remain unchanged. Supplied arrays and maps (including labels) replace their previous values; supplied structured objects update only their supplied fields. Null is not accepted. The name, memory, cpu, network, region, image, ports, filesystem, and volumes are immutable after creation. Supplying any of these fields returns 400, including unchanged, empty, or null values.",
                 "properties": {
                     "lifecycle": {
                         "description": "Lifecycle configuration controlling automatic sandbox deletion based on idle time, max age, or specific dates",
@@ -43713,6 +43760,7 @@
                     ],
                     "image": "baseten/base-image:latest",
                     "memory": 4096,
+                    "cpu": 2,
                     "ports": [
                         {
                             "name": "http",
@@ -43859,6 +43907,7 @@
                                 ],
                                 "image": "baseten/base-image:latest",
                                 "memory": 4096,
+                                "cpu": 2,
                                 "ports": [
                                     {
                                         "name": "http",
@@ -43970,6 +44019,7 @@
                             ],
                             "image": "baseten/base-image:latest",
                             "memory": 4096,
+                            "cpu": 2,
                             "ports": [
                                 {
                                     "name": "http",
@@ -45532,6 +45582,7 @@
                     ],
                     "image": "baseten/base-image:latest",
                     "memory": 4096,
+                    "cpu": 2,
                     "ports": [
                         {
                             "name": "http",
@@ -45662,6 +45713,7 @@
                     ],
                     "image": "baseten/base-image:latest",
                     "memory": 4096,
+                    "cpu": 2,
                     "ports": [
                         {
                             "name": "http",
@@ -45756,6 +45808,7 @@
                     ],
                     "image": "baseten/base-image:latest",
                     "memory": 4096,
+                    "cpu": 2,
                     "ports": [
                         {
                             "name": "http",
@@ -45850,6 +45903,7 @@
                     ],
                     "image": "baseten/base-image:latest",
                     "memory": 4096,
+                    "cpu": 2,
                     "ports": [
                         {
                             "name": "http",
@@ -45945,6 +45999,7 @@
                             ],
                             "image": "baseten/base-image:latest",
                             "memory": 4096,
+                            "cpu": 2,
                             "ports": [
                                 {
                                     "name": "http",
@@ -46047,6 +46102,7 @@
                             ],
                             "image": "baseten/base-image:latest",
                             "memory": 4096,
+                            "cpu": 2,
                             "ports": [
                                 {
                                     "name": "http",
