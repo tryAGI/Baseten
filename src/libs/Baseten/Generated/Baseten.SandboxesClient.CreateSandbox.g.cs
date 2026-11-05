@@ -687,9 +687,12 @@ namespace Baseten
         /// Example: baseten/base-image:latest
         /// </param>
         /// <param name="memory">
-        /// Memory allocation in megabytes. Also determines CPU allocation (CPU cores = memory in MB / 2048, e.g., 4096MB = 2 CPUs). Defaults to 4096. Must be between 1024 and 262144.<br/>
-        /// Default Value: 4096<br/>
+        /// Memory allocation in megabytes. Must be between 1024 and 262144. Defaults to 4096, or to 8192 MB per vCPU (a 1:8 ratio) when only cpu is set, capped at the account's memory quota. When cpu is omitted, memory also determines the CPU allocation (by default 2048 MB = 1 vCPU, 4096 MB = 2, 8192 MB = 4, 16384 MB = 6, 32768 MB = 8, 65536 MB = 16, 131072 MB or more = 32).<br/>
         /// Example: 4096
+        /// </param>
+        /// <param name="cpu">
+        /// Optional number of vCPUs, a whole number between 1 and 32. When omitted, the CPU allocation is derived from memory. When set, memory must be between 1024 and 8192 megabytes per vCPU (a ratio from 1:1 to 1:8), and cpu must not exceed the account's per-sandbox cpu quota. A value equal to the allocation memory alone would give is always accepted. When memory is omitted, it defaults to 8192 MB per vCPU, capped at the account's memory quota. Immutable after creation.<br/>
+        /// Example: 2
         /// </param>
         /// <param name="filesystem">
         /// Filesystem configuration. Set at creation only.<br/>
@@ -724,6 +727,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? envs = default,
             string? image = default,
             long? memory = default,
+            long? cpu = default,
             global::Baseten.SandboxFilesystemV1? filesystem = default,
             global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>? volumes = default,
             global::System.Collections.Generic.IList<global::Baseten.SandboxPortV1>? ports = default,
@@ -742,6 +746,7 @@ namespace Baseten
                 Envs = envs,
                 Image = image,
                 Memory = memory,
+                Cpu = cpu,
                 Filesystem = filesystem,
                 Volumes = volumes,
                 Ports = ports,
