@@ -6,12 +6,14 @@ namespace Baseten
     {
         /// <summary>
         /// Gets server-side tool call usage<br/>
-        /// Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model.
+        /// Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model. Defaults to teams you can manage; org admins include all organization history. Use team_ids to narrow the scope and group_by=TEAM for per-team rows. An unauthorized team filter causes a 403 response.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="teamIds"></param>
+        /// <param name="groupBy"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -23,16 +25,20 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.ToolCallUsageResponseV1> GetBillingToolCallUsageAsync(
             global::System.DateTime startDate,
             global::System.DateTime? endDate = default,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
+            global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageDimensionV1>? groupBy = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets server-side tool call usage<br/>
-        /// Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model.
+        /// Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model. Defaults to teams you can manage; org admins include all organization history. Use team_ids to narrow the scope and group_by=TEAM for per-team rows. An unauthorized team filter causes a 403 response.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="teamIds"></param>
+        /// <param name="groupBy"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -44,6 +50,8 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ToolCallUsageResponseV1>> GetBillingToolCallUsageAsResponseAsync(
             global::System.DateTime startDate,
             global::System.DateTime? endDate = default,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
+            global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageDimensionV1>? groupBy = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

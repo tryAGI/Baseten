@@ -5,7 +5,8 @@ using System.CommandLine;
 namespace Baseten.CLI.Commands;
 
 internal sealed record UpsertTrainingProjectV1OptionSet(
-    Option<string> NameOption)
+    Option<string> NameOption,
+                     Option<string?> ProjectAccelerator)
 {
     public static UpsertTrainingProjectV1OptionSet Create(string? prefix = null)
     {
@@ -17,6 +18,10 @@ internal sealed record UpsertTrainingProjectV1OptionSet(
                 {
                     Description = @"Name of the training project.",
                     Required = true,
+                },
+                ProjectAccelerator: new Option<string?>($"--{normalizedPrefix}project-accelerator")
+                {
+                    Description = @"Optional default GPU type for cache-enabled CPU job placement, such as H100. GPU jobs use their requested GPU type; uncached CPU jobs use normal CPU routing. Omitting this field preserves the stored default; providing a value updates it. Existing cache-affinity requirements still apply.",
                 }
         );
     }

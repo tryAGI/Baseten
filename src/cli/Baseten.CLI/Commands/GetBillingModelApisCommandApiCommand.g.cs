@@ -34,7 +34,7 @@ internal static partial class GetBillingModelApisCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.ModelApiCostDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, or service_tier. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily organization totals.",
+        Description = @"Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, service_tier, or team. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily totals across all teams you can manage.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> ApiKeyPrefixes { get; } = new(
@@ -59,6 +59,12 @@ internal static partial class GetBillingModelApisCommandApiCommand
         name: @"--service-tiers")
     {
         Description = @"Return only costs for these exact service tiers, repeated once per tier.",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<string>?> TeamIds { get; } = new(
+        name: @"--team-ids")
+    {
+        Description = @"Return only costs attributed to these teams, repeated once per team. Defaults to all teams you can manage.",
     };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ModelApisCostsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
@@ -86,7 +92,7 @@ internal static partial class GetBillingModelApisCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-billing-model-apis", @"Gets daily Model APIs costs
-Returns daily Model API costs in USD for your organization, with optional filtering and grouping by API key, user, model, and service tier. Results may differ from finalized invoice amounts. Cost history is available from August 5, 2026 at 20:45 UTC. August 5 is a partial day; earlier dates are unavailable.");
+Returns daily Model API costs in USD for the teams you can manage, with optional filtering and grouping by API key, user, model, service tier, and team. Organization admins receive organization-wide totals by default; other callers may receive lower totals than callers with management access to more teams. Results may differ from finalized invoice amounts. Cost history is available from August 5, 2026 at 20:45 UTC. August 5 is a partial day; earlier dates are unavailable. Team attribution began on October 12, 2026 at 21:54 UTC, with no historical backfill. October 12 is a partial day for team-scoped queries. Only unfiltered organization-admin queries include older unattributed usage.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
                         command.Options.Add(StartDate);
@@ -96,6 +102,7 @@ Returns daily Model API costs in USD for your organization, with optional filter
                         command.Options.Add(UserIds);
                         command.Options.Add(Models);
                         command.Options.Add(ServiceTiers);
+                        command.Options.Add(TeamIds);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -110,6 +117,7 @@ Returns daily Model API costs in USD for your organization, with optional filter
                         var userIds = parseResult.GetValue(UserIds);
                         var models = parseResult.GetValue(Models);
                         var serviceTiers = parseResult.GetValue(ServiceTiers);
+                        var teamIds = parseResult.GetValue(TeamIds);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -123,6 +131,7 @@ Returns daily Model API costs in USD for your organization, with optional filter
                                     userIds: userIds,
                                     models: models,
                                     serviceTiers: serviceTiers,
+                                    teamIds: teamIds,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

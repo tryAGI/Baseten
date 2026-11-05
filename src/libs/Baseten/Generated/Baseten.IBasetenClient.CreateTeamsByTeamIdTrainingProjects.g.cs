@@ -19,7 +19,8 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "training_project": {<br/>
-        ///     "name": "My Training Project"<br/>
+        ///     "name": "My Training Project",<br/>
+        ///     "project_accelerator": "H100"<br/>
         ///   }<br/>
         /// }'
         /// </remarks>
@@ -44,7 +45,8 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "training_project": {<br/>
-        ///     "name": "My Training Project"<br/>
+        ///     "name": "My Training Project",<br/>
+        ///     "project_accelerator": "H100"<br/>
         ///   }<br/>
         /// }'
         /// </remarks>

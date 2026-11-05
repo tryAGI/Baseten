@@ -56,10 +56,10 @@ internal static partial class CreateTeamsByTeamIdLlmModelsCommandApiCommand
         Description = @"Weight configurations for BDN model weight distribution",
     };
 
-    private static Option<global::Baseten.BdnConfigV1?> Bdn { get; } = new(
+    private static Option<object?> Bdn { get; } = new(
         name: @"--bdn")
     {
-        Description = @"BDN volume versions to mount read-only in the frontend and worker, each under /models/<name>. Requires the organization to have BDN volumes enabled.",
+        Description = @"BDN configuration for read-only sealed volume mounts; supports mounts only",
     };
 
     private static Option<global::Baseten.EgressRestrictionsV1?> EgressRestrictions { get; } = new(

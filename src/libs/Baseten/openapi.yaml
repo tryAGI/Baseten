@@ -5920,11 +5920,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/training_projects \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project\": {\n    \"name\": \"My Training Project\"\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/training_projects \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project\": {\n    \"name\": \"My Training Project\",\n    \"project_accelerator\": \"H100\"\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/training_projects\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project': {'name': 'My Training Project'}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/training_projects\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project': {'name': 'My Training Project', 'project_accelerator': 'H100'}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Upserts a training project with the specified metadata for a team.",
@@ -6047,11 +6047,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project\": {\n    \"name\": \"My Training Project\"\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_project\": {\n    \"name\": \"My Training Project\",\n    \"project_accelerator\": \"H100\"\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project': {'name': 'My Training Project'}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_project': {'name': 'My Training Project', 'project_accelerator': 'H100'}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Upserts a training project with the specified metadata.",
@@ -7029,16 +7029,16 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/capabilities\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'model': 'Qwen/Qwen3-8B', 'use_case': 'rl', 'max_seq_len': 32768}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/capabilities\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'model': 'Qwen/Qwen3-8B', 'use_case': 'rl', 'max_seq_len': 32768, 'enabled': True}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot; filter on 'enabled' for the usable set. Capacity is resolved when the run is created, not here. Pass ?model= to ask about one model \u2014 an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.",
+                "description": "Returns the list of models supported by the Loops server, including each model's maximum context length and whether it supports vision-language inputs. Each entry carries an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' explaining why when it cannot. Models this workspace can run come first. Capacity is resolved when the run is created, not here. Pass ?enabled=true for only the models you can use. Pass ?model= to ask about one model \u2014 without ?enabled=, an empty list means Baseten does not support it. Pass ?use_case=sft for a run that needs no sampler, and ?max_seq_len= to check a specific sequence length.",
                 "parameters": [
                     {
                         "name": "model",
                         "in": "query",
                         "required": false,
-                        "description": "Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. An empty list means Baseten does not support that model. Omit to list every supported model.",
+                        "description": "Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. Without 'enabled', an empty list means Baseten does not support that model. Omit to list every supported model.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -7088,6 +7088,27 @@
                                 32768
                             ],
                             "title": "Max Seq Len"
+                        }
+                    },
+                    {
+                        "name": "enabled",
+                        "in": "query",
+                        "required": false,
+                        "description": "Pass true to list only the models this workspace can run now, or false for only the ones it cannot. Omit to list both. With 'model', an empty list can also mean the model is supported but filtered out.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "examples": [
+                                true
+                            ],
+                            "title": "Enabled"
                         }
                     }
                 ],
@@ -9123,6 +9144,101 @@
                 }
             }
         },
+        "/v1/model_apis/{model_api_name}/metrics": {
+            "get": {
+                "summary": "Gets the metrics for a Model API",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/model_apis/{model_api_name}/metrics \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/{model_api_name}/metrics\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'mode': 'CURRENT', 'start_epoch_millis': None, 'end_epoch_millis': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Gets the metrics for a Model API in the given time range.",
+                "parameters": [
+                    {
+                        "name": "mode",
+                        "in": "query",
+                        "required": false,
+                        "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration.",
+                        "schema": {
+                            "$ref": "#/components/schemas/MetricModeV1",
+                            "default": "CURRENT"
+                        }
+                    },
+                    {
+                        "name": "start_epoch_millis",
+                        "in": "query",
+                        "required": false,
+                        "description": "Epoch millis timestamp to start fetching metrics. Defaults to one hour before the end.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Start Epoch Millis"
+                        }
+                    },
+                    {
+                        "name": "end_epoch_millis",
+                        "in": "query",
+                        "required": false,
+                        "description": "Epoch millis timestamp to end fetching metrics. Defaults to the current time. The window between start and end must not exceed 7 days.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "End Epoch Millis"
+                        }
+                    },
+                    {
+                        "name": "metrics",
+                        "in": "query",
+                        "required": false,
+                        "description": "Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_model_api_inference_requests_total, baseten_model_api_incoming_inference_requests_total, and baseten_model_api_tokens_total. Unknown names are rejected; valid names that are not enabled for your organization are omitted from the response.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Metrics",
+                            "type": "array"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetMetricsResponseV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_api_name"
+                }
+            ]
+        },
         "/v1/model_apis/{model_api_name}": {
             "get": {
                 "summary": "Gets a Model API",
@@ -9162,11 +9278,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": {\n    \"mounts\": [\n      {\n        \"path\": \"/models/startup\",\n        \"source\": \"bdn:my-namespace/my-volume:v1\"\n      }\n    ]\n  },\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": null,\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': {'mounts': [{'path': '/models/startup', 'source': 'bdn:my-namespace/my-volume:v1'}]}, 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': None, 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -9199,11 +9315,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": {\n    \"mounts\": [\n      {\n        \"path\": \"/models/startup\",\n        \"source\": \"bdn:my-namespace/my-volume:v1\"\n      }\n    ]\n  },\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/teams/{team_id}/llm_models \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": null,\n  \"egress_restrictions\": null,\n  \"runtime\": null,\n  \"name\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': {'mounts': [{'path': '/models/startup', 'source': 'bdn:my-namespace/my-volume:v1'}]}, 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/teams/{team_id}/llm_models\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': None, 'egress_restrictions': None, 'runtime': None, 'name': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -9241,11 +9357,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": {\n    \"mounts\": [\n      {\n        \"path\": \"/models/startup\",\n        \"source\": \"bdn:my-namespace/my-volume:v1\"\n      }\n    ]\n  },\n  \"egress_restrictions\": null,\n  \"runtime\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/llm_models/{model_id}/deployments \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"resources\": null,\n  \"deployment_name\": null,\n  \"region\": null,\n  \"llm_version\": null,\n  \"model_metadata\": null,\n  \"autoscaling_settings\": {\n    \"autoscaling_window\": 600,\n    \"concurrency_target\": null,\n    \"max_replica\": 5,\n    \"max_scale_down_rate\": null,\n    \"min_replica\": 1,\n    \"scale_down_delay\": 300,\n    \"target_in_flight_tokens\": null,\n    \"target_utilization_percentage\": null\n  },\n  \"additional_autoscaling_config\": {\n    \"metrics\": [\n      {\n        \"name\": \"in_flight_tokens\",\n        \"target\": 40000\n      }\n    ]\n  },\n  \"metadata\": {\n    \"environment\": \"production\",\n    \"git_sha\": \"abc123\"\n  },\n  \"weights\": [\n    {\n      \"mount_location\": \"/models/base\",\n      \"source\": \"hf://meta-llama/Llama-3-8B\"\n    }\n  ],\n  \"bdn\": null,\n  \"egress_restrictions\": null,\n  \"runtime\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': {'mounts': [{'path': '/models/startup', 'source': 'bdn:my-namespace/my-volume:v1'}]}, 'egress_restrictions': None, 'runtime': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/llm_models/{model_id}/deployments\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'resources': None, 'deployment_name': None, 'region': None, 'llm_version': None, 'model_metadata': None, 'autoscaling_settings': {'autoscaling_window': 600, 'concurrency_target': None, 'max_replica': 5, 'max_scale_down_rate': None, 'min_replica': 1, 'scale_down_delay': 300, 'target_in_flight_tokens': None, 'target_utilization_percentage': None}, 'additional_autoscaling_config': {'metrics': [{'name': 'in_flight_tokens', 'target': 40000}]}, 'metadata': {'environment': 'production', 'git_sha': 'abc123'}, 'weights': [{'mount_location': '/models/base', 'source': 'hf://meta-llama/Llama-3-8B'}], 'bdn': None, 'egress_restrictions': None, 'runtime': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "requestBody": {
@@ -9616,7 +9732,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/billing/model_apis\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'start_date': None, 'end_date': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns daily Model API costs in USD for your organization, with optional filtering and grouping by API key, user, model, and service tier. Results may differ from finalized invoice amounts. Cost history is available from August 5, 2026 at 20:45 UTC. August 5 is a partial day; earlier dates are unavailable.",
+                "description": "Returns daily Model API costs in USD for the teams you can manage, with optional filtering and grouping by API key, user, model, service tier, and team. Organization admins receive organization-wide totals by default; other callers may receive lower totals than callers with management access to more teams. Results may differ from finalized invoice amounts. Cost history is available from August 5, 2026 at 20:45 UTC. August 5 is a partial day; earlier dates are unavailable. Team attribution began on October 12, 2026 at 21:54 UTC, with no historical backfill. October 12 is a partial day for team-scoped queries. Only unfiltered organization-admin queries include older unattributed usage.",
                 "parameters": [
                     {
                         "name": "cursor",
@@ -9691,7 +9807,7 @@
                         "name": "group_by",
                         "in": "query",
                         "required": false,
-                        "description": "Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, or service_tier. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily organization totals.",
+                        "description": "Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, service_tier, or team. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily totals across all teams you can manage.",
                         "schema": {
                             "items": {
                                 "$ref": "#/components/schemas/ModelApiCostDimensionV1"
@@ -9749,6 +9865,19 @@
                                 "type": "string"
                             },
                             "title": "Service Tiers",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "team_ids",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only costs attributed to these teams, repeated once per team. Defaults to all teams you can manage.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Team Ids",
                             "type": "array"
                         }
                     }
@@ -9832,7 +9961,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/billing/tool_call_usage\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_date': None, 'end_date': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model.",
+                "description": "Returns your organization's server-side tool call usage (web search and fetch tools Baseten executes on your behalf) as daily rows grouped by provider, charge unit (sku), and model. Defaults to teams you can manage; org admins include all organization history. Use team_ids to narrow the scope and group_by=TEAM for per-team rows. An unauthorized team filter causes a 403 response.",
                 "parameters": [
                     {
                         "name": "start_date",
@@ -9862,6 +9991,32 @@
                             ],
                             "default": null,
                             "title": "End Date"
+                        }
+                    },
+                    {
+                        "name": "team_ids",
+                        "in": "query",
+                        "required": false,
+                        "description": "Return only usage for these teams, repeated once per team. Defaults to all teams you can manage. An unauthorized team ID causes a 403 response.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Team Ids",
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "group_by",
+                        "in": "query",
+                        "required": false,
+                        "description": "Pass TEAM to split daily rows by team. Defaults to aggregating across teams.",
+                        "schema": {
+                            "items": {
+                                "$ref": "#/components/schemas/ToolCallUsageDimensionV1"
+                            },
+                            "title": "Group By",
+                            "type": "array"
                         }
                     }
                 ],
@@ -11319,6 +11474,101 @@
             "parameters": [
                 {
                     "$ref": "#/components/parameters/classifier_id"
+                }
+            ]
+        },
+        "/v1/grid/route_classifiers": {
+            "get": {
+                "summary": "Lists route classifiers available for intelligent routes",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/grid/route_classifiers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/grid/route_classifiers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Returns Baseten-managed route classifiers available to your organization, ordered by identifier. Route classifiers cannot be created or modified through this API.",
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of items to return.",
+                        "schema": {
+                            "default": 100,
+                            "maximum": 1000,
+                            "minimum": 1,
+                            "title": "Limit",
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GridRouteClassifiersResponseV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/grid/route_classifiers/{route_classifier_id}": {
+            "get": {
+                "summary": "Gets a route classifier available for intelligent routes",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/grid/route_classifiers/{route_classifier_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/grid/route_classifiers/{route_classifier_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GridRouteClassifierV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/route_classifier_id"
                 }
             ]
         },
@@ -27527,6 +27777,22 @@
                         ],
                         "title": "Name",
                         "type": "string"
+                    },
+                    "project_accelerator": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional default GPU type for cache-enabled CPU job placement, such as H100. GPU jobs use their requested GPU type; uncached CPU jobs use normal CPU routing. Omitting this field preserves the stored default; providing a value updates it. Existing cache-affinity requirements still apply.",
+                        "examples": [
+                            "H100"
+                        ],
+                        "title": "Project Accelerator"
                     }
                 },
                 "required": [
@@ -27724,6 +27990,19 @@
                         "title": "Name",
                         "type": "string"
                     },
+                    "project_accelerator": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Default GPU type for cache-enabled CPU job placement.",
+                        "title": "Project Accelerator"
+                    },
                     "created_at": {
                         "description": "Time the training project was created in ISO 8601 format.",
                         "format": "date-time",
@@ -27904,6 +28183,7 @@
                     "CUSTOM_SECRET",
                     "AWS_OIDC",
                     "GCP_OIDC",
+                    "HUGGING_FACE_OIDC",
                     "AWS_ASSUME_ROLE"
                 ],
                 "title": "AuthMethod",
@@ -30567,10 +30847,10 @@
                 "type": "object"
             },
             "GetLoopsCapabilitiesResponseV1": {
-                "description": "Response for ``GET /v1/loops/capabilities``.\n\nA model Baseten does not support has no entry at all, so an empty list for\na single-model request means exactly that.",
+                "description": "Response for ``GET /v1/loops/capabilities``.\n\nA model Baseten does not support has no entry at all, so an empty list for\na single-model request without ``enabled`` means exactly that.",
                 "properties": {
                     "supported_models": {
-                        "description": "Models Baseten supports for this use case, each carrying an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' when it cannot. Filter on 'enabled' to get the models you can use.",
+                        "description": "Models Baseten supports for this use case, each carrying an 'enabled' flag saying whether this workspace can run it now, and 'enablement_details' when it cannot. Models this workspace can run come first, then the rest, each group sorted by name.",
                         "items": {
                             "$ref": "#/components/schemas/SupportedModelV1"
                         },
@@ -30606,7 +30886,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. An empty list means Baseten does not support that model. Omit to list every supported model.",
+                        "description": "Restrict the response to one model, identified by its HuggingFace repo id. A supported model comes back with its 'enabled' flag and, when false, its 'enablement_details'. Without 'enabled', an empty list means Baseten does not support that model. Omit to list every supported model.",
                         "examples": [
                             "Qwen/Qwen3-8B"
                         ],
@@ -30636,6 +30916,22 @@
                             32768
                         ],
                         "title": "Max Seq Len"
+                    },
+                    "enabled": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Pass true to list only the models this workspace can run now, or false for only the ones it cannot. Omit to list both. With 'model', an empty list can also mean the model is supported but filtered out.",
+                        "examples": [
+                            true
+                        ],
+                        "title": "Enabled"
                     }
                 },
                 "title": "GetLoopsCapabilitiesQueryParamsV1",
@@ -33760,6 +34056,25 @@
                         ],
                         "title": "Cost Per Million Input Tokens"
                     },
+                    "cost_per_million_cached_input_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Effective cost per million cached input tokens, in dollars. Null when pricing is unavailable or the Model API has no cached input price.",
+                        "examples": [
+                            "0.03"
+                        ],
+                        "title": "Cost Per Million Cached Input Tokens"
+                    },
                     "cost_per_million_output_tokens": {
                         "anyOf": [
                             {
@@ -33808,6 +34123,7 @@
                     "invoke_url",
                     "context_length",
                     "cost_per_million_input_tokens",
+                    "cost_per_million_cached_input_tokens",
                     "cost_per_million_output_tokens",
                     "rate_limits"
                 ],
@@ -34185,51 +34501,50 @@
                 "title": "ModelApisUsageRequestV1",
                 "type": "object"
             },
-            "BdnConfigV1": {
-                "additionalProperties": false,
+            "GetModelAPIMetricsRequestV1": {
+                "description": "Query params for ``GET /v1/model_apis/.../metrics``.",
                 "properties": {
-                    "mounts": {
-                        "description": "The BDN volume versions to mount.",
+                    "mode": {
+                        "$ref": "#/components/schemas/MetricModeV1",
+                        "default": "CURRENT",
+                        "description": "'CURRENT': a single instantaneous snapshot at now; start/end must be omitted. 'SUMMARY': a single value set aggregating the whole window. 'SERIES': evenly-spaced value sets across the window, with the step derived from the window duration."
+                    },
+                    "start_epoch_millis": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Epoch millis timestamp to start fetching metrics. Defaults to one hour before the end.",
+                        "title": "Start Epoch Millis"
+                    },
+                    "end_epoch_millis": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Epoch millis timestamp to end fetching metrics. Defaults to the current time. The window between start and end must not exceed 7 days.",
+                        "title": "End Epoch Millis"
+                    },
+                    "metrics": {
+                        "description": "Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_model_api_inference_requests_total, baseten_model_api_incoming_inference_requests_total, and baseten_model_api_tokens_total. Unknown names are rejected; valid names that are not enabled for your organization are omitted from the response.",
                         "items": {
-                            "$ref": "#/components/schemas/BdnVolumeMountV1"
+                            "type": "string"
                         },
-                        "minItems": 1,
-                        "title": "Mounts",
+                        "title": "Metrics",
                         "type": "array"
                     }
                 },
-                "required": [
-                    "mounts"
-                ],
-                "title": "BdnConfigV1",
-                "type": "object"
-            },
-            "BdnVolumeMountV1": {
-                "additionalProperties": false,
-                "description": "A BDN volume version mounted read-only in the frontend and worker.",
-                "properties": {
-                    "source": {
-                        "description": "The volume version to mount: bdn:<namespace>/<volume>, optionally followed by :<tag> or @b3:<digest>.",
-                        "examples": [
-                            "bdn:my-namespace/my-volume:v1"
-                        ],
-                        "title": "Source",
-                        "type": "string"
-                    },
-                    "path": {
-                        "description": "Where to mount it: /models/<name>, with <name> a single path segment.",
-                        "examples": [
-                            "/models/startup"
-                        ],
-                        "title": "Path",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "source",
-                    "path"
-                ],
-                "title": "BdnVolumeMountV1",
+                "title": "GetModelAPIMetricsRequestV1",
                 "type": "object"
             },
             "EgressRestrictionsV1": {
@@ -34501,24 +34816,16 @@
                     "bdn": {
                         "anyOf": [
                             {
-                                "$ref": "#/components/schemas/BdnConfigV1"
+                                "additionalProperties": true,
+                                "type": "object"
                             },
                             {
                                 "type": "null"
                             }
                         ],
                         "default": null,
-                        "description": "BDN volume versions to mount read-only in the frontend and worker, each under /models/<name>. Requires the organization to have BDN volumes enabled.",
-                        "examples": [
-                            {
-                                "mounts": [
-                                    {
-                                        "path": "/models/startup",
-                                        "source": "bdn:my-namespace/my-volume:v1"
-                                    }
-                                ]
-                            }
-                        ]
+                        "description": "BDN configuration for read-only sealed volume mounts; supports mounts only",
+                        "title": "Bdn"
                     },
                     "egress_restrictions": {
                         "anyOf": [
@@ -34767,24 +35074,16 @@
                     "bdn": {
                         "anyOf": [
                             {
-                                "$ref": "#/components/schemas/BdnConfigV1"
+                                "additionalProperties": true,
+                                "type": "object"
                             },
                             {
                                 "type": "null"
                             }
                         ],
                         "default": null,
-                        "description": "BDN volume versions to mount read-only in the frontend and worker, each under /models/<name>. Requires the organization to have BDN volumes enabled.",
-                        "examples": [
-                            {
-                                "mounts": [
-                                    {
-                                        "path": "/models/startup",
-                                        "source": "bdn:my-namespace/my-volume:v1"
-                                    }
-                                ]
-                            }
-                        ]
+                        "description": "BDN configuration for read-only sealed volume mounts; supports mounts only",
+                        "title": "Bdn"
                     },
                     "egress_restrictions": {
                         "anyOf": [
@@ -35740,6 +36039,19 @@
                         "description": "Service tier. Null when not grouping by service_tier or when attribution is unavailable.",
                         "title": "Service Tier"
                     },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Team the cost is attributed to. Null when not grouping by team or when team attribution is unavailable.",
+                        "title": "Team Id"
+                    },
                     "subtotal": {
                         "description": "Model API cost in USD for this day and grouping combination, returned as an exact decimal string preserving fractional-cent amounts. This amount may differ from finalized invoice amounts.",
                         "examples": [
@@ -35783,7 +36095,8 @@
                     "api_key_prefix",
                     "user",
                     "model",
-                    "service_tier"
+                    "service_tier",
+                    "team"
                 ],
                 "title": "ModelApiCostDimensionV1",
                 "type": "string"
@@ -35840,7 +36153,7 @@
                         "title": "End Date"
                     },
                     "group_by": {
-                        "description": "Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, or service_tier. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily organization totals.",
+                        "description": "Dimensions to break costs down by, repeated once per dimension: api_key_prefix, user, model, service_tier, or team. Each result represents one observed combination of the requested dimensions within that day. For example, grouping by api_key_prefix and user returns each API-key and user pair that had usage. Combinations without usage are omitted, so result counts can differ between days. Omit for daily totals across all teams you can manage.",
                         "items": {
                             "$ref": "#/components/schemas/ModelApiCostDimensionV1"
                         },
@@ -35877,6 +36190,14 @@
                             "type": "string"
                         },
                         "title": "Service Tiers",
+                        "type": "array"
+                    },
+                    "team_ids": {
+                        "description": "Return only costs attributed to these teams, repeated once per team. Defaults to all teams you can manage.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Team Ids",
                         "type": "array"
                     }
                 },
@@ -36953,6 +37274,19 @@
                         "description": "Billable quantity in the provider's sku unit, summed over the calls.",
                         "title": "Quantity",
                         "type": "number"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Team attributed to the usage. Null when not grouping by team or when historical team attribution is unavailable.",
+                        "title": "Team Id"
                     }
                 },
                 "required": [
@@ -36980,6 +37314,13 @@
                 "title": "ToolCallUsageResponseV1",
                 "type": "object"
             },
+            "ToolCallUsageDimensionV1": {
+                "enum": [
+                    "TEAM"
+                ],
+                "title": "ToolCallUsageDimensionV1",
+                "type": "string"
+            },
             "ToolCallUsageRequestV1": {
                 "properties": {
                     "start_date": {
@@ -37001,6 +37342,22 @@
                         "default": null,
                         "description": "Exclusive UTC calendar day at the end of the query range. Defaults to the day after the current UTC date so current-day usage is included. The date range cannot exceed 90 days.",
                         "title": "End Date"
+                    },
+                    "team_ids": {
+                        "description": "Return only usage for these teams, repeated once per team. Defaults to all teams you can manage. An unauthorized team ID causes a 403 response.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Team Ids",
+                        "type": "array"
+                    },
+                    "group_by": {
+                        "description": "Pass TEAM to split daily rows by team. Defaults to aggregating across teams.",
+                        "items": {
+                            "$ref": "#/components/schemas/ToolCallUsageDimensionV1"
+                        },
+                        "title": "Group By",
+                        "type": "array"
                     }
                 },
                 "required": [
@@ -37852,6 +38209,62 @@
                 "title": "GridClassifierV1",
                 "type": "object"
             },
+            "GridRouteClassifierV1": {
+                "properties": {
+                    "id": {
+                        "description": "Stable route classifier identifier.",
+                        "examples": [
+                            "general-v1"
+                        ],
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Display name of the route classifier.",
+                        "examples": [
+                            "General"
+                        ],
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "supported_tradeoffs": {
+                        "description": "Tradeoffs the route classifier supports. Empty when it supports all of them.",
+                        "items": {
+                            "enum": [
+                                "cost",
+                                "balanced",
+                                "intelligence"
+                            ],
+                            "title": "GridRouteTradeoffV1",
+                            "type": "string"
+                        },
+                        "title": "Supported Tradeoffs",
+                        "type": "array"
+                    },
+                    "decidable_models": {
+                        "description": "Model identities the route classifier picks from.",
+                        "examples": [
+                            [
+                                "zai-org/GLM-5.3",
+                                "anthropic/claude-opus-5-5"
+                            ]
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Decidable Models",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "supported_tradeoffs",
+                    "decidable_models"
+                ],
+                "title": "GridRouteClassifierV1",
+                "type": "object"
+            },
             "GridRouteRefV1": {
                 "properties": {
                     "id": {
@@ -37963,6 +38376,37 @@
                 "title": "GridRouteTargetConnectionV1",
                 "type": "object"
             },
+            "GridRouteTargetIntelligentV1": {
+                "properties": {
+                    "type": {
+                        "const": "INTELLIGENT",
+                        "description": "Target kind for an intelligent route: Baseten picks the model per request.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "route_classifier": {
+                        "$ref": "#/components/schemas/GridRouteClassifierV1",
+                        "description": "Route classifier that picks the model."
+                    },
+                    "tradeoff": {
+                        "description": "How the classifier weighs cost against quality.",
+                        "enum": [
+                            "cost",
+                            "balanced",
+                            "intelligence"
+                        ],
+                        "title": "GridRouteTradeoffV1",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "type",
+                    "route_classifier",
+                    "tradeoff"
+                ],
+                "title": "GridRouteTargetIntelligentV1",
+                "type": "object"
+            },
             "GridRouteV1": {
                 "properties": {
                     "id": {
@@ -38001,7 +38445,8 @@
                             "mapping": {
                                 "BASETEN_MODEL_API": "#/components/schemas/GridRouteTargetBasetenModelAPIV1",
                                 "CLASSIFIER": "#/components/schemas/GridRouteTargetClassifierV1",
-                                "CONNECTION": "#/components/schemas/GridRouteTargetConnectionV1"
+                                "CONNECTION": "#/components/schemas/GridRouteTargetConnectionV1",
+                                "INTELLIGENT": "#/components/schemas/GridRouteTargetIntelligentV1"
                             },
                             "propertyName": "type"
                         },
@@ -38014,6 +38459,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/GridRouteTargetClassifierV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GridRouteTargetIntelligentV1"
                             }
                         ],
                         "title": "Target"
@@ -38797,11 +39245,11 @@
                         "description": "Default models for OpenCode."
                     },
                     "codex": {
-                        "$ref": "#/components/schemas/GridPrimaryHarnessDefaultsV1",
+                        "$ref": "#/components/schemas/GridBackgroundHarnessDefaultsV1",
                         "description": "Default models for Codex."
                     },
                     "pi": {
-                        "$ref": "#/components/schemas/GridPrimaryHarnessDefaultsV1",
+                        "$ref": "#/components/schemas/GridBackgroundHarnessDefaultsV1",
                         "description": "Default models for Pi."
                     }
                 },
@@ -38830,26 +39278,6 @@
                     "route"
                 ],
                 "title": "GridHarnessModelV1",
-                "type": "object"
-            },
-            "GridPrimaryHarnessDefaultsV1": {
-                "properties": {
-                    "primary": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/GridHarnessModelV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "Route for the primary model, which new sessions use. Null when the team has no route to use."
-                    }
-                },
-                "required": [
-                    "primary"
-                ],
-                "title": "GridPrimaryHarnessDefaultsV1",
                 "type": "object"
             },
             "GridSettingSourceV1": {
@@ -39036,7 +39464,7 @@
                     "codex": {
                         "anyOf": [
                             {
-                                "$ref": "#/components/schemas/UpdateGridPrimaryHarnessModelsV1"
+                                "$ref": "#/components/schemas/UpdateGridBackgroundHarnessModelsV1"
                             },
                             {
                                 "type": "null"
@@ -39049,7 +39477,7 @@
                     "pi": {
                         "anyOf": [
                             {
-                                "$ref": "#/components/schemas/UpdateGridPrimaryHarnessModelsV1"
+                                "$ref": "#/components/schemas/UpdateGridBackgroundHarnessModelsV1"
                             },
                             {
                                 "type": "null"
@@ -39061,32 +39489,6 @@
                     }
                 },
                 "title": "UpdateGridHarnessDefaultsV1",
-                "type": "object"
-            },
-            "UpdateGridPrimaryHarnessModelsV1": {
-                "additionalProperties": false,
-                "minProperties": 1,
-                "properties": {
-                    "primary": {
-                        "anyOf": [
-                            {
-                                "minLength": 1,
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use the team's default.",
-                        "examples": [
-                            "abc1234"
-                        ],
-                        "title": "Primary",
-                        "x-null-distinct": true
-                    }
-                },
-                "title": "UpdateGridPrimaryHarnessModelsV1",
                 "type": "object"
             },
             "UpdateGridTeamSpendLimitSettingV1": {
@@ -40282,6 +40684,55 @@
                     }
                 },
                 "title": "GridClassifiersRequestV1",
+                "type": "object"
+            },
+            "GridRouteClassifiersResponseV1": {
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/GridRouteClassifierV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "GridRouteClassifiersResponseV1",
+                "type": "object"
+            },
+            "GridRouteClassifiersRequestV1": {
+                "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "default": 100,
+                        "description": "Maximum number of items to return.",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Limit",
+                        "type": "integer"
+                    }
+                },
+                "title": "GridRouteClassifiersRequestV1",
                 "type": "object"
             },
             "GridMachineUserV1": {
@@ -44702,6 +45153,14 @@
                     "type": "string"
                 },
                 "name": "classifier_id",
+                "in": "path",
+                "required": true
+            },
+            "route_classifier_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "route_classifier_id",
                 "in": "path",
                 "required": true
             },

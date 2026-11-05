@@ -65,6 +65,13 @@ namespace Baseten
         public global::Baseten.AnyOf<double?, string>? CostPerMillionInputTokens { get; set; }
 
         /// <summary>
+        /// Effective cost per million cached input tokens, in dollars. Null when pricing is unavailable or the Model API has no cached input price.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("cost_per_million_cached_input_tokens")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
+        public global::Baseten.AnyOf<double?, string>? CostPerMillionCachedInputTokens { get; set; }
+
+        /// <summary>
         /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_per_million_output_tokens")]
@@ -122,6 +129,9 @@ namespace Baseten
         /// <param name="costPerMillionInputTokens">
         /// Effective cost per million input tokens, in dollars. Null when pricing is unavailable.
         /// </param>
+        /// <param name="costPerMillionCachedInputTokens">
+        /// Effective cost per million cached input tokens, in dollars. Null when pricing is unavailable or the Model API has no cached input price.
+        /// </param>
         /// <param name="costPerMillionOutputTokens">
         /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
         /// </param>
@@ -142,6 +152,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.RateLimitV1> rateLimits,
             string? modelFamily,
             global::Baseten.AnyOf<double?, string>? costPerMillionInputTokens,
+            global::Baseten.AnyOf<double?, string>? costPerMillionCachedInputTokens,
             global::Baseten.AnyOf<double?, string>? costPerMillionOutputTokens,
             global::Baseten.ModelAPIOrgDetailsV1? orgDetails)
         {
@@ -153,6 +164,7 @@ namespace Baseten
             this.InvokeUrl = invokeUrl ?? throw new global::System.ArgumentNullException(nameof(invokeUrl));
             this.ContextLength = contextLength;
             this.CostPerMillionInputTokens = costPerMillionInputTokens;
+            this.CostPerMillionCachedInputTokens = costPerMillionCachedInputTokens;
             this.CostPerMillionOutputTokens = costPerMillionOutputTokens;
             this.RateLimits = rateLimits ?? throw new global::System.ArgumentNullException(nameof(rateLimits));
             this.OrgDetails = orgDetails;

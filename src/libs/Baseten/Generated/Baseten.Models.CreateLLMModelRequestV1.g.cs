@@ -84,11 +84,11 @@ namespace Baseten
         public global::System.Collections.Generic.IList<object>? Weights { get; set; }
 
         /// <summary>
-        /// BDN volume versions to mount read-only in the frontend and worker, each under /models/&lt;name&gt;. Requires the organization to have BDN volumes enabled.<br/>
+        /// BDN configuration for read-only sealed volume mounts; supports mounts only<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bdn")]
-        public global::Baseten.BdnConfigV1? Bdn { get; set; }
+        public object? Bdn { get; set; }
 
         /// <summary>
         /// Restricts this deployment's egress to the specified FQDNs and IP addresses; an empty block allows none. Requires the organization to have egress restrictions enabled.<br/>
@@ -165,7 +165,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="bdn">
-        /// BDN volume versions to mount read-only in the frontend and worker, each under /models/&lt;name&gt;. Requires the organization to have BDN volumes enabled.<br/>
+        /// BDN configuration for read-only sealed volume mounts; supports mounts only<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="egressRestrictions">
@@ -192,7 +192,7 @@ namespace Baseten
             object? additionalAutoscalingConfig,
             object? metadata,
             global::System.Collections.Generic.IList<object>? weights,
-            global::Baseten.BdnConfigV1? bdn,
+            object? bdn,
             global::Baseten.EgressRestrictionsV1? egressRestrictions,
             global::Baseten.LLMRuntimeV1? runtime)
         {

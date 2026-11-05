@@ -51,6 +51,13 @@ namespace Baseten
         public required double Quantity { get; set; }
 
         /// <summary>
+        /// Team attributed to the usage. Null when not grouping by team or when historical team attribution is unavailable.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
+        public string? TeamId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -77,6 +84,10 @@ namespace Baseten
         /// <param name="quantity">
         /// Billable quantity in the provider's sku unit, summed over the calls.
         /// </param>
+        /// <param name="teamId">
+        /// Team attributed to the usage. Null when not grouping by team or when historical team attribution is unavailable.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -86,7 +97,8 @@ namespace Baseten
             string sku,
             string model,
             int calls,
-            double quantity)
+            double quantity,
+            string? teamId)
         {
             this.Date = date;
             this.Provider = provider ?? throw new global::System.ArgumentNullException(nameof(provider));
@@ -94,6 +106,7 @@ namespace Baseten
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Calls = calls;
             this.Quantity = quantity;
+            this.TeamId = teamId;
         }
 
         /// <summary>

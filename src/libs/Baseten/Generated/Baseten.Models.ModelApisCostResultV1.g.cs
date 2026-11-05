@@ -37,6 +37,13 @@ namespace Baseten
         public string? ServiceTier { get; set; }
 
         /// <summary>
+        /// Team the cost is attributed to. Null when not grouping by team or when team attribution is unavailable.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
+        public string? TeamId { get; set; }
+
+        /// <summary>
         /// Model API cost in USD for this day and grouping combination, returned as an exact decimal string preserving fractional-cent amounts. This amount may differ from finalized invoice amounts.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subtotal")]
@@ -71,6 +78,10 @@ namespace Baseten
         /// Service tier. Null when not grouping by service_tier or when attribution is unavailable.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="teamId">
+        /// Team the cost is attributed to. Null when not grouping by team or when team attribution is unavailable.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -79,12 +90,14 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? apiKeyPrefixes,
             string? userId,
             string? model,
-            string? serviceTier)
+            string? serviceTier,
+            string? teamId)
         {
             this.ApiKeyPrefixes = apiKeyPrefixes;
             this.UserId = userId;
             this.Model = model;
             this.ServiceTier = serviceTier;
+            this.TeamId = teamId;
             this.Subtotal = subtotal ?? throw new global::System.ArgumentNullException(nameof(subtotal));
         }
 

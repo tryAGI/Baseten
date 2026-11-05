@@ -598,9 +598,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsageDimensionV1), TypeInfoPropertyName = "UsageDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApisUsageRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.UsageDimensionV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BdnConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.BdnVolumeMountV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.BdnVolumeMountV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetModelAPIMetricsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EgressRestrictionsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LLMRuntimeV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RuntimeOidcV1))]
@@ -666,7 +664,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageBucketV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageBucketV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageDimensionV1), TypeInfoPropertyName = "ToolCallUsageDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.ToolCallUsageDimensionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UserInfoV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsersResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.UserInfoV1>))]
@@ -688,11 +688,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridTokenRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridTokenV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridClassifierV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridRouteClassifierV1SupportedTradeoff>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff), TypeInfoPropertyName = "GridRouteClassifierV1SupportedTradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteRefV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetBasetenModelAPIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetClassifierV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridRouteRefV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetConnectionV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff), TypeInfoPropertyName = "GridRouteTargetIntelligentV1Tradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target), TypeInfoPropertyName = "Target2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteV1TargetDiscriminator))]
@@ -727,14 +732,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridBackgroundHarnessDefaultsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridHarnessModelV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridHarnessDefaultsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridPrimaryHarnessDefaultsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridSettingSourceV1), TypeInfoPropertyName = "GridSettingSourceV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridTeamSpendLimitSettingV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridTeamSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridTeamSettingsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridBackgroundHarnessModelsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridHarnessDefaultsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridPrimaryHarnessModelsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridTeamSpendLimitSettingV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridTeamSettingsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridEffectiveSpendLimitV1))]
@@ -786,6 +789,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridClassifiersResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridClassifierV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridClassifiersRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifiersResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridRouteClassifierV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifiersRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridMachineUserV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridMachineUsersResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridMachineUserV1>))]
@@ -1011,14 +1017,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingModality?), TypeInfoPropertyName = "NullableLibraryListingModality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApiCostDimensionV1?), TypeInfoPropertyName = "NullableModelApiCostDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target?), TypeInfoPropertyName = "NullableTarget2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableGridRouteV1TargetDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2?), TypeInfoPropertyName = "NullableTarget22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridRouteRequestV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableCreateGridRouteRequestV1TargetDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridProviderV1?), TypeInfoPropertyName = "NullableGridProviderV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteUsageHarnessV1?), TypeInfoPropertyName = "NullableGridRouteUsageHarnessV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteUsageDimensionV1?), TypeInfoPropertyName = "NullableGridRouteUsageDimensionV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType?), TypeInfoPropertyName = "NullableUpdateGridRouteRequestV1TargetVariant1DiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageDimensionV1?), TypeInfoPropertyName = "NullableToolCallUsageDimensionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?), TypeInfoPropertyName = "NullableGridRouteClassifierV1SupportedTradeoff2")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,15 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableGridRouteTargetIntelligentV1Tradeoff2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target?), TypeInfoPropertyName = "NullableTarget2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableGridRouteV1TargetDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2?), TypeInfoPropertyName = "NullableTarget22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridRouteRequestV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableCreateGridRouteRequestV1TargetDiscriminatorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridProviderV1?), TypeInfoPropertyName = "NullableGridProviderV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteUsageHarnessV1?), TypeInfoPropertyName = "NullableGridRouteUsageHarnessV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteUsageDimensionV1?), TypeInfoPropertyName = "NullableGridRouteUsageDimensionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType?), TypeInfoPropertyName = "NullableUpdateGridRouteRequestV1TargetVariant1DiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridSettingSourceV1?), TypeInfoPropertyName = "NullableGridSettingSourceV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridSpendBlockedByV1?), TypeInfoPropertyName = "NullableGridSpendBlockedByV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth?), TypeInfoPropertyName = "NullableAuth2_3")]
@@ -1147,7 +1156,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisUsageResultV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ModelApisUsageBucketV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.UsageDimensionV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.BdnVolumeMountV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingModality>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LibraryListingVersionV1>))]
@@ -1164,9 +1172,11 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DailyTrainingUsageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingItemV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ToolCallUsageBucketV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ToolCallUsageDimensionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.UserInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GatewayEventV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ExploreMetadataV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteClassifierV1SupportedTradeoff>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteRefV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteUsageResultV1>))]
@@ -1177,6 +1187,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridTeamUserSettingsV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridConnectionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridClassifierV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteClassifierV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridMachineUserV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointTargetV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EndpointV1>))]
@@ -1268,6 +1279,7 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.UpdateSandboxPreviewRequestV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.SandboxPreviewV1JsonConverter());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<string, global::Baseten.SecretReferenceV1>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
@@ -1585,6 +1597,18 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.ResourceKind)
 
                     || typeToConvert == typeof(global::Baseten.ResourceKind?)
+
+                    || typeToConvert == typeof(global::Baseten.ToolCallUsageDimensionV1)
+
+                    || typeToConvert == typeof(global::Baseten.ToolCallUsageDimensionV1?)
+
+                    || typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff)
+
+                    || typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?)
+
+                    || typeToConvert == typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff)
+
+                    || typeToConvert == typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff?)
 
                     || typeToConvert == typeof(global::Baseten.GridRouteV1TargetDiscriminatorType)
 
@@ -2385,6 +2409,36 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.ResourceKind?))
                 {
                     return new global::Baseten.JsonConverters.ResourceKindNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ToolCallUsageDimensionV1))
+                {
+                    return new global::Baseten.JsonConverters.ToolCallUsageDimensionV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.ToolCallUsageDimensionV1?))
+                {
+                    return new global::Baseten.JsonConverters.ToolCallUsageDimensionV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff))
+                {
+                    return new global::Baseten.JsonConverters.GridRouteClassifierV1SupportedTradeoffJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?))
+                {
+                    return new global::Baseten.JsonConverters.GridRouteClassifierV1SupportedTradeoffNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff))
+                {
+                    return new global::Baseten.JsonConverters.GridRouteTargetIntelligentV1TradeoffJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff?))
+                {
+                    return new global::Baseten.JsonConverters.GridRouteTargetIntelligentV1TradeoffNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.GridRouteV1TargetDiscriminatorType))

@@ -41,6 +41,7 @@ internal static partial class CreateTeamsByTeamIdTrainingProjectsCommandApiComma
         var command = new Command(commandName ?? @"create-teams-by-team-id-training-projects", @"Upserts a training project in a specific team
 Upserts a training project with the specified metadata for a team.");
                         command.Arguments.Add(TeamId);                        command.Options.Add(TrainingProjectOptions.NameOption);
+                        command.Options.Add(TrainingProjectOptions.ProjectAccelerator);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -48,12 +49,14 @@ Upserts a training project with the specified metadata for a team.");
             {
                         var teamId = parseResult.GetRequiredValue(TeamId);
 	                        var trainingProjectNameOption = parseResult.GetValue(TrainingProjectOptions.NameOption);
-                        var __TrainingProjectSpecified = CliRuntime.WasSpecified(parseResult, TrainingProjectOptions.NameOption);
+                        var trainingProjectProjectAccelerator = parseResult.GetValue(TrainingProjectOptions.ProjectAccelerator);
+                        var __TrainingProjectSpecified = CliRuntime.WasSpecified(parseResult, TrainingProjectOptions.NameOption) || CliRuntime.WasSpecified(parseResult, TrainingProjectOptions.ProjectAccelerator);
                         var trainingProject =
                             __TrainingProjectSpecified || false
                                 ? new global::Baseten.UpsertTrainingProjectV1
                                 {
 	                                Name = trainingProjectNameOption!,
+                                ProjectAccelerator = trainingProjectProjectAccelerator,
 
                                 }
                                 : null;

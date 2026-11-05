@@ -27,14 +27,14 @@ namespace Baseten
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("codex")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.GridPrimaryHarnessDefaultsV1 Codex { get; set; }
+        public required global::Baseten.GridBackgroundHarnessDefaultsV1 Codex { get; set; }
 
         /// <summary>
         /// Default models for Pi.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pi")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.GridPrimaryHarnessDefaultsV1 Pi { get; set; }
+        public required global::Baseten.GridBackgroundHarnessDefaultsV1 Pi { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -63,8 +63,8 @@ namespace Baseten
         public GridHarnessDefaultsV1(
             global::Baseten.GridBackgroundHarnessDefaultsV1 claudeCode,
             global::Baseten.GridBackgroundHarnessDefaultsV1 opencode,
-            global::Baseten.GridPrimaryHarnessDefaultsV1 codex,
-            global::Baseten.GridPrimaryHarnessDefaultsV1 pi)
+            global::Baseten.GridBackgroundHarnessDefaultsV1 codex,
+            global::Baseten.GridBackgroundHarnessDefaultsV1 pi)
         {
             this.ClaudeCode = claudeCode ?? throw new global::System.ArgumentNullException(nameof(claudeCode));
             this.Opencode = opencode ?? throw new global::System.ArgumentNullException(nameof(opencode));

@@ -23,6 +23,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Team,
+        /// <summary>
+        ///
+        /// </summary>
         User,
     }
 
@@ -41,6 +45,7 @@ namespace Baseten
                 ModelApiCostDimensionV1.ApiKeyPrefix => "api_key_prefix",
                 ModelApiCostDimensionV1.Model => "model",
                 ModelApiCostDimensionV1.ServiceTier => "service_tier",
+                ModelApiCostDimensionV1.Team => "team",
                 ModelApiCostDimensionV1.User => "user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -55,6 +60,7 @@ namespace Baseten
                 "api_key_prefix" => ModelApiCostDimensionV1.ApiKeyPrefix,
                 "model" => ModelApiCostDimensionV1.Model,
                 "service_tier" => ModelApiCostDimensionV1.ServiceTier,
+                "team" => ModelApiCostDimensionV1.Team,
                 "user" => ModelApiCostDimensionV1.User,
                 _ => null,
             };

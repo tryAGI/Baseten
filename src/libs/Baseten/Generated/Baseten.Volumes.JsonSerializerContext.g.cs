@@ -109,6 +109,7 @@ namespace Baseten
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
+            options.Converters.Add(new global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>());
             options.Converters.Add(new global::Baseten.JsonConverters.OneOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Baseten.JsonConverters.OneOfJsonConverter<string, int?>());
             options.Converters.Add(new global::Baseten.JsonConverters.OneOfJsonConverter<string, int?>());
