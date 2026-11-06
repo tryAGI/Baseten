@@ -8906,7 +8906,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Lists Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.",
+                "description": "Lists model metadata with added-model details for teams where you can invoke Model APIs. Legacy Default Team fields remain deprecated but unchanged. Pass team_ids to narrow team details; unauthorized teams cause a 403. added_only=true returns models added by any team in scope. Models added in scope sort first, by their latest addition. Pagination is by model; cursor filters are preserved and reauthorized on every page.",
                 "parameters": [
                     {
                         "name": "cursor",
@@ -8940,10 +8940,23 @@
                         }
                     },
                     {
+                        "name": "team_ids",
+                        "in": "query",
+                        "required": false,
+                        "description": "Select teams for added-model details, filtering, and ordering, repeated once per team. Defaults to all teams where you can invoke Model APIs. Any unauthorized team causes a 403.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Team Ids",
+                            "type": "array"
+                        }
+                    },
+                    {
                         "name": "added_only",
                         "in": "query",
                         "required": false,
-                        "description": "When true, restrict the result to Model APIs the workspace has added. Defaults to the full visible catalog.",
+                        "description": "When true, restrict the result to Model APIs added by any team where you can invoke Model APIs. Explicit team_ids narrow this to the selected teams. Defaults to the full visible catalog.",
                         "schema": {
                             "default": false,
                             "title": "Added Only",
@@ -9249,10 +9262,25 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/{model_api_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/model_apis/{model_api_name}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Fetches a Model API by name, with workspace overlay when added.",
+                "description": "Returns model metadata with added-model details for teams where you can invoke Model APIs. Legacy Default Team fields remain deprecated but unchanged. Pass team_ids to narrow team details; unauthorized teams cause a 403.",
+                "parameters": [
+                    {
+                        "name": "team_ids",
+                        "in": "query",
+                        "required": false,
+                        "description": "Select teams for added-model details, repeated once per team. Defaults to all teams where you can invoke Model APIs. Any unauthorized team causes a 403.",
+                        "schema": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "Team Ids",
+                            "type": "array"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -32351,7 +32379,7 @@
                         "type": "string"
                     },
                     "path": {
-                        "description": "Directory inside that version holding the checkpoint's files.",
+                        "description": "Directory inside that version holding the checkpoint's files. Empty when the checkpoint is the whole version.",
                         "title": "Path",
                         "type": "string"
                     }
@@ -33976,10 +34004,10 @@
                 "type": "string"
             },
             "ModelAPIOrgDetailsV1": {
-                "description": "Workspace-specific state for a Model API.",
+                "description": "Team-specific state for an added Model API.",
                 "properties": {
                     "added_at": {
-                        "description": "When the workspace first added this Model API.",
+                        "description": "When the team first added this Model API.",
                         "format": "date-time",
                         "title": "Added At",
                         "type": "string"
@@ -33995,7 +34023,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "When the workspace last invoked this Model API. Null if the workspace has never invoked it.",
+                        "description": "When the team last invoked this Model API. Null if the team has never invoked it.",
                         "title": "Last Used At"
                     }
                 },
@@ -34005,8 +34033,170 @@
                 "title": "ModelAPIOrgDetailsV1",
                 "type": "object"
             },
+            "ModelAPIRateLimitV1": {
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/LimitTypeV1",
+                        "description": "The type of the rate limit",
+                        "examples": [
+                            "TOKEN",
+                            "REQUEST"
+                        ]
+                    },
+                    "unit": {
+                        "$ref": "#/components/schemas/RateLimitUnitV1",
+                        "description": "The unit of the rate limit",
+                        "examples": [
+                            "SECOND",
+                            "MINUTE"
+                        ]
+                    },
+                    "threshold": {
+                        "description": "The threshold for the rate limit",
+                        "examples": [
+                            1000,
+                            50000
+                        ],
+                        "minimum": 0,
+                        "title": "Threshold",
+                        "type": "integer"
+                    },
+                    "is_pooled": {
+                        "description": "Whether this limit uses the organization-wide pool. The threshold is the effective limit, including any adaptive grant.",
+                        "title": "Is Pooled",
+                        "type": "boolean"
+                    },
+                    "service_tier": {
+                        "$ref": "#/components/schemas/ModelAPIServiceTierV1",
+                        "description": "Service tier the rate limit applies to.",
+                        "examples": [
+                            "DEFAULT",
+                            "FLEX"
+                        ]
+                    },
+                    "baseline_threshold": {
+                        "description": "Configured baseline threshold for the rate limit, before any adaptive increase. Equal to `threshold` when no adaptive increase is in effect.",
+                        "examples": [
+                            1000,
+                            50000
+                        ],
+                        "minimum": 0,
+                        "title": "Baseline Threshold",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "type",
+                    "unit",
+                    "threshold",
+                    "is_pooled",
+                    "service_tier",
+                    "baseline_threshold"
+                ],
+                "title": "ModelAPIRateLimitV1",
+                "type": "object"
+            },
+            "ModelAPIServiceTierV1": {
+                "enum": [
+                    "DEFAULT",
+                    "FLEX",
+                    "PRIORITY"
+                ],
+                "title": "ModelAPIServiceTierV1",
+                "type": "string"
+            },
+            "ModelAPITeamDetailsV1": {
+                "properties": {
+                    "id": {
+                        "description": "Organization Shared Endpoint ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "description": "Team that has added this Model API.",
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "description": "Name of the team that has added this Model API.",
+                        "title": "Team Name",
+                        "type": "string"
+                    },
+                    "added_at": {
+                        "description": "When the team first added this Model API.",
+                        "format": "date-time",
+                        "title": "Added At",
+                        "type": "string"
+                    },
+                    "last_used_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "When the team last invoked this Model API. Null if never invoked.",
+                        "title": "Last Used At"
+                    },
+                    "rate_limits": {
+                        "description": "Effective rate limits for this team's Model API, at most one per type, unit, and service tier.",
+                        "items": {
+                            "$ref": "#/components/schemas/ModelAPIRateLimitV1"
+                        },
+                        "title": "Rate Limits",
+                        "type": "array"
+                    },
+                    "cost_per_million_input_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Effective cost per million input tokens, in dollars. Null if unavailable.",
+                        "title": "Cost Per Million Input Tokens"
+                    },
+                    "cost_per_million_output_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Effective cost per million output tokens, in dollars. Null if unavailable.",
+                        "title": "Cost Per Million Output Tokens"
+                    }
+                },
+                "required": [
+                    "id",
+                    "team_id",
+                    "team_name",
+                    "added_at",
+                    "last_used_at",
+                    "rate_limits",
+                    "cost_per_million_input_tokens",
+                    "cost_per_million_output_tokens"
+                ],
+                "title": "ModelAPITeamDetailsV1",
+                "type": "object"
+            },
             "ModelAPIV1": {
-                "description": "A Model API catalog row, optionally enriched with workspace-specific state.",
+                "description": "Model metadata and authorized team details, with retained legacy fields.",
                 "properties": {
                     "name": {
                         "description": "Identifier of the Model API. Stable, URL-safe slug used as the public identifier.",
@@ -34082,7 +34272,8 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Effective cost per million input tokens, in dollars. Null when pricing is unavailable.",
+                        "deprecated": true,
+                        "description": "Deprecated and will be removed in a future version. Legacy effective input-token price. Use team_details pricing instead. Retained during migration; null when pricing is unavailable.",
                         "examples": [
                             "0.13"
                         ],
@@ -34120,16 +34311,18 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Effective cost per million output tokens, in dollars. Null when pricing is unavailable.",
+                        "deprecated": true,
+                        "description": "Deprecated and will be removed in a future version. Legacy effective output-token price. Use team_details pricing instead. Retained during migration; null when pricing is unavailable.",
                         "examples": [
                             "0.50"
                         ],
                         "title": "Cost Per Million Output Tokens"
                     },
                     "rate_limits": {
-                        "description": "Rate limits in effect for the workspace. Workspace-specific overrides are returned when the workspace has added this Model API and configured them; otherwise the catalog default rate limits are returned.",
+                        "deprecated": true,
+                        "description": "Deprecated and will be removed in a future version. Legacy Default Team effective limits, independent of team_ids, or catalog defaults when not added or unauthorized. Use team_details for team limits; this field is not the org-pool limit view.",
                         "items": {
-                            "$ref": "#/components/schemas/RateLimitV1"
+                            "$ref": "#/components/schemas/ModelAPIRateLimitV1"
                         },
                         "title": "Rate Limits",
                         "type": "array"
@@ -34144,7 +34337,16 @@
                             }
                         ],
                         "default": null,
-                        "description": "Workspace-specific state. Null when the workspace has not added this Model API."
+                        "deprecated": true,
+                        "description": "Deprecated and will be removed in a future version. Legacy Default Team state, independent of team_ids. Use team_details instead. Null when not added or unauthorized."
+                    },
+                    "team_details": {
+                        "description": "Added Model API details for authorized teams, ordered by team ID. Empty when no team in the selected scope has added this Model API.",
+                        "items": {
+                            "$ref": "#/components/schemas/ModelAPITeamDetailsV1"
+                        },
+                        "title": "Team Details",
+                        "type": "array"
                     }
                 },
                 "required": [
@@ -34169,43 +34371,6 @@
                 ],
                 "title": "RateLimitUnitV1",
                 "type": "string"
-            },
-            "RateLimitV1": {
-                "properties": {
-                    "type": {
-                        "$ref": "#/components/schemas/LimitTypeV1",
-                        "description": "The type of the rate limit",
-                        "examples": [
-                            "TOKEN",
-                            "REQUEST"
-                        ]
-                    },
-                    "unit": {
-                        "$ref": "#/components/schemas/RateLimitUnitV1",
-                        "description": "The unit of the rate limit",
-                        "examples": [
-                            "SECOND",
-                            "MINUTE"
-                        ]
-                    },
-                    "threshold": {
-                        "description": "The threshold for the rate limit",
-                        "examples": [
-                            1000,
-                            50000
-                        ],
-                        "minimum": 0,
-                        "title": "Threshold",
-                        "type": "integer"
-                    }
-                },
-                "required": [
-                    "type",
-                    "unit",
-                    "threshold"
-                ],
-                "title": "RateLimitV1",
-                "type": "object"
             },
             "ModelAPIsResponseV1": {
                 "description": "Page of Model APIs visible to the caller.",
@@ -34254,9 +34419,17 @@
                         "title": "Limit",
                         "type": "integer"
                     },
+                    "team_ids": {
+                        "description": "Select teams for added-model details, filtering, and ordering, repeated once per team. Defaults to all teams where you can invoke Model APIs. Any unauthorized team causes a 403.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Team Ids",
+                        "type": "array"
+                    },
                     "added_only": {
                         "default": false,
-                        "description": "When true, restrict the result to Model APIs the workspace has added. Defaults to the full visible catalog.",
+                        "description": "When true, restrict the result to Model APIs added by any team where you can invoke Model APIs. Explicit team_ids narrow this to the selected teams. Defaults to the full visible catalog.",
                         "title": "Added Only",
                         "type": "boolean"
                     }
@@ -34577,6 +34750,21 @@
                     }
                 },
                 "title": "GetModelAPIMetricsRequestV1",
+                "type": "object"
+            },
+            "ModelAPIRequestV1": {
+                "description": "Query-string filters for ``GET /v1/model_apis/{model_api_name}``.",
+                "properties": {
+                    "team_ids": {
+                        "description": "Select teams for added-model details, repeated once per team. Defaults to all teams where you can invoke Model APIs. Any unauthorized team causes a 403.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Team Ids",
+                        "type": "array"
+                    }
+                },
+                "title": "ModelAPIRequestV1",
                 "type": "object"
             },
             "EgressRestrictionsV1": {
@@ -41777,6 +41965,43 @@
                     "slug"
                 ],
                 "title": "ModelConfigV1",
+                "type": "object"
+            },
+            "RateLimitV1": {
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/LimitTypeV1",
+                        "description": "The type of the rate limit",
+                        "examples": [
+                            "TOKEN",
+                            "REQUEST"
+                        ]
+                    },
+                    "unit": {
+                        "$ref": "#/components/schemas/RateLimitUnitV1",
+                        "description": "The unit of the rate limit",
+                        "examples": [
+                            "SECOND",
+                            "MINUTE"
+                        ]
+                    },
+                    "threshold": {
+                        "description": "The threshold for the rate limit",
+                        "examples": [
+                            1000,
+                            50000
+                        ],
+                        "minimum": 0,
+                        "title": "Threshold",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "type",
+                    "unit",
+                    "threshold"
+                ],
+                "title": "RateLimitV1",
                 "type": "object"
             },
             "UsageLimitUnitV1": {

@@ -27,10 +27,12 @@ namespace Baseten
             };
         partial void PrepareGetModelApisByModelApiNameArguments(
             global::System.Net.Http.HttpClient httpClient,
+            global::System.Collections.Generic.IList<string>? teamIds,
             ref string modelApiName);
         partial void PrepareGetModelApisByModelApiNameRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::System.Collections.Generic.IList<string>? teamIds,
             string modelApiName);
         partial void ProcessGetModelApisByModelApiNameResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -43,8 +45,9 @@ namespace Baseten
 
         /// <summary>
         /// Gets a Model API<br/>
-        /// Fetches a Model API by name, with workspace overlay when added.
+        /// Returns model metadata with added-model details for teams where you can invoke Model APIs. Legacy Default Team fields remain deprecated but unchanged. Pass team_ids to narrow team details; unauthorized teams cause a 403.
         /// </summary>
+        /// <param name="teamIds"></param>
         /// <param name="modelApiName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -56,11 +59,13 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ModelAPIV1> GetModelApisByModelApiNameAsync(
             string modelApiName,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetModelApisByModelApiNameAsResponseAsync(
                 modelApiName: modelApiName,
+                teamIds: teamIds,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -69,8 +74,9 @@ namespace Baseten
         }
         /// <summary>
         /// Gets a Model API<br/>
-        /// Fetches a Model API by name, with workspace overlay when added.
+        /// Returns model metadata with added-model details for teams where you can invoke Model APIs. Legacy Default Team fields remain deprecated but unchanged. Pass team_ids to narrow team details; unauthorized teams cause a 403.
         /// </summary>
+        /// <param name="teamIds"></param>
         /// <param name="modelApiName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -82,6 +88,7 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ModelAPIV1>> GetModelApisByModelApiNameAsResponseAsync(
             string modelApiName,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -89,6 +96,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetModelApisByModelApiNameArguments(
                 httpClient: HttpClient,
+                teamIds: teamIds,
                 modelApiName: ref modelApiName);
 
 
@@ -117,6 +125,9 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/model_apis/{modelApiName}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("team_ids", teamIds, delimiter: ",", explode: true)
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -157,6 +168,7 @@ namespace Baseten
                 PrepareGetModelApisByModelApiNameRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    teamIds: teamIds,
                     modelApiName: modelApiName);
 
                 return __httpRequest;

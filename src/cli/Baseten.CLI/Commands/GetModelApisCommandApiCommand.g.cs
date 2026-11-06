@@ -19,9 +19,15 @@ internal static partial class GetModelApisCommandApiCommand
         Description = @"Maximum number of items to return.",
     };
 
+    private static Option<global::System.Collections.Generic.IList<string>?> TeamIds { get; } = new(
+        name: @"--team-ids")
+    {
+        Description = @"Select teams for added-model details, filtering, and ordering, repeated once per team. Defaults to all teams where you can invoke Model APIs. Any unauthorized team causes a 403.",
+    };
+
     private static Option<bool?> AddedOnly { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--added-only",
-        description: @"When true, restrict the result to Model APIs the workspace has added. Defaults to the full visible catalog.");
+        description: @"When true, restrict the result to Model APIs added by any team where you can invoke Model APIs. Explicit team_ids narrow this to the selected teams. Defaults to the full visible catalog.");
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ModelAPIsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -48,9 +54,10 @@ internal static partial class GetModelApisCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-model-apis", @"Lists Model APIs
-Lists Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.");
+Lists model metadata with added-model details for teams where you can invoke Model APIs. Legacy Default Team fields remain deprecated but unchanged. Pass team_ids to narrow team details; unauthorized teams cause a 403. added_only=true returns models added by any team in scope. Models added in scope sort first, by their latest addition. Pagination is by model; cursor filters are preserved and reauthorized on every page.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
+                        command.Options.Add(TeamIds);
                         command.Options.Add(AddedOnly);
 
 
@@ -59,6 +66,7 @@ Lists Model APIs visible to the caller. By default returns the full catalog; pas
             {
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
+                        var teamIds = parseResult.GetValue(TeamIds);
                         var addedOnly = parseResult.GetValue(AddedOnly);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -66,6 +74,7 @@ Lists Model APIs visible to the caller. By default returns the full catalog; pas
                                 var response = await client.GetModelApisAsync(
                                     cursor: cursor,
                                     limit: limit,
+                                    teamIds: teamIds,
                                     addedOnly: addedOnly,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

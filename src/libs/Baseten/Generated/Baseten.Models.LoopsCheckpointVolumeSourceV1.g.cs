@@ -22,7 +22,7 @@ namespace Baseten
         public required string VolumeRef { get; set; }
 
         /// <summary>
-        /// Directory inside that version holding the checkpoint's files.
+        /// Directory inside that version holding the checkpoint's files. Empty when the checkpoint is the whole version.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("path")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -41,7 +41,7 @@ namespace Baseten
         /// Ref of the volume version holding the checkpoint, as `bdn:&lt;namespace&gt;/&lt;volume&gt;:&lt;tag&gt;`.
         /// </param>
         /// <param name="path">
-        /// Directory inside that version holding the checkpoint's files.
+        /// Directory inside that version holding the checkpoint's files. Empty when the checkpoint is the whole version.
         /// </param>
         /// <param name="kind">
         /// Default Value: volume

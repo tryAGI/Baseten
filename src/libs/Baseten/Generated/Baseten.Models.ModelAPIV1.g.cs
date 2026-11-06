@@ -1,10 +1,12 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Baseten
 {
     /// <summary>
-    /// A Model API catalog row, optionally enriched with workspace-specific state.
+    /// Model metadata and authorized team details, with retained legacy fields.
     /// </summary>
     public sealed partial class ModelAPIV1
     {
@@ -58,7 +60,7 @@ namespace Baseten
         public required int ContextLength { get; set; }
 
         /// <summary>
-        /// Effective cost per million input tokens, in dollars. Null when pricing is unavailable.
+        /// Deprecated and will be removed in a future version. Legacy effective input-token price. Use team_details pricing instead. Retained during migration; null when pricing is unavailable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_per_million_input_tokens")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
@@ -72,25 +74,32 @@ namespace Baseten
         public global::Baseten.AnyOf<double?, string>? CostPerMillionCachedInputTokens { get; set; }
 
         /// <summary>
-        /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
+        /// Deprecated and will be removed in a future version. Legacy effective output-token price. Use team_details pricing instead. Retained during migration; null when pricing is unavailable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_per_million_output_tokens")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
         public global::Baseten.AnyOf<double?, string>? CostPerMillionOutputTokens { get; set; }
 
         /// <summary>
-        /// Rate limits in effect for the workspace. Workspace-specific overrides are returned when the workspace has added this Model API and configured them; otherwise the catalog default rate limits are returned.
+        /// Deprecated and will be removed in a future version. Legacy Default Team effective limits, independent of team_ids, or catalog defaults when not added or unauthorized. Use team_details for team limits; this field is not the org-pool limit view.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rate_limits")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Baseten.RateLimitV1> RateLimits { get; set; }
+        public required global::System.Collections.Generic.IList<global::Baseten.ModelAPIRateLimitV1> RateLimits { get; set; }
 
         /// <summary>
-        /// Workspace-specific state. Null when the workspace has not added this Model API.<br/>
+        /// Deprecated and will be removed in a future version. Legacy Default Team state, independent of team_ids. Use team_details instead. Null when not added or unauthorized.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("org_details")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::Baseten.ModelAPIOrgDetailsV1? OrgDetails { get; set; }
+
+        /// <summary>
+        /// Added Model API details for authorized teams, ordered by team ID. Empty when no team in the selected scope has added this Model API.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_details")]
+        public global::System.Collections.Generic.IList<global::Baseten.ModelAPITeamDetailsV1>? TeamDetails { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -120,24 +129,17 @@ namespace Baseten
         /// The model's context window length, in tokens.
         /// </param>
         /// <param name="rateLimits">
-        /// Rate limits in effect for the workspace. Workspace-specific overrides are returned when the workspace has added this Model API and configured them; otherwise the catalog default rate limits are returned.
+        /// Deprecated and will be removed in a future version. Legacy Default Team effective limits, independent of team_ids, or catalog defaults when not added or unauthorized. Use team_details for team limits; this field is not the org-pool limit view.
         /// </param>
         /// <param name="modelFamily">
         /// Family the underlying model belongs to.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="costPerMillionInputTokens">
-        /// Effective cost per million input tokens, in dollars. Null when pricing is unavailable.
-        /// </param>
         /// <param name="costPerMillionCachedInputTokens">
         /// Effective cost per million cached input tokens, in dollars. Null when pricing is unavailable or the Model API has no cached input price.
         /// </param>
-        /// <param name="costPerMillionOutputTokens">
-        /// Effective cost per million output tokens, in dollars. Null when pricing is unavailable.
-        /// </param>
-        /// <param name="orgDetails">
-        /// Workspace-specific state. Null when the workspace has not added this Model API.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// <param name="teamDetails">
+        /// Added Model API details for authorized teams, ordered by team ID. Empty when no team in the selected scope has added this Model API.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -149,12 +151,10 @@ namespace Baseten
             global::System.DateTime releaseDate,
             string invokeUrl,
             int contextLength,
-            global::System.Collections.Generic.IList<global::Baseten.RateLimitV1> rateLimits,
+            global::System.Collections.Generic.IList<global::Baseten.ModelAPIRateLimitV1> rateLimits,
             string? modelFamily,
-            global::Baseten.AnyOf<double?, string>? costPerMillionInputTokens,
             global::Baseten.AnyOf<double?, string>? costPerMillionCachedInputTokens,
-            global::Baseten.AnyOf<double?, string>? costPerMillionOutputTokens,
-            global::Baseten.ModelAPIOrgDetailsV1? orgDetails)
+            global::System.Collections.Generic.IList<global::Baseten.ModelAPITeamDetailsV1>? teamDetails)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
@@ -163,11 +163,9 @@ namespace Baseten
             this.ReleaseDate = releaseDate;
             this.InvokeUrl = invokeUrl ?? throw new global::System.ArgumentNullException(nameof(invokeUrl));
             this.ContextLength = contextLength;
-            this.CostPerMillionInputTokens = costPerMillionInputTokens;
             this.CostPerMillionCachedInputTokens = costPerMillionCachedInputTokens;
-            this.CostPerMillionOutputTokens = costPerMillionOutputTokens;
             this.RateLimits = rateLimits ?? throw new global::System.ArgumentNullException(nameof(rateLimits));
-            this.OrgDetails = orgDetails;
+            this.TeamDetails = teamDetails;
         }
 
         /// <summary>
