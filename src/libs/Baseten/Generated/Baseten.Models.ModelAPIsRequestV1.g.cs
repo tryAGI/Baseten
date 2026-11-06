@@ -23,7 +23,13 @@ namespace Baseten
         public int? Limit { get; set; }
 
         /// <summary>
-        /// When true, restrict the result to Model APIs the workspace has added. Defaults to the full visible catalog.<br/>
+        /// Select teams for added-model details, filtering, and ordering, repeated once per team. Defaults to all teams where you can invoke Model APIs. Any unauthorized team causes a 403.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_ids")]
+        public global::System.Collections.Generic.IList<string>? TeamIds { get; set; }
+
+        /// <summary>
+        /// When true, restrict the result to Model APIs added by any team where you can invoke Model APIs. Explicit team_ids narrow this to the selected teams. Defaults to the full visible catalog.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("added_only")]
@@ -46,8 +52,11 @@ namespace Baseten
         /// Maximum number of items to return.<br/>
         /// Default Value: 100
         /// </param>
+        /// <param name="teamIds">
+        /// Select teams for added-model details, filtering, and ordering, repeated once per team. Defaults to all teams where you can invoke Model APIs. Any unauthorized team causes a 403.
+        /// </param>
         /// <param name="addedOnly">
-        /// When true, restrict the result to Model APIs the workspace has added. Defaults to the full visible catalog.<br/>
+        /// When true, restrict the result to Model APIs added by any team where you can invoke Model APIs. Explicit team_ids narrow this to the selected teams. Defaults to the full visible catalog.<br/>
         /// Default Value: false
         /// </param>
 #if NET7_0_OR_GREATER
@@ -56,10 +65,12 @@ namespace Baseten
         public ModelAPIsRequestV1(
             string? cursor,
             int? limit,
+            global::System.Collections.Generic.IList<string>? teamIds,
             bool? addedOnly)
         {
             this.Cursor = cursor;
             this.Limit = limit;
+            this.TeamIds = teamIds;
             this.AddedOnly = addedOnly;
         }
 

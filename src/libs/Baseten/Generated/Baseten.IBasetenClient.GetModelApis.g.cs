@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Lists Model APIs<br/>
-        /// Lists Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.
+        /// Lists model metadata with added-model details for teams where you can invoke Model APIs. Legacy Default Team fields remain deprecated but unchanged. Pass team_ids to narrow team details; unauthorized teams cause a 403. added_only=true returns models added by any team in scope. Models added in scope sort first, by their latest addition. Pagination is by model; cursor filters are preserved and reauthorized on every page.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -14,6 +14,7 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 100
         /// </param>
+        /// <param name="teamIds"></param>
         /// <param name="addedOnly">
         /// Default Value: false
         /// </param>
@@ -28,12 +29,13 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.ModelAPIsResponseV1> GetModelApisAsync(
             string? cursor = default,
             int? limit = default,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
             bool? addedOnly = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Lists Model APIs<br/>
-        /// Lists Model APIs visible to the caller. By default returns the full catalog; pass `added_only=true` to restrict to Model APIs the workspace has added.
+        /// Lists model metadata with added-model details for teams where you can invoke Model APIs. Legacy Default Team fields remain deprecated but unchanged. Pass team_ids to narrow team details; unauthorized teams cause a 403. added_only=true returns models added by any team in scope. Models added in scope sort first, by their latest addition. Pagination is by model; cursor filters are preserved and reauthorized on every page.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -41,6 +43,7 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 100
         /// </param>
+        /// <param name="teamIds"></param>
         /// <param name="addedOnly">
         /// Default Value: false
         /// </param>
@@ -55,6 +58,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ModelAPIsResponseV1>> GetModelApisAsResponseAsync(
             string? cursor = default,
             int? limit = default,
+            global::System.Collections.Generic.IList<string>? teamIds = default,
             bool? addedOnly = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
