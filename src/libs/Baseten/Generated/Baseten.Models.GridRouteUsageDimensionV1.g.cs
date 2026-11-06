@@ -15,15 +15,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        IntelligentRoute,
+        /// <summary>
+        ///
+        /// </summary>
         Model,
         /// <summary>
         ///
         /// </summary>
         Provider,
-        /// <summary>
-        ///
-        /// </summary>
-        Router,
         /// <summary>
         ///
         /// </summary>
@@ -47,9 +47,9 @@ namespace Baseten
             return value switch
             {
                 GridRouteUsageDimensionV1.Harness => "HARNESS",
+                GridRouteUsageDimensionV1.IntelligentRoute => "INTELLIGENT_ROUTE",
                 GridRouteUsageDimensionV1.Model => "MODEL",
                 GridRouteUsageDimensionV1.Provider => "PROVIDER",
-                GridRouteUsageDimensionV1.Router => "ROUTER",
                 GridRouteUsageDimensionV1.Team => "TEAM",
                 GridRouteUsageDimensionV1.User => "USER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -63,9 +63,9 @@ namespace Baseten
             return value switch
             {
                 "HARNESS" => GridRouteUsageDimensionV1.Harness,
+                "INTELLIGENT_ROUTE" => GridRouteUsageDimensionV1.IntelligentRoute,
                 "MODEL" => GridRouteUsageDimensionV1.Model,
                 "PROVIDER" => GridRouteUsageDimensionV1.Provider,
-                "ROUTER" => GridRouteUsageDimensionV1.Router,
                 "TEAM" => GridRouteUsageDimensionV1.Team,
                 "USER" => GridRouteUsageDimensionV1.User,
                 _ => null,

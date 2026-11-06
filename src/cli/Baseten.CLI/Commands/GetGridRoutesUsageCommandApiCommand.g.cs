@@ -40,7 +40,7 @@ internal static partial class GetGridRoutesUsageCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, ROUTER, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, INTELLIGENT_ROUTE, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. INTELLIGENT_ROUTE returns only usage sent through an intelligent route, one row per intelligent route, or per intelligent route and model with MODEL. These rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> UserIds { get; } = new(

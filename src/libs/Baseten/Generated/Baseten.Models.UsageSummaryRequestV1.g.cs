@@ -9,14 +9,14 @@ namespace Baseten
     public sealed partial class UsageSummaryRequestV1
     {
         /// <summary>
-        /// Start date (ISO 8601, UTC). Earliest queryable: 2026-01-01.
+        /// Inclusive start date (ISO 8601, normalized to midnight UTC). Earliest queryable: 2026-01-01.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_date")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime StartDate { get; set; }
 
         /// <summary>
-        /// End date in ISO 8601 format (UTC). Date range cannot exceed 31 days.
+        /// Exclusive end date (ISO 8601, normalized to midnight UTC). Date range cannot exceed 31 days.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_date")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,10 +32,10 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="UsageSummaryRequestV1" /> class.
         /// </summary>
         /// <param name="startDate">
-        /// Start date (ISO 8601, UTC). Earliest queryable: 2026-01-01.
+        /// Inclusive start date (ISO 8601, normalized to midnight UTC). Earliest queryable: 2026-01-01.
         /// </param>
         /// <param name="endDate">
-        /// End date in ISO 8601 format (UTC). Date range cannot exceed 31 days.
+        /// Exclusive end date (ISO 8601, normalized to midnight UTC). Date range cannot exceed 31 days.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

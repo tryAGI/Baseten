@@ -9937,13 +9937,13 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/billing/usage_summary\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_date': None, 'end_date': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.",
+                "description": "Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.",
                 "parameters": [
                     {
                         "name": "start_date",
                         "in": "query",
                         "required": true,
-                        "description": "Start date (ISO 8601, UTC). Earliest queryable: 2026-01-01.",
+                        "description": "Inclusive start date (ISO 8601, normalized to midnight UTC). Earliest queryable: 2026-01-01.",
                         "schema": {
                             "format": "date-time",
                             "title": "Start Date",
@@ -9954,7 +9954,7 @@
                         "name": "end_date",
                         "in": "query",
                         "required": true,
-                        "description": "End date in ISO 8601 format (UTC). Date range cannot exceed 31 days.",
+                        "description": "Exclusive end date (ISO 8601, normalized to midnight UTC). Date range cannot exceed 31 days.",
                         "schema": {
                             "format": "date-time",
                             "title": "End Date",
@@ -10754,7 +10754,7 @@
                         "name": "group_by",
                         "in": "query",
                         "required": false,
-                        "description": "Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, ROUTER, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.",
+                        "description": "Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, INTELLIGENT_ROUTE, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. INTELLIGENT_ROUTE returns only usage sent through an intelligent route, one row per intelligent route, or per intelligent route and model with MODEL. These rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.",
                         "schema": {
                             "items": {
                                 "$ref": "#/components/schemas/GridRouteUsageDimensionV1"
@@ -37442,13 +37442,13 @@
             "UsageSummaryRequestV1": {
                 "properties": {
                     "start_date": {
-                        "description": "Start date (ISO 8601, UTC). Earliest queryable: 2026-01-01.",
+                        "description": "Inclusive start date (ISO 8601, normalized to midnight UTC). Earliest queryable: 2026-01-01.",
                         "format": "date-time",
                         "title": "Start Date",
                         "type": "string"
                     },
                     "end_date": {
-                        "description": "End date in ISO 8601 format (UTC). Date range cannot exceed 31 days.",
+                        "description": "Exclusive end date (ISO 8601, normalized to midnight UTC). Date range cannot exceed 31 days.",
                         "format": "date-time",
                         "title": "End Date",
                         "type": "string"
@@ -39116,7 +39116,7 @@
                         "default": null,
                         "description": "Provider that served the requests. Null when not grouping by PROVIDER."
                     },
-                    "router_id": {
+                    "intelligent_route": {
                         "anyOf": [
                             {
                                 "type": "string"
@@ -39126,8 +39126,8 @@
                             }
                         ],
                         "default": null,
-                        "description": "Slug of the intelligent router, matching its name in `GET /v1/grid/routes`. Null when not grouping by ROUTER.",
-                        "title": "Router Id"
+                        "description": "Name of the intelligent route, as in `GET /v1/grid/routes`. Null when not grouping by INTELLIGENT_ROUTE.",
+                        "title": "Intelligent Route"
                     },
                     "harness": {
                         "anyOf": [
@@ -39170,7 +39170,7 @@
                         "type": "integer"
                     },
                     "requests": {
-                        "description": "Number of requests; with ROUTER, the requests sent through that router. Usage recorded before requests were counted adds zero.",
+                        "description": "Number of requests; with INTELLIGENT_ROUTE, the requests sent through that route. Usage recorded before requests were counted adds zero.",
                         "title": "Requests",
                         "type": "integer"
                     }
@@ -39214,7 +39214,7 @@
                     "TEAM",
                     "MODEL",
                     "PROVIDER",
-                    "ROUTER",
+                    "INTELLIGENT_ROUTE",
                     "HARNESS"
                 ],
                 "title": "GridRouteUsageDimensionV1",
@@ -39285,7 +39285,7 @@
                         "title": "End Date"
                     },
                     "group_by": {
-                        "description": "Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, ROUTER, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. ROUTER returns only usage sent through an intelligent router, one row per router, or per router and model with MODEL. Router rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.",
+                        "description": "Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, INTELLIGENT_ROUTE, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. INTELLIGENT_ROUTE returns only usage sent through an intelligent route, one row per intelligent route, or per intelligent route and model with MODEL. These rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.",
                         "items": {
                             "$ref": "#/components/schemas/GridRouteUsageDimensionV1"
                         },
@@ -39422,54 +39422,22 @@
                 "title": "UpdateGridRouteRequestV1",
                 "type": "object"
             },
-            "GridBackgroundHarnessDefaultsV1": {
-                "properties": {
-                    "primary": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/GridHarnessModelV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "Route for the primary model, which new sessions use. Null when the team has no route to use."
-                    },
-                    "background": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/GridHarnessModelV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "Route for background tasks, such as session titles. Null when the team has no route to use."
-                    }
-                },
-                "required": [
-                    "primary",
-                    "background"
-                ],
-                "title": "GridBackgroundHarnessDefaultsV1",
-                "type": "object"
-            },
             "GridHarnessDefaultsV1": {
                 "properties": {
                     "claude_code": {
-                        "$ref": "#/components/schemas/GridBackgroundHarnessDefaultsV1",
+                        "$ref": "#/components/schemas/GridHarnessModelsV1",
                         "description": "Default models for Claude Code."
                     },
                     "opencode": {
-                        "$ref": "#/components/schemas/GridBackgroundHarnessDefaultsV1",
+                        "$ref": "#/components/schemas/GridHarnessModelsV1",
                         "description": "Default models for OpenCode."
                     },
                     "codex": {
-                        "$ref": "#/components/schemas/GridBackgroundHarnessDefaultsV1",
+                        "$ref": "#/components/schemas/GridHarnessModelsV1",
                         "description": "Default models for Codex."
                     },
                     "pi": {
-                        "$ref": "#/components/schemas/GridBackgroundHarnessDefaultsV1",
+                        "$ref": "#/components/schemas/GridHarnessModelsV1",
                         "description": "Default models for Pi."
                     }
                 },
@@ -39498,6 +39466,38 @@
                     "route"
                 ],
                 "title": "GridHarnessModelV1",
+                "type": "object"
+            },
+            "GridHarnessModelsV1": {
+                "properties": {
+                    "primary": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/GridHarnessModelV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Route for the primary model, which new sessions use. Null when the team has no route to use."
+                    },
+                    "background": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/GridHarnessModelV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Route for background tasks, such as session titles. Null when the team has no route to use."
+                    }
+                },
+                "required": [
+                    "primary",
+                    "background"
+                ],
+                "title": "GridHarnessModelsV1",
                 "type": "object"
             },
             "GridSettingSourceV1": {
@@ -39607,7 +39607,67 @@
                 "title": "GridTeamSettingsRequestV1",
                 "type": "object"
             },
-            "UpdateGridBackgroundHarnessModelsV1": {
+            "UpdateGridHarnessDefaultsV1": {
+                "additionalProperties": false,
+                "minProperties": 1,
+                "properties": {
+                    "claude_code": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateGridHarnessModelsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
+                        "x-null-distinct": true
+                    },
+                    "opencode": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateGridHarnessModelsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
+                        "x-null-distinct": true
+                    },
+                    "codex": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateGridHarnessModelsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
+                        "x-null-distinct": true
+                    },
+                    "pi": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateGridHarnessModelsV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
+                        "x-null-distinct": true
+                    }
+                },
+                "title": "UpdateGridHarnessDefaultsV1",
+                "type": "object"
+            },
+            "UpdateGridHarnessModelsV1": {
                 "additionalProperties": false,
                 "minProperties": 1,
                 "properties": {
@@ -39648,67 +39708,7 @@
                         "x-null-distinct": true
                     }
                 },
-                "title": "UpdateGridBackgroundHarnessModelsV1",
-                "type": "object"
-            },
-            "UpdateGridHarnessDefaultsV1": {
-                "additionalProperties": false,
-                "minProperties": 1,
-                "properties": {
-                    "claude_code": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/UpdateGridBackgroundHarnessModelsV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
-                        "x-null-distinct": true
-                    },
-                    "opencode": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/UpdateGridBackgroundHarnessModelsV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
-                        "x-null-distinct": true
-                    },
-                    "codex": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/UpdateGridBackgroundHarnessModelsV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
-                        "x-null-distinct": true
-                    },
-                    "pi": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/UpdateGridBackgroundHarnessModelsV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.",
-                        "x-null-distinct": true
-                    }
-                },
-                "title": "UpdateGridHarnessDefaultsV1",
+                "title": "UpdateGridHarnessModelsV1",
                 "type": "object"
             },
             "UpdateGridTeamSpendLimitSettingV1": {
