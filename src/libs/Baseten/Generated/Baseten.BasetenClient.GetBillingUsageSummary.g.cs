@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets billing usage summary for a date range<br/>
-        /// Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.
+        /// Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
@@ -74,7 +74,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets billing usage summary for a date range<br/>
-        /// Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.
+        /// Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>

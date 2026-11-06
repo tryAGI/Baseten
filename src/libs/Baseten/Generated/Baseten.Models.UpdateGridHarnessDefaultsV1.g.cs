@@ -13,28 +13,28 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("claude_code")]
-        public global::Baseten.UpdateGridBackgroundHarnessModelsV1? ClaudeCode { get; set; }
+        public global::Baseten.UpdateGridHarnessModelsV1? ClaudeCode { get; set; }
 
         /// <summary>
         /// Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("opencode")]
-        public global::Baseten.UpdateGridBackgroundHarnessModelsV1? Opencode { get; set; }
+        public global::Baseten.UpdateGridHarnessModelsV1? Opencode { get; set; }
 
         /// <summary>
         /// Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("codex")]
-        public global::Baseten.UpdateGridBackgroundHarnessModelsV1? Codex { get; set; }
+        public global::Baseten.UpdateGridHarnessModelsV1? Codex { get; set; }
 
         /// <summary>
         /// Route IDs for the model roles to change; roles left out are unchanged. Every route must belong to the team. Pass null to clear every role, or omit to leave the harness unchanged.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pi")]
-        public global::Baseten.UpdateGridBackgroundHarnessModelsV1? Pi { get; set; }
+        public global::Baseten.UpdateGridHarnessModelsV1? Pi { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -65,10 +65,10 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateGridHarnessDefaultsV1(
-            global::Baseten.UpdateGridBackgroundHarnessModelsV1? claudeCode,
-            global::Baseten.UpdateGridBackgroundHarnessModelsV1? opencode,
-            global::Baseten.UpdateGridBackgroundHarnessModelsV1? codex,
-            global::Baseten.UpdateGridBackgroundHarnessModelsV1? pi)
+            global::Baseten.UpdateGridHarnessModelsV1? claudeCode,
+            global::Baseten.UpdateGridHarnessModelsV1? opencode,
+            global::Baseten.UpdateGridHarnessModelsV1? codex,
+            global::Baseten.UpdateGridHarnessModelsV1? pi)
         {
             this.ClaudeCode = claudeCode;
             this.Opencode = opencode;

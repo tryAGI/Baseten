@@ -44,11 +44,11 @@ namespace Baseten
         public global::Baseten.GridProviderV1? Provider { get; set; }
 
         /// <summary>
-        /// Slug of the intelligent router, matching its name in `GET /v1/grid/routes`. Null when not grouping by ROUTER.<br/>
+        /// Name of the intelligent route, as in `GET /v1/grid/routes`. Null when not grouping by INTELLIGENT_ROUTE.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("router_id")]
-        public string? RouterId { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("intelligent_route")]
+        public string? IntelligentRoute { get; set; }
 
         /// <summary>
         /// Coding harness. Null when not grouping by HARNESS, when no harness was recorded (including usage from before harness tracking), or when the recorded harness is not recognized by this API version.<br/>
@@ -93,7 +93,7 @@ namespace Baseten
         public required int OutputTokens { get; set; }
 
         /// <summary>
-        /// Number of requests; with ROUTER, the requests sent through that router. Usage recorded before requests were counted adds zero.
+        /// Number of requests; with INTELLIGENT_ROUTE, the requests sent through that route. Usage recorded before requests were counted adds zero.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requests")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -124,7 +124,7 @@ namespace Baseten
         /// Output tokens.
         /// </param>
         /// <param name="requests">
-        /// Number of requests; with ROUTER, the requests sent through that router. Usage recorded before requests were counted adds zero.
+        /// Number of requests; with INTELLIGENT_ROUTE, the requests sent through that route. Usage recorded before requests were counted adds zero.
         /// </param>
         /// <param name="userId">
         /// ID of the user who created the Routes key. Null when not grouping by USER.<br/>
@@ -146,8 +146,8 @@ namespace Baseten
         /// Provider that served the requests. Null when not grouping by PROVIDER.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="routerId">
-        /// Slug of the intelligent router, matching its name in `GET /v1/grid/routes`. Null when not grouping by ROUTER.<br/>
+        /// <param name="intelligentRoute">
+        /// Name of the intelligent route, as in `GET /v1/grid/routes`. Null when not grouping by INTELLIGENT_ROUTE.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="harness">
@@ -169,7 +169,7 @@ namespace Baseten
             string? teamName,
             string? model,
             global::Baseten.GridProviderV1? provider,
-            string? routerId,
+            string? intelligentRoute,
             global::Baseten.GridRouteUsageHarnessV1? harness)
         {
             this.UserId = userId;
@@ -177,7 +177,7 @@ namespace Baseten
             this.TeamName = teamName;
             this.Model = model;
             this.Provider = provider;
-            this.RouterId = routerId;
+            this.IntelligentRoute = intelligentRoute;
             this.Harness = harness;
             this.CostUsd = costUsd ?? throw new global::System.ArgumentNullException(nameof(costUsd));
             this.InputTokens = inputTokens;

@@ -10,14 +10,14 @@ internal static partial class GetBillingUsageSummaryCommandApiCommand
     private static Option<global::System.DateTime> StartDate { get; } = new(
         name: @"--start-date")
     {
-        Description = @"Start date (ISO 8601, UTC). Earliest queryable: 2026-01-01.",
+        Description = @"Inclusive start date (ISO 8601, normalized to midnight UTC). Earliest queryable: 2026-01-01.",
         Required = true,
     };
 
     private static Option<global::System.DateTime> EndDate { get; } = new(
         name: @"--end-date")
     {
-        Description = @"End date in ISO 8601 format (UTC). Date range cannot exceed 31 days.",
+        Description = @"Exclusive end date (ISO 8601, normalized to midnight UTC). Date range cannot exceed 31 days.",
         Required = true,
     };
 
@@ -46,7 +46,7 @@ internal static partial class GetBillingUsageSummaryCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-billing-usage-summary", @"Gets billing usage summary for a date range
-Returns billing usage data within the specified date range. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.");
+Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.");
                         command.Options.Add(StartDate);
                         command.Options.Add(EndDate);
 

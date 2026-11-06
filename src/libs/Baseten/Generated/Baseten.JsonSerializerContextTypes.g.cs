@@ -2882,15 +2882,15 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridBackgroundHarnessDefaultsV1? Type711 { get; set; }
+        public global::Baseten.GridHarnessDefaultsV1? Type711 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridHarnessModelV1? Type712 { get; set; }
+        public global::Baseten.GridHarnessModelsV1? Type712 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.GridHarnessDefaultsV1? Type713 { get; set; }
+        public global::Baseten.GridHarnessModelV1? Type713 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -2910,11 +2910,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridBackgroundHarnessModelsV1? Type718 { get; set; }
+        public global::Baseten.UpdateGridHarnessDefaultsV1? Type718 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.UpdateGridHarnessDefaultsV1? Type719 { get; set; }
+        public global::Baseten.UpdateGridHarnessModelsV1? Type719 { get; set; }
         /// <summary>
         ///
         /// </summary>

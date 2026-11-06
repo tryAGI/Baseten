@@ -6,7 +6,7 @@ namespace Baseten
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class UpdateGridBackgroundHarnessModelsV1
+    public sealed partial class UpdateGridHarnessModelsV1
     {
         /// <summary>
         /// Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use the team's default.<br/>
@@ -29,7 +29,7 @@ namespace Baseten
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateGridBackgroundHarnessModelsV1" /> class.
+        /// Initializes a new instance of the <see cref="UpdateGridHarnessModelsV1" /> class.
         /// </summary>
         /// <param name="primary">
         /// Route ID for the primary model, which new sessions use. Omit to keep the current route, or pass null to use the team's default.<br/>
@@ -42,7 +42,7 @@ namespace Baseten
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public UpdateGridBackgroundHarnessModelsV1(
+        public UpdateGridHarnessModelsV1(
             string? primary,
             string? background)
         {
@@ -51,9 +51,9 @@ namespace Baseten
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateGridBackgroundHarnessModelsV1" /> class.
+        /// Initializes a new instance of the <see cref="UpdateGridHarnessModelsV1" /> class.
         /// </summary>
-        public UpdateGridBackgroundHarnessModelsV1()
+        public UpdateGridHarnessModelsV1()
         {
         }
 
