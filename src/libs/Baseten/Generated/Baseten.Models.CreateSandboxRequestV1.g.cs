@@ -5,7 +5,7 @@ namespace Baseten
 {
     /// <summary>
     /// Configuration for a new sandbox. The client may provide a name; otherwise the server generates one. The name is immutable after creation.<br/>
-    /// Example: {"name":"baseten-api-review-0916","lifecycle":{"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"},"network":{"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"},"region":"us-pdx-1","envs":[{"name":"NODE_ENV","secret":false,"value":"production"},{"name":"PORT","secret":false,"value":"3000"}],"image":"baseten/base-image:latest","memory":4096,"cpu":2,"ports":[{"name":"http","protocol":"HTTP","target":3000}],"external_id":"api-review-20260916-001","labels":{"env":"development","project":"api-review","team":"engineering"}}
+    /// Example: {"name":"baseten-api-review-0916","lifecycle":{"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"},"region":"us-pdx-1","envs":[{"name":"NODE_ENV","secret":false,"value":"production"},{"name":"PORT","secret":false,"value":"3000"}],"image":"baseten/base-image:latest","memory":4096,"cpu":2,"ports":[{"name":"http","protocol":"HTTP","target":3000}],"external_id":"api-review-20260916-001","labels":{"env":"development","project":"api-review","team":"engineering"}}
     /// </summary>
     public sealed partial class CreateSandboxRequestV1
     {
@@ -30,14 +30,6 @@ namespace Baseten
         /// <example>{"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("lifecycle")]
         public global::Baseten.SandboxLifecycleV1? Lifecycle { get; set; }
-
-        /// <summary>
-        /// Network configuration for a sandbox including subnet, domain filtering, and proxy settings<br/>
-        /// Example: {"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"}
-        /// </summary>
-        /// <example>{"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"}</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("network")]
-        public global::Baseten.SandboxNetworkV1? Network { get; set; }
 
         /// <summary>
         /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the default sandbox region is used.<br/>
@@ -138,10 +130,6 @@ namespace Baseten
         /// Lifecycle configuration controlling automatic sandbox deletion based on idle time, max age, or specific dates<br/>
         /// Example: {"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"}
         /// </param>
-        /// <param name="network">
-        /// Network configuration for a sandbox including subnet, domain filtering, and proxy settings<br/>
-        /// Example: {"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"}
-        /// </param>
         /// <param name="region">
         /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the default sandbox region is used.<br/>
         /// Example: us-pdx-1
@@ -189,7 +177,6 @@ namespace Baseten
             bool? createIfNotExists,
             string? name,
             global::Baseten.SandboxLifecycleV1? lifecycle,
-            global::Baseten.SandboxNetworkV1? network,
             string? region,
             global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? envs,
             string? image,
@@ -204,7 +191,6 @@ namespace Baseten
             this.CreateIfNotExists = createIfNotExists;
             this.Name = name;
             this.Lifecycle = lifecycle;
-            this.Network = network;
             this.Region = region;
             this.Envs = envs;
             this.Image = image;

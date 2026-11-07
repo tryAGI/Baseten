@@ -55,10 +55,6 @@ namespace Baseten
         /// Lifecycle configuration controlling automatic sandbox deletion based on idle time, max age, or specific dates<br/>
         /// Example: {"expiration_policies":[{"action":"DELETE","type":"TTL_IDLE","value":"24h"},{"action":"DELETE","type":"TTL_MAX_AGE","value":"7d"},{"action":"DELETE","type":"DATE","value":"2026-09-23T21:26:58Z"}],"terminated_retention":"24h"}
         /// </param>
-        /// <param name="network">
-        /// Network configuration for a sandbox including subnet, domain filtering, and proxy settings<br/>
-        /// Example: {"proxy":{"allowed_domains":["api.openai.com","pypi.org","files.pythonhosted.org","registry.npmjs.org"],"bypass":["registry.npmjs.org"],"forbidden_domains":["facebook.com","*.facebook.com"],"routing":[{"destinations":["api.openai.com"],"headers":{"Authorization":"Bearer {{SECRET:openai-key}}"},"body":{"user":"baseten-api-review-0916"},"secrets":{"openai-key":"sk-proj-demo-not-a-valid-api-key"}}]},"subnet":"default"}
-        /// </param>
         /// <param name="region">
         /// Region where the sandbox runs (for example us-pdx-1 or eu-lon-1). When omitted at creation, the default sandbox region is used.<br/>
         /// Example: us-pdx-1
@@ -108,7 +104,6 @@ namespace Baseten
             bool? createIfNotExists = default,
             string? name = default,
             global::Baseten.SandboxLifecycleV1? lifecycle = default,
-            global::Baseten.SandboxNetworkV1? network = default,
             string? region = default,
             global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>? envs = default,
             string? image = default,
