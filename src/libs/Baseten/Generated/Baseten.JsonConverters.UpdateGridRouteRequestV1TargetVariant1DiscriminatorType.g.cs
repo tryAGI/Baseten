@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorTypeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType.");
                     }
 
                     break;

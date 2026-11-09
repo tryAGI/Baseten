@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTypExtensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTypExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTyp.");
                     }
 
                     break;

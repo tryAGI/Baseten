@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKindExtensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKindExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Baseten.CreateModelDeploymentRequestV1SourceDiscriminatorKind.");
                     }
 
                     break;

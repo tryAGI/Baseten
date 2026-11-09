@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.AutoscalingScheduleUpsertV1CadenceExtensions.ToEnum(stringValue) ?? default;
+                        return global::Baseten.AutoscalingScheduleUpsertV1CadenceExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Baseten.AutoscalingScheduleUpsertV1Cadence.");
                     }
 
                     break;
