@@ -15,10 +15,6 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        Classifier,
-        /// <summary>
-        ///
-        /// </summary>
         Connection,
         /// <summary>
         ///
@@ -39,7 +35,6 @@ namespace Baseten
             return value switch
             {
                 GridRouteV1TargetDiscriminatorType.BasetenModelApi => "BASETEN_MODEL_API",
-                GridRouteV1TargetDiscriminatorType.Classifier => "CLASSIFIER",
                 GridRouteV1TargetDiscriminatorType.Connection => "CONNECTION",
                 GridRouteV1TargetDiscriminatorType.Intelligent => "INTELLIGENT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -53,7 +48,6 @@ namespace Baseten
             return value switch
             {
                 "BASETEN_MODEL_API" => GridRouteV1TargetDiscriminatorType.BasetenModelApi,
-                "CLASSIFIER" => GridRouteV1TargetDiscriminatorType.Classifier,
                 "CONNECTION" => GridRouteV1TargetDiscriminatorType.Connection,
                 "INTELLIGENT" => GridRouteV1TargetDiscriminatorType.Intelligent,
                 _ => null,

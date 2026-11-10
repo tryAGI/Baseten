@@ -15,11 +15,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        Classifier,
+        Connection,
         /// <summary>
         ///
         /// </summary>
-        Connection,
+        Intelligent,
     }
 
     /// <summary>
@@ -35,8 +35,8 @@ namespace Baseten
             return value switch
             {
                 CreateGridRouteRequestV1TargetDiscriminatorType.BasetenModelApi => "BASETEN_MODEL_API",
-                CreateGridRouteRequestV1TargetDiscriminatorType.Classifier => "CLASSIFIER",
                 CreateGridRouteRequestV1TargetDiscriminatorType.Connection => "CONNECTION",
+                CreateGridRouteRequestV1TargetDiscriminatorType.Intelligent => "INTELLIGENT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,8 +48,8 @@ namespace Baseten
             return value switch
             {
                 "BASETEN_MODEL_API" => CreateGridRouteRequestV1TargetDiscriminatorType.BasetenModelApi,
-                "CLASSIFIER" => CreateGridRouteRequestV1TargetDiscriminatorType.Classifier,
                 "CONNECTION" => CreateGridRouteRequestV1TargetDiscriminatorType.Connection,
+                "INTELLIGENT" => CreateGridRouteRequestV1TargetDiscriminatorType.Intelligent,
                 _ => null,
             };
         }

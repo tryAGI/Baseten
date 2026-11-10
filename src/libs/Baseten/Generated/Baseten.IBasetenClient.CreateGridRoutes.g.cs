@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Creates a route<br/>
-        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.
+        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first. INTELLIGENT targets reference a route classifier from GET /v1/grid/route_classifiers.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -33,7 +33,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a route<br/>
-        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.
+        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first. INTELLIGENT targets reference a route classifier from GET /v1/grid/route_classifiers.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -60,18 +60,18 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a route<br/>
-        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.
+        /// Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first. INTELLIGENT targets reference a route classifier from GET /v1/grid/route_classifiers.
         /// </summary>
         /// <param name="teamId">
         /// Identifier of the team that owns the route.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="displayName">
-        /// Display label. Omit to use the route name; null is not accepted.<br/>
+        /// Display label. Omit to use the route name; required for INTELLIGENT targets. Null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="target">
-        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.
+        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team. INTELLIGENT targets need at least one of the route classifier's models, and one of its fallback models, servable by the team.
         /// </param>
         /// <param name="description">
         /// Short description of the route. Omit for no description; null is not accepted.<br/>
