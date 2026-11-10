@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class ModelApisUsageV1
     {
         /// <summary>
-        /// Subtotal cost in dollars after applying credits used
+        /// Usage charges in dollars before applying credits
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subtotal")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
@@ -25,7 +25,7 @@ namespace Baseten
         public required global::Baseten.AnyOf<double?, string> CreditsUsed { get; set; }
 
         /// <summary>
-        /// Total cost in dollars
+        /// Usage charges in dollars after applying credits, floored at zero
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
@@ -33,7 +33,7 @@ namespace Baseten
         public required global::Baseten.AnyOf<double?, string> Total { get; set; }
 
         /// <summary>
-        /// Per-model usage breakdown
+        /// Per-model usage breakdown, split by team for multi-team organizations
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("breakdown")]
         public global::System.Collections.Generic.IList<global::Baseten.ModelApiItemV1>? Breakdown { get; set; }
@@ -48,16 +48,16 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="ModelApisUsageV1" /> class.
         /// </summary>
         /// <param name="subtotal">
-        /// Subtotal cost in dollars after applying credits used
+        /// Usage charges in dollars before applying credits
         /// </param>
         /// <param name="creditsUsed">
         /// Credits applied in dollars
         /// </param>
         /// <param name="total">
-        /// Total cost in dollars
+        /// Usage charges in dollars after applying credits, floored at zero
         /// </param>
         /// <param name="breakdown">
-        /// Per-model usage breakdown
+        /// Per-model usage breakdown, split by team for multi-team organizations
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

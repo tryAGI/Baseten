@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Gets billing usage summary for a date range<br/>
-        /// Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.
+        /// Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. For multi-team organizations, Model APIs usage is split by team. Historical usage without a recorded team is assigned to Default Team. Usage subtotals are before credits; credits are deducted only at the product summary level. The date range must not exceed 31 days.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
@@ -25,7 +25,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets billing usage summary for a date range<br/>
-        /// Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.
+        /// Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. For multi-team organizations, Model APIs usage is split by team. Historical usage without a recorded team is assigned to Default Team. Usage subtotals are before credits; credits are deducted only at the product summary level. The date range must not exceed 31 days.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
