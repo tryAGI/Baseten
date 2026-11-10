@@ -16,13 +16,13 @@ internal static partial class CreateGridRoutesCommandApiCommand
     private static Option<string?> DisplayName { get; } = new(
         name: @"--display-name")
     {
-        Description = @"Display label. Omit to use the route name; null is not accepted.",
+        Description = @"Display label. Omit to use the route name; required for INTELLIGENT targets. Null is not accepted.",
     };
 
     private static Option<global::Baseten.Target2> Target { get; } = new(
         name: @"--target")
     {
-        Description = @"Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.",
+        Description = @"Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team. INTELLIGENT targets need at least one of the route classifier's models, and one of its fallback models, servable by the team.",
         Required = true,
     };
 
@@ -73,7 +73,7 @@ internal static partial class CreateGridRoutesCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"create-grid-routes", @"Creates a route
-Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.");
+Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first. INTELLIGENT targets reference a route classifier from GET /v1/grid/route_classifiers.");
                         command.Options.Add(TeamId);
                         command.Options.Add(DisplayName);
                         command.Options.Add(Target);

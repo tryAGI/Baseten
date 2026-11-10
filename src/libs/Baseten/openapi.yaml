@@ -10655,7 +10655,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/grid/routes\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'team_id': 'abc1234', 'display_name': 'Assistant', 'target': {'model': 'zai-org/GLM-5.3', 'type': 'BASETEN_MODEL_API'}, 'description': 'Assistant for code review and debugging.'}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first.",
+                "description": "Creates and derives a name for the provided route configuration. CONNECTION targets reference a connection owned by the route's team; create the connection first. INTELLIGENT targets reference a route classifier from GET /v1/grid/route_classifiers.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -10927,14 +10927,14 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/grid/routes/{route_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"description\": \"Assistant for code review and debugging.\",\n  \"display_name\": \"Assistant\",\n  \"target\": null\n}'"
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/grid/routes/{route_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"description\": \"Assistant for code review and debugging.\",\n  \"display_name\": \"Assistant\"\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/grid/routes/{route_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'description': 'Assistant for code review and debugging.', 'display_name': 'Assistant', 'target': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/grid/routes/{route_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'description': 'Assistant for code review and debugging.', 'display_name': 'Assistant'}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "The route name, target type, and owning team are immutable.",
+                "description": "The route name, target, and owning team are immutable.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -11442,101 +11442,6 @@
                 },
                 "x-stability": "unstable"
             }
-        },
-        "/v1/grid/classifiers": {
-            "get": {
-                "summary": "Lists classifiers available for intelligent routes",
-                "x-codeSamples": [
-                    {
-                        "lang": "bash",
-                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/grid/classifiers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
-                    },
-                    {
-                        "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/grid/classifiers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None}\n)\n\nprint(response.text)"
-                    }
-                ],
-                "description": "Returns Baseten-managed classifiers available to your organization, ordered by identifier. Classifiers cannot be created or modified through this API.",
-                "parameters": [
-                    {
-                        "name": "cursor",
-                        "in": "query",
-                        "required": false,
-                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
-                        "schema": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "null"
-                                }
-                            ],
-                            "default": null,
-                            "title": "Cursor"
-                        }
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "required": false,
-                        "description": "Maximum number of items to return.",
-                        "schema": {
-                            "default": 100,
-                            "maximum": 1000,
-                            "minimum": 1,
-                            "title": "Limit",
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/GridClassifiersResponseV1"
-                                }
-                            }
-                        }
-                    }
-                },
-                "x-stability": "unstable"
-            }
-        },
-        "/v1/grid/classifiers/{classifier_id}": {
-            "get": {
-                "summary": "Gets a classifier available for intelligent routes",
-                "x-codeSamples": [
-                    {
-                        "lang": "bash",
-                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/grid/classifiers/{classifier_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
-                    },
-                    {
-                        "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/grid/classifiers/{classifier_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/GridClassifierV1"
-                                }
-                            }
-                        }
-                    }
-                },
-                "x-stability": "unstable"
-            },
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/classifier_id"
-                }
-            ]
         },
         "/v1/grid/route_classifiers": {
             "get": {
@@ -38500,32 +38405,6 @@
                 "title": "GridTokenV1",
                 "type": "object"
             },
-            "GridClassifierV1": {
-                "properties": {
-                    "id": {
-                        "description": "Stable classifier identifier.",
-                        "examples": [
-                            "general-v1"
-                        ],
-                        "title": "Id",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Display name of the classifier.",
-                        "examples": [
-                            "General"
-                        ],
-                        "title": "Name",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "id",
-                    "name"
-                ],
-                "title": "GridClassifierV1",
-                "type": "object"
-            },
             "GridRouteClassifierV1": {
                 "properties": {
                     "id": {
@@ -38582,26 +38461,6 @@
                 "title": "GridRouteClassifierV1",
                 "type": "object"
             },
-            "GridRouteRefV1": {
-                "properties": {
-                    "id": {
-                        "description": "Stable route identifier.",
-                        "title": "Id",
-                        "type": "string"
-                    },
-                    "slug": {
-                        "description": "Name of the route to send in the inference request's model field.",
-                        "title": "Slug",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "id",
-                    "slug"
-                ],
-                "title": "GridRouteRefV1",
-                "type": "object"
-            },
             "GridRouteTargetBasetenModelAPIV1": {
                 "properties": {
                     "type": {
@@ -38622,47 +38481,6 @@
                     "model"
                 ],
                 "title": "GridRouteTargetBasetenModelAPIV1",
-                "type": "object"
-            },
-            "GridRouteTargetClassifierV1": {
-                "properties": {
-                    "type": {
-                        "const": "CLASSIFIER",
-                        "description": "Target kind for a classifier-based route.",
-                        "title": "Type",
-                        "type": "string"
-                    },
-                    "classifier": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/GridClassifierV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "Classifier that picks a route for each request. Null for routers created before classifiers could be selected."
-                    },
-                    "default_route": {
-                        "$ref": "#/components/schemas/GridRouteRefV1",
-                        "description": "Route used when the classifier picks none."
-                    },
-                    "allowed_routes": {
-                        "description": "Routes the classifier may pick, in creation order.",
-                        "items": {
-                            "$ref": "#/components/schemas/GridRouteRefV1"
-                        },
-                        "title": "Allowed Routes",
-                        "type": "array"
-                    }
-                },
-                "required": [
-                    "type",
-                    "classifier",
-                    "default_route",
-                    "allowed_routes"
-                ],
-                "title": "GridRouteTargetClassifierV1",
                 "type": "object"
             },
             "GridRouteTargetConnectionV1": {
@@ -38761,7 +38579,6 @@
                         "discriminator": {
                             "mapping": {
                                 "BASETEN_MODEL_API": "#/components/schemas/GridRouteTargetBasetenModelAPIV1",
-                                "CLASSIFIER": "#/components/schemas/GridRouteTargetClassifierV1",
                                 "CONNECTION": "#/components/schemas/GridRouteTargetConnectionV1",
                                 "INTELLIGENT": "#/components/schemas/GridRouteTargetIntelligentV1"
                             },
@@ -38773,9 +38590,6 @@
                             },
                             {
                                 "$ref": "#/components/schemas/GridRouteTargetConnectionV1"
-                            },
-                            {
-                                "$ref": "#/components/schemas/GridRouteTargetClassifierV1"
                             },
                             {
                                 "$ref": "#/components/schemas/GridRouteTargetIntelligentV1"
@@ -38792,7 +38606,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Resolved model metadata; for a router, the envelope of its allowed routes' metadata. Null when nothing is linked."
+                        "description": "Resolved model metadata; for an intelligent route, the envelope of its servable models' metadata. Null when nothing is linked."
                     },
                     "invoke_url": {
                         "description": "Base URL for inference requests using this route.",
@@ -38925,56 +38739,6 @@
                 "title": "UpsertGridRouteTargetBasetenModelAPIV1",
                 "type": "object"
             },
-            "UpsertGridRouteTargetClassifierV1": {
-                "additionalProperties": false,
-                "properties": {
-                    "type": {
-                        "const": "CLASSIFIER",
-                        "description": "Target kind for a classifier-based route.",
-                        "title": "Type",
-                        "type": "string"
-                    },
-                    "classifier_id": {
-                        "description": "ID of the classifier that picks a route for each request.",
-                        "examples": [
-                            "general-v1"
-                        ],
-                        "minLength": 1,
-                        "title": "Classifier Id",
-                        "type": "string"
-                    },
-                    "allowed_route_ids": {
-                        "description": "IDs of the routes the classifier may pick. All must belong to the route's team and must not be routers themselves.",
-                        "examples": [
-                            [
-                                "abc1234",
-                                "def5678"
-                            ]
-                        ],
-                        "items": {
-                            "type": "string"
-                        },
-                        "title": "Allowed Route Ids",
-                        "type": "array"
-                    },
-                    "default_route_id": {
-                        "description": "ID of the allowed route used when the classifier picks none.",
-                        "examples": [
-                            "abc1234"
-                        ],
-                        "title": "Default Route Id",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "type",
-                    "classifier_id",
-                    "allowed_route_ids",
-                    "default_route_id"
-                ],
-                "title": "UpsertGridRouteTargetClassifierV1",
-                "type": "object"
-            },
             "UpsertGridRouteTargetConnectionV1": {
                 "additionalProperties": false,
                 "properties": {
@@ -39006,6 +38770,43 @@
                     "connection_id"
                 ],
                 "title": "UpsertGridRouteTargetConnectionV1",
+                "type": "object"
+            },
+            "UpsertGridRouteTargetIntelligentV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "const": "INTELLIGENT",
+                        "description": "Target kind for an intelligent route: Baseten picks the model per request.",
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "route_classifier_id": {
+                        "description": "Identifier of the route classifier that picks the model. List them with GET /v1/grid/route_classifiers.",
+                        "examples": [
+                            "general-v1"
+                        ],
+                        "minLength": 1,
+                        "title": "Route Classifier Id",
+                        "type": "string"
+                    },
+                    "tradeoff": {
+                        "description": "How the classifier weighs cost against quality. Must be one of the classifier's supported tradeoffs.",
+                        "enum": [
+                            "cost",
+                            "balanced",
+                            "intelligence"
+                        ],
+                        "title": "GridRouteTradeoffV1",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "type",
+                    "route_classifier_id",
+                    "tradeoff"
+                ],
+                "title": "UpsertGridRouteTargetIntelligentV1",
                 "type": "object"
             },
             "CreateGridRouteRequestV1": {
@@ -39040,19 +38841,19 @@
                             }
                         ],
                         "default": null,
-                        "description": "Display label. Omit to use the route name; null is not accepted.",
+                        "description": "Display label. Omit to use the route name; required for INTELLIGENT targets. Null is not accepted.",
                         "examples": [
                             "Assistant"
                         ],
                         "title": "Display Name"
                     },
                     "target": {
-                        "description": "Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.",
+                        "description": "Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team. INTELLIGENT targets need at least one of the route classifier's models, and one of its fallback models, servable by the team.",
                         "discriminator": {
                             "mapping": {
                                 "BASETEN_MODEL_API": "#/components/schemas/UpsertGridRouteTargetBasetenModelAPIV1",
-                                "CLASSIFIER": "#/components/schemas/UpsertGridRouteTargetClassifierV1",
-                                "CONNECTION": "#/components/schemas/UpsertGridRouteTargetConnectionV1"
+                                "CONNECTION": "#/components/schemas/UpsertGridRouteTargetConnectionV1",
+                                "INTELLIGENT": "#/components/schemas/UpsertGridRouteTargetIntelligentV1"
                             },
                             "propertyName": "type"
                         },
@@ -39070,7 +38871,7 @@
                                 "$ref": "#/components/schemas/UpsertGridRouteTargetConnectionV1"
                             },
                             {
-                                "$ref": "#/components/schemas/UpsertGridRouteTargetClassifierV1"
+                                "$ref": "#/components/schemas/UpsertGridRouteTargetIntelligentV1"
                             }
                         ],
                         "title": "Target"
@@ -39483,37 +39284,6 @@
                             "Assistant"
                         ],
                         "title": "Display Name"
-                    },
-                    "target": {
-                        "anyOf": [
-                            {
-                                "discriminator": {
-                                    "mapping": {
-                                        "BASETEN_MODEL_API": "#/components/schemas/UpsertGridRouteTargetBasetenModelAPIV1",
-                                        "CLASSIFIER": "#/components/schemas/UpsertGridRouteTargetClassifierV1",
-                                        "CONNECTION": "#/components/schemas/UpsertGridRouteTargetConnectionV1"
-                                    },
-                                    "propertyName": "type"
-                                },
-                                "oneOf": [
-                                    {
-                                        "$ref": "#/components/schemas/UpsertGridRouteTargetBasetenModelAPIV1"
-                                    },
-                                    {
-                                        "$ref": "#/components/schemas/UpsertGridRouteTargetConnectionV1"
-                                    },
-                                    {
-                                        "$ref": "#/components/schemas/UpsertGridRouteTargetClassifierV1"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER configuration of a router route is mutable.",
-                        "title": "Target",
-                        "x-null-distinct": true
                     }
                 },
                 "title": "UpdateGridRouteRequestV1",
@@ -40952,55 +40722,6 @@
                     "config"
                 ],
                 "title": "UpdateGridConnectionRequestV1",
-                "type": "object"
-            },
-            "GridClassifiersResponseV1": {
-                "properties": {
-                    "items": {
-                        "description": "Items in this page.",
-                        "items": {
-                            "$ref": "#/components/schemas/GridClassifierV1"
-                        },
-                        "title": "Items",
-                        "type": "array"
-                    },
-                    "pagination": {
-                        "$ref": "#/components/schemas/PaginationResponseV1",
-                        "description": "Pagination metadata for the page."
-                    }
-                },
-                "required": [
-                    "items",
-                    "pagination"
-                ],
-                "title": "GridClassifiersResponseV1",
-                "type": "object"
-            },
-            "GridClassifiersRequestV1": {
-                "properties": {
-                    "cursor": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
-                        "title": "Cursor"
-                    },
-                    "limit": {
-                        "default": 100,
-                        "description": "Maximum number of items to return.",
-                        "maximum": 1000,
-                        "minimum": 1,
-                        "title": "Limit",
-                        "type": "integer"
-                    }
-                },
-                "title": "GridClassifiersRequestV1",
                 "type": "object"
             },
             "GridRouteClassifiersResponseV1": {
@@ -45029,14 +44750,6 @@
                     "type": "string"
                 },
                 "name": "connection_id",
-                "in": "path",
-                "required": true
-            },
-            "classifier_id": {
-                "schema": {
-                    "type": "string"
-                },
-                "name": "classifier_id",
                 "in": "path",
                 "required": true
             },

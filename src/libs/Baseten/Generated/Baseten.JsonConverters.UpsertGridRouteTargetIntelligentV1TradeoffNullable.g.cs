@@ -3,10 +3,10 @@
 namespace Baseten.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class UpdateGridRouteRequestV1TargetVariant1DiscriminatorTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType?>
+    public sealed class UpsertGridRouteTargetIntelligentV1TradeoffNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Baseten.UpsertGridRouteTargetIntelligentV1Tradeoff?>
     {
         /// <inheritdoc />
-        public override global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType? Read(
+        public override global::Baseten.UpsertGridRouteTargetIntelligentV1Tradeoff? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Baseten.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorTypeExtensions.ToEnum(stringValue);
+                        return global::Baseten.UpsertGridRouteTargetIntelligentV1TradeoffExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Baseten.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType)numValue;
+                    return (global::Baseten.UpsertGridRouteTargetIntelligentV1Tradeoff)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType?);
+                    return default(global::Baseten.UpsertGridRouteTargetIntelligentV1Tradeoff?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace Baseten.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorType? value,
+            global::Baseten.UpsertGridRouteTargetIntelligentV1Tradeoff? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace Baseten.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Baseten.UpdateGridRouteRequestV1TargetVariant1DiscriminatorTypeExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Baseten.UpsertGridRouteTargetIntelligentV1TradeoffExtensions.ToValueString(value.Value));
             }
         }
     }

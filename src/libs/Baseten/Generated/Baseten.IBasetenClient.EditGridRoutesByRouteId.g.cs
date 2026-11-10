@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Updates a route<br/>
-        /// The route name, target type, and owning team are immutable.
+        /// The route name, target, and owning team are immutable.
         /// </summary>
         /// <param name="routeId"></param>
         /// <param name="request"></param>
@@ -19,8 +19,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "description": "Assistant for code review and debugging.",<br/>
-        ///   "display_name": "Assistant",<br/>
-        ///   "target": null<br/>
+        ///   "display_name": "Assistant"<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.GridRouteV1> EditGridRoutesByRouteIdAsync(
@@ -31,7 +30,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a route<br/>
-        /// The route name, target type, and owning team are immutable.
+        /// The route name, target, and owning team are immutable.
         /// </summary>
         /// <param name="routeId"></param>
         /// <param name="request"></param>
@@ -44,8 +43,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "description": "Assistant for code review and debugging.",<br/>
-        ///   "display_name": "Assistant",<br/>
-        ///   "target": null<br/>
+        ///   "display_name": "Assistant"<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.GridRouteV1>> EditGridRoutesByRouteIdAsResponseAsync(
@@ -56,7 +54,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a route<br/>
-        /// The route name, target type, and owning team are immutable.
+        /// The route name, target, and owning team are immutable.
         /// </summary>
         /// <param name="routeId"></param>
         /// <param name="description">
@@ -67,9 +65,6 @@ namespace Baseten
         /// New display label. Omit to keep the current label; null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="target">
-        /// Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER configuration of a router route is mutable.
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -77,7 +72,6 @@ namespace Baseten
             string routeId,
             string? description = default,
             string? displayName = default,
-            global::Baseten.TargetVariant1? target = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

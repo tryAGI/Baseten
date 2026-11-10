@@ -23,12 +23,6 @@ namespace Baseten
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER configuration of a router route is mutable.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("target")]
-        public global::Baseten.TargetVariant1? Target { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -45,20 +39,15 @@ namespace Baseten
         /// New display label. Omit to keep the current label; null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="target">
-        /// Complete new target configuration. Omit to keep the current configuration; null is not accepted. Only the CLASSIFIER configuration of a router route is mutable.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateGridRouteRequestV1(
             string? description,
-            string? displayName,
-            global::Baseten.TargetVariant1? target)
+            string? displayName)
         {
             this.Description = description;
             this.DisplayName = displayName;
-            this.Target = target;
         }
 
         /// <summary>

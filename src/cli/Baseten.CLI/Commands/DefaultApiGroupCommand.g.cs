@@ -158,8 +158,6 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetGatewayGroupsByGroupIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsByGroupIdApiKeysCommandApiCommand.Create());
                          command.Subcommands.Add(GetGatewayGroupsByGroupIdApiKeysByApiKeyPrefixCommandApiCommand.Create());
-                         command.Subcommands.Add(GetGridClassifiersCommandApiCommand.Create());
-                         command.Subcommands.Add(GetGridClassifiersByClassifierIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridConnectionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridConnectionsByConnectionIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetGridMachineUsersCommandApiCommand.Create());

@@ -16,14 +16,14 @@ namespace Baseten
         public string? TeamId { get; set; }
 
         /// <summary>
-        /// Display label. Omit to use the route name; null is not accepted.<br/>
+        /// Display label. Omit to use the route name; required for INTELLIGENT targets. Null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("display_name")]
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.
+        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team. INTELLIGENT targets need at least one of the route classifier's models, and one of its fallback models, servable by the team.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Target2JsonConverter))]
@@ -47,14 +47,14 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="CreateGridRouteRequestV1" /> class.
         /// </summary>
         /// <param name="target">
-        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team.
+        /// Upstream target for the route. CONNECTION targets use the provider and credentials of a connection owned by the route's team. INTELLIGENT targets need at least one of the route classifier's models, and one of its fallback models, servable by the team.
         /// </param>
         /// <param name="teamId">
         /// Identifier of the team that owns the route.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="displayName">
-        /// Display label. Omit to use the route name; null is not accepted.<br/>
+        /// Display label. Omit to use the route name; required for INTELLIGENT targets. Null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="description">
