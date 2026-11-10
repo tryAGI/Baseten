@@ -11,6 +11,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        CredentialExposure,
+        /// <summary>
+        ///
+        /// </summary>
         Inactivity,
     }
 
@@ -26,6 +30,7 @@ namespace Baseten
         {
             return value switch
             {
+                AuditLogApiKeyRevocationReasonV1.CredentialExposure => "CREDENTIAL_EXPOSURE",
                 AuditLogApiKeyRevocationReasonV1.Inactivity => "INACTIVITY",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -37,6 +42,7 @@ namespace Baseten
         {
             return value switch
             {
+                "CREDENTIAL_EXPOSURE" => AuditLogApiKeyRevocationReasonV1.CredentialExposure,
                 "INACTIVITY" => AuditLogApiKeyRevocationReasonV1.Inactivity,
                 _ => null,
             };

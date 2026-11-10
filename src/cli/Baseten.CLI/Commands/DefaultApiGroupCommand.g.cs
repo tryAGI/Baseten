@@ -98,6 +98,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteLibraryListingsByUserDefinedListingIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteLibraryListingsByUserDefinedListingIdVersionsByVersionTagCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteLoopsCheckpointsByCheckpointIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteLoopsRunsByRunIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdDeploymentsByDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdCommandApiCommand.Create());

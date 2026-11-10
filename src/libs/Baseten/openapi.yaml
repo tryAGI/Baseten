@@ -7371,6 +7371,37 @@
             ]
         },
         "/v1/loops/runs/{run_id}": {
+            "delete": {
+                "summary": "Deletes a Loops run",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request DELETE \\\n--url https://api.baseten.co/v1/loops/runs/{run_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/runs/{run_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"DELETE\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Deletes a Loops run by ID, deactivating it first if it is active, and deletes its checkpoints. Checkpoints still in use, such as deployed ones, are kept and listed in the response; they stay usable until that use stops. Deletion is permanent, and storage for some checkpoints is reclaimed later.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeleteLoopsRunResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/run_id"
+                }
+            ],
             "get": {
                 "summary": "Gets a Loops run",
                 "x-codeSamples": [
@@ -7396,12 +7427,7 @@
                         }
                     }
                 }
-            },
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/run_id"
-                }
-            ]
+            }
         },
         "/v1/loops/trainers": {
             "post": {
@@ -18108,7 +18134,8 @@
             "AuditLogApiKeyRevocationReasonV1": {
                 "description": "Reason an API key was revoked.",
                 "enum": [
-                    "INACTIVITY"
+                    "INACTIVITY",
+                    "CREDENTIAL_EXPOSURE"
                 ],
                 "title": "AuditLogApiKeyRevocationReasonV1",
                 "type": "string"
@@ -31509,6 +31536,184 @@
                 "title": "DeactivateLoopsRunResponseV1",
                 "type": "object"
             },
+            "LoopsCheckpointV1": {
+                "description": "A checkpoint saved by a Loops run.",
+                "properties": {
+                    "checkpoint_id": {
+                        "description": "The ID of the checkpoint.",
+                        "title": "Checkpoint Id",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "The timestamp of the checkpoint in ISO 8601 format.",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "checkpoint_type": {
+                        "description": "The type of checkpoint.",
+                        "title": "Checkpoint Type",
+                        "type": "string"
+                    },
+                    "base_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The base model of the checkpoint.",
+                        "title": "Base Model"
+                    },
+                    "lora_adapter_config": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The adapter config of the checkpoint.",
+                        "title": "Lora Adapter Config"
+                    },
+                    "size_bytes": {
+                        "description": "The size of the checkpoint in bytes.",
+                        "title": "Size Bytes",
+                        "type": "integer"
+                    },
+                    "sync_status": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
+                        "title": "Sync Status"
+                    },
+                    "id": {
+                        "description": "The checkpoint ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "lora_config": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LoopsLoRAConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The immutable LoRA config used to save this checkpoint. Null means the checkpoint is unsupported and cannot be loaded."
+                    },
+                    "run_id": {
+                        "description": "The ID of the run that produced the checkpoint.",
+                        "title": "Run Id",
+                        "type": "string"
+                    },
+                    "target": {
+                        "$ref": "#/components/schemas/TrainerCheckpointTarget",
+                        "description": "Whether this checkpoint is loadable by the sampler or by the run."
+                    }
+                },
+                "required": [
+                    "checkpoint_id",
+                    "created_at",
+                    "checkpoint_type",
+                    "base_model",
+                    "lora_adapter_config",
+                    "size_bytes",
+                    "id",
+                    "lora_config",
+                    "run_id",
+                    "target"
+                ],
+                "title": "LoopsCheckpointV1",
+                "type": "object"
+            },
+            "LoopsLoRAConfigV1": {
+                "description": "A published LoRA config: which modules the adapter targets and how experts are laid out.",
+                "properties": {
+                    "config_version": {
+                        "description": "The config version, like v1.",
+                        "title": "Config Version",
+                        "type": "string"
+                    },
+                    "targets": {
+                        "description": "The module names the LoRA adapter targets.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Targets",
+                        "type": "array"
+                    },
+                    "expert_layout": {
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "per_expert",
+                                    "shared_outer",
+                                    "shared_adapter"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "How routed-expert LoRA weights are laid out. Null when no experts are targeted.",
+                        "title": "Expert Layout"
+                    }
+                },
+                "required": [
+                    "config_version",
+                    "targets"
+                ],
+                "title": "LoopsLoRAConfigV1",
+                "type": "object"
+            },
+            "TrainerCheckpointTarget": {
+                "description": "Whether a TrainerServerCheckpoint is loadable by the sampler or the trainer.\n\nSAMPLER checkpoints are consumed by the sampling server for inference;\nTRAINER checkpoints capture full trainer state for resuming training.\nMirrored in the bt:// URI as\n``bt://loops:<trainer_id>/(sampler_weights|weights)/<name>``.",
+                "enum": [
+                    "sampler",
+                    "trainer"
+                ],
+                "title": "TrainerCheckpointTarget",
+                "type": "string"
+            },
+            "DeleteLoopsRunResponseV1": {
+                "description": "A Loops run whose delete was accepted.",
+                "properties": {
+                    "id": {
+                        "description": "The deleted Loops run ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "kept_checkpoints": {
+                        "description": "The run's checkpoints that were not deleted because something still uses them, such as a deployment. They stay usable until that stops.",
+                        "items": {
+                            "$ref": "#/components/schemas/LoopsCheckpointV1"
+                        },
+                        "title": "Kept Checkpoints",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "kept_checkpoints"
+                ],
+                "title": "DeleteLoopsRunResponseV1",
+                "type": "object"
+            },
             "GetLoopsRunResponseV1": {
                 "description": "Response for ``GET /v1/loops/runs/<run_id>``.",
                 "properties": {
@@ -31905,160 +32110,6 @@
                 ],
                 "title": "GetLoopsSamplerResponseV1",
                 "type": "object"
-            },
-            "LoopsCheckpointV1": {
-                "description": "A checkpoint saved by a Loops run.",
-                "properties": {
-                    "checkpoint_id": {
-                        "description": "The ID of the checkpoint.",
-                        "title": "Checkpoint Id",
-                        "type": "string"
-                    },
-                    "created_at": {
-                        "description": "The timestamp of the checkpoint in ISO 8601 format.",
-                        "format": "date-time",
-                        "title": "Created At",
-                        "type": "string"
-                    },
-                    "checkpoint_type": {
-                        "description": "The type of checkpoint.",
-                        "title": "Checkpoint Type",
-                        "type": "string"
-                    },
-                    "base_model": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "The base model of the checkpoint.",
-                        "title": "Base Model"
-                    },
-                    "lora_adapter_config": {
-                        "anyOf": [
-                            {
-                                "additionalProperties": true,
-                                "type": "object"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "The adapter config of the checkpoint.",
-                        "title": "Lora Adapter Config"
-                    },
-                    "size_bytes": {
-                        "description": "The size of the checkpoint in bytes.",
-                        "title": "Size Bytes",
-                        "type": "integer"
-                    },
-                    "sync_status": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
-                        "title": "Sync Status"
-                    },
-                    "id": {
-                        "description": "The checkpoint ID.",
-                        "title": "Id",
-                        "type": "string"
-                    },
-                    "lora_config": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/components/schemas/LoopsLoRAConfigV1"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "The immutable LoRA config used to save this checkpoint. Null means the checkpoint is unsupported and cannot be loaded."
-                    },
-                    "run_id": {
-                        "description": "The ID of the run that produced the checkpoint.",
-                        "title": "Run Id",
-                        "type": "string"
-                    },
-                    "target": {
-                        "$ref": "#/components/schemas/TrainerCheckpointTarget",
-                        "description": "Whether this checkpoint is loadable by the sampler or by the run."
-                    }
-                },
-                "required": [
-                    "checkpoint_id",
-                    "created_at",
-                    "checkpoint_type",
-                    "base_model",
-                    "lora_adapter_config",
-                    "size_bytes",
-                    "id",
-                    "lora_config",
-                    "run_id",
-                    "target"
-                ],
-                "title": "LoopsCheckpointV1",
-                "type": "object"
-            },
-            "LoopsLoRAConfigV1": {
-                "description": "A published LoRA config: which modules the adapter targets and how experts are laid out.",
-                "properties": {
-                    "config_version": {
-                        "description": "The config version, like v1.",
-                        "title": "Config Version",
-                        "type": "string"
-                    },
-                    "targets": {
-                        "description": "The module names the LoRA adapter targets.",
-                        "items": {
-                            "type": "string"
-                        },
-                        "title": "Targets",
-                        "type": "array"
-                    },
-                    "expert_layout": {
-                        "anyOf": [
-                            {
-                                "enum": [
-                                    "per_expert",
-                                    "shared_outer",
-                                    "shared_adapter"
-                                ],
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": null,
-                        "description": "How routed-expert LoRA weights are laid out. Null when no experts are targeted.",
-                        "title": "Expert Layout"
-                    }
-                },
-                "required": [
-                    "config_version",
-                    "targets"
-                ],
-                "title": "LoopsLoRAConfigV1",
-                "type": "object"
-            },
-            "TrainerCheckpointTarget": {
-                "description": "Whether a TrainerServerCheckpoint is loadable by the sampler or the trainer.\n\nSAMPLER checkpoints are consumed by the sampling server for inference;\nTRAINER checkpoints capture full trainer state for resuming training.\nMirrored in the bt:// URI as\n``bt://loops:<trainer_id>/(sampler_weights|weights)/<name>``.",
-                "enum": [
-                    "sampler",
-                    "trainer"
-                ],
-                "title": "TrainerCheckpointTarget",
-                "type": "string"
             },
             "ListLoopsCheckpointsResponseV1": {
                 "description": "Checkpoints matching the query filter.",

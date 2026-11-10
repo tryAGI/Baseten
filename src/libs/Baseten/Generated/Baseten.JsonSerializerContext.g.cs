@@ -496,6 +496,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsRunRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsRunResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeactivateLoopsRunResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsLoRAConfigV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerCheckpointTarget), TypeInfoPropertyName = "TrainerCheckpointTarget2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsLoRAConfigV1ExpertLayout), TypeInfoPropertyName = "LoopsLoRAConfigV1ExpertLayout2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeleteLoopsRunResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsCheckpointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsRunResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsPlacementScopeV1), TypeInfoPropertyName = "LoopsPlacementScopeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsTrainerRequestV1))]
@@ -503,12 +509,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsSamplerV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsSamplersRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSamplerRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSamplerResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeactivateLoopsSamplerResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsSamplerResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsLoRAConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerCheckpointTarget), TypeInfoPropertyName = "TrainerCheckpointTarget2")]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,9 +519,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsLoRAConfigV1ExpertLayout), TypeInfoPropertyName = "LoopsLoRAConfigV1ExpertLayout2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSamplerResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeactivateLoopsSamplerResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsSamplerResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsCheckpointsResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsCheckpointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsCheckpointsQueryParamsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ValidateLoopsCheckpointResponseV1))]
@@ -997,9 +998,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointConfigTarget?), TypeInfoPropertyName = "NullableLoopsCheckpointConfigTarget2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsUseCaseV1?), TypeInfoPropertyName = "NullableLoopsUseCaseV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusNameV1?), TypeInfoPropertyName = "NullableLoopsRunStatusNameV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsPlacementScopeV1?), TypeInfoPropertyName = "NullableLoopsPlacementScopeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainerCheckpointTarget?), TypeInfoPropertyName = "NullableTrainerCheckpointTarget2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsLoRAConfigV1ExpertLayout?), TypeInfoPropertyName = "NullableLoopsLoRAConfigV1ExpertLayout2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsPlacementScopeV1?), TypeInfoPropertyName = "NullableLoopsPlacementScopeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Source4?), TypeInfoPropertyName = "NullableSource42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointSourceResponseV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableLoopsCheckpointSourceResponseV1SourceDiscriminatorKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Name?), TypeInfoPropertyName = "NullableName2")]
@@ -1018,7 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableGridRouteTargetIntelligentV1Tradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target?), TypeInfoPropertyName = "NullableTarget2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableGridRouteV1TargetDiscriminatorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableUpsertGridRouteTargetIntelligentV1Tradeoff2")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableUpsertGridRouteTargetIntelligentV1Tradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2?), TypeInfoPropertyName = "NullableTarget22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridRouteRequestV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableCreateGridRouteRequestV1TargetDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridProviderV1?), TypeInfoPropertyName = "NullableGridProviderV12")]
@@ -1135,8 +1136,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.OrderByV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SupportedModelV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsRunV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsSamplerV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsCheckpointV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsSamplerV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.LoopsDeploymentV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ResponseTimeDatapointV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.InferenceVolumeByStatusDatapointV1>))]
@@ -1542,10 +1543,6 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.LoopsRunStatusNameV1?)
 
-                    || typeToConvert == typeof(global::Baseten.LoopsPlacementScopeV1)
-
-                    || typeToConvert == typeof(global::Baseten.LoopsPlacementScopeV1?)
-
                     || typeToConvert == typeof(global::Baseten.LoopsLoRAConfigV1ExpertLayout)
 
                     || typeToConvert == typeof(global::Baseten.LoopsLoRAConfigV1ExpertLayout?)
@@ -1553,6 +1550,10 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.TrainerCheckpointTarget)
 
                     || typeToConvert == typeof(global::Baseten.TrainerCheckpointTarget?)
+
+                    || typeToConvert == typeof(global::Baseten.LoopsPlacementScopeV1)
+
+                    || typeToConvert == typeof(global::Baseten.LoopsPlacementScopeV1?)
 
                     || typeToConvert == typeof(global::Baseten.LoopsCheckpointSourceResponseV1SourceDiscriminatorKind)
 
@@ -2281,16 +2282,6 @@ namespace Baseten
                     return new global::Baseten.JsonConverters.LoopsRunStatusNameV1NullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Baseten.LoopsPlacementScopeV1))
-                {
-                    return new global::Baseten.JsonConverters.LoopsPlacementScopeV1JsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Baseten.LoopsPlacementScopeV1?))
-                {
-                    return new global::Baseten.JsonConverters.LoopsPlacementScopeV1NullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Baseten.LoopsLoRAConfigV1ExpertLayout))
                 {
                     return new global::Baseten.JsonConverters.LoopsLoRAConfigV1ExpertLayoutJsonConverter();
@@ -2309,6 +2300,16 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.TrainerCheckpointTarget?))
                 {
                     return new global::Baseten.JsonConverters.TrainerCheckpointTargetNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.LoopsPlacementScopeV1))
+                {
+                    return new global::Baseten.JsonConverters.LoopsPlacementScopeV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.LoopsPlacementScopeV1?))
+                {
+                    return new global::Baseten.JsonConverters.LoopsPlacementScopeV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.LoopsCheckpointSourceResponseV1SourceDiscriminatorKind))
