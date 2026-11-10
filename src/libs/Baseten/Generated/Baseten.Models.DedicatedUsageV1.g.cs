@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class DedicatedUsageV1
     {
         /// <summary>
-        /// Subtotal cost in dollars after applying credits used
+        /// Usage charges in dollars before applying credits
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subtotal")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.AnyOfJsonConverter<double?, string>))]
@@ -55,7 +55,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="DedicatedUsageV1" /> class.
         /// </summary>
         /// <param name="subtotal">
-        /// Subtotal cost in dollars after applying credits used
+        /// Usage charges in dollars before applying credits
         /// </param>
         /// <param name="creditsUsed">
         /// Credits applied in dollars

@@ -31,6 +31,20 @@ namespace Baseten
         public required global::Baseten.AnyOf<double?, string> Subtotal { get; set; }
 
         /// <summary>
+        /// Team ID for multi-team organizations; otherwise null<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
+        public string? TeamId { get; set; }
+
+        /// <summary>
+        /// Team name, including historical teams; null if unavailable<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_name")]
+        public string? TeamName { get; set; }
+
+        /// <summary>
         /// Total input tokens for this model
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_tokens")]
@@ -85,6 +99,14 @@ namespace Baseten
         /// Model family (e.g., Meta, DeepSeek)<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="teamId">
+        /// Team ID for multi-team organizations; otherwise null<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="teamName">
+        /// Team name, including historical teams; null if unavailable<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="daily">
         /// Daily usage breakdown
         /// </param>
@@ -98,11 +120,15 @@ namespace Baseten
             int outputTokens,
             int cachedInputTokens,
             string? modelFamily,
+            string? teamId,
+            string? teamName,
             global::System.Collections.Generic.IList<global::Baseten.DailyModelApiUsageV1>? daily)
         {
             this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
             this.ModelFamily = modelFamily;
             this.Subtotal = subtotal;
+            this.TeamId = teamId;
+            this.TeamName = teamName;
             this.InputTokens = inputTokens;
             this.OutputTokens = outputTokens;
             this.CachedInputTokens = cachedInputTokens;

@@ -46,7 +46,7 @@ internal static partial class GetBillingUsageSummaryCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-billing-usage-summary", @"Gets billing usage summary for a date range
-Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. The date range must not exceed 31 days.");
+Returns billing usage within [start_date, end_date): the start date is inclusive and the end date is exclusive. Both dates are normalized to midnight UTC. Includes dedicated model serving, training, and model APIs usage. For multi-team organizations, Model APIs usage is split by team. Historical usage without a recorded team is assigned to Default Team. Usage subtotals are before credits; credits are deducted only at the product summary level. The date range must not exceed 31 days.");
                         command.Options.Add(StartDate);
                         command.Options.Add(EndDate);
 

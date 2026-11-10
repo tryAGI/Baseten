@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Gets the audit log for the workspace<br/>
-        /// Returns audit-log entries across the workspace, newest first, covering models, chains, and workspace-level actions. Use the filters to narrow by event type, actor, resource, environment, source, or time window, and the cursor to page. In workspaces with multiple teams, only organization admins can read the workspace audit log.
+        /// Returns audit-log entries across the workspace, newest first, covering models, chains, and workspace-level actions. Use the filters to narrow by event type, actor, resource, environment, source, or time window, and the cursor to page. Requires a personal API key; team API keys can't read the workspace audit log. In workspaces with multiple teams, only organization admins can read the workspace audit log.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -58,7 +58,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the audit log for the workspace<br/>
-        /// Returns audit-log entries across the workspace, newest first, covering models, chains, and workspace-level actions. Use the filters to narrow by event type, actor, resource, environment, source, or time window, and the cursor to page. In workspaces with multiple teams, only organization admins can read the workspace audit log.
+        /// Returns audit-log entries across the workspace, newest first, covering models, chains, and workspace-level actions. Use the filters to narrow by event type, actor, resource, environment, source, or time window, and the cursor to page. Requires a personal API key; team API keys can't read the workspace audit log. In workspaces with multiple teams, only organization admins can read the workspace audit log.
         /// </summary>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
