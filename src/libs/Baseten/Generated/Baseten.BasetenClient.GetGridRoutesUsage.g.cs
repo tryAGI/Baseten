@@ -36,7 +36,8 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
             global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? providers,
-            global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses);
+            global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses,
+            global::System.Collections.Generic.IList<string>? apiKeyPrefixes);
         partial void PrepareGetGridRoutesUsageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -49,7 +50,8 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? userIds,
             global::System.Collections.Generic.IList<string>? models,
             global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? providers,
-            global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses);
+            global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses,
+            global::System.Collections.Generic.IList<string>? apiKeyPrefixes);
         partial void ProcessGetGridRoutesUsageResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -83,6 +85,7 @@ namespace Baseten
         /// <param name="models"></param>
         /// <param name="providers"></param>
         /// <param name="harnesses"></param>
+        /// <param name="apiKeyPrefixes"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -102,6 +105,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? models = default,
             global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? providers = default,
             global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses = default,
+            global::System.Collections.Generic.IList<string>? apiKeyPrefixes = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -116,6 +120,7 @@ namespace Baseten
                 models: models,
                 providers: providers,
                 harnesses: harnesses,
+                apiKeyPrefixes: apiKeyPrefixes,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -146,6 +151,7 @@ namespace Baseten
         /// <param name="models"></param>
         /// <param name="providers"></param>
         /// <param name="harnesses"></param>
+        /// <param name="apiKeyPrefixes"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -165,6 +171,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<string>? models = default,
             global::System.Collections.Generic.IList<global::Baseten.GridProviderV1>? providers = default,
             global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageHarnessV1>? harnesses = default,
+            global::System.Collections.Generic.IList<string>? apiKeyPrefixes = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -181,7 +188,8 @@ namespace Baseten
                 userIds: userIds,
                 models: models,
                 providers: providers,
-                harnesses: harnesses);
+                harnesses: harnesses,
+                apiKeyPrefixes: apiKeyPrefixes);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
@@ -220,6 +228,7 @@ namespace Baseten
                                 .AddOptionalParameter("models", models, delimiter: ",", explode: true)
                                 .AddOptionalParameter("providers", providers, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                                 .AddOptionalParameter("harnesses", harnesses, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
+                                .AddOptionalParameter("api_key_prefixes", apiKeyPrefixes, delimiter: ",", explode: true)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -270,7 +279,8 @@ namespace Baseten
                     userIds: userIds,
                     models: models,
                     providers: providers,
-                    harnesses: harnesses);
+                    harnesses: harnesses,
+                    apiKeyPrefixes: apiKeyPrefixes);
 
                 return __httpRequest;
             }

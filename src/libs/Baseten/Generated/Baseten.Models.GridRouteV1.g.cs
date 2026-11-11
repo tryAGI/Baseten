@@ -59,10 +59,10 @@ namespace Baseten
         public required global::Baseten.Target Target { get; set; }
 
         /// <summary>
-        /// Resolved model metadata; for an intelligent route, the envelope of its servable models' metadata. Null when nothing is linked.
+        /// Resolved model metadata; for an intelligent route, the envelope of its servable models' metadata. Null when nothing is linked or the metadata has no supported API formats.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
-        public global::Baseten.ExploreMetadataV1? Metadata { get; set; }
+        public global::Baseten.GridRouteMetadataV1? Metadata { get; set; }
 
         /// <summary>
         /// Base URL for inference requests using this route.
@@ -115,7 +115,7 @@ namespace Baseten
         /// Creation time, ISO 8601.
         /// </param>
         /// <param name="metadata">
-        /// Resolved model metadata; for an intelligent route, the envelope of its servable models' metadata. Null when nothing is linked.
+        /// Resolved model metadata; for an intelligent route, the envelope of its servable models' metadata. Null when nothing is linked or the metadata has no supported API formats.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -130,7 +130,7 @@ namespace Baseten
             global::Baseten.Target target,
             string invokeUrl,
             global::System.DateTime createdAt,
-            global::Baseten.ExploreMetadataV1? metadata)
+            global::Baseten.GridRouteMetadataV1? metadata)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
