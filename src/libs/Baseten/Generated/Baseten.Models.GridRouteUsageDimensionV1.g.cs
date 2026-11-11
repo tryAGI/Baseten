@@ -11,6 +11,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ApiKey,
+        /// <summary>
+        ///
+        /// </summary>
         Harness,
         /// <summary>
         ///
@@ -46,6 +50,7 @@ namespace Baseten
         {
             return value switch
             {
+                GridRouteUsageDimensionV1.ApiKey => "API_KEY",
                 GridRouteUsageDimensionV1.Harness => "HARNESS",
                 GridRouteUsageDimensionV1.IntelligentRoute => "INTELLIGENT_ROUTE",
                 GridRouteUsageDimensionV1.Model => "MODEL",
@@ -62,6 +67,7 @@ namespace Baseten
         {
             return value switch
             {
+                "API_KEY" => GridRouteUsageDimensionV1.ApiKey,
                 "HARNESS" => GridRouteUsageDimensionV1.Harness,
                 "INTELLIGENT_ROUTE" => GridRouteUsageDimensionV1.IntelligentRoute,
                 "MODEL" => GridRouteUsageDimensionV1.Model,

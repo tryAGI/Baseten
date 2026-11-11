@@ -58,6 +58,20 @@ namespace Baseten
         public global::Baseten.GridRouteUsageHarnessV1? Harness { get; set; }
 
         /// <summary>
+        /// Prefix of the API key that made the requests, matching `GET /v1/api_keys`. Null when not grouping by API_KEY, for usage without an API key, and for usage recorded before API key tracking.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("api_key_prefix")]
+        public string? ApiKeyPrefix { get; set; }
+
+        /// <summary>
+        /// Name of the API key. Null when `api_key_prefix` is null or the key has no name.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("api_key_name")]
+        public string? ApiKeyName { get; set; }
+
+        /// <summary>
         /// Estimated cost in USD, returned as an exact decimal string. Costs for OpenAI, Anthropic, and xAI estimate what you pay those providers; they are not Baseten charges.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_usd")]
@@ -154,6 +168,14 @@ namespace Baseten
         /// Coding harness. Null when not grouping by HARNESS, when no harness was recorded (including usage from before harness tracking), or when the recorded harness is not recognized by this API version.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="apiKeyPrefix">
+        /// Prefix of the API key that made the requests, matching `GET /v1/api_keys`. Null when not grouping by API_KEY, for usage without an API key, and for usage recorded before API key tracking.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="apiKeyName">
+        /// Name of the API key. Null when `api_key_prefix` is null or the key has no name.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -170,7 +192,9 @@ namespace Baseten
             string? model,
             global::Baseten.GridProviderV1? provider,
             string? intelligentRoute,
-            global::Baseten.GridRouteUsageHarnessV1? harness)
+            global::Baseten.GridRouteUsageHarnessV1? harness,
+            string? apiKeyPrefix,
+            string? apiKeyName)
         {
             this.UserId = userId;
             this.TeamId = teamId;
@@ -179,6 +203,8 @@ namespace Baseten
             this.Provider = provider;
             this.IntelligentRoute = intelligentRoute;
             this.Harness = harness;
+            this.ApiKeyPrefix = apiKeyPrefix;
+            this.ApiKeyName = apiKeyName;
             this.CostUsd = costUsd ?? throw new global::System.ArgumentNullException(nameof(costUsd));
             this.InputTokens = inputTokens;
             this.CachedInputTokens = cachedInputTokens;

@@ -40,7 +40,7 @@ internal static partial class GetGridRoutesUsageCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Baseten.GridRouteUsageDimensionV1>?> GroupBy { get; } = new(
         name: @"--group-by")
     {
-        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, INTELLIGENT_ROUTE, or HARNESS. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. INTELLIGENT_ROUTE returns only usage sent through an intelligent route, one row per intelligent route, or per intelligent route and model with MODEL. These rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. Defaults to MODEL.",
+        Description = @"Dimensions to break usage down by, repeated once per dimension: USER, TEAM, MODEL, PROVIDER, INTELLIGENT_ROUTE, HARNESS, or API_KEY. Each result represents one observed combination of the requested dimensions within that day, and results are sorted by those values. Combinations without usage are omitted, so result counts can differ between days. INTELLIGENT_ROUTE returns only usage sent through an intelligent route, one row per intelligent route, or per intelligent route and model with MODEL. These rows repeat usage already counted in other groupings, so don't add them to model totals. HARNESS includes usage with no recorded harness as a null group. API_KEY includes usage without an API key, such as requests authenticated by a signed-in session, as a null group. Defaults to MODEL.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> UserIds { get; } = new(
@@ -65,6 +65,12 @@ internal static partial class GetGridRoutesUsageCommandApiCommand
         name: @"--harnesses")
     {
         Description = @"Return only usage for these harnesses, repeated once per harness. Omit to include all usage, including usage with no recorded harness.",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<string>?> ApiKeyPrefixes { get; } = new(
+        name: @"--api-key-prefixes")
+    {
+        Description = @"Return only usage made with these API keys, repeated once per key prefix. Omit to include all usage, including usage without an API key.",
     };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.GridRouteUsageResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
@@ -103,6 +109,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                         command.Options.Add(Models);
                         command.Options.Add(Providers);
                         command.Options.Add(Harnesses);
+                        command.Options.Add(ApiKeyPrefixes);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -118,6 +125,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                         var models = parseResult.GetValue(Models);
                         var providers = parseResult.GetValue(Providers);
                         var harnesses = parseResult.GetValue(Harnesses);
+                        var apiKeyPrefixes = parseResult.GetValue(ApiKeyPrefixes);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -132,6 +140,7 @@ Buckets are UTC days, and days with no usage are included. Organization admins s
                                     models: models,
                                     providers: providers,
                                     harnesses: harnesses,
+                                    apiKeyPrefixes: apiKeyPrefixes,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

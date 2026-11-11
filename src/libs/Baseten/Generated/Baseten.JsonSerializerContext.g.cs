@@ -697,6 +697,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridRouteClassifierV1SupportedTradeoff>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff), TypeInfoPropertyName = "GridRouteClassifierV1SupportedTradeoff2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteMetadataV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.GridRouteMetadataV1ApiFormat>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteMetadataV1ApiFormat), TypeInfoPropertyName = "GridRouteMetadataV1ApiFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetBasetenModelAPIV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetConnectionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1))]
@@ -1016,9 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageDimensionV1?), TypeInfoPropertyName = "NullableToolCallUsageDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?), TypeInfoPropertyName = "NullableGridRouteClassifierV1SupportedTradeoff2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableGridRouteTargetIntelligentV1Tradeoff2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target?), TypeInfoPropertyName = "NullableTarget2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableGridRouteV1TargetDiscriminatorType2")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,10 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteMetadataV1ApiFormat?), TypeInfoPropertyName = "NullableGridRouteMetadataV1ApiFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableGridRouteTargetIntelligentV1Tradeoff2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target?), TypeInfoPropertyName = "NullableTarget2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableGridRouteV1TargetDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableUpsertGridRouteTargetIntelligentV1Tradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target2?), TypeInfoPropertyName = "NullableTarget22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateGridRouteRequestV1TargetDiscriminatorType?), TypeInfoPropertyName = "NullableCreateGridRouteRequestV1TargetDiscriminatorType2")]
@@ -1175,6 +1179,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GatewayEventV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ExploreMetadataV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteClassifierV1SupportedTradeoff>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteMetadataV1ApiFormat>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteUsageResultV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteUsageBucketV1>))]
@@ -1606,6 +1611,10 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff)
 
                     || typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?)
+
+                    || typeToConvert == typeof(global::Baseten.GridRouteMetadataV1ApiFormat)
+
+                    || typeToConvert == typeof(global::Baseten.GridRouteMetadataV1ApiFormat?)
 
                     || typeToConvert == typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff)
 
@@ -2440,6 +2449,16 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?))
                 {
                     return new global::Baseten.JsonConverters.GridRouteClassifierV1SupportedTradeoffNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.GridRouteMetadataV1ApiFormat))
+                {
+                    return new global::Baseten.JsonConverters.GridRouteMetadataV1ApiFormatJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.GridRouteMetadataV1ApiFormat?))
+                {
+                    return new global::Baseten.JsonConverters.GridRouteMetadataV1ApiFormatNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff))
