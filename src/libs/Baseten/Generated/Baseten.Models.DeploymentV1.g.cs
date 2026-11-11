@@ -105,6 +105,13 @@ namespace Baseten
         public required global::Baseten.RequestBackpressureSettingsV1 RequestBackpressureSettings { get; set; }
 
         /// <summary>
+        /// Why the deployment failed. Set only when the status is DEPLOY_FAILED; null otherwise.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("failure_reason")]
+        public string? FailureReason { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -157,6 +164,10 @@ namespace Baseten
         /// The selected region for the deployment, if any<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="failureReason">
+        /// Why the deployment failed. Set only when the status is DEPLOY_FAILED; null otherwise.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -174,7 +185,8 @@ namespace Baseten
             string? instanceTypeName,
             string? environment,
             object? labels,
-            global::Baseten.RegionV1? region)
+            global::Baseten.RegionV1? region,
+            string? failureReason)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.CreatedAt = createdAt;
@@ -190,6 +202,7 @@ namespace Baseten
             this.Labels = labels;
             this.Region = region;
             this.RequestBackpressureSettings = requestBackpressureSettings ?? throw new global::System.ArgumentNullException(nameof(requestBackpressureSettings));
+            this.FailureReason = failureReason;
         }
 
         /// <summary>

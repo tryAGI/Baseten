@@ -37,6 +37,12 @@ namespace Baseten
         public global::System.Collections.Generic.IList<string>? Metrics { get; set; }
 
         /// <summary>
+        /// Return only metrics for these teams, repeated once per team. Defaults to all teams you can manage. Any unauthorized team causes a 403.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("team_ids")]
+        public global::System.Collections.Generic.IList<string>? TeamIds { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +66,9 @@ namespace Baseten
         /// <param name="metrics">
         /// Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_model_api_inference_requests_total, baseten_model_api_incoming_inference_requests_total, and baseten_model_api_tokens_total. Unknown names are rejected; valid names that are not enabled for your organization are omitted from the response.
         /// </param>
+        /// <param name="teamIds">
+        /// Return only metrics for these teams, repeated once per team. Defaults to all teams you can manage. Any unauthorized team causes a 403.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -67,12 +76,14 @@ namespace Baseten
             global::Baseten.MetricModeV1? mode,
             int? startEpochMillis,
             int? endEpochMillis,
-            global::System.Collections.Generic.IList<string>? metrics)
+            global::System.Collections.Generic.IList<string>? metrics,
+            global::System.Collections.Generic.IList<string>? teamIds)
         {
             this.Mode = mode;
             this.StartEpochMillis = startEpochMillis;
             this.EndEpochMillis = endEpochMillis;
             this.Metrics = metrics;
+            this.TeamIds = teamIds;
         }
 
         /// <summary>

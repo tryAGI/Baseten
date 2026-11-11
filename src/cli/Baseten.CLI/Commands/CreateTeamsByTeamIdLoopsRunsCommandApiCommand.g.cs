@@ -13,6 +13,8 @@ internal static partial class CreateTeamsByTeamIdLoopsRunsCommandApiCommand
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
     private static readonly CreateLoopsRunRequestV1OptionSet CreateLoopsRunRequestV1OptionSetOptions = CreateLoopsRunRequestV1OptionSet.Create();
+
+    private static readonly TrainingWeightAuthV1OptionSet BaseCheckpointAuthOptions = TrainingWeightAuthV1OptionSet.Create(@"base-checkpoint-auth");
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -69,7 +71,14 @@ Creates a Loops run with an associated sampler in the given session; the run's i
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromRunId);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId);
                         command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.BaseCheckpoint);
-                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.SamplerNumReplicas);
+                        command.Options.Add(CreateLoopsRunRequestV1OptionSetOptions.SamplerNumReplicas);                        command.Options.Add(BaseCheckpointAuthOptions.AuthMethod);
+                        command.Options.Add(BaseCheckpointAuthOptions.AuthSecretName);
+                        command.Options.Add(BaseCheckpointAuthOptions.AwsOidcRoleArn);
+                        command.Options.Add(BaseCheckpointAuthOptions.AwsOidcRegion);
+                        command.Options.Add(BaseCheckpointAuthOptions.GcpOidcServiceAccount);
+                        command.Options.Add(BaseCheckpointAuthOptions.GcpOidcWorkloadIdProvider);
+                        command.Options.Add(BaseCheckpointAuthOptions.AwsAssumeRoleArn);
+                        command.Options.Add(BaseCheckpointAuthOptions.AwsAssumeRoleRegion);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -109,6 +118,31 @@ Creates a Loops run with an associated sampler in the given session; the run's i
                         var reuseFromSessionId = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.ReuseFromSessionId) : (__requestBase is { } __ReuseFromSessionIdBaseValue ? __ReuseFromSessionIdBaseValue.ReuseFromSessionId : default);
                         var baseCheckpoint = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.BaseCheckpoint) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.BaseCheckpoint) : (__requestBase is { } __BaseCheckpointBaseValue ? __BaseCheckpointBaseValue.BaseCheckpoint : default);
                         var samplerNumReplicas = CliRuntime.WasSpecified(parseResult, CreateLoopsRunRequestV1OptionSetOptions.SamplerNumReplicas) ? parseResult.GetValue(CreateLoopsRunRequestV1OptionSetOptions.SamplerNumReplicas) : (__requestBase is { } __SamplerNumReplicasBaseValue ? __SamplerNumReplicasBaseValue.SamplerNumReplicas : default);
+
+                        var __BaseCheckpointAuthBase = __requestBase is { } __BaseCheckpointAuthBaseValue ? __BaseCheckpointAuthBaseValue.BaseCheckpointAuth : default;                        var baseCheckpointAuthAuthMethod = parseResult.GetValue(BaseCheckpointAuthOptions.AuthMethod);
+                        var baseCheckpointAuthAuthSecretName = CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AuthSecretName) ? parseResult.GetValue(BaseCheckpointAuthOptions.AuthSecretName) : (__BaseCheckpointAuthBase is { } __BaseCheckpointAuthauthSecretNameBaseValue ? __BaseCheckpointAuthauthSecretNameBaseValue.AuthSecretName : default);
+                        var baseCheckpointAuthAwsOidcRoleArn = CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AwsOidcRoleArn) ? parseResult.GetValue(BaseCheckpointAuthOptions.AwsOidcRoleArn) : (__BaseCheckpointAuthBase is { } __BaseCheckpointAuthawsOidcRoleArnBaseValue ? __BaseCheckpointAuthawsOidcRoleArnBaseValue.AwsOidcRoleArn : default);
+                        var baseCheckpointAuthAwsOidcRegion = CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AwsOidcRegion) ? parseResult.GetValue(BaseCheckpointAuthOptions.AwsOidcRegion) : (__BaseCheckpointAuthBase is { } __BaseCheckpointAuthawsOidcRegionBaseValue ? __BaseCheckpointAuthawsOidcRegionBaseValue.AwsOidcRegion : default);
+                        var baseCheckpointAuthGcpOidcServiceAccount = CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.GcpOidcServiceAccount) ? parseResult.GetValue(BaseCheckpointAuthOptions.GcpOidcServiceAccount) : (__BaseCheckpointAuthBase is { } __BaseCheckpointAuthgcpOidcServiceAccountBaseValue ? __BaseCheckpointAuthgcpOidcServiceAccountBaseValue.GcpOidcServiceAccount : default);
+                        var baseCheckpointAuthGcpOidcWorkloadIdProvider = CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.GcpOidcWorkloadIdProvider) ? parseResult.GetValue(BaseCheckpointAuthOptions.GcpOidcWorkloadIdProvider) : (__BaseCheckpointAuthBase is { } __BaseCheckpointAuthgcpOidcWorkloadIdProviderBaseValue ? __BaseCheckpointAuthgcpOidcWorkloadIdProviderBaseValue.GcpOidcWorkloadIdProvider : default);
+                        var baseCheckpointAuthAwsAssumeRoleArn = CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AwsAssumeRoleArn) ? parseResult.GetValue(BaseCheckpointAuthOptions.AwsAssumeRoleArn) : (__BaseCheckpointAuthBase is { } __BaseCheckpointAuthawsAssumeRoleArnBaseValue ? __BaseCheckpointAuthawsAssumeRoleArnBaseValue.AwsAssumeRoleArn : default);
+                        var baseCheckpointAuthAwsAssumeRoleRegion = CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AwsAssumeRoleRegion) ? parseResult.GetValue(BaseCheckpointAuthOptions.AwsAssumeRoleRegion) : (__BaseCheckpointAuthBase is { } __BaseCheckpointAuthawsAssumeRoleRegionBaseValue ? __BaseCheckpointAuthawsAssumeRoleRegionBaseValue.AwsAssumeRoleRegion : default);
+                        var __BaseCheckpointAuthSpecified = CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AuthMethod) || CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AuthSecretName) || CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AwsOidcRoleArn) || CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AwsOidcRegion) || CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.GcpOidcServiceAccount) || CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.GcpOidcWorkloadIdProvider) || CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AwsAssumeRoleArn) || CliRuntime.WasSpecified(parseResult, BaseCheckpointAuthOptions.AwsAssumeRoleRegion);
+                        var baseCheckpointAuth =
+                            __BaseCheckpointAuthSpecified || __BaseCheckpointAuthBase is not null
+                                ? new global::Baseten.TrainingWeightAuthV1
+                                {
+	                                AuthMethod = baseCheckpointAuthAuthMethod!,
+                                AuthSecretName = baseCheckpointAuthAuthSecretName,
+                                AwsOidcRoleArn = baseCheckpointAuthAwsOidcRoleArn,
+                                AwsOidcRegion = baseCheckpointAuthAwsOidcRegion,
+                                GcpOidcServiceAccount = baseCheckpointAuthGcpOidcServiceAccount,
+                                GcpOidcWorkloadIdProvider = baseCheckpointAuthGcpOidcWorkloadIdProvider,
+                                AwsAssumeRoleArn = baseCheckpointAuthAwsAssumeRoleArn,
+                                AwsAssumeRoleRegion = baseCheckpointAuthAwsAssumeRoleRegion,
+
+                                }
+                                : __BaseCheckpointAuthBase;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -128,6 +162,7 @@ Creates a Loops run with an associated sampler in the given session; the run's i
                                     reuseFromSessionId: reuseFromSessionId,
                                     baseCheckpoint: baseCheckpoint,
                                     samplerNumReplicas: samplerNumReplicas,
+                                    baseCheckpointAuth: baseCheckpointAuth,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
