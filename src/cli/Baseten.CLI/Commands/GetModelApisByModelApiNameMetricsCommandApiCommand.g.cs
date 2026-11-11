@@ -37,6 +37,12 @@ internal static partial class GetModelApisByModelApiNameMetricsCommandApiCommand
         Description = @"Names of the metrics to return; see https://docs.baseten.co/observability/export-metrics/supported-metrics for the available names. When omitted, a default set is returned: baseten_model_api_inference_requests_total, baseten_model_api_incoming_inference_requests_total, and baseten_model_api_tokens_total. Unknown names are rejected; valid names that are not enabled for your organization are omitted from the response.",
     };
 
+    private static Option<global::System.Collections.Generic.IList<string>?> TeamIds { get; } = new(
+        name: @"--team-ids")
+    {
+        Description = @"Return only metrics for these teams, repeated once per team. Defaults to all teams you can manage. Any unauthorized team causes a 403.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.GetMetricsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -62,12 +68,13 @@ internal static partial class GetModelApisByModelApiNameMetricsCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-model-apis-by-model-api-name-metrics", @"Gets the metrics for a Model API
-Gets the metrics for a Model API in the given time range.");
+Gets the metrics for a Model API in the given time range for the teams you can manage, with each series labeled by team_id. Organization admins receive organization-wide metrics by default. For a Model API your lab organization lists, other organizations' consumption is included regardless of team_ids.");
                         command.Arguments.Add(ModelApiName);
                         command.Options.Add(Mode);
                         command.Options.Add(StartEpochMillis);
                         command.Options.Add(EndEpochMillis);
                         command.Options.Add(Metrics);
+                        command.Options.Add(TeamIds);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -78,6 +85,7 @@ Gets the metrics for a Model API in the given time range.");
                         var startEpochMillis = parseResult.GetValue(StartEpochMillis);
                         var endEpochMillis = parseResult.GetValue(EndEpochMillis);
                         var metrics = parseResult.GetValue(Metrics);
+                        var teamIds = parseResult.GetValue(TeamIds);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -87,6 +95,7 @@ Gets the metrics for a Model API in the given time range.");
                                     startEpochMillis: startEpochMillis,
                                     endEpochMillis: endEpochMillis,
                                     metrics: metrics,
+                                    teamIds: teamIds,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

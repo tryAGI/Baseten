@@ -94,11 +94,18 @@ namespace Baseten
         public string? ReuseFromSessionId { get; set; }
 
         /// <summary>
-        /// Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://&lt;org&gt;/&lt;repo&gt;[@&lt;revision&gt;]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.<br/>
+        /// Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://&lt;org&gt;/&lt;repo&gt;[@&lt;revision&gt;]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in a team secret: the one named in base_checkpoint_auth, else hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("base_checkpoint")]
         public string? BaseCheckpoint { get; set; }
+
+        /// <summary>
+        /// Optional credentials that read base_checkpoint. Only CUSTOM_SECRET is supported: set auth_secret_name to the team secret that holds a Hugging Face token. The run, its samplers, resumed runs, and checkpoint deployments all use this secret. When omitted, the team secret hf_access_token is used if it exists. Requires base_checkpoint.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_checkpoint_auth")]
+        public global::Baseten.TrainingWeightAuthV1? BaseCheckpointAuth { get; set; }
 
         /// <summary>
         /// Choose where this runs. 'default' lets Baseten choose. 'serverless' runs on Baseten's shared capacity, and fails instead of falling back when shared capacity can't serve the request. 'dedicated' gives it its own deployment, which you size and pay for.<br/>
@@ -164,7 +171,11 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="baseCheckpoint">
-        /// Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://&lt;org&gt;/&lt;repo&gt;[@&lt;revision&gt;]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in the team secret hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.<br/>
+        /// Optional Hugging Face checkpoint to start training from instead of the base model's weights. Form: hf://&lt;org&gt;/&lt;repo&gt;[@&lt;revision&gt;]. It must be a complete, merged checkpoint in safetensors format with the same architecture as base_model, which still selects the hardware and training configuration. It must include its tokenizer files: the run's sampler and the SDK load the tokenizer and chat template from the checkpoint. A private or gated repository needs a Hugging Face token in a team secret: the one named in base_checkpoint_auth, else hf_access_token. The revision is pinned to a commit when the run is created. Cannot be combined with path, reuse_from_run_id, or reuse_from_session_id.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="baseCheckpointAuth">
+        /// Optional credentials that read base_checkpoint. Only CUSTOM_SECRET is supported: set auth_secret_name to the team secret that holds a Hugging Face token. The run, its samplers, resumed runs, and checkpoint deployments all use this secret. When omitted, the team secret hf_access_token is used if it exists. Requires base_checkpoint.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="scope">
@@ -188,6 +199,7 @@ namespace Baseten
             string? reuseFromRunId,
             string? reuseFromSessionId,
             string? baseCheckpoint,
+            global::Baseten.TrainingWeightAuthV1? baseCheckpointAuth,
             global::Baseten.LoopsPlacementScopeV1? scope)
         {
             this.SessionId = sessionId ?? throw new global::System.ArgumentNullException(nameof(sessionId));
@@ -203,6 +215,7 @@ namespace Baseten
             this.ReuseFromRunId = reuseFromRunId;
             this.ReuseFromSessionId = reuseFromSessionId;
             this.BaseCheckpoint = baseCheckpoint;
+            this.BaseCheckpointAuth = baseCheckpointAuth;
             this.Scope = scope;
         }
 
