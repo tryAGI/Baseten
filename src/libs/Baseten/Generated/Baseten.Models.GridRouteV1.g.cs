@@ -23,6 +23,12 @@ namespace Baseten
         public required string Name { get; set; }
 
         /// <summary>
+        /// The route's claude-desktop alias, for Claude Code desktop. Null until the backfill mints it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("alias")]
+        public string? Alias { get; set; }
+
+        /// <summary>
         /// Identifier of the owning team.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("team_id")]
@@ -114,6 +120,9 @@ namespace Baseten
         /// <param name="createdAt">
         /// Creation time, ISO 8601.
         /// </param>
+        /// <param name="alias">
+        /// The route's claude-desktop alias, for Claude Code desktop. Null until the backfill mints it.
+        /// </param>
         /// <param name="metadata">
         /// Resolved model metadata; for an intelligent route, the envelope of its servable models' metadata. Null when nothing is linked or the metadata has no supported API formats.
         /// </param>
@@ -130,10 +139,12 @@ namespace Baseten
             global::Baseten.Target target,
             string invokeUrl,
             global::System.DateTime createdAt,
+            string? alias,
             global::Baseten.GridRouteMetadataV1? metadata)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Alias = alias;
             this.TeamId = teamId ?? throw new global::System.ArgumentNullException(nameof(teamId));
             this.TeamName = teamName ?? throw new global::System.ArgumentNullException(nameof(teamName));
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));

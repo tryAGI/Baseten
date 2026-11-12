@@ -66,6 +66,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateModelsByModelIdEnvironmentsByEnvNameResumePromotionCommandApiCommand.Create());
                          command.Subcommands.Add(CreatePrepareModelUploadCommandApiCommand.Create());
                          command.Subcommands.Add(CreateSecretsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateServiceAccountsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdApiKeysCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdLlmModelsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateTeamsByTeamIdLoopsRunsCommandApiCommand.Create());
@@ -104,6 +105,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteSecretsBySecretNameCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteServiceAccountsByServiceAccountIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTeamsByTeamIdSecretsBySecretNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
@@ -130,6 +132,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsDevelopmentAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdDeploymentsProductionAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(EditOrganizationsMeCommandApiCommand.Create());
+                         command.Subcommands.Add(EditServiceAccountsByServiceAccountIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditTeamsByTeamIdEnvironmentGroupsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingCapacityCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
@@ -220,6 +224,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetOrganizationsMeCommandApiCommand.Create());
                          command.Subcommands.Add(GetRegionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetSecretsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetServiceAccountsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetServiceAccountsByServiceAccountIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdEnvironmentGroupsCommandApiCommand.Create());
