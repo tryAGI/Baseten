@@ -15,6 +15,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Azure,
+        /// <summary>
+        ///
+        /// </summary>
         Bedrock,
         /// <summary>
         ///
@@ -43,6 +47,7 @@ namespace Baseten
             return value switch
             {
                 UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Anthropic => "ANTHROPIC",
+                UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Azure => "AZURE",
                 UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Bedrock => "BEDROCK",
                 UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Openai => "OPENAI",
                 UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Vertex => "VERTEX",
@@ -58,6 +63,7 @@ namespace Baseten
             return value switch
             {
                 "ANTHROPIC" => UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Anthropic,
+                "AZURE" => UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Azure,
                 "BEDROCK" => UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Bedrock,
                 "OPENAI" => UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Openai,
                 "VERTEX" => UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Vertex,

@@ -198,6 +198,43 @@ namespace Baseten
         public global::Baseten.UpsertGridConnectionConfigBedrockV1 PickBedrock() => Bedrock is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Bedrock' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Baseten.UpsertGridConnectionConfigAzureV1? Azure { get; init; }
+#else
+        public global::Baseten.UpsertGridConnectionConfigAzureV1? Azure { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Azure))]
+#endif
+        public bool IsAzure => Azure != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickAzure(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Baseten.UpsertGridConnectionConfigAzureV1? value)
+        {
+            value = Azure;
+            return IsAzure;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Baseten.UpsertGridConnectionConfigAzureV1 PickAzure() => Azure is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Azure' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -316,13 +353,37 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator Config2(global::Baseten.UpsertGridConnectionConfigAzureV1 value) => new Config2((global::Baseten.UpsertGridConnectionConfigAzureV1?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::Baseten.UpsertGridConnectionConfigAzureV1?(Config2 @this) => @this.Azure;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Config2(global::Baseten.UpsertGridConnectionConfigAzureV1? value)
+        {
+            Azure = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static Config2 FromAzure(global::Baseten.UpsertGridConnectionConfigAzureV1? value) => new Config2(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public Config2(
             global::Baseten.CreateGridConnectionRequestV1ConfigDiscriminatorProvider? provider,
             global::Baseten.UpsertGridConnectionConfigAnthropicV1? anthropic,
             global::Baseten.UpsertGridConnectionConfigOpenAIV1? openai,
             global::Baseten.UpsertGridConnectionConfigXAIV1? xai,
             global::Baseten.UpsertGridConnectionConfigVertexV1? vertex,
-            global::Baseten.UpsertGridConnectionConfigBedrockV1? bedrock
+            global::Baseten.UpsertGridConnectionConfigBedrockV1? bedrock,
+            global::Baseten.UpsertGridConnectionConfigAzureV1? azure
             )
         {
             Provider = provider;
@@ -332,12 +393,14 @@ namespace Baseten
             Xai = xai;
             Vertex = vertex;
             Bedrock = bedrock;
+            Azure = azure;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
+            Azure as object ??
             Bedrock as object ??
             Vertex as object ??
             Xai as object ??
@@ -353,7 +416,8 @@ namespace Baseten
             Openai?.ToString() ??
             Xai?.ToString() ??
             Vertex?.ToString() ??
-            Bedrock?.ToString()
+            Bedrock?.ToString() ??
+            Azure?.ToString()
             ;
 
         /// <summary>
@@ -361,7 +425,7 @@ namespace Baseten
         /// </summary>
         public bool Validate()
         {
-            return IsAnthropic && !IsOpenai && !IsXai && !IsVertex && !IsBedrock || !IsAnthropic && IsOpenai && !IsXai && !IsVertex && !IsBedrock || !IsAnthropic && !IsOpenai && IsXai && !IsVertex && !IsBedrock || !IsAnthropic && !IsOpenai && !IsXai && IsVertex && !IsBedrock || !IsAnthropic && !IsOpenai && !IsXai && !IsVertex && IsBedrock;
+            return IsAnthropic && !IsOpenai && !IsXai && !IsVertex && !IsBedrock && !IsAzure || !IsAnthropic && IsOpenai && !IsXai && !IsVertex && !IsBedrock && !IsAzure || !IsAnthropic && !IsOpenai && IsXai && !IsVertex && !IsBedrock && !IsAzure || !IsAnthropic && !IsOpenai && !IsXai && IsVertex && !IsBedrock && !IsAzure || !IsAnthropic && !IsOpenai && !IsXai && !IsVertex && IsBedrock && !IsAzure || !IsAnthropic && !IsOpenai && !IsXai && !IsVertex && !IsBedrock && IsAzure;
         }
 
         /// <summary>
@@ -373,6 +437,7 @@ namespace Baseten
             global::System.Func<global::Baseten.UpsertGridConnectionConfigXAIV1, TResult>? xai = null,
             global::System.Func<global::Baseten.UpsertGridConnectionConfigVertexV1, TResult>? vertex = null,
             global::System.Func<global::Baseten.UpsertGridConnectionConfigBedrockV1, TResult>? bedrock = null,
+            global::System.Func<global::Baseten.UpsertGridConnectionConfigAzureV1, TResult>? azure = null,
             bool validate = true)
         {
             if (validate)
@@ -400,6 +465,10 @@ namespace Baseten
             {
                 return bedrock(__value4);
             }
+            else if (Azure is { } __value5 && azure != null)
+            {
+                return azure(__value5);
+            }
 
             return default(TResult);
         }
@@ -417,6 +486,8 @@ namespace Baseten
             global::System.Action<global::Baseten.UpsertGridConnectionConfigVertexV1>? vertex = null,
 
             global::System.Action<global::Baseten.UpsertGridConnectionConfigBedrockV1>? bedrock = null,
+
+            global::System.Action<global::Baseten.UpsertGridConnectionConfigAzureV1>? azure = null,
             bool validate = true)
         {
             if (validate)
@@ -443,6 +514,10 @@ namespace Baseten
             else if (Bedrock is { } __value4)
             {
                 bedrock?.Invoke(__value4);
+            }
+            else if (Azure is { } __value5)
+            {
+                azure?.Invoke(__value5);
             }
         }
 
@@ -455,6 +530,7 @@ namespace Baseten
             global::System.Action<global::Baseten.UpsertGridConnectionConfigXAIV1>? xai = null,
             global::System.Action<global::Baseten.UpsertGridConnectionConfigVertexV1>? vertex = null,
             global::System.Action<global::Baseten.UpsertGridConnectionConfigBedrockV1>? bedrock = null,
+            global::System.Action<global::Baseten.UpsertGridConnectionConfigAzureV1>? azure = null,
             bool validate = true)
         {
             if (validate)
@@ -481,6 +557,10 @@ namespace Baseten
             else if (Bedrock is { } __value4)
             {
                 bedrock?.Invoke(__value4);
+            }
+            else if (Azure is { } __value5)
+            {
+                azure?.Invoke(__value5);
             }
         }
 
@@ -501,6 +581,8 @@ namespace Baseten
                 typeof(global::Baseten.UpsertGridConnectionConfigVertexV1),
                 Bedrock,
                 typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1),
+                Azure,
+                typeof(global::Baseten.UpsertGridConnectionConfigAzureV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -521,7 +603,8 @@ namespace Baseten
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigOpenAIV1?>.Default.Equals(Openai, other.Openai) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigXAIV1?>.Default.Equals(Xai, other.Xai) &&
                 global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigVertexV1?>.Default.Equals(Vertex, other.Vertex) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigBedrockV1?>.Default.Equals(Bedrock, other.Bedrock)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigBedrockV1?>.Default.Equals(Bedrock, other.Bedrock) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.UpsertGridConnectionConfigAzureV1?>.Default.Equals(Azure, other.Azure)
                 ;
         }
 

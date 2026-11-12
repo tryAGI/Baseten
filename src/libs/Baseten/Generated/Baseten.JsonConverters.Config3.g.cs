@@ -56,6 +56,13 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridConnectionConfigBedrockV1)}");
                 bedrock = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.UpsertGridConnectionConfigAzureV1? azure = default;
+            if (discriminator?.Provider == global::Baseten.UpdateGridConnectionRequestV1ConfigDiscriminatorProvider.Azure)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigAzureV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigAzureV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpsertGridConnectionConfigAzureV1)}");
+                azure = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Baseten.Config3(
                 discriminator?.Provider,
@@ -67,7 +74,9 @@ namespace Baseten.JsonConverters
 
                 vertex,
 
-                bedrock
+                bedrock,
+
+                azure
                 );
 
             return __value;
@@ -111,6 +120,12 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigBedrockV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBedrock(), typeInfo);
+            }
+            else if (value.IsAzure)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpsertGridConnectionConfigAzureV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpsertGridConnectionConfigAzureV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.UpsertGridConnectionConfigAzureV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAzure(), typeInfo);
             }
         }
     }

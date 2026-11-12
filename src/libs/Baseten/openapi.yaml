@@ -39221,7 +39221,8 @@
                     "XAI",
                     "VERTEX",
                     "OPENAI_COMPATIBLE",
-                    "BEDROCK"
+                    "BEDROCK",
+                    "AZURE"
                 ],
                 "title": "GridProviderV1",
                 "type": "string"
@@ -40454,6 +40455,39 @@
                 "title": "GridConnectionConfigAnthropicV1",
                 "type": "object"
             },
+            "GridConnectionConfigAzureV1": {
+                "properties": {
+                    "provider": {
+                        "const": "AZURE",
+                        "description": "Provider kind for Microsoft Azure.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_id": {
+                        "description": "Identifier of the team secret holding the provider API key.",
+                        "title": "Secret Id",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of the team secret holding the provider API key.",
+                        "title": "Secret Name",
+                        "type": "string"
+                    },
+                    "resource_name": {
+                        "description": "Name of the Azure AI Foundry or Azure OpenAI resource.",
+                        "title": "Resource Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_id",
+                    "secret_name",
+                    "resource_name"
+                ],
+                "title": "GridConnectionConfigAzureV1",
+                "type": "object"
+            },
             "GridConnectionConfigBedrockV1": {
                 "properties": {
                     "provider": {
@@ -40622,6 +40656,7 @@
                         "discriminator": {
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/GridConnectionConfigAnthropicV1",
+                                "AZURE": "#/components/schemas/GridConnectionConfigAzureV1",
                                 "BEDROCK": "#/components/schemas/GridConnectionConfigBedrockV1",
                                 "OPENAI": "#/components/schemas/GridConnectionConfigOpenAIV1",
                                 "VERTEX": "#/components/schemas/GridConnectionConfigVertexV1",
@@ -40644,6 +40679,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/GridConnectionConfigBedrockV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/GridConnectionConfigAzureV1"
                             }
                         ],
                         "title": "Config"
@@ -40790,6 +40828,42 @@
                     "secret_name"
                 ],
                 "title": "UpsertGridConnectionConfigAnthropicV1",
+                "type": "object"
+            },
+            "UpsertGridConnectionConfigAzureV1": {
+                "additionalProperties": false,
+                "properties": {
+                    "provider": {
+                        "const": "AZURE",
+                        "description": "Provider kind for Microsoft Azure. Route targets name a deployment, which must be named after its Azure model. Claude models (`claude-*`) use the Anthropic Messages API, and other models use the OpenAI-compatible APIs.",
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "secret_name": {
+                        "description": "Name of an existing secret, owned by the same team, that holds the provider API key.",
+                        "examples": [
+                            "anthropic-key"
+                        ],
+                        "minLength": 1,
+                        "title": "Secret Name",
+                        "type": "string"
+                    },
+                    "resource_name": {
+                        "description": "Name of the Azure AI Foundry or Azure OpenAI resource, the subdomain of `<resource_name>.openai.azure.com`.",
+                        "examples": [
+                            "my-foundry-resource"
+                        ],
+                        "minLength": 1,
+                        "title": "Resource Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "provider",
+                    "secret_name",
+                    "resource_name"
+                ],
+                "title": "UpsertGridConnectionConfigAzureV1",
                 "type": "object"
             },
             "UpsertGridConnectionConfigBedrockV1": {
@@ -40971,6 +41045,7 @@
                         "discriminator": {
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/UpsertGridConnectionConfigAnthropicV1",
+                                "AZURE": "#/components/schemas/UpsertGridConnectionConfigAzureV1",
                                 "BEDROCK": "#/components/schemas/UpsertGridConnectionConfigBedrockV1",
                                 "OPENAI": "#/components/schemas/UpsertGridConnectionConfigOpenAIV1",
                                 "VERTEX": "#/components/schemas/UpsertGridConnectionConfigVertexV1",
@@ -40999,6 +41074,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/UpsertGridConnectionConfigBedrockV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpsertGridConnectionConfigAzureV1"
                             }
                         ],
                         "title": "Config"
@@ -41032,6 +41110,7 @@
                         "discriminator": {
                             "mapping": {
                                 "ANTHROPIC": "#/components/schemas/UpsertGridConnectionConfigAnthropicV1",
+                                "AZURE": "#/components/schemas/UpsertGridConnectionConfigAzureV1",
                                 "BEDROCK": "#/components/schemas/UpsertGridConnectionConfigBedrockV1",
                                 "OPENAI": "#/components/schemas/UpsertGridConnectionConfigOpenAIV1",
                                 "VERTEX": "#/components/schemas/UpsertGridConnectionConfigVertexV1",
@@ -41060,6 +41139,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/UpsertGridConnectionConfigBedrockV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/UpsertGridConnectionConfigAzureV1"
                             }
                         ],
                         "title": "Config"

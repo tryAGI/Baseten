@@ -15,6 +15,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Azure,
+        /// <summary>
+        ///
+        /// </summary>
         BasetenModelApi,
         /// <summary>
         ///
@@ -51,6 +55,7 @@ namespace Baseten
             return value switch
             {
                 GridProviderV1.Anthropic => "ANTHROPIC",
+                GridProviderV1.Azure => "AZURE",
                 GridProviderV1.BasetenModelApi => "BASETEN_MODEL_API",
                 GridProviderV1.Bedrock => "BEDROCK",
                 GridProviderV1.Openai => "OPENAI",
@@ -68,6 +73,7 @@ namespace Baseten
             return value switch
             {
                 "ANTHROPIC" => GridProviderV1.Anthropic,
+                "AZURE" => GridProviderV1.Azure,
                 "BASETEN_MODEL_API" => GridProviderV1.BasetenModelApi,
                 "BEDROCK" => GridProviderV1.Bedrock,
                 "OPENAI" => GridProviderV1.Openai,
