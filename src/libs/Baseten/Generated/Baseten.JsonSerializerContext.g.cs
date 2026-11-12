@@ -757,6 +757,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionBedrockAccessKeysAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionBedrockApiKeyAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigAnthropicV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigAzureV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigBedrockV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth), TypeInfoPropertyName = "Auth2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridConnectionConfigBedrockV1AuthDiscriminator))]
@@ -774,6 +775,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionBedrockAccessKeysAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionBedrockApiKeyAuthV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigAnthropicV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigAzureV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Auth2), TypeInfoPropertyName = "Auth22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertGridConnectionConfigBedrockV1AuthDiscriminator))]
@@ -1017,8 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LibraryListingModality?), TypeInfoPropertyName = "NullableLibraryListingModality2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApiCostDimensionV1?), TypeInfoPropertyName = "NullableModelApiCostDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageDimensionV1?), TypeInfoPropertyName = "NullableToolCallUsageDimensionV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?), TypeInfoPropertyName = "NullableGridRouteClassifierV1SupportedTradeoff2")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageDimensionV1?), TypeInfoPropertyName = "NullableToolCallUsageDimensionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?), TypeInfoPropertyName = "NullableGridRouteClassifierV1SupportedTradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteMetadataV1ApiFormat?), TypeInfoPropertyName = "NullableGridRouteMetadataV1ApiFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableGridRouteTargetIntelligentV1Tradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Target?), TypeInfoPropertyName = "NullableTarget2_3")]
