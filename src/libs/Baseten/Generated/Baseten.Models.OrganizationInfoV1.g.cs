@@ -37,6 +37,20 @@ namespace Baseten
         public global::Baseten.AwsAssumeRoleV1? AwsAssumeRole { get; set; }
 
         /// <summary>
+        /// Whether members can create new personal API keys. Existing keys keep working.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allow_personal_api_keys")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool AllowPersonalApiKeys { get; set; }
+
+        /// <summary>
+        /// Whether new team and organization API keys can be created. Existing keys keep working.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allow_service_account_api_keys")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool AllowServiceAccountApiKeys { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,6 +64,12 @@ namespace Baseten
         /// </param>
         /// <param name="createdAt">
         /// Time the organization was created in ISO 8601 format
+        /// </param>
+        /// <param name="allowPersonalApiKeys">
+        /// Whether members can create new personal API keys. Existing keys keep working.
+        /// </param>
+        /// <param name="allowServiceAccountApiKeys">
+        /// Whether new team and organization API keys can be created. Existing keys keep working.
         /// </param>
         /// <param name="name">
         /// Display name of the organization<br/>
@@ -65,6 +85,8 @@ namespace Baseten
         public OrganizationInfoV1(
             string orgId,
             global::System.DateTime createdAt,
+            bool allowPersonalApiKeys,
+            bool allowServiceAccountApiKeys,
             string? name,
             global::Baseten.AwsAssumeRoleV1? awsAssumeRole)
         {
@@ -72,6 +94,8 @@ namespace Baseten
             this.Name = name;
             this.CreatedAt = createdAt;
             this.AwsAssumeRole = awsAssumeRole;
+            this.AllowPersonalApiKeys = allowPersonalApiKeys;
+            this.AllowServiceAccountApiKeys = allowServiceAccountApiKeys;
         }
 
         /// <summary>

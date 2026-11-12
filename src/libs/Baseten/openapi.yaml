@@ -10304,6 +10304,275 @@
                     }
                 },
                 "x-stability": "unstable"
+            },
+            "patch": {
+                "summary": "Updates the authenticated organization",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/organizations/me \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"allow_personal_api_keys\": null,\n  \"allow_service_account_api_keys\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/organizations/me\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'allow_personal_api_keys': None, 'allow_service_account_api_keys': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates settings of the organization of the user making the request. Only organization admins can call it. Omitted fields are unchanged.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateOrganizationRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationInfoV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/service_accounts": {
+            "get": {
+                "summary": "Lists service accounts",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/service_accounts \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/service_accounts\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'team_id': None, 'disabled': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the service accounts you administer: every account for an organization admin, and your teams' accounts for a team admin. Workload identity federation tokens act as service accounts.",
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of items to return.",
+                        "schema": {
+                            "default": 100,
+                            "maximum": 1000,
+                            "minimum": 1,
+                            "title": "Limit",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "team_id",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only this team's accounts",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Team Id"
+                        }
+                    },
+                    {
+                        "name": "disabled",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only disabled or enabled accounts",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Disabled"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceAccountsV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "post": {
+                "summary": "Creates a service account",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/service_accounts \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"ci-deployer\",\n  \"description\": \"GitHub Actions deploys from acme/models\",\n  \"team_id\": \"abcd1234\",\n  \"preset_permissions\": {\n    \"type\": \"WORKSPACE_MANAGE_ALL\"\n  }\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/service_accounts\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'ci-deployer', 'description': 'GitHub Actions deploys from acme/models', 'team_id': 'abcd1234', 'preset_permissions': {'type': 'WORKSPACE_MANAGE_ALL'}}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a service account that workload identity federation tokens act as. It's enabled at once. Omit `team_id` for an organization account, which only an organization admin can create. A team admin can create accounts for their own team.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateServiceAccountRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceAccountV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/service_accounts/{service_account_id}": {
+            "delete": {
+                "summary": "Deletes a service account",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request DELETE \\\n--url https://api.baseten.co/v1/service_accounts/{service_account_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/service_accounts/{service_account_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"DELETE\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Deletes a disabled service account that no trust rule uses. Disable the account and delete its trust rules first.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeletedServiceAccountV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/service_account_id"
+                }
+            ],
+            "get": {
+                "summary": "Gets a service account",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/service_accounts/{service_account_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/service_accounts/{service_account_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceAccountV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "patch": {
+                "summary": "Updates a service account",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/service_accounts/{service_account_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"disabled\": true\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/service_accounts/{service_account_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'disabled': True}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates the fields you send. Set `disabled` to true to stop the account being used, and back to false to restore it. `preset_permissions` replaces the account's access as a whole. The owning team can't change.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateServiceAccountRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceAccountV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
             }
         },
         "/v1/gateway/events": {
@@ -37899,13 +38168,530 @@
                         ],
                         "default": null,
                         "description": "AWS AssumeRole trust-policy inputs; null while the method is not enabled for the organization"
+                    },
+                    "allow_personal_api_keys": {
+                        "description": "Whether members can create new personal API keys. Existing keys keep working.",
+                        "title": "Allow Personal Api Keys",
+                        "type": "boolean"
+                    },
+                    "allow_service_account_api_keys": {
+                        "description": "Whether new team and organization API keys can be created. Existing keys keep working.",
+                        "title": "Allow Service Account Api Keys",
+                        "type": "boolean"
                     }
                 },
                 "required": [
                     "org_id",
-                    "created_at"
+                    "created_at",
+                    "allow_personal_api_keys",
+                    "allow_service_account_api_keys"
                 ],
                 "title": "OrganizationInfoV1",
+                "type": "object"
+            },
+            "UpdateOrganizationRequestV1": {
+                "additionalProperties": false,
+                "description": "Partial update of the caller's organization settings. Omitted fields are unchanged.",
+                "properties": {
+                    "allow_personal_api_keys": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Whether members can create new personal API keys. Null is not accepted.",
+                        "title": "Allow Personal Api Keys"
+                    },
+                    "allow_service_account_api_keys": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Whether new team and organization API keys can be created. Null is not accepted.",
+                        "title": "Allow Service Account Api Keys"
+                    }
+                },
+                "title": "UpdateOrganizationRequestV1",
+                "type": "object"
+            },
+            "ServiceAccountPresetPermissionsV1": {
+                "description": "A service account's access: one of the access types API keys have.\n\nTemporary: mirrors API key access until fine-grained access control is available, and may be removed.",
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/ServiceAccountPresetTypeV1",
+                        "description": "What the service account may do. WORKSPACE_MANAGE_API_KEYS is for organization-level accounts only; every other type needs a team.",
+                        "examples": [
+                            "WORKSPACE_MANAGE_ALL"
+                        ]
+                    },
+                    "model_ids": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "WORKSPACE_INVOKE and WORKSPACE_EXPORT_METRICS only. Models the account covers. Omit for every model in the team, including models added later.",
+                        "examples": [
+                            [
+                                "abcd1234"
+                            ]
+                        ],
+                        "title": "Model Ids"
+                    },
+                    "environment_names": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "WORKSPACE_INVOKE: environments the account may call; omit for all. With model_ids, each model must have each environment. WORKSPACE_MANAGE_ALL: restricted environments the account may also manage.",
+                        "examples": [
+                            [
+                                "production"
+                            ]
+                        ],
+                        "title": "Environment Names"
+                    },
+                    "model_api_slugs": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "WORKSPACE_INVOKE_MODEL_APIS only. Model APIs the account may call; omit for all.",
+                        "examples": [
+                            [
+                                "my-model-api"
+                            ]
+                        ],
+                        "title": "Model Api Slugs"
+                    }
+                },
+                "required": [
+                    "type"
+                ],
+                "title": "ServiceAccountPresetPermissionsV1",
+                "type": "object"
+            },
+            "ServiceAccountPresetTypeV1": {
+                "description": "What a service account may do: the workspace API key categories, plus Model APIs.\n\nTemporary: mirrors API key access until fine-grained access control is available, and may be removed.",
+                "enum": [
+                    "WORKSPACE_MANAGE_ALL",
+                    "WORKSPACE_INVOKE",
+                    "WORKSPACE_EXPORT_METRICS",
+                    "WORKSPACE_MANAGE_API_KEYS",
+                    "WORKSPACE_INVOKE_MODEL_APIS"
+                ],
+                "title": "ServiceAccountPresetTypeV1",
+                "type": "string"
+            },
+            "ServiceAccountV1": {
+                "description": "A named service account that workload identity federation tokens act as.",
+                "properties": {
+                    "id": {
+                        "description": "Service account ID",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name, unique in the organization",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Description",
+                        "title": "Description"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The team that owns the account. Null for an organization account.",
+                        "title": "Team Id"
+                    },
+                    "preset_permissions": {
+                        "$ref": "#/components/schemas/ServiceAccountPresetPermissionsV1",
+                        "description": "What the service account may do. Temporary; may be removed once fine-grained access control is available."
+                    },
+                    "disabled": {
+                        "description": "Whether the account is disabled. A disabled account can't be used.",
+                        "title": "Disabled",
+                        "type": "boolean"
+                    },
+                    "last_used_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Last time a token was exchanged for this account. Null until the first.",
+                        "title": "Last Used At"
+                    },
+                    "created_at": {
+                        "description": "Time the account was created",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "Time the account was last updated",
+                        "format": "date-time",
+                        "title": "Updated At",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "preset_permissions",
+                    "disabled",
+                    "created_at",
+                    "updated_at"
+                ],
+                "title": "ServiceAccountV1",
+                "type": "object"
+            },
+            "ServiceAccountsV1": {
+                "description": "A page of service accounts.",
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/ServiceAccountV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "ServiceAccountsV1",
+                "type": "object"
+            },
+            "ServiceAccountsRequestV1": {
+                "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "default": 100,
+                        "description": "Maximum number of items to return.",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only this team's accounts",
+                        "title": "Team Id"
+                    },
+                    "disabled": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only disabled or enabled accounts",
+                        "title": "Disabled"
+                    }
+                },
+                "title": "ServiceAccountsRequestV1",
+                "type": "object"
+            },
+            "ServiceAccountPresetPermissionsRequestV1": {
+                "additionalProperties": false,
+                "description": "A service account's access, as sent. Omit a list for no restriction; never send it empty.",
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/ServiceAccountPresetTypeV1",
+                        "description": "What the service account may do. WORKSPACE_MANAGE_API_KEYS is for organization-level accounts only; every other type needs a team.",
+                        "examples": [
+                            "WORKSPACE_MANAGE_ALL"
+                        ]
+                    },
+                    "model_ids": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "WORKSPACE_INVOKE and WORKSPACE_EXPORT_METRICS only. Models the account covers. Omit for every model in the team, including models added later.",
+                        "examples": [
+                            [
+                                "abcd1234"
+                            ]
+                        ],
+                        "title": "Model Ids"
+                    },
+                    "environment_names": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "WORKSPACE_INVOKE: environments the account may call; omit for all. With model_ids, each model must have each environment. WORKSPACE_MANAGE_ALL: restricted environments the account may also manage.",
+                        "examples": [
+                            [
+                                "production"
+                            ]
+                        ],
+                        "title": "Environment Names"
+                    },
+                    "model_api_slugs": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "WORKSPACE_INVOKE_MODEL_APIS only. Model APIs the account may call; omit for all.",
+                        "examples": [
+                            [
+                                "my-model-api"
+                            ]
+                        ],
+                        "title": "Model Api Slugs"
+                    }
+                },
+                "required": [
+                    "type"
+                ],
+                "title": "ServiceAccountPresetPermissionsRequestV1",
+                "type": "object"
+            },
+            "CreateServiceAccountRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to create a service account.",
+                "properties": {
+                    "name": {
+                        "description": "Name, unique in the organization. Can be changed later.",
+                        "examples": [
+                            "ci-deployer"
+                        ],
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "maxLength": 1024,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional description, up to 1,024 characters",
+                        "title": "Description"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The team that owns the account. Omit for an organization account. Can't be changed.",
+                        "title": "Team Id"
+                    },
+                    "preset_permissions": {
+                        "$ref": "#/components/schemas/ServiceAccountPresetPermissionsRequestV1",
+                        "description": "What the service account may do. Can be changed later. Temporary; may be removed once fine-grained access control is available."
+                    }
+                },
+                "required": [
+                    "name",
+                    "preset_permissions"
+                ],
+                "title": "CreateServiceAccountRequestV1",
+                "type": "object"
+            },
+            "DeletedServiceAccountV1": {
+                "properties": {
+                    "id": {
+                        "description": "ID of the deleted service account",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "deleted": {
+                        "description": "Always true",
+                        "title": "Deleted",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id",
+                    "deleted"
+                ],
+                "title": "DeletedServiceAccountV1",
+                "type": "object"
+            },
+            "UpdateServiceAccountRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to update a service account. Only the fields sent change.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "maxLength": 255,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name, unique in the organization",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "maxLength": 1024,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Description, up to 1,024 characters; null clears it",
+                        "title": "Description"
+                    },
+                    "disabled": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Disable the account to stop it being used, or enable it again",
+                        "title": "Disabled"
+                    },
+                    "preset_permissions": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/ServiceAccountPresetPermissionsRequestV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Replaces the account's access as a whole. Temporary; may be removed once fine-grained access control is available."
+                    }
+                },
+                "title": "UpdateServiceAccountRequestV1",
                 "type": "object"
             },
             "GatewayEventTokensV1": {
@@ -38866,6 +39652,18 @@
                         "title": "Name",
                         "type": "string"
                     },
+                    "alias": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The route's claude-desktop alias, for Claude Code desktop. Null until the backfill mints it.",
+                        "title": "Alias"
+                    },
                     "team_id": {
                         "description": "Identifier of the owning team.",
                         "title": "Team Id",
@@ -38935,6 +39733,7 @@
                 "required": [
                     "id",
                     "name",
+                    "alias",
                     "team_id",
                     "team_name",
                     "display_name",
@@ -45163,6 +45962,14 @@
                     "type": "string"
                 },
                 "name": "user_id",
+                "in": "path",
+                "required": true
+            },
+            "service_account_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "service_account_id",
                 "in": "path",
                 "required": true
             },
