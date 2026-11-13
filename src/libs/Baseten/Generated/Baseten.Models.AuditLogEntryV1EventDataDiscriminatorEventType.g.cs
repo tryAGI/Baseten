@@ -151,6 +151,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        OrganizationApiKeySettingsUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         ProviderConnectionCreated,
         /// <summary>
         ///
@@ -297,6 +301,7 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelRenamed => "MODEL_RENAMED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.OrganizationApiKeySettingsUpdated => "ORGANIZATION_API_KEY_SETTINGS_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionCreated => "PROVIDER_CONNECTION_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionDeleted => "PROVIDER_CONNECTION_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionUpdated => "PROVIDER_CONNECTION_UPDATED",
@@ -367,6 +372,7 @@ namespace Baseten
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelPromotionControlAction,
                 "MODEL_RENAMED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelRenamed,
+                "ORGANIZATION_API_KEY_SETTINGS_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.OrganizationApiKeySettingsUpdated,
                 "PROVIDER_CONNECTION_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionCreated,
                 "PROVIDER_CONNECTION_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionDeleted,
                 "PROVIDER_CONNECTION_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionUpdated,

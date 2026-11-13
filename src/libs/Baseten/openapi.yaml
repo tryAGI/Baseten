@@ -10575,6 +10575,498 @@
                 "x-stability": "unstable"
             }
         },
+        "/v1/access/predefined_identity_providers": {
+            "get": {
+                "summary": "Lists predefined identity providers",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/access/predefined_identity_providers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/predefined_identity_providers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the identity providers Baseten supports, with the issuer format for those where each account, tenant, or cluster has its own issuer.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PredefinedIdentityProvidersV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/access/identity_providers": {
+            "get": {
+                "summary": "Lists identity providers",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/access/identity_providers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'predefined_kind': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the organization's identity providers. Organization and team admins can list them.",
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of items to return.",
+                        "schema": {
+                            "default": 100,
+                            "maximum": 1000,
+                            "minimum": 1,
+                            "title": "Limit",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "predefined_kind",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only this predefined provider's issuers",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/PredefinedIdentityProviderKindV1"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IdentityProvidersV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "post": {
+                "summary": "Adds an identity provider",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/access/identity_providers \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"prod-eks\",\n  \"predefined\": {\n    \"kind\": \"AWS_EKS\",\n    \"issuer_url\": \"https://oidc.eks.us-west-2.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE\"\n  }\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'prod-eks', 'predefined': {'kind': 'AWS_EKS', 'issuer_url': 'https://oidc.eks.us-west-2.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE'}}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Adds an identity provider to the organization. For a provider with a per-customer issuer, the issuer must match the provider's format, and its signing keys are fetched before it's saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateIdentityProviderRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IdentityProviderV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/access/identity_providers/{identity_provider_id}": {
+            "delete": {
+                "summary": "Deletes an identity provider",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request DELETE \\\n--url https://api.baseten.co/v1/access/identity_providers/{identity_provider_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers/{identity_provider_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"DELETE\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Removes the identity provider from the organization. Returns 409 while a trust rule uses it. Only organization admins can call this endpoint.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeletedIdentityProviderV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/identity_provider_id"
+                }
+            ],
+            "get": {
+                "summary": "Gets an identity provider",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/access/identity_providers/{identity_provider_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers/{identity_provider_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IdentityProviderV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "patch": {
+                "summary": "Updates an identity provider",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/access/identity_providers/{identity_provider_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"prod-eks\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers/{identity_provider_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'name': 'prod-eks'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates the fields you send. The provider and issuer can't change. Only organization admins can call this endpoint.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateIdentityProviderRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IdentityProviderV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/access/trust_rules": {
+            "get": {
+                "summary": "Lists trust rules",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/access/trust_rules \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/trust_rules\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'identity_provider_id': None, 'service_account_id': None, 'team_id': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists the trust rules you administer: every rule for an organization admin, and rules for your teams' service accounts for a team admin.",
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of items to return.",
+                        "schema": {
+                            "default": 100,
+                            "maximum": 1000,
+                            "minimum": 1,
+                            "title": "Limit",
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "identity_provider_id",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only this provider's rules",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Identity Provider Id"
+                        }
+                    },
+                    {
+                        "name": "service_account_id",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only rules for this service account",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Service Account Id"
+                        }
+                    },
+                    {
+                        "name": "team_id",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only rules for this team's service accounts",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Team Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccessTrustRulesV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "post": {
+                "summary": "Creates a trust rule",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/access/trust_rules \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"models-main-deploy\",\n  \"identity_provider_id\": \"abcd1234\",\n  \"service_account_id\": \"wxyz5678\",\n  \"condition\": \"claims.repository_owner_id == '12345' && claims.sub == 'repo:acme/models:ref:refs/heads/main'\",\n  \"audience\": \"https://api.baseten.co\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/trust_rules\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'models-main-deploy', 'identity_provider_id': 'abcd1234', 'service_account_id': 'wxyz5678', 'condition': \"claims.repository_owner_id == '12345' && claims.sub == 'repo:acme/models:ref:refs/heads/main'\", 'audience': 'https://api.baseten.co'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Creates a rule that lets tokens from an identity provider act as a service account. Organization admins can create rules for any service account, team admins for their own team's. An organization API key manager key can't target organization accounts.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAccessTrustRuleRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccessTrustRuleV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/access/trust_rules/{trust_rule_id}": {
+            "delete": {
+                "summary": "Deletes a trust rule",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request DELETE \\\n--url https://api.baseten.co/v1/access/trust_rules/{trust_rule_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/trust_rules/{trust_rule_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"DELETE\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "New exchanges through the rule fail at once; tokens already issued keep working until they expire.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeletedAccessTrustRuleV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/trust_rule_id"
+                }
+            ],
+            "get": {
+                "summary": "Gets a trust rule",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/access/trust_rules/{trust_rule_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/trust_rules/{trust_rule_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccessTrustRuleV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            },
+            "patch": {
+                "summary": "Updates a trust rule",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PATCH \\\n--url https://api.baseten.co/v1/access/trust_rules/{trust_rule_id} \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": \"models-release-deploy\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/trust_rules/{trust_rule_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'name': 'models-release-deploy'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Updates the fields you send. Changes apply to new exchanges only. The identity provider can't change.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateAccessTrustRuleRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccessTrustRuleV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
         "/v1/gateway/events": {
             "get": {
                 "summary": "Lists gateway events",
@@ -18510,6 +19002,7 @@
                                 "MODEL_DEPLOYMENT_RETRIED": "#/components/schemas/AuditLogEventModelDeploymentRetriedV1",
                                 "MODEL_PROMOTION_CONTROL_ACTION": "#/components/schemas/AuditLogEventModelPromotionControlActionV1",
                                 "MODEL_RENAMED": "#/components/schemas/AuditLogEventModelRenamedV1",
+                                "ORGANIZATION_API_KEY_SETTINGS_UPDATED": "#/components/schemas/AuditLogEventOrganizationApiKeySettingsUpdatedV1",
                                 "PROVIDER_CONNECTION_CREATED": "#/components/schemas/AuditLogEventProviderConnectionCreatedV1",
                                 "PROVIDER_CONNECTION_DELETED": "#/components/schemas/AuditLogEventProviderConnectionDeletedV1",
                                 "PROVIDER_CONNECTION_UPDATED": "#/components/schemas/AuditLogEventProviderConnectionUpdatedV1",
@@ -18616,6 +19109,9 @@
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventApiKeyLifetimeLimitsUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventOrganizationApiKeySettingsUpdatedV1"
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventGatewayEndpointCreatedV1"
@@ -22049,6 +22545,46 @@
                 "title": "AuditLogEventModelRenamedV1",
                 "type": "object"
             },
+            "AuditLogEventOrganizationApiKeySettingsUpdatedV1": {
+                "description": "An administrator changed which classes of API key the organization allows creating.",
+                "properties": {
+                    "event_type": {
+                        "const": "ORGANIZATION_API_KEY_SETTINGS_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "organization_id": {
+                        "title": "Organization Id",
+                        "type": "string"
+                    },
+                    "previous_allow_personal_api_keys": {
+                        "title": "Previous Allow Personal Api Keys",
+                        "type": "boolean"
+                    },
+                    "new_allow_personal_api_keys": {
+                        "title": "New Allow Personal Api Keys",
+                        "type": "boolean"
+                    },
+                    "previous_allow_service_account_api_keys": {
+                        "title": "Previous Allow Service Account Api Keys",
+                        "type": "boolean"
+                    },
+                    "new_allow_service_account_api_keys": {
+                        "title": "New Allow Service Account Api Keys",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "organization_id",
+                    "previous_allow_personal_api_keys",
+                    "new_allow_personal_api_keys",
+                    "previous_allow_service_account_api_keys",
+                    "new_allow_service_account_api_keys"
+                ],
+                "title": "AuditLogEventOrganizationApiKeySettingsUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventPromotionSettingsOverrideV1": {
                 "description": "Promotion settings overridden for one promotion. Null means the environment's value. Not\nitself a payload in the discriminated union.",
                 "properties": {
@@ -22556,7 +23092,8 @@
                     "VOLUME_UPDATED",
                     "TELEMETRY_EXPORT_CREATED",
                     "TELEMETRY_EXPORT_UPDATED",
-                    "TELEMETRY_EXPORT_DELETED"
+                    "TELEMETRY_EXPORT_DELETED",
+                    "ORGANIZATION_API_KEY_SETTINGS_UPDATED"
                 ],
                 "title": "AuditLogEventTypeV1",
                 "type": "string"
@@ -38694,6 +39231,766 @@
                 "title": "UpdateServiceAccountRequestV1",
                 "type": "object"
             },
+            "PredefinedIdentityProviderKindV1": {
+                "description": "An identity provider Baseten supports.",
+                "enum": [
+                    "GITHUB_ACTIONS",
+                    "GCP",
+                    "BASETEN",
+                    "AWS_IAM",
+                    "AWS_EKS",
+                    "AZURE_MANAGED_IDENTITY_V1",
+                    "AZURE_MANAGED_IDENTITY_V2",
+                    "AZURE_AKS"
+                ],
+                "title": "PredefinedIdentityProviderKindV1",
+                "type": "string"
+            },
+            "PredefinedIdentityProviderV1": {
+                "properties": {
+                    "kind": {
+                        "$ref": "#/components/schemas/PredefinedIdentityProviderKindV1",
+                        "description": "Pass as `kind` when adding the provider"
+                    },
+                    "name": {
+                        "description": "Display name",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "issuer_url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The `iss` claim its tokens carry. Null when each account, tenant, or cluster has its own issuer, which you pass as `issuer_url` when adding the provider.",
+                        "title": "Issuer Url"
+                    },
+                    "issuer_url_example": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "An example of the `issuer_url` to pass. Null when the issuer is fixed.",
+                        "title": "Issuer Url Example"
+                    }
+                },
+                "required": [
+                    "kind",
+                    "name"
+                ],
+                "title": "PredefinedIdentityProviderV1",
+                "type": "object"
+            },
+            "PredefinedIdentityProvidersV1": {
+                "properties": {
+                    "items": {
+                        "description": "Identity providers Baseten supports",
+                        "items": {
+                            "$ref": "#/components/schemas/PredefinedIdentityProviderV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "items"
+                ],
+                "title": "PredefinedIdentityProvidersV1",
+                "type": "object"
+            },
+            "IdentityProviderV1": {
+                "description": "An OIDC issuer whose tokens the organization accepts for workload identity federation.",
+                "properties": {
+                    "id": {
+                        "description": "Identity provider ID",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name, unique in the organization",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Description",
+                        "title": "Description"
+                    },
+                    "predefined": {
+                        "$ref": "#/components/schemas/PredefinedIdentityProviderConfigV1",
+                        "description": "Settings of the predefined provider"
+                    },
+                    "created_by": {
+                        "description": "ID of the user who added the provider",
+                        "title": "Created By",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Time the provider was added",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "Time the provider was last updated",
+                        "format": "date-time",
+                        "title": "Updated At",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "predefined",
+                    "created_by",
+                    "created_at",
+                    "updated_at"
+                ],
+                "title": "IdentityProviderV1",
+                "type": "object"
+            },
+            "PredefinedIdentityProviderConfigV1": {
+                "description": "Settings of an identity provider that Baseten defines.",
+                "properties": {
+                    "kind": {
+                        "$ref": "#/components/schemas/PredefinedIdentityProviderKindV1",
+                        "description": "Which predefined provider. Can't be changed."
+                    },
+                    "issuer_url": {
+                        "anyOf": [
+                            {
+                                "maxLength": 1024,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The `iss` claim of the provider's tokens. When adding AWS IAM, Amazon EKS, Azure managed identity, or Azure Kubernetes Service, pass your issuer in the format the predefined identity providers endpoint shows; it's unique in the organization. Can't be passed for other providers, or changed. Always set in responses.",
+                        "title": "Issuer Url"
+                    }
+                },
+                "required": [
+                    "kind"
+                ],
+                "title": "PredefinedIdentityProviderConfigV1",
+                "type": "object"
+            },
+            "IdentityProvidersV1": {
+                "description": "A page of identity providers.",
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/IdentityProviderV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "IdentityProvidersV1",
+                "type": "object"
+            },
+            "IdentityProvidersRequestV1": {
+                "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "default": 100,
+                        "description": "Maximum number of items to return.",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "predefined_kind": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/PredefinedIdentityProviderKindV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only this predefined provider's issuers"
+                    }
+                },
+                "title": "IdentityProvidersRequestV1",
+                "type": "object"
+            },
+            "CreatePredefinedIdentityProviderConfigV1": {
+                "additionalProperties": false,
+                "description": "Settings of the predefined identity provider to add.",
+                "properties": {
+                    "kind": {
+                        "$ref": "#/components/schemas/PredefinedIdentityProviderKindV1",
+                        "description": "Which predefined provider. Can't be changed."
+                    },
+                    "issuer_url": {
+                        "anyOf": [
+                            {
+                                "maxLength": 1024,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The `iss` claim of the provider's tokens. When adding AWS IAM, Amazon EKS, Azure managed identity, or Azure Kubernetes Service, pass your issuer in the format the predefined identity providers endpoint shows; it's unique in the organization. Can't be passed for other providers, or changed. Always set in responses.",
+                        "title": "Issuer Url"
+                    }
+                },
+                "required": [
+                    "kind"
+                ],
+                "title": "CreatePredefinedIdentityProviderConfigV1",
+                "type": "object"
+            },
+            "CreateIdentityProviderRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to add an identity provider.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "maxLength": 255,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name, unique in the organization. Defaults to the provider's display name, so pass one when adding a second issuer of the same provider.",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "maxLength": 1024,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional description",
+                        "title": "Description"
+                    },
+                    "predefined": {
+                        "$ref": "#/components/schemas/CreatePredefinedIdentityProviderConfigV1",
+                        "description": "The predefined provider to add"
+                    }
+                },
+                "required": [
+                    "predefined"
+                ],
+                "title": "CreateIdentityProviderRequestV1",
+                "type": "object"
+            },
+            "DeletedIdentityProviderV1": {
+                "properties": {
+                    "id": {
+                        "description": "ID of the deleted identity provider",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "deleted": {
+                        "description": "Always true",
+                        "title": "Deleted",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id",
+                    "deleted"
+                ],
+                "title": "DeletedIdentityProviderV1",
+                "type": "object"
+            },
+            "UpdateIdentityProviderRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to update an identity provider. Only the fields sent change.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "maxLength": 255,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name, unique in the organization",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "maxLength": 1024,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Description; null clears it",
+                        "title": "Description"
+                    }
+                },
+                "title": "UpdateIdentityProviderRequestV1",
+                "type": "object"
+            },
+            "AccessTrustRuleV1": {
+                "description": "Which tokens from an identity provider may act as a service account.",
+                "properties": {
+                    "id": {
+                        "description": "Trust rule ID. Workloads pass it when they exchange a token.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name, unique in the organization",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Description",
+                        "title": "Description"
+                    },
+                    "identity_provider_id": {
+                        "description": "The identity provider whose tokens it accepts",
+                        "title": "Identity Provider Id",
+                        "type": "string"
+                    },
+                    "identity_provider_name": {
+                        "description": "Name of the identity provider",
+                        "title": "Identity Provider Name",
+                        "type": "string"
+                    },
+                    "service_account_id": {
+                        "description": "The service account its tokens act as",
+                        "title": "Service Account Id",
+                        "type": "string"
+                    },
+                    "service_account_name": {
+                        "description": "Name of the service account",
+                        "title": "Service Account Name",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The service account's team. Null for an organization service account.",
+                        "title": "Team Id"
+                    },
+                    "team_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name of the service account's team. Null for an organization service account.",
+                        "title": "Team Name"
+                    },
+                    "condition": {
+                        "description": "A CEL expression over the token's `claims` that must evaluate to true. It must pin a specific `claims.sub` in a top-level `&&` clause, plus any provider-required checks. Up to 4,096 characters.",
+                        "examples": [
+                            "claims.repository_owner_id == '12345' && claims.sub.startsWith('repo:acme/models:') && claims.ref == 'refs/heads/main'"
+                        ],
+                        "title": "Condition",
+                        "type": "string"
+                    },
+                    "audience": {
+                        "description": "The token's `aud` must equal this, or contain it when `aud` is a list. Up to 1,024 characters.",
+                        "title": "Audience",
+                        "type": "string"
+                    },
+                    "max_access_token_lifetime_seconds": {
+                        "description": "Longest lifetime of a token the rule issues, in seconds",
+                        "title": "Max Access Token Lifetime Seconds",
+                        "type": "integer"
+                    },
+                    "last_used_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Last token exchange through the rule. Null until the first.",
+                        "title": "Last Used At"
+                    },
+                    "created_by": {
+                        "description": "ID of the user who created the rule",
+                        "title": "Created By",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Time the rule was created",
+                        "format": "date-time",
+                        "title": "Created At",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "Time the rule was last updated",
+                        "format": "date-time",
+                        "title": "Updated At",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "identity_provider_id",
+                    "identity_provider_name",
+                    "service_account_id",
+                    "service_account_name",
+                    "condition",
+                    "audience",
+                    "max_access_token_lifetime_seconds",
+                    "created_by",
+                    "created_at",
+                    "updated_at"
+                ],
+                "title": "AccessTrustRuleV1",
+                "type": "object"
+            },
+            "AccessTrustRulesV1": {
+                "description": "A page of trust rules.",
+                "properties": {
+                    "items": {
+                        "description": "Items in this page.",
+                        "items": {
+                            "$ref": "#/components/schemas/AccessTrustRuleV1"
+                        },
+                        "title": "Items",
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
+                    }
+                },
+                "required": [
+                    "items",
+                    "pagination"
+                ],
+                "title": "AccessTrustRulesV1",
+                "type": "object"
+            },
+            "AccessTrustRulesRequestV1": {
+                "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor returned by a previous page. Omit to fetch the first page.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "default": 100,
+                        "description": "Maximum number of items to return.",
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "title": "Limit",
+                        "type": "integer"
+                    },
+                    "identity_provider_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only this provider's rules",
+                        "title": "Identity Provider Id"
+                    },
+                    "service_account_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only rules for this service account",
+                        "title": "Service Account Id"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only rules for this team's service accounts",
+                        "title": "Team Id"
+                    }
+                },
+                "title": "AccessTrustRulesRequestV1",
+                "type": "object"
+            },
+            "CreateAccessTrustRuleRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to create a trust rule.",
+                "properties": {
+                    "name": {
+                        "description": "Name, unique in the organization. Can be changed later.",
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional description",
+                        "title": "Description"
+                    },
+                    "identity_provider_id": {
+                        "description": "Whose tokens the rule accepts. Can't be changed.",
+                        "title": "Identity Provider Id",
+                        "type": "string"
+                    },
+                    "service_account_id": {
+                        "description": "The service account its tokens act as. Can be changed later.",
+                        "title": "Service Account Id",
+                        "type": "string"
+                    },
+                    "condition": {
+                        "description": "A CEL expression over the token's `claims` that must evaluate to true. It must pin a specific `claims.sub` in a top-level `&&` clause, plus any provider-required checks. Up to 4,096 characters. Can be changed later.",
+                        "examples": [
+                            "claims.repository_owner_id == '12345' && claims.sub.startsWith('repo:acme/models:') && claims.ref == 'refs/heads/main'"
+                        ],
+                        "title": "Condition",
+                        "type": "string"
+                    },
+                    "audience": {
+                        "description": "The token's `aud` must equal this, or contain it when `aud` is a list. Up to 1,024 characters. Can be changed later.",
+                        "title": "Audience",
+                        "type": "string"
+                    },
+                    "max_access_token_lifetime_seconds": {
+                        "default": 3600,
+                        "description": "Longest lifetime of a token the rule issues, 60 to 3600 seconds. Can be changed later.",
+                        "maximum": 3600,
+                        "minimum": 60,
+                        "title": "Max Access Token Lifetime Seconds",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "name",
+                    "identity_provider_id",
+                    "service_account_id",
+                    "condition",
+                    "audience"
+                ],
+                "title": "CreateAccessTrustRuleRequestV1",
+                "type": "object"
+            },
+            "DeletedAccessTrustRuleV1": {
+                "properties": {
+                    "id": {
+                        "description": "ID of the deleted trust rule",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "deleted": {
+                        "description": "Always true",
+                        "title": "Deleted",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "id",
+                    "deleted"
+                ],
+                "title": "DeletedAccessTrustRuleV1",
+                "type": "object"
+            },
+            "UpdateAccessTrustRuleRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to update a trust rule. Only the fields sent change.",
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "maxLength": 255,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Name, unique in the organization",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Description; null clears it",
+                        "title": "Description"
+                    },
+                    "condition": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "A CEL expression over the token's `claims` that must evaluate to true. It must pin a specific `claims.sub` in a top-level `&&` clause, plus any provider-required checks. Up to 4,096 characters.",
+                        "title": "Condition"
+                    },
+                    "audience": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The token's `aud` must equal this, or contain it when `aud` is a list. Up to 1,024 characters.",
+                        "title": "Audience"
+                    },
+                    "max_access_token_lifetime_seconds": {
+                        "anyOf": [
+                            {
+                                "maximum": 3600,
+                                "minimum": 60,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Longest lifetime of a token the rule issues, 60 to 3600 seconds. Tokens already issued keep their lifetime.",
+                        "title": "Max Access Token Lifetime Seconds"
+                    },
+                    "service_account_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Moves the rule to another service account. Tokens already issued keep the old account until they expire.",
+                        "title": "Service Account Id"
+                    }
+                },
+                "title": "UpdateAccessTrustRuleRequestV1",
+                "type": "object"
+            },
             "GatewayEventTokensV1": {
                 "properties": {
                     "inputTokens": {
@@ -45970,6 +47267,22 @@
                     "type": "string"
                 },
                 "name": "service_account_id",
+                "in": "path",
+                "required": true
+            },
+            "identity_provider_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "identity_provider_id",
+                "in": "path",
+                "required": true
+            },
+            "trust_rule_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "trust_rule_id",
                 "in": "path",
                 "required": true
             },

@@ -151,6 +151,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        OrganizationApiKeySettingsUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         ProviderConnectionCreated,
         /// <summary>
         ///
@@ -297,6 +301,7 @@ namespace Baseten
                 AuditLogEventTypeV1.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEventTypeV1.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
                 AuditLogEventTypeV1.ModelRenamed => "MODEL_RENAMED",
+                AuditLogEventTypeV1.OrganizationApiKeySettingsUpdated => "ORGANIZATION_API_KEY_SETTINGS_UPDATED",
                 AuditLogEventTypeV1.ProviderConnectionCreated => "PROVIDER_CONNECTION_CREATED",
                 AuditLogEventTypeV1.ProviderConnectionDeleted => "PROVIDER_CONNECTION_DELETED",
                 AuditLogEventTypeV1.ProviderConnectionUpdated => "PROVIDER_CONNECTION_UPDATED",
@@ -367,6 +372,7 @@ namespace Baseten
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEventTypeV1.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEventTypeV1.ModelPromotionControlAction,
                 "MODEL_RENAMED" => AuditLogEventTypeV1.ModelRenamed,
+                "ORGANIZATION_API_KEY_SETTINGS_UPDATED" => AuditLogEventTypeV1.OrganizationApiKeySettingsUpdated,
                 "PROVIDER_CONNECTION_CREATED" => AuditLogEventTypeV1.ProviderConnectionCreated,
                 "PROVIDER_CONNECTION_DELETED" => AuditLogEventTypeV1.ProviderConnectionDeleted,
                 "PROVIDER_CONNECTION_UPDATED" => AuditLogEventTypeV1.ProviderConnectionUpdated,
