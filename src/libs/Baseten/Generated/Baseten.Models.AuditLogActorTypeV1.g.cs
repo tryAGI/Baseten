@@ -23,6 +23,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ServiceAccount,
+        /// <summary>
+        ///
+        /// </summary>
         TombstoneUser,
         /// <summary>
         ///
@@ -45,6 +49,7 @@ namespace Baseten
                 AuditLogActorTypeV1.ApiKey => "API_KEY",
                 AuditLogActorTypeV1.BasetenSystem => "BASETEN_SYSTEM",
                 AuditLogActorTypeV1.BasetenUser => "BASETEN_USER",
+                AuditLogActorTypeV1.ServiceAccount => "SERVICE_ACCOUNT",
                 AuditLogActorTypeV1.TombstoneUser => "TOMBSTONE_USER",
                 AuditLogActorTypeV1.User => "USER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -60,6 +65,7 @@ namespace Baseten
                 "API_KEY" => AuditLogActorTypeV1.ApiKey,
                 "BASETEN_SYSTEM" => AuditLogActorTypeV1.BasetenSystem,
                 "BASETEN_USER" => AuditLogActorTypeV1.BasetenUser,
+                "SERVICE_ACCOUNT" => AuditLogActorTypeV1.ServiceAccount,
                 "TOMBSTONE_USER" => AuditLogActorTypeV1.TombstoneUser,
                 "USER" => AuditLogActorTypeV1.User,
                 _ => null,

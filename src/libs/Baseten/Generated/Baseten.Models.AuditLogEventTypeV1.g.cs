@@ -103,6 +103,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        IdentityProviderCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        IdentityProviderDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        IdentityProviderUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         ModelDeleted,
         /// <summary>
         ///
@@ -183,6 +195,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ServiceAccountCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        ServiceAccountDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        ServiceAccountUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         SshCertificateSigned,
         /// <summary>
         ///
@@ -196,6 +220,18 @@ namespace Baseten
         ///
         /// </summary>
         TelemetryExportUpdated,
+        /// <summary>
+        ///
+        /// </summary>
+        TrustRuleCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        TrustRuleDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        TrustRuleUpdated,
         /// <summary>
         ///
         /// </summary>
@@ -289,6 +325,9 @@ namespace Baseten
                 AuditLogEventTypeV1.GridMachineUserCreated => "GRID_MACHINE_USER_CREATED",
                 AuditLogEventTypeV1.GridMachineUserDeleted => "GRID_MACHINE_USER_DELETED",
                 AuditLogEventTypeV1.GridMachineUserUpdated => "GRID_MACHINE_USER_UPDATED",
+                AuditLogEventTypeV1.IdentityProviderCreated => "IDENTITY_PROVIDER_CREATED",
+                AuditLogEventTypeV1.IdentityProviderDeleted => "IDENTITY_PROVIDER_DELETED",
+                AuditLogEventTypeV1.IdentityProviderUpdated => "IDENTITY_PROVIDER_UPDATED",
                 AuditLogEventTypeV1.ModelDeleted => "MODEL_DELETED",
                 AuditLogEventTypeV1.ModelDeployed => "MODEL_DEPLOYED",
                 AuditLogEventTypeV1.ModelDeploymentActivated => "MODEL_DEPLOYMENT_ACTIVATED",
@@ -309,10 +348,16 @@ namespace Baseten
                 AuditLogEventTypeV1.RequireGroupBasedAdminsEnabled => "REQUIRE_GROUP_BASED_ADMINS_ENABLED",
                 AuditLogEventTypeV1.SecretDeleted => "SECRET_DELETED",
                 AuditLogEventTypeV1.SecretUpdated => "SECRET_UPDATED",
+                AuditLogEventTypeV1.ServiceAccountCreated => "SERVICE_ACCOUNT_CREATED",
+                AuditLogEventTypeV1.ServiceAccountDeleted => "SERVICE_ACCOUNT_DELETED",
+                AuditLogEventTypeV1.ServiceAccountUpdated => "SERVICE_ACCOUNT_UPDATED",
                 AuditLogEventTypeV1.SshCertificateSigned => "SSH_CERTIFICATE_SIGNED",
                 AuditLogEventTypeV1.TelemetryExportCreated => "TELEMETRY_EXPORT_CREATED",
                 AuditLogEventTypeV1.TelemetryExportDeleted => "TELEMETRY_EXPORT_DELETED",
                 AuditLogEventTypeV1.TelemetryExportUpdated => "TELEMETRY_EXPORT_UPDATED",
+                AuditLogEventTypeV1.TrustRuleCreated => "TRUST_RULE_CREATED",
+                AuditLogEventTypeV1.TrustRuleDeleted => "TRUST_RULE_DELETED",
+                AuditLogEventTypeV1.TrustRuleUpdated => "TRUST_RULE_UPDATED",
                 AuditLogEventTypeV1.UserInvited => "USER_INVITED",
                 AuditLogEventTypeV1.UserJoinedOrganization => "USER_JOINED_ORGANIZATION",
                 AuditLogEventTypeV1.UserRemoved => "USER_REMOVED",
@@ -360,6 +405,9 @@ namespace Baseten
                 "GRID_MACHINE_USER_CREATED" => AuditLogEventTypeV1.GridMachineUserCreated,
                 "GRID_MACHINE_USER_DELETED" => AuditLogEventTypeV1.GridMachineUserDeleted,
                 "GRID_MACHINE_USER_UPDATED" => AuditLogEventTypeV1.GridMachineUserUpdated,
+                "IDENTITY_PROVIDER_CREATED" => AuditLogEventTypeV1.IdentityProviderCreated,
+                "IDENTITY_PROVIDER_DELETED" => AuditLogEventTypeV1.IdentityProviderDeleted,
+                "IDENTITY_PROVIDER_UPDATED" => AuditLogEventTypeV1.IdentityProviderUpdated,
                 "MODEL_DELETED" => AuditLogEventTypeV1.ModelDeleted,
                 "MODEL_DEPLOYED" => AuditLogEventTypeV1.ModelDeployed,
                 "MODEL_DEPLOYMENT_ACTIVATED" => AuditLogEventTypeV1.ModelDeploymentActivated,
@@ -380,10 +428,16 @@ namespace Baseten
                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED" => AuditLogEventTypeV1.RequireGroupBasedAdminsEnabled,
                 "SECRET_DELETED" => AuditLogEventTypeV1.SecretDeleted,
                 "SECRET_UPDATED" => AuditLogEventTypeV1.SecretUpdated,
+                "SERVICE_ACCOUNT_CREATED" => AuditLogEventTypeV1.ServiceAccountCreated,
+                "SERVICE_ACCOUNT_DELETED" => AuditLogEventTypeV1.ServiceAccountDeleted,
+                "SERVICE_ACCOUNT_UPDATED" => AuditLogEventTypeV1.ServiceAccountUpdated,
                 "SSH_CERTIFICATE_SIGNED" => AuditLogEventTypeV1.SshCertificateSigned,
                 "TELEMETRY_EXPORT_CREATED" => AuditLogEventTypeV1.TelemetryExportCreated,
                 "TELEMETRY_EXPORT_DELETED" => AuditLogEventTypeV1.TelemetryExportDeleted,
                 "TELEMETRY_EXPORT_UPDATED" => AuditLogEventTypeV1.TelemetryExportUpdated,
+                "TRUST_RULE_CREATED" => AuditLogEventTypeV1.TrustRuleCreated,
+                "TRUST_RULE_DELETED" => AuditLogEventTypeV1.TrustRuleDeleted,
+                "TRUST_RULE_UPDATED" => AuditLogEventTypeV1.TrustRuleUpdated,
                 "USER_INVITED" => AuditLogEventTypeV1.UserInvited,
                 "USER_JOINED_ORGANIZATION" => AuditLogEventTypeV1.UserJoinedOrganization,
                 "USER_REMOVED" => AuditLogEventTypeV1.UserRemoved,

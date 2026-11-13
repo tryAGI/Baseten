@@ -84,6 +84,10 @@ namespace Baseten
         ///
         /// </summary>
         WebhookSigningSecrets,
+        /// <summary>
+        ///
+        /// </summary>
+        WorkloadIdentity,
     }
 
     /// <summary>
@@ -117,6 +121,7 @@ namespace Baseten
                 AuditLogEventTypeGroupV1.TelemetryExport => "TELEMETRY_EXPORT",
                 AuditLogEventTypeGroupV1.UserManagement => "USER_MANAGEMENT",
                 AuditLogEventTypeGroupV1.WebhookSigningSecrets => "WEBHOOK_SIGNING_SECRETS",
+                AuditLogEventTypeGroupV1.WorkloadIdentity => "WORKLOAD_IDENTITY",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -146,6 +151,7 @@ namespace Baseten
                 "TELEMETRY_EXPORT" => AuditLogEventTypeGroupV1.TelemetryExport,
                 "USER_MANAGEMENT" => AuditLogEventTypeGroupV1.UserManagement,
                 "WEBHOOK_SIGNING_SECRETS" => AuditLogEventTypeGroupV1.WebhookSigningSecrets,
+                "WORKLOAD_IDENTITY" => AuditLogEventTypeGroupV1.WorkloadIdentity,
                 _ => null,
             };
         }
