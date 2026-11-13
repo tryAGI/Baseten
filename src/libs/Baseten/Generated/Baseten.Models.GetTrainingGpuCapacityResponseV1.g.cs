@@ -22,6 +22,13 @@ namespace Baseten
         public global::System.Collections.Generic.IList<global::Baseten.TeamTrainingGpuCapacityItemV1>? TeamGpuCapacities { get; set; }
 
         /// <summary>
+        /// Whether the organization can submit spot training jobs.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("spot_enabled")]
+        public bool? SpotEnabled { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -36,15 +43,21 @@ namespace Baseten
         /// <param name="teamGpuCapacities">
         /// Per-team GPU capacity limits and current usage per GPU type
         /// </param>
+        /// <param name="spotEnabled">
+        /// Whether the organization can submit spot training jobs.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetTrainingGpuCapacityResponseV1(
             global::System.Collections.Generic.IList<global::Baseten.TrainingGpuCapacityItemV1> gpuCapacities,
-            global::System.Collections.Generic.IList<global::Baseten.TeamTrainingGpuCapacityItemV1>? teamGpuCapacities)
+            global::System.Collections.Generic.IList<global::Baseten.TeamTrainingGpuCapacityItemV1>? teamGpuCapacities,
+            bool? spotEnabled)
         {
             this.GpuCapacities = gpuCapacities ?? throw new global::System.ArgumentNullException(nameof(gpuCapacities));
             this.TeamGpuCapacities = teamGpuCapacities;
+            this.SpotEnabled = spotEnabled;
         }
 
         /// <summary>

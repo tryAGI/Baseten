@@ -8643,7 +8643,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training/capacity\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns GPU capacity limits (baseline and peak) and current usage for the organization.",
+                "description": "Returns on-demand and spot GPU capacity caps and current usage for the organization and its teams.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -18853,6 +18853,25 @@
                 "title": "PrepareModelUploadResponseV1",
                 "type": "object"
             },
+            "AuditFieldChangeV1": {
+                "description": "A field's value before and after an update.",
+                "properties": {
+                    "old": {
+                        "description": "The value before the update.",
+                        "title": "Old"
+                    },
+                    "new": {
+                        "description": "The value after the update.",
+                        "title": "New"
+                    }
+                },
+                "required": [
+                    "old",
+                    "new"
+                ],
+                "title": "AuditFieldChangeV1",
+                "type": "object"
+            },
             "AuditLogActorTypeV1": {
                 "description": "Kind of actor that performed an audited action.",
                 "enum": [
@@ -18860,7 +18879,8 @@
                     "API_KEY",
                     "BASETEN_USER",
                     "BASETEN_SYSTEM",
-                    "TOMBSTONE_USER"
+                    "TOMBSTONE_USER",
+                    "SERVICE_ACCOUNT"
                 ],
                 "title": "AuditLogActorTypeV1",
                 "type": "string"
@@ -18910,6 +18930,45 @@
                         "default": null,
                         "description": "Display name of the acting API key, when the actor is an API key.",
                         "title": "Api Key Name"
+                    },
+                    "service_account_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "ID of the acting service account, when the actor is a service account.",
+                        "title": "Service Account Id"
+                    },
+                    "service_account_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Current name of the acting service account, when the actor is a service account.",
+                        "title": "Service Account Name"
+                    },
+                    "trust_rule_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "ID of the trust rule the acting workload identity federation token was exchanged through, when the actor is a service account.",
+                        "title": "Trust Rule Id"
                     }
                 },
                 "required": [
@@ -18990,6 +19049,9 @@
                                 "GRID_MACHINE_USER_CREATED": "#/components/schemas/AuditLogEventGridMachineUserCreatedV1",
                                 "GRID_MACHINE_USER_DELETED": "#/components/schemas/AuditLogEventGridMachineUserDeletedV1",
                                 "GRID_MACHINE_USER_UPDATED": "#/components/schemas/AuditLogEventGridMachineUserUpdatedV1",
+                                "IDENTITY_PROVIDER_CREATED": "#/components/schemas/AuditLogEventIdentityProviderCreatedV1",
+                                "IDENTITY_PROVIDER_DELETED": "#/components/schemas/AuditLogEventIdentityProviderDeletedV1",
+                                "IDENTITY_PROVIDER_UPDATED": "#/components/schemas/AuditLogEventIdentityProviderUpdatedV1",
                                 "MODEL_DELETED": "#/components/schemas/AuditLogEventModelDeletedV1",
                                 "MODEL_DEPLOYED": "#/components/schemas/AuditLogEventModelDeployedV1",
                                 "MODEL_DEPLOYMENT_ACTIVATED": "#/components/schemas/AuditLogEventModelDeploymentActivatedV1",
@@ -19010,10 +19072,16 @@
                                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED": "#/components/schemas/AuditLogEventRequireGroupBasedAdminsEnabledV1",
                                 "SECRET_DELETED": "#/components/schemas/AuditLogEventSecretDeletedV1",
                                 "SECRET_UPDATED": "#/components/schemas/AuditLogEventSecretUpdatedV1",
+                                "SERVICE_ACCOUNT_CREATED": "#/components/schemas/AuditLogEventServiceAccountCreatedV1",
+                                "SERVICE_ACCOUNT_DELETED": "#/components/schemas/AuditLogEventServiceAccountDeletedV1",
+                                "SERVICE_ACCOUNT_UPDATED": "#/components/schemas/AuditLogEventServiceAccountUpdatedV1",
                                 "SSH_CERTIFICATE_SIGNED": "#/components/schemas/AuditLogEventSshCertificateSignedV1",
                                 "TELEMETRY_EXPORT_CREATED": "#/components/schemas/AuditLogEventTelemetryExportCreatedV1",
                                 "TELEMETRY_EXPORT_DELETED": "#/components/schemas/AuditLogEventTelemetryExportDeletedV1",
                                 "TELEMETRY_EXPORT_UPDATED": "#/components/schemas/AuditLogEventTelemetryExportUpdatedV1",
+                                "TRUST_RULE_CREATED": "#/components/schemas/AuditLogEventTrustRuleCreatedV1",
+                                "TRUST_RULE_DELETED": "#/components/schemas/AuditLogEventTrustRuleDeletedV1",
+                                "TRUST_RULE_UPDATED": "#/components/schemas/AuditLogEventTrustRuleUpdatedV1",
                                 "USER_INVITED": "#/components/schemas/AuditLogEventUserInvitedV1",
                                 "USER_JOINED_ORGANIZATION": "#/components/schemas/AuditLogEventUserJoinedOrganizationV1",
                                 "USER_REMOVED": "#/components/schemas/AuditLogEventUserRemovedV1",
@@ -19214,6 +19282,33 @@
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventTelemetryExportDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventServiceAccountCreatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventServiceAccountUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventServiceAccountDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventIdentityProviderCreatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventIdentityProviderUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventIdentityProviderDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventTrustRuleCreatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventTrustRuleUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventTrustRuleDeletedV1"
                             }
                         ],
                         "title": "Event Data"
@@ -21778,6 +21873,108 @@
                 "title": "AuditLogEventGridMachineUserUpdatedV1",
                 "type": "object"
             },
+            "AuditLogEventIdentityProviderCreatedV1": {
+                "description": "An identity provider was added.",
+                "properties": {
+                    "event_type": {
+                        "const": "IDENTITY_PROVIDER_CREATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "identity_provider_id": {
+                        "title": "Identity Provider Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Null when the provider was added without one.",
+                        "title": "Description"
+                    },
+                    "predefined": {
+                        "$ref": "#/components/schemas/AuditLogEventPredefinedIdentityProviderConfigV1",
+                        "description": "The provider's settings, as the identity provider resource returns them."
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "identity_provider_id",
+                    "name",
+                    "predefined"
+                ],
+                "title": "AuditLogEventIdentityProviderCreatedV1",
+                "type": "object"
+            },
+            "AuditLogEventIdentityProviderDeletedV1": {
+                "description": "An identity provider was deleted.",
+                "properties": {
+                    "event_type": {
+                        "const": "IDENTITY_PROVIDER_DELETED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "identity_provider_id": {
+                        "title": "Identity Provider Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "identity_provider_id",
+                    "name"
+                ],
+                "title": "AuditLogEventIdentityProviderDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventIdentityProviderUpdatedV1": {
+                "description": "An identity provider was updated.",
+                "properties": {
+                    "event_type": {
+                        "const": "IDENTITY_PROVIDER_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "identity_provider_id": {
+                        "title": "Identity Provider Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "changes": {
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AuditFieldChangeV1"
+                        },
+                        "description": "The fields the update changed, keyed by field name.",
+                        "title": "Changes",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "identity_provider_id",
+                    "name",
+                    "changes"
+                ],
+                "title": "AuditLogEventIdentityProviderUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventModelDeletedV1": {
                 "description": "A model was deleted.",
                 "properties": {
@@ -22585,6 +22782,27 @@
                 "title": "AuditLogEventOrganizationApiKeySettingsUpdatedV1",
                 "type": "object"
             },
+            "AuditLogEventPredefinedIdentityProviderConfigV1": {
+                "description": "Settings of a predefined identity provider, as recorded on an identity provider event. Not\nitself an event payload.",
+                "properties": {
+                    "kind": {
+                        "description": "Which predefined provider, for example `AWS_EKS`.",
+                        "title": "Kind",
+                        "type": "string"
+                    },
+                    "issuer_url": {
+                        "description": "The `iss` claim of the provider's tokens.",
+                        "title": "Issuer Url",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "kind",
+                    "issuer_url"
+                ],
+                "title": "AuditLogEventPredefinedIdentityProviderConfigV1",
+                "type": "object"
+            },
             "AuditLogEventPromotionSettingsOverrideV1": {
                 "description": "Promotion settings overridden for one promotion. Null means the environment's value. Not\nitself a payload in the discriminated union.",
                 "properties": {
@@ -22908,6 +23126,162 @@
                 "title": "AuditLogEventSecretUpdatedV1",
                 "type": "object"
             },
+            "AuditLogEventServiceAccountCreatedV1": {
+                "description": "A service account was created.",
+                "properties": {
+                    "event_type": {
+                        "const": "SERVICE_ACCOUNT_CREATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "service_account_id": {
+                        "title": "Service Account Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Null when the account was created without one.",
+                        "title": "Description"
+                    },
+                    "owner_team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The team that owns the account. Null for an organization account.",
+                        "title": "Owner Team Id"
+                    },
+                    "preset_permissions": {
+                        "$ref": "#/components/schemas/AuditLogEventServiceAccountPresetPermissionsV1"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "service_account_id",
+                    "name",
+                    "preset_permissions"
+                ],
+                "title": "AuditLogEventServiceAccountCreatedV1",
+                "type": "object"
+            },
+            "AuditLogEventServiceAccountDeletedV1": {
+                "description": "A service account was deleted.",
+                "properties": {
+                    "event_type": {
+                        "const": "SERVICE_ACCOUNT_DELETED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "service_account_id": {
+                        "title": "Service Account Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "service_account_id",
+                    "name"
+                ],
+                "title": "AuditLogEventServiceAccountDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventServiceAccountPresetPermissionsV1": {
+                "description": "A service account's access, as recorded on a service account event. Not itself an event\npayload.",
+                "properties": {
+                    "api_key_type": {
+                        "description": "The API key type whose permissions the account has, as API key events record it.",
+                        "title": "Api Key Type",
+                        "type": "string"
+                    },
+                    "model_ids": {
+                        "description": "Models the access is limited to; empty for all.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Model Ids",
+                        "type": "array"
+                    },
+                    "environment_names": {
+                        "description": "Environments the access is limited to, or may also manage; empty for none.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Environment Names",
+                        "type": "array"
+                    },
+                    "model_api_slugs": {
+                        "description": "Model APIs the access is limited to; empty for all.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Model Api Slugs",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "api_key_type",
+                    "model_ids",
+                    "environment_names",
+                    "model_api_slugs"
+                ],
+                "title": "AuditLogEventServiceAccountPresetPermissionsV1",
+                "type": "object"
+            },
+            "AuditLogEventServiceAccountUpdatedV1": {
+                "description": "A service account was updated. Disabling or enabling it is a change to `disabled`.",
+                "properties": {
+                    "event_type": {
+                        "const": "SERVICE_ACCOUNT_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "service_account_id": {
+                        "title": "Service Account Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "changes": {
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AuditFieldChangeV1"
+                        },
+                        "description": "The fields the update changed, keyed by field name.",
+                        "title": "Changes",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "service_account_id",
+                    "name",
+                    "changes"
+                ],
+                "title": "AuditLogEventServiceAccountUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventSshCertificateSignedV1": {
                 "description": "An SSH certificate was signed for a workload.",
                 "properties": {
@@ -23030,6 +23404,131 @@
                 "title": "AuditLogEventTelemetryExportUpdatedV1",
                 "type": "object"
             },
+            "AuditLogEventTrustRuleCreatedV1": {
+                "description": "A trust rule was created.",
+                "properties": {
+                    "event_type": {
+                        "const": "TRUST_RULE_CREATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "trust_rule_id": {
+                        "title": "Trust Rule Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Null when the rule was created without one.",
+                        "title": "Description"
+                    },
+                    "identity_provider_id": {
+                        "title": "Identity Provider Id",
+                        "type": "string"
+                    },
+                    "service_account_id": {
+                        "title": "Service Account Id",
+                        "type": "string"
+                    },
+                    "condition": {
+                        "description": "The CEL expression a token's claims must satisfy.",
+                        "title": "Condition",
+                        "type": "string"
+                    },
+                    "audience": {
+                        "description": "The `aud` claim a token must carry.",
+                        "title": "Audience",
+                        "type": "string"
+                    },
+                    "max_access_token_lifetime_seconds": {
+                        "description": "The longest lifetime, in seconds, of an access token the rule issues.",
+                        "title": "Max Access Token Lifetime Seconds",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "trust_rule_id",
+                    "name",
+                    "identity_provider_id",
+                    "service_account_id",
+                    "condition",
+                    "audience",
+                    "max_access_token_lifetime_seconds"
+                ],
+                "title": "AuditLogEventTrustRuleCreatedV1",
+                "type": "object"
+            },
+            "AuditLogEventTrustRuleDeletedV1": {
+                "description": "A trust rule was deleted.",
+                "properties": {
+                    "event_type": {
+                        "const": "TRUST_RULE_DELETED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "trust_rule_id": {
+                        "title": "Trust Rule Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "trust_rule_id",
+                    "name"
+                ],
+                "title": "AuditLogEventTrustRuleDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventTrustRuleUpdatedV1": {
+                "description": "A trust rule was updated.",
+                "properties": {
+                    "event_type": {
+                        "const": "TRUST_RULE_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "trust_rule_id": {
+                        "title": "Trust Rule Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "changes": {
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AuditFieldChangeV1"
+                        },
+                        "description": "The fields the update changed, keyed by field name.",
+                        "title": "Changes",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "trust_rule_id",
+                    "name",
+                    "changes"
+                ],
+                "title": "AuditLogEventTrustRuleUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventTypeV1": {
                 "description": "Type of action recorded by an audit-log entry.",
                 "enum": [
@@ -23093,6 +23592,15 @@
                     "TELEMETRY_EXPORT_CREATED",
                     "TELEMETRY_EXPORT_UPDATED",
                     "TELEMETRY_EXPORT_DELETED",
+                    "SERVICE_ACCOUNT_CREATED",
+                    "SERVICE_ACCOUNT_UPDATED",
+                    "SERVICE_ACCOUNT_DELETED",
+                    "IDENTITY_PROVIDER_CREATED",
+                    "IDENTITY_PROVIDER_UPDATED",
+                    "IDENTITY_PROVIDER_DELETED",
+                    "TRUST_RULE_CREATED",
+                    "TRUST_RULE_UPDATED",
+                    "TRUST_RULE_DELETED",
                     "ORGANIZATION_API_KEY_SETTINGS_UPDATED"
                 ],
                 "title": "AuditLogEventTypeV1",
@@ -23587,7 +24095,8 @@
                     "USER_MANAGEMENT",
                     "DIRECTORY_GROUP_MANAGEMENT",
                     "SSH",
-                    "TELEMETRY_EXPORT"
+                    "TELEMETRY_EXPORT",
+                    "WORKLOAD_IDENTITY"
                 ],
                 "title": "AuditLogEventTypeGroupV1",
                 "type": "string"
@@ -34026,7 +34535,7 @@
                         "type": "string"
                     },
                     "baseline": {
-                        "description": "Baseline GPU allocation for the team. 0 if not configured.",
+                        "description": "Configured minimum GPU allocation for the team. Not enforced. 0 if not configured.",
                         "title": "Baseline",
                         "type": "integer"
                     },
@@ -34042,7 +34551,7 @@
                     },
                     "dedicated_usage_count": {
                         "default": 0,
-                        "description": "Portion of usage_count from standard (non-spot) jobs.",
+                        "description": "Portion of usage_count from on-demand (non-spot) jobs.",
                         "title": "Dedicated Usage Count",
                         "type": "integer"
                     },
@@ -34073,14 +34582,32 @@
                         "type": "string"
                     },
                     "baseline": {
-                        "description": "Baseline GPU allocation; jobs below this threshold are expected to run immediately. 0 if not configured.",
+                        "description": "Configured minimum GPU allocation (`min_gpus`). 0 if not configured. Use `on_demand_cap` for the cap applied to on-demand jobs.",
                         "title": "Baseline",
                         "type": "integer"
                     },
                     "limit": {
-                        "description": "Maximum concurrent GPUs of this type for this org",
+                        "description": "Configured maximum GPU allocation (`max_gpus`). Use `on_demand_cap` and `spot_cap` for the caps applied to jobs.",
                         "title": "Limit",
                         "type": "integer"
+                    },
+                    "on_demand_cap": {
+                        "description": "Maximum concurrent GPUs of this type for on-demand (non-spot) jobs.",
+                        "title": "On Demand Cap",
+                        "type": "integer"
+                    },
+                    "spot_cap": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Maximum concurrent GPUs of this type for spot jobs. Spot shares this cap with on-demand jobs: spot can use up to the cap minus on-demand GPUs in use. Null if spot is not enabled for the organization.",
+                        "title": "Spot Cap"
                     },
                     "usage_count": {
                         "description": "GPUs currently in use by active training jobs",
@@ -34089,13 +34616,13 @@
                     },
                     "dedicated_usage_count": {
                         "default": 0,
-                        "description": "Portion of usage_count from standard (non-spot) jobs, which run against the baseline.",
+                        "description": "Portion of usage_count from on-demand (non-spot) jobs.",
                         "title": "Dedicated Usage Count",
                         "type": "integer"
                     },
                     "spot_usage_count": {
                         "default": 0,
-                        "description": "Portion of usage_count from spot jobs, which burst into the peak and may push usage above the limit.",
+                        "description": "Portion of usage_count from spot jobs.",
                         "title": "Spot Usage Count",
                         "type": "integer"
                     }
@@ -34104,6 +34631,7 @@
                     "gpu_type",
                     "baseline",
                     "limit",
+                    "on_demand_cap",
                     "usage_count"
                 ],
                 "title": "TrainingGpuCapacityItemV1",
@@ -34127,6 +34655,12 @@
                         },
                         "title": "Team Gpu Capacities",
                         "type": "array"
+                    },
+                    "spot_enabled": {
+                        "default": false,
+                        "description": "Whether the organization can submit spot training jobs.",
+                        "title": "Spot Enabled",
+                        "type": "boolean"
                     }
                 },
                 "required": [

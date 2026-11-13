@@ -30,7 +30,7 @@ namespace Baseten
         public required string GpuType { get; set; }
 
         /// <summary>
-        /// Baseline GPU allocation for the team. 0 if not configured.
+        /// Configured minimum GPU allocation for the team. Not enforced. 0 if not configured.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("baseline")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -51,7 +51,7 @@ namespace Baseten
         public required int UsageCount { get; set; }
 
         /// <summary>
-        /// Portion of usage_count from standard (non-spot) jobs.<br/>
+        /// Portion of usage_count from on-demand (non-spot) jobs.<br/>
         /// Default Value: 0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dedicated_usage_count")]
@@ -83,7 +83,7 @@ namespace Baseten
         /// GPU type identifier (e.g. H100, A100-40GB)
         /// </param>
         /// <param name="baseline">
-        /// Baseline GPU allocation for the team. 0 if not configured.
+        /// Configured minimum GPU allocation for the team. Not enforced. 0 if not configured.
         /// </param>
         /// <param name="limit">
         /// Maximum concurrent GPUs of this type for this team
@@ -92,7 +92,7 @@ namespace Baseten
         /// GPUs currently in use by the team's active training jobs
         /// </param>
         /// <param name="dedicatedUsageCount">
-        /// Portion of usage_count from standard (non-spot) jobs.<br/>
+        /// Portion of usage_count from on-demand (non-spot) jobs.<br/>
         /// Default Value: 0
         /// </param>
         /// <param name="spotUsageCount">

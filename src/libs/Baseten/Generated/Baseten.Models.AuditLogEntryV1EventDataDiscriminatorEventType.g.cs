@@ -103,6 +103,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        IdentityProviderCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        IdentityProviderDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        IdentityProviderUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         ModelDeleted,
         /// <summary>
         ///
@@ -183,6 +195,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        ServiceAccountCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        ServiceAccountDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        ServiceAccountUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         SshCertificateSigned,
         /// <summary>
         ///
@@ -196,6 +220,18 @@ namespace Baseten
         ///
         /// </summary>
         TelemetryExportUpdated,
+        /// <summary>
+        ///
+        /// </summary>
+        TrustRuleCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        TrustRuleDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        TrustRuleUpdated,
         /// <summary>
         ///
         /// </summary>
@@ -289,6 +325,9 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserCreated => "GRID_MACHINE_USER_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserDeleted => "GRID_MACHINE_USER_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserUpdated => "GRID_MACHINE_USER_UPDATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.IdentityProviderCreated => "IDENTITY_PROVIDER_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.IdentityProviderDeleted => "IDENTITY_PROVIDER_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.IdentityProviderUpdated => "IDENTITY_PROVIDER_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeleted => "MODEL_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeployed => "MODEL_DEPLOYED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentActivated => "MODEL_DEPLOYMENT_ACTIVATED",
@@ -309,10 +348,16 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.RequireGroupBasedAdminsEnabled => "REQUIRE_GROUP_BASED_ADMINS_ENABLED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.SecretDeleted => "SECRET_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.SecretUpdated => "SECRET_UPDATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ServiceAccountCreated => "SERVICE_ACCOUNT_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ServiceAccountDeleted => "SERVICE_ACCOUNT_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.ServiceAccountUpdated => "SERVICE_ACCOUNT_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.SshCertificateSigned => "SSH_CERTIFICATE_SIGNED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportCreated => "TELEMETRY_EXPORT_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportDeleted => "TELEMETRY_EXPORT_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportUpdated => "TELEMETRY_EXPORT_UPDATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.TrustRuleCreated => "TRUST_RULE_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.TrustRuleDeleted => "TRUST_RULE_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.TrustRuleUpdated => "TRUST_RULE_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserInvited => "USER_INVITED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserJoinedOrganization => "USER_JOINED_ORGANIZATION",
                 AuditLogEntryV1EventDataDiscriminatorEventType.UserRemoved => "USER_REMOVED",
@@ -360,6 +405,9 @@ namespace Baseten
                 "GRID_MACHINE_USER_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserCreated,
                 "GRID_MACHINE_USER_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserDeleted,
                 "GRID_MACHINE_USER_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserUpdated,
+                "IDENTITY_PROVIDER_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.IdentityProviderCreated,
+                "IDENTITY_PROVIDER_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.IdentityProviderDeleted,
+                "IDENTITY_PROVIDER_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.IdentityProviderUpdated,
                 "MODEL_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeleted,
                 "MODEL_DEPLOYED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeployed,
                 "MODEL_DEPLOYMENT_ACTIVATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentActivated,
@@ -380,10 +428,16 @@ namespace Baseten
                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED" => AuditLogEntryV1EventDataDiscriminatorEventType.RequireGroupBasedAdminsEnabled,
                 "SECRET_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.SecretDeleted,
                 "SECRET_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.SecretUpdated,
+                "SERVICE_ACCOUNT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ServiceAccountCreated,
+                "SERVICE_ACCOUNT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ServiceAccountDeleted,
+                "SERVICE_ACCOUNT_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ServiceAccountUpdated,
                 "SSH_CERTIFICATE_SIGNED" => AuditLogEntryV1EventDataDiscriminatorEventType.SshCertificateSigned,
                 "TELEMETRY_EXPORT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportCreated,
                 "TELEMETRY_EXPORT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportDeleted,
                 "TELEMETRY_EXPORT_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.TelemetryExportUpdated,
+                "TRUST_RULE_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.TrustRuleCreated,
+                "TRUST_RULE_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.TrustRuleDeleted,
+                "TRUST_RULE_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.TrustRuleUpdated,
                 "USER_INVITED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserInvited,
                 "USER_JOINED_ORGANIZATION" => AuditLogEntryV1EventDataDiscriminatorEventType.UserJoinedOrganization,
                 "USER_REMOVED" => AuditLogEntryV1EventDataDiscriminatorEventType.UserRemoved,
