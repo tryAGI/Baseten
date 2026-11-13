@@ -203,6 +203,13 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1)}");
                 apiKeyLifetimeLimitsUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.AuditLogEventOrganizationApiKeySettingsUpdatedV1? organizationApiKeySettingsUpdated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.OrganizationApiKeySettingsUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventOrganizationApiKeySettingsUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventOrganizationApiKeySettingsUpdatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventOrganizationApiKeySettingsUpdatedV1)}");
+                organizationApiKeySettingsUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
             global::Baseten.AuditLogEventGatewayEndpointCreatedV1? gatewayEndpointCreated = default;
             if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointCreated)
             {
@@ -496,6 +503,8 @@ namespace Baseten.JsonConverters
 
                 apiKeyLifetimeLimitsUpdated,
 
+                organizationApiKeySettingsUpdated,
+
                 gatewayEndpointCreated,
 
                 gatewayEndpointUpdated,
@@ -732,6 +741,12 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickApiKeyLifetimeLimitsUpdated(), typeInfo);
+            }
+            else if (value.IsOrganizationApiKeySettingsUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventOrganizationApiKeySettingsUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventOrganizationApiKeySettingsUpdatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventOrganizationApiKeySettingsUpdatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickOrganizationApiKeySettingsUpdated(), typeInfo);
             }
             else if (value.IsGatewayEndpointCreated)
             {

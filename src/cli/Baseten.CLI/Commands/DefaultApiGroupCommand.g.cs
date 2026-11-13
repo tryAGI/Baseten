@@ -11,6 +11,8 @@ internal static partial class DefaultApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"default", @"default endpoint commands.");
+                         command.Subcommands.Add(CreateAccessIdentityProvidersCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateAccessTrustRulesCommandApiCommand.Create());
                          command.Subcommands.Add(CreateChainsByChainIdDeploymentsByChainDeploymentIdDeactivateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateChainsByChainIdEnvironmentsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateChainsByChainIdEnvironmentsByEnvNameChainletSettingsInstanceTypesUpdateCommandApiCommand.Create());
@@ -88,6 +90,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateVolumesSyncsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesSyncsByVolumeSyncIdCancelCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesTokenCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteAccessIdentityProvidersByIdentityProviderIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteAccessTrustRulesByTrustRuleIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdDeploymentsByChainDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteGatewayEndpointsByEndpointIdCommandApiCommand.Create());
@@ -112,6 +116,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameTagsByVolumeTagCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionCommandApiCommand.Create());
+                         command.Subcommands.Add(EditAccessIdentityProvidersByIdentityProviderIdCommandApiCommand.Create());
+                         command.Subcommands.Add(EditAccessTrustRulesByTrustRuleIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameChainletSettingsAutoscalingSettingsCommandApiCommand.Create());
                          command.Subcommands.Add(EditEnvironmentGroupsByEnvNameCommandApiCommand.Create());
@@ -139,6 +145,11 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditVolumesByVolumeNamespaceByVolumeNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessIdentityProvidersCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessIdentityProvidersByIdentityProviderIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessPredefinedIdentityProvidersCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessTrustRulesCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessTrustRulesByTrustRuleIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetAuditLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingModelApisCommandApiCommand.Create());
                          command.Subcommands.Add(GetBillingToolCallUsageCommandApiCommand.Create());

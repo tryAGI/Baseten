@@ -167,6 +167,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventApiKeyCreatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventApiKeyDeletedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventApiKeyLifetimeLimitsUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventOrganizationApiKeySettingsUpdatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointCreatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointUpdatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventGatewayEndpointDeletedV1))]
@@ -508,7 +509,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsSamplersResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsSamplerV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsSamplersRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSamplerRequestV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,6 +519,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSamplerRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSamplerResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeactivateLoopsSamplerResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsSamplerResponseV1))]
@@ -691,6 +692,26 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateServiceAccountRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeletedServiceAccountV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateServiceAccountRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PredefinedIdentityProviderKindV1), TypeInfoPropertyName = "PredefinedIdentityProviderKindV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PredefinedIdentityProviderV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PredefinedIdentityProvidersV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.PredefinedIdentityProviderV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.IdentityProviderV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PredefinedIdentityProviderConfigV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.IdentityProvidersV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.IdentityProviderV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.IdentityProvidersRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreatePredefinedIdentityProviderConfigV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateIdentityProviderRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeletedIdentityProviderV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateIdentityProviderRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessTrustRuleV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessTrustRulesV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessTrustRuleV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessTrustRulesRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateAccessTrustRuleRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeletedAccessTrustRuleV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAccessTrustRuleRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventTokensV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventsResponseV1))]
@@ -998,6 +1019,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleV1Cadence?), TypeInfoPropertyName = "NullableAutoscalingScheduleV1Cadence2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SchedulesItem2?), TypeInfoPropertyName = "NullableSchedulesItem22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadence?), TypeInfoPropertyName = "NullableEnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadence2")]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.InProgressPromotionStatusV1?), TypeInfoPropertyName = "NullableInProgressPromotionStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrafficRoutingRuleShadowSamplingModeV1?), TypeInfoPropertyName = "NullableTrafficRoutingRuleShadowSamplingModeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CancelPromotionStatusV1?), TypeInfoPropertyName = "NullableCancelPromotionStatusV12")]
@@ -1019,16 +1050,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsPlacementScopeV1?), TypeInfoPropertyName = "NullableLoopsPlacementScopeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Source4?), TypeInfoPropertyName = "NullableSource42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointSourceResponseV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableLoopsCheckpointSourceResponseV1SourceDiscriminatorKind2")]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Name?), TypeInfoPropertyName = "NullableName2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.APIKeyCategory?), TypeInfoPropertyName = "NullableAPIKeyCategory2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LimitTypeV1?), TypeInfoPropertyName = "NullableLimitTypeV12")]
@@ -1042,6 +1063,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageDimensionV1?), TypeInfoPropertyName = "NullableToolCallUsageDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ServiceAccountPresetTypeV1?), TypeInfoPropertyName = "NullableServiceAccountPresetTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PredefinedIdentityProviderKindV1?), TypeInfoPropertyName = "NullablePredefinedIdentityProviderKindV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?), TypeInfoPropertyName = "NullableGridRouteClassifierV1SupportedTradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteMetadataV1ApiFormat?), TypeInfoPropertyName = "NullableGridRouteMetadataV1ApiFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteTargetIntelligentV1Tradeoff?), TypeInfoPropertyName = "NullableGridRouteTargetIntelligentV1Tradeoff2")]
@@ -1191,6 +1213,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ToolCallUsageDimensionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.UserInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ServiceAccountV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.PredefinedIdentityProviderV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.IdentityProviderV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessTrustRuleV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GatewayEventV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ExploreMetadataV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteClassifierV1SupportedTradeoff>))]
@@ -1626,6 +1651,10 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.ServiceAccountPresetTypeV1)
 
                     || typeToConvert == typeof(global::Baseten.ServiceAccountPresetTypeV1?)
+
+                    || typeToConvert == typeof(global::Baseten.PredefinedIdentityProviderKindV1)
+
+                    || typeToConvert == typeof(global::Baseten.PredefinedIdentityProviderKindV1?)
 
                     || typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff)
 
@@ -2468,6 +2497,16 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.ServiceAccountPresetTypeV1?))
                 {
                     return new global::Baseten.JsonConverters.ServiceAccountPresetTypeV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.PredefinedIdentityProviderKindV1))
+                {
+                    return new global::Baseten.JsonConverters.PredefinedIdentityProviderKindV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.PredefinedIdentityProviderKindV1?))
+                {
+                    return new global::Baseten.JsonConverters.PredefinedIdentityProviderKindV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff))
