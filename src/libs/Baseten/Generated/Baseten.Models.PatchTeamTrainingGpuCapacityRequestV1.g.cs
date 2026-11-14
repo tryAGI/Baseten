@@ -4,8 +4,8 @@
 namespace Baseten
 {
     /// <summary>
-    /// A request to set the GPU capacity ceiling for a (team, gpu_type) pair.<br/>
-    /// Creates the limit if one doesn't already exist for this team and GPU type,<br/>
+    /// A request to set the GPU quota for a (team, gpu_type) pair.<br/>
+    /// Creates the quota if one doesn't already exist for this team and GPU type,<br/>
     /// otherwise updates it in place.
     /// </summary>
     public sealed partial class PatchTeamTrainingGpuCapacityRequestV1
@@ -25,7 +25,7 @@ namespace Baseten
         public required string GpuType { get; set; }
 
         /// <summary>
-        /// Max concurrent GPUs of this type the team may use
+        /// The team's GPU quota for this type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota. On-demand jobs can run past it by borrowing from the organization's shared pool, when one exists.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_gpus")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -47,7 +47,7 @@ namespace Baseten
         /// GPU type identifier (e.g. H100, A100-40GB)
         /// </param>
         /// <param name="maxGpus">
-        /// Max concurrent GPUs of this type the team may use
+        /// The team's GPU quota for this type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota. On-demand jobs can run past it by borrowing from the organization's shared pool, when one exists.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

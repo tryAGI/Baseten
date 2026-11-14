@@ -8643,7 +8643,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training/capacity\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns on-demand and spot GPU capacity caps and current usage for the organization and its teams.",
+                "description": "Returns on-demand and spot GPU quotas and current usage for the organization and its teams.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -8658,7 +8658,7 @@
                 }
             },
             "patch": {
-                "summary": "Sets a team's training GPU capacity",
+                "summary": "Sets a team's training GPU quota",
                 "x-codeSamples": [
                     {
                         "lang": "bash",
@@ -8669,7 +8669,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training/capacity\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'team_id': None, 'gpu_type': None, 'max_gpus': 8}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Sets the max concurrent GPUs of a given type a team may use. Creates the limit if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a ceiling the org imposes on the team, not something the team manages for itself.",
+                "description": "Sets a team's GPU quota for a given type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota, and on-demand jobs can borrow past it from the organization's shared pool when one exists. Creates the quota if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a quota the org imposes on the team, not something the team manages for itself.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -10720,6 +10720,45 @@
                 "x-stability": "unstable"
             }
         },
+        "/v1/access/identity_providers/verify": {
+            "post": {
+                "summary": "Checks an identity provider before adding it",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/access/identity_providers/verify \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"predefined\": {\n    \"kind\": \"AWS_EKS\",\n    \"issuer_url\": \"https://oidc.eks.us-west-2.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE\"\n  }\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers/verify\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'predefined': {'kind': 'AWS_EKS', 'issuer_url': 'https://oidc.eks.us-west-2.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE'}}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer, that its signing keys can be fetched. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VerifyIdentityProviderRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VerificationV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
         "/v1/access/identity_providers/{identity_provider_id}": {
             "delete": {
                 "summary": "Deletes an identity provider",
@@ -10962,6 +11001,45 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/AccessTrustRuleV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/access/trust_rules/verify": {
+            "post": {
+                "summary": "Checks a trust rule's condition and audience",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/access/trust_rules/verify \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"identity_provider_id\": \"abcd1234\",\n  \"condition\": \"claims.repository_owner_id == '12345' && claims.sub == 'repo:acme/models:ref:refs/heads/main'\",\n  \"audience\": \"https://api.baseten.co\"\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/trust_rules/verify\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'identity_provider_id': 'abcd1234', 'condition': \"claims.repository_owner_id == '12345' && claims.sub == 'repo:acme/models:ref:refs/heads/main'\", 'audience': 'https://api.baseten.co'}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Runs the checks that creating or updating a trust rule runs on its condition and audience, without saving anything: that the condition compiles and pins the claims the identity provider requires. A failed check returns 200 with `valid` false and the reason.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VerifyAccessTrustRuleRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VerificationV1"
                                 }
                             }
                         }
@@ -18993,6 +19071,7 @@
                     "CREATOR_SERVICE_ACCOUNT",
                     "MANAGE_API_KEYS_SERVICE_ACCOUNT",
                     "INVOKE_ALL_MODELS_SERVICE_ACCOUNT",
+                    "INVOKE_ALL_DEDICATED_MODELS_SERVICE_ACCOUNT",
                     "INVOKE_ALLOWED_MODELS_SERVICE_ACCOUNT",
                     "INVOKE_SCOPED_ENVS_AND_MODELS_SERVICE_ACCOUNT",
                     "EXPORT_METRICS_ALL_MODELS_SERVICE_ACCOUNT",
@@ -31169,7 +31248,7 @@
                             },
                             "type": "array"
                         },
-                        "description": "A map of GPU rank to memory usage for the training job. For multinode jobs, this is the memory usage of the leader unless specified otherwise.",
+                        "description": "A map of GPU rank to memory usage for the training job. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
                         "title": "Gpu Memory Usage Bytes",
                         "type": "object"
                     },
@@ -31180,12 +31259,56 @@
                             },
                             "type": "array"
                         },
-                        "description": "A map of GPU rank to fractional GPU utilization. For multinode jobs, this is the GPU utilization of the leader unless specified otherwise.",
+                        "description": "A map of GPU rank to the share of time the GPU's streaming multiprocessors have work assigned, from 0 to 1. This counts any GPU work, not only tensor core math; see gpu_tensor_core_utilization for that. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
                         "title": "Gpu Utilization",
                         "type": "object"
                     },
+                    "gpu_temperature_celsius": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "A map of GPU rank to GPU temperature in degrees Celsius. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
+                        "title": "Gpu Temperature Celsius",
+                        "type": "object"
+                    },
+                    "gpu_power_usage_watts": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "A map of GPU rank to GPU power draw in watts. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
+                        "title": "Gpu Power Usage Watts",
+                        "type": "object"
+                    },
+                    "gpu_tensor_core_utilization": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "A map of GPU rank to the share of time the GPU tensor cores are active, from 0 to 1. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
+                        "title": "Gpu Tensor Core Utilization",
+                        "type": "object"
+                    },
+                    "gpu_memory_bandwidth_utilization": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "A map of GPU rank to the share of cycles GPU memory is actively reading or writing, from 0 to 1. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
+                        "title": "Gpu Memory Bandwidth Utilization",
+                        "type": "object"
+                    },
                     "cpu_usage": {
-                        "description": "The CPU usage measured in cores. For multinode jobs, this is the CPU usage of the leader unless specified otherwise.",
+                        "description": "The CPU usage measured in cores. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
                         "items": {
                             "$ref": "#/components/schemas/TrainingJobMetricV1"
                         },
@@ -31193,7 +31316,7 @@
                         "type": "array"
                     },
                     "cpu_memory_usage_bytes": {
-                        "description": "The CPU memory usage for the training job. For multinode jobs, this is the CPU memory usage of the leader unless specified otherwise.",
+                        "description": "The CPU memory usage for the training job. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
                         "items": {
                             "$ref": "#/components/schemas/TrainingJobMetricV1"
                         },
@@ -31202,12 +31325,16 @@
                     },
                     "ephemeral_storage": {
                         "$ref": "#/components/schemas/StorageMetricsV1",
-                        "description": "The storage usage for the ephemeral storage. For multinode jobs, this is the ephemeral storage usage of the leader unless specified otherwise."
+                        "description": "The storage usage for the ephemeral storage. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node."
                     }
                 },
                 "required": [
                     "gpu_memory_usage_bytes",
                     "gpu_utilization",
+                    "gpu_temperature_celsius",
+                    "gpu_power_usage_watts",
+                    "gpu_tensor_core_utilization",
+                    "gpu_memory_bandwidth_utilization",
                     "cpu_usage",
                     "cpu_memory_usage_bytes",
                     "ephemeral_storage"
@@ -31245,7 +31372,7 @@
                             },
                             "type": "array"
                         },
-                        "description": "A map of GPU rank to memory usage for the training job. For multinode jobs, this is the memory usage of the leader unless specified otherwise.",
+                        "description": "A map of GPU rank to memory usage for the training job. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
                         "title": "Gpu Memory Usage Bytes",
                         "type": "object"
                     },
@@ -31256,12 +31383,56 @@
                             },
                             "type": "array"
                         },
-                        "description": "A map of GPU rank to fractional GPU utilization. For multinode jobs, this is the GPU utilization of the leader unless specified otherwise.",
+                        "description": "A map of GPU rank to the share of time the GPU's streaming multiprocessors have work assigned, from 0 to 1. This counts any GPU work, not only tensor core math; see gpu_tensor_core_utilization for that. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
                         "title": "Gpu Utilization",
                         "type": "object"
                     },
+                    "gpu_temperature_celsius": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "A map of GPU rank to GPU temperature in degrees Celsius. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
+                        "title": "Gpu Temperature Celsius",
+                        "type": "object"
+                    },
+                    "gpu_power_usage_watts": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "A map of GPU rank to GPU power draw in watts. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
+                        "title": "Gpu Power Usage Watts",
+                        "type": "object"
+                    },
+                    "gpu_tensor_core_utilization": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "A map of GPU rank to the share of time the GPU tensor cores are active, from 0 to 1. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
+                        "title": "Gpu Tensor Core Utilization",
+                        "type": "object"
+                    },
+                    "gpu_memory_bandwidth_utilization": {
+                        "additionalProperties": {
+                            "items": {
+                                "$ref": "#/components/schemas/TrainingJobMetricV1"
+                            },
+                            "type": "array"
+                        },
+                        "description": "A map of GPU rank to the share of cycles GPU memory is actively reading or writing, from 0 to 1. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
+                        "title": "Gpu Memory Bandwidth Utilization",
+                        "type": "object"
+                    },
                     "cpu_usage": {
-                        "description": "The CPU usage measured in cores. For multinode jobs, this is the CPU usage of the leader unless specified otherwise.",
+                        "description": "The CPU usage measured in cores. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
                         "items": {
                             "$ref": "#/components/schemas/TrainingJobMetricV1"
                         },
@@ -31269,7 +31440,7 @@
                         "type": "array"
                     },
                     "cpu_memory_usage_bytes": {
-                        "description": "The CPU memory usage for the training job. For multinode jobs, this is the CPU memory usage of the leader unless specified otherwise.",
+                        "description": "The CPU memory usage for the training job. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.",
                         "items": {
                             "$ref": "#/components/schemas/TrainingJobMetricV1"
                         },
@@ -31278,7 +31449,7 @@
                     },
                     "ephemeral_storage": {
                         "$ref": "#/components/schemas/StorageMetricsV1",
-                        "description": "The storage usage for the ephemeral storage. For multinode jobs, this is the ephemeral storage usage of the leader unless specified otherwise."
+                        "description": "The storage usage for the ephemeral storage. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node."
                     },
                     "training_job": {
                         "$ref": "#/components/schemas/TrainingJobV1",
@@ -31307,6 +31478,10 @@
                 "required": [
                     "gpu_memory_usage_bytes",
                     "gpu_utilization",
+                    "gpu_temperature_celsius",
+                    "gpu_power_usage_watts",
+                    "gpu_tensor_core_utilization",
+                    "gpu_memory_bandwidth_utilization",
                     "cpu_usage",
                     "cpu_memory_usage_bytes",
                     "ephemeral_storage",
@@ -34540,7 +34715,7 @@
                         "type": "integer"
                     },
                     "limit": {
-                        "description": "Maximum concurrent GPUs of this type for this team",
+                        "description": "The team's GPU quota for this type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota. On-demand jobs can run past it by borrowing from the organization's shared pool, when one exists.",
                         "title": "Limit",
                         "type": "integer"
                     },
@@ -34582,21 +34757,21 @@
                         "type": "string"
                     },
                     "baseline": {
-                        "description": "Configured minimum GPU allocation (`min_gpus`). 0 if not configured. Use `on_demand_cap` for the cap applied to on-demand jobs.",
+                        "description": "Configured minimum GPU allocation (`min_gpus`). 0 if not configured. Use `on_demand_quota` for the quota applied to on-demand jobs.",
                         "title": "Baseline",
                         "type": "integer"
                     },
                     "limit": {
-                        "description": "Configured maximum GPU allocation (`max_gpus`). Use `on_demand_cap` and `spot_cap` for the caps applied to jobs.",
+                        "description": "Configured maximum GPU allocation (`max_gpus`). Use `on_demand_quota` and `spot_quota` for the quotas applied to jobs.",
                         "title": "Limit",
                         "type": "integer"
                     },
-                    "on_demand_cap": {
-                        "description": "Maximum concurrent GPUs of this type for on-demand (non-spot) jobs.",
-                        "title": "On Demand Cap",
+                    "on_demand_quota": {
+                        "description": "GPU quota for this type for on-demand (non-spot) jobs: the most GPUs they can use at once.",
+                        "title": "On Demand Quota",
                         "type": "integer"
                     },
-                    "spot_cap": {
+                    "spot_quota": {
                         "anyOf": [
                             {
                                 "type": "integer"
@@ -34606,8 +34781,8 @@
                             }
                         ],
                         "default": null,
-                        "description": "Maximum concurrent GPUs of this type for spot jobs. Spot shares this cap with on-demand jobs: spot can use up to the cap minus on-demand GPUs in use. Null if spot is not enabled for the organization.",
-                        "title": "Spot Cap"
+                        "description": "GPU quota for this type for spot jobs. Spot shares this quota with on-demand jobs: spot can use up to the quota minus on-demand GPUs in use. Null if spot is not enabled for the organization.",
+                        "title": "Spot Quota"
                     },
                     "usage_count": {
                         "description": "GPUs currently in use by active training jobs",
@@ -34631,7 +34806,7 @@
                     "gpu_type",
                     "baseline",
                     "limit",
-                    "on_demand_cap",
+                    "on_demand_quota",
                     "usage_count"
                 ],
                 "title": "TrainingGpuCapacityItemV1",
@@ -34641,7 +34816,7 @@
                 "description": "Response for the training GPU capacity endpoint.",
                 "properties": {
                     "gpu_capacities": {
-                        "description": "Org-level GPU capacity limits and current usage per GPU type",
+                        "description": "Organization GPU quotas and current usage per GPU type",
                         "items": {
                             "$ref": "#/components/schemas/TrainingGpuCapacityItemV1"
                         },
@@ -34649,7 +34824,7 @@
                         "type": "array"
                     },
                     "team_gpu_capacities": {
-                        "description": "Per-team GPU capacity limits and current usage per GPU type",
+                        "description": "Per-team GPU quotas and current usage per GPU type",
                         "items": {
                             "$ref": "#/components/schemas/TeamTrainingGpuCapacityItemV1"
                         },
@@ -34670,7 +34845,7 @@
                 "type": "object"
             },
             "PatchTeamTrainingGpuCapacityRequestV1": {
-                "description": "A request to set the GPU capacity ceiling for a (team, gpu_type) pair.\n\nCreates the limit if one doesn't already exist for this team and GPU type,\notherwise updates it in place.",
+                "description": "A request to set the GPU quota for a (team, gpu_type) pair.\n\nCreates the quota if one doesn't already exist for this team and GPU type,\notherwise updates it in place.",
                 "properties": {
                     "team_id": {
                         "description": "Team identifier",
@@ -34683,7 +34858,7 @@
                         "type": "string"
                     },
                     "max_gpus": {
-                        "description": "Max concurrent GPUs of this type the team may use",
+                        "description": "The team's GPU quota for this type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota. On-demand jobs can run past it by borrowing from the organization's shared pool, when one exists.",
                         "examples": [
                             8,
                             16,
@@ -34702,11 +34877,11 @@
                 "type": "object"
             },
             "PatchTeamTrainingGpuCapacityResponseV1": {
-                "description": "Response for setting a team's GPU capacity ceiling.",
+                "description": "Response for setting a team's GPU quota.",
                 "properties": {
                     "team_gpu_capacity": {
                         "$ref": "#/components/schemas/TeamTrainingGpuCapacityItemV1",
-                        "description": "The updated per-team GPU capacity limit"
+                        "description": "The updated per-team GPU quota"
                     }
                 },
                 "required": [
@@ -39734,7 +39909,8 @@
                         ],
                         "default": null,
                         "description": "Description, up to 1,024 characters; null clears it",
-                        "title": "Description"
+                        "title": "Description",
+                        "x-null-distinct": true
                     },
                     "disabled": {
                         "anyOf": [
@@ -40064,6 +40240,77 @@
                 "title": "CreateIdentityProviderRequestV1",
                 "type": "object"
             },
+            "VerifyPredefinedIdentityProviderConfigV1": {
+                "additionalProperties": false,
+                "description": "Settings of the predefined identity provider to check.",
+                "properties": {
+                    "kind": {
+                        "$ref": "#/components/schemas/PredefinedIdentityProviderKindV1",
+                        "description": "Which predefined provider"
+                    },
+                    "issuer_url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The issuer to check, for AWS IAM, Amazon EKS, Azure managed identity, and Azure Kubernetes Service, in the format the predefined identity providers endpoint shows",
+                        "title": "Issuer Url"
+                    }
+                },
+                "required": [
+                    "kind"
+                ],
+                "title": "VerifyPredefinedIdentityProviderConfigV1",
+                "type": "object"
+            },
+            "VerifyIdentityProviderRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to check an identity provider before adding it.",
+                "properties": {
+                    "predefined": {
+                        "$ref": "#/components/schemas/VerifyPredefinedIdentityProviderConfigV1",
+                        "description": "The predefined provider to check, as you'd pass it when adding it"
+                    }
+                },
+                "required": [
+                    "predefined"
+                ],
+                "title": "VerifyIdentityProviderRequestV1",
+                "type": "object"
+            },
+            "VerificationV1": {
+                "description": "Whether a create request would pass the checks the server runs on it.",
+                "properties": {
+                    "valid": {
+                        "description": "Whether the input passes every check",
+                        "title": "Valid",
+                        "type": "boolean"
+                    },
+                    "error": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Why the input fails, as creating it would report. Null when it's valid.",
+                        "title": "Error"
+                    }
+                },
+                "required": [
+                    "valid"
+                ],
+                "title": "VerificationV1",
+                "type": "object"
+            },
             "DeletedIdentityProviderV1": {
                 "properties": {
                     "id": {
@@ -40115,7 +40362,8 @@
                         ],
                         "default": null,
                         "description": "Description; null clears it",
-                        "title": "Description"
+                        "title": "Description",
+                        "x-null-distinct": true
                     }
                 },
                 "title": "UpdateIdentityProviderRequestV1",
@@ -40415,6 +40663,37 @@
                 "title": "CreateAccessTrustRuleRequestV1",
                 "type": "object"
             },
+            "VerifyAccessTrustRuleRequestV1": {
+                "additionalProperties": false,
+                "description": "Request to check a trust rule's condition and audience before saving them.",
+                "properties": {
+                    "identity_provider_id": {
+                        "description": "The identity provider the rule is for, which decides the claims it must pin",
+                        "title": "Identity Provider Id",
+                        "type": "string"
+                    },
+                    "condition": {
+                        "description": "A CEL expression over the token's `claims` that must evaluate to true. It must pin a specific `claims.sub` in a top-level `&&` clause, plus any provider-required checks. Up to 4,096 characters.",
+                        "examples": [
+                            "claims.repository_owner_id == '12345' && claims.sub.startsWith('repo:acme/models:') && claims.ref == 'refs/heads/main'"
+                        ],
+                        "title": "Condition",
+                        "type": "string"
+                    },
+                    "audience": {
+                        "description": "The token's `aud` must equal this, or contain it when `aud` is a list. Up to 1,024 characters.",
+                        "title": "Audience",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "identity_provider_id",
+                    "condition",
+                    "audience"
+                ],
+                "title": "VerifyAccessTrustRuleRequestV1",
+                "type": "object"
+            },
             "DeletedAccessTrustRuleV1": {
                 "properties": {
                     "id": {
@@ -40465,7 +40744,8 @@
                         ],
                         "default": null,
                         "description": "Description; null clears it",
-                        "title": "Description"
+                        "title": "Description",
+                        "x-null-distinct": true
                     },
                     "condition": {
                         "anyOf": [

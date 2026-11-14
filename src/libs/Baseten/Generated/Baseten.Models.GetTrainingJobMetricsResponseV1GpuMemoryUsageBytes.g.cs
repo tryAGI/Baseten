@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// A map of GPU rank to memory usage for the training job. For multinode jobs, this is the memory usage of the leader unless specified otherwise.
+    /// A map of GPU rank to memory usage for the training job. At the top level of a multinode job this is the leader node; under per_node_metrics it is that node.
     /// </summary>
     public sealed partial class GetTrainingJobMetricsResponseV1GpuMemoryUsageBytes
     {

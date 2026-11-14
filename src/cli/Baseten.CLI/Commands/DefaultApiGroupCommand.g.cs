@@ -12,7 +12,9 @@ internal static partial class DefaultApiGroupCommand
     {
         var command = new Command(@"default", @"default endpoint commands.");
                          command.Subcommands.Add(CreateAccessIdentityProvidersCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateAccessIdentityProvidersVerifyCommandApiCommand.Create());
                          command.Subcommands.Add(CreateAccessTrustRulesCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateAccessTrustRulesVerifyCommandApiCommand.Create());
                          command.Subcommands.Add(CreateChainsByChainIdDeploymentsByChainDeploymentIdDeactivateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateChainsByChainIdEnvironmentsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateChainsByChainIdEnvironmentsByEnvNameChainletSettingsInstanceTypesUpdateCommandApiCommand.Create());

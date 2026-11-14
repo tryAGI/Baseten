@@ -16,32 +16,32 @@ namespace Baseten
         public required string GpuType { get; set; }
 
         /// <summary>
-        /// Configured minimum GPU allocation (`min_gpus`). 0 if not configured. Use `on_demand_cap` for the cap applied to on-demand jobs.
+        /// Configured minimum GPU allocation (`min_gpus`). 0 if not configured. Use `on_demand_quota` for the quota applied to on-demand jobs.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("baseline")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Baseline { get; set; }
 
         /// <summary>
-        /// Configured maximum GPU allocation (`max_gpus`). Use `on_demand_cap` and `spot_cap` for the caps applied to jobs.
+        /// Configured maximum GPU allocation (`max_gpus`). Use `on_demand_quota` and `spot_quota` for the quotas applied to jobs.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Limit { get; set; }
 
         /// <summary>
-        /// Maximum concurrent GPUs of this type for on-demand (non-spot) jobs.
+        /// GPU quota for this type for on-demand (non-spot) jobs: the most GPUs they can use at once.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("on_demand_cap")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("on_demand_quota")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int OnDemandCap { get; set; }
+        public required int OnDemandQuota { get; set; }
 
         /// <summary>
-        /// Maximum concurrent GPUs of this type for spot jobs. Spot shares this cap with on-demand jobs: spot can use up to the cap minus on-demand GPUs in use. Null if spot is not enabled for the organization.<br/>
+        /// GPU quota for this type for spot jobs. Spot shares this quota with on-demand jobs: spot can use up to the quota minus on-demand GPUs in use. Null if spot is not enabled for the organization.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("spot_cap")]
-        public int? SpotCap { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("spot_quota")]
+        public int? SpotQuota { get; set; }
 
         /// <summary>
         /// GPUs currently in use by active training jobs
@@ -77,19 +77,19 @@ namespace Baseten
         /// GPU type identifier (e.g. H100, A100-40GB)
         /// </param>
         /// <param name="baseline">
-        /// Configured minimum GPU allocation (`min_gpus`). 0 if not configured. Use `on_demand_cap` for the cap applied to on-demand jobs.
+        /// Configured minimum GPU allocation (`min_gpus`). 0 if not configured. Use `on_demand_quota` for the quota applied to on-demand jobs.
         /// </param>
         /// <param name="limit">
-        /// Configured maximum GPU allocation (`max_gpus`). Use `on_demand_cap` and `spot_cap` for the caps applied to jobs.
+        /// Configured maximum GPU allocation (`max_gpus`). Use `on_demand_quota` and `spot_quota` for the quotas applied to jobs.
         /// </param>
-        /// <param name="onDemandCap">
-        /// Maximum concurrent GPUs of this type for on-demand (non-spot) jobs.
+        /// <param name="onDemandQuota">
+        /// GPU quota for this type for on-demand (non-spot) jobs: the most GPUs they can use at once.
         /// </param>
         /// <param name="usageCount">
         /// GPUs currently in use by active training jobs
         /// </param>
-        /// <param name="spotCap">
-        /// Maximum concurrent GPUs of this type for spot jobs. Spot shares this cap with on-demand jobs: spot can use up to the cap minus on-demand GPUs in use. Null if spot is not enabled for the organization.<br/>
+        /// <param name="spotQuota">
+        /// GPU quota for this type for spot jobs. Spot shares this quota with on-demand jobs: spot can use up to the quota minus on-demand GPUs in use. Null if spot is not enabled for the organization.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="dedicatedUsageCount">
@@ -107,17 +107,17 @@ namespace Baseten
             string gpuType,
             int baseline,
             int limit,
-            int onDemandCap,
+            int onDemandQuota,
             int usageCount,
-            int? spotCap,
+            int? spotQuota,
             int? dedicatedUsageCount,
             int? spotUsageCount)
         {
             this.GpuType = gpuType ?? throw new global::System.ArgumentNullException(nameof(gpuType));
             this.Baseline = baseline;
             this.Limit = limit;
-            this.OnDemandCap = onDemandCap;
-            this.SpotCap = spotCap;
+            this.OnDemandQuota = onDemandQuota;
+            this.SpotQuota = spotQuota;
             this.UsageCount = usageCount;
             this.DedicatedUsageCount = dedicatedUsageCount;
             this.SpotUsageCount = spotUsageCount;

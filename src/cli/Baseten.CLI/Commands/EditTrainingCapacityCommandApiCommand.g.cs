@@ -24,7 +24,7 @@ internal static partial class EditTrainingCapacityCommandApiCommand
     private static Option<int> MaxGpus { get; } = new(
         name: @"--max-gpus")
     {
-        Description = @"Max concurrent GPUs of this type the team may use",
+        Description = @"The team's GPU quota for this type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota. On-demand jobs can run past it by borrowing from the organization's shared pool, when one exists.",
         Required = true,
     };
 
@@ -52,8 +52,8 @@ internal static partial class EditTrainingCapacityCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"edit-training-capacity", @"Sets a team's training GPU capacity
-Sets the max concurrent GPUs of a given type a team may use. Creates the limit if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a ceiling the org imposes on the team, not something the team manages for itself.");
+        var command = new Command(commandName ?? @"edit-training-capacity", @"Sets a team's training GPU quota
+Sets a team's GPU quota for a given type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota, and on-demand jobs can borrow past it from the organization's shared pool when one exists. Creates the quota if one doesn't exist for this (team, gpu_type) pair, otherwise updates it in place. Org-admin only: this is a quota the org imposes on the team, not something the team manages for itself.");
                         command.Options.Add(TeamId);
                         command.Options.Add(GpuType);
                         command.Options.Add(MaxGpus);
