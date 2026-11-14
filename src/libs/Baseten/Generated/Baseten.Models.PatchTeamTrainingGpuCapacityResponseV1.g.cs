@@ -4,12 +4,12 @@
 namespace Baseten
 {
     /// <summary>
-    /// Response for setting a team's GPU capacity ceiling.
+    /// Response for setting a team's GPU quota.
     /// </summary>
     public sealed partial class PatchTeamTrainingGpuCapacityResponseV1
     {
         /// <summary>
-        /// The updated per-team GPU capacity limit
+        /// The updated per-team GPU quota
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("team_gpu_capacity")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -25,7 +25,7 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="PatchTeamTrainingGpuCapacityResponseV1" /> class.
         /// </summary>
         /// <param name="teamGpuCapacity">
-        /// The updated per-team GPU capacity limit
+        /// The updated per-team GPU quota
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

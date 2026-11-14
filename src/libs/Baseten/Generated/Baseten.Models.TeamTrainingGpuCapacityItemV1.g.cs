@@ -37,7 +37,7 @@ namespace Baseten
         public required int Baseline { get; set; }
 
         /// <summary>
-        /// Maximum concurrent GPUs of this type for this team
+        /// The team's GPU quota for this type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota. On-demand jobs can run past it by borrowing from the organization's shared pool, when one exists.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -86,7 +86,7 @@ namespace Baseten
         /// Configured minimum GPU allocation for the team. Not enforced. 0 if not configured.
         /// </param>
         /// <param name="limit">
-        /// Maximum concurrent GPUs of this type for this team
+        /// The team's GPU quota for this type. It counts the team's on-demand jobs, plus its spot jobs when the organization has no separate on-demand quota. On-demand jobs can run past it by borrowing from the organization's shared pool, when one exists.
         /// </param>
         /// <param name="usageCount">
         /// GPUs currently in use by the team's active training jobs
