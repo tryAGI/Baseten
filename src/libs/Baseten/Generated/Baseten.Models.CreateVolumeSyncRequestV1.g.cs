@@ -12,9 +12,9 @@ namespace Baseten
         /// Remote source to sync from.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Source2JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Source3JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.Source2 Source { get; set; }
+        public required global::Baseten.Source3 Source { get; set; }
 
         /// <summary>
         /// BDN volume to sync into.
@@ -42,7 +42,7 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateVolumeSyncRequestV1(
-            global::Baseten.Source2 source,
+            global::Baseten.Source3 source,
             global::Baseten.VolumeSyncDestinationV1 destination)
         {
             this.Source = source;

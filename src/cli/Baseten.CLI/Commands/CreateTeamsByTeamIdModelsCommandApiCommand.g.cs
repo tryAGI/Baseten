@@ -13,7 +13,7 @@ internal static partial class CreateTeamsByTeamIdModelsCommandApiCommand
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
-    private static Option<global::Baseten.Source3> Source { get; } = new(
+    private static Option<global::Baseten.Source2> Source { get; } = new(
         name: @"--source")
     {
         Description = @"Where the new model is created from.",

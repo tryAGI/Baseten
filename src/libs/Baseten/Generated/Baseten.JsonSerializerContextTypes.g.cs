@@ -210,7 +210,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.Source2? Type43 { get; set; }
+        public global::Baseten.Source3? Type43 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -486,11 +486,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SchedulesItem>? Type112 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SchedulesItem2>? Type112 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SchedulesItem? Type113 { get; set; }
+        public global::Baseten.SchedulesItem2? Type113 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -962,7 +962,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.Source3? Type231 { get; set; }
+        public global::Baseten.Source2? Type231 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1326,11 +1326,11 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Baseten.SchedulesItem2>? Type322 { get; set; }
+        public global::System.Collections.Generic.IList<global::Baseten.SchedulesItem>? Type322 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.SchedulesItem2? Type323 { get; set; }
+        public global::Baseten.SchedulesItem? Type323 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -3947,7 +3947,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.SchedulesItem>? ListType15 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.SchedulesItem2>? ListType15 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -4023,7 +4023,7 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Baseten.SchedulesItem2>? ListType34 { get; set; }
+        public global::System.Collections.Generic.List<global::Baseten.SchedulesItem>? ListType34 { get; set; }
         /// <summary>
         ///
         /// </summary>

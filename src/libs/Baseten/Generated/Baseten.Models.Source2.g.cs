@@ -5,483 +5,164 @@
 namespace Baseten
 {
     /// <summary>
-    /// Remote source to sync from.
+    /// Where the new model is created from.
     /// </summary>
     public readonly partial struct Source2 : global::System.IEquatable<Source2>
     {
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.CreateVolumeSyncRequestV1SourceDiscriminatorType? Type { get; }
+        public global::Baseten.CreateModelRequestV1SourceDiscriminatorKind? Kind { get; }
 
         /// <summary>
-        /// Hugging Face source.
+        /// Create a model by forking a library listing accessible to the caller's organization.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.VolumeSyncSourceHuggingFaceV1? HuggingFace { get; init; }
+        public global::Baseten.LibraryListingSourceV1? LibraryListing { get; init; }
 #else
-        public global::Baseten.VolumeSyncSourceHuggingFaceV1? HuggingFace { get; }
+        public global::Baseten.LibraryListingSourceV1? LibraryListing { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(HuggingFace))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LibraryListing))]
 #endif
-        public bool IsHuggingFace => HuggingFace != null;
+        public bool IsLibraryListing => LibraryListing != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickHuggingFace(
+        public bool TryPickLibraryListing(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.VolumeSyncSourceHuggingFaceV1? value)
+            out global::Baseten.LibraryListingSourceV1? value)
         {
-            value = HuggingFace;
-            return IsHuggingFace;
+            value = LibraryListing;
+            return IsLibraryListing;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceHuggingFaceV1 PickHuggingFace() => HuggingFace is { } value
+        public global::Baseten.LibraryListingSourceV1 PickLibraryListing() => LibraryListing is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'HuggingFace' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LibraryListing' but the value was {ToString()}.");
 
         /// <summary>
-        /// Amazon S3 source.
+        /// Create a model from an archive previously uploaded via the credentials<br/>
+        /// issued by `POST /v1/prepare_model_upload`.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Baseten.VolumeSyncSourceS3V1? S3 { get; init; }
+        public global::Baseten.ModelArchiveSourceV1? ModelArchive { get; init; }
 #else
-        public global::Baseten.VolumeSyncSourceS3V1? S3 { get; }
+        public global::Baseten.ModelArchiveSourceV1? ModelArchive { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(S3))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ModelArchive))]
 #endif
-        public bool IsS3 => S3 != null;
+        public bool IsModelArchive => ModelArchive != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickS3(
+        public bool TryPickModelArchive(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::Baseten.VolumeSyncSourceS3V1? value)
+            out global::Baseten.ModelArchiveSourceV1? value)
         {
-            value = S3;
-            return IsS3;
+            value = ModelArchive;
+            return IsModelArchive;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceS3V1 PickS3() => S3 is { } value
+        public global::Baseten.ModelArchiveSourceV1 PickModelArchive() => ModelArchive is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'S3' but the value was {ToString()}.");
-
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ModelArchive' but the value was {ToString()}.");
         /// <summary>
-        /// Google Cloud Storage source.
+        ///
         /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Baseten.VolumeSyncSourceGCSV1? Gcs { get; init; }
-#else
-        public global::Baseten.VolumeSyncSourceGCSV1? Gcs { get; }
-#endif
+        public static implicit operator Source2(global::Baseten.LibraryListingSourceV1 value) => new Source2((global::Baseten.LibraryListingSourceV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Gcs))]
-#endif
-        public bool IsGcs => Gcs != null;
+        public static implicit operator global::Baseten.LibraryListingSourceV1?(Source2 @this) => @this.LibraryListing;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickGcs(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Baseten.VolumeSyncSourceGCSV1? value)
+        public Source2(global::Baseten.LibraryListingSourceV1? value)
         {
-            value = Gcs;
-            return IsGcs;
+            LibraryListing = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceGCSV1 PickGcs() => Gcs is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'Gcs' but the value was {ToString()}.");
-
-        /// <summary>
-        /// Azure Blob Storage source.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Baseten.VolumeSyncSourceAzureV1? Azure { get; init; }
-#else
-        public global::Baseten.VolumeSyncSourceAzureV1? Azure { get; }
-#endif
+        public static Source2 FromLibraryListing(global::Baseten.LibraryListingSourceV1? value) => new Source2(value);
 
         /// <summary>
         ///
         /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Azure))]
-#endif
-        public bool IsAzure => Azure != null;
+        public static implicit operator Source2(global::Baseten.ModelArchiveSourceV1 value) => new Source2((global::Baseten.ModelArchiveSourceV1?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickAzure(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Baseten.VolumeSyncSourceAzureV1? value)
+        public static implicit operator global::Baseten.ModelArchiveSourceV1?(Source2 @this) => @this.ModelArchive;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Source2(global::Baseten.ModelArchiveSourceV1? value)
         {
-            value = Azure;
-            return IsAzure;
+            ModelArchive = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::Baseten.VolumeSyncSourceAzureV1 PickAzure() => Azure is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'Azure' but the value was {ToString()}.");
-
-        /// <summary>
-        /// Cloudflare R2 source.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Baseten.VolumeSyncSourceR2V1? R2 { get; init; }
-#else
-        public global::Baseten.VolumeSyncSourceR2V1? R2 { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(R2))]
-#endif
-        public bool IsR2 => R2 != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickR2(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Baseten.VolumeSyncSourceR2V1? value)
-        {
-            value = R2;
-            return IsR2;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Baseten.VolumeSyncSourceR2V1 PickR2() => R2 is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'R2' but the value was {ToString()}.");
-
-        /// <summary>
-        /// CoreWeave object storage source.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Baseten.VolumeSyncSourceCoreWeaveV1? Coreweave { get; init; }
-#else
-        public global::Baseten.VolumeSyncSourceCoreWeaveV1? Coreweave { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Coreweave))]
-#endif
-        public bool IsCoreweave => Coreweave != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickCoreweave(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Baseten.VolumeSyncSourceCoreWeaveV1? value)
-        {
-            value = Coreweave;
-            return IsCoreweave;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Baseten.VolumeSyncSourceCoreWeaveV1 PickCoreweave() => Coreweave is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'Coreweave' but the value was {ToString()}.");
-
-        /// <summary>
-        /// Baseten training artifact source.
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Baseten.VolumeSyncSourceBasetenTrainingV1? BasetenTraining { get; init; }
-#else
-        public global::Baseten.VolumeSyncSourceBasetenTrainingV1? BasetenTraining { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BasetenTraining))]
-#endif
-        public bool IsBasetenTraining => BasetenTraining != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickBasetenTraining(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Baseten.VolumeSyncSourceBasetenTrainingV1? value)
-        {
-            value = BasetenTraining;
-            return IsBasetenTraining;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Baseten.VolumeSyncSourceBasetenTrainingV1 PickBasetenTraining() => BasetenTraining is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'BasetenTraining' but the value was {ToString()}.");
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Source2(global::Baseten.VolumeSyncSourceHuggingFaceV1 value) => new Source2((global::Baseten.VolumeSyncSourceHuggingFaceV1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.VolumeSyncSourceHuggingFaceV1?(Source2 @this) => @this.HuggingFace;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Source2(global::Baseten.VolumeSyncSourceHuggingFaceV1? value)
-        {
-            HuggingFace = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Source2 FromHuggingFace(global::Baseten.VolumeSyncSourceHuggingFaceV1? value) => new Source2(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Source2(global::Baseten.VolumeSyncSourceS3V1 value) => new Source2((global::Baseten.VolumeSyncSourceS3V1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.VolumeSyncSourceS3V1?(Source2 @this) => @this.S3;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Source2(global::Baseten.VolumeSyncSourceS3V1? value)
-        {
-            S3 = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Source2 FromS3(global::Baseten.VolumeSyncSourceS3V1? value) => new Source2(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Source2(global::Baseten.VolumeSyncSourceGCSV1 value) => new Source2((global::Baseten.VolumeSyncSourceGCSV1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.VolumeSyncSourceGCSV1?(Source2 @this) => @this.Gcs;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Source2(global::Baseten.VolumeSyncSourceGCSV1? value)
-        {
-            Gcs = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Source2 FromGcs(global::Baseten.VolumeSyncSourceGCSV1? value) => new Source2(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Source2(global::Baseten.VolumeSyncSourceAzureV1 value) => new Source2((global::Baseten.VolumeSyncSourceAzureV1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.VolumeSyncSourceAzureV1?(Source2 @this) => @this.Azure;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Source2(global::Baseten.VolumeSyncSourceAzureV1? value)
-        {
-            Azure = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Source2 FromAzure(global::Baseten.VolumeSyncSourceAzureV1? value) => new Source2(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Source2(global::Baseten.VolumeSyncSourceR2V1 value) => new Source2((global::Baseten.VolumeSyncSourceR2V1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.VolumeSyncSourceR2V1?(Source2 @this) => @this.R2;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Source2(global::Baseten.VolumeSyncSourceR2V1? value)
-        {
-            R2 = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Source2 FromR2(global::Baseten.VolumeSyncSourceR2V1? value) => new Source2(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Source2(global::Baseten.VolumeSyncSourceCoreWeaveV1 value) => new Source2((global::Baseten.VolumeSyncSourceCoreWeaveV1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.VolumeSyncSourceCoreWeaveV1?(Source2 @this) => @this.Coreweave;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Source2(global::Baseten.VolumeSyncSourceCoreWeaveV1? value)
-        {
-            Coreweave = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Source2 FromCoreweave(global::Baseten.VolumeSyncSourceCoreWeaveV1? value) => new Source2(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Source2(global::Baseten.VolumeSyncSourceBasetenTrainingV1 value) => new Source2((global::Baseten.VolumeSyncSourceBasetenTrainingV1?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Baseten.VolumeSyncSourceBasetenTrainingV1?(Source2 @this) => @this.BasetenTraining;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Source2(global::Baseten.VolumeSyncSourceBasetenTrainingV1? value)
-        {
-            BasetenTraining = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Source2 FromBasetenTraining(global::Baseten.VolumeSyncSourceBasetenTrainingV1? value) => new Source2(value);
+        public static Source2 FromModelArchive(global::Baseten.ModelArchiveSourceV1? value) => new Source2(value);
 
         /// <summary>
         ///
         /// </summary>
         public Source2(
-            global::Baseten.CreateVolumeSyncRequestV1SourceDiscriminatorType? type,
-            global::Baseten.VolumeSyncSourceHuggingFaceV1? huggingFace,
-            global::Baseten.VolumeSyncSourceS3V1? s3,
-            global::Baseten.VolumeSyncSourceGCSV1? gcs,
-            global::Baseten.VolumeSyncSourceAzureV1? azure,
-            global::Baseten.VolumeSyncSourceR2V1? r2,
-            global::Baseten.VolumeSyncSourceCoreWeaveV1? coreweave,
-            global::Baseten.VolumeSyncSourceBasetenTrainingV1? basetenTraining
+            global::Baseten.CreateModelRequestV1SourceDiscriminatorKind? kind,
+            global::Baseten.LibraryListingSourceV1? libraryListing,
+            global::Baseten.ModelArchiveSourceV1? modelArchive
             )
         {
-            Type = type;
+            Kind = kind;
 
-            HuggingFace = huggingFace;
-            S3 = s3;
-            Gcs = gcs;
-            Azure = azure;
-            R2 = r2;
-            Coreweave = coreweave;
-            BasetenTraining = basetenTraining;
+            LibraryListing = libraryListing;
+            ModelArchive = modelArchive;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
-            BasetenTraining as object ??
-            Coreweave as object ??
-            R2 as object ??
-            Azure as object ??
-            Gcs as object ??
-            S3 as object ??
-            HuggingFace as object
+            ModelArchive as object ??
+            LibraryListing as object
             ;
 
         /// <summary>
         ///
         /// </summary>
         public override string? ToString() =>
-            HuggingFace?.ToString() ??
-            S3?.ToString() ??
-            Gcs?.ToString() ??
-            Azure?.ToString() ??
-            R2?.ToString() ??
-            Coreweave?.ToString() ??
-            BasetenTraining?.ToString()
+            LibraryListing?.ToString() ??
+            ModelArchive?.ToString()
             ;
 
         /// <summary>
@@ -489,20 +170,15 @@ namespace Baseten
         /// </summary>
         public bool Validate()
         {
-            return IsHuggingFace && !IsS3 && !IsGcs && !IsAzure && !IsR2 && !IsCoreweave && !IsBasetenTraining || !IsHuggingFace && IsS3 && !IsGcs && !IsAzure && !IsR2 && !IsCoreweave && !IsBasetenTraining || !IsHuggingFace && !IsS3 && IsGcs && !IsAzure && !IsR2 && !IsCoreweave && !IsBasetenTraining || !IsHuggingFace && !IsS3 && !IsGcs && IsAzure && !IsR2 && !IsCoreweave && !IsBasetenTraining || !IsHuggingFace && !IsS3 && !IsGcs && !IsAzure && IsR2 && !IsCoreweave && !IsBasetenTraining || !IsHuggingFace && !IsS3 && !IsGcs && !IsAzure && !IsR2 && IsCoreweave && !IsBasetenTraining || !IsHuggingFace && !IsS3 && !IsGcs && !IsAzure && !IsR2 && !IsCoreweave && IsBasetenTraining;
+            return IsLibraryListing && !IsModelArchive || !IsLibraryListing && IsModelArchive;
         }
 
         /// <summary>
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Baseten.VolumeSyncSourceHuggingFaceV1, TResult>? huggingFace = null,
-            global::System.Func<global::Baseten.VolumeSyncSourceS3V1, TResult>? s3 = null,
-            global::System.Func<global::Baseten.VolumeSyncSourceGCSV1, TResult>? gcs = null,
-            global::System.Func<global::Baseten.VolumeSyncSourceAzureV1, TResult>? azure = null,
-            global::System.Func<global::Baseten.VolumeSyncSourceR2V1, TResult>? r2 = null,
-            global::System.Func<global::Baseten.VolumeSyncSourceCoreWeaveV1, TResult>? coreweave = null,
-            global::System.Func<global::Baseten.VolumeSyncSourceBasetenTrainingV1, TResult>? basetenTraining = null,
+            global::System.Func<global::Baseten.LibraryListingSourceV1, TResult>? libraryListing = null,
+            global::System.Func<global::Baseten.ModelArchiveSourceV1, TResult>? modelArchive = null,
             bool validate = true)
         {
             if (validate)
@@ -510,33 +186,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (HuggingFace is { } __value0 && huggingFace != null)
+            if (LibraryListing is { } __value0 && libraryListing != null)
             {
-                return huggingFace(__value0);
+                return libraryListing(__value0);
             }
-            else if (S3 is { } __value1 && s3 != null)
+            else if (ModelArchive is { } __value1 && modelArchive != null)
             {
-                return s3(__value1);
-            }
-            else if (Gcs is { } __value2 && gcs != null)
-            {
-                return gcs(__value2);
-            }
-            else if (Azure is { } __value3 && azure != null)
-            {
-                return azure(__value3);
-            }
-            else if (R2 is { } __value4 && r2 != null)
-            {
-                return r2(__value4);
-            }
-            else if (Coreweave is { } __value5 && coreweave != null)
-            {
-                return coreweave(__value5);
-            }
-            else if (BasetenTraining is { } __value6 && basetenTraining != null)
-            {
-                return basetenTraining(__value6);
+                return modelArchive(__value1);
             }
 
             return default(TResult);
@@ -546,19 +202,9 @@ namespace Baseten
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::Baseten.VolumeSyncSourceHuggingFaceV1>? huggingFace = null,
+            global::System.Action<global::Baseten.LibraryListingSourceV1>? libraryListing = null,
 
-            global::System.Action<global::Baseten.VolumeSyncSourceS3V1>? s3 = null,
-
-            global::System.Action<global::Baseten.VolumeSyncSourceGCSV1>? gcs = null,
-
-            global::System.Action<global::Baseten.VolumeSyncSourceAzureV1>? azure = null,
-
-            global::System.Action<global::Baseten.VolumeSyncSourceR2V1>? r2 = null,
-
-            global::System.Action<global::Baseten.VolumeSyncSourceCoreWeaveV1>? coreweave = null,
-
-            global::System.Action<global::Baseten.VolumeSyncSourceBasetenTrainingV1>? basetenTraining = null,
+            global::System.Action<global::Baseten.ModelArchiveSourceV1>? modelArchive = null,
             bool validate = true)
         {
             if (validate)
@@ -566,33 +212,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (HuggingFace is { } __value0)
+            if (LibraryListing is { } __value0)
             {
-                huggingFace?.Invoke(__value0);
+                libraryListing?.Invoke(__value0);
             }
-            else if (S3 is { } __value1)
+            else if (ModelArchive is { } __value1)
             {
-                s3?.Invoke(__value1);
-            }
-            else if (Gcs is { } __value2)
-            {
-                gcs?.Invoke(__value2);
-            }
-            else if (Azure is { } __value3)
-            {
-                azure?.Invoke(__value3);
-            }
-            else if (R2 is { } __value4)
-            {
-                r2?.Invoke(__value4);
-            }
-            else if (Coreweave is { } __value5)
-            {
-                coreweave?.Invoke(__value5);
-            }
-            else if (BasetenTraining is { } __value6)
-            {
-                basetenTraining?.Invoke(__value6);
+                modelArchive?.Invoke(__value1);
             }
         }
 
@@ -600,13 +226,8 @@ namespace Baseten
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::Baseten.VolumeSyncSourceHuggingFaceV1>? huggingFace = null,
-            global::System.Action<global::Baseten.VolumeSyncSourceS3V1>? s3 = null,
-            global::System.Action<global::Baseten.VolumeSyncSourceGCSV1>? gcs = null,
-            global::System.Action<global::Baseten.VolumeSyncSourceAzureV1>? azure = null,
-            global::System.Action<global::Baseten.VolumeSyncSourceR2V1>? r2 = null,
-            global::System.Action<global::Baseten.VolumeSyncSourceCoreWeaveV1>? coreweave = null,
-            global::System.Action<global::Baseten.VolumeSyncSourceBasetenTrainingV1>? basetenTraining = null,
+            global::System.Action<global::Baseten.LibraryListingSourceV1>? libraryListing = null,
+            global::System.Action<global::Baseten.ModelArchiveSourceV1>? modelArchive = null,
             bool validate = true)
         {
             if (validate)
@@ -614,33 +235,13 @@ namespace Baseten
                 Validate();
             }
 
-            if (HuggingFace is { } __value0)
+            if (LibraryListing is { } __value0)
             {
-                huggingFace?.Invoke(__value0);
+                libraryListing?.Invoke(__value0);
             }
-            else if (S3 is { } __value1)
+            else if (ModelArchive is { } __value1)
             {
-                s3?.Invoke(__value1);
-            }
-            else if (Gcs is { } __value2)
-            {
-                gcs?.Invoke(__value2);
-            }
-            else if (Azure is { } __value3)
-            {
-                azure?.Invoke(__value3);
-            }
-            else if (R2 is { } __value4)
-            {
-                r2?.Invoke(__value4);
-            }
-            else if (Coreweave is { } __value5)
-            {
-                coreweave?.Invoke(__value5);
-            }
-            else if (BasetenTraining is { } __value6)
-            {
-                basetenTraining?.Invoke(__value6);
+                modelArchive?.Invoke(__value1);
             }
         }
 
@@ -651,20 +252,10 @@ namespace Baseten
         {
             var fields = new object?[]
             {
-                HuggingFace,
-                typeof(global::Baseten.VolumeSyncSourceHuggingFaceV1),
-                S3,
-                typeof(global::Baseten.VolumeSyncSourceS3V1),
-                Gcs,
-                typeof(global::Baseten.VolumeSyncSourceGCSV1),
-                Azure,
-                typeof(global::Baseten.VolumeSyncSourceAzureV1),
-                R2,
-                typeof(global::Baseten.VolumeSyncSourceR2V1),
-                Coreweave,
-                typeof(global::Baseten.VolumeSyncSourceCoreWeaveV1),
-                BasetenTraining,
-                typeof(global::Baseten.VolumeSyncSourceBasetenTrainingV1),
+                LibraryListing,
+                typeof(global::Baseten.LibraryListingSourceV1),
+                ModelArchive,
+                typeof(global::Baseten.ModelArchiveSourceV1),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -681,13 +272,8 @@ namespace Baseten
         public bool Equals(Source2 other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.VolumeSyncSourceHuggingFaceV1?>.Default.Equals(HuggingFace, other.HuggingFace) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.VolumeSyncSourceS3V1?>.Default.Equals(S3, other.S3) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.VolumeSyncSourceGCSV1?>.Default.Equals(Gcs, other.Gcs) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.VolumeSyncSourceAzureV1?>.Default.Equals(Azure, other.Azure) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.VolumeSyncSourceR2V1?>.Default.Equals(R2, other.R2) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.VolumeSyncSourceCoreWeaveV1?>.Default.Equals(Coreweave, other.Coreweave) &&
-                global::System.Collections.Generic.EqualityComparer<global::Baseten.VolumeSyncSourceBasetenTrainingV1?>.Default.Equals(BasetenTraining, other.BasetenTraining)
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.LibraryListingSourceV1?>.Default.Equals(LibraryListing, other.LibraryListing) &&
+                global::System.Collections.Generic.EqualityComparer<global::Baseten.ModelArchiveSourceV1?>.Default.Equals(ModelArchive, other.ModelArchive)
                 ;
         }
 
