@@ -23,6 +23,13 @@ namespace Baseten
         public int? Limit { get; set; }
 
         /// <summary>
+        /// Only the provider with this name, ignoring case<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Only this predefined provider's issuers<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -46,6 +53,10 @@ namespace Baseten
         /// Maximum number of items to return.<br/>
         /// Default Value: 100
         /// </param>
+        /// <param name="name">
+        /// Only the provider with this name, ignoring case<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="predefinedKind">
         /// Only this predefined provider's issuers<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -56,10 +67,12 @@ namespace Baseten
         public IdentityProvidersRequestV1(
             string? cursor,
             int? limit,
+            string? name,
             global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind)
         {
             this.Cursor = cursor;
             this.Limit = limit;
+            this.Name = name;
             this.PredefinedKind = predefinedKind;
         }
 

@@ -67,7 +67,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="displayName">
-        /// Display label. Omit to use the route name; required for INTELLIGENT targets. Null is not accepted.<br/>
+        /// Display label. Omit to use the route's name; required for INTELLIGENT targets. Null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="target">

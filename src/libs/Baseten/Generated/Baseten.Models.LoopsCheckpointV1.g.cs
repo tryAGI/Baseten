@@ -84,6 +84,12 @@ namespace Baseten
         public required global::Baseten.TrainerCheckpointTarget Target { get; set; }
 
         /// <summary>
+        /// When the checkpoint expires and is deleted, set from the TTL it was saved with. Null means it's kept until you delete it. A checkpoint that's still in use when it expires, for example deployed, is deleted once it's released.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public global::System.DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -126,6 +132,9 @@ namespace Baseten
         /// <param name="loraConfig">
         /// The immutable LoRA config used to save this checkpoint. Null means the checkpoint is unsupported and cannot be loaded.
         /// </param>
+        /// <param name="expiresAt">
+        /// When the checkpoint expires and is deleted, set from the TTL it was saved with. Null means it's kept until you delete it. A checkpoint that's still in use when it expires, for example deployed, is deleted once it's released.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -140,7 +149,8 @@ namespace Baseten
             string? baseModel,
             object? loraAdapterConfig,
             string? syncStatus,
-            global::Baseten.LoopsLoRAConfigV1? loraConfig)
+            global::Baseten.LoopsLoRAConfigV1? loraConfig,
+            global::System.DateTime? expiresAt)
         {
             this.CheckpointId = checkpointId ?? throw new global::System.ArgumentNullException(nameof(checkpointId));
             this.CreatedAt = createdAt;
@@ -153,6 +163,7 @@ namespace Baseten
             this.LoraConfig = loraConfig;
             this.RunId = runId ?? throw new global::System.ArgumentNullException(nameof(runId));
             this.Target = target;
+            this.ExpiresAt = expiresAt;
         }
 
         /// <summary>

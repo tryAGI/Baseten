@@ -16,17 +16,24 @@ namespace Baseten
         public required string Id { get; set; }
 
         /// <summary>
-        /// Name to send in the inference request's model field.
+        /// Name to send in the inference request's `model` field. Unique within the team; immutable.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Name { get; set; }
 
         /// <summary>
-        /// The route's claude-desktop alias, for Claude Code desktop. Null until the backfill mints it.
+        /// Display label, defaulting to the route's name.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("alias")]
-        public string? Alias { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("display_name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string DisplayName { get; set; }
+
+        /// <summary>
+        /// The route's other names, one per purpose. Empty for routes created before aliases existed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("aliases")]
+        public global::System.Collections.Generic.IList<global::Baseten.GridRouteAliasV1>? Aliases { get; set; }
 
         /// <summary>
         /// Identifier of the owning team.
@@ -41,13 +48,6 @@ namespace Baseten
         [global::System.Text.Json.Serialization.JsonPropertyName("team_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string TeamName { get; set; }
-
-        /// <summary>
-        /// Display label, defaulting to the route name.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("display_name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string DisplayName { get; set; }
 
         /// <summary>
         /// Short description of the route, empty when unset.
@@ -97,16 +97,16 @@ namespace Baseten
         /// Stable route identifier.
         /// </param>
         /// <param name="name">
-        /// Name to send in the inference request's model field.
+        /// Name to send in the inference request's `model` field. Unique within the team; immutable.
+        /// </param>
+        /// <param name="displayName">
+        /// Display label, defaulting to the route's name.
         /// </param>
         /// <param name="teamId">
         /// Identifier of the owning team.
         /// </param>
         /// <param name="teamName">
         /// Name of the owning team.
-        /// </param>
-        /// <param name="displayName">
-        /// Display label, defaulting to the route name.
         /// </param>
         /// <param name="description">
         /// Short description of the route, empty when unset.
@@ -120,8 +120,8 @@ namespace Baseten
         /// <param name="createdAt">
         /// Creation time, ISO 8601.
         /// </param>
-        /// <param name="alias">
-        /// The route's claude-desktop alias, for Claude Code desktop. Null until the backfill mints it.
+        /// <param name="aliases">
+        /// The route's other names, one per purpose. Empty for routes created before aliases existed.
         /// </param>
         /// <param name="metadata">
         /// Resolved model metadata; for an intelligent route, the envelope of its servable models' metadata. Null when nothing is linked or the metadata has no supported API formats.
@@ -132,22 +132,22 @@ namespace Baseten
         public GridRouteV1(
             string id,
             string name,
+            string displayName,
             string teamId,
             string teamName,
-            string displayName,
             string description,
             global::Baseten.Target target,
             string invokeUrl,
             global::System.DateTime createdAt,
-            string? alias,
+            global::System.Collections.Generic.IList<global::Baseten.GridRouteAliasV1>? aliases,
             global::Baseten.GridRouteMetadataV1? metadata)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Alias = alias;
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
+            this.Aliases = aliases;
             this.TeamId = teamId ?? throw new global::System.ArgumentNullException(nameof(teamId));
             this.TeamName = teamName ?? throw new global::System.ArgumentNullException(nameof(teamName));
-            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Target = target;
             this.Metadata = metadata;
