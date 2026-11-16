@@ -7,7 +7,7 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class CreateVolumesSyncsCommandApiCommand
 {
-    private static Option<global::Baseten.Source2> Source { get; } = new(
+    private static Option<global::Baseten.Source3> Source { get; } = new(
         name: @"--source")
     {
         Description = @"Remote source to sync from.",

@@ -17,22 +17,22 @@ namespace Baseten.JsonConverters
 
 
             var readerCopy = reader;
-            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminator> ??
-                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminator)}");
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminator)}");
             var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
 
-            global::Baseten.AutoscalingScheduleV1? daily = default;
-            if (discriminator?.Cadence == global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadence.Daily)
+            global::Baseten.AutoscalingScheduleUpsertV1? daily = default;
+            if (discriminator?.Cadence == global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence.Daily)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AutoscalingScheduleV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AutoscalingScheduleV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AutoscalingScheduleV1)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AutoscalingScheduleUpsertV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AutoscalingScheduleUpsertV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AutoscalingScheduleUpsertV1)}");
                 daily = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-            global::Baseten.OneTimeAutoscalingScheduleV1? oneTime = default;
-            if (discriminator?.Cadence == global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadence.OneTime)
+            global::Baseten.OneTimeAutoscalingScheduleUpsertV1? oneTime = default;
+            if (discriminator?.Cadence == global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence.OneTime)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.OneTimeAutoscalingScheduleV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.OneTimeAutoscalingScheduleV1> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.OneTimeAutoscalingScheduleV1)}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.OneTimeAutoscalingScheduleUpsertV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.OneTimeAutoscalingScheduleUpsertV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.OneTimeAutoscalingScheduleUpsertV1)}");
                 oneTime = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
@@ -57,14 +57,14 @@ namespace Baseten.JsonConverters
 
             if (value.IsDaily)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AutoscalingScheduleV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AutoscalingScheduleV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AutoscalingScheduleV1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AutoscalingScheduleUpsertV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AutoscalingScheduleUpsertV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AutoscalingScheduleUpsertV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDaily(), typeInfo);
             }
             else if (value.IsOneTime)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.OneTimeAutoscalingScheduleV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.OneTimeAutoscalingScheduleV1?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.OneTimeAutoscalingScheduleV1).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.OneTimeAutoscalingScheduleUpsertV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.OneTimeAutoscalingScheduleUpsertV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.OneTimeAutoscalingScheduleUpsertV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickOneTime(), typeInfo);
             }
         }

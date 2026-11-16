@@ -12,9 +12,9 @@ namespace Baseten
         /// Where the new model is created from.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Source3JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.Source2JsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.Source3 Source { get; set; }
+        public required global::Baseten.Source2 Source { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,7 +32,7 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateModelRequestV1(
-            global::Baseten.Source3 source)
+            global::Baseten.Source2 source)
         {
             this.Source = source;
         }
