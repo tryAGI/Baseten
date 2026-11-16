@@ -23,6 +23,13 @@ namespace Baseten
         public int? Limit { get; set; }
 
         /// <summary>
+        /// Only the account with this name, ignoring case<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Only this team's accounts<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -53,6 +60,10 @@ namespace Baseten
         /// Maximum number of items to return.<br/>
         /// Default Value: 100
         /// </param>
+        /// <param name="name">
+        /// Only the account with this name, ignoring case<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="teamId">
         /// Only this team's accounts<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -67,11 +78,13 @@ namespace Baseten
         public ServiceAccountsRequestV1(
             string? cursor,
             int? limit,
+            string? name,
             string? teamId,
             bool? disabled)
         {
             this.Cursor = cursor;
             this.Limit = limit;
+            this.Name = name;
             this.TeamId = teamId;
             this.Disabled = disabled;
         }

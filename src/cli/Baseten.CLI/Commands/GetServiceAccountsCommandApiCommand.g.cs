@@ -19,6 +19,12 @@ internal static partial class GetServiceAccountsCommandApiCommand
         Description = @"Maximum number of items to return.",
     };
 
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"Only the account with this name, ignoring case",
+    };
+
     private static Option<string?> TeamId { get; } = new(
         name: @"--team-id")
     {
@@ -57,6 +63,7 @@ internal static partial class GetServiceAccountsCommandApiCommand
 Lists the service accounts you administer: every account for an organization admin, and your teams' accounts for a team admin. Workload identity federation tokens act as service accounts.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
+                        command.Options.Add(NameOption);
                         command.Options.Add(TeamId);
                         command.Options.Add(Disabled);
 
@@ -66,6 +73,7 @@ Lists the service accounts you administer: every account for an organization adm
             {
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
+                        var name = parseResult.GetValue(NameOption);
                         var teamId = parseResult.GetValue(TeamId);
                         var disabled = parseResult.GetValue(Disabled);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -74,6 +82,7 @@ Lists the service accounts you administer: every account for an organization adm
                                 var response = await client.GetServiceAccountsAsync(
                                     cursor: cursor,
                                     limit: limit,
+                                    name: name,
                                     teamId: teamId,
                                     disabled: disabled,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

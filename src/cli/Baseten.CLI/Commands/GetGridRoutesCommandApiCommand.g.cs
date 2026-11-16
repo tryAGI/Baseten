@@ -32,7 +32,7 @@ internal static partial class GetGridRoutesCommandApiCommand
     private static Option<string?> NameOption { get; } = new(
         name: @"--name")
     {
-        Description = @"Filter by exact route name. Preserved by the cursor; if repeated, must match the original filter.",
+        Description = @"Filter by exact route name, the value to send in the inference request's `model` field. Matches a route's name or any of its aliases. Preserved by the cursor; if repeated, must match the original filter.",
     };
 
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.GridRoutesResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)

@@ -16,7 +16,7 @@ internal static partial class CreateGridRoutesCommandApiCommand
     private static Option<string?> DisplayName { get; } = new(
         name: @"--display-name")
     {
-        Description = @"Display label. Omit to use the route name; required for INTELLIGENT targets. Null is not accepted.",
+        Description = @"Display label. Omit to use the route's name; required for INTELLIGENT targets. Null is not accepted.",
     };
 
     private static Option<global::Baseten.Target2> Target { get; } = new(
@@ -118,12 +118,20 @@ Creates and derives a name for the provided route configuration. CONNECTION targ
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
+                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
+                                        parseResult,
+                                        response,
+                                        global::Baseten.SourceGenerationContext.Default,
+                                        @"Aliases",
+                                        cancellationToken).ConfigureAwait(false))
+                                {
                                 await CliRuntime.WriteResponseAsync(
                                     parseResult,
                                     response,
                                     global::Baseten.SourceGenerationContext.Default,
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
+                                }
             }, cancellationToken).ConfigureAwait(false));
         CustomizeCommand(ref command);
         return command;

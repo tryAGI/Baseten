@@ -37,7 +37,7 @@ namespace Baseten
         public bool? ForHarnesses { get; set; }
 
         /// <summary>
-        /// Filter by exact route name. Preserved by the cursor; if repeated, must match the original filter.<br/>
+        /// Filter by exact route name, the value to send in the inference request's `model` field. Matches a route's name or any of its aliases. Preserved by the cursor; if repeated, must match the original filter.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -69,7 +69,7 @@ namespace Baseten
         /// Default Value: false
         /// </param>
         /// <param name="name">
-        /// Filter by exact route name. Preserved by the cursor; if repeated, must match the original filter.<br/>
+        /// Filter by exact route name, the value to send in the inference request's `model` field. Matches a route's name or any of its aliases. Preserved by the cursor; if repeated, must match the original filter.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER

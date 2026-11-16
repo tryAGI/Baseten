@@ -19,6 +19,12 @@ internal static partial class GetAccessIdentityProvidersCommandApiCommand
         Description = @"Maximum number of items to return.",
     };
 
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"Only the provider with this name, ignoring case",
+    };
+
     private static Option<global::Baseten.PredefinedIdentityProviderKindV1?> PredefinedKind { get; } = new(
         name: @"--predefined-kind")
     {
@@ -53,6 +59,7 @@ internal static partial class GetAccessIdentityProvidersCommandApiCommand
 Lists the organization's identity providers. Organization and team admins can list them.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
+                        command.Options.Add(NameOption);
                         command.Options.Add(PredefinedKind);
 
 
@@ -61,6 +68,7 @@ Lists the organization's identity providers. Organization and team admins can li
             {
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
+                        var name = parseResult.GetValue(NameOption);
                         var predefinedKind = parseResult.GetValue(PredefinedKind);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -68,6 +76,7 @@ Lists the organization's identity providers. Organization and team admins can li
                                 var response = await client.GetAccessIdentityProvidersAsync(
                                     cursor: cursor,
                                     limit: limit,
+                                    name: name,
                                     predefinedKind: predefinedKind,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

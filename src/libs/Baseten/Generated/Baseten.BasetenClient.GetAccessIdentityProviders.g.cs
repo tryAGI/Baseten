@@ -29,12 +29,14 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
             ref int? limit,
+            ref string? name,
             ref global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind);
         partial void PrepareGetAccessIdentityProvidersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
             int? limit,
+            string? name,
             global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind);
         partial void ProcessGetAccessIdentityProvidersResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -55,6 +57,9 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 100
         /// </param>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="predefinedKind">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -69,6 +74,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.IdentityProvidersV1> GetAccessIdentityProvidersAsync(
             string? cursor = default,
             int? limit = default,
+            string? name = default,
             global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -76,6 +82,7 @@ namespace Baseten
             var __response = await GetAccessIdentityProvidersAsResponseAsync(
                 cursor: cursor,
                 limit: limit,
+                name: name,
                 predefinedKind: predefinedKind,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -93,6 +100,9 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 100
         /// </param>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="predefinedKind">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -107,6 +117,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.IdentityProvidersV1>> GetAccessIdentityProvidersAsResponseAsync(
             string? cursor = default,
             int? limit = default,
+            string? name = default,
             global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -117,6 +128,7 @@ namespace Baseten
                 httpClient: HttpClient,
                 cursor: ref cursor,
                 limit: ref limit,
+                name: ref name,
                 predefinedKind: ref predefinedKind);
 
 
@@ -148,6 +160,7 @@ namespace Baseten
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
                                 .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("name", name)
                                 .AddOptionalParameter("predefined_kind", predefinedKind?.ToValueString())
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -192,6 +205,7 @@ namespace Baseten
                     httpRequestMessage: __httpRequest,
                     cursor: cursor,
                     limit: limit,
+                    name: name,
                     predefinedKind: predefinedKind);
 
                 return __httpRequest;

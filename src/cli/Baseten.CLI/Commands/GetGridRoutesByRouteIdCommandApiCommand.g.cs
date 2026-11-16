@@ -53,12 +53,20 @@ internal static partial class GetGridRoutesByRouteIdCommandApiCommand
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
+                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
+                                        parseResult,
+                                        response,
+                                        global::Baseten.SourceGenerationContext.Default,
+                                        @"Aliases",
+                                        cancellationToken).ConfigureAwait(false))
+                                {
                                 await CliRuntime.WriteResponseAsync(
                                     parseResult,
                                     response,
                                     global::Baseten.SourceGenerationContext.Default,
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
+                                }
             }, cancellationToken).ConfigureAwait(false));
         CustomizeCommand(ref command);
         return command;

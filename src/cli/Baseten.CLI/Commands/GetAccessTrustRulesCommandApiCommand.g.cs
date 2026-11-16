@@ -19,6 +19,12 @@ internal static partial class GetAccessTrustRulesCommandApiCommand
         Description = @"Maximum number of items to return.",
     };
 
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"Only the rule with this name, ignoring case",
+    };
+
     private static Option<string?> IdentityProviderId { get; } = new(
         name: @"--identity-provider-id")
     {
@@ -65,6 +71,7 @@ internal static partial class GetAccessTrustRulesCommandApiCommand
 Lists the trust rules you administer: every rule for an organization admin, and rules for your teams' service accounts for a team admin.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
+                        command.Options.Add(NameOption);
                         command.Options.Add(IdentityProviderId);
                         command.Options.Add(ServiceAccountId);
                         command.Options.Add(TeamId);
@@ -75,6 +82,7 @@ Lists the trust rules you administer: every rule for an organization admin, and 
             {
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
+                        var name = parseResult.GetValue(NameOption);
                         var identityProviderId = parseResult.GetValue(IdentityProviderId);
                         var serviceAccountId = parseResult.GetValue(ServiceAccountId);
                         var teamId = parseResult.GetValue(TeamId);
@@ -84,6 +92,7 @@ Lists the trust rules you administer: every rule for an organization admin, and 
                                 var response = await client.GetAccessTrustRulesAsync(
                                     cursor: cursor,
                                     limit: limit,
+                                    name: name,
                                     identityProviderId: identityProviderId,
                                     serviceAccountId: serviceAccountId,
                                     teamId: teamId,

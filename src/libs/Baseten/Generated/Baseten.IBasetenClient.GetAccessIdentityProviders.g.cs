@@ -14,6 +14,9 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 100
         /// </param>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="predefinedKind">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -28,6 +31,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.IdentityProvidersV1> GetAccessIdentityProvidersAsync(
             string? cursor = default,
             int? limit = default,
+            string? name = default,
             global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -40,6 +44,9 @@ namespace Baseten
         /// </param>
         /// <param name="limit">
         /// Default Value: 100
+        /// </param>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="predefinedKind">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -55,6 +62,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.IdentityProvidersV1>> GetAccessIdentityProvidersAsResponseAsync(
             string? cursor = default,
             int? limit = default,
+            string? name = default,
             global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

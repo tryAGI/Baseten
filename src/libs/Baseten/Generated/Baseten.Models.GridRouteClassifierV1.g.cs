@@ -18,9 +18,9 @@ namespace Baseten
         /// <summary>
         /// Display name of the route classifier.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("display_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public required string DisplayName { get; set; }
 
         /// <summary>
         /// Tradeoffs the route classifier supports. Empty when it supports all of them.
@@ -48,7 +48,7 @@ namespace Baseten
         /// <param name="id">
         /// Stable route classifier identifier.
         /// </param>
-        /// <param name="name">
+        /// <param name="displayName">
         /// Display name of the route classifier.
         /// </param>
         /// <param name="supportedTradeoffs">
@@ -62,12 +62,12 @@ namespace Baseten
 #endif
         public GridRouteClassifierV1(
             string id,
-            string name,
+            string displayName,
             global::System.Collections.Generic.IList<global::Baseten.GridRouteClassifierV1SupportedTradeoff> supportedTradeoffs,
             global::System.Collections.Generic.IList<string> decidableModels)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.SupportedTradeoffs = supportedTradeoffs ?? throw new global::System.ArgumentNullException(nameof(supportedTradeoffs));
             this.DecidableModels = decidableModels ?? throw new global::System.ArgumentNullException(nameof(decidableModels));
         }

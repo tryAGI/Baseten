@@ -14,6 +14,9 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 100
         /// </param>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="identityProviderId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -34,6 +37,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AccessTrustRulesV1> GetAccessTrustRulesAsync(
             string? cursor = default,
             int? limit = default,
+            string? name = default,
             string? identityProviderId = default,
             string? serviceAccountId = default,
             string? teamId = default,
@@ -48,6 +52,9 @@ namespace Baseten
         /// </param>
         /// <param name="limit">
         /// Default Value: 100
+        /// </param>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="identityProviderId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -69,6 +76,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessTrustRulesV1>> GetAccessTrustRulesAsResponseAsync(
             string? cursor = default,
             int? limit = default,
+            string? name = default,
             string? identityProviderId = default,
             string? serviceAccountId = default,
             string? teamId = default,

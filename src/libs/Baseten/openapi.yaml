@@ -7935,6 +7935,49 @@
                 }
             ]
         },
+        "/v1/loops/checkpoints/{checkpoint_id}/ttl": {
+            "put": {
+                "summary": "Sets a Loops checkpoint's TTL",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PUT \\\n--url https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/ttl \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"ttl_seconds\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/checkpoints/{checkpoint_id}/ttl\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PUT\",\n    url,\n    headers=headers,\n    json={'ttl_seconds': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Sets when a Loops checkpoint expires, counted from now, or removes its TTL so it's kept until you delete it. An expired checkpoint is deleted within 24 hours. If it's in use when it expires, it's deleted within 24 hours after it stops being used.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetLoopsCheckpointTtlRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoopsCheckpointV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/checkpoint_id"
+                }
+            ]
+        },
         "/v1/loops/deployments": {
             "get": {
                 "summary": "Lists Loops deployments",
@@ -10353,7 +10396,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/service_accounts\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'team_id': None, 'disabled': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/service_accounts\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'name': None, 'team_id': None, 'disabled': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists the service accounts you administer: every account for an organization admin, and your teams' accounts for a team admin. Workload identity federation tokens act as service accounts.",
@@ -10387,6 +10430,25 @@
                             "minimum": 1,
                             "title": "Limit",
                             "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only the account with this name, ignoring case",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Name"
                         }
                     },
                     {
@@ -10614,7 +10676,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'predefined_kind': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'name': None, 'predefined_kind': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists the organization's identity providers. Organization and team admins can list them.",
@@ -10648,6 +10710,25 @@
                             "minimum": 1,
                             "title": "Limit",
                             "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only the provider with this name, ignoring case",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Name"
                         }
                     },
                     {
@@ -10866,7 +10947,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/trust_rules\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'identity_provider_id': None, 'service_account_id': None, 'team_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/trust_rules\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'name': None, 'identity_provider_id': None, 'service_account_id': None, 'team_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists the trust rules you administer: every rule for an organization admin, and rules for your teams' service accounts for a team admin.",
@@ -10900,6 +10981,25 @@
                             "minimum": 1,
                             "title": "Limit",
                             "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only the rule with this name, ignoring case",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Name"
                         }
                     },
                     {
@@ -11492,7 +11592,7 @@
                         "name": "name",
                         "in": "query",
                         "required": false,
-                        "description": "Filter by exact route name. Preserved by the cursor; if repeated, must match the original filter.",
+                        "description": "Filter by exact route name, the value to send in the inference request's `model` field. Matches a route's name or any of its aliases. Preserved by the cursor; if repeated, must match the original filter.",
                         "schema": {
                             "anyOf": [
                                 {
@@ -33169,6 +33269,19 @@
                     "target": {
                         "$ref": "#/components/schemas/TrainerCheckpointTarget",
                         "description": "Whether this checkpoint is loadable by the sampler or by the run."
+                    },
+                    "expires_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "When the checkpoint expires and is deleted, set from the TTL it was saved with. Null means it's kept until you delete it. A checkpoint that's still in use when it expires, for example deployed, is deleted once it's released.",
+                        "title": "Expires At"
                     }
                 },
                 "required": [
@@ -33181,7 +33294,8 @@
                     "id",
                     "lora_config",
                     "run_id",
-                    "target"
+                    "target",
+                    "expires_at"
                 ],
                 "title": "LoopsCheckpointV1",
                 "type": "object"
@@ -34010,6 +34124,29 @@
                     "source"
                 ],
                 "title": "LoopsCheckpointSourceResponseV1",
+                "type": "object"
+            },
+            "SetLoopsCheckpointTtlRequestV1": {
+                "properties": {
+                    "ttl_seconds": {
+                        "anyOf": [
+                            {
+                                "maximum": 315360000,
+                                "minimum": 3600,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Seconds from now until the checkpoint expires and is deleted, from 3600 (1 hour) to 315360000 (10 years). Null removes the TTL, so the checkpoint is kept until you delete it.",
+                        "title": "Ttl Seconds"
+                    }
+                },
+                "required": [
+                    "ttl_seconds"
+                ],
+                "title": "SetLoopsCheckpointTtlRequestV1",
                 "type": "object"
             },
             "LoopsDeploymentStatusV1": {
@@ -39693,6 +39830,20 @@
                         "title": "Limit",
                         "type": "integer"
                     },
+                    "name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only the account with this name, ignoring case",
+                        "title": "Name"
+                    },
                     "team_id": {
                         "anyOf": [
                             {
@@ -40151,6 +40302,20 @@
                         "title": "Limit",
                         "type": "integer"
                     },
+                    "name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only the provider with this name, ignoring case",
+                        "title": "Name"
+                    },
                     "predefined_kind": {
                         "anyOf": [
                             {
@@ -40553,6 +40718,20 @@
                         "minimum": 1,
                         "title": "Limit",
                         "type": "integer"
+                    },
+                    "name": {
+                        "anyOf": [
+                            {
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only the rule with this name, ignoring case",
+                        "title": "Name"
                     },
                     "identity_provider_id": {
                         "anyOf": [
@@ -41436,22 +41615,48 @@
                 "title": "GridTokenV1",
                 "type": "object"
             },
+            "GridRouteAliasKindV1": {
+                "enum": [
+                    "CLAUDE_DESKTOP"
+                ],
+                "title": "GridRouteAliasKindV1",
+                "type": "string"
+            },
+            "GridRouteAliasV1": {
+                "properties": {
+                    "name": {
+                        "description": "Name to send in the inference request's `model` field instead of the route's `name`.",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "kind": {
+                        "$ref": "#/components/schemas/GridRouteAliasKindV1",
+                        "description": "Purpose of the alias. CLAUDE_DESKTOP is for Claude Code desktop, which rejects model names without a `claude` substring."
+                    }
+                },
+                "required": [
+                    "name",
+                    "kind"
+                ],
+                "title": "GridRouteAliasV1",
+                "type": "object"
+            },
             "GridRouteClassifierV1": {
                 "properties": {
                     "id": {
                         "description": "Stable route classifier identifier.",
                         "examples": [
-                            "general-v1"
+                            "abc1234"
                         ],
                         "title": "Id",
                         "type": "string"
                     },
-                    "name": {
+                    "display_name": {
                         "description": "Display name of the route classifier.",
                         "examples": [
                             "General"
                         ],
-                        "title": "Name",
+                        "title": "Display Name",
                         "type": "string"
                     },
                     "supported_tradeoffs": {
@@ -41485,7 +41690,7 @@
                 },
                 "required": [
                     "id",
-                    "name",
+                    "display_name",
                     "supported_tradeoffs",
                     "decidable_models"
                 ],
@@ -41759,21 +41964,22 @@
                         "type": "string"
                     },
                     "name": {
-                        "description": "Name to send in the inference request's model field.",
+                        "description": "Name to send in the inference request's `model` field. Unique within the team; immutable.",
                         "title": "Name",
                         "type": "string"
                     },
-                    "alias": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "description": "The route's claude-desktop alias, for Claude Code desktop. Null until the backfill mints it.",
-                        "title": "Alias"
+                    "display_name": {
+                        "description": "Display label, defaulting to the route's name.",
+                        "title": "Display Name",
+                        "type": "string"
+                    },
+                    "aliases": {
+                        "description": "The route's other names, one per purpose. Empty for routes created before aliases existed.",
+                        "items": {
+                            "$ref": "#/components/schemas/GridRouteAliasV1"
+                        },
+                        "title": "Aliases",
+                        "type": "array"
                     },
                     "team_id": {
                         "description": "Identifier of the owning team.",
@@ -41783,11 +41989,6 @@
                     "team_name": {
                         "description": "Name of the owning team.",
                         "title": "Team Name",
-                        "type": "string"
-                    },
-                    "display_name": {
-                        "description": "Display label, defaulting to the route name.",
-                        "title": "Display Name",
                         "type": "string"
                     },
                     "description": {
@@ -41844,10 +42045,9 @@
                 "required": [
                     "id",
                     "name",
-                    "alias",
+                    "display_name",
                     "team_id",
                     "team_name",
-                    "display_name",
                     "description",
                     "target",
                     "metadata",
@@ -41931,7 +42131,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Filter by exact route name. Preserved by the cursor; if repeated, must match the original filter.",
+                        "description": "Filter by exact route name, the value to send in the inference request's `model` field. Matches a route's name or any of its aliases. Preserved by the cursor; if repeated, must match the original filter.",
                         "title": "Name"
                     }
                 },
@@ -42006,7 +42206,7 @@
                     "route_classifier_id": {
                         "description": "Identifier of the route classifier that picks the model. List them with GET /v1/grid/route_classifiers.",
                         "examples": [
-                            "general-v1"
+                            "abc1234"
                         ],
                         "minLength": 1,
                         "title": "Route Classifier Id",
@@ -42063,7 +42263,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Display label. Omit to use the route name; required for INTELLIGENT targets. Null is not accepted.",
+                        "description": "Display label. Omit to use the route's name; required for INTELLIGENT targets. Null is not accepted.",
                         "examples": [
                             "Assistant"
                         ],
@@ -42237,7 +42437,7 @@
                         "default": null,
                         "description": "Provider that served the requests. Null when not grouping by PROVIDER."
                     },
-                    "intelligent_route": {
+                    "intelligent_route_id": {
                         "anyOf": [
                             {
                                 "type": "string"
@@ -42247,8 +42447,21 @@
                             }
                         ],
                         "default": null,
-                        "description": "Name of the intelligent route, as in `GET /v1/grid/routes`. Null when not grouping by INTELLIGENT_ROUTE.",
-                        "title": "Intelligent Route"
+                        "description": "ID of the intelligent route, as `id` in GET /v1/grid/routes. Null when not grouping by INTELLIGENT_ROUTE.",
+                        "title": "Intelligent Route Id"
+                    },
+                    "intelligent_route_display_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Display name of the intelligent route. Null when `intelligent_route_id` is null or the route cannot be resolved.",
+                        "title": "Intelligent Route Display Name"
                     },
                     "harness": {
                         "anyOf": [

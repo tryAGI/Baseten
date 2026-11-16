@@ -44,11 +44,18 @@ namespace Baseten
         public global::Baseten.GridProviderV1? Provider { get; set; }
 
         /// <summary>
-        /// Name of the intelligent route, as in `GET /v1/grid/routes`. Null when not grouping by INTELLIGENT_ROUTE.<br/>
+        /// ID of the intelligent route, as `id` in GET /v1/grid/routes. Null when not grouping by INTELLIGENT_ROUTE.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("intelligent_route")]
-        public string? IntelligentRoute { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("intelligent_route_id")]
+        public string? IntelligentRouteId { get; set; }
+
+        /// <summary>
+        /// Display name of the intelligent route. Null when `intelligent_route_id` is null or the route cannot be resolved.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("intelligent_route_display_name")]
+        public string? IntelligentRouteDisplayName { get; set; }
 
         /// <summary>
         /// Coding harness. Null when not grouping by HARNESS, when no harness was recorded (including usage from before harness tracking), or when the recorded harness is not recognized by this API version.<br/>
@@ -160,8 +167,12 @@ namespace Baseten
         /// Provider that served the requests. Null when not grouping by PROVIDER.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="intelligentRoute">
-        /// Name of the intelligent route, as in `GET /v1/grid/routes`. Null when not grouping by INTELLIGENT_ROUTE.<br/>
+        /// <param name="intelligentRouteId">
+        /// ID of the intelligent route, as `id` in GET /v1/grid/routes. Null when not grouping by INTELLIGENT_ROUTE.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="intelligentRouteDisplayName">
+        /// Display name of the intelligent route. Null when `intelligent_route_id` is null or the route cannot be resolved.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="harness">
@@ -191,7 +202,8 @@ namespace Baseten
             string? teamName,
             string? model,
             global::Baseten.GridProviderV1? provider,
-            string? intelligentRoute,
+            string? intelligentRouteId,
+            string? intelligentRouteDisplayName,
             global::Baseten.GridRouteUsageHarnessV1? harness,
             string? apiKeyPrefix,
             string? apiKeyName)
@@ -201,7 +213,8 @@ namespace Baseten
             this.TeamName = teamName;
             this.Model = model;
             this.Provider = provider;
-            this.IntelligentRoute = intelligentRoute;
+            this.IntelligentRouteId = intelligentRouteId;
+            this.IntelligentRouteDisplayName = intelligentRouteDisplayName;
             this.Harness = harness;
             this.ApiKeyPrefix = apiKeyPrefix;
             this.ApiKeyName = apiKeyName;

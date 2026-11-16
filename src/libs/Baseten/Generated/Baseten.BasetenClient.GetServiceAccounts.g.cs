@@ -29,6 +29,7 @@ namespace Baseten
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
             ref int? limit,
+            ref string? name,
             ref string? teamId,
             bool? disabled);
         partial void PrepareGetServiceAccountsRequest(
@@ -36,6 +37,7 @@ namespace Baseten
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
             int? limit,
+            string? name,
             string? teamId,
             bool? disabled);
         partial void ProcessGetServiceAccountsResponse(
@@ -57,6 +59,9 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 100
         /// </param>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="teamId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -74,6 +79,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.ServiceAccountsV1> GetServiceAccountsAsync(
             string? cursor = default,
             int? limit = default,
+            string? name = default,
             string? teamId = default,
             bool? disabled = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -82,6 +88,7 @@ namespace Baseten
             var __response = await GetServiceAccountsAsResponseAsync(
                 cursor: cursor,
                 limit: limit,
+                name: name,
                 teamId: teamId,
                 disabled: disabled,
                 requestOptions: requestOptions,
@@ -100,6 +107,9 @@ namespace Baseten
         /// <param name="limit">
         /// Default Value: 100
         /// </param>
+        /// <param name="name">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="teamId">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -117,6 +127,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ServiceAccountsV1>> GetServiceAccountsAsResponseAsync(
             string? cursor = default,
             int? limit = default,
+            string? name = default,
             string? teamId = default,
             bool? disabled = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -128,6 +139,7 @@ namespace Baseten
                 httpClient: HttpClient,
                 cursor: ref cursor,
                 limit: ref limit,
+                name: ref name,
                 teamId: ref teamId,
                 disabled: disabled);
 
@@ -160,6 +172,7 @@ namespace Baseten
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
                                 .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("name", name)
                                 .AddOptionalParameter("team_id", teamId)
                                 .AddOptionalParameter("disabled", disabled?.ToString().ToLowerInvariant())
                                 ;
@@ -205,6 +218,7 @@ namespace Baseten
                     httpRequestMessage: __httpRequest,
                     cursor: cursor,
                     limit: limit,
+                    name: name,
                     teamId: teamId,
                     disabled: disabled);
 
