@@ -9,6 +9,12 @@ namespace Baseten
     public sealed partial class TrainingJobV1
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bdn")]
+        public global::Baseten.TrainingBDNConfigResponseV1? Bdn { get; set; }
+
+        /// <summary>
         /// Unique identifier of the training job.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -137,6 +143,7 @@ namespace Baseten
         /// <param name="trainingProject">
         /// Summary of the training project.
         /// </param>
+        /// <param name="bdn"></param>
         /// <param name="errorMessage">
         /// Error message if the training job failed. While the job is pending, a hint when switching it to spot capacity would let it start sooner.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -176,6 +183,7 @@ namespace Baseten
             global::System.DateTime updatedAt,
             string trainingProjectId,
             global::Baseten.TrainingProjectSummaryV1 trainingProject,
+            global::Baseten.TrainingBDNConfigResponseV1? bdn,
             string? errorMessage,
             int? nodeCount,
             string? name,
@@ -184,6 +192,7 @@ namespace Baseten
             global::Baseten.AvailabilityModelV1? availabilityModel,
             global::Baseten.UserV1? user)
         {
+            this.Bdn = bdn;
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.CreatedAt = createdAt;
             this.CurrentStatus = currentStatus ?? throw new global::System.ArgumentNullException(nameof(currentStatus));

@@ -6371,11 +6371,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_job\": {\n    \"image\": {\n      \"base_image\": \"hello-world\",\n      \"docker_auth\": null\n    },\n    \"compute\": {\n      \"node_count\": 1,\n      \"cpu_count\": 1,\n      \"memory\": \"2Gi\",\n      \"accelerator\": {\n        \"accelerator\": \"H100\",\n        \"count\": 2\n      },\n      \"availability_model\": \"spot\"\n    },\n    \"runtime\": {\n      \"start_commands\": [\n        \"python main.py\"\n      ],\n      \"environment_variables\": {\n        \"API_KEY\": \"your_api_key_here\",\n        \"PATH\": \"/usr/bin\"\n      },\n      \"enable_cache\": true,\n      \"cache_config\": {\n        \"enable_legacy_hf_mount\": true,\n        \"enabled\": true,\n        \"mount_base_path\": \"/root/.cache\",\n        \"persistent_home\": false,\n        \"require_cache_affinity\": true\n      },\n      \"checkpointing_config\": {\n        \"enabled\": true,\n        \"checkpoint_path\": \"/mnt/ckpts\",\n        \"volume_size_gib\": 10\n      },\n      \"load_checkpoint_config\": null\n    },\n    \"name\": \"gpt-oss-job\",\n    \"truss_user_env\": null,\n    \"interactive_session\": null,\n    \"weights\": [\n      {\n        \"allow_patterns\": null,\n        \"auth\": null,\n        \"auth_secret_name\": null,\n        \"ignore_patterns\": null,\n        \"mount_location\": \"/app/models/base\",\n        \"source\": \"hf://meta-llama/Llama-3-8B@main\"\n      }\n    ],\n    \"enable_baseten_workdir\": false,\n    \"priority\": 0\n  }\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"training_job\": {\n    \"bdn\": {},\n    \"image\": {\n      \"base_image\": \"hello-world\",\n      \"docker_auth\": null\n    },\n    \"compute\": {\n      \"node_count\": 1,\n      \"cpu_count\": 1,\n      \"memory\": \"2Gi\",\n      \"accelerator\": {\n        \"accelerator\": \"H100\",\n        \"count\": 2\n      },\n      \"availability_model\": \"spot\"\n    },\n    \"runtime\": {\n      \"start_commands\": [\n        \"python main.py\"\n      ],\n      \"environment_variables\": {\n        \"API_KEY\": \"your_api_key_here\",\n        \"PATH\": \"/usr/bin\"\n      },\n      \"enable_cache\": true,\n      \"cache_config\": {\n        \"enable_legacy_hf_mount\": true,\n        \"enabled\": true,\n        \"mount_base_path\": \"/root/.cache\",\n        \"persistent_home\": false,\n        \"require_cache_affinity\": true\n      },\n      \"checkpointing_config\": {\n        \"enabled\": true,\n        \"checkpoint_path\": \"/mnt/ckpts\",\n        \"volume_size_gib\": 10\n      },\n      \"load_checkpoint_config\": null\n    },\n    \"name\": \"gpt-oss-job\",\n    \"truss_user_env\": null,\n    \"interactive_session\": null,\n    \"weights\": [\n      {\n        \"allow_patterns\": null,\n        \"auth\": null,\n        \"auth_secret_name\": null,\n        \"ignore_patterns\": null,\n        \"mount_location\": \"/app/models/base\",\n        \"source\": \"hf://meta-llama/Llama-3-8B@main\"\n      }\n    ],\n    \"enable_baseten_workdir\": false,\n    \"priority\": 0\n  }\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_job': {'image': {'base_image': 'hello-world', 'docker_auth': None}, 'compute': {'node_count': 1, 'cpu_count': 1, 'memory': '2Gi', 'accelerator': {'accelerator': 'H100', 'count': 2}, 'availability_model': 'spot'}, 'runtime': {'start_commands': ['python main.py'], 'environment_variables': {'API_KEY': 'your_api_key_here', 'PATH': '/usr/bin'}, 'enable_cache': True, 'cache_config': {'enable_legacy_hf_mount': True, 'enabled': True, 'mount_base_path': '/root/.cache', 'persistent_home': False, 'require_cache_affinity': True}, 'checkpointing_config': {'enabled': True, 'checkpoint_path': '/mnt/ckpts', 'volume_size_gib': 10}, 'load_checkpoint_config': None}, 'name': 'gpt-oss-job', 'truss_user_env': None, 'interactive_session': None, 'weights': [{'allow_patterns': None, 'auth': None, 'auth_secret_name': None, 'ignore_patterns': None, 'mount_location': '/app/models/base', 'source': 'hf://meta-llama/Llama-3-8B@main'}], 'enable_baseten_workdir': False, 'priority': 0}}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'training_job': {'bdn': {}, 'image': {'base_image': 'hello-world', 'docker_auth': None}, 'compute': {'node_count': 1, 'cpu_count': 1, 'memory': '2Gi', 'accelerator': {'accelerator': 'H100', 'count': 2}, 'availability_model': 'spot'}, 'runtime': {'start_commands': ['python main.py'], 'environment_variables': {'API_KEY': 'your_api_key_here', 'PATH': '/usr/bin'}, 'enable_cache': True, 'cache_config': {'enable_legacy_hf_mount': True, 'enabled': True, 'mount_base_path': '/root/.cache', 'persistent_home': False, 'require_cache_affinity': True}, 'checkpointing_config': {'enabled': True, 'checkpoint_path': '/mnt/ckpts', 'volume_size_gib': 10}, 'load_checkpoint_config': None}, 'name': 'gpt-oss-job', 'truss_user_env': None, 'interactive_session': None, 'weights': [{'allow_patterns': None, 'auth': None, 'auth_secret_name': None, 'ignore_patterns': None, 'mount_location': '/app/models/base', 'source': 'hf://meta-llama/Llama-3-8B@main'}], 'enable_baseten_workdir': False, 'priority': 0}}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Creates a training job with the specified configuration.",
@@ -29786,8 +29786,58 @@
                 "title": "CheckpointSyncStatus",
                 "type": "string"
             },
+            "TrainingBDNConfigResponseV1": {
+                "properties": {
+                    "mounts": {
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingBDNMountResponseV1"
+                        },
+                        "title": "Mounts",
+                        "type": "array"
+                    }
+                },
+                "title": "TrainingBDNConfigResponseV1",
+                "type": "object"
+            },
+            "TrainingBDNMountResponseV1": {
+                "properties": {
+                    "source": {
+                        "title": "Source",
+                        "type": "string"
+                    },
+                    "path": {
+                        "title": "Path",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Relative glob patterns selecting files to mount; empty includes all files.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Relative glob patterns excluding files from the mount; exclusions win.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "source",
+                    "path"
+                ],
+                "title": "TrainingBDNMountResponseV1",
+                "type": "object"
+            },
             "TrainingJobV1": {
                 "properties": {
+                    "bdn": {
+                        "$ref": "#/components/schemas/TrainingBDNConfigResponseV1"
+                    },
                     "id": {
                         "description": "Unique identifier of the training job.",
                         "title": "Id",
@@ -30769,6 +30819,9 @@
             "CreateTrainingJobV1": {
                 "description": "Configuration for a training job.",
                 "properties": {
+                    "bdn": {
+                        "$ref": "#/components/schemas/TrainingBDNConfigV1"
+                    },
                     "image": {
                         "$ref": "#/components/schemas/CreateTrainingJobImageV1",
                         "examples": [
@@ -31243,6 +31296,58 @@
                     "name"
                 ],
                 "title": "SecretReferenceV1",
+                "type": "object"
+            },
+            "TrainingBDNConfigV1": {
+                "additionalProperties": false,
+                "description": "Read-only BDN mounts with the same reference semantics as inference.",
+                "properties": {
+                    "mounts": {
+                        "items": {
+                            "$ref": "#/components/schemas/TrainingBDNMountV1"
+                        },
+                        "maxItems": 32,
+                        "title": "Mounts",
+                        "type": "array"
+                    }
+                },
+                "title": "TrainingBDNConfigV1",
+                "type": "object"
+            },
+            "TrainingBDNMountV1": {
+                "additionalProperties": false,
+                "description": "A requested read-only BDN dataset mount.",
+                "properties": {
+                    "source": {
+                        "title": "Source",
+                        "type": "string"
+                    },
+                    "path": {
+                        "title": "Path",
+                        "type": "string"
+                    },
+                    "include": {
+                        "description": "Relative glob patterns selecting files to mount; empty includes all files.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Include",
+                        "type": "array"
+                    },
+                    "exclude": {
+                        "description": "Relative glob patterns excluding files from the mount; exclusions win.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Exclude",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "source",
+                    "path"
+                ],
+                "title": "TrainingBDNMountV1",
                 "type": "object"
             },
             "TrainingWeightAuthV1": {
