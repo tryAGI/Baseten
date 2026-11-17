@@ -9,6 +9,12 @@ namespace Baseten
     public sealed partial class CreateTrainingJobV1
     {
         /// <summary>
+        /// Read-only BDN mounts with the same reference semantics as inference.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bdn")]
+        public global::Baseten.TrainingBDNConfigV1? Bdn { get; set; }
+
+        /// <summary>
         /// Configuration to create a training job image.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("image")]
@@ -80,6 +86,9 @@ namespace Baseten
         /// <param name="image">
         /// Configuration to create a training job image.
         /// </param>
+        /// <param name="bdn">
+        /// Read-only BDN mounts with the same reference semantics as inference.
+        /// </param>
         /// <param name="compute">
         /// Configuration to specify the compute for a training job.
         /// </param>
@@ -114,6 +123,7 @@ namespace Baseten
 #endif
         public CreateTrainingJobV1(
             global::Baseten.CreateTrainingJobImageV1 image,
+            global::Baseten.TrainingBDNConfigV1? bdn,
             global::Baseten.CreateTrainingJobComputeV1? compute,
             global::Baseten.CreateTrainingJobRuntimeV1? runtime,
             string? name,
@@ -123,6 +133,7 @@ namespace Baseten
             bool? enableBasetenWorkdir,
             int? priority)
         {
+            this.Bdn = bdn;
             this.Image = image ?? throw new global::System.ArgumentNullException(nameof(image));
             this.Compute = compute;
             this.Runtime = runtime;

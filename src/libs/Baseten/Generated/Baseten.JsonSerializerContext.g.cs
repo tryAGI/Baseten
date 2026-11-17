@@ -406,6 +406,9 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpsertTrainingProjectRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AvailabilityModelV1), TypeInfoPropertyName = "AvailabilityModelV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckpointSyncStatus), TypeInfoPropertyName = "CheckpointSyncStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingBDNConfigResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingBDNMountResponseV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingBDNMountResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingJobV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingProjectSummaryV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UserV1))]
@@ -437,6 +440,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobS3Artifact))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoadCheckpointConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingBDNConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrussUserEnv))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.InteractiveSessionConfigV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.CreateJobWeightConfigV1>))]
@@ -454,6 +458,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoadCheckpointConfigCheckpointDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoadCheckpointConfigCheckpointDiscriminatorTyp), TypeInfoPropertyName = "LoadCheckpointConfigCheckpointDiscriminatorTyp2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointConfigTarget), TypeInfoPropertyName = "LoopsCheckpointConfigTarget2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.TrainingBDNMountV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingBDNMountV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateTrainingJobResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TrainingJobTombstoneV1))]
@@ -503,12 +509,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsUseCaseV1), TypeInfoPropertyName = "LoopsUseCaseV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsCapabilitiesQueryParamsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSessionV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSessionResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsSessionResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusNameV1), TypeInfoPropertyName = "LoopsRunStatusNameV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSamplerV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,6 +519,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsSessionResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetLoopsSessionResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusNameV1), TypeInfoPropertyName = "LoopsRunStatusNameV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSamplerV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSamplerStatusV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsRunsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsRunV1>))]
@@ -1013,12 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1?), TypeInfoPropertyName = "NullableRequestBackpressurePolicyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RollingDeployStrategyV1?), TypeInfoPropertyName = "NullableRollingDeployStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SchedulesItem2?), TypeInfoPropertyName = "NullableSchedulesItem22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence?), TypeInfoPropertyName = "NullableUpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogActorTypeV1?), TypeInfoPropertyName = "NullableAuditLogActorTypeV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyRevocationReasonV1?), TypeInfoPropertyName = "NullableAuditLogApiKeyRevocationReasonV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyTypeV1?), TypeInfoPropertyName = "NullableAuditLogApiKeyTypeV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EventData?), TypeInfoPropertyName = "NullableEventData2")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence?), TypeInfoPropertyName = "NullableUpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogActorTypeV1?), TypeInfoPropertyName = "NullableAuditLogActorTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyRevocationReasonV1?), TypeInfoPropertyName = "NullableAuditLogApiKeyRevocationReasonV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyTypeV1?), TypeInfoPropertyName = "NullableAuditLogApiKeyTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EventData?), TypeInfoPropertyName = "NullableEventData2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType?), TypeInfoPropertyName = "NullableAuditLogEntryV1EventDataDiscriminatorEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSourceV1?), TypeInfoPropertyName = "NullableAuditLogSourceV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleActionV1?), TypeInfoPropertyName = "NullableAuditLogEventAutoscalingScheduleActionV12")]
@@ -1192,11 +1198,13 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainletEnvironmentSettingsV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainletEnvironmentAutoscalingSettingsUpdateV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ChainletEnvironmentInstanceTypeUpdateV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingBDNMountResponseV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingProjectV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingJobV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.CreateTrainingJobS3Artifact>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.CreateJobWeightConfigV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.CheckpointsItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingBDNMountV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingJobMetricV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<global::Baseten.TrainingJobMetricV1>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrainingJobNodeMetricsV1>))]

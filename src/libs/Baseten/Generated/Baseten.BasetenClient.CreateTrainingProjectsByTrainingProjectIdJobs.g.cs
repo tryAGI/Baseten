@@ -58,6 +58,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "training_job": {<br/>
+        ///     "bdn": {},<br/>
         ///     "image": {<br/>
         ///       "base_image": "hello-world",<br/>
         ///       "docker_auth": null<br/>
@@ -145,6 +146,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "training_job": {<br/>
+        ///     "bdn": {},<br/>
         ///     "image": {<br/>
         ///       "base_image": "hello-world",<br/>
         ///       "docker_auth": null<br/>
