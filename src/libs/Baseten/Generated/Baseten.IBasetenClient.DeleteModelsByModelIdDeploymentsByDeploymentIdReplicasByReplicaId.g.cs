@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Terminates a replica in a deployment<br/>
-        /// Terminates a deployment replica and returns the termination status.
+        /// Terminates a deployment replica and returns the termination status. Returns 404 if no replica matches the replica ID. Returns 400 without requesting termination if multiple replicas match the replica ID.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
@@ -27,7 +27,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Terminates a replica in a deployment<br/>
-        /// Terminates a deployment replica and returns the termination status.
+        /// Terminates a deployment replica and returns the termination status. Returns 404 if no replica matches the replica ID. Returns 400 without requesting termination if multiple replicas match the replica ID.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>

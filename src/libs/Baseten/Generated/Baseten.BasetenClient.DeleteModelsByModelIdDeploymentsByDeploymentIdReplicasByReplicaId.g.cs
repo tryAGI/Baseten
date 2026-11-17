@@ -47,7 +47,7 @@ namespace Baseten
 
         /// <summary>
         /// Terminates a replica in a deployment<br/>
-        /// Terminates a deployment replica and returns the termination status.
+        /// Terminates a deployment replica and returns the termination status. Returns 404 if no replica matches the replica ID. Returns 400 without requesting termination if multiple replicas match the replica ID.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
@@ -79,7 +79,7 @@ namespace Baseten
         }
         /// <summary>
         /// Terminates a replica in a deployment<br/>
-        /// Terminates a deployment replica and returns the termination status.
+        /// Terminates a deployment replica and returns the termination status. Returns 404 if no replica matches the replica ID. Returns 400 without requesting termination if multiple replicas match the replica ID.
         /// </summary>
         /// <param name="modelId"></param>
         /// <param name="deploymentId"></param>
@@ -388,7 +388,7 @@ namespace Baseten
                                 {
                                     throw global::Baseten.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -433,7 +433,7 @@ namespace Baseten
 
                                     throw global::Baseten.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(

@@ -110,6 +110,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteModelsByModelIdDeploymentsByDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteModelsByModelIdEnvironmentsByEnvNameReplicasByReplicaIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteSecretsBySecretNameCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteServiceAccountsByServiceAccountIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteTeamsByTeamIdSecretsBySecretNameCommandApiCommand.Create());
@@ -224,6 +225,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdReplicasCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdReplicasByReplicaIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdStartupsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdStartupsSummaryCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsDevelopmentCommandApiCommand.Create());
@@ -232,6 +235,8 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameMetricsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameReplicasCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameReplicasByReplicaIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameStartupsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdEnvironmentsByEnvNameStartupsSummaryCommandApiCommand.Create());
                          command.Subcommands.Add(GetOrganizationsMeCommandApiCommand.Create());
