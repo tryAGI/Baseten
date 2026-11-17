@@ -50,7 +50,7 @@ internal static partial class DeleteModelsByModelIdDeploymentsByDeploymentIdRepl
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"delete-models-by-model-id-deployments-by-deployment-id-replicas-by-replica-id", @"Terminates a replica in a deployment
-Terminates a deployment replica and returns the termination status.");
+Terminates a deployment replica and returns the termination status. Returns 404 if no replica matches the replica ID. Returns 400 without requesting termination if multiple replicas match the replica ID.");
                         command.Arguments.Add(ModelId);
                         command.Arguments.Add(DeploymentId);
                         command.Arguments.Add(ReplicaId);

@@ -327,6 +327,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupSummaryV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.StartupPhasePercentilesV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetStartupSummaryRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentReplicaStatusV1), TypeInfoPropertyName = "DeploymentReplicaStatusV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentReplicaV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentReplicasV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.DeploymentReplicaV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentReplicasRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.DeploymentReplicaStatusV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TerminateReplicaResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SignSSHCertificateRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SignSSHCertificateResponseV1))]
@@ -503,12 +509,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunStatusV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsRunV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSamplerV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSamplerStatusV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsRunsResponseV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsRunV1>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsRunsQueryParamsV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsRunRequestV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsRunResponseV1))]
     internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -519,6 +519,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsSamplerStatusV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsRunsResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.LoopsRunV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListLoopsRunsQueryParamsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsRunRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateLoopsRunResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeactivateLoopsRunResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsCheckpointV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsLoRAConfigV1))]
@@ -1013,12 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyTypeV1?), TypeInfoPropertyName = "NullableAuditLogApiKeyTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EventData?), TypeInfoPropertyName = "NullableEventData2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType?), TypeInfoPropertyName = "NullableAuditLogEntryV1EventDataDiscriminatorEventType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSourceV1?), TypeInfoPropertyName = "NullableAuditLogSourceV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleActionV1?), TypeInfoPropertyName = "NullableAuditLogEventAutoscalingScheduleActionV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1?), TypeInfoPropertyName = "NullableAuditLogPromotionControlActionV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeGroupV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeGroupV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSortDirectionV1?), TypeInfoPropertyName = "NullableAuditLogSortDirectionV12")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType?), TypeInfoPropertyName = "NullableAuditLogEntryV1EventDataDiscriminatorEventType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSourceV1?), TypeInfoPropertyName = "NullableAuditLogSourceV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleActionV1?), TypeInfoPropertyName = "NullableAuditLogEventAutoscalingScheduleActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1?), TypeInfoPropertyName = "NullableAuditLogPromotionControlActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTypeGroupV1?), TypeInfoPropertyName = "NullableAuditLogEventTypeGroupV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSortDirectionV1?), TypeInfoPropertyName = "NullableAuditLogSortDirectionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.Source2?), TypeInfoPropertyName = "NullableSource22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateModelRequestV1SourceDiscriminatorKind?), TypeInfoPropertyName = "NullableCreateModelRequestV1SourceDiscriminatorKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentStatusV1?), TypeInfoPropertyName = "NullableDeploymentStatusV12")]
@@ -1047,6 +1053,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupPhaseStatusV1?), TypeInfoPropertyName = "NullableStartupPhaseStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupPhaseV1?), TypeInfoPropertyName = "NullableStartupPhaseV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.StartupSortFieldV1?), TypeInfoPropertyName = "NullableStartupSortFieldV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeploymentReplicaStatusV1?), TypeInfoPropertyName = "NullableDeploymentReplicaStatusV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleV1Cadence?), TypeInfoPropertyName = "NullableAutoscalingScheduleV1Cadence2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SchedulesItem?), TypeInfoPropertyName = "NullableSchedulesItem2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadence?), TypeInfoPropertyName = "NullableEnvironmentAutoscalingSchedulesV1ScheduleDiscriminatorCadence2")]
@@ -1170,6 +1177,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.StartupAttemptV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.StartupOutcomeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.StartupPhasePercentilesV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DeploymentReplicaV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.DeploymentReplicaStatusV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SchedulesItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingRuleV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.TrafficRoutingTargetV1>))]
@@ -1546,6 +1555,10 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.StartupSortFieldV1)
 
                     || typeToConvert == typeof(global::Baseten.StartupSortFieldV1?)
+
+                    || typeToConvert == typeof(global::Baseten.DeploymentReplicaStatusV1)
+
+                    || typeToConvert == typeof(global::Baseten.DeploymentReplicaStatusV1?)
 
                     || typeToConvert == typeof(global::Baseten.AutoscalingScheduleV1Cadence)
 
@@ -2204,6 +2217,16 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.StartupSortFieldV1?))
                 {
                     return new global::Baseten.JsonConverters.StartupSortFieldV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.DeploymentReplicaStatusV1))
+                {
+                    return new global::Baseten.JsonConverters.DeploymentReplicaStatusV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.DeploymentReplicaStatusV1?))
+                {
+                    return new global::Baseten.JsonConverters.DeploymentReplicaStatusV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.AutoscalingScheduleV1Cadence))
