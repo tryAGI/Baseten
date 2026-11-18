@@ -11,6 +11,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Alias,
+        /// <summary>
+        ///
+        /// </summary>
         ClaudeDesktop,
     }
 
@@ -26,6 +30,7 @@ namespace Baseten
         {
             return value switch
             {
+                GridRouteAliasKindV1.Alias => "ALIAS",
                 GridRouteAliasKindV1.ClaudeDesktop => "CLAUDE_DESKTOP",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -37,6 +42,7 @@ namespace Baseten
         {
             return value switch
             {
+                "ALIAS" => GridRouteAliasKindV1.Alias,
                 "CLAUDE_DESKTOP" => GridRouteAliasKindV1.ClaudeDesktop,
                 _ => null,
             };
