@@ -8472,7 +8472,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/loops/deployments/{deployment_id}/logs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'start_epoch_millis': None, 'end_epoch_millis': None, 'direction': None, 'limit': None, 'min_level': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Fetches logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.",
+                "description": "Fetches logs from the trainer pods of a Loops deployment. Visible to anyone with training access to the deployment's team.",
                 "parameters": [
                     {
                         "name": "start_epoch_millis",
