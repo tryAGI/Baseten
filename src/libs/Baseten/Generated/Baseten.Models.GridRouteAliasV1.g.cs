@@ -16,11 +16,12 @@ namespace Baseten
         public required string Name { get; set; }
 
         /// <summary>
-        /// Purpose of the alias. CLAUDE_DESKTOP is for Claude Code desktop, which rejects model names without a `claude` substring.
+        /// Purpose of the alias. CLAUDE_DESKTOP is for Claude Code desktop, which rejects model names without a `claude` substring. ALIAS is any other name the team's clients send for the route.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("kind")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.GridRouteAliasKindV1JsonConverter))]
-        public global::Baseten.GridRouteAliasKindV1 Kind { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.GridRouteAliasKindV1 Kind { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,7 +36,7 @@ namespace Baseten
         /// Name to send in the inference request's `model` field instead of the route's `name`.
         /// </param>
         /// <param name="kind">
-        /// Purpose of the alias. CLAUDE_DESKTOP is for Claude Code desktop, which rejects model names without a `claude` substring.
+        /// Purpose of the alias. CLAUDE_DESKTOP is for Claude Code desktop, which rejects model names without a `claude` substring. ALIAS is any other name the team's clients send for the route.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

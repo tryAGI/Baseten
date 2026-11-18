@@ -42117,7 +42117,8 @@
             },
             "GridRouteAliasKindV1": {
                 "enum": [
-                    "CLAUDE_DESKTOP"
+                    "CLAUDE_DESKTOP",
+                    "ALIAS"
                 ],
                 "title": "GridRouteAliasKindV1",
                 "type": "string"
@@ -42131,7 +42132,7 @@
                     },
                     "kind": {
                         "$ref": "#/components/schemas/GridRouteAliasKindV1",
-                        "description": "Purpose of the alias. CLAUDE_DESKTOP is for Claude Code desktop, which rejects model names without a `claude` substring."
+                        "description": "Purpose of the alias. CLAUDE_DESKTOP is for Claude Code desktop, which rejects model names without a `claude` substring. ALIAS is any other name the team's clients send for the route."
                     }
                 },
                 "required": [
