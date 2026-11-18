@@ -53,7 +53,7 @@ namespace Baseten
 
         /// <summary>
         /// Gets logs for a Loops trainer deployment<br/>
-        /// Fetches logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.
+        /// Fetches logs from the trainer pods of a Loops deployment. Visible to anyone with training access to the deployment's team.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -104,7 +104,7 @@ namespace Baseten
         }
         /// <summary>
         /// Gets logs for a Loops trainer deployment<br/>
-        /// Fetches logs from the trainer pods of a Loops deployment. Visible to any member of the deployment's team.
+        /// Fetches logs from the trainer pods of a Loops deployment. Visible to anyone with training access to the deployment's team.
         /// </summary>
         /// <param name="startEpochMillis">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
