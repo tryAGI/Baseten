@@ -42315,8 +42315,8 @@
                         "title": "Supported Tradeoffs",
                         "type": "array"
                     },
-                    "decidable_models": {
-                        "description": "Model identities the route classifier picks from.",
+                    "decidable_canonical_model_ids": {
+                        "description": "Canonical model ids the route classifier picks from.",
                         "examples": [
                             [
                                 "zai-org/GLM-5.3",
@@ -42326,7 +42326,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "title": "Decidable Models",
+                        "title": "Decidable Canonical Model Ids",
                         "type": "array"
                     }
                 },
@@ -42334,7 +42334,7 @@
                     "id",
                     "display_name",
                     "supported_tradeoffs",
-                    "decidable_models"
+                    "decidable_canonical_model_ids"
                 ],
                 "title": "GridRouteClassifierV1",
                 "type": "object"
