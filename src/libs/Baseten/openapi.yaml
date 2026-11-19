@@ -8941,7 +8941,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training/capacity\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns on-demand and spot GPU quotas and current usage for the organization and its teams.",
+                "description": "Returns on-demand and spot GPU quotas and current usage for the teams you can view, plus organization-wide totals when you have organization-level access.",
                 "responses": {
                     "200": {
                         "description": "",
@@ -11492,6 +11492,41 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/AccessTrustRuleV1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-stability": "unstable"
+            }
+        },
+        "/v1/auth/token": {
+            "post": {
+                "summary": "Exchanges an identity provider's JWT for an access token",
+                "security": [],
+                "description": "Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that is refused always returns `invalid_grant`, whatever the reason.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TokenExchangeRequestV1"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TokenExchangeRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokenExchangeResponseV1"
                                 }
                             }
                         }
@@ -28314,7 +28349,8 @@
                     },
                     "sampling_mode": {
                         "$ref": "#/components/schemas/TrafficRoutingRuleShadowSamplingModeV1",
-                        "description": "How requests are picked for shadowing"
+                        "default": "USER_SESSION",
+                        "description": "How requests are picked for shadowing. Defaults to USER_SESSION."
                     },
                     "propagate_client_cancellation": {
                         "description": "Whether a shadow request is cancelled when the original client disconnects",
@@ -28327,7 +28363,6 @@
                     "targets",
                     "percent_traffic",
                     "expires_at",
-                    "sampling_mode",
                     "propagate_client_cancellation"
                 ],
                 "title": "TrafficRoutingRuleUpsertV1",
@@ -40257,7 +40292,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Last time a token was exchanged for this account. Null until the first.",
+                        "description": "Last time a request authenticated as this account, to within an hour. Null until the first.",
                         "title": "Last Used At"
                     },
                     "created_at": {
@@ -41135,7 +41170,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Last token exchange through the rule. Null until the first.",
+                        "description": "Last time a request authenticated with a token the rule issued, to within an hour. Null until the first.",
                         "title": "Last Used At"
                     },
                     "created_by": {
@@ -41482,6 +41517,112 @@
                     }
                 },
                 "title": "UpdateAccessTrustRuleRequestV1",
+                "type": "object"
+            },
+            "TokenExchangeRequestV1": {
+                "description": "An RFC 8693 token exchange request naming the trust rule to check as its audience.",
+                "properties": {
+                    "grant_type": {
+                        "description": "Always `urn:ietf:params:oauth:grant-type:token-exchange`",
+                        "examples": [
+                            "urn:ietf:params:oauth:grant-type:token-exchange"
+                        ],
+                        "title": "Grant Type",
+                        "type": "string"
+                    },
+                    "subject_token": {
+                        "description": "The identity provider's JWT",
+                        "examples": [
+                            "<identity provider JWT>"
+                        ],
+                        "maxLength": 16384,
+                        "title": "Subject Token",
+                        "type": "string"
+                    },
+                    "subject_token_type": {
+                        "description": "`urn:ietf:params:oauth:token-type:jwt` or `urn:ietf:params:oauth:token-type:id_token`",
+                        "examples": [
+                            "urn:ietf:params:oauth:token-type:jwt"
+                        ],
+                        "title": "Subject Token Type",
+                        "type": "string"
+                    },
+                    "audience": {
+                        "description": "ID of the trust rule to check the JWT against",
+                        "examples": [
+                            "abcd1234"
+                        ],
+                        "maxLength": 64,
+                        "title": "Audience",
+                        "type": "string"
+                    },
+                    "requested_token_type": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Optional; only `urn:ietf:params:oauth:token-type:access_token` is issued",
+                        "title": "Requested Token Type"
+                    },
+                    "access_token_lifetime_seconds": {
+                        "anyOf": [
+                            {
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Lifetime of the access token, in seconds. At most the rule's maximum.",
+                        "title": "Access Token Lifetime Seconds"
+                    }
+                },
+                "required": [
+                    "grant_type",
+                    "subject_token",
+                    "subject_token_type",
+                    "audience"
+                ],
+                "title": "TokenExchangeRequestV1",
+                "type": "object"
+            },
+            "TokenExchangeResponseV1": {
+                "properties": {
+                    "access_token": {
+                        "description": "Send as `Authorization: Bearer`",
+                        "title": "Access Token",
+                        "type": "string"
+                    },
+                    "issued_token_type": {
+                        "description": "Always `urn:ietf:params:oauth:token-type:access_token`",
+                        "title": "Issued Token Type",
+                        "type": "string"
+                    },
+                    "token_type": {
+                        "description": "Always `Bearer`",
+                        "title": "Token Type",
+                        "type": "string"
+                    },
+                    "expires_in": {
+                        "description": "Seconds until the access token expires",
+                        "title": "Expires In",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "access_token",
+                    "issued_token_type",
+                    "token_type",
+                    "expires_in"
+                ],
+                "title": "TokenExchangeResponseV1",
                 "type": "object"
             },
             "GatewayEventTokensV1": {

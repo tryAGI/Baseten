@@ -93,7 +93,7 @@ namespace Baseten
         public required int MaxAccessTokenLifetimeSeconds { get; set; }
 
         /// <summary>
-        /// Last token exchange through the rule. Null until the first.<br/>
+        /// Last time a request authenticated with a token the rule issued, to within an hour. Null until the first.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("last_used_at")]
@@ -178,7 +178,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="lastUsedAt">
-        /// Last token exchange through the rule. Null until the first.<br/>
+        /// Last time a request authenticated with a token the rule issued, to within an hour. Null until the first.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER

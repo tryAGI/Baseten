@@ -742,6 +742,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.VerifyAccessTrustRuleRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeletedAccessTrustRuleV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAccessTrustRuleRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TokenExchangeRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TokenExchangeResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventTokensV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventsResponseV1))]
@@ -1017,8 +1019,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleWeekdayV1?), TypeInfoPropertyName = "NullableAutoscalingScheduleWeekdayV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PromotionCleanupStrategyV1?), TypeInfoPropertyName = "NullablePromotionCleanupStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1?), TypeInfoPropertyName = "NullableRequestBackpressurePolicyV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RollingDeployStrategyV1?), TypeInfoPropertyName = "NullableRollingDeployStrategyV12")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SchedulesItem2?), TypeInfoPropertyName = "NullableSchedulesItem22")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1029,6 +1029,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
     )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RollingDeployStrategyV1?), TypeInfoPropertyName = "NullableRollingDeployStrategyV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SchedulesItem2?), TypeInfoPropertyName = "NullableSchedulesItem22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence?), TypeInfoPropertyName = "NullableUpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogActorTypeV1?), TypeInfoPropertyName = "NullableAuditLogActorTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogApiKeyRevocationReasonV1?), TypeInfoPropertyName = "NullableAuditLogApiKeyRevocationReasonV12")]
