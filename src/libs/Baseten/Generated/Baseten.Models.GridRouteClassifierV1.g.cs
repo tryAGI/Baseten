@@ -30,11 +30,11 @@ namespace Baseten
         public required global::System.Collections.Generic.IList<global::Baseten.GridRouteClassifierV1SupportedTradeoff> SupportedTradeoffs { get; set; }
 
         /// <summary>
-        /// Model identities the route classifier picks from.
+        /// Canonical model ids the route classifier picks from.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("decidable_models")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("decidable_canonical_model_ids")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> DecidableModels { get; set; }
+        public required global::System.Collections.Generic.IList<string> DecidableCanonicalModelIds { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -54,8 +54,8 @@ namespace Baseten
         /// <param name="supportedTradeoffs">
         /// Tradeoffs the route classifier supports. Empty when it supports all of them.
         /// </param>
-        /// <param name="decidableModels">
-        /// Model identities the route classifier picks from.
+        /// <param name="decidableCanonicalModelIds">
+        /// Canonical model ids the route classifier picks from.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -64,12 +64,12 @@ namespace Baseten
             string id,
             string displayName,
             global::System.Collections.Generic.IList<global::Baseten.GridRouteClassifierV1SupportedTradeoff> supportedTradeoffs,
-            global::System.Collections.Generic.IList<string> decidableModels)
+            global::System.Collections.Generic.IList<string> decidableCanonicalModelIds)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.DisplayName = displayName ?? throw new global::System.ArgumentNullException(nameof(displayName));
             this.SupportedTradeoffs = supportedTradeoffs ?? throw new global::System.ArgumentNullException(nameof(supportedTradeoffs));
-            this.DecidableModels = decidableModels ?? throw new global::System.ArgumentNullException(nameof(decidableModels));
+            this.DecidableCanonicalModelIds = decidableCanonicalModelIds ?? throw new global::System.ArgumentNullException(nameof(decidableCanonicalModelIds));
         }
 
         /// <summary>
