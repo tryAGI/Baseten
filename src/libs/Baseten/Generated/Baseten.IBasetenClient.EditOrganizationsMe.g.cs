@@ -18,7 +18,8 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "allow_personal_api_keys": null,<br/>
-        ///   "allow_service_account_api_keys": null<br/>
+        ///   "allow_service_account_api_keys": null,<br/>
+        ///   "allow_team_admins_to_manage_roles": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.OrganizationInfoV1> EditOrganizationsMeAsync(
@@ -40,7 +41,8 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
         ///   "allow_personal_api_keys": null,<br/>
-        ///   "allow_service_account_api_keys": null<br/>
+        ///   "allow_service_account_api_keys": null,<br/>
+        ///   "allow_team_admins_to_manage_roles": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.OrganizationInfoV1>> EditOrganizationsMeAsResponseAsync(
@@ -60,12 +62,17 @@ namespace Baseten
         /// Whether new team and organization API keys can be created. Null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="allowTeamAdminsToManageRoles">
+        /// Whether team admins create, change, and delete their team's custom roles. Needs `access.role.write` for the organization. Null is not accepted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.OrganizationInfoV1> EditOrganizationsMeAsync(
             bool? allowPersonalApiKeys = default,
             bool? allowServiceAccountApiKeys = default,
+            bool? allowTeamAdminsToManageRoles = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
