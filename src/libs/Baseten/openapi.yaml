@@ -28,7 +28,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'namespace': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed.",
+                "description": "Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed. A page can hold fewer volumes than `limit`, or none, while more remain, so keep requesting with the returned cursor until `has_more` is false.",
                 "parameters": [
                     {
                         "name": "cursor",
@@ -6344,10 +6344,50 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'limit': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Lists all training jobs for the training project.",
+                "description": "Lists the training project's jobs, newest first.",
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "required": false,
+                        "description": "Opaque cursor from the pagination.cursor field of a previous response. Omit both cursor and limit to get every job in one response.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Cursor"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "description": "Maximum number of jobs to return, newest first, up to 1000.",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "maximum": 1000,
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null,
+                            "title": "Limit"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -6948,6 +6988,55 @@
                 },
                 {
                     "$ref": "#/components/parameters/training_job_id"
+                }
+            ]
+        },
+        "/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoints/{checkpoint_id}/ttl": {
+            "put": {
+                "summary": "Sets a training job checkpoint's TTL",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request PUT \\\n--url https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoints/{checkpoint_id}/ttl \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"ttl_seconds\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoints/{checkpoint_id}/ttl\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PUT\",\n    url,\n    headers=headers,\n    json={'ttl_seconds': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SetTrainingJobCheckpointTtlRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TrainingJobCheckpointV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/training_project_id"
+                },
+                {
+                    "$ref": "#/components/parameters/training_job_id"
+                },
+                {
+                    "$ref": "#/components/parameters/checkpoint_id"
                 }
             ]
         },
@@ -20164,6 +20253,9 @@
                                 "GATEWAY_ENDPOINT_CREATED": "#/components/schemas/AuditLogEventGatewayEndpointCreatedV1",
                                 "GATEWAY_ENDPOINT_DELETED": "#/components/schemas/AuditLogEventGatewayEndpointDeletedV1",
                                 "GATEWAY_ENDPOINT_UPDATED": "#/components/schemas/AuditLogEventGatewayEndpointUpdatedV1",
+                                "GRID_GUARDRAIL_CREATED": "#/components/schemas/AuditLogEventGridGuardrailCreatedV1",
+                                "GRID_GUARDRAIL_DELETED": "#/components/schemas/AuditLogEventGridGuardrailDeletedV1",
+                                "GRID_GUARDRAIL_UPDATED": "#/components/schemas/AuditLogEventGridGuardrailUpdatedV1",
                                 "GRID_MACHINE_USER_CREATED": "#/components/schemas/AuditLogEventGridMachineUserCreatedV1",
                                 "GRID_MACHINE_USER_DELETED": "#/components/schemas/AuditLogEventGridMachineUserDeletedV1",
                                 "GRID_MACHINE_USER_UPDATED": "#/components/schemas/AuditLogEventGridMachineUserUpdatedV1",
@@ -20325,6 +20417,15 @@
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventGridMachineUserDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventGridGuardrailCreatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventGridGuardrailUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventGridGuardrailDeletedV1"
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventUserInvitedV1"
@@ -22881,6 +22982,213 @@
                 "title": "AuditLogEventGatewayEndpointUpdatedV1",
                 "type": "object"
             },
+            "AuditLogEventGridGuardrailCreatedV1": {
+                "description": "A Grid guardrail was added to a team.",
+                "properties": {
+                    "event_type": {
+                        "const": "GRID_GUARDRAIL_CREATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "grid_guardrail_id": {
+                        "title": "Grid Guardrail Id",
+                        "type": "string"
+                    },
+                    "guardrail_name": {
+                        "title": "Guardrail Name",
+                        "type": "string"
+                    },
+                    "provider": {
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "provider_guardrail_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Guardrail Id"
+                    },
+                    "provider_guardrail_version": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Guardrail Version"
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "team_id": {
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "title": "Team Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "grid_guardrail_id",
+                    "guardrail_name",
+                    "provider",
+                    "provider_guardrail_id",
+                    "provider_guardrail_version",
+                    "enabled",
+                    "team_id",
+                    "team_name"
+                ],
+                "title": "AuditLogEventGridGuardrailCreatedV1",
+                "type": "object"
+            },
+            "AuditLogEventGridGuardrailDeletedV1": {
+                "description": "A Grid guardrail was removed from a team.",
+                "properties": {
+                    "event_type": {
+                        "const": "GRID_GUARDRAIL_DELETED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "grid_guardrail_id": {
+                        "title": "Grid Guardrail Id",
+                        "type": "string"
+                    },
+                    "guardrail_name": {
+                        "title": "Guardrail Name",
+                        "type": "string"
+                    },
+                    "provider": {
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "provider_guardrail_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Guardrail Id"
+                    },
+                    "provider_guardrail_version": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Guardrail Version"
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "team_id": {
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "title": "Team Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "grid_guardrail_id",
+                    "guardrail_name",
+                    "provider",
+                    "provider_guardrail_id",
+                    "provider_guardrail_version",
+                    "enabled",
+                    "team_id",
+                    "team_name"
+                ],
+                "title": "AuditLogEventGridGuardrailDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventGridGuardrailUpdatedV1": {
+                "description": "A Grid guardrail was renamed, reconfigured, or turned on or off.",
+                "properties": {
+                    "event_type": {
+                        "const": "GRID_GUARDRAIL_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "grid_guardrail_id": {
+                        "title": "Grid Guardrail Id",
+                        "type": "string"
+                    },
+                    "guardrail_name": {
+                        "title": "Guardrail Name",
+                        "type": "string"
+                    },
+                    "provider": {
+                        "title": "Provider",
+                        "type": "string"
+                    },
+                    "provider_guardrail_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Guardrail Id"
+                    },
+                    "provider_guardrail_version": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Guardrail Version"
+                    },
+                    "enabled": {
+                        "title": "Enabled",
+                        "type": "boolean"
+                    },
+                    "team_id": {
+                        "title": "Team Id",
+                        "type": "string"
+                    },
+                    "team_name": {
+                        "title": "Team Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "grid_guardrail_id",
+                    "guardrail_name",
+                    "provider",
+                    "provider_guardrail_id",
+                    "provider_guardrail_version",
+                    "enabled",
+                    "team_id",
+                    "team_name"
+                ],
+                "title": "AuditLogEventGridGuardrailUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventGridMachineUserCreatedV1": {
                 "description": "A Grid machine user was created.",
                 "properties": {
@@ -24685,6 +24993,9 @@
                     "GRID_MACHINE_USER_CREATED",
                     "GRID_MACHINE_USER_UPDATED",
                     "GRID_MACHINE_USER_DELETED",
+                    "GRID_GUARDRAIL_CREATED",
+                    "GRID_GUARDRAIL_UPDATED",
+                    "GRID_GUARDRAIL_DELETED",
                     "USER_INVITED",
                     "USER_JOINED_ORGANIZATION",
                     "WEBHOOK_SIGNING_SECRET_CREATED",
@@ -30856,13 +31167,53 @@
                         },
                         "title": "Training Jobs",
                         "type": "array"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/PaginationResponseV1",
+                        "description": "Pagination metadata for the page."
                     }
                 },
                 "required": [
                     "training_project",
-                    "training_jobs"
+                    "training_jobs",
+                    "pagination"
                 ],
                 "title": "ListTrainingJobsResponseV1",
+                "type": "object"
+            },
+            "ListTrainingJobsRequestV1": {
+                "description": "A request to list a training project's jobs.",
+                "properties": {
+                    "cursor": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Opaque cursor from the pagination.cursor field of a previous response. Omit both cursor and limit to get every job in one response.",
+                        "title": "Cursor"
+                    },
+                    "limit": {
+                        "anyOf": [
+                            {
+                                "maximum": 1000,
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Maximum number of jobs to return, newest first, up to 1000.",
+                        "title": "Limit"
+                    }
+                },
+                "title": "ListTrainingJobsRequestV1",
                 "type": "object"
             },
             "AuthMethod": {
@@ -32904,10 +33255,28 @@
                         "description": "Sync state of the checkpoint: SYNCING or COMPLETE.",
                         "title": "Sync Status"
                     },
+                    "id": {
+                        "description": "The checkpoint ID.",
+                        "title": "Id",
+                        "type": "string"
+                    },
                     "training_job_id": {
                         "description": "The ID of the training job.",
                         "title": "Training Job Id",
                         "type": "string"
+                    },
+                    "expires_at": {
+                        "anyOf": [
+                            {
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "When the checkpoint expires and is deleted. Null means it never expires.",
+                        "title": "Expires At"
                     }
                 },
                 "required": [
@@ -32917,7 +33286,9 @@
                     "base_model",
                     "lora_adapter_config",
                     "size_bytes",
-                    "training_job_id"
+                    "id",
+                    "training_job_id",
+                    "expires_at"
                 ],
                 "title": "TrainingJobCheckpointV1",
                 "type": "object"
@@ -32943,6 +33314,29 @@
                     "checkpoints"
                 ],
                 "title": "GetTrainingJobCheckpointsResponseV1",
+                "type": "object"
+            },
+            "SetTrainingJobCheckpointTtlRequestV1": {
+                "properties": {
+                    "ttl_seconds": {
+                        "anyOf": [
+                            {
+                                "maximum": 315360000,
+                                "minimum": 3600,
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Seconds from now until the checkpoint expires and is deleted, from 3600 (1 hour) to 315360000 (10 years). Null removes the TTL, so the checkpoint never expires.",
+                        "title": "Ttl Seconds"
+                    }
+                },
+                "required": [
+                    "ttl_seconds"
+                ],
+                "title": "SetTrainingJobCheckpointTtlRequestV1",
                 "type": "object"
             },
             "CheckpointFile": {
@@ -35323,7 +35717,7 @@
                                 "type": "null"
                             }
                         ],
-                        "description": "Seconds from now until the checkpoint expires and is deleted, from 3600 (1 hour) to 315360000 (10 years). Null removes the TTL, so the checkpoint is kept until you delete it.",
+                        "description": "Seconds from now until the checkpoint expires and is deleted, from 3600 (1 hour) to 315360000 (10 years). Null removes the TTL, so the checkpoint never expires.",
                         "title": "Ttl Seconds"
                     }
                 },
@@ -50667,6 +51061,14 @@
                 "in": "path",
                 "required": true
             },
+            "checkpoint_id": {
+                "schema": {
+                    "type": "string"
+                },
+                "name": "checkpoint_id",
+                "in": "path",
+                "required": true
+            },
             "session_id": {
                 "schema": {
                     "type": "string"
@@ -50688,14 +51090,6 @@
                     "type": "string"
                 },
                 "name": "sampler_id",
-                "in": "path",
-                "required": true
-            },
-            "checkpoint_id": {
-                "schema": {
-                    "type": "string"
-                },
-                "name": "checkpoint_id",
                 "in": "path",
                 "required": true
             },

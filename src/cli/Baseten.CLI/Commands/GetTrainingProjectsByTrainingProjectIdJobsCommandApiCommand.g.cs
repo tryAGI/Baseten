@@ -13,6 +13,18 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsCommandA
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<string?> Cursor { get; } = new(
+        name: @"--cursor")
+    {
+        Description = @"Opaque cursor from the pagination.cursor field of a previous response. Omit both cursor and limit to get every job in one response.",
+    };
+
+    private static Option<int?> Limit { get; } = new(
+        name: @"--limit")
+    {
+        Description = @"Maximum number of jobs to return, newest first, up to 1000.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.ListTrainingJobsResponseV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -38,19 +50,25 @@ internal static partial class GetTrainingProjectsByTrainingProjectIdJobsCommandA
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-training-projects-by-training-project-id-jobs", @"Lists training jobs
-Lists all training jobs for the training project.");
+Lists the training project's jobs, newest first.");
                         command.Arguments.Add(TrainingProjectId);
+                        command.Options.Add(Cursor);
+                        command.Options.Add(Limit);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
                         var trainingProjectId = parseResult.GetRequiredValue(TrainingProjectId);
+                        var cursor = parseResult.GetValue(Cursor);
+                        var limit = parseResult.GetValue(Limit);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetTrainingProjectsByTrainingProjectIdJobsAsync(
                                     trainingProjectId: trainingProjectId,
+                                    cursor: cursor,
+                                    limit: limit,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

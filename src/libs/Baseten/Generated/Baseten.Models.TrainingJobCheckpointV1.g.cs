@@ -56,11 +56,24 @@ namespace Baseten
         public string? SyncStatus { get; set; }
 
         /// <summary>
+        /// The checkpoint ID.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
+
+        /// <summary>
         /// The ID of the training job.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("training_job_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string TrainingJobId { get; set; }
+
+        /// <summary>
+        /// When the checkpoint expires and is deleted. Null means it never expires.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("expires_at")]
+        public global::System.DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -83,6 +96,9 @@ namespace Baseten
         /// <param name="sizeBytes">
         /// The size of the checkpoint in bytes.
         /// </param>
+        /// <param name="id">
+        /// The checkpoint ID.
+        /// </param>
         /// <param name="trainingJobId">
         /// The ID of the training job.
         /// </param>
@@ -96,6 +112,9 @@ namespace Baseten
         /// Sync state of the checkpoint: SYNCING or COMPLETE.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="expiresAt">
+        /// When the checkpoint expires and is deleted. Null means it never expires.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -104,10 +123,12 @@ namespace Baseten
             global::System.DateTime createdAt,
             string checkpointType,
             long sizeBytes,
+            string id,
             string trainingJobId,
             string? baseModel,
             object? loraAdapterConfig,
-            string? syncStatus)
+            string? syncStatus,
+            global::System.DateTime? expiresAt)
         {
             this.CheckpointId = checkpointId ?? throw new global::System.ArgumentNullException(nameof(checkpointId));
             this.CreatedAt = createdAt;
@@ -116,7 +137,9 @@ namespace Baseten
             this.LoraAdapterConfig = loraAdapterConfig;
             this.SizeBytes = sizeBytes;
             this.SyncStatus = syncStatus;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.TrainingJobId = trainingJobId ?? throw new global::System.ArgumentNullException(nameof(trainingJobId));
+            this.ExpiresAt = expiresAt;
         }
 
         /// <summary>

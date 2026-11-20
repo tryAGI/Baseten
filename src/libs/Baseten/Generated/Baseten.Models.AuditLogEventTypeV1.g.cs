@@ -91,6 +91,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        GridGuardrailCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        GridGuardrailDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        GridGuardrailUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         GridMachineUserCreated,
         /// <summary>
         ///
@@ -322,6 +334,9 @@ namespace Baseten
                 AuditLogEventTypeV1.GatewayEndpointCreated => "GATEWAY_ENDPOINT_CREATED",
                 AuditLogEventTypeV1.GatewayEndpointDeleted => "GATEWAY_ENDPOINT_DELETED",
                 AuditLogEventTypeV1.GatewayEndpointUpdated => "GATEWAY_ENDPOINT_UPDATED",
+                AuditLogEventTypeV1.GridGuardrailCreated => "GRID_GUARDRAIL_CREATED",
+                AuditLogEventTypeV1.GridGuardrailDeleted => "GRID_GUARDRAIL_DELETED",
+                AuditLogEventTypeV1.GridGuardrailUpdated => "GRID_GUARDRAIL_UPDATED",
                 AuditLogEventTypeV1.GridMachineUserCreated => "GRID_MACHINE_USER_CREATED",
                 AuditLogEventTypeV1.GridMachineUserDeleted => "GRID_MACHINE_USER_DELETED",
                 AuditLogEventTypeV1.GridMachineUserUpdated => "GRID_MACHINE_USER_UPDATED",
@@ -402,6 +417,9 @@ namespace Baseten
                 "GATEWAY_ENDPOINT_CREATED" => AuditLogEventTypeV1.GatewayEndpointCreated,
                 "GATEWAY_ENDPOINT_DELETED" => AuditLogEventTypeV1.GatewayEndpointDeleted,
                 "GATEWAY_ENDPOINT_UPDATED" => AuditLogEventTypeV1.GatewayEndpointUpdated,
+                "GRID_GUARDRAIL_CREATED" => AuditLogEventTypeV1.GridGuardrailCreated,
+                "GRID_GUARDRAIL_DELETED" => AuditLogEventTypeV1.GridGuardrailDeleted,
+                "GRID_GUARDRAIL_UPDATED" => AuditLogEventTypeV1.GridGuardrailUpdated,
                 "GRID_MACHINE_USER_CREATED" => AuditLogEventTypeV1.GridMachineUserCreated,
                 "GRID_MACHINE_USER_DELETED" => AuditLogEventTypeV1.GridMachineUserDeleted,
                 "GRID_MACHINE_USER_UPDATED" => AuditLogEventTypeV1.GridMachineUserUpdated,

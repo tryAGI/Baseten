@@ -292,6 +292,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetVolumesSyncsCommandApiCommand.Create());
                          command.Subcommands.Add(GetVolumesSyncsByVolumeSyncIdCommandApiCommand.Create());
                          command.Subcommands.Add(PutLoopsCheckpointsByCheckpointIdTtlCommandApiCommand.Create());
+                         command.Subcommands.Add(PutTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCheckpointsByCheckpointIdTtlCommandApiCommand.Create());
         CustomizeCommand(ref command);
         return command;
     }
