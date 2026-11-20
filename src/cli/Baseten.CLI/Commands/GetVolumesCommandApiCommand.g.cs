@@ -51,7 +51,7 @@ internal static partial class GetVolumesCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"get-volumes", @"Gets the volumes in a namespace
-Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed.");
+Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed. A page can hold fewer volumes than `limit`, or none, while more remain, so keep requesting with the returned cursor until `has_more` is false.");
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
                         command.Options.Add(Namespace);

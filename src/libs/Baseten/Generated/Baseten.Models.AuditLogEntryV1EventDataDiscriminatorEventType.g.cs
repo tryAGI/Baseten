@@ -91,6 +91,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        GridGuardrailCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        GridGuardrailDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        GridGuardrailUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         GridMachineUserCreated,
         /// <summary>
         ///
@@ -322,6 +334,9 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointCreated => "GATEWAY_ENDPOINT_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointDeleted => "GATEWAY_ENDPOINT_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointUpdated => "GATEWAY_ENDPOINT_UPDATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.GridGuardrailCreated => "GRID_GUARDRAIL_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.GridGuardrailDeleted => "GRID_GUARDRAIL_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.GridGuardrailUpdated => "GRID_GUARDRAIL_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserCreated => "GRID_MACHINE_USER_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserDeleted => "GRID_MACHINE_USER_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserUpdated => "GRID_MACHINE_USER_UPDATED",
@@ -402,6 +417,9 @@ namespace Baseten
                 "GATEWAY_ENDPOINT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointCreated,
                 "GATEWAY_ENDPOINT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointDeleted,
                 "GATEWAY_ENDPOINT_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GatewayEndpointUpdated,
+                "GRID_GUARDRAIL_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridGuardrailCreated,
+                "GRID_GUARDRAIL_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridGuardrailDeleted,
+                "GRID_GUARDRAIL_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridGuardrailUpdated,
                 "GRID_MACHINE_USER_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserCreated,
                 "GRID_MACHINE_USER_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserDeleted,
                 "GRID_MACHINE_USER_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.GridMachineUserUpdated,

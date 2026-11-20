@@ -16,7 +16,7 @@ internal static partial class PutLoopsCheckpointsByCheckpointIdTtlCommandApiComm
     private static Option<int?> TtlSeconds { get; } = new(
         name: @"--ttl-seconds")
     {
-        Description = @"Seconds from now until the checkpoint expires and is deleted, from 3600 (1 hour) to 315360000 (10 years). Null removes the TTL, so the checkpoint is kept until you delete it.",
+        Description = @"Seconds from now until the checkpoint expires and is deleted, from 3600 (1 hour) to 315360000 (10 years). Null removes the TTL, so the checkpoint never expires.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

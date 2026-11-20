@@ -27,10 +27,14 @@ namespace Baseten
             };
         partial void PrepareGetTrainingProjectsByTrainingProjectIdJobsArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? cursor,
+            int? limit,
             ref string trainingProjectId);
         partial void PrepareGetTrainingProjectsByTrainingProjectIdJobsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? cursor,
+            int? limit,
             string trainingProjectId);
         partial void ProcessGetTrainingProjectsByTrainingProjectIdJobsResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -43,8 +47,14 @@ namespace Baseten
 
         /// <summary>
         /// Lists training jobs<br/>
-        /// Lists all training jobs for the training project.
+        /// Lists the training project's jobs, newest first.
         /// </summary>
+        /// <param name="cursor">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -56,11 +66,15 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ListTrainingJobsResponseV1> GetTrainingProjectsByTrainingProjectIdJobsAsync(
             string trainingProjectId,
+            string? cursor = default,
+            int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetTrainingProjectsByTrainingProjectIdJobsAsResponseAsync(
                 trainingProjectId: trainingProjectId,
+                cursor: cursor,
+                limit: limit,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -69,8 +83,14 @@ namespace Baseten
         }
         /// <summary>
         /// Lists training jobs<br/>
-        /// Lists all training jobs for the training project.
+        /// Lists the training project's jobs, newest first.
         /// </summary>
+        /// <param name="cursor">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="limit">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="trainingProjectId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -82,6 +102,8 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListTrainingJobsResponseV1>> GetTrainingProjectsByTrainingProjectIdJobsAsResponseAsync(
             string trainingProjectId,
+            string? cursor = default,
+            int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -89,6 +111,8 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetTrainingProjectsByTrainingProjectIdJobsArguments(
                 httpClient: HttpClient,
+                cursor: ref cursor,
+                limit: limit,
                 trainingProjectId: ref trainingProjectId);
 
 
@@ -117,6 +141,10 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/training_projects/{trainingProjectId}/jobs",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("cursor", cursor)
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -157,6 +185,8 @@ namespace Baseten
                 PrepareGetTrainingProjectsByTrainingProjectIdJobsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    cursor: cursor,
+                    limit: limit,
                     trainingProjectId: trainingProjectId);
 
                 return __httpRequest;
