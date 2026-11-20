@@ -14,6 +14,10 @@ internal static partial class EditOrganizationsMeCommandApiCommand
     private static Option<bool?> AllowServiceAccountApiKeys { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--allow-service-account-api-keys",
         description: @"Whether new team and organization API keys can be created. Null is not accepted.");
+
+    private static Option<bool?> AllowTeamAdminsToManageRoles { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--allow-team-admins-to-manage-roles",
+        description: @"Whether team admins create, change, and delete their team's custom roles. Needs `access.role.write` for the organization. Null is not accepted.");
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -59,6 +63,7 @@ internal static partial class EditOrganizationsMeCommandApiCommand
 Updates settings of the organization of the user making the request. Only organization admins can call it. Omitted fields are unchanged.");
                         command.Options.Add(AllowPersonalApiKeys);
                         command.Options.Add(AllowServiceAccountApiKeys);
+                        command.Options.Add(AllowTeamAdminsToManageRoles);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -86,12 +91,14 @@ Updates settings of the organization of the user making the request. Only organi
                             cancellationToken).ConfigureAwait(false);
                         var allowPersonalApiKeys = CliRuntime.WasSpecified(parseResult, AllowPersonalApiKeys) ? parseResult.GetValue(AllowPersonalApiKeys) : (__requestBase is { } __AllowPersonalApiKeysBaseValue ? __AllowPersonalApiKeysBaseValue.AllowPersonalApiKeys : default);
                         var allowServiceAccountApiKeys = CliRuntime.WasSpecified(parseResult, AllowServiceAccountApiKeys) ? parseResult.GetValue(AllowServiceAccountApiKeys) : (__requestBase is { } __AllowServiceAccountApiKeysBaseValue ? __AllowServiceAccountApiKeysBaseValue.AllowServiceAccountApiKeys : default);
+                        var allowTeamAdminsToManageRoles = CliRuntime.WasSpecified(parseResult, AllowTeamAdminsToManageRoles) ? parseResult.GetValue(AllowTeamAdminsToManageRoles) : (__requestBase is { } __AllowTeamAdminsToManageRolesBaseValue ? __AllowTeamAdminsToManageRolesBaseValue.AllowTeamAdminsToManageRoles : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.EditOrganizationsMeAsync(
                                     allowPersonalApiKeys: allowPersonalApiKeys,
                                     allowServiceAccountApiKeys: allowServiceAccountApiKeys,
+                                    allowTeamAdminsToManageRoles: allowTeamAdminsToManageRoles,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

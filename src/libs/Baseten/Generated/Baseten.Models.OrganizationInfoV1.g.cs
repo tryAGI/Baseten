@@ -51,6 +51,13 @@ namespace Baseten
         public required bool AllowServiceAccountApiKeys { get; set; }
 
         /// <summary>
+        /// Whether team admins create, change, and delete their team's custom roles. When false, only organization admins do, and team admins still assign roles in their team. Null when custom roles aren't available to your organization, or you can't read its roles.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allow_team_admins_to_manage_roles")]
+        public bool? AllowTeamAdminsToManageRoles { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -79,6 +86,10 @@ namespace Baseten
         /// AWS AssumeRole trust-policy inputs; null while the method is not enabled for the organization<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="allowTeamAdminsToManageRoles">
+        /// Whether team admins create, change, and delete their team's custom roles. When false, only organization admins do, and team admins still assign roles in their team. Null when custom roles aren't available to your organization, or you can't read its roles.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -88,7 +99,8 @@ namespace Baseten
             bool allowPersonalApiKeys,
             bool allowServiceAccountApiKeys,
             string? name,
-            global::Baseten.AwsAssumeRoleV1? awsAssumeRole)
+            global::Baseten.AwsAssumeRoleV1? awsAssumeRole,
+            bool? allowTeamAdminsToManageRoles)
         {
             this.OrgId = orgId ?? throw new global::System.ArgumentNullException(nameof(orgId));
             this.Name = name;
@@ -96,6 +108,7 @@ namespace Baseten
             this.AwsAssumeRole = awsAssumeRole;
             this.AllowPersonalApiKeys = allowPersonalApiKeys;
             this.AllowServiceAccountApiKeys = allowServiceAccountApiKeys;
+            this.AllowTeamAdminsToManageRoles = allowTeamAdminsToManageRoles;
         }
 
         /// <summary>

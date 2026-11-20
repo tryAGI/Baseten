@@ -23,6 +23,13 @@ namespace Baseten
         public bool? AllowServiceAccountApiKeys { get; set; }
 
         /// <summary>
+        /// Whether team admins create, change, and delete their team's custom roles. Needs `access.role.write` for the organization. Null is not accepted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allow_team_admins_to_manage_roles")]
+        public bool? AllowTeamAdminsToManageRoles { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -39,15 +46,21 @@ namespace Baseten
         /// Whether new team and organization API keys can be created. Null is not accepted.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="allowTeamAdminsToManageRoles">
+        /// Whether team admins create, change, and delete their team's custom roles. Needs `access.role.write` for the organization. Null is not accepted.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateOrganizationRequestV1(
             bool? allowPersonalApiKeys,
-            bool? allowServiceAccountApiKeys)
+            bool? allowServiceAccountApiKeys,
+            bool? allowTeamAdminsToManageRoles)
         {
             this.AllowPersonalApiKeys = allowPersonalApiKeys;
             this.AllowServiceAccountApiKeys = allowServiceAccountApiKeys;
+            this.AllowTeamAdminsToManageRoles = allowTeamAdminsToManageRoles;
         }
 
         /// <summary>

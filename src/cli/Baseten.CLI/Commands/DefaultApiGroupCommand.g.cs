@@ -11,8 +11,11 @@ internal static partial class DefaultApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"default", @"default endpoint commands.");
+                         command.Subcommands.Add(CreateAccessAssignmentsCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateAccessCheckCommandApiCommand.Create());
                          command.Subcommands.Add(CreateAccessIdentityProvidersCommandApiCommand.Create());
                          command.Subcommands.Add(CreateAccessIdentityProvidersVerifyCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateAccessRolesCommandApiCommand.Create());
                          command.Subcommands.Add(CreateAccessTrustRulesCommandApiCommand.Create());
                          command.Subcommands.Add(CreateAccessTrustRulesVerifyCommandApiCommand.Create());
                          command.Subcommands.Add(CreateAuthTokenCommandApiCommand.Create());
@@ -93,7 +96,9 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateVolumesSyncsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesSyncsByVolumeSyncIdCancelCommandApiCommand.Create());
                          command.Subcommands.Add(CreateVolumesTokenCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteAccessAssignmentsByAssignmentIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteAccessIdentityProvidersByIdentityProviderIdCommandApiCommand.Create());
+                         command.Subcommands.Add(DeleteAccessRolesByRoleIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteAccessTrustRulesByTrustRuleIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteChainsByChainIdDeploymentsByChainDeploymentIdCommandApiCommand.Create());
@@ -121,6 +126,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameTagsByVolumeTagCommandApiCommand.Create());
                          command.Subcommands.Add(DeleteVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionCommandApiCommand.Create());
                          command.Subcommands.Add(EditAccessIdentityProvidersByIdentityProviderIdCommandApiCommand.Create());
+                         command.Subcommands.Add(EditAccessRolesByRoleIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditAccessTrustRulesByTrustRuleIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameCommandApiCommand.Create());
                          command.Subcommands.Add(EditChainsByChainIdEnvironmentsByEnvNameChainletSettingsAutoscalingSettingsCommandApiCommand.Create());
@@ -149,9 +155,14 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdInteractiveSessionsBySessionIdCommandApiCommand.Create());
                          command.Subcommands.Add(EditVolumesByVolumeNamespaceByVolumeNameCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessAssignmentsCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessAssignmentsByAssignmentIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetAccessIdentityProvidersCommandApiCommand.Create());
                          command.Subcommands.Add(GetAccessIdentityProvidersByIdentityProviderIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessPermissionsCommandApiCommand.Create());
                          command.Subcommands.Add(GetAccessPredefinedIdentityProvidersCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessRolesCommandApiCommand.Create());
+                         command.Subcommands.Add(GetAccessRolesByRoleIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetAccessTrustRulesCommandApiCommand.Create());
                          command.Subcommands.Add(GetAccessTrustRulesByTrustRuleIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetAuditLogsCommandApiCommand.Create());
@@ -245,6 +256,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(GetServiceAccountsCommandApiCommand.Create());
                          command.Subcommands.Add(GetServiceAccountsByServiceAccountIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetServiceAccountsByServiceAccountIdAccessCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetTeamsByTeamIdEnvironmentGroupsCommandApiCommand.Create());
@@ -269,7 +281,9 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetTrainingProjectsByTrainingProjectIdJobsByTrainingJobIdMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(GetUsersCommandApiCommand.Create());
                          command.Subcommands.Add(GetUsersByUserIdCommandApiCommand.Create());
+                         command.Subcommands.Add(GetUsersByUserIdAccessCommandApiCommand.Create());
                          command.Subcommands.Add(GetUsersMeCommandApiCommand.Create());
+                         command.Subcommands.Add(GetUsersMeAccessCommandApiCommand.Create());
                          command.Subcommands.Add(GetVolumesCommandApiCommand.Create());
                          command.Subcommands.Add(GetVolumesByVolumeNamespaceByVolumeNameCommandApiCommand.Create());
                          command.Subcommands.Add(GetVolumesByVolumeNamespaceByVolumeNameVersionsCommandApiCommand.Create());

@@ -705,6 +705,18 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsersResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.UserInfoV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UsersRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessAssignmentV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessGrantedViaV1), TypeInfoPropertyName = "AccessGrantedViaV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessSubjectTypeV1), TypeInfoPropertyName = "AccessSubjectTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessResourceV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessResourceV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessResourceTypeV1), TypeInfoPropertyName = "AccessResourceTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EffectiveAccessGrantV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EffectiveAccessPermissionV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EffectiveAccessGrantV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EffectiveAccessV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessAssignmentV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.EffectiveAccessPermissionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AwsAssumeRoleV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.OrganizationInfoV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateOrganizationRequestV1))]
@@ -742,6 +754,34 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.VerifyAccessTrustRuleRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.DeletedAccessTrustRuleV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAccessTrustRuleRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessPermissionCategoryV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessResourceTypeV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessPermissionV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessRoleKindV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRoleKindV1), TypeInfoPropertyName = "AccessRoleKindV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessPermissionsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessPermissionCategoryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessPermissionV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRoleV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRolesV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessRoleV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRolesRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateAccessRoleRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRoleTombstoneV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRoleRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAccessRoleRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessAssignmentsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessAssignmentsRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessResourceUpdateV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateAccessAssignmentRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessResourceUpdateV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessAssignmentTombstoneV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessCheckV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckAccessRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessCheckV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessCheckResultV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CheckAccessResponseV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessCheckResultV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TokenExchangeRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.TokenExchangeResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GatewayEventTokensV1))]
@@ -979,6 +1019,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxLibraryImageVolumeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxLibraryImageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxLibraryImagesResponseV1))]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxLibraryImageV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CleanupSandboxImagesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxPreviewStatusV1), TypeInfoPropertyName = "SandboxPreviewStatusV12")]
@@ -1019,16 +1069,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AutoscalingScheduleWeekdayV1?), TypeInfoPropertyName = "NullableAutoscalingScheduleWeekdayV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PromotionCleanupStrategyV1?), TypeInfoPropertyName = "NullablePromotionCleanupStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RequestBackpressurePolicyV1?), TypeInfoPropertyName = "NullableRequestBackpressurePolicyV12")]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.RollingDeployStrategyV1?), TypeInfoPropertyName = "NullableRollingDeployStrategyV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SchedulesItem2?), TypeInfoPropertyName = "NullableSchedulesItem22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence?), TypeInfoPropertyName = "NullableUpdateAutoscalingScheduleSettingsV1ScheduleDiscriminatorCadence2")]
@@ -1098,8 +1138,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ModelApiCostDimensionV1?), TypeInfoPropertyName = "NullableModelApiCostDimensionV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ResourceKind?), TypeInfoPropertyName = "NullableResourceKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ToolCallUsageDimensionV1?), TypeInfoPropertyName = "NullableToolCallUsageDimensionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessGrantedViaV1?), TypeInfoPropertyName = "NullableAccessGrantedViaV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessSubjectTypeV1?), TypeInfoPropertyName = "NullableAccessSubjectTypeV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessResourceTypeV1?), TypeInfoPropertyName = "NullableAccessResourceTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ServiceAccountPresetTypeV1?), TypeInfoPropertyName = "NullableServiceAccountPresetTypeV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PredefinedIdentityProviderKindV1?), TypeInfoPropertyName = "NullablePredefinedIdentityProviderKindV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRoleKindV1?), TypeInfoPropertyName = "NullableAccessRoleKindV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteAliasKindV1?), TypeInfoPropertyName = "NullableGridRouteAliasKindV12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteClassifierV1SupportedTradeoff?), TypeInfoPropertyName = "NullableGridRouteClassifierV1SupportedTradeoff2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GridRouteMetadataV1ApiFormat?), TypeInfoPropertyName = "NullableGridRouteMetadataV1ApiFormat2")]
@@ -1253,10 +1297,22 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ToolCallUsageBucketV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ToolCallUsageDimensionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.UserInfoV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessResourceV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EffectiveAccessGrantV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessAssignmentV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.EffectiveAccessPermissionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ServiceAccountV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.PredefinedIdentityProviderV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.IdentityProviderV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessTrustRuleV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessResourceTypeV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessRoleKindV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessPermissionCategoryV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessPermissionV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessRoleV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessResourceUpdateV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessCheckV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessCheckResultV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GatewayEventV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.ExploreMetadataV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.GridRouteClassifierV1SupportedTradeoff>))]
@@ -1694,6 +1750,18 @@ namespace Baseten
 
                     || typeToConvert == typeof(global::Baseten.ToolCallUsageDimensionV1?)
 
+                    || typeToConvert == typeof(global::Baseten.AccessGrantedViaV1)
+
+                    || typeToConvert == typeof(global::Baseten.AccessGrantedViaV1?)
+
+                    || typeToConvert == typeof(global::Baseten.AccessResourceTypeV1)
+
+                    || typeToConvert == typeof(global::Baseten.AccessResourceTypeV1?)
+
+                    || typeToConvert == typeof(global::Baseten.AccessSubjectTypeV1)
+
+                    || typeToConvert == typeof(global::Baseten.AccessSubjectTypeV1?)
+
                     || typeToConvert == typeof(global::Baseten.ServiceAccountPresetTypeV1)
 
                     || typeToConvert == typeof(global::Baseten.ServiceAccountPresetTypeV1?)
@@ -1701,6 +1769,10 @@ namespace Baseten
                     || typeToConvert == typeof(global::Baseten.PredefinedIdentityProviderKindV1)
 
                     || typeToConvert == typeof(global::Baseten.PredefinedIdentityProviderKindV1?)
+
+                    || typeToConvert == typeof(global::Baseten.AccessRoleKindV1)
+
+                    || typeToConvert == typeof(global::Baseten.AccessRoleKindV1?)
 
                     || typeToConvert == typeof(global::Baseten.GridRouteAliasKindV1)
 
@@ -2549,6 +2621,36 @@ namespace Baseten
                     return new global::Baseten.JsonConverters.ToolCallUsageDimensionV1NullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::Baseten.AccessGrantedViaV1))
+                {
+                    return new global::Baseten.JsonConverters.AccessGrantedViaV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AccessGrantedViaV1?))
+                {
+                    return new global::Baseten.JsonConverters.AccessGrantedViaV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AccessResourceTypeV1))
+                {
+                    return new global::Baseten.JsonConverters.AccessResourceTypeV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AccessResourceTypeV1?))
+                {
+                    return new global::Baseten.JsonConverters.AccessResourceTypeV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AccessSubjectTypeV1))
+                {
+                    return new global::Baseten.JsonConverters.AccessSubjectTypeV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AccessSubjectTypeV1?))
+                {
+                    return new global::Baseten.JsonConverters.AccessSubjectTypeV1NullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::Baseten.ServiceAccountPresetTypeV1))
                 {
                     return new global::Baseten.JsonConverters.ServiceAccountPresetTypeV1JsonConverter();
@@ -2567,6 +2669,16 @@ namespace Baseten
                 if (typeToConvert == typeof(global::Baseten.PredefinedIdentityProviderKindV1?))
                 {
                     return new global::Baseten.JsonConverters.PredefinedIdentityProviderKindV1NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AccessRoleKindV1))
+                {
+                    return new global::Baseten.JsonConverters.AccessRoleKindV1JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Baseten.AccessRoleKindV1?))
+                {
+                    return new global::Baseten.JsonConverters.AccessRoleKindV1NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Baseten.GridRouteAliasKindV1))
