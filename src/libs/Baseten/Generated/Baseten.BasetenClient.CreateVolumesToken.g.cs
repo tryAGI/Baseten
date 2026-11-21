@@ -57,6 +57,7 @@ namespace Baseten
         ///   "scopes": null,<br/>
         ///   "namespaces": null,<br/>
         ///   "volumes": null,<br/>
+        ///   "hosting": null,<br/>
         ///   "correlation_id": null<br/>
         /// }'
         /// </remarks>
@@ -91,6 +92,7 @@ namespace Baseten
         ///   "scopes": null,<br/>
         ///   "namespaces": null,<br/>
         ///   "volumes": null,<br/>
+        ///   "hosting": null,<br/>
         ///   "correlation_id": null<br/>
         /// }'
         /// </remarks>
@@ -468,6 +470,10 @@ namespace Baseten
         /// <param name="volumes">
         /// Volume names the token is limited to, lowercase ASCII, exact names only, at least one. The limit applies to every requested scope in every requested namespace.
         /// </param>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="correlationId">
         /// Optional client-chosen identifier, at most 128 printable ASCII characters. Echoed into server logs to link the issued token to a client operation.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -479,6 +485,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.VolumeTokenScopeV1> scopes,
             global::System.Collections.Generic.IList<string> namespaces,
             global::System.Collections.Generic.IList<string> volumes,
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? correlationId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -488,6 +495,7 @@ namespace Baseten
                 Scopes = scopes,
                 Namespaces = namespaces,
                 Volumes = volumes,
+                Hosting = hosting,
                 CorrelationId = correlationId,
             };
 

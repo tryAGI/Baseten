@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Baseten
@@ -9,11 +11,18 @@ namespace Baseten
     public sealed partial class TrainingJobCheckpointV1
     {
         /// <summary>
-        /// The ID of the checkpoint.
+        /// Deprecated: use `checkpoint_name`, which has the same value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("checkpoint_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CheckpointId { get; set; }
+
+        /// <summary>
+        /// The checkpoint's name, for example `checkpoint-500`. To refer to the checkpoint in a URL, use its `id`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("checkpoint_name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string CheckpointName { get; set; }
 
         /// <summary>
         /// The timestamp of the checkpoint in ISO 8601 format.
@@ -56,7 +65,7 @@ namespace Baseten
         public string? SyncStatus { get; set; }
 
         /// <summary>
-        /// The checkpoint ID.
+        /// The checkpoint's unique ID, used in checkpoint URLs.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -85,7 +94,10 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="TrainingJobCheckpointV1" /> class.
         /// </summary>
         /// <param name="checkpointId">
-        /// The ID of the checkpoint.
+        /// Deprecated: use `checkpoint_name`, which has the same value.
+        /// </param>
+        /// <param name="checkpointName">
+        /// The checkpoint's name, for example `checkpoint-500`. To refer to the checkpoint in a URL, use its `id`.
         /// </param>
         /// <param name="createdAt">
         /// The timestamp of the checkpoint in ISO 8601 format.
@@ -97,7 +109,7 @@ namespace Baseten
         /// The size of the checkpoint in bytes.
         /// </param>
         /// <param name="id">
-        /// The checkpoint ID.
+        /// The checkpoint's unique ID, used in checkpoint URLs.
         /// </param>
         /// <param name="trainingJobId">
         /// The ID of the training job.
@@ -120,6 +132,7 @@ namespace Baseten
 #endif
         public TrainingJobCheckpointV1(
             string checkpointId,
+            string checkpointName,
             global::System.DateTime createdAt,
             string checkpointType,
             long sizeBytes,
@@ -131,6 +144,7 @@ namespace Baseten
             global::System.DateTime? expiresAt)
         {
             this.CheckpointId = checkpointId ?? throw new global::System.ArgumentNullException(nameof(checkpointId));
+            this.CheckpointName = checkpointName ?? throw new global::System.ArgumentNullException(nameof(checkpointName));
             this.CreatedAt = createdAt;
             this.CheckpointType = checkpointType ?? throw new global::System.ArgumentNullException(nameof(checkpointType));
             this.BaseModel = baseModel;

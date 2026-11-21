@@ -49,7 +49,7 @@ namespace Baseten
 
         /// <summary>
         /// Sets a training job checkpoint's TTL<br/>
-        /// Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires.
+        /// Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires. Once a job stops, a TTL can be set only after its checkpoint upload is confirmed as finished, which usually takes a few minutes. Checkpoints of a job whose upload is never confirmed, such as most that finished before checkpoint expiry was available, can't expire.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -89,7 +89,7 @@ namespace Baseten
         }
         /// <summary>
         /// Sets a training job checkpoint's TTL<br/>
-        /// Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires.
+        /// Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires. Once a job stops, a TTL can be set only after its checkpoint upload is confirmed as finished, which usually takes a few minutes. Checkpoints of a job whose upload is never confirmed, such as most that finished before checkpoint expiry was available, can't expire.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>
@@ -478,7 +478,7 @@ namespace Baseten
         }
         /// <summary>
         /// Sets a training job checkpoint's TTL<br/>
-        /// Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires.
+        /// Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires. Once a job stops, a TTL can be set only after its checkpoint upload is confirmed as finished, which usually takes a few minutes. Checkpoints of a job whose upload is never confirmed, such as most that finished before checkpoint expiry was available, can't expire.
         /// </summary>
         /// <param name="trainingProjectId"></param>
         /// <param name="trainingJobId"></param>

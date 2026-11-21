@@ -15,6 +15,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Gemini,
+        /// <summary>
+        ///
+        /// </summary>
         Messages,
         /// <summary>
         ///
@@ -35,6 +39,7 @@ namespace Baseten
             return value switch
             {
                 GridRouteMetadataV1ApiFormat.ChatCompletions => "chat_completions",
+                GridRouteMetadataV1ApiFormat.Gemini => "gemini",
                 GridRouteMetadataV1ApiFormat.Messages => "messages",
                 GridRouteMetadataV1ApiFormat.Responses => "responses",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -48,6 +53,7 @@ namespace Baseten
             return value switch
             {
                 "chat_completions" => GridRouteMetadataV1ApiFormat.ChatCompletions,
+                "gemini" => GridRouteMetadataV1ApiFormat.Gemini,
                 "messages" => GridRouteMetadataV1ApiFormat.Messages,
                 "responses" => GridRouteMetadataV1ApiFormat.Responses,
                 _ => null,

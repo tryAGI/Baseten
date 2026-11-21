@@ -9,14 +9,14 @@ namespace Baseten
     public sealed partial class CreateTrainingJobS3Artifact
     {
         /// <summary>
-        /// S3 bucket for the uploaded runtime artifact.
+        /// S3 bucket of the uploaded runtime artifact. Use the `s3_bucket` returned by `GET /v1/blobs/credentials/train`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("s3_bucket")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string S3Bucket { get; set; }
 
         /// <summary>
-        /// S3 key for the uploaded runtime artifact.
+        /// S3 key of the uploaded runtime artifact. Use the `s3_key` returned by `GET /v1/blobs/credentials/train`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("s3_key")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,10 +32,10 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="CreateTrainingJobS3Artifact" /> class.
         /// </summary>
         /// <param name="s3Bucket">
-        /// S3 bucket for the uploaded runtime artifact.
+        /// S3 bucket of the uploaded runtime artifact. Use the `s3_bucket` returned by `GET /v1/blobs/credentials/train`.
         /// </param>
         /// <param name="s3Key">
-        /// S3 key for the uploaded runtime artifact.
+        /// S3 key of the uploaded runtime artifact. Use the `s3_key` returned by `GET /v1/blobs/credentials/train`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

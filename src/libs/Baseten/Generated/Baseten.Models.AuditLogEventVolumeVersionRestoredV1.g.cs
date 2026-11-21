@@ -11,16 +11,23 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        /// <default>"VOLUME_VERSION_RESTORED"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
-        public string EventType { get; set; } = "VOLUME_VERSION_RESTORED";
+        [global::System.Text.Json.Serialization.JsonPropertyName("volume_ref")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string VolumeRef { get; set; }
+
+        /// <summary>
+        /// Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.<br/>
+        /// Default Value: BASETEN_CLOUD
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
+        public string? Hosting { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("volume_ref")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string VolumeRef { get; set; }
+        /// <default>"VOLUME_VERSION_RESTORED"</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
+        public string EventType { get; set; } = "VOLUME_VERSION_RESTORED";
 
         /// <summary>
         ///
@@ -64,6 +71,10 @@ namespace Baseten
         /// <param name="volumeName"></param>
         /// <param name="version"></param>
         /// <param name="digest"></param>
+        /// <param name="hosting">
+        /// Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.<br/>
+        /// Default Value: BASETEN_CLOUD
+        /// </param>
         /// <param name="eventType"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -74,10 +85,12 @@ namespace Baseten
             string volumeName,
             string version,
             string digest,
+            string? hosting,
             string eventType = "VOLUME_VERSION_RESTORED")
         {
-            this.EventType = eventType;
             this.VolumeRef = volumeRef ?? throw new global::System.ArgumentNullException(nameof(volumeRef));
+            this.Hosting = hosting;
+            this.EventType = eventType;
             this.Namespace = @namespace ?? throw new global::System.ArgumentNullException(nameof(@namespace));
             this.VolumeName = volumeName ?? throw new global::System.ArgumentNullException(nameof(volumeName));
             this.Version = version ?? throw new global::System.ArgumentNullException(nameof(version));

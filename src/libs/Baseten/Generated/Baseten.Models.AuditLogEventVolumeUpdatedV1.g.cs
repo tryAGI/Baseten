@@ -11,16 +11,23 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
-        /// <default>"VOLUME_UPDATED"</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
-        public string EventType { get; set; } = "VOLUME_UPDATED";
+        [global::System.Text.Json.Serialization.JsonPropertyName("volume_ref")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string VolumeRef { get; set; }
+
+        /// <summary>
+        /// Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.<br/>
+        /// Default Value: BASETEN_CLOUD
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
+        public string? Hosting { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("volume_ref")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string VolumeRef { get; set; }
+        /// <default>"VOLUME_UPDATED"</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("event_type")]
+        public string EventType { get; set; } = "VOLUME_UPDATED";
 
         /// <summary>
         /// The volume's expiration time after the update, as an ISO 8601 string. Null when the update cleared it.
@@ -44,6 +51,10 @@ namespace Baseten
         /// Initializes a new instance of the <see cref="AuditLogEventVolumeUpdatedV1" /> class.
         /// </summary>
         /// <param name="volumeRef"></param>
+        /// <param name="hosting">
+        /// Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.<br/>
+        /// Default Value: BASETEN_CLOUD
+        /// </param>
         /// <param name="expiresAt">
         /// The volume's expiration time after the update, as an ISO 8601 string. Null when the update cleared it.
         /// </param>
@@ -56,12 +67,14 @@ namespace Baseten
 #endif
         public AuditLogEventVolumeUpdatedV1(
             string volumeRef,
+            string? hosting,
             string? expiresAt,
             string? previousExpiresAt,
             string eventType = "VOLUME_UPDATED")
         {
-            this.EventType = eventType;
             this.VolumeRef = volumeRef ?? throw new global::System.ArgumentNullException(nameof(volumeRef));
+            this.Hosting = hosting;
+            this.EventType = eventType;
             this.ExpiresAt = expiresAt;
             this.PreviousExpiresAt = previousExpiresAt;
         }

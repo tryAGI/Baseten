@@ -92,11 +92,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/volumes/token \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"scopes\": null,\n  \"namespaces\": null,\n  \"volumes\": null,\n  \"correlation_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/volumes/token \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"scopes\": null,\n  \"namespaces\": null,\n  \"volumes\": null,\n  \"hosting\": null,\n  \"correlation_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/token\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'scopes': None, 'namespaces': None, 'volumes': None, 'correlation_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/volumes/token\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'scopes': None, 'namespaces': None, 'volumes': None, 'hosting': None, 'correlation_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Exchanges your API key for a short-lived token that authenticates against Baseten volume storage. A volume token is needed only to push and pull volume data; other volume operations use your API key directly. Tokens expire after one hour and cannot be renewed; exchange again for a fresh token. Push and tag capabilities require organization-level model management permission. Pass correlation_id to link the issued token to a client operation in server logs.",
@@ -7004,7 +7004,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoints/{checkpoint_id}/ttl\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PUT\",\n    url,\n    headers=headers,\n    json={'ttl_seconds': None}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires.",
+                "description": "Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires. Once a job stops, a TTL can be set only after its checkpoint upload is confirmed as finished, which usually takes a few minutes. Checkpoints of a job whose upload is never confirmed, such as most that finished before checkpoint expiry was available, can't expire.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -16598,6 +16598,16 @@
                 "title": "ListVolumesRequestV1",
                 "type": "object"
             },
+            "VolumeHostingV1": {
+                "description": "Where volumes are stored. The same name under two hostings is two different volumes.\n\n- ``BASETEN_CLOUD``: Baseten's shared fleet.\n- ``SINGLE_TENANT``: your organization's single-tenant workload planes.\n- ``SELF_HOSTED``: workload planes in your own cloud account.",
+                "enum": [
+                    "BASETEN_CLOUD",
+                    "SINGLE_TENANT",
+                    "SELF_HOSTED"
+                ],
+                "title": "VolumeHostingV1",
+                "type": "string"
+            },
             "VolumeTokenScopeV1": {
                 "description": "Capability a volume token grants.\n\n- ``PULL``: read volume data.\n- ``INSPECT``: read volume metadata without data access.\n- ``PUSH``: upload and commit volume versions.\n- ``TAG``: move or remove tags.",
                 "enum": [
@@ -16638,6 +16648,18 @@
                         "minItems": 1,
                         "title": "Volumes",
                         "type": "array"
+                    },
+                    "hosting": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VolumeHostingV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one."
                     },
                     "correlation_id": {
                         "anyOf": [
@@ -16700,6 +16722,10 @@
                         "title": "Volumes",
                         "type": "array"
                     },
+                    "hosting": {
+                        "$ref": "#/components/schemas/VolumeHostingV1",
+                        "description": "Where the granted volumes are stored."
+                    },
                     "bdn_endpoint": {
                         "anyOf": [
                             {
@@ -16719,6 +16745,7 @@
                     "scopes",
                     "namespaces",
                     "volumes",
+                    "hosting",
                     "bdn_endpoint"
                 ],
                 "title": "CreateVolumeTokenResponseV1",
@@ -25178,13 +25205,19 @@
             "AuditLogEventVolumeDeletedV1": {
                 "description": "A volume was deleted, tombstoning every version it still held.",
                 "properties": {
+                    "volume_ref": {
+                        "title": "Volume Ref",
+                        "type": "string"
+                    },
+                    "hosting": {
+                        "default": "BASETEN_CLOUD",
+                        "description": "Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.",
+                        "title": "Hosting",
+                        "type": "string"
+                    },
                     "event_type": {
                         "const": "VOLUME_DELETED",
                         "title": "Event Type",
-                        "type": "string"
-                    },
-                    "volume_ref": {
-                        "title": "Volume Ref",
                         "type": "string"
                     },
                     "namespace": {
@@ -25201,8 +25234,8 @@
                     }
                 },
                 "required": [
-                    "event_type",
                     "volume_ref",
+                    "event_type",
                     "namespace",
                     "volume_name",
                     "versions_deleted"
@@ -25213,13 +25246,19 @@
             "AuditLogEventVolumeTagDeletedV1": {
                 "description": "Deleting a volume tag succeeded. `deleted` is false if the tag was already absent.",
                 "properties": {
+                    "volume_ref": {
+                        "title": "Volume Ref",
+                        "type": "string"
+                    },
+                    "hosting": {
+                        "default": "BASETEN_CLOUD",
+                        "description": "Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.",
+                        "title": "Hosting",
+                        "type": "string"
+                    },
                     "event_type": {
                         "const": "VOLUME_TAG_DELETED",
                         "title": "Event Type",
-                        "type": "string"
-                    },
-                    "volume_ref": {
-                        "title": "Volume Ref",
                         "type": "string"
                     },
                     "tag": {
@@ -25232,8 +25271,8 @@
                     }
                 },
                 "required": [
-                    "event_type",
                     "volume_ref",
+                    "event_type",
                     "tag",
                     "deleted"
                 ],
@@ -25243,13 +25282,19 @@
             "AuditLogEventVolumeTagSetV1": {
                 "description": "A volume tag was set on a version.",
                 "properties": {
+                    "volume_ref": {
+                        "title": "Volume Ref",
+                        "type": "string"
+                    },
+                    "hosting": {
+                        "default": "BASETEN_CLOUD",
+                        "description": "Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.",
+                        "title": "Hosting",
+                        "type": "string"
+                    },
                     "event_type": {
                         "const": "VOLUME_TAG_SET",
                         "title": "Event Type",
-                        "type": "string"
-                    },
-                    "volume_ref": {
-                        "title": "Volume Ref",
                         "type": "string"
                     },
                     "tag": {
@@ -25262,8 +25307,8 @@
                     }
                 },
                 "required": [
-                    "event_type",
                     "volume_ref",
+                    "event_type",
                     "tag",
                     "digest"
                 ],
@@ -25273,13 +25318,19 @@
             "AuditLogEventVolumeUpdatedV1": {
                 "description": "A volume's settings were updated.",
                 "properties": {
+                    "volume_ref": {
+                        "title": "Volume Ref",
+                        "type": "string"
+                    },
+                    "hosting": {
+                        "default": "BASETEN_CLOUD",
+                        "description": "Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.",
+                        "title": "Hosting",
+                        "type": "string"
+                    },
                     "event_type": {
                         "const": "VOLUME_UPDATED",
                         "title": "Event Type",
-                        "type": "string"
-                    },
-                    "volume_ref": {
-                        "title": "Volume Ref",
                         "type": "string"
                     },
                     "expires_at": {
@@ -25308,8 +25359,8 @@
                     }
                 },
                 "required": [
-                    "event_type",
                     "volume_ref",
+                    "event_type",
                     "expires_at",
                     "previous_expires_at"
                 ],
@@ -25319,13 +25370,19 @@
             "AuditLogEventVolumeVersionDeletedV1": {
                 "description": "One version of a volume was deleted.",
                 "properties": {
+                    "volume_ref": {
+                        "title": "Volume Ref",
+                        "type": "string"
+                    },
+                    "hosting": {
+                        "default": "BASETEN_CLOUD",
+                        "description": "Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.",
+                        "title": "Hosting",
+                        "type": "string"
+                    },
                     "event_type": {
                         "const": "VOLUME_VERSION_DELETED",
                         "title": "Event Type",
-                        "type": "string"
-                    },
-                    "volume_ref": {
-                        "title": "Volume Ref",
                         "type": "string"
                     },
                     "namespace": {
@@ -25346,8 +25403,8 @@
                     }
                 },
                 "required": [
-                    "event_type",
                     "volume_ref",
+                    "event_type",
                     "namespace",
                     "volume_name",
                     "version",
@@ -25359,13 +25416,19 @@
             "AuditLogEventVolumeVersionRestoredV1": {
                 "description": "A deleted version of a volume was restored.",
                 "properties": {
+                    "volume_ref": {
+                        "title": "Volume Ref",
+                        "type": "string"
+                    },
+                    "hosting": {
+                        "default": "BASETEN_CLOUD",
+                        "description": "Where the volume is stored: BASETEN_CLOUD, SINGLE_TENANT, or SELF_HOSTED. The same volume_ref under two hostings names two different volumes.",
+                        "title": "Hosting",
+                        "type": "string"
+                    },
                     "event_type": {
                         "const": "VOLUME_VERSION_RESTORED",
                         "title": "Event Type",
-                        "type": "string"
-                    },
-                    "volume_ref": {
-                        "title": "Volume Ref",
                         "type": "string"
                     },
                     "namespace": {
@@ -25386,8 +25449,8 @@
                     }
                 },
                 "required": [
-                    "event_type",
                     "volume_ref",
+                    "event_type",
                     "namespace",
                     "volume_name",
                     "version",
@@ -31828,17 +31891,14 @@
             "CreateTrainingJobS3Artifact": {
                 "properties": {
                     "s3_bucket": {
-                        "description": "S3 bucket for the uploaded runtime artifact.",
-                        "examples": [
-                            "my-s3-bucket"
-                        ],
+                        "description": "S3 bucket of the uploaded runtime artifact. Use the `s3_bucket` returned by `GET /v1/blobs/credentials/train`.",
                         "title": "S3 Bucket",
                         "type": "string"
                     },
                     "s3_key": {
-                        "description": "S3 key for the uploaded runtime artifact.",
+                        "description": "S3 key of the uploaded runtime artifact. Use the `s3_key` returned by `GET /v1/blobs/credentials/train`.",
                         "examples": [
-                            "my-s3-key"
+                            "organizations/abc123/training/1f0e8c2a-7b3d-4e5f-9a6b-2c4d8e0f1a3b/scripts.tgz"
                         ],
                         "title": "S3 Key",
                         "type": "string"
@@ -33197,8 +33257,14 @@
                 "description": "A checkpoint for a training job.",
                 "properties": {
                     "checkpoint_id": {
-                        "description": "The ID of the checkpoint.",
+                        "deprecated": true,
+                        "description": "Deprecated: use `checkpoint_name`, which has the same value.",
                         "title": "Checkpoint Id",
+                        "type": "string"
+                    },
+                    "checkpoint_name": {
+                        "description": "The checkpoint's name, for example `checkpoint-500`. To refer to the checkpoint in a URL, use its `id`.",
+                        "title": "Checkpoint Name",
                         "type": "string"
                     },
                     "created_at": {
@@ -33256,7 +33322,7 @@
                         "title": "Sync Status"
                     },
                     "id": {
-                        "description": "The checkpoint ID.",
+                        "description": "The checkpoint's unique ID, used in checkpoint URLs.",
                         "title": "Id",
                         "type": "string"
                     },
@@ -33281,6 +33347,7 @@
                 },
                 "required": [
                     "checkpoint_id",
+                    "checkpoint_name",
                     "created_at",
                     "checkpoint_type",
                     "base_model",
@@ -34007,6 +34074,95 @@
                 "title": "EnablementDetailsV1",
                 "type": "object"
             },
+            "LoopsServerlessPricingV1": {
+                "description": "A model's current serverless Loops prices for this workspace, in USD per million tokens.\n\nPrices come from the workspace's plan, so they include its price overrides. A meter the plan\ndoes not price is null.",
+                "properties": {
+                    "cost_per_million_uncached_prefill_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "USD per million prompt tokens that miss the prefix cache.",
+                        "examples": [
+                            "0.15"
+                        ],
+                        "title": "Cost Per Million Uncached Prefill Tokens"
+                    },
+                    "cost_per_million_cached_prefill_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "USD per million prompt tokens served from the prefix cache.",
+                        "examples": [
+                            "0.03"
+                        ],
+                        "title": "Cost Per Million Cached Prefill Tokens"
+                    },
+                    "cost_per_million_sample_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "USD per million tokens the sampler generates.",
+                        "examples": [
+                            "0.6"
+                        ],
+                        "title": "Cost Per Million Sample Tokens"
+                    },
+                    "cost_per_million_train_tokens": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "USD per million tokens the trainer processes.",
+                        "examples": [
+                            "1.2"
+                        ],
+                        "title": "Cost Per Million Train Tokens"
+                    }
+                },
+                "required": [
+                    "cost_per_million_uncached_prefill_tokens",
+                    "cost_per_million_cached_prefill_tokens",
+                    "cost_per_million_sample_tokens",
+                    "cost_per_million_train_tokens"
+                ],
+                "title": "LoopsServerlessPricingV1",
+                "type": "object"
+            },
             "SupportedModelV1": {
                 "description": "A model supported by the Loops server.",
                 "properties": {
@@ -34055,6 +34211,18 @@
                         "default": null,
                         "description": "Early access only. Whether this workspace can use serverless Loops for this model.",
                         "title": "Serverless"
+                    },
+                    "serverless_pricing": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/LoopsServerlessPricingV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Early access only. This workspace's current serverless prices for the model. Present only when 'serverless' is true and the workspace's plan prices the model."
                     },
                     "enablement_details": {
                         "anyOf": [
@@ -34765,8 +34933,14 @@
                 "description": "A checkpoint saved by a Loops run.",
                 "properties": {
                     "checkpoint_id": {
-                        "description": "The ID of the checkpoint.",
+                        "deprecated": true,
+                        "description": "Deprecated: use `checkpoint_name`, which has the same value.",
                         "title": "Checkpoint Id",
+                        "type": "string"
+                    },
+                    "checkpoint_name": {
+                        "description": "The checkpoint's name, for example `checkpoint-500`. To refer to the checkpoint in a URL, use its `id`.",
+                        "title": "Checkpoint Name",
                         "type": "string"
                     },
                     "created_at": {
@@ -34824,7 +34998,7 @@
                         "title": "Sync Status"
                     },
                     "id": {
-                        "description": "The checkpoint ID.",
+                        "description": "The checkpoint's unique ID, used in checkpoint URLs.",
                         "title": "Id",
                         "type": "string"
                     },
@@ -34864,6 +35038,7 @@
                 },
                 "required": [
                     "checkpoint_id",
+                    "checkpoint_name",
                     "created_at",
                     "checkpoint_type",
                     "base_model",
@@ -35553,8 +35728,14 @@
                         "type": "string"
                     },
                     "checkpoint_id": {
-                        "description": "The name the checkpoint was saved under.",
+                        "deprecated": true,
+                        "description": "Deprecated: use `checkpoint_name`, which has the same value.",
                         "title": "Checkpoint Id",
+                        "type": "string"
+                    },
+                    "checkpoint_name": {
+                        "description": "The name the checkpoint was saved under.",
+                        "title": "Checkpoint Name",
                         "type": "string"
                     },
                     "target": {
@@ -35571,6 +35752,7 @@
                     "id",
                     "run_id",
                     "checkpoint_id",
+                    "checkpoint_name",
                     "target",
                     "path"
                 ],
@@ -44154,6 +44336,12 @@
                         "description": "OpenAI Chat Completions API support.",
                         "title": "Chat Completions",
                         "type": "boolean"
+                    },
+                    "gemini": {
+                        "default": false,
+                        "description": "Gemini API `generateContent` support.",
+                        "title": "Gemini",
+                        "type": "boolean"
                     }
                 },
                 "title": "ExploreMetadataAPIFormatsV1",
@@ -44686,12 +44874,13 @@
                         "description": "Provider list prices in USD per 1M tokens, when available."
                     },
                     "api_formats": {
-                        "description": "API formats the route supports, most preferred first: `chat_completions`, `messages`, `responses` for a BASETEN_MODEL_API target and `messages`, `responses`, `chat_completions` for any other target, keeping only the formats the route supports. Never empty.",
+                        "description": "API formats the route supports, most preferred first: `chat_completions`, `messages`, `responses` for a BASETEN_MODEL_API target and `messages`, `responses`, `chat_completions`, `gemini` for any other target, keeping only the formats the route supports. Never empty.",
                         "items": {
                             "enum": [
                                 "messages",
                                 "responses",
-                                "chat_completions"
+                                "chat_completions",
+                                "gemini"
                             ],
                             "title": "GridRouteAPIFormatV1",
                             "type": "string"

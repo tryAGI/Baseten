@@ -28,6 +28,12 @@ internal static partial class CreateVolumesTokenCommandApiCommand
         Required = true,
     };
 
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<string?> CorrelationId { get; } = new(
         name: @"--correlation-id")
     {
@@ -79,6 +85,7 @@ Exchanges your API key for a short-lived token that authenticates against Basete
                         command.Options.Add(Scopes);
                         command.Options.Add(Namespaces);
                         command.Options.Add(Volumes);
+                        command.Options.Add(Hosting);
                         command.Options.Add(CorrelationId);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -108,6 +115,7 @@ Exchanges your API key for a short-lived token that authenticates against Basete
                         var scopes = parseResult.GetRequiredValue(Scopes);
                         var namespaces = parseResult.GetRequiredValue(Namespaces);
                         var volumes = parseResult.GetRequiredValue(Volumes);
+                        var hosting = CliRuntime.WasSpecified(parseResult, Hosting) ? parseResult.GetValue(Hosting) : (__requestBase is { } __HostingBaseValue ? __HostingBaseValue.Hosting : default);
                         var correlationId = CliRuntime.WasSpecified(parseResult, CorrelationId) ? parseResult.GetValue(CorrelationId) : (__requestBase is { } __CorrelationIdBaseValue ? __CorrelationIdBaseValue.CorrelationId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -116,6 +124,7 @@ Exchanges your API key for a short-lived token that authenticates against Basete
                                     scopes: scopes,
                                     namespaces: namespaces,
                                     volumes: volumes,
+                                    hosting: hosting,
                                     correlationId: correlationId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

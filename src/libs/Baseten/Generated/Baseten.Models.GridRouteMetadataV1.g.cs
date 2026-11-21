@@ -82,7 +82,7 @@ namespace Baseten
         public global::Baseten.ExploreCostV1? Cost { get; set; }
 
         /// <summary>
-        /// API formats the route supports, most preferred first: `chat_completions`, `messages`, `responses` for a BASETEN_MODEL_API target and `messages`, `responses`, `chat_completions` for any other target, keeping only the formats the route supports. Never empty.
+        /// API formats the route supports, most preferred first: `chat_completions`, `messages`, `responses` for a BASETEN_MODEL_API target and `messages`, `responses`, `chat_completions`, `gemini` for any other target, keeping only the formats the route supports. Never empty.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_formats")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -101,7 +101,7 @@ namespace Baseten
         /// Accepted input modalities.
         /// </param>
         /// <param name="apiFormats">
-        /// API formats the route supports, most preferred first: `chat_completions`, `messages`, `responses` for a BASETEN_MODEL_API target and `messages`, `responses`, `chat_completions` for any other target, keeping only the formats the route supports. Never empty.
+        /// API formats the route supports, most preferred first: `chat_completions`, `messages`, `responses` for a BASETEN_MODEL_API target and `messages`, `responses`, `chat_completions`, `gemini` for any other target, keeping only the formats the route supports. Never empty.
         /// </param>
         /// <param name="slug">
         /// Metadata slug, e.g. 'anthropic/claude-opus-4'; null for rows without one.

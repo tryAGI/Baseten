@@ -44,6 +44,14 @@ namespace Baseten
         public required global::System.Collections.Generic.IList<string> Volumes { get; set; }
 
         /// <summary>
+        /// Where the granted volumes are stored.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Baseten.JsonConverters.VolumeHostingV1JsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Baseten.VolumeHostingV1 Hosting { get; set; }
+
+        /// <summary>
         /// Base URL of the volume API this token authenticates against. Null when the environment does not expose a public volume API yet.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bdn_endpoint")]
@@ -73,6 +81,9 @@ namespace Baseten
         /// <param name="volumes">
         /// Effective volume names granted, in canonical lowercase form.
         /// </param>
+        /// <param name="hosting">
+        /// Where the granted volumes are stored.
+        /// </param>
         /// <param name="bdnEndpoint">
         /// Base URL of the volume API this token authenticates against. Null when the environment does not expose a public volume API yet.
         /// </param>
@@ -85,6 +96,7 @@ namespace Baseten
             global::System.Collections.Generic.IList<global::Baseten.VolumeTokenScopeV1> scopes,
             global::System.Collections.Generic.IList<string> namespaces,
             global::System.Collections.Generic.IList<string> volumes,
+            global::Baseten.VolumeHostingV1 hosting,
             string? bdnEndpoint)
         {
             this.Token = token ?? throw new global::System.ArgumentNullException(nameof(token));
@@ -92,6 +104,7 @@ namespace Baseten
             this.Scopes = scopes ?? throw new global::System.ArgumentNullException(nameof(scopes));
             this.Namespaces = namespaces ?? throw new global::System.ArgumentNullException(nameof(namespaces));
             this.Volumes = volumes ?? throw new global::System.ArgumentNullException(nameof(volumes));
+            this.Hosting = hosting;
             this.BdnEndpoint = bdnEndpoint;
         }
 

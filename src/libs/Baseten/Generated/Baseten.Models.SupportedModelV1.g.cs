@@ -60,6 +60,13 @@ namespace Baseten
         public bool? Serverless { get; set; }
 
         /// <summary>
+        /// Early access only. This workspace's current serverless prices for the model. Present only when 'serverless' is true and the workspace's plan prices the model.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("serverless_pricing")]
+        public global::Baseten.LoopsServerlessPricingV1? ServerlessPricing { get; set; }
+
+        /// <summary>
         /// Why the model is not enabled, and what would change it. Present only when 'enabled' is false — an enabled model has nothing to explain. Read 'enabled' for the state; this is the detail behind it.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -99,6 +106,10 @@ namespace Baseten
         /// Early access only. Whether this workspace can use serverless Loops for this model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="serverlessPricing">
+        /// Early access only. This workspace's current serverless prices for the model. Present only when 'serverless' is true and the workspace's plan prices the model.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="enablementDetails">
         /// Why the model is not enabled, and what would change it. Present only when 'enabled' is false — an enabled model has nothing to explain. Read 'enabled' for the state; this is the detail behind it.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -114,6 +125,7 @@ namespace Baseten
             int? maxEnabledSeqLen,
             bool? enabled,
             bool? serverless,
+            global::Baseten.LoopsServerlessPricingV1? serverlessPricing,
             global::Baseten.EnablementDetailsV1? enablementDetails)
         {
             this.ModelName = modelName ?? throw new global::System.ArgumentNullException(nameof(modelName));
@@ -123,6 +135,7 @@ namespace Baseten
             this.SupportsVisionLanguage = supportsVisionLanguage;
             this.Enabled = enabled;
             this.Serverless = serverless;
+            this.ServerlessPricing = serverlessPricing;
             this.EnablementDetails = enablementDetails;
         }
 
