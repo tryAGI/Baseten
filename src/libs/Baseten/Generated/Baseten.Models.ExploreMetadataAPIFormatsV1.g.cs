@@ -30,6 +30,13 @@ namespace Baseten
         public bool? ChatCompletions { get; set; }
 
         /// <summary>
+        /// Gemini API `generateContent` support.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("gemini")]
+        public bool? Gemini { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,17 +57,23 @@ namespace Baseten
         /// OpenAI Chat Completions API support.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="gemini">
+        /// Gemini API `generateContent` support.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ExploreMetadataAPIFormatsV1(
             bool? messages,
             bool? responses,
-            bool? chatCompletions)
+            bool? chatCompletions,
+            bool? gemini)
         {
             this.Messages = messages;
             this.Responses = responses;
             this.ChatCompletions = chatCompletions;
+            this.Gemini = gemini;
         }
 
         /// <summary>

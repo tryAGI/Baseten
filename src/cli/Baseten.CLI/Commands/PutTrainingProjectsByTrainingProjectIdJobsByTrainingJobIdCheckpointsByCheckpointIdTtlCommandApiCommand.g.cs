@@ -72,7 +72,7 @@ internal static partial class PutTrainingProjectsByTrainingProjectIdJobsByTraini
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"put-training-projects-by-training-project-id-jobs-by-training-job-id-checkpoints-by-checkpoint-id-ttl", @"Sets a training job checkpoint's TTL
-Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires.");
+Sets when a training job checkpoint expires, counted from now, or removes its TTL so it never expires. Once a job stops, a TTL can be set only after its checkpoint upload is confirmed as finished, which usually takes a few minutes. Checkpoints of a job whose upload is never confirmed, such as most that finished before checkpoint expiry was available, can't expire.");
                         command.Arguments.Add(TrainingProjectId);
                         command.Arguments.Add(TrainingJobId);
                         command.Arguments.Add(CheckpointId);

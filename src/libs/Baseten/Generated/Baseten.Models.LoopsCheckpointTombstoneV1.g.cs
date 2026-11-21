@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Baseten
@@ -23,11 +25,18 @@ namespace Baseten
         public required string RunId { get; set; }
 
         /// <summary>
-        /// The name the checkpoint was saved under.
+        /// Deprecated: use `checkpoint_name`, which has the same value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("checkpoint_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CheckpointId { get; set; }
+
+        /// <summary>
+        /// The name the checkpoint was saved under.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("checkpoint_name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string CheckpointName { get; set; }
 
         /// <summary>
         /// Whether the checkpoint was loadable by the sampler or by the run.
@@ -60,6 +69,9 @@ namespace Baseten
         /// The ID of the run that produced the checkpoint.
         /// </param>
         /// <param name="checkpointId">
+        /// Deprecated: use `checkpoint_name`, which has the same value.
+        /// </param>
+        /// <param name="checkpointName">
         /// The name the checkpoint was saved under.
         /// </param>
         /// <param name="target">
@@ -75,12 +87,14 @@ namespace Baseten
             string id,
             string runId,
             string checkpointId,
+            string checkpointName,
             global::Baseten.TrainerCheckpointTarget target,
             string path)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.RunId = runId ?? throw new global::System.ArgumentNullException(nameof(runId));
             this.CheckpointId = checkpointId ?? throw new global::System.ArgumentNullException(nameof(checkpointId));
+            this.CheckpointName = checkpointName ?? throw new global::System.ArgumentNullException(nameof(checkpointName));
             this.Target = target;
             this.Path = path ?? throw new global::System.ArgumentNullException(nameof(path));
         }
