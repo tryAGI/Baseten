@@ -25,6 +25,12 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsByV
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.VolumeVersionDetailV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -54,6 +60,7 @@ Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
                         command.Arguments.Add(VolumeVersion);
+                        command.Options.Add(Hosting);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -62,6 +69,7 @@ Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag
                         var volumeNamespace = parseResult.GetRequiredValue(VolumeNamespace);
                         var volumeName = parseResult.GetRequiredValue(VolumeName);
                         var volumeVersion = parseResult.GetRequiredValue(VolumeVersion);
+                        var hosting = parseResult.GetValue(Hosting);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -69,6 +77,7 @@ Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag
                                     volumeNamespace: volumeNamespace,
                                     volumeName: volumeName,
                                     volumeVersion: volumeVersion,
+                                    hosting: hosting,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

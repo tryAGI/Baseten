@@ -27,12 +27,14 @@ namespace Baseten
             };
         partial void PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::Baseten.VolumeHostingV1? hosting,
             ref string volumeNamespace,
             ref string volumeName,
             ref string volumeVersion);
         partial void PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Baseten.VolumeHostingV1? hosting,
             string volumeNamespace,
             string volumeName,
             string volumeVersion);
@@ -49,6 +51,9 @@ namespace Baseten
         /// Gets one version of a volume<br/>
         /// Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a full content digest or a prefix of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest prefix that matches more than one version is rejected: supply more characters.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="volumeVersion"></param>
@@ -64,6 +69,7 @@ namespace Baseten
             string volumeNamespace,
             string volumeName,
             string volumeVersion,
+            global::Baseten.VolumeHostingV1? hosting = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -71,6 +77,7 @@ namespace Baseten
                 volumeNamespace: volumeNamespace,
                 volumeName: volumeName,
                 volumeVersion: volumeVersion,
+                hosting: hosting,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -81,6 +88,9 @@ namespace Baseten
         /// Gets one version of a volume<br/>
         /// Returns a single version of the volume. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a full content digest or a prefix of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to. A digest prefix that matches more than one version is rejected: supply more characters.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="volumeVersion"></param>
@@ -96,6 +106,7 @@ namespace Baseten
             string volumeNamespace,
             string volumeName,
             string volumeVersion,
+            global::Baseten.VolumeHostingV1? hosting = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -103,6 +114,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionArguments(
                 httpClient: HttpClient,
+                hosting: ref hosting,
                 volumeNamespace: ref volumeNamespace,
                 volumeName: ref volumeName,
                 volumeVersion: ref volumeVersion);
@@ -133,6 +145,9 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/volumes/{volumeNamespace}/{volumeName}/versions/{volumeVersion}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("hosting", hosting?.ToValueString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -173,6 +188,7 @@ namespace Baseten
                 PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsByVolumeVersionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    hosting: hosting,
                     volumeNamespace: volumeNamespace,
                     volumeName: volumeName,
                     volumeVersion: volumeVersion);

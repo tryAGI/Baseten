@@ -27,11 +27,13 @@ namespace Baseten
             };
         partial void PrepareGetVolumesNamespacesArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::Baseten.VolumeHostingV1? hosting,
             ref string? cursor,
             ref int? limit);
         partial void PrepareGetVolumesNamespacesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Baseten.VolumeHostingV1? hosting,
             string? cursor,
             int? limit);
         partial void ProcessGetVolumesNamespacesResponse(
@@ -47,6 +49,9 @@ namespace Baseten
         /// Gets the volume namespaces in your workspace<br/>
         /// Returns the namespaces that hold volumes your API key can read, in lowercase. Namespaces are not created directly: a namespace comes into existence when the first volume is pushed into it.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -62,12 +67,14 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ListVolumeNamespacesResponseV1> GetVolumesNamespacesAsync(
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? cursor = default,
             int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetVolumesNamespacesAsResponseAsync(
+                hosting: hosting,
                 cursor: cursor,
                 limit: limit,
                 requestOptions: requestOptions,
@@ -80,6 +87,9 @@ namespace Baseten
         /// Gets the volume namespaces in your workspace<br/>
         /// Returns the namespaces that hold volumes your API key can read, in lowercase. Namespaces are not created directly: a namespace comes into existence when the first volume is pushed into it.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -95,6 +105,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListVolumeNamespacesResponseV1>> GetVolumesNamespacesAsResponseAsync(
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? cursor = default,
             int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -104,6 +115,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetVolumesNamespacesArguments(
                 httpClient: HttpClient,
+                hosting: ref hosting,
                 cursor: ref cursor,
                 limit: ref limit);
 
@@ -134,6 +146,7 @@ namespace Baseten
                                 path: "/v1/volumes/namespaces",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("hosting", hosting?.ToValueString())
                                 .AddOptionalParameter("cursor", cursor)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 ;
@@ -177,6 +190,7 @@ namespace Baseten
                 PrepareGetVolumesNamespacesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    hosting: hosting,
                     cursor: cursor,
                     limit: limit);
 

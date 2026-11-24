@@ -38,18 +38,11 @@ namespace Baseten
         public string? TeamId { get; set; }
 
         /// <summary>
-        /// Resources the role applies to. Omit for every resource where it applies.<br/>
+        /// Sets of resources the role applies to. It applies to what any set matches, and a set matches what every resource in its `all_of` matches. For example, one set for a model in staging and another for a different model in production. An environment name no deployment uses yet applies once one does. Omit for every resource where the role applies.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("resources")]
-        public global::System.Collections.Generic.IList<global::Baseten.AccessResourceUpdateV1>? Resources { get; set; }
-
-        /// <summary>
-        /// Names of the environments the role applies in, such as `production`, for the team's models and chains. An environment needs no environment group, and a name no deployment uses yet applies once one does. Omit for every environment.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environments")]
-        public global::System.Collections.Generic.IList<string>? Environments { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("resource_sets")]
+        public global::System.Collections.Generic.IList<global::Baseten.AccessResourceSetRequestV1>? ResourceSets { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -73,12 +66,8 @@ namespace Baseten
         /// ID of the team to assign a team role in. Omit for an organization role.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="resources">
-        /// Resources the role applies to. Omit for every resource where it applies.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="environments">
-        /// Names of the environments the role applies in, such as `production`, for the team's models and chains. An environment needs no environment group, and a name no deployment uses yet applies once one does. Omit for every environment.<br/>
+        /// <param name="resourceSets">
+        /// Sets of resources the role applies to. It applies to what any set matches, and a set matches what every resource in its `all_of` matches. For example, one set for a model in staging and another for a different model in production. An environment name no deployment uses yet applies once one does. Omit for every resource where the role applies.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
 #if NET7_0_OR_GREATER
@@ -89,15 +78,13 @@ namespace Baseten
             global::Baseten.AccessSubjectTypeV1 subjectType,
             string subjectId,
             string? teamId,
-            global::System.Collections.Generic.IList<global::Baseten.AccessResourceUpdateV1>? resources,
-            global::System.Collections.Generic.IList<string>? environments)
+            global::System.Collections.Generic.IList<global::Baseten.AccessResourceSetRequestV1>? resourceSets)
         {
             this.RoleId = roleId ?? throw new global::System.ArgumentNullException(nameof(roleId));
             this.SubjectType = subjectType;
             this.SubjectId = subjectId ?? throw new global::System.ArgumentNullException(nameof(subjectId));
             this.TeamId = teamId;
-            this.Resources = resources;
-            this.Environments = environments;
+            this.ResourceSets = resourceSets;
         }
 
         /// <summary>

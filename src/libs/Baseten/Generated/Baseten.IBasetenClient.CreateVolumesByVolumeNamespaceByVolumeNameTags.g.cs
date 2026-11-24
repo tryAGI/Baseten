@@ -19,6 +19,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/tags \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "hosting": null,<br/>
         ///   "tag": "nightly",<br/>
         ///   "version": "head",<br/>
         ///   "expires_at": null,<br/>
@@ -47,6 +48,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/tags \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "hosting": null,<br/>
         ///   "tag": "nightly",<br/>
         ///   "version": "head",<br/>
         ///   "expires_at": null,<br/>
@@ -66,6 +68,10 @@ namespace Baseten
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="tag">
         /// Name of the tag to set. Tags are case-sensitive. Setting a tag that already exists overwrites it, and the version it pointed at before stays reachable by digest.
         /// </param>
@@ -88,6 +94,7 @@ namespace Baseten
             string volumeName,
             string tag,
             string version,
+            global::Baseten.VolumeHostingV1? hosting = default,
             global::System.DateTime? expiresAt = default,
             int? expectedSequence = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

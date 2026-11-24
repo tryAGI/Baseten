@@ -9,6 +9,13 @@ namespace Baseten
     public sealed partial class CreateVolumeTokenRequestV1
     {
         /// <summary>
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
+        public global::Baseten.VolumeHostingV1? Hosting { get; set; }
+
+        /// <summary>
         /// Capabilities the token grants, at least one. Requesting PUSH or TAG requires organization-level model management permission.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scopes")]
@@ -28,13 +35,6 @@ namespace Baseten
         [global::System.Text.Json.Serialization.JsonPropertyName("volumes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<string> Volumes { get; set; }
-
-        /// <summary>
-        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
-        public global::Baseten.VolumeHostingV1? Hosting { get; set; }
 
         /// <summary>
         /// Optional client-chosen identifier, at most 128 printable ASCII characters. Echoed into server logs to link the issued token to a client operation.<br/>
@@ -79,10 +79,10 @@ namespace Baseten
             global::Baseten.VolumeHostingV1? hosting,
             string? correlationId)
         {
+            this.Hosting = hosting;
             this.Scopes = scopes ?? throw new global::System.ArgumentNullException(nameof(scopes));
             this.Namespaces = namespaces ?? throw new global::System.ArgumentNullException(nameof(namespaces));
             this.Volumes = volumes ?? throw new global::System.ArgumentNullException(nameof(volumes));
-            this.Hosting = hosting;
             this.CorrelationId = correlationId;
         }
 

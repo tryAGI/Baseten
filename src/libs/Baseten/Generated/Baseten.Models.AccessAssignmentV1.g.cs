@@ -72,16 +72,11 @@ namespace Baseten
         public string? TeamName { get; set; }
 
         /// <summary>
-        /// Resources the role applies to. Null for every resource where it applies.
+        /// Sets of resources the role applies to. It applies to what any set matches, and a set matches what every resource in its `all_of` matches. Empty for every resource where it applies.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("resources")]
-        public global::System.Collections.Generic.IList<global::Baseten.AccessResourceV1>? Resources { get; set; }
-
-        /// <summary>
-        /// Names of the environments the role applies in, such as `production`. Null for every environment.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("environments")]
-        public global::System.Collections.Generic.IList<string>? Environments { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("resource_sets")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Baseten.AccessResourceSetV1> ResourceSets { get; set; }
 
         /// <summary>
         /// ID of the user who assigned the role. Null for a role held through membership, or one no user assigned.
@@ -122,6 +117,9 @@ namespace Baseten
         /// <param name="subjectName">
         /// Name of the user, service account, or directory group that holds the role
         /// </param>
+        /// <param name="resourceSets">
+        /// Sets of resources the role applies to. It applies to what any set matches, and a set matches what every resource in its `all_of` matches. Empty for every resource where it applies.
+        /// </param>
         /// <param name="id">
         /// Unique identifier of the role assignment. Null for a built-in role held through organization or team membership.
         /// </param>
@@ -130,12 +128,6 @@ namespace Baseten
         /// </param>
         /// <param name="teamName">
         /// Name of the team the role applies in. Null for the organization.
-        /// </param>
-        /// <param name="resources">
-        /// Resources the role applies to. Null for every resource where it applies.
-        /// </param>
-        /// <param name="environments">
-        /// Names of the environments the role applies in, such as `production`. Null for every environment.
         /// </param>
         /// <param name="createdBy">
         /// ID of the user who assigned the role. Null for a role held through membership, or one no user assigned.
@@ -153,11 +145,10 @@ namespace Baseten
             global::Baseten.AccessSubjectTypeV1 subjectType,
             string subjectId,
             string subjectName,
+            global::System.Collections.Generic.IList<global::Baseten.AccessResourceSetV1> resourceSets,
             string? id,
             string? teamId,
             string? teamName,
-            global::System.Collections.Generic.IList<global::Baseten.AccessResourceV1>? resources,
-            global::System.Collections.Generic.IList<string>? environments,
             string? createdBy,
             global::System.DateTime? createdAt)
         {
@@ -170,8 +161,7 @@ namespace Baseten
             this.SubjectName = subjectName ?? throw new global::System.ArgumentNullException(nameof(subjectName));
             this.TeamId = teamId;
             this.TeamName = teamName;
-            this.Resources = resources;
-            this.Environments = environments;
+            this.ResourceSets = resourceSets ?? throw new global::System.ArgumentNullException(nameof(resourceSets));
             this.CreatedBy = createdBy;
             this.CreatedAt = createdAt;
         }

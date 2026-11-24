@@ -21,8 +21,7 @@ namespace Baseten
         ///   "subject_type": "USER",<br/>
         ///   "subject_id": null,<br/>
         ///   "team_id": null,<br/>
-        ///   "resources": null,<br/>
-        ///   "environments": null<br/>
+        ///   "resource_sets": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AccessAssignmentV1> CreateAccessAssignmentsAsync(
@@ -47,8 +46,7 @@ namespace Baseten
         ///   "subject_type": "USER",<br/>
         ///   "subject_id": null,<br/>
         ///   "team_id": null,<br/>
-        ///   "resources": null,<br/>
-        ///   "environments": null<br/>
+        ///   "resource_sets": null<br/>
         /// }'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessAssignmentV1>> CreateAccessAssignmentsAsResponseAsync(
@@ -73,12 +71,8 @@ namespace Baseten
         /// ID of the team to assign a team role in. Omit for an organization role.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
-        /// <param name="resources">
-        /// Resources the role applies to. Omit for every resource where it applies.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
-        /// <param name="environments">
-        /// Names of the environments the role applies in, such as `production`, for the team's models and chains. An environment needs no environment group, and a name no deployment uses yet applies once one does. Omit for every environment.<br/>
+        /// <param name="resourceSets">
+        /// Sets of resources the role applies to. It applies to what any set matches, and a set matches what every resource in its `all_of` matches. For example, one set for a model in staging and another for a different model in production. An environment name no deployment uses yet applies once one does. Omit for every resource where the role applies.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -89,8 +83,7 @@ namespace Baseten
             global::Baseten.AccessSubjectTypeV1 subjectType,
             string subjectId,
             string? teamId = default,
-            global::System.Collections.Generic.IList<global::Baseten.AccessResourceUpdateV1>? resources = default,
-            global::System.Collections.Generic.IList<string>? environments = default,
+            global::System.Collections.Generic.IList<global::Baseten.AccessResourceSetRequestV1>? resourceSets = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

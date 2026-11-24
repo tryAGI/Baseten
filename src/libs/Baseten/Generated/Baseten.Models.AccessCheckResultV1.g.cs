@@ -22,10 +22,11 @@ namespace Baseten
         public string? TeamId { get; set; }
 
         /// <summary>
-        /// The resource it was checked on, if any
+        /// Where it was checked, as the check named it; empty for a team or the organization
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("resource")]
-        public global::Baseten.AccessResourceV1? Resource { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("resource_set")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Baseten.AccessResourceV1> ResourceSet { get; set; }
 
         /// <summary>
         /// Whether you hold the permission there
@@ -46,27 +47,27 @@ namespace Baseten
         /// <param name="permission">
         /// Name of the permission
         /// </param>
+        /// <param name="resourceSet">
+        /// Where it was checked, as the check named it; empty for a team or the organization
+        /// </param>
         /// <param name="allowed">
         /// Whether you hold the permission there
         /// </param>
         /// <param name="teamId">
         /// ID of the team it was checked in, if any
         /// </param>
-        /// <param name="resource">
-        /// The resource it was checked on, if any
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AccessCheckResultV1(
             string permission,
+            global::System.Collections.Generic.IList<global::Baseten.AccessResourceV1> resourceSet,
             bool allowed,
-            string? teamId,
-            global::Baseten.AccessResourceV1? resource)
+            string? teamId)
         {
             this.Permission = permission ?? throw new global::System.ArgumentNullException(nameof(permission));
             this.TeamId = teamId;
-            this.Resource = resource;
+            this.ResourceSet = resourceSet ?? throw new global::System.ArgumentNullException(nameof(resourceSet));
             this.Allowed = allowed;
         }
 

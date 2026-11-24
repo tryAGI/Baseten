@@ -15,6 +15,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        Environment,
+        /// <summary>
+        ///
+        /// </summary>
         GatewayEndpoint,
         /// <summary>
         ///
@@ -91,6 +95,7 @@ namespace Baseten
             return value switch
             {
                 AccessResourceTypeV1.Chain => "CHAIN",
+                AccessResourceTypeV1.Environment => "ENVIRONMENT",
                 AccessResourceTypeV1.GatewayEndpoint => "GATEWAY_ENDPOINT",
                 AccessResourceTypeV1.GatewayGroup => "GATEWAY_GROUP",
                 AccessResourceTypeV1.GatewayKey => "GATEWAY_KEY",
@@ -118,6 +123,7 @@ namespace Baseten
             return value switch
             {
                 "CHAIN" => AccessResourceTypeV1.Chain,
+                "ENVIRONMENT" => AccessResourceTypeV1.Environment,
                 "GATEWAY_ENDPOINT" => AccessResourceTypeV1.GatewayEndpoint,
                 "GATEWAY_GROUP" => AccessResourceTypeV1.GatewayGroup,
                 "GATEWAY_KEY" => AccessResourceTypeV1.GatewayKey,

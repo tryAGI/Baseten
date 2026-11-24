@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Creates a sandbox access token<br/>
-        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours and cannot be renewed; request a new one when needed. This endpoint is experimental and may change or be removed without notice.
+        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours, or when the workload identity access token that requested them expires, whichever is sooner. They cannot be renewed, so request a new one when needed. This endpoint is experimental and may change or be removed without notice.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -29,7 +29,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a sandbox access token<br/>
-        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours and cannot be renewed; request a new one when needed. This endpoint is experimental and may change or be removed without notice.
+        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours, or when the workload identity access token that requested them expires, whichever is sooner. They cannot be renewed, so request a new one when needed. This endpoint is experimental and may change or be removed without notice.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -52,7 +52,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a sandbox access token<br/>
-        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours and cannot be renewed; request a new one when needed. This endpoint is experimental and may change or be removed without notice.
+        /// Exchanges your Baseten credentials for a short-lived token that authenticates against the sandbox API. The token carries every team you belong to. Tokens expire after two hours, or when the workload identity access token that requested them expires, whichever is sooner. They cannot be renewed, so request a new one when needed. This endpoint is experimental and may change or be removed without notice.
         /// </summary>
         /// <param name="scopes">
         /// What the token should grant access to. Only `sandboxes` is supported today; the token then authenticates against the sandbox API.

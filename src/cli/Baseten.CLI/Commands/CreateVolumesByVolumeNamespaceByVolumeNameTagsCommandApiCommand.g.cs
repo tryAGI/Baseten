@@ -19,6 +19,12 @@ internal static partial class CreateVolumesByVolumeNamespaceByVolumeNameTagsComm
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<string> Tag { get; } = new(
         name: @"--tag")
     {
@@ -89,6 +95,7 @@ internal static partial class CreateVolumesByVolumeNamespaceByVolumeNameTagsComm
 Setting an existing tag overwrites it. The previous version remains available by digest. Pass `expires_at` to set the tag's expiration time. Omit `expires_at` to clear any expiration time on the tag. Version or volume expiration still deletes the tag. Setting `head` changes the version used by references without a tag or digest. You cannot set `head` on an expiring version or supply `expires_at` when setting `head`.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
+                        command.Options.Add(Hosting);
                         command.Options.Add(Tag);
                         command.Options.Add(Version);
                         command.Options.Add(ExpiresAt);
@@ -120,6 +127,7 @@ Setting an existing tag overwrites it. The previous version remains available by
                             cancellationToken).ConfigureAwait(false);
                         var volumeNamespace = parseResult.GetRequiredValue(VolumeNamespace);
                         var volumeName = parseResult.GetRequiredValue(VolumeName);
+                        var hosting = CliRuntime.WasSpecified(parseResult, Hosting) ? parseResult.GetValue(Hosting) : (__requestBase is { } __HostingBaseValue ? __HostingBaseValue.Hosting : default);
                         var tag = parseResult.GetRequiredValue(Tag);
                         var version = parseResult.GetRequiredValue(Version);
                         var expiresAt = CliRuntime.WasSpecified(parseResult, ExpiresAt) ? parseResult.GetValue(ExpiresAt) : (__requestBase is { } __ExpiresAtBaseValue ? __ExpiresAtBaseValue.ExpiresAt : default);
@@ -130,6 +138,7 @@ Setting an existing tag overwrites it. The previous version remains available by
                                 var response = await client.CreateVolumesByVolumeNamespaceByVolumeNameTagsAsync(
                                     volumeNamespace: volumeNamespace,
                                     volumeName: volumeName,
+                                    hosting: hosting,
                                     tag: tag,
                                     version: version,
                                     expiresAt: expiresAt,

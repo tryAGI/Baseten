@@ -54,12 +54,20 @@ Needs `access.member.read` where the role applies.");
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
+                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
+                                        parseResult,
+                                        response,
+                                        global::Baseten.SourceGenerationContext.Default,
+                                        @"ResourceSets",
+                                        cancellationToken).ConfigureAwait(false))
+                                {
                                 await CliRuntime.WriteResponseAsync(
                                     parseResult,
                                     response,
                                     global::Baseten.SourceGenerationContext.Default,
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
+                                }
             }, cancellationToken).ConfigureAwait(false));
         CustomizeCommand(ref command);
         return command;

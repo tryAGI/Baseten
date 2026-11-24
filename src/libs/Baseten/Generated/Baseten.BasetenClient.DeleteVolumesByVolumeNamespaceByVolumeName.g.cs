@@ -60,6 +60,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "hosting": null,<br/>
         ///   "expected_sequence": null<br/>
         /// }'
         /// </remarks>
@@ -97,6 +98,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "hosting": null,<br/>
         ///   "expected_sequence": null<br/>
         /// }'
         /// </remarks>
@@ -473,6 +475,10 @@ namespace Baseten
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="expectedSequence">
         /// Revision the volume is expected to be at. When set, the delete fails with a conflict if the volume has changed since, so it cannot act on a volume someone else has pushed to. Take the value from a volume's sequence, or from volume_sequence.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -483,12 +489,14 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.DeleteVolumeResponseV1> DeleteVolumesByVolumeNamespaceByVolumeNameAsync(
             string volumeNamespace,
             string volumeName,
+            global::Baseten.VolumeHostingV1? hosting = default,
             int? expectedSequence = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Baseten.DeleteVolumeRequestV1
             {
+                Hosting = hosting,
                 ExpectedSequence = expectedSequence,
             };
 

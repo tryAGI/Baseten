@@ -19,6 +19,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "hosting": null,<br/>
         ///   "expires_at": "2030-01-01T00:00:00Z",<br/>
         ///   "expected_sequence": null<br/>
         /// }'
@@ -45,6 +46,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "hosting": null,<br/>
         ///   "expires_at": "2030-01-01T00:00:00Z",<br/>
         ///   "expected_sequence": null<br/>
         /// }'
@@ -62,6 +64,10 @@ namespace Baseten
         /// </summary>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="expiresAt">
         /// Time at which the volume expires, in ISO 8601 format, with a UTC offset. It must be in the future and at most ten years ahead. Set it to null to clear the expiration time. A body that sets no field is rejected. When the volume expires, all live versions are deleted, all tags are removed, and the volume disappears from listings. Clearing the expiration time afterward does not restore deleted versions. Each deleted version can be restored until its delete_after time. Setting or clearing the expiration time requires the same permission as deleting the volume.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -76,6 +82,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.PatchVolumeResponseV1> EditVolumesByVolumeNamespaceByVolumeNameAsync(
             string volumeNamespace,
             string volumeName,
+            global::Baseten.VolumeHostingV1? hosting = default,
             global::System.DateTime? expiresAt = default,
             int? expectedSequence = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

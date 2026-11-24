@@ -53,14 +53,14 @@ namespace Baseten
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Early access only. Whether this workspace can use serverless Loops for this model.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// Whether this workspace can use serverless Loops for this model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("serverless")]
-        public bool? Serverless { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool Serverless { get; set; }
 
         /// <summary>
-        /// Early access only. This workspace's current serverless prices for the model. Present only when 'serverless' is true and the workspace's plan prices the model.<br/>
+        /// This workspace's current serverless prices for the model. Null unless 'serverless' is true and the workspace's plan prices the model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("serverless_pricing")]
@@ -94,6 +94,9 @@ namespace Baseten
         /// <param name="supportsVisionLanguage">
         /// Whether the model accepts image inputs alongside text.
         /// </param>
+        /// <param name="serverless">
+        /// Whether this workspace can use serverless Loops for this model.
+        /// </param>
         /// <param name="maxEnabledSeqLen">
         /// The longest sequence length this workspace can train at. Lower than 'max_seq_len' when the longer configurations need hardware the workspace is not approved for — a model's longer sequence lengths often need a bigger SKU of the same GPU. Zero when the workspace cannot run the model at all, so a client can compare against a required length without a null case.<br/>
         /// Default Value: 0
@@ -102,12 +105,8 @@ namespace Baseten
         /// Whether this workspace can start a run with this model now. False means Baseten supports it but the workspace cannot use it yet; 'not_enabled' says why. Capacity is resolved when the run is created, so true is not a guarantee that GPUs are free.<br/>
         /// Default Value: true
         /// </param>
-        /// <param name="serverless">
-        /// Early access only. Whether this workspace can use serverless Loops for this model.<br/>
-        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
-        /// </param>
         /// <param name="serverlessPricing">
-        /// Early access only. This workspace's current serverless prices for the model. Present only when 'serverless' is true and the workspace's plan prices the model.<br/>
+        /// This workspace's current serverless prices for the model. Null unless 'serverless' is true and the workspace's plan prices the model.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="enablementDetails">
@@ -122,9 +121,9 @@ namespace Baseten
             int maxSeqLen,
             int maxContextLength,
             bool supportsVisionLanguage,
+            bool serverless,
             int? maxEnabledSeqLen,
             bool? enabled,
-            bool? serverless,
             global::Baseten.LoopsServerlessPricingV1? serverlessPricing,
             global::Baseten.EnablementDetailsV1? enablementDetails)
         {

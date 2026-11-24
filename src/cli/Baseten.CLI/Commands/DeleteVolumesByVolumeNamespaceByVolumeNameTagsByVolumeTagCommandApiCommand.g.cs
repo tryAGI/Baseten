@@ -25,6 +25,12 @@ internal static partial class DeleteVolumesByVolumeNamespaceByVolumeNameTagsByVo
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<int?> ExpectedSequence { get; } = new(
         name: @"--expected-sequence")
     {
@@ -76,6 +82,7 @@ The version remains available by digest and any other tags. If the tag is absent
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
                         command.Arguments.Add(VolumeTag);
+                        command.Options.Add(Hosting);
                         command.Options.Add(ExpectedSequence);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -105,6 +112,7 @@ The version remains available by digest and any other tags. If the tag is absent
                         var volumeNamespace = parseResult.GetRequiredValue(VolumeNamespace);
                         var volumeName = parseResult.GetRequiredValue(VolumeName);
                         var volumeTag = parseResult.GetRequiredValue(VolumeTag);
+                        var hosting = CliRuntime.WasSpecified(parseResult, Hosting) ? parseResult.GetValue(Hosting) : (__requestBase is { } __HostingBaseValue ? __HostingBaseValue.Hosting : default);
                         var expectedSequence = CliRuntime.WasSpecified(parseResult, ExpectedSequence) ? parseResult.GetValue(ExpectedSequence) : (__requestBase is { } __ExpectedSequenceBaseValue ? __ExpectedSequenceBaseValue.ExpectedSequence : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -113,6 +121,7 @@ The version remains available by digest and any other tags. If the tag is absent
                                     volumeNamespace: volumeNamespace,
                                     volumeName: volumeName,
                                     volumeTag: volumeTag,
+                                    hosting: hosting,
                                     expectedSequence: expectedSequence,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

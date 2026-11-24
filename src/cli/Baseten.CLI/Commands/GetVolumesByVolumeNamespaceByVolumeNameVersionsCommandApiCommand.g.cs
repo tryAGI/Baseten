@@ -19,6 +19,12 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsCom
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<bool?> IncludeTombstoned { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--include-tombstoned",
         description: @"Whether to include deleted and expired versions. Such a version carries a TOMBSTONED lifecycle and stays restorable until its recovery deadline passes.");
@@ -51,6 +57,7 @@ internal static partial class GetVolumesByVolumeNamespaceByVolumeNameVersionsCom
 Returns every live version of the volume, newest first, each with its digest, size, lifecycle, the tags pointing at it, and any scheduled expiry. Pass include_tombstoned to list deleted and expired versions alongside them.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
+                        command.Options.Add(Hosting);
                         command.Options.Add(IncludeTombstoned);
 
 
@@ -59,6 +66,7 @@ Returns every live version of the volume, newest first, each with its digest, si
             {
                         var volumeNamespace = parseResult.GetRequiredValue(VolumeNamespace);
                         var volumeName = parseResult.GetRequiredValue(VolumeName);
+                        var hosting = parseResult.GetValue(Hosting);
                         var includeTombstoned = parseResult.GetValue(IncludeTombstoned);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -66,6 +74,7 @@ Returns every live version of the volume, newest first, each with its digest, si
                                 var response = await client.GetVolumesByVolumeNamespaceByVolumeNameVersionsAsync(
                                     volumeNamespace: volumeNamespace,
                                     volumeName: volumeName,
+                                    hosting: hosting,
                                     includeTombstoned: includeTombstoned,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

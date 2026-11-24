@@ -27,12 +27,14 @@ namespace Baseten
             };
         partial void PrepareGetVolumesArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::Baseten.VolumeHostingV1? hosting,
             ref string? cursor,
             ref int? limit,
             ref string @namespace);
         partial void PrepareGetVolumesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Baseten.VolumeHostingV1? hosting,
             string? cursor,
             int? limit,
             string @namespace);
@@ -49,6 +51,9 @@ namespace Baseten
         /// Gets the volumes in a namespace<br/>
         /// Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed. A page can hold fewer volumes than `limit`, or none, while more remain, so keep requesting with the returned cursor until `has_more` is false.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -66,6 +71,7 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.ListVolumesResponseV1> GetVolumesAsync(
             string @namespace,
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? cursor = default,
             int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -73,6 +79,7 @@ namespace Baseten
         {
             var __response = await GetVolumesAsResponseAsync(
                 @namespace: @namespace,
+                hosting: hosting,
                 cursor: cursor,
                 limit: limit,
                 requestOptions: requestOptions,
@@ -85,6 +92,9 @@ namespace Baseten
         /// Gets the volumes in a namespace<br/>
         /// Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed. A page can hold fewer volumes than `limit`, or none, while more remain, so keep requesting with the returned cursor until `has_more` is false.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -102,6 +112,7 @@ namespace Baseten
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListVolumesResponseV1>> GetVolumesAsResponseAsync(
             string @namespace,
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? cursor = default,
             int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -111,6 +122,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetVolumesArguments(
                 httpClient: HttpClient,
+                hosting: ref hosting,
                 cursor: ref cursor,
                 limit: ref limit,
                 @namespace: ref @namespace);
@@ -142,6 +154,7 @@ namespace Baseten
                                 path: "/v1/volumes",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("hosting", hosting?.ToValueString())
                                 .AddOptionalParameter("cursor", cursor)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddRequiredParameter("namespace", @namespace)
@@ -186,6 +199,7 @@ namespace Baseten
                 PrepareGetVolumesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    hosting: hosting,
                     cursor: cursor,
                     limit: limit,
                     @namespace: @namespace);
