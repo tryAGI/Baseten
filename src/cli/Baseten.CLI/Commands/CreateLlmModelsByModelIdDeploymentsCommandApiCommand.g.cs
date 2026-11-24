@@ -77,7 +77,7 @@ internal static partial class CreateLlmModelsByModelIdDeploymentsCommandApiComma
     private static Option<object?> Bdn { get; } = new(
         name: @"--bdn")
     {
-        Description = @"BDN configuration for read-only sealed volume mounts; supports mounts only",
+        Description = @"BDN configuration: read-only sealed volume mounts, and Hot Load at /bdn on worker pods",
     };
 
     private static Option<global::Baseten.EgressRestrictionsV1?> EgressRestrictions { get; } = new(
