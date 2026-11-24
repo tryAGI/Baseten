@@ -27,11 +27,13 @@ namespace Baseten
             };
         partial void PrepareGetVolumesByVolumeNamespaceByVolumeNameArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::Baseten.VolumeHostingV1? hosting,
             ref string volumeNamespace,
             ref string volumeName);
         partial void PrepareGetVolumesByVolumeNamespaceByVolumeNameRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Baseten.VolumeHostingV1? hosting,
             string volumeNamespace,
             string volumeName);
         partial void ProcessGetVolumesByVolumeNamespaceByVolumeNameResponse(
@@ -47,6 +49,9 @@ namespace Baseten
         /// Gets a volume<br/>
         /// Returns a volume with its tags, head version, version counts, and any scheduled expiry. Versions live on the versions sub-resource so they can be paged separately. A volume whose versions have all been deleted or have expired is still returned, with zero live versions.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -60,12 +65,14 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.VolumeV1> GetVolumesByVolumeNamespaceByVolumeNameAsync(
             string volumeNamespace,
             string volumeName,
+            global::Baseten.VolumeHostingV1? hosting = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetVolumesByVolumeNamespaceByVolumeNameAsResponseAsync(
                 volumeNamespace: volumeNamespace,
                 volumeName: volumeName,
+                hosting: hosting,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -76,6 +83,9 @@ namespace Baseten
         /// Gets a volume<br/>
         /// Returns a volume with its tags, head version, version counts, and any scheduled expiry. Versions live on the versions sub-resource so they can be paged separately. A volume whose versions have all been deleted or have expired is still returned, with zero live versions.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -89,6 +99,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeV1>> GetVolumesByVolumeNamespaceByVolumeNameAsResponseAsync(
             string volumeNamespace,
             string volumeName,
+            global::Baseten.VolumeHostingV1? hosting = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -96,6 +107,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetVolumesByVolumeNamespaceByVolumeNameArguments(
                 httpClient: HttpClient,
+                hosting: ref hosting,
                 volumeNamespace: ref volumeNamespace,
                 volumeName: ref volumeName);
 
@@ -125,6 +137,9 @@ namespace Baseten
                             var __pathBuilder = new global::Baseten.PathBuilder(
                                 path: $"/v1/volumes/{volumeNamespace}/{volumeName}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("hosting", hosting?.ToValueString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -165,6 +180,7 @@ namespace Baseten
                 PrepareGetVolumesByVolumeNamespaceByVolumeNameRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    hosting: hosting,
                     volumeNamespace: volumeNamespace,
                     volumeName: volumeName);
 

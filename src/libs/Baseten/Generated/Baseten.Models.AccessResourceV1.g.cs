@@ -4,7 +4,7 @@
 namespace Baseten
 {
     /// <summary>
-    /// A resource a role assignment selects.
+    /// A resource in a resource set: a resource, or an environment by name.
     /// </summary>
     public sealed partial class AccessResourceV1
     {
@@ -17,7 +17,7 @@ namespace Baseten
         public required global::Baseten.AccessResourceTypeV1 Type { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource, such as a model's ID
+        /// Unique identifier of the resource, such as a model's ID, or the name of the environment, such as `production`
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("identifier")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -36,7 +36,7 @@ namespace Baseten
         /// Type of the resource
         /// </param>
         /// <param name="identifier">
-        /// Unique identifier of the resource, such as a model's ID
+        /// Unique identifier of the resource, such as a model's ID, or the name of the environment, such as `production`
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

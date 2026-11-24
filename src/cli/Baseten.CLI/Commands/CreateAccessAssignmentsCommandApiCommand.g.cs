@@ -34,16 +34,10 @@ internal static partial class CreateAccessAssignmentsCommandApiCommand
         Description = @"ID of the team to assign a team role in. Omit for an organization role.",
     };
 
-    private static Option<global::System.Collections.Generic.IList<global::Baseten.AccessResourceUpdateV1>?> Resources { get; } = new(
-        name: @"--resources")
+    private static Option<global::System.Collections.Generic.IList<global::Baseten.AccessResourceSetRequestV1>?> ResourceSets { get; } = new(
+        name: @"--resource-sets")
     {
-        Description = @"Resources the role applies to. Omit for every resource where it applies.",
-    };
-
-    private static Option<global::System.Collections.Generic.IList<string>?> Environments { get; } = new(
-        name: @"--environments")
-    {
-        Description = @"Names of the environments the role applies in, such as `production`, for the team's models and chains. An environment needs no environment group, and a name no deployment uses yet applies once one does. Omit for every environment.",
+        Description = @"Sets of resources the role applies to. It applies to what any set matches, and a set matches what every resource in its `all_of` matches. For example, one set for a model in staging and another for a different model in production. An environment name no deployment uses yet applies once one does. Omit for every resource where the role applies.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -92,8 +86,7 @@ Gives a user, service account, or directory group a role, for the organization o
                         command.Options.Add(SubjectType);
                         command.Options.Add(SubjectId);
                         command.Options.Add(TeamId);
-                        command.Options.Add(Resources);
-                        command.Options.Add(Environments);
+                        command.Options.Add(ResourceSets);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -123,8 +116,7 @@ Gives a user, service account, or directory group a role, for the organization o
                         var subjectType = parseResult.GetRequiredValue(SubjectType);
                         var subjectId = parseResult.GetRequiredValue(SubjectId);
                         var teamId = CliRuntime.WasSpecified(parseResult, TeamId) ? parseResult.GetValue(TeamId) : (__requestBase is { } __TeamIdBaseValue ? __TeamIdBaseValue.TeamId : default);
-                        var resources = CliRuntime.WasSpecified(parseResult, Resources) ? parseResult.GetValue(Resources) : (__requestBase is { } __ResourcesBaseValue ? __ResourcesBaseValue.Resources : default);
-                        var environments = CliRuntime.WasSpecified(parseResult, Environments) ? parseResult.GetValue(Environments) : (__requestBase is { } __EnvironmentsBaseValue ? __EnvironmentsBaseValue.Environments : default);
+                        var resourceSets = CliRuntime.WasSpecified(parseResult, ResourceSets) ? parseResult.GetValue(ResourceSets) : (__requestBase is { } __ResourceSetsBaseValue ? __ResourceSetsBaseValue.ResourceSets : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -133,17 +125,24 @@ Gives a user, service account, or directory group a role, for the organization o
                                     subjectType: subjectType,
                                     subjectId: subjectId,
                                     teamId: teamId,
-                                    resources: resources,
-                                    environments: environments,
+                                    resourceSets: resourceSets,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
+                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
+                                        parseResult,
+                                        response,
+                                        global::Baseten.SourceGenerationContext.Default,
+                                        @"ResourceSets",
+                                        cancellationToken).ConfigureAwait(false))
+                                {
                                 await CliRuntime.WriteResponseAsync(
                                     parseResult,
                                     response,
                                     global::Baseten.SourceGenerationContext.Default,
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
+                                }
             }, cancellationToken).ConfigureAwait(false));
         CustomizeCommand(ref command);
         return command;

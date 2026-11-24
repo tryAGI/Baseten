@@ -7,6 +7,12 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetVolumesNamespacesCommandApiCommand
 {
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<string?> Cursor { get; } = new(
         name: @"--cursor")
     {
@@ -45,6 +51,7 @@ internal static partial class GetVolumesNamespacesCommandApiCommand
     {
         var command = new Command(commandName ?? @"get-volumes-namespaces", @"Gets the volume namespaces in your workspace
 Returns the namespaces that hold volumes your API key can read, in lowercase. Namespaces are not created directly: a namespace comes into existence when the first volume is pushed into it.");
+                        command.Options.Add(Hosting);
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
 
@@ -52,12 +59,14 @@ Returns the namespaces that hold volumes your API key can read, in lowercase. Na
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
+                        var hosting = parseResult.GetValue(Hosting);
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.GetVolumesNamespacesAsync(
+                                    hosting: hosting,
                                     cursor: cursor,
                                     limit: limit,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

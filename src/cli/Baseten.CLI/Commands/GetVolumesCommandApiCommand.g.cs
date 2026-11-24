@@ -7,6 +7,12 @@ namespace Baseten.CLI.Commands;
 
 internal static partial class GetVolumesCommandApiCommand
 {
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<string?> Cursor { get; } = new(
         name: @"--cursor")
     {
@@ -52,6 +58,7 @@ internal static partial class GetVolumesCommandApiCommand
     {
         var command = new Command(commandName ?? @"get-volumes", @"Gets the volumes in a namespace
 Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed. A page can hold fewer volumes than `limit`, or none, while more remain, so keep requesting with the returned cursor until `has_more` is false.");
+                        command.Options.Add(Hosting);
                         command.Options.Add(Cursor);
                         command.Options.Add(Limit);
                         command.Options.Add(Namespace);
@@ -60,6 +67,7 @@ Returns one row per volume in the namespace, each with its tags, head version, v
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
+                        var hosting = parseResult.GetValue(Hosting);
                         var cursor = parseResult.GetValue(Cursor);
                         var limit = parseResult.GetValue(Limit);
                         var @namespace = parseResult.GetRequiredValue(Namespace);
@@ -67,6 +75,7 @@ Returns one row per volume in the namespace, each with its tags, head version, v
 
 
                                 var response = await client.GetVolumesAsync(
+                                    hosting: hosting,
                                     cursor: cursor,
                                     limit: limit,
                                     @namespace: @namespace,

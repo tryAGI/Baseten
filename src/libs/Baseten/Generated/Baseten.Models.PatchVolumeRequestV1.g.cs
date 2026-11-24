@@ -9,6 +9,13 @@ namespace Baseten
     public sealed partial class PatchVolumeRequestV1
     {
         /// <summary>
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
+        public global::Baseten.VolumeHostingV1? Hosting { get; set; }
+
+        /// <summary>
         /// Time at which the volume expires, in ISO 8601 format, with a UTC offset. It must be in the future and at most ten years ahead. Set it to null to clear the expiration time. A body that sets no field is rejected. When the volume expires, all live versions are deleted, all tags are removed, and the volume disappears from listings. Clearing the expiration time afterward does not restore deleted versions. Each deleted version can be restored until its delete_after time. Setting or clearing the expiration time requires the same permission as deleting the volume.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -31,6 +38,10 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="PatchVolumeRequestV1" /> class.
         /// </summary>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="expiresAt">
         /// Time at which the volume expires, in ISO 8601 format, with a UTC offset. It must be in the future and at most ten years ahead. Set it to null to clear the expiration time. A body that sets no field is rejected. When the volume expires, all live versions are deleted, all tags are removed, and the volume disappears from listings. Clearing the expiration time afterward does not restore deleted versions. Each deleted version can be restored until its delete_after time. Setting or clearing the expiration time requires the same permission as deleting the volume.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -43,9 +54,11 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PatchVolumeRequestV1(
+            global::Baseten.VolumeHostingV1? hosting,
             global::System.DateTime? expiresAt,
             int? expectedSequence)
         {
+            this.Hosting = hosting;
             this.ExpiresAt = expiresAt;
             this.ExpectedSequence = expectedSequence;
         }

@@ -27,12 +27,14 @@ namespace Baseten
             };
         partial void PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::Baseten.VolumeHostingV1? hosting,
             ref bool? includeTombstoned,
             ref string volumeNamespace,
             ref string volumeName);
         partial void PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Baseten.VolumeHostingV1? hosting,
             bool? includeTombstoned,
             string volumeNamespace,
             string volumeName);
@@ -49,6 +51,9 @@ namespace Baseten
         /// Gets the versions of a volume<br/>
         /// Returns every live version of the volume, newest first, each with its digest, size, lifecycle, the tags pointing at it, and any scheduled expiry. Pass include_tombstoned to list deleted and expired versions alongside them.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="includeTombstoned">
         /// Default Value: false
         /// </param>
@@ -65,6 +70,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.ListVolumeVersionsResponseV1> GetVolumesByVolumeNamespaceByVolumeNameVersionsAsync(
             string volumeNamespace,
             string volumeName,
+            global::Baseten.VolumeHostingV1? hosting = default,
             bool? includeTombstoned = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -72,6 +78,7 @@ namespace Baseten
             var __response = await GetVolumesByVolumeNamespaceByVolumeNameVersionsAsResponseAsync(
                 volumeNamespace: volumeNamespace,
                 volumeName: volumeName,
+                hosting: hosting,
                 includeTombstoned: includeTombstoned,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -83,6 +90,9 @@ namespace Baseten
         /// Gets the versions of a volume<br/>
         /// Returns every live version of the volume, newest first, each with its digest, size, lifecycle, the tags pointing at it, and any scheduled expiry. Pass include_tombstoned to list deleted and expired versions alongside them.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="includeTombstoned">
         /// Default Value: false
         /// </param>
@@ -99,6 +109,7 @@ namespace Baseten
         public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListVolumeVersionsResponseV1>> GetVolumesByVolumeNamespaceByVolumeNameVersionsAsResponseAsync(
             string volumeNamespace,
             string volumeName,
+            global::Baseten.VolumeHostingV1? hosting = default,
             bool? includeTombstoned = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -107,6 +118,7 @@ namespace Baseten
                 client: HttpClient);
             PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsArguments(
                 httpClient: HttpClient,
+                hosting: ref hosting,
                 includeTombstoned: ref includeTombstoned,
                 volumeNamespace: ref volumeNamespace,
                 volumeName: ref volumeName);
@@ -138,6 +150,7 @@ namespace Baseten
                                 path: $"/v1/volumes/{volumeNamespace}/{volumeName}/versions",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("hosting", hosting?.ToValueString())
                                 .AddOptionalParameter("include_tombstoned", includeTombstoned?.ToString().ToLowerInvariant())
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -180,6 +193,7 @@ namespace Baseten
                 PrepareGetVolumesByVolumeNamespaceByVolumeNameVersionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    hosting: hosting,
                     includeTombstoned: includeTombstoned,
                     volumeNamespace: volumeNamespace,
                     volumeName: volumeName);

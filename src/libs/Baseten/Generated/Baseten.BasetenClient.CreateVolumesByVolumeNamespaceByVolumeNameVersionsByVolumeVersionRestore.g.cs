@@ -63,6 +63,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version}/restore \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "hosting": null,<br/>
         ///   "expected_sequence": null<br/>
         /// }'
         /// </remarks>
@@ -103,6 +104,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/volumes/{volume_namespace}/{volume_name}/versions/{volume_version}/restore \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY" \<br/>
         /// --data '{<br/>
+        ///   "hosting": null,<br/>
         ///   "expected_sequence": null<br/>
         /// }'
         /// </remarks>
@@ -483,6 +485,10 @@ namespace Baseten
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="volumeVersion"></param>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="expectedSequence">
         /// Revision the volume is expected to be at. When set, the restore fails with a conflict if the volume has changed since. Take the value from volume_sequence.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -494,12 +500,14 @@ namespace Baseten
             string volumeNamespace,
             string volumeName,
             string volumeVersion,
+            global::Baseten.VolumeHostingV1? hosting = default,
             int? expectedSequence = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Baseten.RestoreVolumeVersionRequestV1
             {
+                Hosting = hosting,
                 ExpectedSequence = expectedSequence,
             };
 

@@ -9,6 +9,13 @@ namespace Baseten
     public sealed partial class RestoreVolumeVersionRequestV1
     {
         /// <summary>
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
+        public global::Baseten.VolumeHostingV1? Hosting { get; set; }
+
+        /// <summary>
         /// Revision the volume is expected to be at. When set, the restore fails with a conflict if the volume has changed since. Take the value from volume_sequence.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -24,6 +31,10 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="RestoreVolumeVersionRequestV1" /> class.
         /// </summary>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="expectedSequence">
         /// Revision the volume is expected to be at. When set, the restore fails with a conflict if the volume has changed since. Take the value from volume_sequence.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -32,8 +43,10 @@ namespace Baseten
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RestoreVolumeVersionRequestV1(
+            global::Baseten.VolumeHostingV1? hosting,
             int? expectedSequence)
         {
+            this.Hosting = hosting;
             this.ExpectedSequence = expectedSequence;
         }
 

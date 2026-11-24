@@ -8,6 +8,9 @@ namespace Baseten
         /// Gets the volume namespaces in your workspace<br/>
         /// Returns the namespaces that hold volumes your API key can read, in lowercase. Namespaces are not created directly: a namespace comes into existence when the first volume is pushed into it.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -23,6 +26,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.ListVolumeNamespacesResponseV1> GetVolumesNamespacesAsync(
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? cursor = default,
             int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -31,6 +35,9 @@ namespace Baseten
         /// Gets the volume namespaces in your workspace<br/>
         /// Returns the namespaces that hold volumes your API key can read, in lowercase. Namespaces are not created directly: a namespace comes into existence when the first volume is pushed into it.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -46,6 +53,7 @@ namespace Baseten
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListVolumeNamespacesResponseV1>> GetVolumesNamespacesAsResponseAsync(
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? cursor = default,
             int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

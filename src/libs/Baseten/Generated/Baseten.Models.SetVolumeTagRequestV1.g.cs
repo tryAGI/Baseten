@@ -9,6 +9,13 @@ namespace Baseten
     public sealed partial class SetVolumeTagRequestV1
     {
         /// <summary>
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
+        public global::Baseten.VolumeHostingV1? Hosting { get; set; }
+
+        /// <summary>
         /// Name of the tag to set. Tags are case-sensitive. Setting a tag that already exists overwrites it, and the version it pointed at before stays reachable by digest.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tag")]
@@ -51,6 +58,10 @@ namespace Baseten
         /// <param name="version">
         /// Version to set the tag on. Address it with `:&lt;tag&gt;` for a tag, `@&lt;digest&gt;` for a full content digest or a prefix of at least 12 hexadecimal characters, or `head` for the version a reference with no tag or digest resolves to.
         /// </param>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="expiresAt">
         /// Time at which the tag expires, in ISO 8601 format, with a UTC offset. It must be in the future and at most ten years ahead. Omit it for a tag with no expiration time of its own. Omitting it also clears the expiration time of an existing tag. Version or volume expiration still deletes the tag. Do not specify it when setting `head`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -65,9 +76,11 @@ namespace Baseten
         public SetVolumeTagRequestV1(
             string tag,
             string version,
+            global::Baseten.VolumeHostingV1? hosting,
             global::System.DateTime? expiresAt,
             int? expectedSequence)
         {
+            this.Hosting = hosting;
             this.Tag = tag ?? throw new global::System.ArgumentNullException(nameof(tag));
             this.Version = version ?? throw new global::System.ArgumentNullException(nameof(version));
             this.ExpiresAt = expiresAt;

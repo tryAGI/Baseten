@@ -19,6 +19,12 @@ internal static partial class DeleteVolumesByVolumeNamespaceByVolumeNameCommandA
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<int?> ExpectedSequence { get; } = new(
         name: @"--expected-sequence")
     {
@@ -69,6 +75,7 @@ internal static partial class DeleteVolumesByVolumeNamespaceByVolumeNameCommandA
 Deletes every live version of the volume, after which the volume stops appearing in listings. The data is not erased: each version stays restorable until its recovery deadline passes, and the versions sub-resource still reports them when you pass include_tombstoned. Deleting a volume that has no live versions left succeeds and reports zero versions deleted.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
+                        command.Options.Add(Hosting);
                         command.Options.Add(ExpectedSequence);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -97,6 +104,7 @@ Deletes every live version of the volume, after which the volume stops appearing
                             cancellationToken).ConfigureAwait(false);
                         var volumeNamespace = parseResult.GetRequiredValue(VolumeNamespace);
                         var volumeName = parseResult.GetRequiredValue(VolumeName);
+                        var hosting = CliRuntime.WasSpecified(parseResult, Hosting) ? parseResult.GetValue(Hosting) : (__requestBase is { } __HostingBaseValue ? __HostingBaseValue.Hosting : default);
                         var expectedSequence = CliRuntime.WasSpecified(parseResult, ExpectedSequence) ? parseResult.GetValue(ExpectedSequence) : (__requestBase is { } __ExpectedSequenceBaseValue ? __ExpectedSequenceBaseValue.ExpectedSequence : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -104,6 +112,7 @@ Deletes every live version of the volume, after which the volume stops appearing
                                 var response = await client.DeleteVolumesByVolumeNamespaceByVolumeNameAsync(
                                     volumeNamespace: volumeNamespace,
                                     volumeName: volumeName,
+                                    hosting: hosting,
                                     expectedSequence: expectedSequence,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

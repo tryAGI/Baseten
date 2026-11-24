@@ -8,6 +8,9 @@ namespace Baseten
         /// Gets a volume<br/>
         /// Returns a volume with its tags, head version, version counts, and any scheduled expiry. Versions live on the versions sub-resource so they can be paged separately. A volume whose versions have all been deleted or have expired is still returned, with zero live versions.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -21,12 +24,16 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.VolumeV1> GetVolumesByVolumeNamespaceByVolumeNameAsync(
             string volumeNamespace,
             string volumeName,
+            global::Baseten.VolumeHostingV1? hosting = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets a volume<br/>
         /// Returns a volume with its tags, head version, version counts, and any scheduled expiry. Versions live on the versions sub-resource so they can be paged separately. A volume whose versions have all been deleted or have expired is still returned, with zero live versions.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="volumeNamespace"></param>
         /// <param name="volumeName"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -40,6 +47,7 @@ namespace Baseten
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.VolumeV1>> GetVolumesByVolumeNamespaceByVolumeNameAsResponseAsync(
             string volumeNamespace,
             string volumeName,
+            global::Baseten.VolumeHostingV1? hosting = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

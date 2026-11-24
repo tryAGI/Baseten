@@ -25,6 +25,12 @@ internal static partial class DeleteVolumesByVolumeNamespaceByVolumeNameVersions
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<int?> ExpectedSequence { get; } = new(
         name: @"--expected-sequence")
     {
@@ -76,6 +82,7 @@ Deletes the version the address names, along with every tag pointing at it. Addr
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
                         command.Arguments.Add(VolumeVersion);
+                        command.Options.Add(Hosting);
                         command.Options.Add(ExpectedSequence);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -105,6 +112,7 @@ Deletes the version the address names, along with every tag pointing at it. Addr
                         var volumeNamespace = parseResult.GetRequiredValue(VolumeNamespace);
                         var volumeName = parseResult.GetRequiredValue(VolumeName);
                         var volumeVersion = parseResult.GetRequiredValue(VolumeVersion);
+                        var hosting = CliRuntime.WasSpecified(parseResult, Hosting) ? parseResult.GetValue(Hosting) : (__requestBase is { } __HostingBaseValue ? __HostingBaseValue.Hosting : default);
                         var expectedSequence = CliRuntime.WasSpecified(parseResult, ExpectedSequence) ? parseResult.GetValue(ExpectedSequence) : (__requestBase is { } __ExpectedSequenceBaseValue ? __ExpectedSequenceBaseValue.ExpectedSequence : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -113,6 +121,7 @@ Deletes the version the address names, along with every tag pointing at it. Addr
                                     volumeNamespace: volumeNamespace,
                                     volumeName: volumeName,
                                     volumeVersion: volumeVersion,
+                                    hosting: hosting,
                                     expectedSequence: expectedSequence,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

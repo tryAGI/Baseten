@@ -8,6 +8,9 @@ namespace Baseten
         /// Gets the volumes in a namespace<br/>
         /// Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed. A page can hold fewer volumes than `limit`, or none, while more remain, so keep requesting with the returned cursor until `has_more` is false.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -25,6 +28,7 @@ namespace Baseten
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.ListVolumesResponseV1> GetVolumesAsync(
             string @namespace,
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? cursor = default,
             int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -33,6 +37,9 @@ namespace Baseten
         /// Gets the volumes in a namespace<br/>
         /// Returns one row per volume in the namespace, each with its tags, head version, version counts, and any scheduled expiry. Pass namespace to choose the namespace, which is required because the volume service has no cross-namespace inventory. Versions live on the versions sub-resource, so this response stays a fixed size per volume no matter how long a volume's history is. A volume with no live versions left, whether deleted or expired, is not listed. A page can hold fewer volumes than `limit`, or none, while more remain, so keep requesting with the returned cursor until `has_more` is false.
         /// </summary>
+        /// <param name="hosting">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
@@ -50,6 +57,7 @@ namespace Baseten
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.ListVolumesResponseV1>> GetVolumesAsResponseAsync(
             string @namespace,
+            global::Baseten.VolumeHostingV1? hosting = default,
             string? cursor = default,
             int? limit = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

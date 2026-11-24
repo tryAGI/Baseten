@@ -19,6 +19,12 @@ internal static partial class EditVolumesByVolumeNamespaceByVolumeNameCommandApi
         Description = @"This is a missing parameter that was added automatically. Please check the OpenAPI spec.",
     };
 
+    private static Option<global::Baseten.VolumeHostingV1?> Hosting { get; } = new(
+        name: @"--hosting")
+    {
+        Description = @"Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.",
+    };
+
     private static Option<global::System.DateTime?> ExpiresAt { get; } = new(
         name: @"--expires-at")
     {
@@ -75,6 +81,7 @@ internal static partial class EditVolumesByVolumeNamespaceByVolumeNameCommandApi
 Updates a volume's settings, such as its expiration time. Only the settings in the request change.");
                         command.Arguments.Add(VolumeNamespace);
                         command.Arguments.Add(VolumeName);
+                        command.Options.Add(Hosting);
                         command.Options.Add(ExpiresAt);
                         command.Options.Add(ExpectedSequence);
           command.Options.Add(Input);
@@ -104,6 +111,7 @@ Updates a volume's settings, such as its expiration time. Only the settings in t
                             cancellationToken).ConfigureAwait(false);
                         var volumeNamespace = parseResult.GetRequiredValue(VolumeNamespace);
                         var volumeName = parseResult.GetRequiredValue(VolumeName);
+                        var hosting = CliRuntime.WasSpecified(parseResult, Hosting) ? parseResult.GetValue(Hosting) : (__requestBase is { } __HostingBaseValue ? __HostingBaseValue.Hosting : default);
                         var expiresAt = CliRuntime.WasSpecified(parseResult, ExpiresAt) ? parseResult.GetValue(ExpiresAt) : (__requestBase is { } __ExpiresAtBaseValue ? __ExpiresAtBaseValue.ExpiresAt : default);
                         var expectedSequence = CliRuntime.WasSpecified(parseResult, ExpectedSequence) ? parseResult.GetValue(ExpectedSequence) : (__requestBase is { } __ExpectedSequenceBaseValue ? __ExpectedSequenceBaseValue.ExpectedSequence : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -112,6 +120,7 @@ Updates a volume's settings, such as its expiration time. Only the settings in t
                                 var response = await client.EditVolumesByVolumeNamespaceByVolumeNameAsync(
                                     volumeNamespace: volumeNamespace,
                                     volumeName: volumeName,
+                                    hosting: hosting,
                                     expiresAt: expiresAt,
                                     expectedSequence: expectedSequence,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

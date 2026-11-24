@@ -9,6 +9,13 @@ namespace Baseten
     public sealed partial class ListVolumesRequestV1
     {
         /// <summary>
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hosting")]
+        public global::Baseten.VolumeHostingV1? Hosting { get; set; }
+
+        /// <summary>
         /// Opaque cursor returned by a previous page. Omit to fetch the first page.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -41,6 +48,10 @@ namespace Baseten
         /// <param name="namespace">
         /// Namespace to list volumes in. Required, because the volume service has no cross-namespace inventory.
         /// </param>
+        /// <param name="hosting">
+        /// Where the volumes are stored. Defaults to your organization's hosting when it has one, and is required when it has more than one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="cursor">
         /// Opaque cursor returned by a previous page. Omit to fetch the first page.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -54,9 +65,11 @@ namespace Baseten
 #endif
         public ListVolumesRequestV1(
             string @namespace,
+            global::Baseten.VolumeHostingV1? hosting,
             string? cursor,
             int? limit)
         {
+            this.Hosting = hosting;
             this.Cursor = cursor;
             this.Limit = limit;
             this.Namespace = @namespace ?? throw new global::System.ArgumentNullException(nameof(@namespace));
