@@ -64,7 +64,7 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="disabled">
-        /// Disable the account to stop it being used, or enable it again<br/>
+        /// Disable the account to stop it being used, or enable it again. Disabling the account permanently revokes its access tokens.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="presetPermissions">

@@ -63,6 +63,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        CustomRoleCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        CustomRoleDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        CustomRoleUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         DirectoryGroupRoleUpdated,
         /// <summary>
         ///
@@ -175,6 +187,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        OrganizationAccessSettingsUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         OrganizationApiKeySettingsUpdated,
         /// <summary>
         ///
@@ -196,6 +212,14 @@ namespace Baseten
         ///
         /// </summary>
         RequireGroupBasedAdminsEnabled,
+        /// <summary>
+        ///
+        /// </summary>
+        RoleAssignmentCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        RoleAssignmentDeleted,
         /// <summary>
         ///
         /// </summary>
@@ -327,6 +351,9 @@ namespace Baseten
                 AuditLogEventTypeV1.ChainDeploymentPromoted => "CHAIN_DEPLOYMENT_PROMOTED",
                 AuditLogEventTypeV1.ChainEnvironmentCreated => "CHAIN_ENVIRONMENT_CREATED",
                 AuditLogEventTypeV1.ChainEnvironmentUpdated => "CHAIN_ENVIRONMENT_UPDATED",
+                AuditLogEventTypeV1.CustomRoleCreated => "CUSTOM_ROLE_CREATED",
+                AuditLogEventTypeV1.CustomRoleDeleted => "CUSTOM_ROLE_DELETED",
+                AuditLogEventTypeV1.CustomRoleUpdated => "CUSTOM_ROLE_UPDATED",
                 AuditLogEventTypeV1.DirectoryGroupRoleUpdated => "DIRECTORY_GROUP_ROLE_UPDATED",
                 AuditLogEventTypeV1.EnvironmentCreated => "ENVIRONMENT_CREATED",
                 AuditLogEventTypeV1.EnvironmentDeleted => "ENVIRONMENT_DELETED",
@@ -355,12 +382,15 @@ namespace Baseten
                 AuditLogEventTypeV1.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEventTypeV1.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
                 AuditLogEventTypeV1.ModelRenamed => "MODEL_RENAMED",
+                AuditLogEventTypeV1.OrganizationAccessSettingsUpdated => "ORGANIZATION_ACCESS_SETTINGS_UPDATED",
                 AuditLogEventTypeV1.OrganizationApiKeySettingsUpdated => "ORGANIZATION_API_KEY_SETTINGS_UPDATED",
                 AuditLogEventTypeV1.ProviderConnectionCreated => "PROVIDER_CONNECTION_CREATED",
                 AuditLogEventTypeV1.ProviderConnectionDeleted => "PROVIDER_CONNECTION_DELETED",
                 AuditLogEventTypeV1.ProviderConnectionUpdated => "PROVIDER_CONNECTION_UPDATED",
                 AuditLogEventTypeV1.ReplicaTerminated => "REPLICA_TERMINATED",
                 AuditLogEventTypeV1.RequireGroupBasedAdminsEnabled => "REQUIRE_GROUP_BASED_ADMINS_ENABLED",
+                AuditLogEventTypeV1.RoleAssignmentCreated => "ROLE_ASSIGNMENT_CREATED",
+                AuditLogEventTypeV1.RoleAssignmentDeleted => "ROLE_ASSIGNMENT_DELETED",
                 AuditLogEventTypeV1.SecretDeleted => "SECRET_DELETED",
                 AuditLogEventTypeV1.SecretUpdated => "SECRET_UPDATED",
                 AuditLogEventTypeV1.ServiceAccountCreated => "SERVICE_ACCOUNT_CREATED",
@@ -410,6 +440,9 @@ namespace Baseten
                 "CHAIN_DEPLOYMENT_PROMOTED" => AuditLogEventTypeV1.ChainDeploymentPromoted,
                 "CHAIN_ENVIRONMENT_CREATED" => AuditLogEventTypeV1.ChainEnvironmentCreated,
                 "CHAIN_ENVIRONMENT_UPDATED" => AuditLogEventTypeV1.ChainEnvironmentUpdated,
+                "CUSTOM_ROLE_CREATED" => AuditLogEventTypeV1.CustomRoleCreated,
+                "CUSTOM_ROLE_DELETED" => AuditLogEventTypeV1.CustomRoleDeleted,
+                "CUSTOM_ROLE_UPDATED" => AuditLogEventTypeV1.CustomRoleUpdated,
                 "DIRECTORY_GROUP_ROLE_UPDATED" => AuditLogEventTypeV1.DirectoryGroupRoleUpdated,
                 "ENVIRONMENT_CREATED" => AuditLogEventTypeV1.EnvironmentCreated,
                 "ENVIRONMENT_DELETED" => AuditLogEventTypeV1.EnvironmentDeleted,
@@ -438,12 +471,15 @@ namespace Baseten
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEventTypeV1.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEventTypeV1.ModelPromotionControlAction,
                 "MODEL_RENAMED" => AuditLogEventTypeV1.ModelRenamed,
+                "ORGANIZATION_ACCESS_SETTINGS_UPDATED" => AuditLogEventTypeV1.OrganizationAccessSettingsUpdated,
                 "ORGANIZATION_API_KEY_SETTINGS_UPDATED" => AuditLogEventTypeV1.OrganizationApiKeySettingsUpdated,
                 "PROVIDER_CONNECTION_CREATED" => AuditLogEventTypeV1.ProviderConnectionCreated,
                 "PROVIDER_CONNECTION_DELETED" => AuditLogEventTypeV1.ProviderConnectionDeleted,
                 "PROVIDER_CONNECTION_UPDATED" => AuditLogEventTypeV1.ProviderConnectionUpdated,
                 "REPLICA_TERMINATED" => AuditLogEventTypeV1.ReplicaTerminated,
                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED" => AuditLogEventTypeV1.RequireGroupBasedAdminsEnabled,
+                "ROLE_ASSIGNMENT_CREATED" => AuditLogEventTypeV1.RoleAssignmentCreated,
+                "ROLE_ASSIGNMENT_DELETED" => AuditLogEventTypeV1.RoleAssignmentDeleted,
                 "SECRET_DELETED" => AuditLogEventTypeV1.SecretDeleted,
                 "SECRET_UPDATED" => AuditLogEventTypeV1.SecretUpdated,
                 "SERVICE_ACCOUNT_CREATED" => AuditLogEventTypeV1.ServiceAccountCreated,

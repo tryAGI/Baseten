@@ -22,7 +22,7 @@ namespace Baseten
         ///   "description": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleV1> EditAccessRolesByRoleIdAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleDetailV1> EditAccessRolesByRoleIdAsync(
             string roleId,
 
             global::Baseten.UpdateAccessRoleRequestV1 request,
@@ -46,7 +46,7 @@ namespace Baseten
         ///   "description": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleV1>> EditAccessRolesByRoleIdAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleDetailV1>> EditAccessRolesByRoleIdAsResponseAsync(
             string roleId,
 
             global::Baseten.UpdateAccessRoleRequestV1 request,
@@ -80,7 +80,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleV1> EditAccessRolesByRoleIdAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleDetailV1> EditAccessRolesByRoleIdAsync(
             string roleId,
             string? name = default,
             string? description = default,

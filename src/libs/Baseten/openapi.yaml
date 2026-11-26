@@ -11906,11 +11906,11 @@
                 "x-codeSamples": [
                     {
                         "lang": "bash",
-                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/access/roles \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": null,\n  \"kind\": \"ORGANIZATION\",\n  \"team_id\": null\n}'"
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/access/roles \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"name\": null,\n  \"kind\": \"ORGANIZATION\",\n  \"team_id\": null,\n  \"template_role_id\": null\n}'"
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/roles\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': None, 'kind': 'ORGANIZATION', 'team_id': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/roles\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': None, 'kind': 'ORGANIZATION', 'team_id': None, 'template_role_id': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Needs `access.role.write` for the organization, or in the role's team while your organization lets team admins manage roles. Unknown, reserved, or unavailable permissions return 400 with the `reason` in the error details.",
@@ -11930,7 +11930,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/AccessRoleV1"
+                                    "$ref": "#/components/schemas/AccessRoleDetailV1"
                                 }
                             }
                         }
@@ -12011,7 +12011,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/AccessRoleV1"
+                                    "$ref": "#/components/schemas/AccessRoleDetailV1"
                                 }
                             }
                         }
@@ -12048,7 +12048,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/AccessRoleV1"
+                                    "$ref": "#/components/schemas/AccessRoleDetailV1"
                                 }
                             }
                         }
@@ -12331,7 +12331,7 @@
             "post": {
                 "summary": "Exchanges an identity provider's JWT for an access token",
                 "security": [],
-                "description": "Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that is refused always returns `invalid_grant`, whatever the reason.",
+                "description": "Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that fails a check always returns `invalid_grant`, whatever the check. Exchanges are rate limited per trust rule, per organization and per client IP. Over a limit, the response is a 429 with an `error` of `slow_down` and a `Retry-After` header.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -20501,6 +20501,9 @@
                                 "CHAIN_DEPLOYMENT_PROMOTED": "#/components/schemas/AuditLogEventChainDeploymentPromotedV1",
                                 "CHAIN_ENVIRONMENT_CREATED": "#/components/schemas/AuditLogEventChainEnvironmentCreatedV1",
                                 "CHAIN_ENVIRONMENT_UPDATED": "#/components/schemas/AuditLogEventChainEnvironmentUpdatedV1",
+                                "CUSTOM_ROLE_CREATED": "#/components/schemas/AuditLogEventCustomRoleCreatedV1",
+                                "CUSTOM_ROLE_DELETED": "#/components/schemas/AuditLogEventCustomRoleDeletedV1",
+                                "CUSTOM_ROLE_UPDATED": "#/components/schemas/AuditLogEventCustomRoleUpdatedV1",
                                 "DIRECTORY_GROUP_ROLE_UPDATED": "#/components/schemas/AuditLogEventDirectoryGroupRoleUpdatedV1",
                                 "ENVIRONMENT_CREATED": "#/components/schemas/AuditLogEventEnvironmentCreatedV1",
                                 "ENVIRONMENT_DELETED": "#/components/schemas/AuditLogEventEnvironmentDeletedV1",
@@ -20529,12 +20532,15 @@
                                 "MODEL_DEPLOYMENT_RETRIED": "#/components/schemas/AuditLogEventModelDeploymentRetriedV1",
                                 "MODEL_PROMOTION_CONTROL_ACTION": "#/components/schemas/AuditLogEventModelPromotionControlActionV1",
                                 "MODEL_RENAMED": "#/components/schemas/AuditLogEventModelRenamedV1",
+                                "ORGANIZATION_ACCESS_SETTINGS_UPDATED": "#/components/schemas/AuditLogEventOrganizationAccessSettingsUpdatedV1",
                                 "ORGANIZATION_API_KEY_SETTINGS_UPDATED": "#/components/schemas/AuditLogEventOrganizationApiKeySettingsUpdatedV1",
                                 "PROVIDER_CONNECTION_CREATED": "#/components/schemas/AuditLogEventProviderConnectionCreatedV1",
                                 "PROVIDER_CONNECTION_DELETED": "#/components/schemas/AuditLogEventProviderConnectionDeletedV1",
                                 "PROVIDER_CONNECTION_UPDATED": "#/components/schemas/AuditLogEventProviderConnectionUpdatedV1",
                                 "REPLICA_TERMINATED": "#/components/schemas/AuditLogEventReplicaTerminatedV1",
                                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED": "#/components/schemas/AuditLogEventRequireGroupBasedAdminsEnabledV1",
+                                "ROLE_ASSIGNMENT_CREATED": "#/components/schemas/AuditLogEventRoleAssignmentCreatedV1",
+                                "ROLE_ASSIGNMENT_DELETED": "#/components/schemas/AuditLogEventRoleAssignmentDeletedV1",
                                 "SECRET_DELETED": "#/components/schemas/AuditLogEventSecretDeletedV1",
                                 "SECRET_UPDATED": "#/components/schemas/AuditLogEventSecretUpdatedV1",
                                 "SERVICE_ACCOUNT_CREATED": "#/components/schemas/AuditLogEventServiceAccountCreatedV1",
@@ -20783,6 +20789,24 @@
                             },
                             {
                                 "$ref": "#/components/schemas/AuditLogEventTrustRuleDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventCustomRoleCreatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventCustomRoleUpdatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventCustomRoleDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventRoleAssignmentCreatedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventRoleAssignmentDeletedV1"
+                            },
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventOrganizationAccessSettingsUpdatedV1"
                             }
                         ],
                         "title": "Event Data"
@@ -22290,6 +22314,162 @@
                 "title": "AuditLogEventChainletInstanceTypeChangedV1",
                 "type": "object"
             },
+            "AuditLogEventCustomIdentityProviderConfigV1": {
+                "description": "Settings of a custom identity provider, as recorded on an identity provider event. Not\nitself an event payload.",
+                "properties": {
+                    "issuer_url": {
+                        "description": "The `iss` claim of the provider's tokens.",
+                        "title": "Issuer Url",
+                        "type": "string"
+                    },
+                    "jwks": {
+                        "additionalProperties": true,
+                        "description": "Where the provider's signing keys are found.",
+                        "title": "Jwks",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "issuer_url",
+                    "jwks"
+                ],
+                "title": "AuditLogEventCustomIdentityProviderConfigV1",
+                "type": "object"
+            },
+            "AuditLogEventCustomRoleCreatedV1": {
+                "description": "A custom role was created.",
+                "properties": {
+                    "event_type": {
+                        "const": "CUSTOM_ROLE_CREATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "role_id": {
+                        "title": "Role Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "kind": {
+                        "description": "Where the role can be assigned: `organization` or `team`.",
+                        "title": "Kind",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The only team a team role can be assigned in. Null when any team can use it.",
+                        "title": "Team Id"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Null when the role was created without one.",
+                        "title": "Description"
+                    },
+                    "permissions": {
+                        "description": "The role's own permissions.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Permissions",
+                        "type": "array"
+                    },
+                    "includes": {
+                        "description": "IDs of the built-in roles whose permissions the role also grants.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Includes",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "role_id",
+                    "name",
+                    "kind",
+                    "permissions",
+                    "includes"
+                ],
+                "title": "AuditLogEventCustomRoleCreatedV1",
+                "type": "object"
+            },
+            "AuditLogEventCustomRoleDeletedV1": {
+                "description": "A custom role was deleted.",
+                "properties": {
+                    "event_type": {
+                        "const": "CUSTOM_ROLE_DELETED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "role_id": {
+                        "title": "Role Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "role_id",
+                    "name"
+                ],
+                "title": "AuditLogEventCustomRoleDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventCustomRoleUpdatedV1": {
+                "description": "A custom role was updated.",
+                "properties": {
+                    "event_type": {
+                        "const": "CUSTOM_ROLE_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "role_id": {
+                        "title": "Role Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "changes": {
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AuditFieldChangeV1"
+                        },
+                        "description": "The fields the update changed, keyed by field name.",
+                        "title": "Changes",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "role_id",
+                    "name",
+                    "changes"
+                ],
+                "title": "AuditLogEventCustomRoleUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventDirectoryGroupRoleUpdatedV1": {
                 "description": "A directory group's role was updated.",
                 "properties": {
@@ -23584,15 +23764,34 @@
                         "title": "Description"
                     },
                     "predefined": {
-                        "$ref": "#/components/schemas/AuditLogEventPredefinedIdentityProviderConfigV1",
-                        "description": "The provider's settings, as the identity provider resource returns them."
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventPredefinedIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "A predefined provider's settings, as the identity provider resource returns them. Null for a custom provider."
+                    },
+                    "custom": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/AuditLogEventCustomIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "A custom provider's settings, as the identity provider resource returns them. Null for a predefined provider."
                     }
                 },
                 "required": [
                     "event_type",
                     "identity_provider_id",
-                    "name",
-                    "predefined"
+                    "name"
                 ],
                 "title": "AuditLogEventIdentityProviderCreatedV1",
                 "type": "object"
@@ -24423,6 +24622,36 @@
                 "title": "AuditLogEventModelRenamedV1",
                 "type": "object"
             },
+            "AuditLogEventOrganizationAccessSettingsUpdatedV1": {
+                "description": "An administrator changed whether team admins manage their team's custom roles.",
+                "properties": {
+                    "event_type": {
+                        "const": "ORGANIZATION_ACCESS_SETTINGS_UPDATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "organization_id": {
+                        "title": "Organization Id",
+                        "type": "string"
+                    },
+                    "previous_allow_team_admins_to_manage_roles": {
+                        "title": "Previous Allow Team Admins To Manage Roles",
+                        "type": "boolean"
+                    },
+                    "new_allow_team_admins_to_manage_roles": {
+                        "title": "New Allow Team Admins To Manage Roles",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "organization_id",
+                    "previous_allow_team_admins_to_manage_roles",
+                    "new_allow_team_admins_to_manage_roles"
+                ],
+                "title": "AuditLogEventOrganizationAccessSettingsUpdatedV1",
+                "type": "object"
+            },
             "AuditLogEventOrganizationApiKeySettingsUpdatedV1": {
                 "description": "An administrator changed which classes of API key the organization allows creating.",
                 "properties": {
@@ -24755,6 +24984,159 @@
                     "organization_id"
                 ],
                 "title": "AuditLogEventRequireGroupBasedAdminsEnabledV1",
+                "type": "object"
+            },
+            "AuditLogEventRoleAssignmentCreatedV1": {
+                "description": "A role was assigned to a user or directory group.",
+                "properties": {
+                    "event_type": {
+                        "const": "ROLE_ASSIGNMENT_CREATED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "role_assignment_id": {
+                        "title": "Role Assignment Id",
+                        "type": "string"
+                    },
+                    "role_id": {
+                        "title": "Role Id",
+                        "type": "string"
+                    },
+                    "role_name": {
+                        "title": "Role Name",
+                        "type": "string"
+                    },
+                    "subject_type": {
+                        "description": "Who holds the role: `user` or `directory_group`.",
+                        "title": "Subject Type",
+                        "type": "string"
+                    },
+                    "subject_id": {
+                        "description": "ID of the user or directory group.",
+                        "title": "Subject Id",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The team the role applies in. Null for organization roles.",
+                        "title": "Team Id"
+                    },
+                    "resource_sets": {
+                        "description": "When set, the role applies only to what any of these sets matches. A set matches what every resource in its `all_of` matches.",
+                        "items": {
+                            "$ref": "#/components/schemas/AuditLogEventRoleAssignmentResourceSetV1"
+                        },
+                        "title": "Resource Sets",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "role_assignment_id",
+                    "role_id",
+                    "role_name",
+                    "subject_type",
+                    "subject_id",
+                    "resource_sets"
+                ],
+                "title": "AuditLogEventRoleAssignmentCreatedV1",
+                "type": "object"
+            },
+            "AuditLogEventRoleAssignmentDeletedV1": {
+                "description": "A role assignment was removed.",
+                "properties": {
+                    "event_type": {
+                        "const": "ROLE_ASSIGNMENT_DELETED",
+                        "title": "Event Type",
+                        "type": "string"
+                    },
+                    "role_assignment_id": {
+                        "title": "Role Assignment Id",
+                        "type": "string"
+                    },
+                    "role_id": {
+                        "title": "Role Id",
+                        "type": "string"
+                    },
+                    "subject_type": {
+                        "description": "Who held the role: `user` or `directory_group`.",
+                        "title": "Subject Type",
+                        "type": "string"
+                    },
+                    "subject_id": {
+                        "description": "ID of the user or directory group.",
+                        "title": "Subject Id",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The team the role applied in. Null for organization roles.",
+                        "title": "Team Id"
+                    }
+                },
+                "required": [
+                    "event_type",
+                    "role_assignment_id",
+                    "role_id",
+                    "subject_type",
+                    "subject_id"
+                ],
+                "title": "AuditLogEventRoleAssignmentDeletedV1",
+                "type": "object"
+            },
+            "AuditLogEventRoleAssignmentResourceSetV1": {
+                "description": "Resources a role assignment is limited to together. Not itself an event payload.",
+                "properties": {
+                    "all_of": {
+                        "description": "At most one resource and one environment, both of which a resource must match.",
+                        "items": {
+                            "$ref": "#/components/schemas/AuditLogEventRoleAssignmentResourceV1"
+                        },
+                        "title": "All Of",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "all_of"
+                ],
+                "title": "AuditLogEventRoleAssignmentResourceSetV1",
+                "type": "object"
+            },
+            "AuditLogEventRoleAssignmentResourceV1": {
+                "description": "A resource a role assignment is limited to. Not itself an event payload.",
+                "properties": {
+                    "resource_type": {
+                        "description": "Type of the resource, for example `model`.",
+                        "title": "Resource Type",
+                        "type": "string"
+                    },
+                    "resource_id": {
+                        "description": "ID of the resource.",
+                        "title": "Resource Id",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "resource_type",
+                    "resource_id"
+                ],
+                "title": "AuditLogEventRoleAssignmentResourceV1",
                 "type": "object"
             },
             "AuditLogEventSecretDeletedV1": {
@@ -25285,7 +25667,13 @@
                     "TRUST_RULE_CREATED",
                     "TRUST_RULE_UPDATED",
                     "TRUST_RULE_DELETED",
-                    "ORGANIZATION_API_KEY_SETTINGS_UPDATED"
+                    "ORGANIZATION_API_KEY_SETTINGS_UPDATED",
+                    "CUSTOM_ROLE_CREATED",
+                    "CUSTOM_ROLE_UPDATED",
+                    "CUSTOM_ROLE_DELETED",
+                    "ROLE_ASSIGNMENT_CREATED",
+                    "ROLE_ASSIGNMENT_DELETED",
+                    "ORGANIZATION_ACCESS_SETTINGS_UPDATED"
                 ],
                 "title": "AuditLogEventTypeV1",
                 "type": "string"
@@ -25816,7 +26204,8 @@
                     "DIRECTORY_GROUP_MANAGEMENT",
                     "SSH",
                     "TELEMETRY_EXPORT",
-                    "WORKLOAD_IDENTITY"
+                    "WORKLOAD_IDENTITY",
+                    "ACCESS_CONTROL"
                 ],
                 "title": "AuditLogEventTypeGroupV1",
                 "type": "string"
@@ -42411,7 +42800,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Disable the account to stop it being used, or enable it again",
+                        "description": "Disable the account to stop it being used, or enable it again. Disabling the account permanently revokes its access tokens.",
                         "title": "Disabled"
                     },
                     "preset_permissions": {
@@ -43505,22 +43894,6 @@
                         ],
                         "description": "Name of the only team a team role can be assigned in",
                         "title": "Team Name"
-                    },
-                    "permissions": {
-                        "description": "Names of the role's own permissions",
-                        "items": {
-                            "type": "string"
-                        },
-                        "title": "Permissions",
-                        "type": "array"
-                    },
-                    "include_role_ids": {
-                        "description": "IDs of the built-in roles whose permissions this role also grants, including permissions Baseten adds to them later",
-                        "items": {
-                            "type": "string"
-                        },
-                        "title": "Include Role Ids",
-                        "type": "array"
                     }
                 },
                 "required": [
@@ -43530,9 +43903,7 @@
                     "built_in",
                     "kind",
                     "team_id",
-                    "team_name",
-                    "permissions",
-                    "include_role_ids"
+                    "team_name"
                 ],
                 "title": "AccessRoleV1",
                 "type": "object"
@@ -43661,6 +44032,19 @@
                         },
                         "title": "Include Role Ids",
                         "type": "array"
+                    },
+                    "template_role_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "ID of a built-in role whose current permissions to copy into `permissions` once, leaving out those the role's kind can't hold and those not available to your organization. Unlike `include_role_ids`, later changes to that role don't apply.",
+                        "title": "Template Role Id"
                     }
                 },
                 "required": [
@@ -43668,6 +44052,88 @@
                     "kind"
                 ],
                 "title": "CreateAccessRoleRequestV1",
+                "type": "object"
+            },
+            "AccessRoleDetailV1": {
+                "description": "A role, its permissions, and the built-in roles it includes.",
+                "properties": {
+                    "id": {
+                        "description": "Unique identifier of the role. Built-in role IDs start with `baseten:`, such as `baseten:reader`.",
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the role",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the role",
+                        "title": "Description",
+                        "type": "string"
+                    },
+                    "built_in": {
+                        "description": "Whether Baseten defines the role. Built-in roles are read-only.",
+                        "title": "Built In",
+                        "type": "boolean"
+                    },
+                    "kind": {
+                        "$ref": "#/components/schemas/AccessRoleKindV1",
+                        "description": "Where the role is assigned: `ORGANIZATION` roles for the whole organization, and `TEAM` roles in a team. `MEMBERSHIP` roles are built-in roles held only through organization membership, such as Admin and Creator, and can't be assigned."
+                    },
+                    "team_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "ID of the only team a team role can be assigned in. Null when any team can use it, and for other kinds of role.",
+                        "title": "Team Id"
+                    },
+                    "team_name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Name of the only team a team role can be assigned in",
+                        "title": "Team Name"
+                    },
+                    "permissions": {
+                        "description": "Names of the role's own permissions",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Permissions",
+                        "type": "array"
+                    },
+                    "include_roles": {
+                        "description": "Built-in roles whose permissions this role also grants, including permissions Baseten adds to them later, each with the roles it includes",
+                        "items": {
+                            "$ref": "#/components/schemas/AccessRoleDetailV1"
+                        },
+                        "title": "Include Roles",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "built_in",
+                    "kind",
+                    "team_id",
+                    "team_name",
+                    "permissions",
+                    "include_roles"
+                ],
+                "title": "AccessRoleDetailV1",
                 "type": "object"
             },
             "AccessRoleTombstoneV1": {
@@ -46915,6 +47381,19 @@
                         "description": "Name of the team secret holding the provider API key.",
                         "title": "Secret Name",
                         "type": "string"
+                    },
+                    "region": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "OpenAI region code for regional inference. Null or `all` denotes global inference.",
+                        "title": "Region"
                     }
                 },
                 "required": [
@@ -47296,6 +47775,22 @@
                         "minLength": 1,
                         "title": "Secret Name",
                         "type": "string"
+                    },
+                    "region": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "OpenAI region code for regional inference, for example `us`. Null or `all` uses global inference.",
+                        "examples": [
+                            "us"
+                        ],
+                        "title": "Region"
                     }
                 },
                 "required": [

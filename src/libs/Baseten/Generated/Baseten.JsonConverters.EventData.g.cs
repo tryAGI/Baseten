@@ -532,6 +532,48 @@ namespace Baseten.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventTrustRuleDeletedV1)}");
                 trustRuleDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
+            global::Baseten.AuditLogEventCustomRoleCreatedV1? customRoleCreated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventCustomRoleCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventCustomRoleCreatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventCustomRoleCreatedV1)}");
+                customRoleCreated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventCustomRoleUpdatedV1? customRoleUpdated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventCustomRoleUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventCustomRoleUpdatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventCustomRoleUpdatedV1)}");
+                customRoleUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventCustomRoleDeletedV1? customRoleDeleted = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventCustomRoleDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventCustomRoleDeletedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventCustomRoleDeletedV1)}");
+                customRoleDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventRoleAssignmentCreatedV1? roleAssignmentCreated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.RoleAssignmentCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventRoleAssignmentCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventRoleAssignmentCreatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventRoleAssignmentCreatedV1)}");
+                roleAssignmentCreated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventRoleAssignmentDeletedV1? roleAssignmentDeleted = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.RoleAssignmentDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventRoleAssignmentDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventRoleAssignmentDeletedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventRoleAssignmentDeletedV1)}");
+                roleAssignmentDeleted = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
+            global::Baseten.AuditLogEventOrganizationAccessSettingsUpdatedV1? organizationAccessSettingsUpdated = default;
+            if (discriminator?.EventType == global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType.OrganizationAccessSettingsUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventOrganizationAccessSettingsUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventOrganizationAccessSettingsUpdatedV1> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Baseten.AuditLogEventOrganizationAccessSettingsUpdatedV1)}");
+                organizationAccessSettingsUpdated = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
+            }
 
             var __value = new global::Baseten.EventData(
                 discriminator?.EventType,
@@ -679,7 +721,19 @@ namespace Baseten.JsonConverters
 
                 trustRuleUpdated,
 
-                trustRuleDeleted
+                trustRuleDeleted,
+
+                customRoleCreated,
+
+                customRoleUpdated,
+
+                customRoleDeleted,
+
+                roleAssignmentCreated,
+
+                roleAssignmentDeleted,
+
+                organizationAccessSettingsUpdated
                 );
 
             return __value;
@@ -1131,6 +1185,42 @@ namespace Baseten.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventTrustRuleDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventTrustRuleDeletedV1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventTrustRuleDeletedV1).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTrustRuleDeleted(), typeInfo);
+            }
+            else if (value.IsCustomRoleCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventCustomRoleCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventCustomRoleCreatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventCustomRoleCreatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustomRoleCreated(), typeInfo);
+            }
+            else if (value.IsCustomRoleUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventCustomRoleUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventCustomRoleUpdatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventCustomRoleUpdatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustomRoleUpdated(), typeInfo);
+            }
+            else if (value.IsCustomRoleDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventCustomRoleDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventCustomRoleDeletedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventCustomRoleDeletedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustomRoleDeleted(), typeInfo);
+            }
+            else if (value.IsRoleAssignmentCreated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventRoleAssignmentCreatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventRoleAssignmentCreatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventRoleAssignmentCreatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRoleAssignmentCreated(), typeInfo);
+            }
+            else if (value.IsRoleAssignmentDeleted)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventRoleAssignmentDeletedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventRoleAssignmentDeletedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventRoleAssignmentDeletedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRoleAssignmentDeleted(), typeInfo);
+            }
+            else if (value.IsOrganizationAccessSettingsUpdated)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Baseten.AuditLogEventOrganizationAccessSettingsUpdatedV1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Baseten.AuditLogEventOrganizationAccessSettingsUpdatedV1?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Baseten.AuditLogEventOrganizationAccessSettingsUpdatedV1).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickOrganizationAccessSettingsUpdated(), typeInfo);
             }
         }
     }

@@ -88,7 +88,7 @@ internal static partial class CreateAuthTokenCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"create-auth-token", @"Exchanges an identity provider's JWT for an access token
-Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that is refused always returns `invalid_grant`, whatever the reason.");
+Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that fails a check always returns `invalid_grant`, whatever the check. Exchanges are rate limited per trust rule, per organization and per client IP. Over a limit, the response is a 429 with an `error` of `slow_down` and a `Retry-After` header.");
                         command.Options.Add(GrantType);
                         command.Options.Add(SubjectToken);
                         command.Options.Add(SubjectTokenType);

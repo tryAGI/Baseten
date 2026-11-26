@@ -49,6 +49,13 @@ namespace Baseten
         public global::System.Collections.Generic.IList<string>? IncludeRoleIds { get; set; }
 
         /// <summary>
+        /// ID of a built-in role whose current permissions to copy into `permissions` once, leaving out those the role's kind can't hold and those not available to your organization. Unlike `include_role_ids`, later changes to that role don't apply.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("template_role_id")]
+        public string? TemplateRoleId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -76,6 +83,10 @@ namespace Baseten
         /// <param name="includeRoleIds">
         /// IDs of built-in roles whose permissions the role also grants, such as `baseten:reader`
         /// </param>
+        /// <param name="templateRoleId">
+        /// ID of a built-in role whose current permissions to copy into `permissions` once, leaving out those the role's kind can't hold and those not available to your organization. Unlike `include_role_ids`, later changes to that role don't apply.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -85,7 +96,8 @@ namespace Baseten
             string? teamId,
             string? description,
             global::System.Collections.Generic.IList<string>? permissions,
-            global::System.Collections.Generic.IList<string>? includeRoleIds)
+            global::System.Collections.Generic.IList<string>? includeRoleIds,
+            string? templateRoleId)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Kind = kind;
@@ -93,6 +105,7 @@ namespace Baseten
             this.Description = description;
             this.Permissions = permissions;
             this.IncludeRoleIds = includeRoleIds;
+            this.TemplateRoleId = templateRoleId;
         }
 
         /// <summary>

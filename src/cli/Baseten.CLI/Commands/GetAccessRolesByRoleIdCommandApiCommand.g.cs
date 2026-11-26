@@ -19,7 +19,7 @@ internal static partial class GetAccessRolesByRoleIdCommandApiCommand
         Description = @"ID of a team. Gets the role only if `GET /v1/access/roles` lists it for that team, and checks your access in that team.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.AccessRoleV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.AccessRoleDetailV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -35,7 +35,7 @@ internal static partial class GetAccessRolesByRoleIdCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.AccessRoleV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.AccessRoleDetailV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

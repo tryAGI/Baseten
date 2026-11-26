@@ -63,6 +63,18 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        CustomRoleCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        CustomRoleDeleted,
+        /// <summary>
+        ///
+        /// </summary>
+        CustomRoleUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         DirectoryGroupRoleUpdated,
         /// <summary>
         ///
@@ -175,6 +187,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        OrganizationAccessSettingsUpdated,
+        /// <summary>
+        ///
+        /// </summary>
         OrganizationApiKeySettingsUpdated,
         /// <summary>
         ///
@@ -196,6 +212,14 @@ namespace Baseten
         ///
         /// </summary>
         RequireGroupBasedAdminsEnabled,
+        /// <summary>
+        ///
+        /// </summary>
+        RoleAssignmentCreated,
+        /// <summary>
+        ///
+        /// </summary>
+        RoleAssignmentDeleted,
         /// <summary>
         ///
         /// </summary>
@@ -327,6 +351,9 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.ChainDeploymentPromoted => "CHAIN_DEPLOYMENT_PROMOTED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ChainEnvironmentCreated => "CHAIN_ENVIRONMENT_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ChainEnvironmentUpdated => "CHAIN_ENVIRONMENT_UPDATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleCreated => "CUSTOM_ROLE_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleDeleted => "CUSTOM_ROLE_DELETED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleUpdated => "CUSTOM_ROLE_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.DirectoryGroupRoleUpdated => "DIRECTORY_GROUP_ROLE_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.EnvironmentCreated => "ENVIRONMENT_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.EnvironmentDeleted => "ENVIRONMENT_DELETED",
@@ -355,12 +382,15 @@ namespace Baseten
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRetried => "MODEL_DEPLOYMENT_RETRIED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelPromotionControlAction => "MODEL_PROMOTION_CONTROL_ACTION",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ModelRenamed => "MODEL_RENAMED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.OrganizationAccessSettingsUpdated => "ORGANIZATION_ACCESS_SETTINGS_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.OrganizationApiKeySettingsUpdated => "ORGANIZATION_API_KEY_SETTINGS_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionCreated => "PROVIDER_CONNECTION_CREATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionDeleted => "PROVIDER_CONNECTION_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionUpdated => "PROVIDER_CONNECTION_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ReplicaTerminated => "REPLICA_TERMINATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.RequireGroupBasedAdminsEnabled => "REQUIRE_GROUP_BASED_ADMINS_ENABLED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.RoleAssignmentCreated => "ROLE_ASSIGNMENT_CREATED",
+                AuditLogEntryV1EventDataDiscriminatorEventType.RoleAssignmentDeleted => "ROLE_ASSIGNMENT_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.SecretDeleted => "SECRET_DELETED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.SecretUpdated => "SECRET_UPDATED",
                 AuditLogEntryV1EventDataDiscriminatorEventType.ServiceAccountCreated => "SERVICE_ACCOUNT_CREATED",
@@ -410,6 +440,9 @@ namespace Baseten
                 "CHAIN_DEPLOYMENT_PROMOTED" => AuditLogEntryV1EventDataDiscriminatorEventType.ChainDeploymentPromoted,
                 "CHAIN_ENVIRONMENT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ChainEnvironmentCreated,
                 "CHAIN_ENVIRONMENT_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ChainEnvironmentUpdated,
+                "CUSTOM_ROLE_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleCreated,
+                "CUSTOM_ROLE_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleDeleted,
+                "CUSTOM_ROLE_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.CustomRoleUpdated,
                 "DIRECTORY_GROUP_ROLE_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.DirectoryGroupRoleUpdated,
                 "ENVIRONMENT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.EnvironmentCreated,
                 "ENVIRONMENT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.EnvironmentDeleted,
@@ -438,12 +471,15 @@ namespace Baseten
                 "MODEL_DEPLOYMENT_RETRIED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelDeploymentRetried,
                 "MODEL_PROMOTION_CONTROL_ACTION" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelPromotionControlAction,
                 "MODEL_RENAMED" => AuditLogEntryV1EventDataDiscriminatorEventType.ModelRenamed,
+                "ORGANIZATION_ACCESS_SETTINGS_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.OrganizationAccessSettingsUpdated,
                 "ORGANIZATION_API_KEY_SETTINGS_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.OrganizationApiKeySettingsUpdated,
                 "PROVIDER_CONNECTION_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionCreated,
                 "PROVIDER_CONNECTION_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionDeleted,
                 "PROVIDER_CONNECTION_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ProviderConnectionUpdated,
                 "REPLICA_TERMINATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ReplicaTerminated,
                 "REQUIRE_GROUP_BASED_ADMINS_ENABLED" => AuditLogEntryV1EventDataDiscriminatorEventType.RequireGroupBasedAdminsEnabled,
+                "ROLE_ASSIGNMENT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.RoleAssignmentCreated,
+                "ROLE_ASSIGNMENT_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.RoleAssignmentDeleted,
                 "SECRET_DELETED" => AuditLogEntryV1EventDataDiscriminatorEventType.SecretDeleted,
                 "SECRET_UPDATED" => AuditLogEntryV1EventDataDiscriminatorEventType.SecretUpdated,
                 "SERVICE_ACCOUNT_CREATED" => AuditLogEntryV1EventDataDiscriminatorEventType.ServiceAccountCreated,

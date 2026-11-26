@@ -30,6 +30,13 @@ namespace Baseten
         public required string SecretName { get; set; }
 
         /// <summary>
+        /// OpenAI region code for regional inference. Null or `all` denotes global inference.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -44,6 +51,10 @@ namespace Baseten
         /// <param name="secretName">
         /// Name of the team secret holding the provider API key.
         /// </param>
+        /// <param name="region">
+        /// OpenAI region code for regional inference. Null or `all` denotes global inference.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="provider">
         /// Provider kind for OpenAI.
         /// </param>
@@ -53,11 +64,13 @@ namespace Baseten
         public GridConnectionConfigOpenAIV1(
             string secretId,
             string secretName,
+            string? region,
             string provider = "OPENAI")
         {
             this.Provider = provider;
             this.SecretId = secretId ?? throw new global::System.ArgumentNullException(nameof(secretId));
             this.SecretName = secretName ?? throw new global::System.ArgumentNullException(nameof(secretName));
+            this.Region = region;
         }
 
         /// <summary>
