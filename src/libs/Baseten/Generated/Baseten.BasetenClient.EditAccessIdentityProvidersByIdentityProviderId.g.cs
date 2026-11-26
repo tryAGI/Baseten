@@ -45,7 +45,7 @@ namespace Baseten
 
         /// <summary>
         /// Updates an identity provider<br/>
-        /// Updates the fields you send. The provider and issuer can't change. Only organization admins can call this endpoint.
+        /// Updates the fields you send. The provider and issuer can't change; a custom provider's `jwks` can, and new keys are read before they're saved. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="identityProviderId"></param>
         /// <param name="request"></param>
@@ -79,7 +79,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates an identity provider<br/>
-        /// Updates the fields you send. The provider and issuer can't change. Only organization admins can call this endpoint.
+        /// Updates the fields you send. The provider and issuer can't change; a custom provider's `jwks` can, and new keys are read before they're saved. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="identityProviderId"></param>
         /// <param name="request"></param>
@@ -460,7 +460,7 @@ namespace Baseten
         }
         /// <summary>
         /// Updates an identity provider<br/>
-        /// Updates the fields you send. The provider and issuer can't change. Only organization admins can call this endpoint.
+        /// Updates the fields you send. The provider and issuer can't change; a custom provider's `jwks` can, and new keys are read before they're saved. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="identityProviderId"></param>
         /// <param name="name">
@@ -471,6 +471,10 @@ namespace Baseten
         /// Description; null clears it<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="custom">
+        /// A custom provider's settings to change. A predefined provider's can't be changed.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -478,6 +482,7 @@ namespace Baseten
             string identityProviderId,
             string? name = default,
             string? description = default,
+            global::Baseten.UpdateCustomIdentityProviderConfigV1? custom = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -485,6 +490,7 @@ namespace Baseten
             {
                 Name = name,
                 Description = description,
+                Custom = custom,
             };
 
             return await EditAccessIdentityProvidersByIdentityProviderIdAsync(

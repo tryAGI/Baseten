@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Adds an identity provider<br/>
-        /// Adds an identity provider to the organization. For a provider with a per-customer issuer, the issuer must match the provider's format, and its signing keys are fetched before it's saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.
+        /// Adds a predefined or custom identity provider to the organization. For a predefined provider with a per-customer issuer, the issuer must match the provider's format. A custom provider needs a name and an issuer that no predefined provider uses. Signing keys are fetched or parsed before the provider is saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -31,7 +31,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Adds an identity provider<br/>
-        /// Adds an identity provider to the organization. For a provider with a per-customer issuer, the issuer must match the provider's format, and its signing keys are fetched before it's saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.
+        /// Adds a predefined or custom identity provider to the organization. For a predefined provider with a per-customer issuer, the issuer must match the provider's format. A custom provider needs a name and an issuer that no predefined provider uses. Signing keys are fetched or parsed before the provider is saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -56,10 +56,10 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Adds an identity provider<br/>
-        /// Adds an identity provider to the organization. For a provider with a per-customer issuer, the issuer must match the provider's format, and its signing keys are fetched before it's saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.
+        /// Adds a predefined or custom identity provider to the organization. For a predefined provider with a per-customer issuer, the issuer must match the provider's format. A custom provider needs a name and an issuer that no predefined provider uses. Signing keys are fetched or parsed before the provider is saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="name">
-        /// Name, unique in the organization. Defaults to the provider's display name, so pass one when adding a second issuer of the same provider.<br/>
+        /// Name, unique in the organization. Required for a custom provider. A predefined provider defaults to its display name, so pass one when adding a second issuer of the same provider.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="description">
@@ -67,15 +67,21 @@ namespace Baseten
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="predefined">
-        /// The predefined provider to add
+        /// The predefined provider to add. Pass this or `custom`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="custom">
+        /// The custom provider to add. Pass this or `predefined`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.IdentityProviderV1> CreateAccessIdentityProvidersAsync(
-            global::Baseten.CreatePredefinedIdentityProviderConfigV1 predefined,
             string? name = default,
             string? description = default,
+            global::Baseten.CreatePredefinedIdentityProviderConfigV1? predefined = default,
+            global::Baseten.CreateCustomIdentityProviderConfigV1? custom = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

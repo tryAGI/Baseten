@@ -51,6 +51,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(CreateModelsByModelIdDeploymentsCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsByModelIdDeploymentsByDeploymentIdActivateCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsByModelIdDeploymentsByDeploymentIdDeactivateCommandApiCommand.Create());
+                         command.Subcommands.Add(CreateModelsByModelIdDeploymentsByDeploymentIdHotLoadCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsByModelIdDeploymentsByDeploymentIdPatchesCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsByModelIdDeploymentsByDeploymentIdPatchesSyncCommandApiCommand.Create());
                          command.Subcommands.Add(CreateModelsByModelIdDeploymentsByDeploymentIdPromoteCommandApiCommand.Create());
@@ -234,6 +235,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdConfigCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdDownloadCommandApiCommand.Create());
+                         command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdHotLoadCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdLogsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdMetricsCommandApiCommand.Create());
                          command.Subcommands.Add(GetModelsByModelIdDeploymentsByDeploymentIdPatchesStateCommandApiCommand.Create());

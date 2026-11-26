@@ -24,6 +24,12 @@ internal static partial class EditAccessIdentityProvidersByIdentityProviderIdCom
     {
         Description = @"Description; null clears it",
     };
+
+    private static Option<global::Baseten.UpdateCustomIdentityProviderConfigV1?> Custom { get; } = new(
+        name: @"--custom")
+    {
+        Description = @"A custom provider's settings to change. A predefined provider's can't be changed.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -66,10 +72,11 @@ internal static partial class EditAccessIdentityProvidersByIdentityProviderIdCom
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"edit-access-identity-providers-by-identity-provider-id", @"Updates an identity provider
-Updates the fields you send. The provider and issuer can't change. Only organization admins can call this endpoint.");
+Updates the fields you send. The provider and issuer can't change; a custom provider's `jwks` can, and new keys are read before they're saved. Only organization admins can call this endpoint.");
                         command.Arguments.Add(IdentityProviderId);
                         command.Options.Add(NameOption);
                         command.Options.Add(DescriptionOption);
+                        command.Options.Add(Custom);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -98,6 +105,7 @@ Updates the fields you send. The provider and issuer can't change. Only organiza
                         var identityProviderId = parseResult.GetRequiredValue(IdentityProviderId);
                         var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
                         var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
+                        var custom = CliRuntime.WasSpecified(parseResult, Custom) ? parseResult.GetValue(Custom) : (__requestBase is { } __CustomBaseValue ? __CustomBaseValue.Custom : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -105,6 +113,7 @@ Updates the fields you send. The provider and issuer can't change. Only organiza
                                     identityProviderId: identityProviderId,
                                     name: name,
                                     description: description,
+                                    custom: custom,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

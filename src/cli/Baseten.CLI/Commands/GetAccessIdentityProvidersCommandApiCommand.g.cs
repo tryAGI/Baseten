@@ -31,6 +31,12 @@ internal static partial class GetAccessIdentityProvidersCommandApiCommand
         Description = @"Only this predefined provider's issuers",
     };
 
+    private static Option<global::Baseten.IdentityProviderTypeV1?> Type { get; } = new(
+        name: @"--type")
+    {
+        Description = @"Only predefined or only custom providers",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Baseten.IdentityProvidersV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -61,6 +67,7 @@ Lists the organization's identity providers. Organization and team admins can li
                         command.Options.Add(Limit);
                         command.Options.Add(NameOption);
                         command.Options.Add(PredefinedKind);
+                        command.Options.Add(Type);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -70,6 +77,7 @@ Lists the organization's identity providers. Organization and team admins can li
                         var limit = parseResult.GetValue(Limit);
                         var name = parseResult.GetValue(NameOption);
                         var predefinedKind = parseResult.GetValue(PredefinedKind);
+                        var type = parseResult.GetValue(Type);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -78,6 +86,7 @@ Lists the organization's identity providers. Organization and team admins can li
                                     limit: limit,
                                     name: name,
                                     predefinedKind: predefinedKind,
+                                    type: type,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

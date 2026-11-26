@@ -30,11 +30,18 @@ namespace Baseten
         public string? Description { get; set; }
 
         /// <summary>
-        /// Settings of the predefined provider
+        /// Settings of a predefined provider. Null for a custom one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("predefined")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.PredefinedIdentityProviderConfigV1 Predefined { get; set; }
+        public global::Baseten.PredefinedIdentityProviderConfigV1? Predefined { get; set; }
+
+        /// <summary>
+        /// Settings of a custom provider. Null for a predefined one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom")]
+        public global::Baseten.CustomIdentityProviderConfigV1? Custom { get; set; }
 
         /// <summary>
         /// ID of the user who added the provider
@@ -72,9 +79,6 @@ namespace Baseten
         /// <param name="name">
         /// Name, unique in the organization
         /// </param>
-        /// <param name="predefined">
-        /// Settings of the predefined provider
-        /// </param>
         /// <param name="createdBy">
         /// ID of the user who added the provider
         /// </param>
@@ -88,22 +92,32 @@ namespace Baseten
         /// Description<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="predefined">
+        /// Settings of a predefined provider. Null for a custom one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="custom">
+        /// Settings of a custom provider. Null for a predefined one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public IdentityProviderV1(
             string id,
             string name,
-            global::Baseten.PredefinedIdentityProviderConfigV1 predefined,
             string createdBy,
             global::System.DateTime createdAt,
             global::System.DateTime updatedAt,
-            string? description)
+            string? description,
+            global::Baseten.PredefinedIdentityProviderConfigV1? predefined,
+            global::Baseten.CustomIdentityProviderConfigV1? custom)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
-            this.Predefined = predefined ?? throw new global::System.ArgumentNullException(nameof(predefined));
+            this.Predefined = predefined;
+            this.Custom = custom;
             this.CreatedBy = createdBy ?? throw new global::System.ArgumentNullException(nameof(createdBy));
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;

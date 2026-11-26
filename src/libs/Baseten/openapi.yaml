@@ -3068,6 +3068,78 @@
                 }
             ]
         },
+        "/v1/models/{model_id}/deployments/{deployment_id}/hot_load": {
+            "get": {
+                "summary": "Gets a deployment's RL weight-sync status",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request GET \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/hot_load \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\"\n"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/hot_load\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    json={}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Lists each replica's lifecycle status and RL weight-sync state, with the revision of the deployment's newest target. A replica is done with a target when its hotload_stage is done and its revision equals the deployment's revision. loading_state is null for a replica that has not reported a state.",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HotLoadStatusV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/model_id"
+                },
+                {
+                    "$ref": "#/components/parameters/deployment_id"
+                }
+            ],
+            "post": {
+                "summary": "Sets the snapshot a deployment's replicas hot-load",
+                "x-codeSamples": [
+                    {
+                        "lang": "bash",
+                        "source": "curl --request POST \\\n--url https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/hot_load \\\n--header \"Authorization: Bearer $BASETEN_API_KEY\" \\\n--data '{\n  \"identity\": null,\n  \"incremental_snapshot_metadata\": null\n}'"
+                    },
+                    {
+                        "lang": "python",
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/hot_load\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'identity': None, 'incremental_snapshot_metadata': None}\n)\n\nprint(response.text)"
+                    }
+                ],
+                "description": "Stores the request as the deployment's RL weight-sync target; every replica loads it, and the newest request wins. Returns 400 if the body is not a JSON object of at most 16384 bytes as compact JSON, or has an invalid identity or incremental_snapshot_metadata. Snapshots are not checked here; a replica that rejects one reports it in its status. Only RL deployments can hot-load, and source.token and source.api are not accepted.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HotLoadRequestV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HotLoadResponseV1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/models/{model_id}/deployments/{deployment_id}/download": {
             "get": {
                 "summary": "Gets a presigned download URL for a deployment's truss",
@@ -11206,7 +11278,7 @@
                     },
                     {
                         "lang": "python",
-                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'name': None, 'predefined_kind': None}\n)\n\nprint(response.text)"
+                        "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"GET\",\n    url,\n    headers=headers,\n    params={'cursor': None, 'name': None, 'predefined_kind': None, 'type': None}\n)\n\nprint(response.text)"
                     }
                 ],
                 "description": "Lists the organization's identity providers. Organization and team admins can list them.",
@@ -11277,6 +11349,23 @@
                             ],
                             "default": null
                         }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "description": "Only predefined or only custom providers",
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/IdentityProviderTypeV1"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "default": null
+                        }
                     }
                 ],
                 "responses": {
@@ -11305,7 +11394,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'name': 'prod-eks', 'predefined': {'kind': 'AWS_EKS', 'issuer_url': 'https://oidc.eks.us-west-2.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE'}}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Adds an identity provider to the organization. For a provider with a per-customer issuer, the issuer must match the provider's format, and its signing keys are fetched before it's saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.",
+                "description": "Adds a predefined or custom identity provider to the organization. For a predefined provider with a per-customer issuer, the issuer must match the provider's format. A custom provider needs a name and an issuer that no predefined provider uses. Signing keys are fetched or parsed before the provider is saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -11344,7 +11433,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers/verify\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"POST\",\n    url,\n    headers=headers,\n    json={'predefined': {'kind': 'AWS_EKS', 'issuer_url': 'https://oidc.eks.us-west-2.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE'}}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer, that its signing keys can be fetched. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.",
+                "description": "Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer or a custom provider, that its signing keys can be read. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -11441,7 +11530,7 @@
                         "source": "import requests\nimport os\nAPI_KEY = os.environ.get(\"BASETEN_API_KEY\", \"<YOUR_API_KEY>\")\nurl = \"https://api.baseten.co/v1/access/identity_providers/{identity_provider_id}\"\n\nheaders = {\"Authorization\": f\"Bearer {API_KEY}\"}\n\nresponse = requests.request(\n    \"PATCH\",\n    url,\n    headers=headers,\n    json={'name': 'prod-eks'}\n)\n\nprint(response.text)"
                     }
                 ],
-                "description": "Updates the fields you send. The provider and issuer can't change. Only organization admins can call this endpoint.",
+                "description": "Updates the fields you send. The provider and issuer can't change; a custom provider's `jwks` can, and new keys are read before they're saved. Only organization admins can call this endpoint.",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -27294,6 +27383,210 @@
                 "title": "RetryDeploymentResponseV1",
                 "type": "object"
             },
+            "HotLoadLoadingStateV1": {
+                "description": "A replica's RL weight-sync state, as last reported by the replica.",
+                "properties": {
+                    "hotload_stage": {
+                        "description": "One of loading, done, rejected, or error. A replica behind the deployment's revision is reported as loading.",
+                        "title": "Hotload Stage",
+                        "type": "string"
+                    },
+                    "current_snapshot_identity": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Identity of the snapshot the replica serves.",
+                        "title": "Current Snapshot Identity"
+                    },
+                    "target_snapshot_identity": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Identity of the snapshot the replica is loading or last tried to load.",
+                        "title": "Target Snapshot Identity"
+                    },
+                    "reason": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Why the replica rejected or failed its target.",
+                        "title": "Reason"
+                    },
+                    "revision": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Revision of the target the replica last took, or null if it has taken none.",
+                        "title": "Revision"
+                    }
+                },
+                "required": [
+                    "hotload_stage",
+                    "current_snapshot_identity",
+                    "target_snapshot_identity",
+                    "reason",
+                    "revision"
+                ],
+                "title": "HotLoadLoadingStateV1",
+                "type": "object"
+            },
+            "HotLoadReplicaV1": {
+                "description": "A replica's lifecycle status and RL weight-sync state.",
+                "properties": {
+                    "replica_id": {
+                        "description": "Replica ID, as in the deployment's replicas list.",
+                        "title": "Replica Id",
+                        "type": "string"
+                    },
+                    "replica_status": {
+                        "description": "Replica lifecycle status.",
+                        "enum": [
+                            "pending",
+                            "ready",
+                            "not_ready",
+                            "terminating",
+                            "failed",
+                            "unknown"
+                        ],
+                        "title": "Replica Status",
+                        "type": "string"
+                    },
+                    "loading_state": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/HotLoadLoadingStateV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "The replica's weight-sync state, or null if it has not reported one."
+                    }
+                },
+                "required": [
+                    "replica_id",
+                    "replica_status",
+                    "loading_state"
+                ],
+                "title": "HotLoadReplicaV1",
+                "type": "object"
+            },
+            "HotLoadStatusV1": {
+                "description": "The RL weight-sync status of every replica in a deployment.",
+                "properties": {
+                    "revision": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Revision of the deployment's newest hot-load target, or null if none was set.",
+                        "title": "Revision"
+                    },
+                    "replicas": {
+                        "description": "One entry per replica.",
+                        "items": {
+                            "$ref": "#/components/schemas/HotLoadReplicaV1"
+                        },
+                        "title": "Replicas",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "revision",
+                    "replicas"
+                ],
+                "title": "HotLoadStatusV1",
+                "type": "object"
+            },
+            "HotLoadIncrementalSnapshotMetadataV1": {
+                "additionalProperties": true,
+                "description": "The formats a delta snapshot is encoded with.",
+                "properties": {
+                    "compression_format": {
+                        "description": "The delta's compression format.",
+                        "title": "Compression Format",
+                        "type": "string"
+                    },
+                    "checksum_format": {
+                        "description": "The delta's checksum format.",
+                        "title": "Checksum Format",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "compression_format",
+                    "checksum_format"
+                ],
+                "title": "HotLoadIncrementalSnapshotMetadataV1",
+                "type": "object"
+            },
+            "HotLoadRequestV1": {
+                "additionalProperties": true,
+                "description": "The snapshot the deployment's replicas should load. Other keys are passed through.",
+                "properties": {
+                    "identity": {
+                        "description": "Snapshot directory below the checkpoint prefix, for example, anchors/step000001.",
+                        "title": "Identity",
+                        "type": "string"
+                    },
+                    "incremental_snapshot_metadata": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/HotLoadIncrementalSnapshotMetadataV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Required when identity is a delta snapshot."
+                    }
+                },
+                "required": [
+                    "identity"
+                ],
+                "title": "HotLoadRequestV1",
+                "type": "object"
+            },
+            "HotLoadResponseV1": {
+                "description": "The stored hot-load target.",
+                "properties": {
+                    "revision": {
+                        "description": "Revision of the stored target; grows with every request.",
+                        "title": "Revision",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "revision"
+                ],
+                "title": "HotLoadResponseV1",
+                "type": "object"
+            },
             "DownloadDeploymentResponseV1": {
                 "description": "The response to a request to download a deployment's truss.",
                 "properties": {
@@ -42896,6 +43189,81 @@
                 "title": "PredefinedIdentityProvidersV1",
                 "type": "object"
             },
+            "CustomIdentityProviderConfigV1": {
+                "description": "Settings of an identity provider an organization defines itself.",
+                "properties": {
+                    "issuer_url": {
+                        "description": "The `iss` claim of the provider's tokens, matched exactly. https on port 443, without a query; unique in the organization. Can't be changed.",
+                        "maxLength": 1024,
+                        "title": "Issuer Url",
+                        "type": "string"
+                    },
+                    "jwks": {
+                        "$ref": "#/components/schemas/IdentityProviderJwksV1",
+                        "description": "Where the provider's signing keys are"
+                    }
+                },
+                "required": [
+                    "issuer_url",
+                    "jwks"
+                ],
+                "title": "CustomIdentityProviderConfigV1",
+                "type": "object"
+            },
+            "IdentityProviderJwksTypeV1": {
+                "description": "How Baseten finds a custom identity provider's signing keys.",
+                "enum": [
+                    "DISCOVERY",
+                    "EXPLICIT_URL",
+                    "INLINE"
+                ],
+                "title": "IdentityProviderJwksTypeV1",
+                "type": "string"
+            },
+            "IdentityProviderJwksV1": {
+                "description": "Where a custom identity provider's signing keys are. Replaced as a whole when changed.",
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/IdentityProviderJwksTypeV1",
+                        "description": "`DISCOVERY` reads the issuer's `/.well-known/openid-configuration` and follows its `jwks_uri`, re-reading it as keys are refreshed. `EXPLICIT_URL` fetches `url`. `INLINE` uses `keys`, for an issuer Baseten can't reach; update them when they rotate."
+                    },
+                    "url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The JWK Set URL, for `EXPLICIT_URL` only: https on port 443, without a query, returning `application/json` or `application/jwk-set+json`.",
+                        "title": "Url"
+                    },
+                    "keys": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "additionalProperties": true,
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Public RSA or EC keys as JWKs, each with a different string `kid`, for `INLINE` only. Up to 10.",
+                        "title": "Keys"
+                    }
+                },
+                "required": [
+                    "type"
+                ],
+                "title": "IdentityProviderJwksV1",
+                "type": "object"
+            },
             "IdentityProviderV1": {
                 "description": "An OIDC issuer whose tokens the organization accepts for workload identity federation.",
                 "properties": {
@@ -42923,8 +43291,28 @@
                         "title": "Description"
                     },
                     "predefined": {
-                        "$ref": "#/components/schemas/PredefinedIdentityProviderConfigV1",
-                        "description": "Settings of the predefined provider"
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/PredefinedIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Settings of a predefined provider. Null for a custom one."
+                    },
+                    "custom": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/CustomIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Settings of a custom provider. Null for a predefined one."
                     },
                     "created_by": {
                         "description": "ID of the user who added the provider",
@@ -42947,7 +43335,6 @@
                 "required": [
                     "id",
                     "name",
-                    "predefined",
                     "created_by",
                     "created_at",
                     "updated_at"
@@ -43006,6 +43393,14 @@
                 "title": "IdentityProvidersV1",
                 "type": "object"
             },
+            "IdentityProviderTypeV1": {
+                "enum": [
+                    "PREDEFINED",
+                    "CUSTOM"
+                ],
+                "title": "IdentityProviderTypeV1",
+                "type": "string"
+            },
             "IdentityProvidersRequestV1": {
                 "properties": {
                     "cursor": {
@@ -43054,9 +43449,43 @@
                         ],
                         "default": null,
                         "description": "Only this predefined provider's issuers"
+                    },
+                    "type": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/IdentityProviderTypeV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Only predefined or only custom providers"
                     }
                 },
                 "title": "IdentityProvidersRequestV1",
+                "type": "object"
+            },
+            "CreateCustomIdentityProviderConfigV1": {
+                "additionalProperties": false,
+                "description": "Settings of the custom identity provider to add.",
+                "properties": {
+                    "issuer_url": {
+                        "description": "The `iss` claim of the provider's tokens, matched exactly. https on port 443, without a query; unique in the organization. Can't be changed.",
+                        "maxLength": 1024,
+                        "title": "Issuer Url",
+                        "type": "string"
+                    },
+                    "jwks": {
+                        "$ref": "#/components/schemas/RequestIdentityProviderJwksV1",
+                        "description": "Where the provider's signing keys are"
+                    }
+                },
+                "required": [
+                    "issuer_url",
+                    "jwks"
+                ],
+                "title": "CreateCustomIdentityProviderConfigV1",
                 "type": "object"
             },
             "CreatePredefinedIdentityProviderConfigV1": {
@@ -43088,6 +43517,51 @@
                 "title": "CreatePredefinedIdentityProviderConfigV1",
                 "type": "object"
             },
+            "RequestIdentityProviderJwksV1": {
+                "additionalProperties": false,
+                "description": "Where the custom identity provider's signing keys are.",
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/IdentityProviderJwksTypeV1",
+                        "description": "`DISCOVERY` reads the issuer's `/.well-known/openid-configuration` and follows its `jwks_uri`, re-reading it as keys are refreshed. `EXPLICIT_URL` fetches `url`. `INLINE` uses `keys`, for an issuer Baseten can't reach; update them when they rotate."
+                    },
+                    "url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The JWK Set URL, for `EXPLICIT_URL` only: https on port 443, without a query, returning `application/json` or `application/jwk-set+json`.",
+                        "title": "Url"
+                    },
+                    "keys": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "additionalProperties": true,
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "Public RSA or EC keys as JWKs, each with a different string `kid`, for `INLINE` only. Up to 10.",
+                        "title": "Keys"
+                    }
+                },
+                "required": [
+                    "type"
+                ],
+                "title": "RequestIdentityProviderJwksV1",
+                "type": "object"
+            },
             "CreateIdentityProviderRequestV1": {
                 "additionalProperties": false,
                 "description": "Request to add an identity provider.",
@@ -43104,7 +43578,7 @@
                             }
                         ],
                         "default": null,
-                        "description": "Name, unique in the organization. Defaults to the provider's display name, so pass one when adding a second issuer of the same provider.",
+                        "description": "Name, unique in the organization. Required for a custom provider. A predefined provider defaults to its display name, so pass one when adding a second issuer of the same provider.",
                         "title": "Name"
                     },
                     "description": {
@@ -43122,14 +43596,52 @@
                         "title": "Description"
                     },
                     "predefined": {
-                        "$ref": "#/components/schemas/CreatePredefinedIdentityProviderConfigV1",
-                        "description": "The predefined provider to add"
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/CreatePredefinedIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The predefined provider to add. Pass this or `custom`."
+                    },
+                    "custom": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/CreateCustomIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The custom provider to add. Pass this or `predefined`."
+                    }
+                },
+                "title": "CreateIdentityProviderRequestV1",
+                "type": "object"
+            },
+            "VerifyCustomIdentityProviderConfigV1": {
+                "additionalProperties": false,
+                "description": "Settings of the custom identity provider to check.",
+                "properties": {
+                    "issuer_url": {
+                        "description": "The `iss` claim of the provider's tokens, matched exactly",
+                        "title": "Issuer Url",
+                        "type": "string"
+                    },
+                    "jwks": {
+                        "$ref": "#/components/schemas/RequestIdentityProviderJwksV1",
+                        "description": "Where the provider's signing keys are"
                     }
                 },
                 "required": [
-                    "predefined"
+                    "issuer_url",
+                    "jwks"
                 ],
-                "title": "CreateIdentityProviderRequestV1",
+                "title": "VerifyCustomIdentityProviderConfigV1",
                 "type": "object"
             },
             "VerifyPredefinedIdentityProviderConfigV1": {
@@ -43165,13 +43677,30 @@
                 "description": "Request to check an identity provider before adding it.",
                 "properties": {
                     "predefined": {
-                        "$ref": "#/components/schemas/VerifyPredefinedIdentityProviderConfigV1",
-                        "description": "The predefined provider to check, as you'd pass it when adding it"
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VerifyPredefinedIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The predefined provider to check, as you'd pass it when adding it. Pass this or `custom`."
+                    },
+                    "custom": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/VerifyCustomIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "The custom provider to check, as you'd pass it when adding it. Pass this or `predefined`."
                     }
                 },
-                "required": [
-                    "predefined"
-                ],
                 "title": "VerifyIdentityProviderRequestV1",
                 "type": "object"
             },
@@ -43223,6 +43752,21 @@
                 "title": "DeletedIdentityProviderV1",
                 "type": "object"
             },
+            "UpdateCustomIdentityProviderConfigV1": {
+                "additionalProperties": false,
+                "description": "Settings of a custom identity provider to change.",
+                "properties": {
+                    "jwks": {
+                        "$ref": "#/components/schemas/RequestIdentityProviderJwksV1",
+                        "description": "Where the provider's signing keys are; checked like when adding it"
+                    }
+                },
+                "required": [
+                    "jwks"
+                ],
+                "title": "UpdateCustomIdentityProviderConfigV1",
+                "type": "object"
+            },
             "UpdateIdentityProviderRequestV1": {
                 "additionalProperties": false,
                 "description": "Request to update an identity provider. Only the fields sent change.",
@@ -43256,6 +43800,18 @@
                         "description": "Description; null clears it",
                         "title": "Description",
                         "x-null-distinct": true
+                    },
+                    "custom": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateCustomIdentityProviderConfigV1"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": null,
+                        "description": "A custom provider's settings to change. A predefined provider's can't be changed."
                     }
                 },
                 "title": "UpdateIdentityProviderRequestV1",

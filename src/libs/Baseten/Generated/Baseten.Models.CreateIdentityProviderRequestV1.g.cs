@@ -9,7 +9,7 @@ namespace Baseten
     public sealed partial class CreateIdentityProviderRequestV1
     {
         /// <summary>
-        /// Name, unique in the organization. Defaults to the provider's display name, so pass one when adding a second issuer of the same provider.<br/>
+        /// Name, unique in the organization. Required for a custom provider. A predefined provider defaults to its display name, so pass one when adding a second issuer of the same provider.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -23,11 +23,18 @@ namespace Baseten
         public string? Description { get; set; }
 
         /// <summary>
-        /// The predefined provider to add
+        /// The predefined provider to add. Pass this or `custom`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("predefined")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.CreatePredefinedIdentityProviderConfigV1 Predefined { get; set; }
+        public global::Baseten.CreatePredefinedIdentityProviderConfigV1? Predefined { get; set; }
+
+        /// <summary>
+        /// The custom provider to add. Pass this or `predefined`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom")]
+        public global::Baseten.CreateCustomIdentityProviderConfigV1? Custom { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,28 +45,35 @@ namespace Baseten
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateIdentityProviderRequestV1" /> class.
         /// </summary>
-        /// <param name="predefined">
-        /// The predefined provider to add
-        /// </param>
         /// <param name="name">
-        /// Name, unique in the organization. Defaults to the provider's display name, so pass one when adding a second issuer of the same provider.<br/>
+        /// Name, unique in the organization. Required for a custom provider. A predefined provider defaults to its display name, so pass one when adding a second issuer of the same provider.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="description">
         /// Optional description<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="predefined">
+        /// The predefined provider to add. Pass this or `custom`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="custom">
+        /// The custom provider to add. Pass this or `predefined`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateIdentityProviderRequestV1(
-            global::Baseten.CreatePredefinedIdentityProviderConfigV1 predefined,
             string? name,
-            string? description)
+            string? description,
+            global::Baseten.CreatePredefinedIdentityProviderConfigV1? predefined,
+            global::Baseten.CreateCustomIdentityProviderConfigV1? custom)
         {
             this.Name = name;
             this.Description = description;
-            this.Predefined = predefined ?? throw new global::System.ArgumentNullException(nameof(predefined));
+            this.Predefined = predefined;
+            this.Custom = custom;
         }
 
         /// <summary>
