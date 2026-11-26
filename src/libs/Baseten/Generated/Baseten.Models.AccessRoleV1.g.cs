@@ -58,20 +58,6 @@ namespace Baseten
         public string? TeamName { get; set; }
 
         /// <summary>
-        /// Names of the role's own permissions
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("permissions")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> Permissions { get; set; }
-
-        /// <summary>
-        /// IDs of the built-in roles whose permissions this role also grants, including permissions Baseten adds to them later
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("include_role_ids")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> IncludeRoleIds { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -95,12 +81,6 @@ namespace Baseten
         /// <param name="kind">
         /// Where the role is assigned: `ORGANIZATION` roles for the whole organization, and `TEAM` roles in a team. `MEMBERSHIP` roles are built-in roles held only through organization membership, such as Admin and Creator, and can't be assigned.
         /// </param>
-        /// <param name="permissions">
-        /// Names of the role's own permissions
-        /// </param>
-        /// <param name="includeRoleIds">
-        /// IDs of the built-in roles whose permissions this role also grants, including permissions Baseten adds to them later
-        /// </param>
         /// <param name="teamId">
         /// ID of the only team a team role can be assigned in. Null when any team can use it, and for other kinds of role.
         /// </param>
@@ -116,8 +96,6 @@ namespace Baseten
             string description,
             bool builtIn,
             global::Baseten.AccessRoleKindV1 kind,
-            global::System.Collections.Generic.IList<string> permissions,
-            global::System.Collections.Generic.IList<string> includeRoleIds,
             string? teamId,
             string? teamName)
         {
@@ -128,8 +106,6 @@ namespace Baseten
             this.Kind = kind;
             this.TeamId = teamId;
             this.TeamName = teamName;
-            this.Permissions = permissions ?? throw new global::System.ArgumentNullException(nameof(permissions));
-            this.IncludeRoleIds = includeRoleIds ?? throw new global::System.ArgumentNullException(nameof(includeRoleIds));
         }
 
         /// <summary>

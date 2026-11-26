@@ -43,6 +43,12 @@ internal static partial class CreateAccessRolesCommandApiCommand
     {
         Description = @"IDs of built-in roles whose permissions the role also grants, such as `baseten:reader`",
     };
+
+    private static Option<string?> TemplateRoleId { get; } = new(
+        name: @"--template-role-id")
+    {
+        Description = @"ID of a built-in role whose current permissions to copy into `permissions` once, leaving out those the role's kind can't hold and those not available to your organization. Unlike `include_role_ids`, later changes to that role don't apply.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -60,7 +66,7 @@ internal static partial class CreateAccessRolesCommandApiCommand
           Hidden = true,
       };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Baseten.AccessRoleV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Baseten.AccessRoleDetailV1 value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -76,7 +82,7 @@ internal static partial class CreateAccessRolesCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.AccessRoleV1 value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Baseten.AccessRoleDetailV1 value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -92,6 +98,7 @@ Needs `access.role.write` for the organization, or in the role's team while your
                         command.Options.Add(DescriptionOption);
                         command.Options.Add(Permissions);
                         command.Options.Add(IncludeRoleIds);
+                        command.Options.Add(TemplateRoleId);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -123,6 +130,7 @@ Needs `access.role.write` for the organization, or in the role's team while your
                         var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
                         var permissions = CliRuntime.WasSpecified(parseResult, Permissions) ? parseResult.GetValue(Permissions) : (__requestBase is { } __PermissionsBaseValue ? __PermissionsBaseValue.Permissions : default);
                         var includeRoleIds = CliRuntime.WasSpecified(parseResult, IncludeRoleIds) ? parseResult.GetValue(IncludeRoleIds) : (__requestBase is { } __IncludeRoleIdsBaseValue ? __IncludeRoleIdsBaseValue.IncludeRoleIds : default);
+                        var templateRoleId = CliRuntime.WasSpecified(parseResult, TemplateRoleId) ? parseResult.GetValue(TemplateRoleId) : (__requestBase is { } __TemplateRoleIdBaseValue ? __TemplateRoleIdBaseValue.TemplateRoleId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -133,6 +141,7 @@ Needs `access.role.write` for the organization, or in the role's team while your
                                     description: description,
                                     permissions: permissions,
                                     includeRoleIds: includeRoleIds,
+                                    templateRoleId: templateRoleId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

@@ -61,7 +61,7 @@ namespace Baseten
         ///   "description": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AccessRoleV1> EditAccessRolesByRoleIdAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AccessRoleDetailV1> EditAccessRolesByRoleIdAsync(
             string roleId,
 
             global::Baseten.UpdateAccessRoleRequestV1 request,
@@ -96,7 +96,7 @@ namespace Baseten
         ///   "description": null<br/>
         /// }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleV1>> EditAccessRolesByRoleIdAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleDetailV1>> EditAccessRolesByRoleIdAsResponseAsync(
             string roleId,
 
             global::Baseten.UpdateAccessRoleRequestV1 request,
@@ -386,9 +386,9 @@ namespace Baseten
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Baseten.AccessRoleV1.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Baseten.AccessRoleDetailV1.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleDetailV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -418,9 +418,9 @@ namespace Baseten
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Baseten.AccessRoleV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Baseten.AccessRoleDetailV1.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleV1>(
+                                    return new global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleDetailV1>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Baseten.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -488,7 +488,7 @@ namespace Baseten
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Baseten.AccessRoleV1> EditAccessRolesByRoleIdAsync(
+        public async global::System.Threading.Tasks.Task<global::Baseten.AccessRoleDetailV1> EditAccessRolesByRoleIdAsync(
             string roleId,
             string? name = default,
             string? description = default,

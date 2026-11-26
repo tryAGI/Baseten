@@ -43,7 +43,7 @@ namespace Baseten
 
         /// <summary>
         /// Exchanges an identity provider's JWT for an access token<br/>
-        /// Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that is refused always returns `invalid_grant`, whatever the reason.
+        /// Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that fails a check always returns `invalid_grant`, whatever the check. Exchanges are rate limited per trust rule, per organization and per client IP. Over a limit, the response is a 429 with an `error` of `slow_down` and a `Retry-After` header.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -66,7 +66,7 @@ namespace Baseten
         }
         /// <summary>
         /// Exchanges an identity provider's JWT for an access token<br/>
-        /// Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that is refused always returns `invalid_grant`, whatever the reason.
+        /// Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that fails a check always returns `invalid_grant`, whatever the check. Exchanges are rate limited per trust rule, per organization and per client IP. Over a limit, the response is a 429 with an `error` of `slow_down` and a `Retry-After` header.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -435,7 +435,7 @@ namespace Baseten
         }
         /// <summary>
         /// Exchanges an identity provider's JWT for an access token<br/>
-        /// Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that is refused always returns `invalid_grant`, whatever the reason.
+        /// Exchanges a JWT from your identity provider for a short-lived Baseten access token, as described in RFC 8693. Send no API key: the JWT is the credential. Name the trust rule to check the JWT against as the `audience`, and send the access token as `Authorization: Bearer` on later requests. Errors follow RFC 6749 section 5.2: a 400 response with an `error` of `invalid_request`, `unsupported_grant_type`, or `invalid_grant`. A well-formed request that fails a check always returns `invalid_grant`, whatever the check. Exchanges are rate limited per trust rule, per organization and per client IP. Over a limit, the response is a 429 with an `error` of `slow_down` and a `Retry-After` header.
         /// </summary>
         /// <param name="grantType">
         /// Always `urn:ietf:params:oauth:grant-type:token-exchange`

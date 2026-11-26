@@ -19,10 +19,11 @@ namespace Baseten
         /// --data '{<br/>
         ///   "name": null,<br/>
         ///   "kind": "ORGANIZATION",<br/>
-        ///   "team_id": null<br/>
+        ///   "team_id": null,<br/>
+        ///   "template_role_id": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleV1> CreateAccessRolesAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleDetailV1> CreateAccessRolesAsync(
 
             global::Baseten.CreateAccessRoleRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -42,10 +43,11 @@ namespace Baseten
         /// --data '{<br/>
         ///   "name": null,<br/>
         ///   "kind": "ORGANIZATION",<br/>
-        ///   "team_id": null<br/>
+        ///   "team_id": null,<br/>
+        ///   "template_role_id": null<br/>
         /// }'
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleV1>> CreateAccessRolesAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleDetailV1>> CreateAccessRolesAsResponseAsync(
 
             global::Baseten.CreateAccessRoleRequestV1 request,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -73,16 +75,21 @@ namespace Baseten
         /// <param name="includeRoleIds">
         /// IDs of built-in roles whose permissions the role also grants, such as `baseten:reader`
         /// </param>
+        /// <param name="templateRoleId">
+        /// ID of a built-in role whose current permissions to copy into `permissions` once, leaving out those the role's kind can't hold and those not available to your organization. Unlike `include_role_ids`, later changes to that role don't apply.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleV1> CreateAccessRolesAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleDetailV1> CreateAccessRolesAsync(
             string name,
             global::Baseten.AccessRoleKindV1 kind,
             string? teamId = default,
             string? description = default,
             global::System.Collections.Generic.IList<string>? permissions = default,
             global::System.Collections.Generic.IList<string>? includeRoleIds = default,
+            string? templateRoleId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

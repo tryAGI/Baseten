@@ -37,11 +37,18 @@ namespace Baseten
         public string? Description { get; set; }
 
         /// <summary>
-        /// The provider's settings, as the identity provider resource returns them.
+        /// A predefined provider's settings, as the identity provider resource returns them. Null for a custom provider.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("predefined")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Baseten.AuditLogEventPredefinedIdentityProviderConfigV1 Predefined { get; set; }
+        public global::Baseten.AuditLogEventPredefinedIdentityProviderConfigV1? Predefined { get; set; }
+
+        /// <summary>
+        /// A custom provider's settings, as the identity provider resource returns them. Null for a predefined provider.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom")]
+        public global::Baseten.AuditLogEventCustomIdentityProviderConfigV1? Custom { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -54,11 +61,16 @@ namespace Baseten
         /// </summary>
         /// <param name="identityProviderId"></param>
         /// <param name="name"></param>
-        /// <param name="predefined">
-        /// The provider's settings, as the identity provider resource returns them.
-        /// </param>
         /// <param name="description">
         /// Null when the provider was added without one.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="predefined">
+        /// A predefined provider's settings, as the identity provider resource returns them. Null for a custom provider.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="custom">
+        /// A custom provider's settings, as the identity provider resource returns them. Null for a predefined provider.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="eventType"></param>
@@ -68,15 +80,17 @@ namespace Baseten
         public AuditLogEventIdentityProviderCreatedV1(
             string identityProviderId,
             string name,
-            global::Baseten.AuditLogEventPredefinedIdentityProviderConfigV1 predefined,
             string? description,
+            global::Baseten.AuditLogEventPredefinedIdentityProviderConfigV1? predefined,
+            global::Baseten.AuditLogEventCustomIdentityProviderConfigV1? custom,
             string eventType = "IDENTITY_PROVIDER_CREATED")
         {
             this.EventType = eventType;
             this.IdentityProviderId = identityProviderId ?? throw new global::System.ArgumentNullException(nameof(identityProviderId));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
-            this.Predefined = predefined ?? throw new global::System.ArgumentNullException(nameof(predefined));
+            this.Predefined = predefined;
+            this.Custom = custom;
         }
 
         /// <summary>

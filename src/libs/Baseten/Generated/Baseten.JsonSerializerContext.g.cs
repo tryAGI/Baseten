@@ -217,6 +217,12 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTrustRuleCreatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTrustRuleUpdatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventTrustRuleDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventCustomRoleCreatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventCustomRoleUpdatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventCustomRoleDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventRoleAssignmentCreatedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventRoleAssignmentDeletedV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventOrganizationAccessSettingsUpdatedV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEntryV1EventDataDiscriminatorEventType), TypeInfoPropertyName = "AuditLogEntryV1EventDataDiscriminatorEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogSourceV1), TypeInfoPropertyName = "AuditLogSourceV12")]
@@ -228,13 +234,18 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingScheduleUpsertV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingSettingsUpdateV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventAutoscalingSettingsV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventCustomIdentityProviderConfigV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Baseten.AuditFieldChangeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventEnvironmentSettingsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventPredefinedIdentityProviderConfigV1))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Baseten.AuditFieldChangeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventPromotionSettingsOverrideV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventRequestBackpressureSettingsUpdateV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogPromotionControlActionV1), TypeInfoPropertyName = "AuditLogPromotionControlActionV12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEventRoleAssignmentResourceSetV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventRoleAssignmentResourceSetV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEventRoleAssignmentResourceV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventRoleAssignmentResourceV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AuditLogEventServiceAccountPresetPermissionsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListAuditLogsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuditLogEntryV1>))]
@@ -498,6 +509,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.GetAuthCodesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AuthCodeV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchInteractiveSessionRequestV1))]
+    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.InteractiveSessionV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.PatchInteractiveSessionResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.FileSummary))]
@@ -509,16 +530,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SearchTrainingJobsRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.OrderByV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SearchTrainingJobsResponseV1))]
-    internal sealed partial class SourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.EnablementDetailsV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.LoopsServerlessPricingV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AnyOf<double?, string>), TypeInfoPropertyName = "AnyOfDoubleString2")]
@@ -777,6 +788,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessRoleV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRolesRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.CreateAccessRoleRequestV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRoleDetailV1))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.AccessRoleDetailV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRoleTombstoneV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.AccessRoleRequestV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.UpdateAccessRoleRequestV1))]
@@ -1006,6 +1019,16 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxFilesystemV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.OneOf<string, int?>), TypeInfoPropertyName = "OneOfStringInt322")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxConfigurationV1))]
+    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxEnvV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxVolumeAttachmentV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxVolumeAttachmentV1))]
@@ -1019,16 +1042,6 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxImagesResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageV1>))]
-    internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.SandboxImageV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Baseten.ListSandboxImageTagsResponseV1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Baseten.SandboxImageTagV1>))]
@@ -1226,6 +1239,8 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.SchedulesItem2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventAutoscalingScheduleUpsertV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventAutoscalingScheduleChangeV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventRoleAssignmentResourceSetV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventRoleAssignmentResourceV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEntryV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogEventTypeGroupV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AuditLogSourceV1>))]
@@ -1324,6 +1339,7 @@ namespace Baseten
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessPermissionCategoryV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessPermissionV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessRoleV1>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessRoleDetailV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessResourceRequestV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessResourceSetRequestV1>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Baseten.AccessCheckV1>))]

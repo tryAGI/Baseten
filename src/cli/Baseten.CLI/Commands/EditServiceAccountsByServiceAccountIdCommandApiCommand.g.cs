@@ -27,7 +27,7 @@ internal static partial class EditServiceAccountsByServiceAccountIdCommandApiCom
 
     private static Option<bool?> Disabled { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--disabled",
-        description: @"Disable the account to stop it being used, or enable it again");
+        description: @"Disable the account to stop it being used, or enable it again. Disabling the account permanently revokes its access tokens.");
     private static readonly ServiceAccountPresetPermissionsRequestV1OptionSet PresetPermissionsOptions = ServiceAccountPresetPermissionsRequestV1OptionSet.Create(@"preset-permissions");
       private static Option<string?> Input { get; } = new(@"--input")
       {

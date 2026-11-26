@@ -20,7 +20,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/access/roles/{role_id} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleV1> GetAccessRolesByRoleIdAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AccessRoleDetailV1> GetAccessRolesByRoleIdAsync(
             string roleId,
             string? teamId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
@@ -41,7 +41,7 @@ namespace Baseten
         /// --url https://api.baseten.co/v1/access/roles/{role_id} \<br/>
         /// --header "Authorization: Bearer $BASETEN_API_KEY"
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleV1>> GetAccessRolesByRoleIdAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Baseten.AutoSDKHttpResponse<global::Baseten.AccessRoleDetailV1>> GetAccessRolesByRoleIdAsResponseAsync(
             string roleId,
             string? teamId = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,

@@ -11,6 +11,10 @@ namespace Baseten
         /// <summary>
         ///
         /// </summary>
+        AccessControl,
+        /// <summary>
+        ///
+        /// </summary>
         ActivatedDeactivated,
         /// <summary>
         ///
@@ -102,6 +106,7 @@ namespace Baseten
         {
             return value switch
             {
+                AuditLogEventTypeGroupV1.AccessControl => "ACCESS_CONTROL",
                 AuditLogEventTypeGroupV1.ActivatedDeactivated => "ACTIVATED_DEACTIVATED",
                 AuditLogEventTypeGroupV1.ApiKeys => "API_KEYS",
                 AuditLogEventTypeGroupV1.AutoscalingSettings => "AUTOSCALING_SETTINGS",
@@ -132,6 +137,7 @@ namespace Baseten
         {
             return value switch
             {
+                "ACCESS_CONTROL" => AuditLogEventTypeGroupV1.AccessControl,
                 "ACTIVATED_DEACTIVATED" => AuditLogEventTypeGroupV1.ActivatedDeactivated,
                 "API_KEYS" => AuditLogEventTypeGroupV1.ApiKeys,
                 "AUTOSCALING_SETTINGS" => AuditLogEventTypeGroupV1.AutoscalingSettings,
