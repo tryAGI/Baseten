@@ -30,14 +30,16 @@ namespace Baseten
             ref string? cursor,
             ref int? limit,
             ref string? name,
-            ref global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind);
+            ref global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind,
+            ref global::Baseten.IdentityProviderTypeV1? type);
         partial void PrepareGetAccessIdentityProvidersRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
             int? limit,
             string? name,
-            global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind);
+            global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind,
+            global::Baseten.IdentityProviderTypeV1? type);
         partial void ProcessGetAccessIdentityProvidersResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -63,6 +65,9 @@ namespace Baseten
         /// <param name="predefinedKind">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="type">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -76,6 +81,7 @@ namespace Baseten
             int? limit = default,
             string? name = default,
             global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind = default,
+            global::Baseten.IdentityProviderTypeV1? type = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -84,6 +90,7 @@ namespace Baseten
                 limit: limit,
                 name: name,
                 predefinedKind: predefinedKind,
+                type: type,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -106,6 +113,9 @@ namespace Baseten
         /// <param name="predefinedKind">
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="type">
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Baseten.ApiException"></exception>
@@ -119,6 +129,7 @@ namespace Baseten
             int? limit = default,
             string? name = default,
             global::Baseten.PredefinedIdentityProviderKindV1? predefinedKind = default,
+            global::Baseten.IdentityProviderTypeV1? type = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -129,7 +140,8 @@ namespace Baseten
                 cursor: ref cursor,
                 limit: ref limit,
                 name: ref name,
-                predefinedKind: ref predefinedKind);
+                predefinedKind: ref predefinedKind,
+                type: ref type);
 
 
             var __authorizations = global::Baseten.EndPointSecurityResolver.ResolveAuthorizations(
@@ -162,6 +174,7 @@ namespace Baseten
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("name", name)
                                 .AddOptionalParameter("predefined_kind", predefinedKind?.ToValueString())
+                                .AddOptionalParameter("type", type?.ToValueString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Baseten.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -206,7 +219,8 @@ namespace Baseten
                     cursor: cursor,
                     limit: limit,
                     name: name,
-                    predefinedKind: predefinedKind);
+                    predefinedKind: predefinedKind,
+                    type: type);
 
                 return __httpRequest;
             }

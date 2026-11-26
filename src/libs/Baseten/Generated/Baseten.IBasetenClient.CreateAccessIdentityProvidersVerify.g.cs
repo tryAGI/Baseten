@@ -6,7 +6,7 @@ namespace Baseten
     {
         /// <summary>
         /// Checks an identity provider before adding it<br/>
-        /// Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer, that its signing keys can be fetched. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.
+        /// Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer or a custom provider, that its signing keys can be read. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -30,7 +30,7 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Checks an identity provider before adding it<br/>
-        /// Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer, that its signing keys can be fetched. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.
+        /// Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer or a custom provider, that its signing keys can be read. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -54,16 +54,22 @@ namespace Baseten
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Checks an identity provider before adding it<br/>
-        /// Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer, that its signing keys can be fetched. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.
+        /// Runs the checks that adding the identity provider runs, without adding it: the issuer's format, that the organization doesn't have it yet, and, for a provider with a per-customer issuer or a custom provider, that its signing keys can be read. A failed check returns 200 with `valid` false and the reason. Only organization admins can call this endpoint.
         /// </summary>
         /// <param name="predefined">
-        /// The predefined provider to check, as you'd pass it when adding it
+        /// The predefined provider to check, as you'd pass it when adding it. Pass this or `custom`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
+        /// <param name="custom">
+        /// The custom provider to check, as you'd pass it when adding it. Pass this or `predefined`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Baseten.VerificationV1> CreateAccessIdentityProvidersVerifyAsync(
-            global::Baseten.VerifyPredefinedIdentityProviderConfigV1 predefined,
+            global::Baseten.VerifyPredefinedIdentityProviderConfigV1? predefined = default,
+            global::Baseten.VerifyCustomIdentityProviderConfigV1? custom = default,
             global::Baseten.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

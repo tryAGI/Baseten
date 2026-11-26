@@ -10,7 +10,7 @@ internal static partial class CreateAccessIdentityProvidersCommandApiCommand
     private static Option<string?> NameOption { get; } = new(
         name: @"--name")
     {
-        Description = @"Name, unique in the organization. Defaults to the provider's display name, so pass one when adding a second issuer of the same provider.",
+        Description = @"Name, unique in the organization. Required for a custom provider. A predefined provider defaults to its display name, so pass one when adding a second issuer of the same provider.",
     };
 
     private static Option<string?> DescriptionOption { get; } = new(
@@ -19,11 +19,16 @@ internal static partial class CreateAccessIdentityProvidersCommandApiCommand
         Description = @"Optional description",
     };
 
-    private static Option<global::Baseten.CreatePredefinedIdentityProviderConfigV1> Predefined { get; } = new(
+    private static Option<global::Baseten.CreatePredefinedIdentityProviderConfigV1?> Predefined { get; } = new(
         name: @"--predefined")
     {
-        Description = @"The predefined provider to add",
-        Required = true,
+        Description = @"The predefined provider to add. Pass this or `custom`.",
+    };
+
+    private static Option<global::Baseten.CreateCustomIdentityProviderConfigV1?> Custom { get; } = new(
+        name: @"--custom")
+    {
+        Description = @"The custom provider to add. Pass this or `predefined`.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -67,10 +72,11 @@ internal static partial class CreateAccessIdentityProvidersCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"create-access-identity-providers", @"Adds an identity provider
-Adds an identity provider to the organization. For a provider with a per-customer issuer, the issuer must match the provider's format, and its signing keys are fetched before it's saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.");
+Adds a predefined or custom identity provider to the organization. For a predefined provider with a per-customer issuer, the issuer must match the provider's format. A custom provider needs a name and an issuer that no predefined provider uses. Signing keys are fetched or parsed before the provider is saved; a failure returns 422 with the reason. Each provider with a fixed issuer can be added once. Only organization admins can call this endpoint.");
                         command.Options.Add(NameOption);
                         command.Options.Add(DescriptionOption);
                         command.Options.Add(Predefined);
+                        command.Options.Add(Custom);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -98,7 +104,8 @@ Adds an identity provider to the organization. For a provider with a per-custome
                             cancellationToken).ConfigureAwait(false);
                         var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
                         var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
-                        var predefined = parseResult.GetRequiredValue(Predefined);
+                        var predefined = CliRuntime.WasSpecified(parseResult, Predefined) ? parseResult.GetValue(Predefined) : (__requestBase is { } __PredefinedBaseValue ? __PredefinedBaseValue.Predefined : default);
+                        var custom = CliRuntime.WasSpecified(parseResult, Custom) ? parseResult.GetValue(Custom) : (__requestBase is { } __CustomBaseValue ? __CustomBaseValue.Custom : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -106,6 +113,7 @@ Adds an identity provider to the organization. For a provider with a per-custome
                                     name: name,
                                     description: description,
                                     predefined: predefined,
+                                    custom: custom,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
